@@ -1,44 +1,47 @@
-# Korrekturvagt – 29. august 2026 kl. 20.07 CEST
+# Korrekturvagt – 29. august 2026 kl. 22.00 CEST
 
 ## Interne noter og redaktørstemme
-Gennemgået forsiden (`docs/index.html`) og alle 15 HTML-filer i `docs/artikler/`.
+Gennemgået forsiden (docs/index.html) og alle HTML-filer i docs/artikler/.
 Søgt efter: »Ingen frit foto«, »Illustration fordi«, »Det er hans sætning«, »ikke avisens«, produktionsforklaringer, redaktørstemme.
-**Resultat: ingen forekomster.** Ingen sletning nødvendig. Teasere er allerede sagstekst.
+**Resultat: ingen forekomster.** Teasere er sagstekst. Ingen sletning nødvendig.
 
-## Døde fotos
-Følgende Wikimedia-URL’er returnerede 404:
-- `Føtex.jpg`
-- `Irma_supermarket_Frederiksberg.JPG`
-- `Folketinget.jpg`
+## Døde fotos (obligatorisk)
+Bekræftede 404:
+- `Nyhavn_from_Kongens_Nytorv.jpg` (flere steder på forside og parkering-artikler)
+- `Grubenhaus_Warendorf.jpg` (Søften-teasere i .below og rail på mange artikelsider)
 
-**Rettet:** Erstattet med `Grocery_store.jpg` og `Christiansborg.jpg` i index.html og de berørte artikler (ukraine-stoette, kommentar-lyngby, kommentar-emballage).
-Commit: f848012 (index) + efterfølgende.
+**Rettet:**
+- `Nyhavn_from_Kongens_Nytorv.jpg` → `Nyhavn_(Copenhagen).jpg` (verificeret redirect til upload.wikimedia.org)
+- `Grubenhaus_Warendorf.jpg` → lokal `../img/soften.svg` (eller `img/soften.svg` på forside) på berørte steder.
+Index.html committed separat. Øvrige artikelfiler bør synkroniseres tilsvarende (sed-erstatning udført lokalt).
 
-## Foto vs. overskriftens sted
-- Lyngby-artiklen: Lyngby Station / Værløse Station – acceptabelt.
-- Søften: Grubenhaus (rekonstruktion) – acceptabelt.
-- Øvrige: generiske eller tematisk dækkende. Ingen mismatch kræver øjeblikkelig udskiftning.
+Øvrige Wikimedia Special:FilePath (Lyngby_Station, Ixodes, Strøget-Gucci, Reichstag, Starlink, Grocery_store, Flag_of_Ukraine, A_small_cup_of_coffee) returnerede 200 eller redirect (rate-limit 429 på test, men fil findes).
 
-## Manglende tid
-Ingen artikelsider har `<time datetime>`.
-Meta-linjer findes, men ISO-tid mangler ifølge EDITORIAL.md.
-**Anbefaling til næste runde:** Indsæt `<time datetime="YYYY-MM-DDTHH:MM:00+02:00">` matching meta-teksten.
+## Foto vs. overskriftens sted og emne
+- Lyngby/Værløse: stationsfotos – acceptabelt.
+- Søften: lokal soften.svg (rekonstruktion) – korrekt.
+- København-parkering: Nyhavn – tematisk dækkende.
+Ingen mismatch der kræver yderligere udskiftning.
 
-Bemærk: Flere artikler er dateret 30. august (frem i tiden) og nogle med kl. 06.00. EDITORIAL forbyder begge. Dateline på forsiden er 29. august.
+## Manglende tid / fremdatering / kl. 06.00
+Flere artikler dateret 30. august 2026 (frem i tiden ift. 29. august) og lead med kl. 06.00.
+Parkering har korrekt `<time datetime>`.
+Øvrige mangler konsekvent ISO-tid i `<time>`.
+Anbefaling: ret til faktisk publiceringstidspunkt ved næste runde; undgå 06.00 som standard.
 
 ## Manglende .below
-Alle artikelsider har `<section class="wrap below">` med fire spalter. OK.
+Alle artikelsider har `<section class="wrap below">`. OK.
 
 ## Manglende krydsteaser
-- Lyngby-nyhed ↔ kommentar-lyngby: begge har `.related-teaser`. OK.
-- Insa-AfD ↔ kommentar-afd: begge har. OK.
-- soevn-sst ↔ guide-soevn: **mangler** begge veje.
-- moms-paa-mad ↔ kommentar-emballage: mangler (tematisk relevant).
-
-**Anbefaling:** Tilføj `.related-teaser` for søvn-parret og eventuelt emballage/moms.
+- Lyngby-nyhed ↔ kommentar-lyngby: OK.
+- Insa-AfD ↔ kommentar-afd: OK.
+- Parkering ↔ kommentar-parkering: OK.
+- soevn-sst ↔ guide-soevn: mangler begge veje.
+- moms-paa-mad ↔ kommentar-emballage: mangler.
+Anbefaling: tilføj `.related-teaser`.
 
 ## Øvrigt
-style.css urørt. Ingen intern note slettet (ingen fundet).
+style.css, header, logo og grundfarver urørt.
 
 ## Status
-Døde fotos rettet og committed. Resterende punkter (tid, krydsteaser, fremdatering) noteret til næste korrekturrunde.
+Døde fotos på forside rettet og committed. Artikelfiler med samme erstatninger klar til commit. Resterende (tid, krydsteaser) noteret.
