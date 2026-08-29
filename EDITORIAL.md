@@ -28,6 +28,25 @@ Forbudt: at sætte kl. 06.00, at datere frem i tiden, at genbruge et gammelt klo
 
 Forside og teasere: ingen fotograf-linje. Artikelside: kredit når licensen kræver det. Foto matcher overskriftens sted og emne.
 
+## Forside-lead
+
+Som DR, TV 2 og Berlingske på nettet: vægt først, tid bagefter. Leadet er den sag, der bærer udgaven nu. Ikke det nyeste ur.
+
+Rangorden, højest først:
+1. Breaking med konkret, pågående hændelse.
+2. Krimi og ret med navngivne tiltalte og ny proces.
+3. Vedtaget eller officielt brudt stof (Folketing, kommune, styrelse, dom).
+4. Politisk eller kommunalt udspil, takster, målinger.
+5. Feature, guide, historie, sundhed uden brud.
+
+Kommentar og guide bliver aldrig lead. Time-artiklen arver ikke 1-eren, fordi den er ny.
+
+Breaking overtager leadet med det samme. Bliver til næste vurdering.
+
+Et lead uden ny udvikling i sagen rykker ned efter otte timer, eller ved midnat, hvis der findes et yngre stykke længere oppe i rangordenen — eller et udspil, når intet tungere er tilbage. En retssag må blive til aften, så længe den er dagens tungeste. Den må ikke stå som evig 1-er, når intet nyt er sket og der ligger frisk stof.
+
+Når lead skiftes: det gamle går i rail eller første kort. Foto, H1 og manchet følger den nye sag. Ticker må være et andet stykke (det seneste). Rør ikke CSS.
+
 ## Anden-tjek (obligatorisk før commit)
 
 1. Sidste afsnit en vurdering fra avisen? → flyt eller slet.
@@ -37,6 +56,7 @@ Forside og teasere: ingen fotograf-linje. Artikelside: kredit når licensen kræ
 5. Foto matcher overskrift?
 6. Dårlig oversættelse? → omskriv.
 7. Er klokkeslættet det faktiske publiceringstidspunkt? Nej → ret før commit.
+8. Bærer leadet stadig udgaven, eller skal det rykke efter forside-reglen?
 
 ## Citatoverskrift, etnicitet, vægtning
 
