@@ -3,41 +3,128 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Avisen</title>
-  <style>
-    :root { color-scheme: light; }
-    body { margin: 0; font-family: Georgia, "Times New Roman", serif; background: #f6f1e8; color: #1a1a1a; }
-    header { border-bottom: 3px solid #1a1a1a; padding: 2.2rem 1.25rem 1.1rem; text-align: center; background: #faf7f1; }
-    header p.kicker { letter-spacing: .18em; text-transform: uppercase; font-size: .72rem; font-family: system-ui, sans-serif; margin: 0 0 .4rem; }
-    h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); margin: 0; font-weight: 700; }
-    .sub { font-family: system-ui, sans-serif; font-size: .95rem; color: #444; margin: .6rem 0 0; }
-    main { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-    article { background: #fff; border: 1px solid #ddd4c4; padding: 1.4rem 1.3rem; margin-bottom: 1.1rem; }
-    article h2 { margin: 0 0 .4rem; font-size: 1.35rem; }
-    .meta { font-family: system-ui, sans-serif; font-size: .8rem; color: #666; margin-bottom: .8rem; }
-    a { color: #1a1a1a; }
-    footer { font-family: system-ui, sans-serif; font-size: .8rem; color: #666; text-align: center; padding: 0 1rem 2.5rem; }
-  </style>
+  <title>Forside – Morgentidende</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <p class="kicker">Offentlig webudgave</p>
-    <h1>Avisen</h1>
-    <p class="sub">Udkast lander om natten. Godkendte artikler vises her.</p>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="wordmark" href="./" aria-label="Morgentidende — forside">MORGENTIDENDE</a>
+      <div class="dateline">
+        <time datetime="2026-08-29">Lørdag 29. august 2026</time>
+        <span>Danmarks nye avis</span>
+      </div>
+      <nav class="nav" aria-label="Sektioner">
+        <a href="./" aria-current="page">Nyheder</a>
+        <a href="#indland">Indland</a>
+        <a href="#udland">Udland</a>
+        <a href="#erhverv">Erhverv</a>
+        <a href="#videnskab">Videnskab</a>
+        <a href="#historie">Historie</a>
+        <a href="#om">Om</a>
+      </nav>
+    </div>
   </header>
-  <main>
-    <article>
-      <p class="meta">29. august 2026 · Redaktionen</p>
-      <h2>Webudgaven er åben</h2>
-      <p>Repoet er oprettet. Der er endnu ingen godkendte artikler i <code>published/</code>. Første natlige udkast forventes 30. august kl. 02.00.</p>
-      <p>Kilde og arkiv: <a href="https://github.com/NickZen108/avisen">github.com/NickZen108/avisen</a></p>
-    </article>
-    <article>
-      <p class="meta">Udkast</p>
-      <h2>Drafts</h2>
-      <p>Natlige tekster ligger i <a href="https://github.com/NickZen108/avisen/tree/main/drafts">drafts/</a> indtil de er læst igennem.</p>
-    </article>
+
+  <div class="ticker">
+    <div class="wrap">
+      <span class="kicker">Nyhedsoverblik</span>
+      <p>To rapporter om spiralsagen lander med modsat fortegn. Siumut kræver Den Internationale Domstol</p>
+    </div>
+  </div>
+
+  <main class="wrap layout">
+    <section class="lead">
+      <img src="https://morgentidende.hostingersite.com/img/lead-groenland.jpg" alt="Farvede huse foran et sneklædt fjeld i Grønland">
+      <p class="section-label" id="indland">Indland</p>
+      <h1>Den ene rapport finder intet belæg for folkedrab. Siumut vil have Danmark for en international domstol</h1>
+      <p class="standfirst">Naalakkersuisut offentliggjorde fredag to uenige udredninger af spiralsagen. Advokat Jonas Christoffersen siger i et interview til Ritzau, at evidensen for folkedrab er »nul«. Siumuts formand, Aleqa Hammond, afviser at lade sagen slutte dér.</p>
+      <p class="meta">Offentliggjort lørdag 29. august 2026 · Indland</p>
+    </section>
+
+    <aside class="rail" aria-label="Også i dag">
+      <p class="rail-title">Også i dag</p>
+      <a class="rail-item" href="#udland">
+        <span>Udland</span>
+        Tysk måling sætter AfD på 29 procent. Kanslerpartiet ligger otte point efter
+      </a>
+      <a class="rail-item" href="#erhverv">
+        <span>Erhverv</span>
+        DI: omkostningen sætter sig i prisen
+      </a>
+      <a class="rail-item" href="#videnskab">
+        <span>Videnskab</span>
+        Kort nattesøvn sløver kroppens insulin. Det viser nye populationsdata
+      </a>
+      <a class="rail-item" href="#historie">
+        <span>Historie</span>
+        I jorden nord for Aarhus ligger 82 grubehuse fra vikingetiden
+      </a>
+      <a class="rail-item" href="#erhverv">
+        <span>Erhverv</span>
+        Fødevarepriserne er steget mere end lønnen. Det viser tallene for 2021–2025
+      </a>
+    </aside>
+
+    <section class="stack">
+      <article id="udland">
+        <p class="section-label">Udland</p>
+        <h2>Tysk måling sætter AfD på 29 procent. Kanslerpartiet ligger otte point efter</h2>
+        <p>Instituttet INSA, der jævnligt måler den tyske vælgeropinion for avisen Bild, finder Alternative für Deutschland som største parti.</p>
+        <p class="meta">Lørdag 29. august 2026</p>
+      </article>
+      <article id="videnskab">
+        <p class="section-label">Videnskab</p>
+        <h2>Kort nattesøvn sløver kroppens insulin. Det viser nye populationsdata</h2>
+        <p>Et taiwanesisk kohortestudie med over en halv million deltagere knytter både for kort og for lang søvn til højere dødelighed. Sundhedsstyrelsen anbefaler syv til ni timer.</p>
+        <p class="meta">Lørdag 29. august 2026</p>
+      </article>
+      <article id="erhverv">
+        <p class="section-label">Erhverv</p>
+        <h2>DI: omkostningen sætter sig i prisen</h2>
+        <p>Dansk Industri siger, at emballagegebyrer og nye EU-krav sætter sig i priserne. Heunicke har sagt, at det samlet ikke bliver dyrere.</p>
+        <p class="meta">Lørdag 29. august 2026</p>
+      </article>
+      <article>
+        <p class="section-label">Erhverv</p>
+        <h2>Fødevarepriserne er steget mere end lønnen. Det viser tallene for 2021–2025</h2>
+        <p>Fødevarer +28,6 procent til december 2025. Forbrugerpriser i alt +17,0. Lønnen i erhverv i alt +20,8 procent til andet kvartal 2026.</p>
+        <p class="meta">Lørdag 29. august 2026</p>
+      </article>
+      <article>
+        <p class="section-label">Kommentar</p>
+        <h2>Regningen for emballagereglerne ender i kassen</h2>
+        <p>Kravene til dokumentation og nyt design koster virksomhederne. Den slags sætter sig i prisen. Formålet er mindre affald. Dette er en kommentar, ikke et nyhedsreferat.</p>
+        <p class="meta">Lørdag 29. august 2026</p>
+      </article>
+      <article>
+        <p class="section-label">Guide</p>
+        <h2>Fem vaner, der giver nattesøvnen en chance</h2>
+        <p>Dagslys, koffein, køligt rum, faste tider og skærmen den sidste time. Kedelige råd, der bliver ved med at holde. Ved siden af dagens stofskifteartikel.</p>
+        <p class="meta">Lørdag 29. august 2026</p>
+      </article>
+      <article id="historie">
+        <p class="section-label">Historie</p>
+        <h2>I jorden nord for Aarhus ligger 82 grubehuse fra vikingetiden</h2>
+        <p>Moesgaard Museum har afdækket et tekstilværksted på 100.000 kvadratmeter ved Søften. Fundene peger på organiseret produktion – ikke kun krig og togter.</p>
+        <p class="meta">Lørdag 29. august 2026</p>
+      </article>
+    </section>
   </main>
-  <footer>NickZen108 / avisen · GitHub Pages</footer>
+
+  <footer id="om">
+    <div class="wrap footer-inner">
+      <p class="wordmark-sm">Morgentidende</p>
+      <p>GitHub-udgave af avisen. Natlige udkast lander i repoet. Live-redaktionen på Hostinger er den fulde udgave.</p>
+      <p class="footer-links">
+        <a href="https://morgentidende.hostingersite.com/">Hostinger-udgave</a>
+        ·
+        <a href="https://github.com/NickZen108/avisen">Arkiv på GitHub</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
