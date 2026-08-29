@@ -1,9 +1,31 @@
-# Design — Morgentidende
+# 2. Design
 
-Officielt logo: **mørk udgave** (forslag 3).
-Filer: `docs/logo.svg` (navnetræk) og `docs/logo-mark.svg` (ikon).
+Låst 29. august 2026. Ændres kun når brugeren skriver det sort på hvidt.
 
-Papir `#F8F6F1` · Blæk `#161513` · Navy `#1B2430` · Papir-lys `#F4F1EA`
-Ikke JP-grøn. Ikke Politiken-rød.
+## Farver
 
-Skrift: Fraunces (hoved), Source Serif 4 (brød), Source Sans 3 (ui).
+- Papir `#F3EEE4`
+- Blæk `#161513`
+- Header/footer `#1B2430`
+- Ticker `#121820`
+- Tema-boks `#E8E2D4`
+- Accent `#3D5270`
+- Guld `#C9A227`
+
+## Typografi
+
+Wordmark: Fraunces italic, `clamp(2.35rem, 5.6vw, 3.85rem)`.
+Brød: Source Serif 4. Kicker: Source Sans 3.
+
+## Sideskabelon
+
+Forside: lead + rail + tre kort + fire smalle.
+Artikelside: `article-grid` + sidespalte + `.below` fire spalter med foto.
+Nyhed/kommentar om samme sag: `.related-teaser` begge veje.
+Flere stykker om samme tema: `.theme-box`.
+
+## Forbudt uden ny ordre
+
+style.css-grids, header, logo-fil, wordmark-størrelse, grundfarver.
+
+Tilladt: nye artikler, teaser-tekst, sitemap, bruge `.related-teaser` og `.theme-box`.

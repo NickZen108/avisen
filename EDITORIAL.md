@@ -1,25 +1,53 @@
-# Morgentidende — redaktionel linje
+# 1. Redaktionel linje
 
-Navn: **Morgentidende**.
+Navn på alle flader: **Morgentidende**.
 
-Nyheden skal kunne læses af en uenig. Linjen vises i Kommentar og i emnevalg.
+Seriøs broadsheet. Ikke partiblad. Ikke vred. Nyheden skal kunne læses af en uenig. Holdningen vises i emnevalg og i stykker mærket Kommentar.
 
-## Breaking
+Frihed, ytringsfrihed, slank stat, mindre bureaukrati, privatliv, nationalt demokrati. Skeptisk over for EU-styring, FN-konventioner som politisk overstyring, krig som let løsning, politisk islam, ikke-vestlig indvandring som politisk spørgsmål, socialisme, klimapolitik som skatteprojekt, woke og institutionel kønspolitik.
 
-Scan-agenten læser DR, TV 2, JP, Berlingske, Politiken, BT/EB, Ritzau. Breaking = samme sag hos mindst to store medier, eller officiel kilde.
+## Sprog
 
-Ved breaking: skriv straks én eller flere *nyheder*. Kommentar først bagefter. Relaterede stykker: `.related-teaser`. Flere stykker om samme sag: `.theme-box`.
+Kort. Aktiv. Dansk. Kedeligt og klart. Ingen slang.
 
-Ingen breaking: én artikel i timen. Fordeling over et døgn, cirka 4 nyhed, 2 krimi, 2 sundhed, 1 videnskab/feature, 1 historie, 1 forbruger, 1 guide.
+## Forbudt på siden
+
+Ingen intern note. Ingen redaktørstemme. Ingen sætning som »Ingen frit foto af …«, »Det er hans sætning, ikke avisens«, »Illustration fordi vi manglede foto«. Læseren ser kun sagen.
+
+Korrekturvagten gennemsøger *alle* artikler og forsiden for sådanne noter og sletter dem.
+
+## Tid
+
+Alle artikler: dato og klokkeslæt. `30. august 2026 kl. 06.00`.
+
+## Foto
+
+Matcher overskriftens sted og emne. Lyngby-sag får ikke Værløse Station. Caption og fil stemmer. Døde URL'er skiftes.
+
+## Overskrift som citat
+
+Tilladt når sætningen er det stærkeste. Gåseøjne. Ordret. Kilde i underrubrik eller første afsnit. Redaktøren tjekker mod original. Finder han den ikke: veto.
+
+## Citater i teksten
+
+Altid dansk. Kilde og dato.
+
+## Egenavne
+
+Første gang: forklaring i samme sætning.
+
+## Etnicitet og religion i krimi
+
+Kun nøgterne tegn fra kilden (tolk, tørklæde), anden halvdel. Ingen tolkning.
+
+## Nyhed og Kommentar
+
+Nyhed først. Kommentar først efter mindst én nyhed om samme emne. Krydsteaser begge veje. Flere kommentarer samme døgn kun ved større breaking.
+
+## Vægtning
 
 Af seneste 10: mindst 4 ikke-politiske. Maks. 2 samme døgn om islam/indvandring/køn tilsammen.
 
-## Kæde
+## Tvivl
 
-Research → Journalist → SEO → Redaktør (veto).
-
-Redaktøren dobbelttjekker alle citater, især citatoverskrifter, mod den originale kilde. Finder han ikke sætningen ordret: artikel udgives ikke med den overskrift.
-
-## Kommentar
-
-Mærket Kommentar. Saglig. Ikke vred. Flere end én pr. døgn kun ved større breaking.
+Vred eller partiblad: vælg den neutrale linje.

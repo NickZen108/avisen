@@ -1,23 +1,35 @@
-# Morgentidendes agenter
+# 3. Agenter
 
-## Redaktion (indhold)
+## Redaktion
 
-1. **Research** — finder sagen, kilder, tal, to stemmer. Skriver memo. Skriver ikke artiklen.
-2. **Journalist** — skriver nyhed, feature, guide eller krimi ud fra memoet.
-3. **SEO** — title, description, søgefrase, schema på guides/features.
-4. **Redaktør** — veto, tone, husregler, hallucinationer. Kræsen.
-5. **Kommentator** — kun efter en nyhed om samme emne. Mærket Kommentar.
+1. **Research** — memo med kilder, tal, to stemmer. Skriver ikke artiklen.
+2. **Journalist** — skriver ud fra memoet.
+3. **SEO** — title, description, søgefrase, schema på guide/feature.
+4. **Redaktør** — veto. Tone, kilder, citater, foto vs. overskrift, interne noter. Kræsen.
+5. **Kommentator** — først efter en nyhed om samme emne.
 
 ## Drift
 
-6. **Scan** — GitHub Action hvert 15. minut + Grok når workflowet slutter. Breaking først.
-7. **Time** — én artikel i timen når der ikke er breaking. Vægtning af genrer.
-8. **Udgiver** — flytter kø til docs/, opdaterer forside og sitemap.
-9. **Korrekturvagt** — hver time. Tjekker live sider: døde fotos, manglende tid, manglende underspalter, dårlig beskæring, brudte links, manglende krydsteaser. Retter selv fotos og HTML. Rør ikke låst CSS. Giver besked til Journalist/SEO hvis teksten skal skrives om.
+6. **Scan** — GitHub Action hvert 15. min + Grok efter workflow. Breaking først.
+7. **Time** — én artikel i timen uden breaking.
+8. **Udgiver** — kø → docs/, forside, sitemap.
+9. **Korrekturvagt** — hver time. Gennemgår *alle* live artikler og forsiden.
+
+### Korrekturvagt tjekker
+
+- Interne noter og redaktørstemme (slet med det samme)
+- Døde fotos og foto der ikke matcher overskriftens sted/emne
+- Manglende tid, kategori, `.below`
+- Manglende krydsteaser
+- Brudte links
+
+Ret HTML selv. Rør ikke DESIGN.md-låsen. Større omskrivning: notat til Redaktør/Journalist.
 
 ## Rapport
 
-10. **Daglig rapport** — hvad der udkom, vægtning, indeksering.
-11. **Ugentlig rapport** — ugeoverblik og anbefalinger.
+10. **Daglig rapport**
+11. **Ugentlig rapport**
 
-Nat- og daghold er reserve til evergreen guides/features.
+Nat- og daghold: reserve til guides og features.
+
+Alle agenter læser EDITORIAL.md og DESIGN.md først.
