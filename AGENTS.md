@@ -10,8 +10,8 @@
 
 ## Drift
 
-6. **Scan** — hvert 15. min + Grok efter workflow.
-7. **Time** — én artikel i timen uden breaking.
+6. **Scan** — hvert 15. min + Grok efter workflow. Breaking publiceres straks og tæller ikke som time-stykket.
+7. **Time** — én ny artikel hver hele time, også hvis der er udgivet breaking i samme time. Andet emne. En kørsel uden ny fil er en fejl.
 8. **Udgiver**
 9. **Korrekturvagt** — hver time. Alle live sider. Først interne noter og vurderings-slutninger i nyheder. Så foto: hvert `<img>` skal hentes (404/timeout/grå kasse = dødt, også når motivet passer). Foretræk `docs/img/`. Derefter tid og `.below`. Se QA.md.
 
