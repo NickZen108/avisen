@@ -8,7 +8,19 @@ Dato og klokkeslæt på alle artikler. Format: 30. august 2026 kl. 06.00.
 
 ## Foto
 
-Fotoet skal matche overskriftens sted og emne. En artikel om retssag i Lyngby får ikke et foto fra Værløse Station. Caption og fil skal stemme. Døde Commons-URL'er skiftes med det samme.
+Fotoet skal matche overskriftens sted og emne. Caption og fil skal stemme.
+
+## Overskrift som citat
+
+En overskrift må være et citat, når sætningen er det stærkeste i sagen. Sæt den i gåseøjne.
+
+Eksempel på formen: »Nul tegn på folkedrab i Grønland«
+
+Krav:
+- Ordret. Ingen stramning, ingen udeladte ord, ingen »citatagtig« parafrase.
+- Navngiven kilde i underrubrik eller første afsnit (hvem, titel, hvor, dato).
+- Research skal have den originale sætning med URL.
+- Redaktøren tjekker citatet mod kilden før udgivelse. Finder redaktøren ikke sætningen: veto. Ingen citatoverskrift.
 
 ## Layout
 
@@ -28,7 +40,7 @@ Tegn nævnes nøgternt i anden halvdel, hvis kilden siger det. Ingen tolkning.
 
 Nyhed først. Kommentar først efter mindst én nyhed om samme emne.
 
-## Citater
+## Citater i teksten
 
 Dansk. Kilde og dato. Aldrig meta.
 
