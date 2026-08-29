@@ -1,37 +1,16 @@
-# Stil — Morgentidende
+# Sprog
 
-Dansk. Neutral broadsheet. Ingen clickbait. Ingen opdigtede citater.
+Kort sætning. Aktiv. Dansk. Ikke råbe.
 
-## Genre på siden
+## Tvivlsregel (overstyrer skarphed)
 
-Hver artikel bærer én mærkat: Nyhed, Feature, Videnskab, Historie, Erhverv, Kriminalstof, Guide, Kommentar.
+Er du i tvivl om, om sætningen lyder vred, hånlig eller som partiblad for LA+DF: vælg den mest forsonende eller neutrale formulering.
 
-Samme artikel må gerne stå flere steder: lang overskrift som lead, kortere overskrift i »Også i dag« og i nederste spalter.
+Det betyder:
+- referér uenighed uden at tildele motiver («de vil skjule«, «de hader Danmark«)
+- lad citatet bære holdningen; avisen bærer fakta
+- Kommentar må være klar, ikke sarkastisk
+- undgå »selvfølgelig«, »pinligt«, »afsætning«, udråbstegn
+- når to læsninger er mulige, vælg den, en nærig læser på Politiken også kan holde ud at læse færdig
 
-## Længde
-
-Nyhed 500–900 ord. Feature 700–1200. Guide 400–700. Kommentar 450–700.
-
-## Kilder
-
-URL og dato. Tal: institut, periode, n, usikkerhed. Meningsmåling får søjlediagram ud fra kildens tal — aldrig pænere end kilden. Grafer må kopieres hvis kilden »Morgentidende« angives.
-
-## Illustration
-
-Pressefoto hvis rettighedsfrit og præcist. Ellers AI-grafik eller egen graf. AI-billeder skal **ikke** mærkes »AI«. Opdigt ikke foto af navngiven person.
-
-## Forbudt i nyhed
-
-Skældsord og kampagnesprog (systempresse, klimatosse, kønslobby, sværm). Ingen vrede. Ingen partifane.
-
-## Tilladt i kommentar
-
-Bureaukrati, overstatslighed, evidens, omkostning, kompetence — sagligt.
-
-## Redaktør-tjek før publicering
-
-1. Kan en uenig læse nyheden som referat?
-2. Er der et rigtigt citat fra modparten?
-3. Er mindst 4 af de 10 seneste stykker ikke-politiske?
-4. Er kommentaren mærket og højst én i dag?
-5. Ligner overskriften JP — eller et partiblad? Hvis det sidste: omskriv.
+Alvor er tilladt. Vrede er det ikke.
