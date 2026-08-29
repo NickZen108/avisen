@@ -16,14 +16,17 @@ Ingen intern note. Ingen redaktørstemme. Ingen »ikke en facitliste«, »ikke a
 
 En nyhed må ikke slutte med avisens vurdering. Sådanne sætninger hører i Kommentar eller ud.
 
+## Udgivelsestid
+
+Tidspunktet på artiklen er det øjeblik, filen lander i `docs/` og går live. Dansk tid. Format: `29. august 2026 kl. 19.23`.
+
+Forbudt: at sætte kl. 06.00, at datere frem i tiden, at genbruge et gammelt klokkeslæt. Planlagt kø får først tid, når den faktisk publiceres.
+
+`<time datetime>` skal være samme tid i ISO.
+
 ## Foto og kredit
 
-Forside og teasere: ingen fotograf-linje under billedet (som JP/Berlingske).
-Artikelside: kredit under det store foto, når licensen kræver det.
-
-Wikimedia CC-BY og CC-BY-SA *kræver* navn på ophavsmanden. Det opfyldes på artikelsiden, ikke på forsiden. Public domain og egne illustrationer kan stå uden navn. Egne grafer: »Morgentidende« kun på artikelsiden, hvis det ser rent ud.
-
-Foto matcher stadig overskriftens sted og emne.
+Forside og teasere: ingen fotograf-linje. Artikelside: kredit når licensen kræver det. Foto matcher overskriftens sted og emne.
 
 ## Anden-tjek (obligatorisk før commit)
 
@@ -33,10 +36,11 @@ Foto matcher stadig overskriftens sted og emne.
 4. Egennavne forklaret første gang?
 5. Foto matcher overskrift?
 6. Dårlig oversættelse? → omskriv.
+7. Er klokkeslættet det faktiske publiceringstidspunkt? Nej → ret før commit.
 
-## Tid, citatoverskrift, etnicitet, vægtning
+## Citatoverskrift, etnicitet, vægtning
 
-Tid på alle stykker. Citatoverskrift kun ordret. Etnicitet kun som tegn i anden halvdel. Mindst 4 af 10 ikke-politiske.
+Citatoverskrift kun ordret. Etnicitet kun som tegn i anden halvdel. Mindst 4 af 10 ikke-politiske.
 
 ## Tvivl
 
