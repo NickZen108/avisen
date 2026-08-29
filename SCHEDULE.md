@@ -1,28 +1,18 @@
 # Planlagt udgivelse
 
-Som WordPress «Schedule». Artikler gøres færdige i køen. De går først live, når udgiver-agenten slipper dem.
+Første slot hver dag: **06:00** (telefonen ved morgenkaffen).
 
-## Kø
+Øvrige: 09:30 · 13:00 · 16:00 · 19:00 · 21:30
+Mindst tre timer mellem to live-udgivelser.
 
-`scheduled/YYYY-MM-DD-slug.md` med frontmatter:
+06-historien skal være en konkret nyhed, folk gider åbne: kriminalstof, retssag, tal. Ikke en guide.
 
-```
-publish_at: 2026-08-30T10:00:00+02:00
-status: queued
-slug: ...
-title: ...
-genre: ...
-html_path: scheduled/html/YYYY-MM-DD-slug.html
-```
+## Research-inspiration (ikke kilder)
 
-Færdig HTML ligger i `scheduled/html/`.
+- Danske lokalaviser og politiets døgnrapporter (krimi)
+- Store europæiske og amerikanske kommentaraviser (UnHerd, Spectator, Quillette) kun som *emnespor*
+- Offentlige indlæg på X fra Elon Musk og lign. som *emnespor* (teknik, rum, AI) — aldrig som bevis
+- Sundhed/fitness-kanaler må pege på et paper; paperet skal læses. YouTube er ikke kilde.
 
-## Slots (Europe/Copenhagen)
-
-07:30 · 10:00 · 13:00 · 16:00 · 19:00 · 21:30
-
-Mindst 3 timer mellem to live-udgivelser. Ingen klumper. Maks. én artikel pr. slot.
-
-## Udgiver-agent
-
-Kører hver time 07–22. Finder den ældste queued-fil hvor publish_at ≤ nu. Flytter HTML til `docs/artikler/{slug}.html`, opdaterer forside + sitemap, sætter status: live. Stopper. Hvis ingen er forfalden: ingen ændring.
+Forbudt: konspirationer, anonyme telegram-påstande, «de fortier«.
+Kilder er altid styrelse, ret, politi, DST, fagfællebedømt tidsskrift eller navngiven aktør.
