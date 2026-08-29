@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="Morgentidende">
+  <rect width="1200" height="400" fill="#1B2430"/>
+  <text x="600" y="210" text-anchor="middle" fill="#F4F1EA" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-style="italic" font-weight="600">Morgentidende</text>
+  <line x1="280" y1="255" x2="920" y2="255" stroke="#F4F1EA" stroke-width="1.2" opacity="0.85"/>
+</svg>
