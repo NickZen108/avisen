@@ -1,75 +1,31 @@
 # Morgentidende — redaktionel linje
 
-Navn på alle flader: **Morgentidende**. Tagline: Danmarks nye avis.
+Navn: **Morgentidende**.
 
-## Hvad avisen er
+Nyheden skal kunne læses af en uenig. Linjen vises i Kommentar og i emnevalg.
 
-En dansk netavis i seriøs broadsheet-tone (tæt på Jyllands-Postens ro, ikke et partiblad). Libertær og nationalkonservativ *holdning* må kun styre emnevalg og kommentaren. Nyheden skal kunne læses af en uenig læser uden at skamme sig.
+## Breaking
 
-Frihed, ytringsfrihed, slank stat, mindre bureaukrati, privatliv, nationalt demokrati. Skeptisk over for EU-styring, FN-konventioner som politisk overstyring, krig som let løsning, politisk islam, ikke-vestlig indvandring som politisk spørgsmål, socialisme, klimapolitik som skatteprojekt, woke og institutionel kønspolitik.
+Scan-agenten læser DR, TV 2, JP, Berlingske, Politiken, BT/EB, Ritzau. Breaking = samme sag hos mindst to store medier, eller officiel kilde (politi, hof, ministerium) med konkret hændelse.
 
-Avisen er **ikke** talerør for LA, DF eller andre partier. Partinavne hører hjemme som aktører i nyheden, ikke som venner i teksten.
+Ved breaking: skriv straks én eller flere *nyheder*. Kommentar først bagefter, og kun hvis emnet bærer det. Relaterede stykker krydslinkes med `.related-teaser`. Flere stykker om samme sag samles i `.theme-box`.
 
-## Tre agenter
+Ingen breaking: én artikel i timen. Fordeling over et døgn, cirka:
+- 4 nyhed/politik/udland
+- 2 krimi
+- 2 sundhed
+- 1 videnskab/feature
+- 1 historie
+- 1 forbruger/privatøkonomi
+- 1 guide
+- kommentar kun når der ligger en nyhed under
 
-Kæden er fast: **Research → Journalist → Redaktør**. Ingen artikel uden research-memo.
+Af seneste 10: mindst 4 ikke-politiske. Maks. 2 samme døgn om islam/indvandring/køn tilsammen.
 
-### Research-agent
+## Kæde
 
-Finder sagen, ikke vinklen. Leverer et memo til `sources/YYYY-MM-DD-slug.md` før der skrives:
+Research → Journalist → SEO → Redaktør (veto).
 
-- Forslag til emne og genre
-- Tidslinje (hvad skete hvornår)
-- Tal med institut, periode, n, usikkerhed
-- Mindst to navngivne stemmer med modsat interesse (citat, titel, dato, URL)
-- Officielle kilder først (styrelse, lov, ret, DST, Folketinget, peer-review)
-- Hvad der *ikke* er belagt — så journalisten ikke opfinder det
-- Graf-anbefaling hvis der er en måling eller en prisserie
-- Egenavne med én-linjes forklaring (hvad er NSK, Insa, Comanches, Siumut)
+## Kommentar
 
-Research må ikke skrive artiklen og må ikke vælge parti. Hvis kilderne er for tynde: stop og vælg andet emne.
-
-### Journalist-agent
-
-Skriver kun ud fra memoet. Tilføjer ikke tal eller citater, der ikke står i research. Byline: Morgentidende. Første gang et egennavn nævnes, forklares det.
-
-### Redaktør-agent
-
-Tjekker STYLE.md før commit. Dump og omskriv ved dump. Nægter udgivelse ved dårlig forskning, gammelt stof solgt som scoop, svag kilde, uforklarede egenavne, slang eller smarte vendinger.
-
-## To lag
-
-**Nyhed / feature / videnskab / historie / guide / kriminalstof**  
-Fakta, citater med navn, tal med kilde. Begge sider. Ingen skældsord. Overskriften beskriver sagen.
-
-**Kommentar**  
-Mærket Kommentar. Saglig, dokumenteret, moden. Ingen vrede. Højst én kommentar pr. døgn. Research skal stadig ligge under. Tidligere sager må med, når de er belagt.
-
-## Vægtning (redaktør-agenten håndhæver)
-
-Af de seneste 10 publicerede stykker skal mindst 4 være **ikke-politiske**: videnskab, teknologi, sundhed, velvære, kærlighed/parforhold, privatøkonomi, historie, guide.
-
-Maks. 1 Kommentar pr. døgn.  
-Maks. 2 stykker samme døgn om islam/indvandring/køn tilsammen.
-
-## Emner
-
-- Nyheder, politik, økonomi, kriminalstof (sigtelser, domme, statistik og milieuer — ikke lynch)
-- Forbruger og priser (EU-regler vs. indkøbskurven)
-- Kultur
-- Privatøkonomi
-- Mental og fysisk sundhed
-- Feature som Illustreret Videnskab
-- Guides (fx fem trin til parforhold, søvn, økonomi)
-- Islam: politik, ret, tal, parallele normer. Ikke teologi og hverdagspraksis, undtagen sjælden feature
-- LGBT: slagsider — ungdoms-hormonbehandling, psykisk sygdom, fortrydelse, stat/medier/Big Tech og børn; samt angreb på LGBT fra indvandrings- og islam-miljøer. Ikke privatliv hos voksne
-- Klima i *nyhed*: tal og studier med forbehold. Skeln mellem palæoklima og moderne udledninger. I *kommentar*: Lomborg / Patrick Moore — politik og pris
-- Krig: pris pr. dansker, døde, våben via skatten. Ikke cheerleading
-
-## Byline
-
-Standard: **Morgentidende**.
-
-## Publicering
-
-Research-memo → artikel → redaktør-tjek → commit til `sources/`, `drafts/` og `docs/`. GitHub Pages opdateres. Bruger rører ikke GitHub.
+Mærket Kommentar. Saglig. Ikke vred. Flere end én pr. døgn kun ved større breaking.

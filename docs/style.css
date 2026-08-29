@@ -7,6 +7,7 @@
   --dark: #1B2430;
   --dark-ink: #F4F1EA;
   --gold: #C9A227;
+  --theme: #E8E2D4;
   --max: 1180px;
   --display: "Fraunces", "Source Serif 4", Georgia, serif;
   --serif: "Source Serif 4", Georgia, serif;
@@ -112,6 +113,41 @@ a:hover { text-decoration: underline; text-underline-offset: .16em; }
 .article-body p { margin: 0 0 1rem; }
 .article-rail { border-left: 1px solid var(--rule); padding-left: 1.1rem; }
 .article-rail .rail-item { font-size: .92rem; }
+
+.related-teaser {
+  margin: 1.2rem 0 0;
+  padding: .85rem 1rem;
+  background: var(--theme);
+  border-left: 3px solid var(--accent);
+}
+.related-teaser .k {
+  display: block;
+  font-family: var(--sans);
+  font-size: .64rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .25rem;
+}
+.related-teaser p { margin: 0; font-weight: 600; }
+
+.theme-box {
+  grid-column: 1 / -1;
+  background: var(--theme);
+  border: 1px solid var(--rule);
+  padding: 1rem 1.15rem 1.2rem;
+  margin: 0 0 1.4rem;
+}
+.theme-box .theme-kicker {
+  margin: 0 0 .55rem;
+  font-family: var(--sans);
+  font-size: .64rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.theme-box ul { list-style: none; margin: 0; padding: 0; }
+.theme-box li { padding: .4rem 0; border-top: 1px solid var(--rule); font-weight: 600; }
 
 .below {
   display: grid;

@@ -1,32 +1,34 @@
 # Sprog
 
-Kort sætning. Aktiv. Dansk. Ikke råbe.
-
-Skriv kedeligt og klart. Ingen slang. Ingen smarte vendinger.
+Kort sætning. Aktiv. Dansk. Ikke råbe. Kedeligt og klart.
 
 ## Tid
 
-Hver artikel bærer dato og klokkeslæt. Format: 30. august 2026 kl. 06.00. Ingen artikel uden tid.
+Dato og klokkeslæt på alle artikler. Format: 30. august 2026 kl. 06.00.
 
 ## Layout
 
-Artikelside: brødtekst + smal sidespalte. Under *alle* artikler fire spalter side om side med foto. Samme artikel må have kortere overskrift i underspalten.
+Artikelside: brødtekst + sidespalte. Under alle artikler fire spalter med foto.
+
+Når nyhed og kommentar hører sammen: `.related-teaser` under brødteksten på *begge* sider. Nyheden linker til kommentaren. Kommentaren linker til nyheden. Aldrig kun den ene vej.
+
+Større tema (flere stykker om samme sag): `.theme-box` på forside og artikelside med listen over søsterstykker. Baggrund #E8E2D4.
 
 ## Egenavne
 
-Første gang et egennavn nævnes, forklares det i samme sætning.
+Første gang: forklaring i samme sætning.
 
 ## Etnicitet og religion i kriminalstof
 
-Tegn (tolk og sprog, tørklæde, forældres land, andet statsborgerskab) nævnes nøgternt i anden halvdel, hvis kilden siger det. Ingen tolkning.
+Tegn nævnes nøgternt i anden halvdel, hvis kilden siger det. Ingen tolkning.
 
 ## Nyhed og Kommentar
 
-Nyhed: belagt stof. Kommentar: egen artikel, mærket Kommentar.
+Nyhed først. Kommentar først efter mindst én nyhed om samme emne. Flere kommentarer samme døgn kun ved større breaking.
 
 ## Citater
 
-Altid på dansk. Kilde og dato. Aldrig meta.
+Dansk. Kilde og dato. Aldrig meta.
 
 ## Tvivlsregel
 

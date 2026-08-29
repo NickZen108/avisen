@@ -1,13 +1,10 @@
 # DESIGN LÅST
 
-Låst 29. august 2026 efter udtrykkelig ordre.
+Låst 29. august 2026. Ændres kun når brugeren skriver det sort på hvidt.
 
-**Ingen ændring af CSS, header, logo, spalter, typografi, farver eller layout uden at brugeren skriver det sort på hvidt.**
+Tilladt uden ny ordre: nye artikler, teaser-tekst, sitemap.
+Tilladt efter ordre 29. august 2026 kl. 18.40: klasserne `.related-teaser` og `.theme-box` (krydslink nyhed/kommentar + temaspalte).
 
-Tilladt: nye artikelfiler, teaser-tekst på forsiden, sitemap, nyhedsbrev-tekst.
-Forbudt: pille ved docs/style.css, docs/logo.svg, docs/logo-mark.svg, masthead-størrelse, grid, media queries.
+Forbudt: header, logo, wordmark-størrelse, grundfarver, grids.
 
-Papir: #F3EEE4 (kopieret fra morgentidende.hostingersite.com).
-Blæk: #161513. Header/footer: #1B2430. Ticker: #121820.
-Wordmark: Fraunces italic clamp(2.35rem, 5.6vw, 3.85rem).
-Artikelside: article-grid + article-rail + .below fire spalter med foto.
+Papir: #F3EEE4. Tema-boks: #E8E2D4.
