@@ -12,6 +12,14 @@ Eksempel: »rockerklubben Comanches«, »målingsinstituttet Insa«, »National 
 
 Derefter må kortformen bruges. Antag aldrig, at læseren kender navnet.
 
+## Etnicitet og religion i kriminalstof
+
+Hvis en navngiven, tjekbar kilde (ret, politi, anklageskrift, retsreferat) oplyser etnicitet, oprindelsesland, forældres baggrund, religion eller tolkesprog, nævnes det henkastet i *anden halvdel* af artiklen. Ikke i overskrift, manchet eller første afsnit. Ikke som vinkel.
+
+Eksempel: »Berlingske skrev i en anden sag, at den tiltaltes mor er kurder og faren serber.« Eller: »Retten brugte arabisk tolk.«
+
+Gæt, »lyder som«, navnetolkning og sammenblanding af sager er forbudt. Ingen kilde: intet i teksten.
+
 ## Nyhed og Kommentar er to genrer
 
 Nyhed, krimi, udland, økonomi: kun hvad der kan belægges. Begge parter, når de findes. Ingen redaktørstemme. Ingen sætning der kunne stå i en leder.
