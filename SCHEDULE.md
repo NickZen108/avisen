@@ -1,18 +1,10 @@
 # Planlagt udgivelse
 
-Første slot hver dag: **06:00** (telefonen ved morgenkaffen).
+Første slot hver dag: **06:00**.
 
-Øvrige: 09:30 · 13:00 · 16:00 · 19:00 · 21:30
-Mindst tre timer mellem to live-udgivelser.
+Øvrige samme døgn spredes: 07:50, 09:10, 10:20, 11:40, 13:00, 14:15, 15:30, 16:45, 18:00, 19:20, 20:40.
+Mindst en time mellem to live-udgivelser. Ikke klumper.
 
-06-historien skal være en konkret nyhed, folk gider åbne: kriminalstof, retssag, tal. Ikke en guide.
+Klokkeslættet skrives på artiklen.
 
-## Research-inspiration (ikke kilder)
-
-- Danske lokalaviser og politiets døgnrapporter (krimi)
-- Store europæiske og amerikanske kommentaraviser (UnHerd, Spectator, Quillette) kun som *emnespor*
-- Offentlige indlæg på X fra Elon Musk og lign. som *emnespor* (teknik, rum, AI) — aldrig som bevis
-- Sundhed/fitness-kanaler må pege på et paper; paperet skal læses. YouTube er ikke kilde.
-
-Forbudt: konspirationer, anonyme telegram-påstande, «de fortier«.
-Kilder er altid styrelse, ret, politi, DST, fagfællebedømt tidsskrift eller navngiven aktør.
+06-historien skal være en konkret nyhed: kriminalstof, retssag, tal. Ikke en guide.

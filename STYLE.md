@@ -4,36 +4,33 @@ Kort sætning. Aktiv. Dansk. Ikke råbe.
 
 Skriv kedeligt og klart. Ingen slang. Ingen smarte vendinger. Ingen »Grok-smart« billedsprog. Læseren skal forstå sætningen første gang.
 
+## Tid
+
+Hver artikel bærer dato *og* klokkeslæt for udgivelse, dansk tid. Format: 30. august 2026 kl. 06.00. Tiden står i meta-linjen under overskriften og i teaser på forsiden, når der er plads.
+
+## Layout
+
+Forside og artikelside følger broadsheet: forskellig spaltebredde. Artikelside har brødtekst plus en smal sidespalte. Under artiklen ligger flere smallere spalter med andre stykker (samme artikel må gerne have kortere overskrift der).
+
 ## Egenavne
 
-Første gang et egennavn optræder i artiklen, skal det forklares i samme sætning: hvad det er (parti, styrelse, rockerklub, museum, målingsinstitut, lov, sted).
-
-Eksempel: »rockerklubben Comanches«, »målingsinstituttet Insa«, »National enhed for Særlig Kriminalitet (NSK)«.
-
-Derefter må kortformen bruges. Antag aldrig, at læseren kender navnet.
+Første gang et egennavn optræder i artiklen, skal det forklares i samme sætning.
 
 ## Etnicitet og religion i kriminalstof
 
-Hvis der i ret, politi, anklageskrift eller et retsreferat står *tegn* på etnicitet eller religion, nævnes tegnene nøgternt i *anden halvdel* af artiklen. Ikke i overskrift, manchet eller første afsnit. Ikke som vinkel.
+Hvis der i ret, politi, anklageskrift eller et retsreferat står tegn på etnicitet eller religion, nævnes tegnene nøgternt i anden halvdel. Ikke i overskrift, manchet eller første afsnit. Ikke som vinkel.
 
-Tegn er for eksempel:
-- tiltalte brugte tolk (og på hvilket sprog, hvis det fremgår)
-- mor eller pårørende bar tørklæde i retten
-- forældres oprindelsesland, hvis en kilde siger det
-- statsborgerskab andet end dansk/svensk, hvis det står i sagen
-
-Der må ikke tolkes på tegnene. Skriv ikke »muslimsk«, »indvandrerbaggrund« eller »lyder som«, medmindre kilden bruger ordet. Gæt og sammenblanding af sager er forbudt. Ingen tegn i kilderne: intet i teksten.
+Tegn: tolk og sprog, tørklæde i retten, forældres oprindelsesland, andet statsborgerskab.
+Der må ikke tolkes på tegnene. Ingen tegn i kilderne: intet i teksten.
 
 ## Nyhed og Kommentar er to genrer
 
-Nyhed, krimi, udland, økonomi: kun hvad der kan belægges. Begge parter, når de findes. Ingen redaktørstemme. Ingen sætning der kunne stå i en leder.
-
-Kommentar står i sin egen artikel, mærket Kommentar øverst. Ingen sætning i brødteksten der forklarer genren. Den må vise linjen. Den må ikke være vred, skinger eller partiblad. Tidligere, dokumenterede sager må trækkes ind, når de belægger argumentet.
+Nyhed: kun belagt stof. Begge parter. Ingen redaktørstemme.
+Kommentar: egen artikel, mærket Kommentar øverst. Ingen genre-forklaring i brødteksten.
 
 ## Citater
 
-Altid på dansk. Kilde og dato ved citatet.
-Aldrig meta. Læseren skal ikke høre redaktøren tænke.
+Altid på dansk. Kilde og dato ved citatet. Aldrig meta.
 
 ## Tvivlsregel
 
