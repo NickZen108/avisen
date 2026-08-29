@@ -14,24 +14,29 @@ Ingen intern note. Ingen redaktørstemme. Ingen »ikke en facitliste«, »ikke a
 
 ## Nyhed er ikke kommentar
 
-En nyhed må ikke slutte med avisens vurdering (»prisen kan først måles når…«, »løftet er ikke en facitliste«). Sådanne sætninger hører i Kommentar eller ud.
+En nyhed må ikke slutte med avisens vurdering. Sådanne sætninger hører i Kommentar eller ud.
+
+## Foto og kredit
+
+Forside og teasere: ingen fotograf-linje under billedet (som JP/Berlingske).
+Artikelside: kredit under det store foto, når licensen kræver det.
+
+Wikimedia CC-BY og CC-BY-SA *kræver* navn på ophavsmanden. Det opfyldes på artikelsiden, ikke på forsiden. Public domain og egne illustrationer kan stå uden navn. Egne grafer: »Morgentidende« kun på artikelsiden, hvis det ser rent ud.
+
+Foto matcher stadig overskriftens sted og emne.
 
 ## Anden-tjek (obligatorisk før commit)
 
-Redaktøren læser stykket højt og svarer på:
+1. Sidste afsnit en vurdering fra avisen? → flyt eller slet.
+2. Intern note? → slet.
+3. Citat ordret med kilde i memoet? Ellers veto.
+4. Egennavne forklaret første gang?
+5. Foto matcher overskrift?
+6. Dårlig oversættelse? → omskriv.
 
-1. Er sidste afsnit en vurdering fra avisen? Ja → flyt eller slet.
-2. Står der en intern note? Ja → slet.
-3. Er hvert citat ordret med navn, titel, sted, dato og URL i memoet? Nej → veto.
-4. Er egennavne forklaret første gang, på det rigtige sted?
-5. Matcher foto overskriftens sted og emne?
-6. Lyder en sætning som dårlig oversættelse (»gengiver hende for«)? Ja → omskriv.
+## Tid, citatoverskrift, etnicitet, vægtning
 
-Finder redaktøren ét ja i 1, 2 eller 6: stykket går ikke live før det er rettet.
-
-## Tid, foto, citatoverskrift, etnicitet, vægtning
-
-Som før: tid på alle stykker. Foto matcher overskrift. Citatoverskrift kun ordret. Etnicitet kun som tegn i anden halvdel. Mindst 4 af 10 ikke-politiske.
+Tid på alle stykker. Citatoverskrift kun ordret. Etnicitet kun som tegn i anden halvdel. Mindst 4 af 10 ikke-politiske.
 
 ## Tvivl
 
