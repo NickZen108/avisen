@@ -1,7 +1,9 @@
 # Udgivelse
 
-29. august 2026 kl. 19: timevis i 24 timer, derefter tilbage til spredte slots.
+Én time-artikel hver hele time. Gælder fast.
 
-Én artikel pr. time. Ikke klumper. Første faste slot ellers 06:00.
+Breaking publiceres derudover, når scan finder det. Breaking erstatter ikke time-stykket.
+
+Ikke klumper af time-artikler. Ægte publiceringstid. Første øvrige slot ellers 06:00.
 
 DESIGN.lock.md gælder. Rør ikke CSS.
