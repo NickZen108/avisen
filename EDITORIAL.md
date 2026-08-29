@@ -25,16 +25,17 @@ Finder sagen, ikke vinklen. Leverer et memo til `sources/YYYY-MM-DD-slug.md` fø
 - Officielle kilder først (styrelse, lov, ret, DST, Folketinget, peer-review)
 - Hvad der *ikke* er belagt — så journalisten ikke opfinder det
 - Graf-anbefaling hvis der er en måling eller en prisserie
+- Egenavne med én-linjes forklaring (hvad er NSK, Insa, Comanches, Siumut)
 
 Research må ikke skrive artiklen og må ikke vælge parti. Hvis kilderne er for tynde: stop og vælg andet emne.
 
 ### Journalist-agent
 
-Skriver kun ud fra memoet. Tilføjer ikke tal eller citater, der ikke står i research. Byline: Morgentidende.
+Skriver kun ud fra memoet. Tilføjer ikke tal eller citater, der ikke står i research. Byline: Morgentidende. Første gang et egennavn nævnes, forklares det.
 
 ### Redaktør-agent
 
-Tjekker STYLE.md før commit. Dump og omskriv ved dump.
+Tjekker STYLE.md før commit. Dump og omskriv ved dump. Nægter udgivelse ved dårlig forskning, gammelt stof solgt som scoop, svag kilde, uforklarede egenavne, slang eller smarte vendinger.
 
 ## To lag
 
@@ -42,7 +43,7 @@ Tjekker STYLE.md før commit. Dump og omskriv ved dump.
 Fakta, citater med navn, tal med kilde. Begge sider. Ingen skældsord. Overskriften beskriver sagen.
 
 **Kommentar**  
-Mærket Kommentar. Saglig, dokumenteret, moden. Ingen vrede. Højst én kommentar pr. døgn. Research skal stadig ligge under.
+Mærket Kommentar. Saglig, dokumenteret, moden. Ingen vrede. Højst én kommentar pr. døgn. Research skal stadig ligge under. Tidligere sager må med, når de er belagt.
 
 ## Vægtning (redaktør-agenten håndhæver)
 
