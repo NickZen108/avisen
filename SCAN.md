@@ -1,11 +1,9 @@
 # Scan-agent
 
-Kilder hver kørsel: DR seneste, TV 2 Nyheder, JP seneste, Berlingske, Politiken, Ritzau via de store, BT/EB kun som spor (ikke som eneste kilde).
+To pulser:
+1. GitHub Action »Breaking scan« hvert 15. minut (UTC-cron). Skriver `scan/latest.md`.
+2. Grok kører når det workflow slutter. Læs `scan/latest.md` + STYLE.md + EDITORIAL.md.
 
-Skriv `scan/YYYY-MM-DD-HHMM.md` med: intet / følger vi / breaking.
+Breaking = samme sag hos mindst to, eller officiel kilde. Så 1–3 nyheder. Kommentar først efter en nyhed. `.related-teaser` begge veje. `.theme-box` ved ≥2 stykker.
 
-Breaking: publicer nyhed(er) med det samme. Derefter eventuel kommentar. Krydsteaser begge veje. Tema-boks hvis ≥2 stykker.
-
-Ikke breaking: lad time-agenten tage næste slot. Scan-agenten publicerer *ikke* en fyldartikel bare for at fylde.
-
-DESIGN.lock: rør ikke CSS ud over at *bruge* `.related-teaser` og `.theme-box`.
+Ikke breaking: ingen fyldartikel.
