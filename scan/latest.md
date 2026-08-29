@@ -1,9 +1,10 @@
-# Scan 2026-08-29 21:56 UTC
+# Scan 2026-08-29 23:51 UTC
 
 Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 
 ## DR
 - Kort nyt | DR
+- Voldeligt overfald udløser stor politiaktion i Horsens
 - Britisk højrefløjsprovokatør udvist af USA
 - Kemikalieudslip med saltsyre i Nibe
 - Fra i dag vil trafikken over Øresund være besværet
@@ -18,7 +19,6 @@ Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 - Take That indtager Tinderbox
 - To teenagere anholdt for grov vold på folkeskole
 - Det skal koste 30.000 kroner for en parkeringslicens i København, mener Alternativet
-- ICE indgår kontrakt om indkøb af stødhandsker til millionbeløb
 
 ## TV2
 - (feed ikke nået)
