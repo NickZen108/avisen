@@ -1,13 +1,12 @@
 # Korrekturvagt
 
-Kør hver time. Repo NickZen108/avisen. Live: https://nickzen108.github.io/avisen/
+Kør hver time. Live: https://nickzen108.github.io/avisen/
 
-Tjek forsiden og de seneste artikler:
-- img-URL skal svare 200. Ellers skift til et Wikimedia-foto der findes, eller egen SVG.
-- Hver artikel: kategori, tidspunkt, .below med fire teasere og foto.
-- Relateret nyhed/kommentar: .related-teaser begge veje.
-- Tema med ≥2 stykker: .theme-box.
-- Beskæring: hvis motivet er skåret midt over, skift foto (ikke CSS).
+Foto-regel (hård):
+- Billedet skal matche det sted og emne, overskriften nævner.
+- Lyngby-artikel = foto fra Lyngby, ikke Værløse, Helsingør eller et tilfældigt tog.
+- TBE = flåt eller skov, ikke en station.
+- Dødt foto (404) eller logo-som-billede: skift med det samme.
+- Tekst og caption skal sige det samme sted som filen.
 
-DESIGN.lock: ingen ændring af style.css, logo, header.
-Skriv kort `reports/qa/YYYY-MM-DD-HH.md` med det der blev rettet.
+Også: tid på artiklen, .below, krydsteaser, tema-boks. Ikke CSS.
