@@ -14,11 +14,15 @@ Derefter må kortformen bruges. Antag aldrig, at læseren kender navnet.
 
 ## Etnicitet og religion i kriminalstof
 
-Hvis en navngiven, tjekbar kilde (ret, politi, anklageskrift, retsreferat) oplyser etnicitet, oprindelsesland, forældres baggrund, religion eller tolkesprog, nævnes det henkastet i *anden halvdel* af artiklen. Ikke i overskrift, manchet eller første afsnit. Ikke som vinkel.
+Hvis der i ret, politi, anklageskrift eller et retsreferat står *tegn* på etnicitet eller religion, nævnes tegnene nøgternt i *anden halvdel* af artiklen. Ikke i overskrift, manchet eller første afsnit. Ikke som vinkel.
 
-Eksempel: »Berlingske skrev i en anden sag, at den tiltaltes mor er kurder og faren serber.« Eller: »Retten brugte arabisk tolk.«
+Tegn er for eksempel:
+- tiltalte brugte tolk (og på hvilket sprog, hvis det fremgår)
+- mor eller pårørende bar tørklæde i retten
+- forældres oprindelsesland, hvis en kilde siger det
+- statsborgerskab andet end dansk/svensk, hvis det står i sagen
 
-Gæt, »lyder som«, navnetolkning og sammenblanding af sager er forbudt. Ingen kilde: intet i teksten.
+Der må ikke tolkes på tegnene. Skriv ikke »muslimsk«, »indvandrerbaggrund« eller »lyder som«, medmindre kilden bruger ordet. Gæt og sammenblanding af sager er forbudt. Ingen tegn i kilderne: intet i teksten.
 
 ## Nyhed og Kommentar er to genrer
 
