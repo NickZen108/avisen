@@ -2,36 +2,32 @@
 
 Kort sætning. Aktiv. Dansk. Ikke råbe.
 
-Skriv kedeligt og klart. Ingen slang. Ingen smarte vendinger. Ingen »Grok-smart« billedsprog. Læseren skal forstå sætningen første gang.
+Skriv kedeligt og klart. Ingen slang. Ingen smarte vendinger.
 
 ## Tid
 
-Hver artikel bærer dato *og* klokkeslæt for udgivelse, dansk tid. Format: 30. august 2026 kl. 06.00. Tiden står i meta-linjen under overskriften og i teaser på forsiden, når der er plads.
+Hver artikel bærer dato og klokkeslæt. Format: 30. august 2026 kl. 06.00. Ingen artikel uden tid.
 
 ## Layout
 
-Forside og artikelside følger broadsheet: forskellig spaltebredde. Artikelside har brødtekst plus en smal sidespalte. Under artiklen ligger flere smallere spalter med andre stykker (samme artikel må gerne have kortere overskrift der).
+Artikelside: brødtekst + smal sidespalte. Under *alle* artikler fire spalter side om side med foto. Samme artikel må have kortere overskrift i underspalten.
 
 ## Egenavne
 
-Første gang et egennavn optræder i artiklen, skal det forklares i samme sætning.
+Første gang et egennavn nævnes, forklares det i samme sætning.
 
 ## Etnicitet og religion i kriminalstof
 
-Hvis der i ret, politi, anklageskrift eller et retsreferat står tegn på etnicitet eller religion, nævnes tegnene nøgternt i anden halvdel. Ikke i overskrift, manchet eller første afsnit. Ikke som vinkel.
+Tegn (tolk og sprog, tørklæde, forældres land, andet statsborgerskab) nævnes nøgternt i anden halvdel, hvis kilden siger det. Ingen tolkning.
 
-Tegn: tolk og sprog, tørklæde i retten, forældres oprindelsesland, andet statsborgerskab.
-Der må ikke tolkes på tegnene. Ingen tegn i kilderne: intet i teksten.
+## Nyhed og Kommentar
 
-## Nyhed og Kommentar er to genrer
-
-Nyhed: kun belagt stof. Begge parter. Ingen redaktørstemme.
-Kommentar: egen artikel, mærket Kommentar øverst. Ingen genre-forklaring i brødteksten.
+Nyhed: belagt stof. Kommentar: egen artikel, mærket Kommentar.
 
 ## Citater
 
-Altid på dansk. Kilde og dato ved citatet. Aldrig meta.
+Altid på dansk. Kilde og dato. Aldrig meta.
 
 ## Tvivlsregel
 
-Kan sætningen læses vred eller som partiblad: vælg den neutrale linje.
+Vred eller partiblad: vælg den neutrale linje.

@@ -28,7 +28,6 @@ a:hover { text-decoration: underline; text-underline-offset: .16em; }
   letter-spacing: 0.01em; line-height: 0.95; color: var(--dark-ink); text-decoration: none;
 }
 .wordmark:hover { text-decoration: none; }
-.masthead .dateline, .masthead .nav { color: var(--dark-ink); }
 .dateline {
   display: flex; justify-content: space-between; align-items: baseline;
   border-top: 1px solid rgba(244,241,234,.35);
@@ -109,6 +108,7 @@ a:hover { text-decoration: underline; text-underline-offset: .16em; }
   padding: 1.6rem 0 1rem;
 }
 .article-body h1 { font-size: clamp(1.55rem, 2.6vw, 2.15rem); line-height: 1.15; margin: 0 0 .45rem; font-weight: 600; }
+.article-body h2 { font-size: 1.22rem; margin: 1.35rem 0 .45rem; font-weight: 600; }
 .article-body p { margin: 0 0 1rem; }
 .article-rail { border-left: 1px solid var(--rule); padding-left: 1.1rem; }
 .article-rail .rail-item { font-size: .92rem; }
