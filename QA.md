@@ -2,6 +2,14 @@
 
 Se AGENTS.md, afsnittet Korrekturvagt. Første pligt: slet interne noter på alle sider.
 
+## Dansk (obligatorisk)
+
+Hvert dansk ord i H1, title, ticker, manchet og brødtekst skal kunne stå i Retskrivningsordbogen (dsn.dk). Opdigtede ord er veto. Ret til nærmeste rigtige ord eller omskriv sætningen.
+
+Undtagelser: egennavne, citater på originalsprog, etablerede fremmedord og forkortelser, tal og enheder.
+
+Tjek sætningen omkring ordet: grammatik, forståelighed, husets sprog (kort, aktiv, dansk). Én brudt sætning = ret. Ikke omskriv hele artiklen. Ændr ikke meningen.
+
 ## Døde billeder (obligatorisk)
 
 Tematisk match er ikke nok. Hvert `<img>` på forside, artikelside, rail og `.below` skal hentes.
