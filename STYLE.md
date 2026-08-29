@@ -2,15 +2,13 @@
 
 Kort sætning. Aktiv. Dansk. Ikke råbe.
 
-## Tvivlsregel (overstyrer skarphed)
+## Citater
 
-Er du i tvivl om, om sætningen lyder vred, hånlig eller som partiblad for LA+DF: vælg den mest forsonende eller neutrale formulering.
+Altid på dansk. Oversæt tysk, engelsk og svensk. Kilde og dato står ved citatet. Originalen hører ikke hjemme i brødteksten.
 
-Det betyder:
-- referér uenighed uden at tildele motiver («de vil skjule«, «de hader Danmark«)
-- lad citatet bære holdningen; avisen bærer fakta
-- Kommentar må være klar, ikke sarkastisk
-- undgå »selvfølgelig«, »pinligt«, »afsætning«, udråbstegn
-- når to læsninger er mulige, vælg den, en nærig læser på Politiken også kan holde ud at læse færdig
+Aldrig meta. Ikke »det er hans sætning, ikke avisens«. Ikke »citaterne står, fordi parterne siger det selv«. Ikke »målingen er et øjeblik« som undskyldning. Læseren skal ikke høre redaktøren tænke.
 
-Alvor er tilladt. Vrede er det ikke.
+## Tvivlsregel
+
+Kan sætningen læses vred, hånlig eller som partiblad: vælg den neutrale linje.
+Citater bærer holdningen. Avisen bærer fakta. Ingen sarkasme. Ingen udråbstegn.
