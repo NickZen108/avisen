@@ -1,3 +1,5 @@
 # Sources
 
-Kildelister, embedsnoter og rå materiale. Ikke færdige artikler.
+Research-agentens memoer. Én fil pr. artikel: `YYYY-MM-DD-slug.md`.
+
+Journalisten må ikke skrive, før memoet ligger her.
