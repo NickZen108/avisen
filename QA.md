@@ -4,11 +4,13 @@ Se AGENTS.md, afsnittet Korrekturvagt. Første pligt: slet interne noter på all
 
 ## Dansk (obligatorisk)
 
-Hvert dansk ord i H1, title, ticker, manchet og brødtekst skal kunne stå i Retskrivningsordbogen (dsn.dk). Opdigtede ord er veto. Ret til nærmeste rigtige ord eller omskriv sætningen.
+Hvert dansk ord i H1, title, ticker, manchet og brødtekst skal kunne stå i Retskrivningsordbogen (dsn.dk). Opdigtede eller forvrængede ord er veto.
 
-Undtagelser: egennavne, citater på originalsprog, etablerede fremmedord og forkortelser, tal og enheder.
+Når et sådant ord findes: ret ikke kun ordet. Læs hele sætningen det indgår i. Tjek grammatik, forståelighed og husets sprog (kort, aktiv, dansk). Er konstruktionen skæv, omskriv sætningen. Eksempel: »mellem bødsel og ytringsfrihed« → »mellem bøde og ytringsfrihed«, eller en ny klar sætning — ikke et plaster på det ene ord.
 
-Tjek sætningen omkring ordet: grammatik, forståelighed, husets sprog (kort, aktiv, dansk). Én brudt sætning = ret. Ikke omskriv hele artiklen. Ændr ikke meningen.
+Undtagelser for enkeltord: egennavne, citater på originalsprog, etablerede fremmedord og forkortelser, tal og enheder.
+
+Ikke omskriv hele artiklen. Ændr ikke meningen.
 
 ## Døde billeder (obligatorisk)
 
