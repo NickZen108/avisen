@@ -17,6 +17,16 @@
       "type": "primary",
       "source_group": "github-pr-8",
       "authoritative_for": "PR-status, merge-status og den testede newsroom-pipeline i NickZen108/avisen"
+    },
+    {
+      "id": "S2",
+      "name": "GitHub PR #10 og #11 – build/post-deploy handoff fixes",
+      "url": "https://github.com/NickZen108/avisen/pull/11",
+      "published_at": "2026-08-30T09:41:08Z",
+      "accessed_at": "2026-08-30T09:42:00Z",
+      "type": "primary",
+      "source_group": "github-pr-11",
+      "authoritative_for": "Systemændringer der eksplicit kobler auto-merge til build og publisher-commit til post-deploy guard"
     }
   ],
   "claims": [
@@ -45,6 +55,19 @@
       ],
       "checked_at": "2026-08-30T09:36:00Z",
       "notes": "Verificeret direkte i repo- og workflowdata."
+    },
+    {
+      "id": "F03",
+      "claim": "Backend-kæden er rettet, så auto-merge eksplicit starter structured build, og publisher-commit eksplicit starter post-deploy guard.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "github-pr-11"
+      ],
+      "checked_at": "2026-08-30T09:42:00Z",
+      "notes": "Verificeret i de mergede workflowændringer."
     }
   ],
   "numbers": [],
@@ -59,9 +82,10 @@
   },
   "fact_check": {
     "status": "pass",
-    "checked_at": "2026-08-30T09:36:00Z",
+    "checked_at": "2026-08-30T09:42:00Z",
     "notes": [
-      "Teknisk selvtest; primærkilden er repoets egne GitHub-data."
+      "Teknisk selvtest; primærkilden er repoets egne GitHub-data.",
+      "F03 verificeret mod de mergede workflowrettelser."
     ]
   }
 }
