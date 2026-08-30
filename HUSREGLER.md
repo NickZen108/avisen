@@ -69,7 +69,9 @@ Legacy-artikler uden struktureret canonical kilde kan fortsat have eksplicitte d
 
 Hero-billeder skal være visuelt stærke, relevante og egnede til både desktop og mobil. Et teknisk diagram er som udgangspunkt forklaringsgrafik inde i artiklen, ikke artikelens hero, medmindre grafikken selv er historien.
 
-Prioritet er: 1) relevant, lovligt og æstetisk stærkt foto, 2) relevant redaktionel illustration, 3) genereret illustration til tidløse, forklarende, videnskabelige eller guideprægede emner, hvis et godt foto ikke findes.
+**Husregel: Brug rigtige fotos, når de er gode, relevante og juridisk brugbare; ellers generér et flot hero-billede.** Et middelmådigt stock-/Commons-foto vælges ikke bare fordi det er nemt at licensere. Kvalitet og relevans skal være høj nok til et professionelt nyhedsmedie.
+
+Prioritet er derfor: 1) relevant, lovligt og æstetisk stærkt foto, 2) flot genereret hero-billede, når et godt foto ikke findes eller ikke er tilstrækkeligt visuelt stærkt, 3) relevant redaktionel illustration, når illustrationsformen passer bedre til historien.
 
 Genereret materiale må aldrig fremstilles som dokumentarfoto af en virkelig hændelse, person eller specifik scene. Det registreres som `image_type: illustration`. Dokumentarfotos må gerne få et diskret, ensartet redaktionelt filter eller farvebehandling, hvis det forbedrer helhedsindtrykket, men må ikke manipuleres, så dokumentarisk betydning ændres.
 
