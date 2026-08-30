@@ -1,53 +1,23 @@
 name: Release scheduled articles
-
 on:
-  schedule:
-    - cron: '2,17,32,47 * * * *'
+  schedule: [{cron: '2,17,32,47 * * * *'}]
   workflow_dispatch:
-
-permissions:
-  contents: write
-  actions: write
-
-concurrency:
-  group: morgentidende-main-writes
-  cancel-in-progress: false
-
+permissions: {contents: write, actions: write}
+concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-      - name: Sync latest main
-        run: |
-          git fetch origin main
-          git reset --hard origin/main
+        with: {ref: main, fetch-depth: 0}
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+        with: {python-version: '3.12'}
       - name: Release due scheduled articles
         run: python scripts/release_scheduled.py
-      - name: Validate canonical state
-        run: python scripts/quality_gate.py --prebuild
-      - name: Commit released canonical articles
+      - name: Validate released state
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py
+      - name: Commit release
         id: release
         run: |
-          git config user.name "morgentidende-scheduler"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/articles
-          if git diff --cached --quiet; then
-            echo "released=false" >> "$GITHUB_OUTPUT"
-            echo "Ingen planlagte artikler klar"
-          else
-            git commit -m "schedule: release due articles"
-            git push
-            echo "released=true" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Dispatch structured build after scheduled release
-        if: ${{ steps.release.outputs.released == 'true' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run build-publish.yml --ref main
+          git config user.name morgentidende-scheduler; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"; git add content/articles
+          if git diff --cached --quiet; then echo "released=false" >> "$GITHUB_OUTPUT"; else git commit -m "schedule: release due articles"; git push; echo "released=true" >> "$GITHUB_OUTPUT"; fi

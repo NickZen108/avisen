@@ -1,68 +1,31 @@
 # Morgentidende / Avisen
 
-Offentligt redaktionelt arkiv og kildekode til en stærkt automatiseret dansk netavis.
+GitHub er den kanoniske tekniske kopi. Nye artikler går gennem en gated redaktionel pipeline som struktureret indhold; `docs/` er genereret public-output.
 
-GitHub er den kanoniske tekniske kopi. Nye artikler går gennem en gated redaktionel pipeline og skrives som struktureret indhold; `docs/` er publiceret/genereret output.
+## Pipeline v2
 
-**Repo:** [github.com/NickZen108/avisen](https://github.com/NickZen108/avisen)
+Scan → Nyhedsdesk assignment → Research/coverage sweep → Fact check → Nyhedsdesk recheck → Journalist → Sprog → Etik → Billede → SEO → Slutredaktør → Forside → Teknisk QA → Udgiver → live technical QA → Live proofreader → Redaktionel update-monitor.
 
-## Start her
+Ingen agent gør sit eget arbejde publiceringsklart. Slutredaktøren laver et versionsbundet final approval snapshot efter alle redaktionelle ændringer.
 
-1. `HUSREGLER.md` — regelhierarki og hårde stopregler
-2. `EDITORIAL.md` — presseetik og redaktionel linje
-3. `SOURCES.md` — kilder og faktaledger
-4. `STYLE.md` — dansk og overskrifter
-5. `DESIGN.md` — låst design og generator
-6. `CATEGORIES.md` — kategorier og stofmix
-7. `SCHEDULE.md` + `FRONTPAGE.md` — publicering og lead
-8. `AGENTS.md` — pipeline og agentspecifikke prompts
-9. `AUTOMATION.md` — gratis hybridarkitektur og auto-publish-sikkerhed
+## Publicering
 
-## Pipeline
+Nye auto-artikler bruger `pipeline_version: 2`. Udgiver afleverer `status: ready` + `release_requested: true` uden `published_at`. GitHub Actions sætter faktisk publiceringstid ved release/build efter merge, bygger HTML/sitemaps/rettelseslog og tester live-sitet.
 
-Scan → Nyhedsdesk → Research → Fact check → Journalist → Sprog → Etik/fairness → SEO/discovery → Billede → Teknisk QA → Forsideredaktør → Udgiver → Post-publication monitor.
+## Canonical data
 
-Ingen agent godkender sit eget arbejde. `NO_PUBLISH` er legitimt; der er ingen tvungen timeartikel.
-
-I eksperimentfasen er **AI redaktionen, mens GitHub Actions er maskinrummet**. GitHub Actions bruges til scanning, kandidat-kø, quality gates, guarded auto-merge, build, deployment-kontrol og QA uden betalte model-API-kald. AI afleverer autopublicerbart stof som en `edition/*`/`newsroom/*` PR; den skriver ikke direkte til `main`.
-
-## Mapper
-
-| Sti | Formål |
-|---|---|
-| `agents/` | komplette prompts for hver redaktionel agent |
-| `queue/` | deterministisk kandidat-inventar fra gratis scan; ikke en redaktionel vurdering |
-| `sources/` | research og machine-readable fact ledgers |
-| `content/articles/` | canonical strukturerede artikelkilder |
-| `content/frontpage.json` | canonical forsidevalg |
-| `templates/` | låste centrale HTML-skabeloner |
-| `scripts/` | build, quality gates, live QA, newsroom queue og scan |
-| `docs/` | GitHub Pages/live output |
-| `killed/` | afviste assignments/stykker med årsag |
-| `reports/` | daglig, ugentlig, editorial og QA-rapportering |
+- `content/articles/` — artikler
+- `sources/` — fact ledgers
+- `content/frontpage.json` — placering; v2-artikler er normalt slug-referencer
+- `content/corrections.json` — offentlig rettelseslog
+- `reports/editorial/approvals/` — Slutredaktørens final approvals
+- `docs/` — genereret public-output
 
 ## Build
 
 ```bash
+python scripts/release_ready.py
 python scripts/quality_gate.py --prebuild
 python scripts/build_all.py
 python scripts/quality_gate.py
 ```
-
-GitHub Actions kører de samme gates og kan committe genereret public-output. Nye håndskrevne HTML-artikler er forbudt; eksisterende legacy-artikler er grandfathered og migreres ved større opdatering.
-
-## Gratis automation
-
-- `Breaking scan`: hvert 15. minut.
-- `Newsroom cycle`: omsætter scan til `queue/candidates.json` uden AI.
-- `Quality gates`: tester alle PR'er og main.
-- `Auto-publish merge`: merger kun newsroom-PR'er med korrekt `[AUTO]`-kontrakt, snæver fil-allowlist og præcis testet SHA.
-- `Build structured edition`: genererer live-output fra structured content.
-- `Post-deploy guard`: tre interne smoke-tests og forsigtig rollback af seneste genererede publisher-commit ved vedvarende intern fejl.
-- `Post-publication QA`: timevis live-kontrol og rapport.
-
-Alle workflows der skriver til `main`, deler en concurrency-lock, så samtidige scan/publish/QA-kørsler ikke overskriver hinanden.
-
-## Transparens
-
-Offentlige sider i `docs/` beskriver metode, AI-brug og rettelser. Materielle rettelser må ikke foretages stille.

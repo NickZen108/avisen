@@ -1,132 +1,49 @@
 # Kilder og faktaledger
 
-Morgentidende skriver ikke direkte fra en løs bunke links. Research skal først omsætte kilder til en struktureret faktaledger. Journalisten må kun bruge faktuelle påstande, der er godkendt i ledgeren.
+Morgentidende skriver ikke direkte fra en løs bunke links. Research omsætter kilder til en struktureret faktaledger; Journalisten må kun bruge godkendte claims.
 
 ## Kildehierarki
-
-Stærkest som udgangspunkt:
 
 1. primærdokument: lov, dom, myndighedsafgørelse, officiel statistik, regnskab, paper, original tale/interview, direkte partsvar
 2. troværdig nyhedsorganisation med egen reporting
 3. fagmedie/sekundær analyse med tydelig kilde
 4. blog, social post, YouTube, anonym kanal eller aggregator
 
-Niveau 4 kan være kilde til, **at afsenderen har sagt/postet noget**, men er normalt ikke tilstrækkelig dokumentation for det underliggende faktum.
-
 ## Uafhængighed
 
-To URLs er ikke nødvendigvis to kilder. Research registrerer `source_group` for det oprindelige ophav.
-
-Eksempler:
-
-- DR og TV 2 citerer samme Ritzau-telegram → ét source-group på telegrammets faktum
-- tre medier citerer samme pressemeddelelse → ét source-group på selskabets påstand
-- dom + selvstændigt medieinterview → to uafhængige ophav
+To URLs er ikke nødvendigvis to kilder. `source_group` registrerer det oprindelige ophav.
 
 ## Coverage sweep før skrivning
 
-Når Nyhedsdesk har valgt en nyhed til research med henblik på publicering, skal Research ikke nøjes med den kilde, der gjorde redaktionen opmærksom på historien.
-
-Før en nyhedsartikel må gå til Journalist, skal Research:
+Når Nyhedsdesk har valgt en nyhed til research med henblik på publicering, skal Research:
 
 - finde relevant primærkilde, når den findes
-- normalt gennemgå mindst **3 reelt uafhængige redaktionelle kilder**, der dækker samme historie, når sådanne findes
-- søge efter kilder med forskellig relevant adgang til historien, fx internationalt nyhedsmedie, dansk/national dækning, fagmedie, lokal dækning eller selvstændig reporting
-- sammenligne hvilke væsentlige fakta, konsekvenser, citater, forbehold, modpositioner og kontekst de forskellige kilder bidrager med
-- registrere væsentlige uenigheder eller forskelle i faktaledger/memo
-- undgå at bruge én artikel som skjult skabelon for Morgentidendes tekst
+- normalt gennemgå mindst **3 reelt uafhængige redaktionelle kilder** om samme historie, når sådanne findes
+- søge på tværs af relevante internationale/nationale medier, fagmedier og lokale/specialiserede kilder
+- sammenligne centrale fakta, konsekvenser, citater, forbehold, modpositioner og kontekst
+- registrere hvilke væsentlige pointer kun enkelte dækninger havde
+- undgå at bruge én artikel som skjult skabelon
 
-Formålet er både **fuldstændighed og pluralisme**: forskellige redaktioner opdager og prioriterer ofte forskellige væsentlige dele af samme historie. Coverage sweep er derfor ikke kun et fact-check, men en systematisk søgning efter manglende relevante pointer.
+Ledgeren har et maskinlæsbart `coverage_sweep` med `status`, `editorial_source_ids`, `independent_source_groups`, `limitations` og `notes`.
 
-Tre URLs er ikke nok. Bureaukopier, syndikering, omskrivninger af samme artikel eller medier der alle bygger på samme pressemeddelelse tæller ikke som tre uafhængige coverage-kilder.
+`pass` kræver normalt mindst tre reelt uafhængige coverage-source-groups. `limited` bruges fx tidligt i breaking og kræver en konkret begrundelse. `not_required` er kun til genrer, hvor et nyheds-coverage sweep reelt ikke giver mening, og kræver begrundelse.
 
-Hvis færre end 3 reelt uafhængige redaktionelle kilder findes — fx meget tidligt i breaking news — dokumenterer Research søgningen og begrænsningen. Historien kan fortsætte, hvis kravene til bærende fakta nedenfor er opfyldt, men Fact checker skal tage eksplicit stilling til den manglende bredde, og historien bør genundersøges ved senere UPDATE når flere kilder bliver tilgængelige.
-
-Coverage-bredde er ikke det samme som kunstig balance. En svag eller udokumenteret modposition får ikke samme vægt som stærk evidens alene for at skabe 50/50-symmetri.
+Coverage-bredde er ikke kunstig 50/50. Evidens og relevans afgør vægten.
 
 ## Minimum for bærende faktum
 
-Godkend når mindst én af disse er opfyldt:
+Et bærende faktum kan godkendes ved én autoritativ primærkilde eller to reelt uafhængige navngivne kilder. Coverage sweep erstatter ikke dette krav og omvendt.
 
-- én primærkilde, som selv er autoritativ for netop faktummet, **eller**
-- to reelt uafhængige navngivne kilder
+## Fact check og desk recheck
 
-Dette minimum afgør, om et faktum kan bæres. Det erstatter ikke coverage sweep for en hel nyhedsartikel.
+Fact checker udfylder `fact_check.status = pass|fail`, tidspunkt og noter. Efter Fact checker ser Nyhedsdesk det dokumenterede resultat igen og udfylder `desk_recheck.status = publish|update|hold|kill` med tidspunkt og begrundelse.
 
-En pressemeddelelse er primær dokumentation for, hvad afsenderen meddeler, men ikke automatisk sandhedsbevis for en omstridt ekstern påstand.
+Fact check PASS betyder “dokumenteret”, ikke automatisk “værd at publicere”.
 
-Alvorlige anklager, store ukendte tal eller påstande med høj skade kræver skærpet dokumentation og kan udløse manuel review.
+## Forelæggelse/modpart
 
-## Faktaledger
-
-Én ledger pr. story/article under `sources/`. JSON er canonical for nye artikler.
-
-Hver claim indeholder mindst:
-
-- `id`: stabilt claim-id, fx `F01`
-- `claim`: kort neutral faktasætning
-- `status`: `verified`, `disputed`, `uncertain`, `rejected`
-- `source_ids`: kilder der understøtter
-- `independent_groups`: ophavsgrupper
-- `checked_at`: tidspunkt
-- `notes`: forbehold/konflikter
-
-Hver source indeholder mindst:
-
-- `id`
-- `name`
-- `url`
-- `published_at` eller `accessed_at`
-- `type`: `primary`, `news`, `paper`, `interview`, `other`
-- `source_group`
-- `authoritative_for`: hvad kilden faktisk kan bevise
-
-Coverage-memoet skal desuden gøre det muligt for Fact checker at se, hvilke kilder der blev gennemgået, hvilke der er reelt uafhængige, og hvilke væsentlige pointer der kom fra forskellige dækninger.
-
-## Tal
-
-For hvert centralt tal skal ledgeren registrere:
-
-- værdi
-- enhed
-- periode/dato
-- population/nævner når relevant
-- evt. beregningsformel
-- kilde
-
-Procenter og procentpoint skelnes. Tal fra forskellige datoer eller populationer må ikke lægges sammen uden dokumenteret metode.
-
-## Citater
-
-Direkte citat kræver:
-
-- ordret originaltekst eller lyd/transkript
-- speaker
-- kilde-URL/dokument
-- kontekst nok til at sikre mening
-- oversættelsesstatus
-
-Hvis ordlyden ikke kan genfindes: parafrasér eller drop citatet. Citat i H1 kræver ekstra fact-check.
-
-## Egennavne og titler
-
-Navn, titel, embede, organisation, geografi og juridisk status verificeres særskilt. Ingen automatisk udfyldning fra modelhukommelse.
-
-## Dato og freshness
-
-Ledgeren registrerer, hvornår hændelsen skete, og hvornår kilden blev publiceret. Evergreen må gerne være ældre. Nyhed må ikke sælges som ny, hvis den bærende udvikling er gammel.
-
-## Modpart
-
-I en konkret strid registreres:
-
-- hvem kritikken retter sig mod
-- om parten er kontaktet eller allerede har et relevant offentligt svar
-- svar/fravær af svar
-- deadline
-
-Manglende svar er ikke tilladelse til at gætte partens holdning.
+`right_of_reply.required: true` er en hard gate. Uden dokumenteret undtagelse kræves `party`, `contacted_at`, `deadline` og enten et registreret svar eller en udløbet svarfrist.
 
 ## AI
 
-AI-genereret tekst, opsummeringer eller søgesvar er aldrig source-id. AI kan hjælpe med at finde kilder, men fact checker skal åbne og kontrollere den oprindelige kilde.
+AI-genereret tekst, opsummeringer eller søgesvar er aldrig source-id. Oprindelige kilder skal åbnes og kontrolleres.
