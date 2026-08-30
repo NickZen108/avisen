@@ -1,23 +1,64 @@
-# 3. Agenter
+# Agenter — Morgentidende
 
-## Redaktion
+Alle agenter læser først `HUSREGLER.md` og følger prioriteten dér. Hver agent har en komplet prompt i `agents/`. Ingen agent må godkende sit eget arbejde eller omgå et FAIL.
 
-1. **Research** — memo. Skriver ikke artiklen.
-2. **Journalist** — skriver ud fra memoet. Ingen slutsætning med avisens vurdering i en nyhed.
-3. **SEO** — title, description, schema.
-4. **Redaktør** — anden-tjek i EDITORIAL.md før commit. Veto ved kommentar forklædt som nyhed, intern note, uciteret citat, foto-mismatch, dødt foto, opdigtet dansk i H1/manchet. Styrer forside-lead efter EDITORIAL (vægt først, tid bagefter). Time-stykke er ikke automatisk 1-er.
-5. **Kommentator** — først efter en nyhed om samme emne. Kommentar bliver aldrig lead.
+## Pipeline
 
-## Drift
+1. **Scan** — finder signaler og kandidater. Skriver ikke artikler.
+2. **Nyhedsdesk** — deduplikerer, tildeler `story_id`, kategori, nyhedsvægt A–D og assignment. Kan KILL.
+3. **Research** — producerer faktaledger og kildememo. Ingen artikelprosa.
+4. **Fact checker** — verificerer ledger, uafhængighed, citater, tal, datoer og navne. PASS/FAIL.
+5. **Journalist** — skriver kun ud fra godkendt ledger.
+6. **Sprogredaktør** — dansk, klarhed og overskrift. Må ikke ændre fakta.
+7. **Etik/fairness** — forelæggelse, identifikation, børn, skade, nyhed/kommentar. Kan kræve manual review.
+8. **SEO/discovery** — metadata, schema, intern linking og søgbarhed. Må ikke styre fakta eller gøre nyhed til SEO-produkt.
+9. **Billedredaktør** — match, ophav, licens, autenticitet og alt-tekst.
+10. **Teknisk QA** — schema, links, generated-only HTML, design lock, build, tider og sitemaps.
+11. **Forsideredaktør** — vælger lead og placering efter `FRONTPAGE.md`, ikke efter alder alene.
+12. **Udgiver** — publicerer kun ved PASS fra alle krævede gates og sætter faktisk dansk publiceringstid.
+13. **Post-publication monitor** — finder døde links/billeder, regressions og rettelsesbehov.
 
-6. **Scan** — hvert 15. min + Grok efter workflow. Breaking publiceres straks og tæller ikke som time-stykket. Breaking må overtage lead.
-7. **Time** — én ny artikel hver hele time, også hvis der er udgivet breaking i samme time. Andet emne. En kørsel uden ny fil er en fejl. Lægger i rail/kort medmindre redaktøren løfter det til lead.
-8. **Udgiver**
-9. **Korrekturvagt** — hver time. Alle live sider. Først interne noter. Så dansk: hvert ord i H1, ticker og brød skal kunne stå i Retskrivningsordbogen; opdigtede ord og brudte sætninger rettes. Så foto: hvert `<img>` skal hentes (404/timeout/grå kasse = dødt). Foretræk `docs/img/`. Derefter tid og `.below`. Se QA.md.
+## Separate formater
 
-## Rapport
+**Kommentator** — må først skrive aktuel kommentar, når en faktuel nyhed om samme `story_id` er live. Kommentar bliver ikke automatisk lead.
 
-10. Daglig rapport
-11. Ugentlig rapport
+**Daglig rapport** — måler produktion, kvalitet, corrections, coverage-mix, direkte søgbarhed og analytics når de findes. Ingen opdigtede trafiktal.
 
-Læs EDITORIAL.md og DESIGN.md først.
+**Ugentlig rapport** — vurderer emnebalance, fejlrate, rettelser, dubletter, originalitet, direkte trafik og abonnements-/nyhedsbrevsudvikling når data findes.
+
+## Stopregler
+
+En kørsel uden ny publicering er tilladt og ofte korrekt. Følgende er derimod fejl:
+
+- artikel uden godkendt ledger
+- samme faktum fremstillet som to uafhængige kilder, selv om begge stammer fra samme bureau/pressemeddelelse
+- fakta uden claim-id
+- citat uden kilde og ordlyd
+- højrisikostof autopubliceret trods `manual_review: true`
+- kommentar før nyhed om samme aktuelle sag
+- direkte redigering af låst design
+- fremtidigt/opdigtet publiceringstidspunkt
+- dublet-URL uden selvstændig nyhed
+
+## Prompts
+
+De operative prompts ligger i:
+
+- `agents/scan.md`
+- `agents/newsdesk.md`
+- `agents/research.md`
+- `agents/fact-check.md`
+- `agents/journalist.md`
+- `agents/language.md`
+- `agents/ethics.md`
+- `agents/seo.md`
+- `agents/image.md`
+- `agents/technical-qa.md`
+- `agents/frontpage.md`
+- `agents/publisher.md`
+- `agents/post-publication.md`
+- `agents/commentator.md`
+- `agents/daily-report.md`
+- `agents/weekly-report.md`
+
+Hver prompt følger samme format: Formål → Skal læse → Input → Handling → Forbud → Output → PASS/FAIL/STOP.

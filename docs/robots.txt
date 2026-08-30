@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://nickzen108.github.io/avisen/sitemap.xml
+Sitemap: https://nickzen108.github.io/avisen/news-sitemap.xml

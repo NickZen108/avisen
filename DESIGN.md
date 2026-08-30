@@ -1,6 +1,6 @@
-# 2. Design
+# Design — Morgentidende
 
-Låst 29. august 2026. Ændres kun når brugeren skriver det sort på hvidt.
+Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Det visuelle design er fortsat låst.
 
 ## Farver
 
@@ -24,8 +24,28 @@ Artikelside: `article-grid` + sidespalte + `.below` fire spalter med foto.
 Nyhed/kommentar om samme sag: `.related-teaser` begge veje.
 Flere stykker om samme tema: `.theme-box`.
 
-## Forbudt uden ny ordre
+## Genereret HTML
 
-style.css-grids, header, logo-fil, wordmark-størrelse, grundfarver.
+Nye og substantielt opdaterede artikler skrives som struktureret indhold i `content/articles/`. `scripts/build_all.py` genererer HTML under `docs/artikler/` fra den centrale skabelon. Forsiden styres af `content/frontpage.json` og genereres centralt.
 
-Tilladt: nye artikler, teaser-tekst, sitemap, bruge `.related-teaser` og `.theme-box`.
+Journalist-, SEO-, sprog-, billed- og redaktøragenter må ikke skrive layout-HTML eller CSS. De ændrer kun felter, som deres prompt giver adgang til.
+
+Legacy-HTML må vises uændret, men skal migreres til generatoren ved større opdatering.
+
+## Maskinel lås
+
+`config/design-lock.txt` indeholder Git blob-hash for låste filer. CI fejler, hvis de ændres uden samtidig eksplicit opdatering af designlåsen efter brugerordre.
+
+Låst:
+
+- `docs/style.css`
+- `docs/signup.css`
+- `docs/logo.svg`
+- `docs/logo-mark.svg`
+- grundstruktur i generatorens header/footer/layout
+
+## Forbudt uden ny brugerordre
+
+style.css-grids, header, logo-fil, wordmark-størrelse, grundfarver eller ny layoutstruktur.
+
+Tilladt inden for låsen: nye artikler, teaser-tekst, sitemap, story clusters, `.related-teaser`, `.theme-box`, offentlige metode-/rettelsessider og metadata.

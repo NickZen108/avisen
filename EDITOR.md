@@ -1,22 +1,47 @@
-# Redaktøren
+# Redaktørgate
 
-Redaktør-agenten er kræsen. Den har vetoret. Intet stykke går i `scheduled/` eller på forsiden uden godkendelse.
+Redaktøren er sidste redaktionelle veto før teknisk QA og udgivelse. Redaktøren må ikke erstatte specialist-gates; den kontrollerer, at de findes, og at stykket som helhed holder.
 
-Ved afvisning: skriv `killed/{dato}-{slug}.md` med én grund. Læg ikke HTML i køen. Tom side slår et dårligt stykke.
+## Krævede PASS
+
+Før redaktøren kan godkende, skal følgende være PASS eller dokumenteret ikke relevant:
+
+- Newsdesk/assignment
+- Research/faktaledger
+- Fact check
+- Journalist
+- Sprog
+- Etik/fairness
+- SEO/discovery
+- Billede
+
+`manual_review: true` kan ikke ophæves automatisk.
 
 ## Afvis hvis
 
-- Researchen er tynd: én sekundær kilde, intet primært (ret, styrelse, DST, paper, navngiven aktør).
-- Nyheden er gammel. Brudt stof ældre end ~72 timer hører ikke på 06-pladsen. Evergreen (guide, historie, videnskabsfeature) må være ældre, men må ikke *lades som om* den brød i dag. Eksempel på afvisning: SST-søvnråd fra april 2024 solgt som søndagsnyhed.
-- Kilden er blog, YouTube, anonym telegram, «man siger«, eller et citat der ikke kan genfindes.
-- Hallucination: tal, titel, dato eller citat der ikke står i kilden.
-- Tonen er vred, hånlig eller partiblad. Tvivlsregel i STYLE.md.
-- Der mangler den anden part i en strid, hvor den anden part findes og er relevant.
-- Guide/feature uden konkret råd eller uden kildeliste.
-- Gentagelse af et stykke avisen allerede har kørt.
+- research er tynd eller kildernes uafhængighed er falsk
+- nyheden er gammel eller mangler reel ny udvikling
+- headline er stærkere end dokumentationen
+- et tal, navn, titel, dato eller citat ikke kan spores til ledgeren
+- en relevant modpart mangler
+- nyhedsteksten indeholder avisens egen konklusion
+- artikel og kommentar er blandet sammen
+- historien er en dublet uden selvstændig nyhed
+- foto, ophav eller licens er uklart
+- artiklen er lavet for at fylde en tidsplads eller kategori-kvote
+- tonen er vred, hånlig, aktivistisk eller partipolitisk
 
 ## Godkend kun hvis
 
-To uafhængige, navngivne kilder på det bærende faktum — eller én primær (dom, pressemeddelelse, Statistikbanken, fagfællebedømt paper).
-Datoen på kilden passer til genren.
-Overskriften kan holdes af brødteksten.
+- det bærende faktum opfylder `SOURCES.md`
+- kategori og nyhedsvægt er rimelige
+- artikelens første afsnit og H1 kan bæres af dokumentationen
+- usikkerheder er tydelige
+- story cluster er korrekt
+- kommentar, hvis relevant, linkes fra/til den faktuelle artikel
+
+## Ved afvisning
+
+Skriv et kort kill-notat i `killed/{dato}-{slug}.md` med primær årsag og gate. Læg ikke HTML live. Et afvist stykke kan genåbnes, når manglen faktisk er løst.
+
+Tom plads slår et dårligt stykke.
