@@ -16,16 +16,16 @@
     "image_alt": "Lyngby Station"
   },
   "rail": [
-    {"slug":"2026-08-30-roman-rumteleskop-opsendt","category":"Videnskab","title":"NASA opsender Roman-rumteleskopet","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Falcon_Heavy_Demo_Mission_%2839121888845%29.jpg","image_alt":"SpaceX Falcon Heavy"},
+    {"slug":"2026-08-30-roman-rumteleskop-opsendt","category":"Videnskab","title":"NASA opsender Roman-rumteleskopet","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Falcon_Heavy_Demo_Mission_%2840126462231%29.jpg","image_alt":"SpaceX Falcon Heavy under opsendelse"},
     {"slug":"2026-08-30-hvorfor-himlen-er-blaa","category":"Videnskab","title":"Derfor er himlen blå","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_with_blue_sky.jpg","image_alt":"Blå himmel, der går over i varme orange og røde farver ved solnedgang over horisonten"},
     {"slug":"2026-08-30-solsystemet-i-tal","category":"Videnskab","title":"Solsystemet i tal","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Solar_System_graphic_by_NASA.png","image_alt":"NASA-grafik over solsystemet"},
-    {"slug":"2026-08-30-wegovy-stopper","category":"Sundhed","title":"Halvdelen stopper Wegovy","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Pharmacy_shelves.jpg","image_alt":"Apotek"},
+    {"slug":"2026-08-30-wegovy-stopper","category":"Sundhed","title":"Halvdelen stopper Wegovy","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Former_pharmacy%2C_shelves_with_medicines.jpg","image_alt":"Hylder med medicin på et apotek"},
     {"slug":"2026-08-29-dsa-ytringsfrihed","category":"Feature","title":"DSA: bøde eller tale","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Berlaymont_building.jpg","image_alt":"Europa-Kommissionen"}
   ],
   "stack": [
     {"slug":"2026-08-29-dsa-ytringsfrihed","category":"Feature","title":"DSA mellem bøde og tale","teaser":"X fik 120 mio. euro. Räsänen blev dømt for en kirkebog. Vance kaldte det truslen indefra.","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Berlaymont_building.jpg","image_alt":"Berlaymont, Europa-Kommissionen"},
     {"slug":"2026-08-29-usa-canada-handelskrig","category":"Udland","title":"Har Trump en pointe?","teaser":"USA: vareunderskud 48,3 mia. dollar i 2025. Trump sagde 60. Canada svarer 8. september.","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Ambassador_Bridge.jpg","image_alt":"Ambassador Bridge mellem USA og Canada"},
-    {"slug":"2026-08-29-parkering-30000-koebenhavn","category":"Forbruger","title":"P-licens til 30.000 kroner","teaser":"Alternativet vil hæve beboerparkering i København. Borgerlige grupper kalder det skævt. Ikke vedtaget.","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn_from_Kongens_Nytorv.jpg","image_alt":"København"}
+    {"slug":"2026-08-29-parkering-30000-koebenhavn","category":"Forbruger","title":"P-licens til 30.000 kroner","teaser":"Alternativet vil hæve beboerparkering i København. Borgerlige grupper kalder det skævt. Ikke vedtaget.","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn-Copenhagen.jpg","image_alt":"Nyhavn i København"}
   ],
   "narrow": [
     {"slug":"2026-08-30-roman-rumteleskop-opsendt","category":"Videnskab","title":"NASA opsender Roman-rumteleskopet","teaser":"Flagskibsmissionen skal undersøge mørk energi, mørk materie og exoplaneter."},
