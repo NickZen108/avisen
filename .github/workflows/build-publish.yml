@@ -1,0 +1,44 @@
+name: Build structured edition
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'sources/**'
+      - 'templates/**'
+      - 'config/**'
+      - 'scripts/build_all.py'
+      - 'scripts/quality_gate.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prebuild gates
+        run: python scripts/quality_gate.py --prebuild
+      - name: Build
+        run: python scripts/build_all.py
+      - name: Postbuild gates
+        run: python scripts/quality_gate.py
+      - name: Commit generated public files
+        run: |
+          git config user.name "morgentidende-publisher"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html docs/artikler docs/sitemap.xml docs/news-sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Ingen genererede ændringer"
+          else
+            git commit -m "publish: build structured edition"
+            git push
+          fi
