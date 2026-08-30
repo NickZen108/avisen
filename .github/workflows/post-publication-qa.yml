@@ -26,8 +26,11 @@ jobs:
         with:
           python-version: '3.12'
       - name: Live smoke test
-        run: python scripts/live_qa.py --report reports/qa/live-latest.md
+        id: live_qa
+        continue-on-error: true
+        run: python scripts/live_qa.py --strict --report reports/qa/live-latest.md
       - name: Commit QA report
+        if: ${{ always() }}
         run: |
           git config user.name "morgentidende-qa"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -38,3 +41,6 @@ jobs:
             git commit -m "qa: hourly live smoke test"
             git push
           fi
+      - name: Fail workflow when live QA found hard or soft faults
+        if: ${{ steps.live_qa.outcome == 'failure' }}
+        run: exit 1
