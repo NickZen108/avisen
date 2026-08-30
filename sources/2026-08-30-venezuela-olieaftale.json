@@ -37,6 +37,26 @@
       "type": "news",
       "source_group": "ft-own-reporting",
       "authoritative_for": "Politisk kritik i Venezuela og fortsat uklarhed om centrale juridiske og kommercielle vilkår."
+    },
+    {
+      "id": "S4",
+      "name": "EFE via Hola News",
+      "url": "https://holanews.com/delcy-rodriguez-informa-que-el-acuerdo-petrolero-con-ee-uu-tendra-una-vigencia-de-25-anos/",
+      "published_at": "2026-08-30",
+      "accessed_at": "2026-08-30T11:45:00+02:00",
+      "type": "news",
+      "source_group": "efe-own-reporting",
+      "authoritative_for": "Rodríguez' tv-oplysninger om 25 års løbetid, produktionsmål over 1,5 mio. tønder dagligt og de økonomiske estimater."
+    },
+    {
+      "id": "S5",
+      "name": "El Diario",
+      "url": "https://eldiario.com/2026/08/29/acuerdo-energetico-venezuela-eeuu/",
+      "published_at": "2026-08-29",
+      "accessed_at": "2026-08-30T11:45:00+02:00",
+      "type": "news",
+      "source_group": "eldiario-own-reporting",
+      "authoritative_for": "Reaktioner og kritik fra både opposition og chavistiske/dissidente miljøer i Venezuela."
     }
   ],
   "claims": [
@@ -44,35 +64,59 @@
       "id": "F01",
       "claim": "Venezuelas midlertidige præsident Delcy Rodriguez siger, at energiaftalen med USA skal løbe i 25 år og omfatter udvikling af 17 strategiske oliefelter.",
       "status": "verified",
-      "source_ids": ["S1"],
-      "independent_groups": ["reuters-own-reporting"],
-      "checked_at": "2026-08-30T11:41:43+02:00",
-      "notes": "Reuters gengiver Rodriguez' offentlige udmelding; autoritativt for regeringens beskrivelse af aftalen."
+      "source_ids": [
+        "S1",
+        "S4"
+      ],
+      "independent_groups": [
+        "reuters-own-reporting",
+        "efe-own-reporting"
+      ],
+      "checked_at": "2026-08-30T11:45:00+02:00",
+      "notes": "Reuters gengiver Rodriguez' offentlige udmelding; autoritativt for regeringens beskrivelse af aftalen. Krydstjekket mod EFE's selvstændige Caracas-rapportering."
     },
     {
       "id": "F02",
       "claim": "Rodriguez oplyser et produktionsmål på mere end 1,5 millioner tønder råolie om dagen og anslår 209 milliarder dollar i mulige indtægter til den venezuelanske stat.",
       "status": "verified",
-      "source_ids": ["S1"],
-      "independent_groups": ["reuters-own-reporting"],
-      "checked_at": "2026-08-30T11:41:43+02:00",
-      "notes": "Tallene er regeringens mål/estimat og fremstilles ikke som garanteret resultat."
+      "source_ids": [
+        "S1",
+        "S4"
+      ],
+      "independent_groups": [
+        "reuters-own-reporting",
+        "efe-own-reporting"
+      ],
+      "checked_at": "2026-08-30T11:45:00+02:00",
+      "notes": "Tallene er regeringens mål/estimat og fremstilles ikke som garanteret resultat. Krydstjekket mod EFE's selvstændige Caracas-rapportering."
     },
     {
       "id": "F03",
       "claim": "Donald Trump har sagt, at aftalen giver amerikansk side majoritetskontrol over mere end 65 milliarder tønder af Venezuelas dokumenterede oliereserver.",
       "status": "verified",
-      "source_ids": ["S2"],
-      "independent_groups": ["ap-own-reporting"],
-      "checked_at": "2026-08-30T11:41:43+02:00",
-      "notes": "Verificeret som Trumps offentliggjorte beskrivelse; den fulde juridiske konstruktion er ikke offentliggjort."
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "independent_groups": [
+        "reuters-own-reporting",
+        "ap-own-reporting"
+      ],
+      "checked_at": "2026-08-30T11:45:00+02:00",
+      "notes": "Verificeret som Trumps offentliggjorte beskrivelse; den fulde juridiske konstruktion er ikke offentliggjort. Krydstjekket mod Reuters' kontekst om Trumps annoncering."
     },
     {
       "id": "F04",
       "claim": "De fulde vilkår og den præcise juridiske konstruktion bag amerikansk kontrol er fortsat ikke offentligt klarlagt.",
       "status": "verified",
-      "source_ids": ["S2", "S3"],
-      "independent_groups": ["ap-own-reporting", "ft-own-reporting"],
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "independent_groups": [
+        "ap-own-reporting",
+        "ft-own-reporting"
+      ],
       "checked_at": "2026-08-30T11:41:43+02:00",
       "notes": "AP og FT beskriver manglende offentlig detaljering; FT omtaler også juridiske spørgsmål og kritik."
     },
@@ -80,18 +124,54 @@
       "id": "F05",
       "claim": "Aftalen møder kritik fra både venezuelanske oppositionspolitikere og tidligere profiler med rødder i chavismen, som efterlyser gennemsigtighed eller anfægter aftalen.",
       "status": "verified",
-      "source_ids": ["S3"],
-      "independent_groups": ["ft-own-reporting"],
-      "checked_at": "2026-08-30T11:41:43+02:00",
-      "notes": "FT rapporterer navngivne kritikere fra flere politiske lejre."
+      "source_ids": [
+        "S3",
+        "S5"
+      ],
+      "independent_groups": [
+        "ft-own-reporting",
+        "eldiario-own-reporting"
+      ],
+      "checked_at": "2026-08-30T11:45:00+02:00",
+      "notes": "FT rapporterer navngivne kritikere fra flere politiske lejre. Krydstjekket mod El Diarios lokale rapportering om kritik på tværs af politiske lejre."
     }
   ],
   "numbers": [
-    {"claim_id":"F01","value":25,"unit":"år","period":"aftalens oplyste løbetid","source_id":"S1"},
-    {"claim_id":"F01","value":17,"unit":"oliefelter","period":"projektets oplyste første ramme","source_id":"S1"},
-    {"claim_id":"F02","value":1.5,"unit":"millioner tønder pr. dag","period":"produktionsmål","source_id":"S1"},
-    {"claim_id":"F02","value":209,"unit":"milliarder USD","period":"potentiel samlet statsindtægt ifølge Rodriguez","source_id":"S1"},
-    {"claim_id":"F03","value":65,"unit":"milliarder tønder","period":"reserver omfattet af Trumps beskrivelse","source_id":"S2"}
+    {
+      "claim_id": "F01",
+      "value": 25,
+      "unit": "år",
+      "period": "aftalens oplyste løbetid",
+      "source_id": "S1"
+    },
+    {
+      "claim_id": "F01",
+      "value": 17,
+      "unit": "oliefelter",
+      "period": "projektets oplyste første ramme",
+      "source_id": "S1"
+    },
+    {
+      "claim_id": "F02",
+      "value": 1.5,
+      "unit": "millioner tønder pr. dag",
+      "period": "produktionsmål",
+      "source_id": "S1"
+    },
+    {
+      "claim_id": "F02",
+      "value": 209,
+      "unit": "milliarder USD",
+      "period": "potentiel samlet statsindtægt ifølge Rodriguez",
+      "source_id": "S1"
+    },
+    {
+      "claim_id": "F03",
+      "value": 65,
+      "unit": "milliarder tønder",
+      "period": "reserver omfattet af Trumps beskrivelse",
+      "source_id": "S2"
+    }
   ],
   "quotes": [],
   "right_of_reply": {
@@ -104,12 +184,13 @@
   },
   "fact_check": {
     "status": "pass",
-    "checked_at": "2026-08-30T11:41:43+02:00",
+    "checked_at": "2026-08-30T11:45:00+02:00",
     "notes": [
       "Bærende fakta er attribueret til de parter, der har offentliggjort dem.",
       "Påstanden om amerikansk kontrol fremstilles som Trumps beskrivelse, fordi den fulde juridiske konstruktion ikke er offentlig.",
       "Ingen direkte citater anvendes.",
-      "Kritik og usikkerhed er medtaget for fairness."
+      "Kritik og usikkerhed er medtaget for fairness.",
+      "Claims med tidligere enkeltkildestøtte er krydstjekket med EFE, AP/Reuters og El Diario som separate source_groups."
     ]
   }
 }
