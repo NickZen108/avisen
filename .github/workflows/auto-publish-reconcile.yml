@@ -1,0 +1,113 @@
+name: Auto-publish reconcile
+
+on:
+  schedule:
+    - cron: '3,8,13,18,23,28,33,38,43,48,53,58 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/auto-publish-reconcile.yml'
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: morgentidende-main-writes
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Reconcile one eligible AUTO PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          PRS=$(gh api -X GET "/repos/${GITHUB_REPOSITORY}/pulls"             -f state='open' -f base='main' -f sort='created' -f direction='asc' -f per_page=100)
+
+          COUNT=$(printf '%s' "$PRS" | jq 'length')
+          if [ "$COUNT" -eq 0 ]; then
+            echo "Ingen åbne main-PR'er"
+            exit 0
+          fi
+
+          CURRENT_MAIN=$(gh api "/repos/${GITHUB_REPOSITORY}/branches/main" --jq '.commit.sha')
+
+          printf '%s' "$PRS" | jq -c '.[]' | while IFS= read -r PR; do
+            NUMBER=$(printf '%s' "$PR" | jq -r '.number')
+            TITLE=$(printf '%s' "$PR" | jq -r '.title')
+            BODY=$(printf '%s' "$PR" | jq -r '.body // ""')
+            HEAD_REF=$(printf '%s' "$PR" | jq -r '.head.ref')
+            HEAD_REPO=$(printf '%s' "$PR" | jq -r '.head.repo.full_name')
+            HEAD_SHA=$(printf '%s' "$PR" | jq -r '.head.sha')
+            BASE_SHA=$(printf '%s' "$PR" | jq -r '.base.sha')
+            CHANGED=$(printf '%s' "$PR" | jq -r '.changed_files')
+
+            [ "$HEAD_REPO" = "$GITHUB_REPOSITORY" ] || continue
+            case "$HEAD_REF" in edition/*|newsroom/*) ;; *) continue ;; esac
+            case "$TITLE" in "[AUTO] "*) ;; *) continue ;; esac
+            printf '%s' "$BODY" | grep -q '<!-- morgentidende-auto-publish -->' || continue
+            [ "$CHANGED" -le 50 ] || continue
+
+            FILES=$(gh api -X GET "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/files" -f per_page=100)
+            BAD=$(printf '%s' "$FILES" | jq -r '
+              .[] |
+              select(
+                .status == "removed" or
+                (
+                  (.filename == "content/frontpage.json") or
+                  (.filename | startswith("content/articles/")) or
+                  (.filename | startswith("sources/")) or
+                  (.filename | startswith("killed/")) or
+                  (.filename | startswith("scheduled/")) or
+                  (.filename | startswith("reports/editorial/"))
+                ) | not
+              ) |
+              .filename
+            ')
+            [ -z "$BAD" ] || continue
+
+            ARTICLE_FILES=$(printf '%s' "$FILES" | jq -r '.[] | select(.filename | startswith("content/articles/")) | .filename')
+            BLOCKED=false
+            while IFS= read -r ARTICLE; do
+              [ -z "$ARTICLE" ] && continue
+              if git show "$HEAD_SHA:$ARTICLE" | jq -e '.manual_review == true' >/dev/null; then
+                BLOCKED=true
+                break
+              fi
+            done <<< "$ARTICLE_FILES"
+            [ "$BLOCKED" = false ] || continue
+
+            RUNS=$(gh api -X GET "/repos/${GITHUB_REPOSITORY}/actions/workflows/quality-gates.yml/runs"               -f event='pull_request' -f branch="$HEAD_REF" -f per_page=50)
+            PASSED=$(printf '%s' "$RUNS" | jq -r --arg sha "$HEAD_SHA"               '[.workflow_runs[] | select(.head_sha == $sha and .status == "completed" and .conclusion == "success")] | length')
+            [ "$PASSED" -gt 0 ] || continue
+
+            if [ "$BASE_SHA" != "$CURRENT_MAIN" ]; then
+              echo "PR #$NUMBER er bag main; opdaterer branch og kræver ny Quality gate"
+              gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/update-branch"                 -f expected_head_sha="$HEAD_SHA"
+              exit 0
+            fi
+
+            echo "Reconciler merger PR #$NUMBER ved testet SHA $HEAD_SHA"
+            MERGE=$(gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/merge"               -f merge_method='squash'               -f sha="$HEAD_SHA"               -f commit_title="$TITLE")
+
+            MERGED=$(printf '%s' "$MERGE" | jq -r '.merged')
+            [ "$MERGED" = "true" ] || {
+              echo "$MERGE"
+              exit 1
+            }
+
+            gh workflow run build-publish.yml --ref main
+            exit 0
+          done
+
+          echo "Ingen eligible AUTO-PR'er at reconcile"
