@@ -16,6 +16,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: morgentidende-main-writes
@@ -43,13 +44,23 @@ jobs:
       - name: Postbuild gates
         run: python scripts/quality_gate.py
       - name: Commit generated public files
+        id: publish
         run: |
           git config user.name "morgentidende-publisher"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/index.html docs/artikler docs/sitemap.xml docs/news-sitemap.xml
           if git diff --cached --quiet; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
             echo "Ingen genererede ændringer"
           else
             git commit -m "publish: build structured edition"
             git push
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "publisher_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
+      - name: Dispatch post-deploy guard for exact publisher commit
+        if: ${{ steps.publish.outputs.published == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUBLISHER_SHA: ${{ steps.publish.outputs.publisher_sha }}
+        run: gh workflow run post-deploy-guard.yml --ref main -f target_sha="$PUBLISHER_SHA"
