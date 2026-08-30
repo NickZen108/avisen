@@ -11,72 +11,31 @@
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-08-30-solsystemet-i-tal.json",
-  "claim_ids": [
-    "F01",
-    "F02",
-    "F03"
-  ],
+  "claim_ids": ["F01", "F02", "F03"],
   "seo": {
     "title": "Planeternes afstand fra Solen – solsystemet i tal",
     "description": "NASA-tal for de otte planeters gennemsnitlige afstand fra Solen, fra Merkur til Neptun.",
     "canonical": null
   },
   "image": {
-    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Solar_System_graphic_by_NASA.png",
-    "alt": "NASA-grafik med Solen og objekter i solsystemet",
-    "credit": "NASA / Wikimedia Commons",
-    "license": "Public domain (NASA, USA)",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Solar_System_graphic_by_NASA.png",
-    "image_type": "graphic"
+    "src": "https://nickzen108.github.io/avisen/img/morgentidende-planeter-au.svg",
+    "alt": "Pædagogisk illustration af de otte planeters gennemsnitlige afstand fra Solen målt i astronomiske enheder, AU",
+    "credit": "Morgentidende",
+    "license": "Morgentidende",
+    "source_url": "https://nickzen108.github.io/avisen/img/morgentidende-planeter-au.svg",
+    "image_type": "illustration"
   },
   "body": [
-    {
-      "type": "p",
-      "text": "Solsystemet tegnes ofte som en pæn række planeter med næsten ens mellemrum. Det gør modellen læsbar, men den skjuler, hvor voldsomt afstandene vokser, når man bevæger sig ud fra Solen."
-    },
-    {
-      "type": "h2",
-      "text": "De otte planeter"
-    },
-    {
-      "type": "ol",
-      "items": [
-        "Merkur: cirka 58 millioner km fra Solen.",
-        "Venus: cirka 108 millioner km.",
-        "Jorden: cirka 149,7 millioner km.",
-        "Mars: cirka 227,9 millioner km.",
-        "Jupiter: cirka 778 millioner km.",
-        "Saturn: cirka 1,4 milliarder km.",
-        "Uranus: cirka 2,9 milliarder km.",
-        "Neptun: cirka 4,5 milliarder km."
-      ]
-    },
-    {
-      "type": "h2",
-      "text": "Jorden som målestok"
-    },
-    {
-      "type": "p",
-      "text": "Astronomer bruger ofte den astronomiske enhed, AU, til afstande i solsystemet. Jordens gennemsnitlige afstand fra Solen fungerer som reference. Det gør sammenligninger lettere end at arbejde med milliarder af kilometer i hver sætning."
-    },
-    {
-      "type": "h2",
-      "text": "Grafikken snyder med vilje"
-    },
-    {
-      "type": "p",
-      "text": "Artiklens NASA-grafik er en oversigtsgrafik, ikke en målfast gengivelse af de virkelige afstande. Hvis både planetstørrelser og indbyrdes afstande skulle være på samme skala, ville de små indre planeter hurtigt blive næsten usynlige på en almindelig skærm."
-    },
-    {
-      "type": "p",
-      "text": "Pointen i tallene er derfor ikke at gøre solsystemet lille nok til en skolebogsside, men at vise hvor hurtigt skalaen ændrer sig fra de indre klippeplaneter til de ydre planeter."
-    }
+    {"type":"p","text":"Solsystemet tegnes ofte som en pæn række planeter med næsten ens mellemrum. Det gør modellen læsbar, men den skjuler, hvor voldsomt afstandene vokser, når man bevæger sig ud fra Solen."},
+    {"type":"h2","text":"De otte planeter"},
+    {"type":"ol","items":["Merkur: cirka 58 millioner km fra Solen.","Venus: cirka 108 millioner km.","Jorden: cirka 149,7 millioner km.","Mars: cirka 227,9 millioner km.","Jupiter: cirka 778 millioner km.","Saturn: cirka 1,4 milliarder km.","Uranus: cirka 2,9 milliarder km.","Neptun: cirka 4,5 milliarder km."]},
+    {"type":"h2","text":"Jorden som målestok"},
+    {"type":"p","text":"Astronomer bruger ofte den astronomiske enhed, AU, til afstande i solsystemet. Jordens gennemsnitlige afstand fra Solen fungerer som reference. Det gør sammenligninger lettere end at arbejde med milliarder af kilometer i hver sætning."},
+    {"type":"h2","text":"Grafikken snyder med vilje"},
+    {"type":"p","text":"Artiklens grafik er en oversigtsgrafik, ikke en målfast gengivelse af de virkelige afstande. Hvis både planetstørrelser og indbyrdes afstande skulle være på samme skala, ville de små indre planeter hurtigt blive næsten usynlige på en almindelig skærm."},
+    {"type":"p","text":"Pointen i tallene er derfor ikke at gøre solsystemet lille nok til en skolebogsside, men at vise hvor hurtigt skalaen ændrer sig fra de indre klippeplaneter til de ydre planeter."}
   ],
-  "source_ids_to_display": [
-    "S1",
-    "S2",
-    "IMG1"
-  ],
+  "source_ids_to_display": ["S1", "S2"],
   "related_news_slug": null,
   "related": [],
   "correction_note": null,
