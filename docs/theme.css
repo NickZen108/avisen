@@ -1,0 +1,58 @@
+html[data-theme="dark"] {
+  --paper: #111417;
+  --ink: #ECE8E0;
+  --muted: #AAA59C;
+  --rule: #343A42;
+  --accent: #9DB7D8;
+  --dark: #0B1016;
+  --dark-ink: #F4F1EA;
+  --gold: #D8B84D;
+  --theme: #1B222B;
+  color-scheme: dark;
+}
+html[data-theme="dark"] .card img,
+html[data-theme="dark"] .article-graphic img { background: #171B20; }
+html[data-theme="dark"] input { color-scheme: dark; }
+
+.masthead-inner { position: relative; }
+.theme-toggle {
+  position: absolute;
+  top: .05rem;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  border: 0;
+  background: transparent;
+  color: var(--dark-ink);
+  font: 600 .72rem/1 var(--sans);
+  letter-spacing: .06em;
+  cursor: pointer;
+  padding: .35rem .1rem;
+}
+.theme-toggle__track {
+  width: 2.3rem;
+  height: 1.25rem;
+  border: 1px solid rgba(244,241,234,.55);
+  border-radius: 999px;
+  padding: .12rem;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255,255,255,.08);
+  transition: background .18s ease;
+}
+.theme-toggle__thumb {
+  width: .88rem;
+  height: .88rem;
+  border-radius: 50%;
+  background: var(--dark-ink);
+  transform: translateX(0);
+  transition: transform .18s ease;
+}
+html[data-theme="dark"] .theme-toggle__track { background: rgba(201,162,39,.28); }
+html[data-theme="dark"] .theme-toggle__thumb { transform: translateX(1rem); }
+.theme-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+@media (max-width: 720px) {
+  .theme-toggle__label { display: none; }
+}
