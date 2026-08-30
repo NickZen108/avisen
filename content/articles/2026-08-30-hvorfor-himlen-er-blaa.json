@@ -18,13 +18,13 @@
     "canonical": null
   },
   "image": {
-    "src": "https://nickzen108.github.io/avisen/img/himmel-blaa-forklaring.svg",
-    "alt": "Pædagogisk illustration af hvordan korte blå bølgelængder spredes i atmosfæren",
+    "src": "../img/sollys-hero.svg",
+    "alt": "Blå himmel med gyldent sollys og rød-orange solnedgang over en fjern horisont",
     "credit": "Morgentidende",
     "license": "Morgentidende",
-    "source_url": "https://nickzen108.github.io/avisen/img/himmel-blaa-forklaring.svg",
+    "source_url": null,
     "image_type": "illustration",
-    "placement": "inline"
+    "placement": "lead"
   },
   "body": [
     {
