@@ -17,7 +17,7 @@
   },
   "rail": [
     {"slug":"2026-08-30-roman-rumteleskop-opsendt","category":"Videnskab","title":"NASA opsender Roman-rumteleskopet","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Falcon_Heavy_Demo_Mission_%2839121888845%29.jpg","image_alt":"SpaceX Falcon Heavy"},
-    {"slug":"2026-08-30-hvorfor-himlen-er-blaa","category":"Videnskab","title":"Derfor er himlen blå","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Rayleigh_sunlight_scattering.svg","image_alt":"Grafik over Rayleigh-spredning i atmosfæren"},
+    {"slug":"2026-08-30-hvorfor-himlen-er-blaa","category":"Videnskab","title":"Derfor er himlen blå","image_src":"img/sollys-hero.svg","image_alt":"Blå himmel med gyldent sollys og rød-orange solnedgang over en fjern horisont"},
     {"slug":"2026-08-30-solsystemet-i-tal","category":"Videnskab","title":"Solsystemet i tal","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Solar_System_graphic_by_NASA.png","image_alt":"NASA-grafik over solsystemet"},
     {"slug":"2026-08-30-wegovy-stopper","category":"Sundhed","title":"Halvdelen stopper Wegovy","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Pharmacy_shelves.jpg","image_alt":"Apotek"},
     {"slug":"2026-08-29-dsa-ytringsfrihed","category":"Feature","title":"DSA: bøde eller tale","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Berlaymont_building.jpg","image_alt":"Europa-Kommissionen"}
