@@ -293,7 +293,7 @@ def main() -> int:
     validate_public_text()
     validate_frontpage()
 
-    if not prebuild:
+    if not args.prebuild:
         if not (ROOT / "docs" / "news-sitemap.xml").exists():
             err("docs/news-sitemap.xml mangler efter build")
 
