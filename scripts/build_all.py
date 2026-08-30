@@ -4,14 +4,15 @@ from __future__ import annotations
 
 import html
 import json
-import re
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://nickzen108.github.io/avisen"
 ARTICLE_DIR = ROOT / "content" / "articles"
 DOC_ARTICLES = ROOT / "docs" / "artikler"
+COPENHAGEN = ZoneInfo("Europe/Copenhagen")
 
 MONTHS = ["januar", "februar", "marts", "april", "maj", "juni", "juli", "august", "september", "oktober", "november", "december"]
 WEEKDAYS = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"]
@@ -29,7 +30,7 @@ def parse_iso(value: str) -> datetime:
 
 
 def dk_label(value: str) -> str:
-    dt = parse_iso(value)
+    dt = parse_iso(value).astimezone(COPENHAGEN)
     return f"{dt.day}. {MONTHS[dt.month-1]} {dt.year} kl. {dt:%H.%M}"
 
 
@@ -42,9 +43,7 @@ def render_blocks(blocks: list[dict]) -> str:
     for block in blocks:
         kind = block.get("type")
         if kind in {"p", "h2", "h3", "blockquote"}:
-            text = esc(block.get("text", ""))
-            tag = kind
-            out.append(f"<{tag}>{text}</{tag}>")
+            out.append(f"<{kind}>{esc(block.get('text', ''))}</{kind}>")
         elif kind in {"ul", "ol"}:
             items = "".join(f"<li>{esc(x)}</li>" for x in block.get("items", []))
             out.append(f"<{kind}>{items}</{kind}>")
@@ -63,10 +62,7 @@ def source_html(article: dict, ledger: dict) -> str:
             continue
         name = esc(source.get("name") or sid)
         url = source.get("url")
-        if url:
-            rows.append(f'<li><a href="{esc(url)}" rel="nofollow noopener">{name}</a></li>')
-        else:
-            rows.append(f"<li>{name}</li>")
+        rows.append(f'<li><a href="{esc(url)}" rel="nofollow noopener">{name}</a></li>' if url else f"<li>{name}</li>")
     if not rows:
         return ""
     return '<section class="article-sources"><h2>Kilder</h2><ul>' + "".join(rows) + "</ul></section>"
@@ -76,8 +72,7 @@ def related_html(article: dict) -> tuple[str, str]:
     related = article.get("related") or []
     if not related:
         return "", ""
-    rail_items = []
-    below_items = []
+    rail_items, below_items = [], []
     for i, item in enumerate(related):
         slug = esc(item["slug"])
         category = esc(item.get("category", "Nyhed"))
@@ -90,9 +85,10 @@ def related_html(article: dict) -> tuple[str, str]:
             rail_items.append(rail)
         teaser = esc(item.get("teaser", ""))
         below_items.append(f'<article><a href="{slug}.html">{image_html}</a><p class="section-label">{category}</p><h2><a href="{slug}.html">{title}</a></h2><p>{teaser}</p></article>')
-    rail_html = '<aside class="article-rail"><p class="rail-title">Også i avisen</p>' + "".join(rail_items) + "</aside>"
-    below_html = '<section class="wrap below">' + "".join(below_items[:4]) + "</section>"
-    return rail_html, below_html
+    return (
+        '<aside class="article-rail"><p class="rail-title">Også i avisen</p>' + "".join(rail_items) + "</aside>",
+        '<section class="wrap below">' + "".join(below_items[:4]) + "</section>",
+    )
 
 
 def build_article(path: Path) -> None:
@@ -102,19 +98,18 @@ def build_article(path: Path) -> None:
     if not article.get("published_at"):
         raise ValueError(f"published artikel mangler published_at: {path}")
 
-    ledger_path = ROOT / article["ledger"]
-    ledger = load_json(ledger_path)
+    ledger = load_json(ROOT / article["ledger"])
     template = (ROOT / "templates" / "article.html").read_text(encoding="utf-8")
-
     slug = article["slug"]
     canonical = article.get("seo", {}).get("canonical") or f"{BASE_URL}/artikler/{slug}.html"
     seo_title = article.get("seo", {}).get("title") or article["title"]
     page_title = seo_title if "Morgentidende" in seo_title else f"{seo_title} – Morgentidende"
     description = article.get("seo", {}).get("description") or article["standfirst"]
-
     category = article["category"]
-    schema_type = "NewsArticle" if category in {"Nyhed", "Krimi", "Politik", "Økonomi", "Udland", "Forbruger", "Kultur", "Videnskab", "Sundhed", "Parforhold", "Sport"} else "Article"
+    news_categories = {"Nyhed", "Krimi", "Politik", "Økonomi", "Udland", "Forbruger", "Kultur", "Videnskab", "Sundhed", "Parforhold", "Sport"}
+    schema_type = "NewsArticle" if category in news_categories else "Article"
     image = article.get("image")
+
     schema = {
         "@context": "https://schema.org",
         "@type": schema_type,
@@ -129,23 +124,16 @@ def build_article(path: Path) -> None:
         schema["dateModified"] = article["updated_at"]
     if image and image.get("src"):
         schema["image"] = [image["src"]]
+    schema_json = json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
     rail_html, below_html = related_html(article)
-    updated_label = ""
-    if article.get("updated_at"):
-        updated_label = f" · Opdateret {esc(dk_label(article['updated_at']))}"
+    updated_label = f" · Opdateret {esc(dk_label(article['updated_at']))}" if article.get("updated_at") else ""
     correction = article.get("correction_note")
-    correction_html = ""
-    if correction:
-        correction_html = f'<aside class="theme-box"><strong>Rettelse:</strong> {esc(correction)}</aside>'
-
+    correction_html = f'<aside class="theme-box"><strong>Rettelse:</strong> {esc(correction)}</aside>' if correction else ""
     related_teaser = ""
     if article.get("related_news_slug"):
         related_teaser = f'<aside class="related-teaser"><strong>Relateret:</strong> <a href="{esc(article["related_news_slug"])}.html">Læs den faktuelle nyhedsartikel</a></aside>'
-
-    og_image = ""
-    if image and image.get("src"):
-        og_image = f'<meta property="og:image" content="{esc(image["src"])}">'
+    og_image = f'<meta property="og:image" content="{esc(image["src"])}">' if image and image.get("src") else ""
 
     replacements = {
         "{{SOURCE_PATH}}": esc(path.relative_to(ROOT)),
@@ -154,7 +142,7 @@ def build_article(path: Path) -> None:
         "{{CANONICAL_URL}}": esc(canonical),
         "{{OG_TITLE}}": esc(article["title"]),
         "{{OG_IMAGE}}": og_image,
-        "{{SCHEMA_JSON}}": html.escape(json.dumps(schema, ensure_ascii=False, separators=(",", ":"))),
+        "{{SCHEMA_JSON}}": schema_json,
         "{{CATEGORY}}": esc(category),
         "{{H1}}": esc(article["title"]),
         "{{STANDFIRST}}": esc(article["standfirst"]),
@@ -171,7 +159,6 @@ def build_article(path: Path) -> None:
     }
     for key, value in replacements.items():
         template = template.replace(key, value)
-
     DOC_ARTICLES.mkdir(parents=True, exist_ok=True)
     (DOC_ARTICLES / f"{slug}.html").write_text(template, encoding="utf-8")
 
@@ -188,7 +175,6 @@ def build_frontpage() -> None:
 
     ticker = state["ticker"]
     ticker_html = f'<p><a href="{front_item_url(ticker["slug"])}">{esc(ticker["title"])}</a></p>'
-
     lead = state["lead"]
     lead_html = (
         '<section class="lead">'
@@ -200,26 +186,20 @@ def build_frontpage() -> None:
         '</section>'
     )
 
-    rail_parts = ['<aside class="rail"><p class="rail-title">Også i dag</p>']
+    rail = ['<aside class="rail"><p class="rail-title">Også i dag</p>']
     for item in state.get("rail", []):
-        rail_parts.append(
-            f'<a class="rail-item" href="{front_item_url(item["slug"])}"><img src="{esc(item["image_src"])}" alt="{esc(item.get("image_alt", ""))}"><span><span>{esc(item["category"])}</span> {esc(item["title"])}</span></a>'
-        )
-    rail_parts.append("</aside>")
+        rail.append(f'<a class="rail-item" href="{front_item_url(item["slug"])}"><img src="{esc(item["image_src"])}" alt="{esc(item.get("image_alt", ""))}"><span><span>{esc(item["category"])}</span> {esc(item["title"])}</span></a>')
+    rail.append("</aside>")
 
-    stack_parts = ['<section class="stack">']
+    stack = ['<section class="stack">']
     for item in state.get("stack", []):
-        stack_parts.append(
-            f'<article class="card"><a href="{front_item_url(item["slug"])}"><img src="{esc(item["image_src"])}" alt="{esc(item.get("image_alt", ""))}"></a><p class="section-label">{esc(item["category"])}</p><h2><a href="{front_item_url(item["slug"])}">{esc(item["title"])}</a></h2><p>{esc(item.get("teaser", ""))}</p></article>'
-        )
-    stack_parts.append("</section>")
+        stack.append(f'<article class="card"><a href="{front_item_url(item["slug"])}"><img src="{esc(item["image_src"])}" alt="{esc(item.get("image_alt", ""))}"></a><p class="section-label">{esc(item["category"])}</p><h2><a href="{front_item_url(item["slug"])}">{esc(item["title"])}</a></h2><p>{esc(item.get("teaser", ""))}</p></article>')
+    stack.append("</section>")
 
-    narrow_parts = ['<section class="narrow">']
+    narrow = ['<section class="narrow">']
     for item in state.get("narrow", []):
-        narrow_parts.append(
-            f'<article><p class="section-label">{esc(item["category"])}</p><h2><a href="{front_item_url(item["slug"])}">{esc(item["title"])}</a></h2><p>{esc(item.get("teaser", ""))}</p></article>'
-        )
-    narrow_parts.append("</section>")
+        narrow.append(f'<article><p class="section-label">{esc(item["category"])}</p><h2><a href="{front_item_url(item["slug"])}">{esc(item["title"])}</a></h2><p>{esc(item.get("teaser", ""))}</p></article>')
+    narrow.append("</section>")
 
     replacements = {
         "{{DATE_ISO}}": esc(state["date"]),
@@ -227,9 +207,9 @@ def build_frontpage() -> None:
         "{{EDITION_LABEL}}": esc(state.get("edition_label", "Danmarks nye avis")),
         "{{TICKER_HTML}}": ticker_html,
         "{{LEAD_HTML}}": lead_html,
-        "{{RAIL_HTML}}": "".join(rail_parts),
-        "{{STACK_HTML}}": "".join(stack_parts),
-        "{{NARROW_HTML}}": "".join(narrow_parts),
+        "{{RAIL_HTML}}": "".join(rail),
+        "{{STACK_HTML}}": "".join(stack),
+        "{{NARROW_HTML}}": "".join(narrow),
     }
     for key, value in replacements.items():
         template = template.replace(key, value)
@@ -249,15 +229,7 @@ def build_news_sitemap() -> None:
         if now - published.astimezone(timezone.utc) > timedelta(days=2):
             continue
         url = f"{BASE_URL}/artikler/{article['slug']}.html"
-        rows.append(
-            "<url>"
-            f"<loc>{esc(url)}</loc>"
-            "<news:news>"
-            "<news:publication><news:name>Morgentidende</news:name><news:language>da</news:language></news:publication>"
-            f"<news:publication_date>{esc(article['published_at'])}</news:publication_date>"
-            f"<news:title>{esc(article['title'])}</news:title>"
-            "</news:news></url>"
-        )
+        rows.append("<url>" f"<loc>{esc(url)}</loc>" "<news:news>" "<news:publication><news:name>Morgentidende</news:name><news:language>da</news:language></news:publication>" f"<news:publication_date>{esc(article['published_at'])}</news:publication_date>" f"<news:title>{esc(article['title'])}</news:title>" "</news:news></url>")
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n' + "\n".join(rows) + "\n</urlset>\n"
     (ROOT / "docs" / "news-sitemap.xml").write_text(xml, encoding="utf-8")
 
