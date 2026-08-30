@@ -1,0 +1,100 @@
+{
+  "story_id": "2026-08-30-hvorfor-himlen-er-blaa",
+  "article_slug": "2026-08-30-hvorfor-himlen-er-blaa",
+  "assignment": {
+    "category": "Videnskab",
+    "weight": "D",
+    "core_question": "Hvorfor ser himlen blå ud, mens solopgang og solnedgang ofte bliver røde?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "NASA Space Place: Why Is the Sky Blue?",
+      "url": "https://spaceplace.nasa.gov/blue-sky/en/",
+      "published_at": null,
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "primary",
+      "source_group": "nasa-blue-sky",
+      "authoritative_for": "Grundforklaring af sollys, bølgelængder og spredning i Jordens atmosfære"
+    },
+    {
+      "id": "S2",
+      "name": "NASA GISS: Aerosols in the Atmosphere",
+      "url": "https://www.giss.nasa.gov/edu/icp/research/ppa/1997/reyes/",
+      "published_at": null,
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "primary",
+      "source_group": "nasa-giss-rayleigh",
+      "authoritative_for": "Forklaring af Rayleigh-spredning og hvorfor solopgang/solnedgang fremstår rødlig"
+    },
+    {
+      "id": "IMG1",
+      "name": "Wikimedia Commons: Rayleigh sunlight scattering.svg",
+      "url": "https://commons.wikimedia.org/wiki/File:Rayleigh_sunlight_scattering.svg",
+      "published_at": null,
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "other",
+      "source_group": "commons-rayleigh-graphic",
+      "authoritative_for": "Grafikkens ophav og licens"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Sollys, der ser hvidt ud, består af synligt lys med forskellige farver og bølgelængder.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nasa-blue-sky"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "NASA forklarer farvespektret og forskelle i bølgelængde."
+    },
+    {
+      "id": "F02",
+      "claim": "Blåt lys har kortere bølgelængde end rødt lys og spredes stærkere af små molekyler i atmosfæren; derfor ser en klar himmel typisk blå ud.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nasa-blue-sky"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "Grundforklaring hos NASA Space Place."
+    },
+    {
+      "id": "F03",
+      "claim": "Ved solopgang og solnedgang passerer sollyset gennem mere atmosfære, så de kortere bølgelængder spredes væk fra den direkte synslinje, mens mere rødligt lys når frem.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "nasa-giss-rayleigh"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "NASA GISS beskriver den længere vej gennem atmosfæren og den rødlige rest af det direkte lys."
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-08-30T10:10:00Z",
+    "notes": [
+      "Evergreen videnskabsforklaring baseret på to NASA-kilder. Grafiklicens kontrolleret på Wikimedia Commons."
+    ]
+  }
+}
