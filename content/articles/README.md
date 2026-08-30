@@ -4,7 +4,7 @@ Nye artikler oprettes her som JSON. `docs/artikler/*.html` er genereret output o
 
 ## Minimumfelter
 
-- `status`: `draft`, `ready` eller `published`
+- `status`: `draft`, `ready`, `scheduled` eller `published`
 - `story_id`
 - `slug` uden `.html`
 - `category`
@@ -19,11 +19,19 @@ Nye artikler oprettes her som JSON. `docs/artikler/*.html` er genereret output o
 - `seo`
 - `image` eller `null`
 
-`published_at` sættes først ved faktisk publicering. `updated_at` bruges kun ved substantiel opdatering.
+`published_at` sættes først ved faktisk publicering. `updated_at` bruges ved substantiel opdatering.
 
 ## Body blocks
 
-Tilladte typer: `p`, `h2`, `h3`, `ul`, `ol`, `blockquote`. Tekst escapes af generatoren; journalisten leverer ikke vilkårlig HTML.
+Tilladte typer: `p`, `h2`, `h3`, `ul`, `ol`, `blockquote` og `figure`. Tekst escapes af generatoren; journalisten leverer ikke vilkårlig HTML.
+
+En `figure` bruges til grafik, der hører til et bestemt sted i artiklen. Minimum er `src` og `alt`; derudover kan bruges `caption`, `credit`, `source_url` og `wide`. Lokale grafikker ligger i `docs/img/` og refereres fra artikel-HTML som `../img/filnavn.svg`. `wide: true` giver næsten kant-til-kant-visning på mobil uden vandret scroll.
+
+Hvis artikelens `image` primært bruges til Open Graph/metadata, mens grafikken skal stå inde i teksten, sættes `placement: inline`. Så vises den ikke automatisk som lead-billede øverst.
+
+## Relaterede artikler
+
+`related` indeholder normalt 2–4 relevante live artikler. Generatoren bruger dem både i artikelens sidefelt og som teasere under artiklen. Brug ikke planlagte eller upublicerede slugs.
 
 ## Kommentar
 
