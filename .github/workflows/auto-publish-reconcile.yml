@@ -44,13 +44,14 @@ jobs:
 
           printf '%s' "$PRS" | jq -c '.[]' | while IFS= read -r PR; do
             NUMBER=$(printf '%s' "$PR" | jq -r '.number')
-            TITLE=$(printf '%s' "$PR" | jq -r '.title')
-            BODY=$(printf '%s' "$PR" | jq -r '.body // ""')
-            HEAD_REF=$(printf '%s' "$PR" | jq -r '.head.ref')
-            HEAD_REPO=$(printf '%s' "$PR" | jq -r '.head.repo.full_name')
-            HEAD_SHA=$(printf '%s' "$PR" | jq -r '.head.sha')
-            BASE_SHA=$(printf '%s' "$PR" | jq -r '.base.sha')
-            CHANGED=$(printf '%s' "$PR" | jq -r '.changed_files')
+            DETAIL=$(gh api "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}")
+            TITLE=$(printf '%s' "$DETAIL" | jq -r '.title')
+            BODY=$(printf '%s' "$DETAIL" | jq -r '.body // ""')
+            HEAD_REF=$(printf '%s' "$DETAIL" | jq -r '.head.ref')
+            HEAD_REPO=$(printf '%s' "$DETAIL" | jq -r '.head.repo.full_name')
+            HEAD_SHA=$(printf '%s' "$DETAIL" | jq -r '.head.sha')
+            BASE_SHA=$(printf '%s' "$DETAIL" | jq -r '.base.sha')
+            CHANGED=$(printf '%s' "$DETAIL" | jq -r '.changed_files')
 
             [ "$HEAD_REPO" = "$GITHUB_REPOSITORY" ] || continue
             case "$HEAD_REF" in edition/*|newsroom/*) ;; *) continue ;; esac
