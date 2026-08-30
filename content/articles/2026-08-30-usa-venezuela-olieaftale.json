@@ -1,0 +1,61 @@
+{
+  "status": "published",
+  "story_id": "2026-08-30-us-venezuela-oil-deal",
+  "slug": "2026-08-30-usa-venezuela-olieaftale",
+  "category": "Udland",
+  "weight": "B",
+  "title": "Venezuela: Olieaftale med USA skal løbe i 25 år",
+  "standfirst": "Aftalen omfatter ifølge Venezuelas midlertidige præsident 17 oliefelter og et mål om produktion over 1,5 millioner tønder om dagen. De fulde vilkår for den amerikanske kontrol er fortsat uklare.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": "2026-08-30T11:41:43+02:00",
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-08-30-venezuela-olieaftale.json",
+  "claim_ids": ["F01", "F02", "F03", "F04", "F05"],
+  "seo": {
+    "title": "Venezuela: Olieaftale med USA skal løbe i 25 år",
+    "description": "Venezuela oplyser, at energiaftalen med USA løber i 25 år og omfatter 17 oliefelter. Centrale juridiske og kommercielle vilkår er stadig uklare.",
+    "canonical": null
+  },
+  "image": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "Venezuelas midlertidige præsident, Delcy Rodriguez, har søndag givet nye oplysninger om landets store energiaftale med USA. Ifølge Rodriguez skal projektet løbe i 25 år og omfatte udvikling af 17 strategiske oliefelter."
+    },
+    {
+      "type": "p",
+      "text": "Målet er ifølge den venezuelanske regering en produktion på mere end 1,5 millioner tønder råolie om dagen. Rodriguez anslår samtidig, at projektet kan give den venezuelanske stat 209 milliarder dollar i indtægter. Det er et regeringsestimat og ikke en garanteret indtægt."
+    },
+    {
+      "type": "h2",
+      "text": "USA's kontrol er ikke fuldt beskrevet"
+    },
+    {
+      "type": "p",
+      "text": "USA's præsident, Donald Trump, har beskrevet aftalen som en ordning, der giver amerikansk side majoritetskontrol over mere end 65 milliarder tønder af Venezuelas dokumenterede oliereserver. Men de fulde aftalevilkår og den præcise juridiske konstruktion bag kontrollen er endnu ikke offentliggjort."
+    },
+    {
+      "type": "p",
+      "text": "Det betyder, at der fortsat er forskel på det, regeringerne siger, aftalen skal gøre, og det, offentligheden kan kontrollere i de konkrete kontrakter. Venezuelas regering fastholder, at landet beholder ejerskab og suverænitet over naturressourcerne."
+    },
+    {
+      "type": "h2",
+      "text": "Kritik fra flere sider i Venezuela"
+    },
+    {
+      "type": "p",
+      "text": "Aftalen har udløst kritik i Venezuela. Financial Times beskriver modstand både blandt oppositionspolitikere og tidligere profiler med rødder i chavismen. Kritikken retter sig blandt andet mod gennemsigtigheden, den juridiske forankring og omfanget af amerikansk indflydelse på olieindustrien."
+    },
+    {
+      "type": "p",
+      "text": "Aftalen kan på længere sigt få betydning for både Venezuelas økonomi og det internationale oliemarked. Hvor hurtigt produktionen faktisk kan løftes, afhænger imidlertid af investeringer, infrastruktur og de kontrakter, som endnu ikke er fuldt offentlige."
+    }
+  ],
+  "source_ids_to_display": ["S1", "S2", "S3"],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null
+}
