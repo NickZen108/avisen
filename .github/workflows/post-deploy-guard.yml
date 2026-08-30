@@ -6,6 +6,11 @@ on:
     paths:
       - 'docs/**'
   workflow_dispatch:
+    inputs:
+      target_sha:
+        description: Exact publisher commit SHA to verify and, if safe, roll back
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -41,9 +46,9 @@ jobs:
           done
           exit 1
       - name: Record failure and safely roll back latest generated publish
-        if: ${{ steps.smoke.outcome == 'failure' && github.event_name == 'push' }}
+        if: ${{ steps.smoke.outcome == 'failure' && (github.event_name == 'push' || inputs.target_sha != '') }}
         env:
-          TARGET_SHA: ${{ github.sha }}
+          TARGET_SHA: ${{ inputs.target_sha || github.sha }}
         run: |
           set -euo pipefail
           git fetch origin main
