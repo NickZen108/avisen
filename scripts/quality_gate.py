@@ -97,7 +97,7 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
         if field not in article:
             err(f"{path.name}: mangler felt {field}")
 
-    if article.get("status") not in {"draft", "ready", "published"}:
+    if article.get("status") not in {"draft", "ready", "scheduled", "published"}:
         err(f"{path.name}: ugyldig status")
     if article.get("category") not in categories:
         err(f"{path.name}: ugyldig kategori {article.get('category')!r}")
@@ -150,20 +150,33 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
         if not claim:
             err(f"{path.name}: claim {claim_id} findes ikke i ledger")
             continue
-        if article.get("status") == "published" and claim.get("status") != "verified":
-            err(f"{path.name}: publiceret claim {claim_id} er ikke verified")
-        if article.get("status") == "published":
+        if article.get("status") in {"scheduled", "published"} and claim.get("status") != "verified":
+            err(f"{path.name}: klar/publiceret claim {claim_id} er ikke verified")
+        if article.get("status") in {"scheduled", "published"}:
             for sid in claim.get("source_ids", []):
                 src = sources.get(sid)
                 if not src:
                     err(f"{path.name}: claim {claim_id} peger på ukendt source_id {sid}")
                 elif not str(src.get("source_group", "")).strip():
                     err(f"{path.name}: source {sid} mangler source_group")
-        if article.get("status") == "published" and not claim_has_required_support(claim, sources):
+        if article.get("status") in {"scheduled", "published"} and not claim_has_required_support(claim, sources):
             err(f"{path.name}: claim {claim_id} mangler uafhængig eller autoritativ støtte")
 
     if article.get("category") == "Kommentar" and not article.get("related_news_slug"):
         err(f"{path.name}: Kommentar mangler related_news_slug")
+
+    if article.get("status") == "scheduled":
+        scheduled_for = article.get("scheduled_for")
+        if not scheduled_for:
+            err(f"{path.name}: scheduled_for mangler")
+        else:
+            parse_iso(scheduled_for, f"{path.name}.scheduled_for")
+        if article.get("published_at"):
+            err(f"{path.name}: scheduled artikel må ikke have published_at")
+        if article.get("manual_review"):
+            err(f"{path.name}: manual_review=true må ikke ligge i automatisk schedule")
+        if (ledger.get("fact_check") or {}).get("status") != "pass":
+            err(f"{path.name}: fact_check.status skal være pass før scheduling")
 
     if article.get("status") == "published":
         if article.get("manual_review") and not article.get("manual_review_completed"):
@@ -237,7 +250,12 @@ def validate_frontpage() -> None:
         if item.get("slug"):
             slugs.append(item["slug"])
     known = {p.stem for p in (ROOT / "docs" / "artikler").glob("*.html")}
-    known |= {read_json(p).get("slug") for p in (ROOT / "content" / "articles").glob("*.json") if not p.name.startswith("_") and read_json(p)}
+    for article_path in (ROOT / "content" / "articles").glob("*.json"):
+        if article_path.name.startswith("_"):
+            continue
+        data = read_json(article_path)
+        if data and data.get("status") == "published" and data.get("slug"):
+            known.add(data["slug"])
     for slug in slugs:
         if slug not in known:
             err(f"frontpage peger på ukendt slug: {slug}")
