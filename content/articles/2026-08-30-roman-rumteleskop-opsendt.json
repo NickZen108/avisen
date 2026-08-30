@@ -1,0 +1,89 @@
+{
+  "status": "published",
+  "story_id": "2026-08-30-roman-rumteleskop",
+  "slug": "2026-08-30-roman-rumteleskop-opsendt",
+  "category": "Videnskab",
+  "weight": "C",
+  "title": "NASA opsender Nancy Grace Roman-rumteleskopet",
+  "standfirst": "Det nye flagskibsobservatorium blev opsendt søndag morgen fra Florida med en Falcon Heavy-raket. Missionen skal undersøge mørk energi, mørk materie og exoplaneter.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": "2026-08-30T17:05:00Z",
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-08-30-roman-rumteleskop.json",
+  "claim_ids": ["F01", "F02", "F03", "F04"],
+  "seo": {
+    "title": "NASA opsender Roman-rumteleskopet – mørk energi og exoplaneter",
+    "description": "Nancy Grace Roman Space Telescope blev opsendt 30. august 2026 fra Kennedy Space Center. Her er fakta om missionen.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Falcon_Heavy_Demo_Mission_%2839121888845%29.jpg",
+    "alt": "SpaceX Falcon Heavy-raket under opsendelse",
+    "credit": "SpaceX / Wikimedia Commons",
+    "license": "CC BY-NC 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Falcon_Heavy_Demo_Mission_(39121888845).jpg",
+    "image_type": "photo"
+  },
+  "body": [
+    {
+      "type": "p",
+      "text": "NASA's Nancy Grace Roman Space Telescope blev opsendt søndag den 30. august 2026 kl. 7.26 EDT, svarende til 13.26 dansk tid, fra Launch Complex 39A på Kennedy Space Center i Florida. Opsendelsen skete om bord på en SpaceX Falcon Heavy-raket."
+    },
+    {
+      "type": "p",
+      "text": "Ifølge NASA adskilte raketten sig fra observatoriet 31 minutter efter opsendelsen. Solpaneler og den lavere instrument-solskærm blev bekræftet udfoldet 1 time og 23 minutter efter opsendelsen. Jordkontrol på Goddard Space Flight Center modtog telemetridata syv minutter efter liftoff."
+    },
+    {
+      "type": "h2",
+      "text": "På vej mod L2"
+    },
+    {
+      "type": "p",
+      "text": "Teleskopet er nu på en tre måneder lang rejse på omkring 1,5 millioner kilometer til det andet Lagrange-punkt mellem Solen og Jorden, kendt som L2. Herfra skal det gennemføre sine observationer."
+    },
+    {
+      "type": "h2",
+      "text": "Missionens mål"
+    },
+    {
+      "type": "p",
+      "text": "Roman er udstyret med et Wide Field Instrument, der kombinerer et stort synsfelt med skarp infrarød vision. Hovedmålene er at kortlægge store dele af himlen for at undersøge mørk energi og mørk materie samt at finde og karakterisere exoplaneter. Missionen har en primær varighed på fem år og en anslået pris på omkring 4 milliarder dollar."
+    },
+    {
+      "type": "p",
+      "text": "Teleskopet er opkaldt efter astronomen Nancy Grace Roman, der spillede en central rolle i udviklingen af Hubble-rumteleskopet. Det supplerer Hubble og James Webb Space Telescope ved at levere bredere surveys i stedet for detaljerede nærbilleder."
+    }
+  ],
+  "source_ids_to_display": ["S1", "S2"],
+  "related_news_slug": null,
+  "related": [
+    {
+      "slug": "2026-08-30-hvorfor-himlen-er-blaa",
+      "category": "Videnskab",
+      "title": "Derfor er himlen blå – og solnedgangen rød",
+      "teaser": "Rayleigh-spredning forklarer både den blå himmel og de røde solnedgange.",
+      "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rayleigh_sunlight_scattering.svg",
+      "image_alt": "Grafik over Rayleigh-spredning"
+    },
+    {
+      "slug": "2026-08-30-solsystemet-i-tal",
+      "category": "Videnskab",
+      "title": "Solsystemet i tal",
+      "teaser": "Fra Merkur til Neptun: planeternes afstande sat på én skala med NASA-tal.",
+      "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Solar_System_graphic_by_NASA.png",
+      "image_alt": "NASA-grafik over solsystemet"
+    },
+    {
+      "slug": "2026-08-30-apollo-11-otte-dage",
+      "category": "Historie",
+      "title": "Apollo 11: Otte dage til Månen og hjem",
+      "teaser": "Tidslinjen fra opsendelsen 16. juli 1969 til hjemkomsten.",
+      "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+      "image_alt": "Saturn V med Apollo 11"
+    }
+  ],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null
+}
