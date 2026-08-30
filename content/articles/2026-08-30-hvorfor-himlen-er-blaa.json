@@ -1,0 +1,80 @@
+{
+  "status": "scheduled",
+  "story_id": "2026-08-30-hvorfor-himlen-er-blaa",
+  "slug": "2026-08-30-hvorfor-himlen-er-blaa",
+  "category": "Videnskab",
+  "weight": "D",
+  "title": "Derfor er himlen blå – og solnedgangen rød",
+  "standfirst": "Det samme sollys kan give en blå middagshimmel og en rød solnedgang. Forklaringen ligger i lysets bølgelængder og den vej, det tager gennem atmosfæren.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-08-30-hvorfor-himlen-er-blaa.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03"
+  ],
+  "seo": {
+    "title": "Hvorfor er himlen blå og solnedgangen rød?",
+    "description": "En kort videnskabelig forklaring på Rayleigh-spredning, blå himmel og røde solnedgange.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rayleigh_sunlight_scattering.svg",
+    "alt": "Grafik over hvordan sollys med forskellige bølgelængder spredes i atmosfæren",
+    "credit": "Robert A. Rohde; SVG: KES47 / Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Rayleigh_sunlight_scattering.svg",
+    "image_type": "graphic"
+  },
+  "body": [
+    {
+      "type": "p",
+      "text": "Solen sender ikke et særligt blåt lys ned over os. Det synlige sollys rummer hele farvespektret. Når lyset rammer Jordens atmosfære, møder det molekyler og små partikler, som kan sprede lyset i andre retninger."
+    },
+    {
+      "type": "h2",
+      "text": "De korte bølger spredes mest"
+    },
+    {
+      "type": "p",
+      "text": "Blåt lys har kortere bølgelængde end rødt lys. De små molekyler i luften spreder de korte bølgelængder mere effektivt end de lange. Derfor kommer der relativt meget blåt, spredt lys til vores øjne fra alle retninger på en klar dag."
+    },
+    {
+      "type": "p",
+      "text": "Fænomenet kaldes Rayleigh-spredning. Det beskriver netop, hvordan lys spredes af partikler, der er små sammenlignet med lysets bølgelængde."
+    },
+    {
+      "type": "h2",
+      "text": "Hvorfor bliver aftenen rød?"
+    },
+    {
+      "type": "p",
+      "text": "Når Solen står lavt, skal lyset gennem en længere strækning af atmosfæren, før det når øjet. Undervejs bliver en større del af de korte, blå bølgelængder spredt væk fra den direkte synslinje. Det lys, der fortsætter direkte mod os, er derfor relativt rigere på røde og orange bølgelængder."
+    },
+    {
+      "type": "p",
+      "text": "Støv, aerosoler og skyer kan ændre farvernes styrke og udseende, så to solnedgange ikke behøver ligne hinanden."
+    },
+    {
+      "type": "h2",
+      "text": "Grafikken"
+    },
+    {
+      "type": "p",
+      "text": "Artiklens grafik er en skematisk illustration af Rayleigh-spredning. Den er ikke et fotografi af en konkret atmosfærisk hændelse."
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "IMG1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": "2026-08-30T10:30:00Z",
+  "released_from_schedule_at": null
+}
