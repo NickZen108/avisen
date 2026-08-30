@@ -2,7 +2,9 @@
 # Opdateres kun efter udtrykkelig brugerordre om designændring.
 a14028e9a7b5c8a8d6fee7e5a4697300e4863515 docs/style.css
 19c0c2ace05968ca427cc51977105059170034a4 docs/signup.css
+9e703f2608db65142eff103bc0b6e920258a0c90 docs/theme.css
+b1857a55a4da498c0ad3dc672a34cf4793f3848f docs/theme.js
 1c79eb821797aa7061d8780b1eda4d2533155971 docs/logo.svg
 815c7911616bfe97d61fa6a245b31f3bda0473fc docs/logo-mark.svg
-bcfff874a93c92628809ca14ac8482a9754eb00f templates/article.html
-4beeae2387bada9614cf6b8d1fac851b8ba47d63 templates/index.html
+d189eb4f16467ba400f97a96235de438e1f52e74 templates/article.html
+e14a903a8450dd8e45f10b3a96317701cee1e890 templates/index.html
