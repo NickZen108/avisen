@@ -19,38 +19,13 @@
   },
   "image": null,
   "body": [
-    {
-      "type": "p",
-      "text": "Dødstallet efter et russisk angreb på et ammunitionslager i Kyiv-regionen er steget til 38, oplyser Ukraines præsident, Volodymyr Zelenskyj, søndag. Fire mennesker regnes fortsat som savnede."
-    },
-    {
-      "type": "p",
-      "text": "Angrebet ramte et militært lager ved landsbyen Myla i Bucha-distriktet. Granater, miner, droner og anden ammunition eksploderede efter træfferen og forårsagede omfattende ødelæggelser i området."
-    },
-    {
-      "type": "p",
-      "text": "Ifølge den seneste officielle ukrainske status er 20 mennesker kommet til skade, heriblandt to børn. Redningsfolk har fået slukket størstedelen af brandene, men mineryddere arbejder fortsat med eksplosiver i et betydeligt forurenet område."
-    },
-    {
-      "type": "h2",
-      "text": "Opbevaringen bliver undersøgt"
-    },
-    {
-      "type": "p",
-      "text": "Ukrainske myndigheder undersøger samtidig, hvorfor så store mængder ammunition blev opbevaret tæt på beboelse. Zelenskyj har kaldt placeringen groft uansvarlig og krævet, at omstændighederne bliver klarlagt."
-    },
-    {
-      "type": "p",
-      "text": "Det er anden gang på to måneder, at et russisk angreb i Kyiv-regionen ifølge Reuters har udløst dødelige sekundære eksplosioner på et militært lager. Den aktuelle hændelse er den hidtil dødeligste russiske angrebshændelse i Kyiv-området i år."
-    },
-    {
-      "type": "h2",
-      "text": "Dødstallet kan fortsat ændre sig"
-    },
-    {
-      "type": "p",
-      "text": "Eftersøgningen og oprydningen fortsætter. De 38 døde er derfor den senest verificerede officielle status og ikke nødvendigvis det endelige dødstal."
-    }
+    {"type":"p","text":"Dødstallet efter et russisk angreb på et ammunitionslager i Kyiv-regionen er steget til 38, oplyser Ukraines præsident, Volodymyr Zelenskyj, søndag. Fire mennesker regnes fortsat som savnede."},
+    {"type":"p","text":"Angrebet ramte et militært lager ved landsbyen Myla i Bucha-distriktet. Granater, miner, droner og anden ammunition eksploderede efter træfferen og forårsagede omfattende ødelæggelser i området."},
+    {"type":"p","text":"Ifølge den seneste officielle ukrainske status er 20 mennesker kommet til skade, heriblandt to børn. Redningsfolk har fået slukket størstedelen af brandene, men mineryddere arbejder fortsat med eksplosiver i et betydeligt forurenet område."},
+    {"type":"h2","text":"Opbevaringen bliver undersøgt"},
+    {"type":"p","text":"Ukrainske myndigheder undersøger samtidig, hvorfor så store mængder ammunition blev opbevaret tæt på beboelse. Zelenskyj har kaldt placeringen groft uansvarlig og krævet, at omstændighederne bliver klarlagt."},
+    {"type":"h2","text":"Dødstallet kan fortsat ændre sig"},
+    {"type":"p","text":"Eftersøgningen og oprydningen fortsætter. De 38 døde er derfor den senest verificerede officielle status og ikke nødvendigvis det endelige dødstal."}
   ],
   "source_ids_to_display": ["S1", "S2", "S3"],
   "related_news_slug": null,
