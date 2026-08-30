@@ -1,0 +1,92 @@
+{
+  "status": "scheduled",
+  "story_id": "2026-08-30-guide-staerkere-login",
+  "slug": "2026-08-30-guide-staerkere-login",
+  "category": "Guide",
+  "weight": "D",
+  "title": "Guide: Et stærkere login uden password-akrobatik",
+  "standfirst": "Længde slår tvungne specialtegn, og et kodeord alene beskytter ikke mod phishing. Her er en enkel opskrift baseret på NIST og CISA.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-08-30-guide-staerkere-login.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04"
+  ],
+  "seo": {
+    "title": "Stærkere login: password, MFA og passkeys",
+    "description": "Praktisk guide til stærkere login baseret på NIST og CISA: lange passwords, MFA og phishing-resistente passkeys.",
+    "canonical": null
+  },
+  "image": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "Mange har lært, at et godt password skal ligne et vredt modem: store og små bogstaver, tal, specialtegn og et obligatorisk udråbstegn. Den nyere NIST-vejledning lægger mere vægt på længde end på sådanne faste sammensætningsregler."
+    },
+    {
+      "type": "h2",
+      "text": "1. Gør passwordet langt"
+    },
+    {
+      "type": "p",
+      "text": "NIST kræver mindst 15 tegn, når passwordet er den eneste autentifikationsfaktor. Lange passphrases med flere ord kan være lettere at huske end korte, kunstigt komplekse passwords."
+    },
+    {
+      "type": "h2",
+      "text": "2. Skift ikke bare for kalenderens skyld"
+    },
+    {
+      "type": "p",
+      "text": "NIST anbefaler ikke tvungne periodiske skift, medmindre der er tegn på, at passwordet er kompromitteret. Hyppige, mekaniske skift kan i praksis føre til forudsigelige variationer af det samme password."
+    },
+    {
+      "type": "h2",
+      "text": "3. Brug mere end ét lag"
+    },
+    {
+      "type": "p",
+      "text": "Et password er ikke phishing-resistent. CISA anbefaler multifaktor-login og fremhæver phishing-resistente metoder som den stærkeste retning, når de er tilgængelige."
+    },
+    {
+      "type": "h2",
+      "text": "4. Overvej passkeys"
+    },
+    {
+      "type": "p",
+      "text": "NIST beskriver korrekt implementerede FIDO-passkeys som phishing-resistente. De binder login kryptografisk til den rigtige tjeneste i stedet for at bede dig om at indtaste en genbrugelig hemmelighed på en webside."
+    },
+    {
+      "type": "h2",
+      "text": "En enkel prioritering"
+    },
+    {
+      "type": "ol",
+      "items": [
+        "Brug et langt og unikt password, hvis tjenesten kræver password.",
+        "Slå multifaktor-login til.",
+        "Vælg en phishing-resistent metode som passkey/FIDO, når tjenesten tilbyder det.",
+        "Skift straks legitimationsoplysninger, hvis der er tegn på kompromittering.",
+        "Undgå at genbruge samme password på flere tjenester."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Guiden reducerer risiko; den fjerner den ikke. En kompromitteret enhed, social manipulation eller en dårlig implementering kan stadig skabe problemer."
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": "2026-08-30T11:00:00Z",
+  "released_from_schedule_at": null
+}
