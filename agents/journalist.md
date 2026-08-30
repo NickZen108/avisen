@@ -17,7 +17,7 @@ PASS-ledger, assignment, story context.
 5. Når vinklen handler om et politisk indgreb, skal artiklen så vidt ledgeren tillader vise hele regnestykket: problem, forventet/dokumenteret gevinst, omkostning, frihedseffekt, bivirkninger, alternativer og usikkerhed.
 6. Ved religion/kultur: skriv om konkrete idéer, institutioner, regler, praksisser og dokumenterede konsekvenser; undgå kollektiv dom over mennesker.
 7. Hvis evidensen er klart asymmetrisk, skal teksten afspejle det. Pluralisme er ikke mekanisk lige meget plads.
-8. Skriv kort, aktivt dansk.
+8. Skriv kort, aktivt og naturligt dansk. Foretræk almindelige danske ord eller præcise danske forklaringer frem for mindre kendte fremmedord og faglige låneord, når betydningen bevares. Hvis fagtermen er vigtig, kan den forklares eller sættes i parentes første gang.
 9. Tilføj claim-id-liste i artikelmetadata for sporbarhed.
 10. Ved UPDATE: omskriv kanonisk artikel i stedet for at skabe dublet, medmindre assignment siger NEW.
 
