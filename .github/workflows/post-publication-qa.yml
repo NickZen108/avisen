@@ -1,0 +1,31 @@
+name: Post-publication QA
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  live-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Live smoke test
+        run: python scripts/live_qa.py --report reports/qa/live-latest.md
+      - name: Commit QA report
+        run: |
+          git config user.name "morgentidende-qa"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/qa/live-latest.md
+          if git diff --cached --quiet; then
+            echo "Ingen rapportændring"
+          else
+            git commit -m "qa: hourly live smoke test"
+            git push
+          fi
