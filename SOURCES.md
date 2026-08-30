@@ -23,12 +23,35 @@ Eksempler:
 - tre medier citerer samme pressemeddelelse → ét source-group på selskabets påstand
 - dom + selvstændigt medieinterview → to uafhængige ophav
 
+## Coverage sweep før skrivning
+
+Når Nyhedsdesk har valgt en nyhed til research med henblik på publicering, skal Research ikke nøjes med den kilde, der gjorde redaktionen opmærksom på historien.
+
+Før en nyhedsartikel må gå til Journalist, skal Research:
+
+- finde relevant primærkilde, når den findes
+- normalt gennemgå mindst **3 reelt uafhængige redaktionelle kilder**, der dækker samme historie, når sådanne findes
+- søge efter kilder med forskellig relevant adgang til historien, fx internationalt nyhedsmedie, dansk/national dækning, fagmedie, lokal dækning eller selvstændig reporting
+- sammenligne hvilke væsentlige fakta, konsekvenser, citater, forbehold, modpositioner og kontekst de forskellige kilder bidrager med
+- registrere væsentlige uenigheder eller forskelle i faktaledger/memo
+- undgå at bruge én artikel som skjult skabelon for Morgentidendes tekst
+
+Formålet er både **fuldstændighed og pluralisme**: forskellige redaktioner opdager og prioriterer ofte forskellige væsentlige dele af samme historie. Coverage sweep er derfor ikke kun et fact-check, men en systematisk søgning efter manglende relevante pointer.
+
+Tre URLs er ikke nok. Bureaukopier, syndikering, omskrivninger af samme artikel eller medier der alle bygger på samme pressemeddelelse tæller ikke som tre uafhængige coverage-kilder.
+
+Hvis færre end 3 reelt uafhængige redaktionelle kilder findes — fx meget tidligt i breaking news — dokumenterer Research søgningen og begrænsningen. Historien kan fortsætte, hvis kravene til bærende fakta nedenfor er opfyldt, men Fact checker skal tage eksplicit stilling til den manglende bredde, og historien bør genundersøges ved senere UPDATE når flere kilder bliver tilgængelige.
+
+Coverage-bredde er ikke det samme som kunstig balance. En svag eller udokumenteret modposition får ikke samme vægt som stærk evidens alene for at skabe 50/50-symmetri.
+
 ## Minimum for bærende faktum
 
 Godkend når mindst én af disse er opfyldt:
 
 - én primærkilde, som selv er autoritativ for netop faktummet, **eller**
 - to reelt uafhængige navngivne kilder
+
+Dette minimum afgør, om et faktum kan bæres. Det erstatter ikke coverage sweep for en hel nyhedsartikel.
 
 En pressemeddelelse er primær dokumentation for, hvad afsenderen meddeler, men ikke automatisk sandhedsbevis for en omstridt ekstern påstand.
 
@@ -57,6 +80,8 @@ Hver source indeholder mindst:
 - `type`: `primary`, `news`, `paper`, `interview`, `other`
 - `source_group`
 - `authoritative_for`: hvad kilden faktisk kan bevise
+
+Coverage-memoet skal desuden gøre det muligt for Fact checker at se, hvilke kilder der blev gennemgået, hvilke der er reelt uafhængige, og hvilke væsentlige pointer der kom fra forskellige dækninger.
 
 ## Tal
 
