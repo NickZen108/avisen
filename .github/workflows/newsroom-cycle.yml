@@ -27,8 +27,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Build machine-readable candidate queue
-        run: python scripts/newsroom_queue.py
+      - name: Build or preserve machine-readable candidate queue
+        run: |
+          if grep -q "Cloudflare runtime" scan/latest.md 2>/dev/null; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('queue/candidates.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          assert data.get('runtime') == 'cloudflare-workers', 'Cloudflare scan marker without Cloudflare queue'
+          assert isinstance(data.get('signals'), list), 'Cloudflare queue signals missing'
+          print(f"Cloudflare queue bevaret: {len(data['signals'])} signaler")
+          PY
+          else
+            python scripts/newsroom_queue.py
+          fi
       - name: Commit queue only when signals changed
         run: |
           git config user.name "morgentidende-newsroom"
