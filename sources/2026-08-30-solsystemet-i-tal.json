@@ -1,0 +1,181 @@
+{
+  "story_id": "2026-08-30-solsystemet-i-tal",
+  "article_slug": "2026-08-30-solsystemet-i-tal",
+  "assignment": {
+    "category": "Videnskab",
+    "weight": "D",
+    "core_question": "Hvor store er springene i gennemsnitlig afstand fra Solen mellem de otte planeter?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "NASA Science: Planet Sizes and Locations in Our Solar System",
+      "url": "https://science.nasa.gov/solar-system/planet-sizes-and-locations-in-our-solar-system/",
+      "published_at": null,
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "primary",
+      "source_group": "nasa-planet-distances",
+      "authoritative_for": "NASA's opgivne gennemsnitlige afstande fra Solen for planeterne"
+    },
+    {
+      "id": "S2",
+      "name": "NASA Science: The Solar System",
+      "url": "https://science.nasa.gov/learn/basics-of-space-flight/chapter1-2/",
+      "published_at": null,
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "primary",
+      "source_group": "nasa-solar-system-basics",
+      "authoritative_for": "Astronomiske enheder og planeternes gennemsnitlige afstande i solsystemet"
+    },
+    {
+      "id": "IMG1",
+      "name": "Wikimedia Commons: Solar System graphic by NASA",
+      "url": "https://commons.wikimedia.org/wiki/File:Solar_System_graphic_by_NASA.png",
+      "published_at": null,
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "other",
+      "source_group": "commons-nasa-solar-graphic",
+      "authoritative_for": "Grafikkens ophav og public-domain-status"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "NASA angiver de gennemsnitlige afstande fra Solen til Merkur, Venus, Jorden og Mars til henholdsvis cirka 58, 108, 149,7 og 227,9 millioner kilometer.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nasa-planet-distances"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "Afrundede værdier fra NASA."
+    },
+    {
+      "id": "F02",
+      "claim": "NASA angiver de gennemsnitlige afstande fra Solen til Jupiter, Saturn, Uranus og Neptun til henholdsvis cirka 778 millioner, 1,4 milliarder, 2,9 milliarder og 4,5 milliarder kilometer.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nasa-planet-distances"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "Afrundede værdier fra NASA."
+    },
+    {
+      "id": "F03",
+      "claim": "En astronomisk enhed, AU, bruges som afstandsmål i solsystemet med Jordens gennemsnitlige afstand fra Solen som reference.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "nasa-solar-system-basics"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "NASA anvender AU som sammenligningsmål for planetafstande."
+    }
+  ],
+  "numbers": [
+    {
+      "id": "N01",
+      "value": 58,
+      "unit": "millioner km",
+      "period": "gennemsnitlig afstand",
+      "population": "Merkur-Solen",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "N02",
+      "value": 108,
+      "unit": "millioner km",
+      "period": "gennemsnitlig afstand",
+      "population": "Venus-Solen",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "N03",
+      "value": 149.7,
+      "unit": "millioner km",
+      "period": "gennemsnitlig afstand",
+      "population": "Jorden-Solen",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "N04",
+      "value": 227.9,
+      "unit": "millioner km",
+      "period": "gennemsnitlig afstand",
+      "population": "Mars-Solen",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "N05",
+      "value": 778,
+      "unit": "millioner km",
+      "period": "gennemsnitlig afstand",
+      "population": "Jupiter-Solen",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "N06",
+      "value": 1.4,
+      "unit": "milliarder km",
+      "period": "gennemsnitlig afstand",
+      "population": "Saturn-Solen",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "N07",
+      "value": 2.9,
+      "unit": "milliarder km",
+      "period": "gennemsnitlig afstand",
+      "population": "Uranus-Solen",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "N08",
+      "value": 4.5,
+      "unit": "milliarder km",
+      "period": "gennemsnitlig afstand",
+      "population": "Neptun-Solen",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-08-30T10:10:00Z",
+    "notes": [
+      "Tal er direkte fra NASA og gengives med samme omtrentlige præcision. Grafikken er NASA-værk og markeret som grafik, ikke målfast dokumentarfoto."
+    ]
+  }
+}

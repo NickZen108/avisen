@@ -1,0 +1,84 @@
+{
+  "status": "scheduled",
+  "story_id": "2026-08-30-apollo-11-otte-dage",
+  "slug": "2026-08-30-apollo-11-otte-dage",
+  "category": "Historie",
+  "weight": "D",
+  "title": "Apollo 11: Otte dage fra Florida til Månen og hjem igen",
+  "standfirst": "Tre astronauter lettede 16. juli 1969. Fire dage senere gik to af dem på Månen. Den 24. juli var besætningen tilbage på Jorden.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-08-30-apollo-11-otte-dage.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04"
+  ],
+  "seo": {
+    "title": "Apollo 11: Tidslinjen fra opsendelse til Månen og hjem",
+    "description": "Kort historisk tidslinje for Apollo 11: Armstrong, Aldrin og Collins fra 16. til 24. juli 1969.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+    "alt": "Saturn V-raketten med Apollo 11 løfter fra affyringsrampen",
+    "credit": "NASA/JSC; efterbehandling Cygni_18 / Wikimedia Commons",
+    "license": "Public domain (NASA, USA)",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+    "image_type": "photo"
+  },
+  "body": [
+    {
+      "type": "p",
+      "text": "Apollo 11 kan lyde som en lang historisk epoke. Selve rejsen fra opsendelse til hjemkomst lå inden for otte kalenderdage i juli 1969."
+    },
+    {
+      "type": "h2",
+      "text": "16. juli: Tre mand forlader Jorden"
+    },
+    {
+      "type": "p",
+      "text": "Neil Armstrong, Buzz Aldrin og Michael Collins blev sendt af sted 16. juli 1969. Armstrong var missionens kommandør, Aldrin pilot på månemodulet og Collins pilot på kommandomodulet."
+    },
+    {
+      "type": "h2",
+      "text": "20. juli: To går ned, én bliver i kredsløb"
+    },
+    {
+      "type": "p",
+      "text": "Armstrong og Aldrin landede med månemodulet, mens Collins fortsatte omkring Månen i kommandomodulet. Armstrong blev det første menneske på Månen, Aldrin det andet."
+    },
+    {
+      "type": "p",
+      "text": "NASA beskriver Armstrong og Aldrins samlede ophold på Månen som omtrent 22 timer, før månemodulets opstigningstrin lettede for at mødes med Collins igen."
+    },
+    {
+      "type": "h2",
+      "text": "24. juli: Tilbage på Jorden"
+    },
+    {
+      "type": "p",
+      "text": "Den 24. juli sluttede missionen med splashdown. Fra opsendelsen den 16. til hjemkomsten den 24. juli var der gået otte kalenderdage."
+    },
+    {
+      "type": "h2",
+      "text": "Et fotografi, ikke en rekonstruktion"
+    },
+    {
+      "type": "p",
+      "text": "Artiklens registrerede billede viser den virkelige Apollo 11-opsendelse. Det stammer fra NASA og er registreret som public domain i USA; det er ikke AI-genereret."
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "IMG1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": "2026-08-30T12:00:00Z",
+  "released_from_schedule_at": null
+}
