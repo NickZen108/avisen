@@ -1,89 +1,569 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-08-30T13:20:18+00:00",
-  "scan_label": "2026-08-30 13:20 UTC",
-  "fingerprint": "0dc1b8235be3a5565ade4cd871eee125ef41419d1c381a04ab0acfbc029b1799",
-  "signal_count": 16,
+  "schema_version": 2,
+  "runtime": "cloudflare-workers",
+  "generated_at": "2026-08-30T22:05:27.271Z",
+  "fingerprint": "ed5369ba50d2a6e72c5584b37dfaa73a8857db6fb94127dab73fcdd976d46242",
+  "signal_count": 88,
+  "feeds": [
+    {
+      "source": "DR",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "source": "TV2",
+      "ok": false,
+      "status": 530,
+      "error": null
+    },
+    {
+      "source": "The Local Denmark",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "source": "BBC Denmark",
+      "ok": true,
+      "status": 200,
+      "error": null
+    },
+    {
+      "source": "Euronews Denmark",
+      "ok": true,
+      "status": 200,
+      "error": null
+    }
+  ],
   "signals": [
+    {
+      "source": "The Local Denmark",
+      "headline": "&#039;Automatic bias&#039;: How having a foreign name in Denmark affects life",
+      "normalized": "039 automatic bias 039 how having a foreign name in denmark affects life",
+      "url": "https://www.thelocal.dk/20240923/tell-us-how-does-having-a-foreign-name-affect-life-in-denmark"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "&#039;Be patient&#039;: Social Democrat MP sees no new Danish citizenships until late 2027",
+      "normalized": "039 be patient 039 social democrat mp sees no new danish citizenships until late 2027",
+      "url": "https://www.thelocal.dk/20260825/be-patient-social-democrat-mp-sees-no-new-citizenships-until-late-2027"
+    },
     {
       "source": "DR",
       "headline": "17-årig uledsaget bilist er kørt ind i to huse",
-      "normalized": "17 årig uledsaget bilist er kørt ind i to huse"
+      "normalized": "17 årig uledsaget bilist er kørt ind i to huse",
+      "url": "https://www.dr.dk/nyheder/seneste/17-aarig-uledsaget-bilist-er-koert-ind-i-huse"
+    },
+    {
+      "source": "DR",
+      "headline": "67-årig får livsvarigt fængsel for krigsforbrydelser i Rwanda",
+      "normalized": "67 årig får livsvarigt fængsel for krigsforbrydelser i rwanda",
+      "url": "https://www.dr.dk/nyheder/seneste/67-aarig-faar-livsvarigt-faengsel-krigsforbrydelser-i-rwanda"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "A bridge too far? Prague railway project draws criticism",
+      "normalized": "a bridge too far prague railway project draws criticism",
+      "url": "https://www.bbc.co.uk/news/articles/cvg8r0v05p8o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "A man, his dog and a big jog: The duo driving 2,500 miles for sporting glory",
+      "normalized": "a man his dog and a big jog the duo driving 2 500 miles for sporting glory",
+      "url": "https://www.bbc.co.uk/news/articles/c5yp2nvdyyro?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Armoured fighters storm Denmark’s Spøttrup Castle for IMCF world championship",
+      "normalized": "armoured fighters storm denmark s spøttrup castle for imcf world championship",
+      "url": "http://www.euronews.com/video/2026/07/24/armoured-fighters-storm-denmarks-spottrup-castle-for-imcf-world-championship"
     },
     {
       "source": "DR",
       "headline": "Bilist sigtet for vanvidskørsel efter u-vending i Øresundstunnelen",
-      "normalized": "bilist sigtet for vanvidskørsel efter u vending i øresundstunnelen"
+      "normalized": "bilist sigtet for vanvidskørsel efter u vending i øresundstunnelen",
+      "url": "https://www.dr.dk/nyheder/seneste/bilist-sigtet-vanvidskoersel-efter-u-vending-i-oeresundstunnelen"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Billionaire populist Andrej Babis' party wins Czech parliamentary election",
+      "normalized": "billionaire populist andrej babis party wins czech parliamentary election",
+      "url": "https://www.bbc.co.uk/news/articles/c62qezmr92lo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Billionaire populist eyes power in Czech vote but may need help from extremes",
+      "normalized": "billionaire populist eyes power in czech vote but may need help from extremes",
+      "url": "https://www.bbc.co.uk/news/articles/cly1pr8298vo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Blacksmiths recreate Viking Age anchor using ancient techniques in Denmark",
+      "normalized": "blacksmiths recreate viking age anchor using ancient techniques in denmark",
+      "url": "http://www.euronews.com/culture/2026/08/25/blacksmiths-recreate-viking-age-anchor-using-ancient-techniques-in-denmark"
     },
     {
       "source": "DR",
       "headline": "Britisk højrefløjsprovokatør udvist af USA",
-      "normalized": "britisk højrefløjsprovokatør udvist af usa"
+      "normalized": "britisk højrefløjsprovokatør udvist af usa",
+      "url": "https://www.dr.dk/nyheder/seneste/britisk-hoejrefloejsprovokatoer-udvist-af-usa"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Czech billionaire becomes PM with promise to cut ties to business empire",
+      "normalized": "czech billionaire becomes pm with promise to cut ties to business empire",
+      "url": "https://www.bbc.co.uk/news/articles/c5yqvrewz45o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Czech fake dentist gave root canals after reading online instructions",
+      "normalized": "czech fake dentist gave root canals after reading online instructions",
+      "url": "https://www.bbc.co.uk/news/articles/c20pj38gyeqo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Czech firefighters tackle large toxic train fire",
+      "normalized": "czech firefighters tackle large toxic train fire",
+      "url": "https://www.bbc.co.uk/news/articles/ce982zpz1k3o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Czech opposition leader hit in head with crutch during rally",
+      "normalized": "czech opposition leader hit in head with crutch during rally",
+      "url": "https://www.bbc.co.uk/news/articles/cr4e4xg7rrwo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Czech police finally catch up with 'phantom racing car driver'",
+      "normalized": "czech police finally catch up with phantom racing car driver",
+      "url": "https://www.bbc.co.uk/news/articles/c4g7xl4p53ko?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Czechs appeal for EU help with Radio Free Europe after Trump cuts",
+      "normalized": "czechs appeal for eu help with radio free europe after trump cuts",
+      "url": "https://www.bbc.co.uk/news/articles/cm2d5gpnv6mo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Danish footballer Christian Eriksen 'doing well' after collapse",
+      "normalized": "danish footballer christian eriksen doing well after collapse",
+      "url": "http://www.euronews.com/my-europe/2026/06/08/danish-footballer-christian-eriksen-doing-well-after-collapse"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Danish government increases budgetary surplus by 8.5 billion kroner",
+      "normalized": "danish government increases budgetary surplus by 8 5 billion kroner",
+      "url": "https://www.thelocal.dk/20260828/danish-government-increases-budgetary-surplus-by-8-5-billion-kroner"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Danish government predicts higher property prices next year",
+      "normalized": "danish government predicts higher property prices next year",
+      "url": "https://www.thelocal.dk/20260827/danish-government-predicts-higher-property-prices-next-year"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Danish PM confident VAT cut on food will be passed to consumers",
+      "normalized": "danish pm confident vat cut on food will be passed to consumers",
+      "url": "https://www.thelocal.dk/20260827/danish-pm-confident-vat-cut-on-food-will-be-passed-to-consumers"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Danish royals mourn passing of Norway&#039;s King Harald",
+      "normalized": "danish royals mourn passing of norway 039 s king harald",
+      "url": "https://www.thelocal.dk/20260828/danish-royals-mourn-passing-of-norways-king-harald"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Danish word of the day: kondolerer",
+      "normalized": "danish word of the day kondolerer",
+      "url": "https://www.thelocal.dk/20260828/danish-word-of-the-day-kondolerer"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Danish word of the day: Madpakke",
+      "normalized": "danish word of the day madpakke",
+      "url": "https://www.thelocal.dk/20220420/danish-word-of-the-day-madpakke"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Denmark, Portugal, Lithuania lead the way as EU share of electricity from renewables hits 46%",
+      "normalized": "denmark portugal lithuania lead the way as eu share of electricity from renewables hits 46",
+      "url": "http://www.euronews.com/2026/07/02/denmark-portugal-lithuania-lead-the-way-as-eu-share-of-electricity-from-renewables-hits-46"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Denmark tightens rules on secondary school students to prevent AI cheating",
+      "normalized": "denmark tightens rules on secondary school students to prevent ai cheating",
+      "url": "http://www.euronews.com/next/2026/08/07/denmark-tightens-rules-on-secondary-school-students-to-prevent-ai-cheating"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Emil the Elk caught after long summer on the loose in Central Europe",
+      "normalized": "emil the elk caught after long summer on the loose in central europe",
+      "url": "https://www.bbc.co.uk/news/articles/c4gvk0y8rgvo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Endangered antelopes flown to Kenya from Czech Republic in 'historic homecoming'",
+      "normalized": "endangered antelopes flown to kenya from czech republic in historic homecoming",
+      "url": "https://www.bbc.co.uk/news/articles/c202l3gzvp7o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "EU chief to visit Greenland in September to boost ties",
+      "normalized": "eu chief to visit greenland in september to boost ties",
+      "url": "https://www.thelocal.dk/20260827/eu-chief-to-visit-greenland-in-september-to-boost-ties"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "EU demands Meta &#039;protect our kids&#039; after US settlement",
+      "normalized": "eu demands meta 039 protect our kids 039 after us settlement",
+      "url": "https://www.thelocal.dk/20260827/eu-demands-meta-to-protect-our-kids-after-us-settlement"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "European socialists head towards showdown over divergences on migration policy",
+      "normalized": "european socialists head towards showdown over divergences on migration policy",
+      "url": "http://www.euronews.com/my-europe/2026/08/19/european-socialists-head-towards-showdown-over-divergences-on-migration-policy"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Film tax fraudster jailed after two years on the run",
+      "normalized": "film tax fraudster jailed after two years on the run",
+      "url": "https://www.bbc.co.uk/news/articles/ce9pggzzk05o?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "DR",
       "headline": "Fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i London",
-      "normalized": "fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i london"
+      "normalized": "fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i london",
+      "url": "https://www.dr.dk/nyheder/seneste/fire-erkender-sig-skyldige-i-brandangreb-paa-joedisk-ambulancetjeneste-i-london"
     },
     {
       "source": "DR",
       "headline": "Fra i dag vil trafikken over Øresund være besværet",
-      "normalized": "fra i dag vil trafikken over øresund være besværet"
+      "normalized": "fra i dag vil trafikken over øresund være besværet",
+      "url": "https://www.dr.dk/nyheder/seneste/fra-i-dag-vil-trafikken-over-oeresund-vaere-besvaeret"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Front desk vibes, back alley dreams: Feast your eyes on Denmark’s 2026 Mullet Championship",
+      "normalized": "front desk vibes back alley dreams feast your eyes on denmark s 2026 mullet championship",
+      "url": "http://www.euronews.com/culture/2026/06/08/front-desk-vibes-back-alley-dreams-feast-your-eyes-on-denmarks-2026-mullet-championship"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "German transgender far-right extremist arrested in Czech Republic",
+      "normalized": "german transgender far right extremist arrested in czech republic",
+      "url": "https://www.bbc.co.uk/news/articles/cn4vdnr8knjo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Germany hosts Denmark, Austria ahead of EU budget battle",
+      "normalized": "germany hosts denmark austria ahead of eu budget battle",
+      "url": "https://www.thelocal.dk/20260827/germany-hosts-denmark-austria-ahead-of-eu-budget-battle"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "'Greenland is not for sale' Denmark's Frederiksen reminds Trump",
+      "normalized": "greenland is not for sale denmark s frederiksen reminds trump",
+      "url": "http://www.euronews.com/my-europe/2026/07/08/greenland-is-not-for-sale-denmarks-frederiksen-reminds-trump"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Greenland to open truth commission over forced contraception of Inuit women scheme",
+      "normalized": "greenland to open truth commission over forced contraception of inuit women scheme",
+      "url": "http://www.euronews.com/my-europe/2026/08/28/greenland-to-open-truth-commission-over-forced-contraception-of-inuit-women-scheme"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Greenland to present report on forced contraceptions",
+      "normalized": "greenland to present report on forced contraceptions",
+      "url": "https://www.thelocal.dk/20260828/greenland-to-present-report-on-forced-contraceptions"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Heatwave breaks records in Germany, Denmark and Czech Republic",
+      "normalized": "heatwave breaks records in germany denmark and czech republic",
+      "url": "https://www.bbc.co.uk/news/articles/cx2vdydz31no?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "How much of Denmark&#039;s VAT cut on food will be reflected in prices?",
+      "normalized": "how much of denmark 039 s vat cut on food will be reflected in prices",
+      "url": "https://www.thelocal.dk/20260827/how-much-of-denmarks-vat-cut-on-food-will-be-reflected-in-prices"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Hundreds join Copenhagen kayak parade in support of Greenland",
+      "normalized": "hundreds join copenhagen kayak parade in support of greenland",
+      "url": "http://www.euronews.com/video/2026/08/10/hundreds-join-copenhagen-kayak-parade-in-support-of-greenland"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Iceland votes &#039;No&#039; to resuming EU talks",
+      "normalized": "iceland votes 039 no 039 to resuming eu talks",
+      "url": "https://www.thelocal.dk/20260830/iceland-votes-no-to-resuming-eu-talks"
     },
     {
       "source": "DR",
       "headline": "Kemikalieudslip med saltsyre i Nibe",
-      "normalized": "kemikalieudslip med saltsyre i nibe"
-    },
-    {
-      "source": "DR",
-      "headline": "Kort nyt | DR",
-      "normalized": "kort nyt dr"
+      "normalized": "kemikalieudslip med saltsyre i nibe",
+      "url": "https://www.dr.dk/nyheder/seneste/kemikalieudslip-med-saltsyre-i-nibe"
     },
     {
       "source": "DR",
       "headline": "Københavnertradition aflyst på grund af regnvejr",
-      "normalized": "københavnertradition aflyst på grund af regnvejr"
+      "normalized": "københavnertradition aflyst på grund af regnvejr",
+      "url": "https://www.dr.dk/nyheder/seneste/koebenhavnertradition-aflyst-paa-grund-af-regnvejr"
     },
     {
       "source": "DR",
       "headline": "Landboforening melder om stor opbakning til protestmøde",
-      "normalized": "landboforening melder om stor opbakning til protestmøde"
+      "normalized": "landboforening melder om stor opbakning til protestmøde",
+      "url": "https://www.dr.dk/nyheder/seneste/landboforening-melder-om-stor-opbakning-til-protestmoede"
     },
     {
       "source": "DR",
       "headline": "Meget vand på Fynske Motorvej giver problemer",
-      "normalized": "meget vand på fynske motorvej giver problemer"
+      "normalized": "meget vand på fynske motorvej giver problemer",
+      "url": "https://www.dr.dk/nyheder/seneste/meget-vand-paa-fynske-motorvej-giver-problemer"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Meloni and Frederiksen reiterate opposition to 'uncontrolled immigration'",
+      "normalized": "meloni and frederiksen reiterate opposition to uncontrolled immigration",
+      "url": "http://www.euronews.com/my-europe/2026/08/10/meloni-and-frederiksen-reiterate-opposition-to-uncontrolled-immigration"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Midterms: What Americans in Europe need to know about changes to mail-in voting",
+      "normalized": "midterms what americans in europe need to know about changes to mail in voting",
+      "url": "https://www.thelocal.dk/20260828/midterms-what-americans-in-europe-need-to-know-about-changes-to-mail-in-voting"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Neon lights and lanterns glow in new Hikari area at Tivoli, Denmark",
+      "normalized": "neon lights and lanterns glow in new hikari area at tivoli denmark",
+      "url": "http://www.euronews.com/video/2026/08/19/neon-lights-and-lanterns-glow-in-new-hikari-area-at-tivoli-denmark"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "No bosses, no problem: Inside the Danish firm that manages itself",
+      "normalized": "no bosses no problem inside the danish firm that manages itself",
+      "url": "http://www.euronews.com/business/2026/06/17/no-bosses-no-problem-inside-the-danish-firm-that-manages-itself"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Nordics weigh merging their stock exchanges into one regional market",
+      "normalized": "nordics weigh merging their stock exchanges into one regional market",
+      "url": "http://www.euronews.com/business/2026/08/27/nordics-weigh-merging-their-stock-exchanges-into-one-regional-market"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "'Not very Christian': How Danish Gen Z are rethinking confirmation",
+      "normalized": "not very christian how danish gen z are rethinking confirmation",
+      "url": "http://www.euronews.com/culture/2026/06/30/not-very-christian-how-danish-gen-z-are-rethinking-confirmation"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "On the Agenda: What&#039;s happening in Denmark this week?",
+      "normalized": "on the agenda what 039 s happening in denmark this week",
+      "url": "https://www.thelocal.dk/20260829/on-the-agenda-whats-happening-in-denmark-this-week-6"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Paris restricts alcohol consumption and sales as Europe's heatwave shifts east",
+      "normalized": "paris restricts alcohol consumption and sales as europe s heatwave shifts east",
+      "url": "https://www.bbc.co.uk/news/articles/cwy0pdq89zno?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "DR",
       "headline": "Populær fyret ukrainsk forsvarsminister skal rådgive Italiens forsvarsminister",
-      "normalized": "populær fyret ukrainsk forsvarsminister skal rådgive italiens forsvarsminister"
+      "normalized": "populær fyret ukrainsk forsvarsminister skal rådgive italiens forsvarsminister",
+      "url": "https://www.dr.dk/nyheder/seneste/populaer-fyret-ukrainsk-forsvarsminister-skal-raadgive-italiens-minister"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Prague to ban organised night-time pub crawls",
+      "normalized": "prague to ban organised night time pub crawls",
+      "url": "https://www.bbc.co.uk/news/articles/cdxr8yywlgjo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Rescued bile bears released in Denmark forest",
+      "normalized": "rescued bile bears released in denmark forest",
+      "url": "http://www.euronews.com/video/2026/07/03/rescued-bile-bears-released-in-denmark-forest"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Santas fill Danish streets for annual congress",
+      "normalized": "santas fill danish streets for annual congress",
+      "url": "http://www.euronews.com/video/2026/07/09/santas-fill-danish-streets-for-annual-congress"
     },
     {
       "source": "DR",
       "headline": "Sigtede for angreb mod Hadsten Skole accepterer forlænget fængsling",
-      "normalized": "sigtede for angreb mod hadsten skole accepterer forlænget fængsling"
+      "normalized": "sigtede for angreb mod hadsten skole accepterer forlænget fængsling",
+      "url": "https://www.dr.dk/nyheder/seneste/sigtede-angreb-mod-hadsten-skole-accepterer-forlaenget-faengsling"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Sir Tom Stoppard, playwright famed for his wit and depth, dies at 88",
+      "normalized": "sir tom stoppard playwright famed for his wit and depth dies at 88",
+      "url": "https://www.bbc.co.uk/news/articles/c74xe49q7vlo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Spectacular find: 1,000-year-old Viking textile workshop unearthed",
+      "normalized": "spectacular find 1 000 year old viking textile workshop unearthed",
+      "url": "http://www.euronews.com/culture/2026/07/05/spectacular-find-1000-year-old-viking-textile-workshop-unearthed"
+    },
+    {
+      "source": "DR",
+      "headline": "Take That indtager Tinderbox",
+      "normalized": "take that indtager tinderbox",
+      "url": "https://www.dr.dk/nyheder/seneste/take-that-indtager-tinderbox"
+    },
+    {
+      "source": "DR",
+      "headline": "Teenager mistænkt for medvirken til drab under svensk sværdangreb",
+      "normalized": "teenager mistænkt for medvirken til drab under svensk sværdangreb",
+      "url": "https://www.dr.dk/nyheder/seneste/teenager-mistaenkt-medvirken-til-drab-under-svensk-svaerdangreb"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "The Faroe Islands’ self-navigating car itineraries are putting the magic back into travel",
+      "normalized": "the faroe islands self navigating car itineraries are putting the magic back into travel",
+      "url": "http://www.euronews.com/travel/2026/08/25/the-faroe-islands-self-navigating-car-itineraries-are-putting-the-magic-back-into-travel"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "The Interview",
+      "normalized": "the interview",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct7wzx?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "DR",
       "headline": "To ministre fra Moderaterne søger orlov fra Folketinget",
-      "normalized": "to ministre fra moderaterne søger orlov fra folketinget"
+      "normalized": "to ministre fra moderaterne søger orlov fra folketinget",
+      "url": "https://www.dr.dk/nyheder/seneste/ministre-fra-moderaterne-soeger-orlov-fra-folketinget"
+    },
+    {
+      "source": "DR",
+      "headline": "To teenagere anholdt for grov vold på folkeskole",
+      "normalized": "to teenagere anholdt for grov vold på folkeskole",
+      "url": "https://www.dr.dk/nyheder/seneste/teenagere-anholdt-grov-vold-paa-folkeskole"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Today in Denmark: A roundup of the latest news on Thursday",
+      "normalized": "today in denmark a roundup of the latest news on thursday",
+      "url": "https://www.thelocal.dk/20260827/today-in-denmark-a-roundup-of-the-latest-news-on-thursday-54"
     },
     {
       "source": "DR",
       "headline": "Tre anholdt for voldeligt overfald i Horsens",
-      "normalized": "tre anholdt for voldeligt overfald i horsens"
+      "normalized": "tre anholdt for voldeligt overfald i horsens",
+      "url": "https://www.dr.dk/nyheder/seneste/tre-anholdt-voldeligt-overfald-i-horsens"
     },
     {
       "source": "DR",
       "headline": "Trump og Venezuela annoncerer 'den største olieaftale i verdenshistorien'",
-      "normalized": "trump og venezuela annoncerer den største olieaftale i verdenshistorien"
+      "normalized": "trump og venezuela annoncerer den største olieaftale i verdenshistorien",
+      "url": "https://www.dr.dk/nyheder/seneste/trump-haevder-have-indgaaet-historisk-olieaftale-med-venezuela"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Trump's new Greenland threat triggers Europe's unhealed trauma",
+      "normalized": "trump s new greenland threat triggers europe s unhealed trauma",
+      "url": "http://www.euronews.com/my-europe/2026/07/09/trumps-new-greenland-threat-triggers-europes-unhealed-trauma"
+    },
+    {
+      "source": "DR",
+      "headline": "USA angriber for første gang i en måned Iran",
+      "normalized": "usa angriber for første gang i en måned iran",
+      "url": "https://www.dr.dk/nyheder/seneste/usa-angriber-foerste-gang-i-en-maaned-iran"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Victims of abuse at youth care home to be compensated by Danish government",
+      "normalized": "victims of abuse at youth care home to be compensated by danish government",
+      "url": "http://www.euronews.com/my-europe/2026/08/24/victims-of-abuse-at-youth-care-home-to-be-compensated-by-danish-government"
     },
     {
       "source": "DR",
       "headline": "Voldeligt overfald udløste større politiindsats i Horsens",
-      "normalized": "voldeligt overfald udløste større politiindsats i horsens"
+      "normalized": "voldeligt overfald udløste større politiindsats i horsens",
+      "url": "https://www.dr.dk/nyheder/seneste/voldeligt-overfald-udloeser-stor-politiaktion-i-horsens"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Watch: Firefighters seen tackling Czech train fire in drone video",
+      "normalized": "watch firefighters seen tackling czech train fire in drone video",
+      "url": "https://www.bbc.co.uk/news/videos/c5y2pdz5wwyo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Watch: Viking Age anchor recreated with hammer and bellows in Denmark",
+      "normalized": "watch viking age anchor recreated with hammer and bellows in denmark",
+      "url": "http://www.euronews.com/video/2026/08/25/watch-viking-age-anchor-recreated-with-hammer-and-bellows-in-denmark"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "What&#039;s the difference between Schengen and EU free movement rules?",
+      "normalized": "what 039 s the difference between schengen and eu free movement rules",
+      "url": "https://www.thelocal.dk/20260828/whats-the-difference-between-schengen-and-eu-free-movement-rules"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "What changes in Denmark in September 2026?",
+      "normalized": "what changes in denmark in september 2026",
+      "url": "https://www.thelocal.dk/20260826/what-changes-in-denmark-in-september-2026"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "What you should know before agreeing to buy a Danish &#039;andelsbolig&#039;",
+      "normalized": "what you should know before agreeing to buy a danish 039 andelsbolig 039",
+      "url": "https://www.thelocal.dk/20251022/what-you-should-know-before-agreeing-to-buy-a-danish-andelsbolig"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "Will the ‘coolcation’ travel trend change the geography of international tourism?",
+      "normalized": "will the coolcation travel trend change the geography of international tourism",
+      "url": "http://www.euronews.com/travel/2026/07/30/will-the-coolcation-travel-trend-change-the-geography-of-international-tourism"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Witness History",
+      "normalized": "witness history",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct74q5?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Witness History",
+      "normalized": "witness history",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct74ms?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Women's coach given lifetime ban for secret filming",
+      "normalized": "women s coach given lifetime ban for secret filming",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cm2p1pl13j0o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Euronews Denmark",
+      "headline": "World's largest kite festival fills Danish skies with 25,000 kites",
+      "normalized": "world s largest kite festival fills danish skies with 25 000 kites",
+      "url": "http://www.euronews.com/video/2026/06/22/giant-dragon-and-octopus-kites-fill-danish-skies"
+    },
+    {
+      "source": "BBC Denmark",
+      "headline": "Yungblud festival goes international, but not everyone's convinced",
+      "normalized": "yungblud festival goes international but not everyone s convinced",
+      "url": "https://www.bbc.co.uk/news/articles/cz9qje5dwx8o?at_medium=RSS&at_campaign=rss"
     }
   ],
   "exact_clusters": [],
