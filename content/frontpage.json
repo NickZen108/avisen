@@ -1,0 +1,36 @@
+{
+  "date": "2026-08-30",
+  "edition_label": "Danmarks nye avis",
+  "lead_rationale": "Krimi/ret med navngivet proces og konkret ny udvikling; beholdes som legacy lead indtil næste redaktionelle refresh.",
+  "ticker": {
+    "slug": "2026-08-30-wegovy-stopper",
+    "title": "Halvdelen stopper Wegovy inden et år"
+  },
+  "lead": {
+    "slug": "2026-08-30-svensk-teenager-lyngby-drabsforsoeg",
+    "category": "Krimi",
+    "title": "16-årig svensker står i Lyngby tiltalt for drab på bestilling",
+    "standfirst": "Anklagemyndigheden siger, at han som 15-årig kom fra Linköping til en lejlighed i Værløse. Politiet anholdt ham, før der blev skudt. Tre danskere er medtiltalte. Alle nægter.",
+    "published_label": "30. august 2026 kl. 06.00",
+    "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lyngby_Station.jpg",
+    "image_alt": "Lyngby Station"
+  },
+  "rail": [
+    {"slug":"2026-08-30-wegovy-stopper","category":"Sundhed","title":"Halvdelen stopper Wegovy","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Pharmacy_shelves.jpg","image_alt":"Apotek"},
+    {"slug":"2026-08-29-dsa-ytringsfrihed","category":"Feature","title":"DSA: bøde eller tale","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Berlaymont_building.jpg","image_alt":"Europa-Kommissionen"},
+    {"slug":"2026-08-29-usa-canada-handelskrig","category":"Udland","title":"USA-Canada: 48 mia. dollar","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Ambassador_Bridge.jpg","image_alt":"Ambassador Bridge"},
+    {"slug":"2026-08-29-parkering-30000-koebenhavn","category":"Forbruger","title":"P-licens til 30.000 kr.","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn_from_Kongens_Nytorv.jpg","image_alt":"København"},
+    {"slug":"2026-08-30-insa-afd-sonntagsfrage","category":"Udland","title":"Insa: AfD 29, Union 20,5","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Reichstag_building_Berlin_view_from_west_before_sunset.jpg","image_alt":"Rigsdagen i Berlin"}
+  ],
+  "stack": [
+    {"slug":"2026-08-29-dsa-ytringsfrihed","category":"Feature","title":"DSA mellem bøde og tale","teaser":"X fik 120 mio. euro. Räsänen blev dømt for en kirkebog. Vance kaldte det truslen indefra.","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Berlaymont_building.jpg","image_alt":"Berlaymont, Europa-Kommissionen"},
+    {"slug":"2026-08-29-usa-canada-handelskrig","category":"Udland","title":"Har Trump en pointe?","teaser":"USA: vareunderskud 48,3 mia. dollar i 2025. Trump sagde 60. Canada svarer 8. september.","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Ambassador_Bridge.jpg","image_alt":"Ambassador Bridge mellem USA og Canada"},
+    {"slug":"2026-08-29-parkering-30000-koebenhavn","category":"Forbruger","title":"P-licens til 30.000 kroner","teaser":"Alternativet vil hæve beboerparkering i København. Borgerlige grupper kalder det skævt. Ikke vedtaget.","image_src":"https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn_from_Kongens_Nytorv.jpg","image_alt":"København"}
+  ],
+  "narrow": [
+    {"slug":"2026-08-30-wegovy-stopper","category":"Sundhed","title":"Halvdelen stopper Wegovy inden et år","teaser":"Aarhus: 49 procent ophørte. Pris og bivirkninger."},
+    {"slug":"2026-08-30-spiralsagen-to-rapporter","category":"Politik","title":"Siumut og Naleraq vil have Haag","teaser":"To rapporter. Naalakkersuisut har ikke kunnet fastslå folkedrab."},
+    {"slug":"2026-08-30-ukraine-stoette-per-dansker","category":"Økonomi","title":"13.400 kr. pr. dansker","teaser":"UM: 80,6 milliarder besluttet siden 2022."},
+    {"slug":"2026-08-30-guide-soevn","category":"Guide","title":"Fem vaner til nattesøvnen","teaser":"Lys, koffein, køligt rum. SST anbefaler 7–9 timer."}
+  ]
+}
