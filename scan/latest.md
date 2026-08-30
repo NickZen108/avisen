@@ -1,10 +1,10 @@
-# Scan 2026-08-29 23:51 UTC
+# Scan 2026-08-30 02:51 UTC
 
 Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 
 ## DR
 - Kort nyt | DR
-- Voldeligt overfald udløser stor politiaktion i Horsens
+- Voldeligt overfald udløste større politiindsats i Horsens
 - Britisk højrefløjsprovokatør udvist af USA
 - Kemikalieudslip med saltsyre i Nibe
 - Fra i dag vil trafikken over Øresund være besværet
