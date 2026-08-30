@@ -16,7 +16,7 @@ Breaking kommer oveni. Volumen må aldrig være årsag til publicering.
 
 ## Døgnrytme — dansk tid
 
-**23.00–05.30:** overvågning. Kun A-breaking publiceres automatisk. Evergreen kan færdiggøres til senere, men fremdateres ikke.
+**23.00–05.30:** overvågning. Kun A-breaking publiceres automatisk. Evergreen kan færdiggøres og lægges i den planlagte kø med `scheduled_for`; den bliver ikke synlig før schedulerens faktiske frigivelse.
 
 **05.45–06.15:** morgenudgave. Forsideredaktøren vurderer dagens lead og 4–10 øvrige placeringer. Fokus på nyt siden aftenen/natten og det vigtigste, læseren skal vide før arbejdsdagen.
 
@@ -35,6 +35,12 @@ Breaking kommer oveni. Volumen må aldrig være årsag til publicering.
 **22.00–23.00:** oprydning, corrections, QA, næste morgens research.
 
 Klokkeslættene er en startmodel. Når egne analytics findes, justeres rytmen efter tilbagevendende læsere og engagement — ikke efter rå klik alene.
+
+## Planlagt kø
+
+Evergreen, feature, guide, historie, videnskab og datastof kan færdiggøres i batches. En færdig artikel kan få `status: scheduled` og et timezone-aware `scheduled_for`. Den skal bestå samme faktuelle, sproglige, etiske, billedmæssige og tekniske gates som en straks-publiceret artikel. `published_at` sættes først af scheduleren, når artiklen faktisk frigives. `manual_review: true` må aldrig frigives automatisk.
+
+Aktuelle nyheder vurderes fortsat mindst hver time. Breaking kan tilsidesætte den planlagte rytme. Planlagt stof er en reserve og en distributionsmekanisme, ikke en produktionskvote.
 
 ## Nyhedsvægt
 
