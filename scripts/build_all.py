@@ -47,6 +47,30 @@ def render_blocks(blocks: list[dict]) -> str:
         elif kind in {"ul", "ol"}:
             items = "".join(f"<li>{esc(x)}</li>" for x in block.get("items", []))
             out.append(f"<{kind}>{items}</{kind}>")
+        elif kind == "figure":
+            src = esc(block.get("src", ""))
+            alt = esc(block.get("alt", ""))
+            classes = ["article-graphic"]
+            if block.get("wide", True):
+                classes.append("article-graphic--wide")
+            caption = str(block.get("caption", "")).strip()
+            credit = str(block.get("credit", "")).strip()
+            source_url = str(block.get("source_url", "")).strip()
+            caption_bits: list[str] = []
+            if caption:
+                caption_bits.append(esc(caption))
+            if credit:
+                if source_url:
+                    caption_bits.append(f'Illustration: <a href="{esc(source_url)}" rel="nofollow noopener">{esc(credit)}</a>')
+                else:
+                    caption_bits.append(f"Illustration: {esc(credit)}")
+            figcaption = f'<figcaption>{" · ".join(caption_bits)}</figcaption>' if caption_bits else ""
+            out.append(
+                f'<figure class="{" ".join(classes)}">'
+                f'<img src="{src}" alt="{alt}" loading="lazy" decoding="async">'
+                f'{figcaption}'
+                '</figure>'
+            )
         else:
             raise ValueError(f"ukendt body block: {kind}")
     return "\n    ".join(out)
@@ -136,7 +160,7 @@ def build_article(path: Path) -> None:
     og_image = f'<meta property="og:image" content="{esc(image["src"])}">' if image and image.get("src") else ""
 
     article_image_html = ""
-    if image and image.get("src"):
+    if image and image.get("src") and image.get("placement", "lead") == "lead":
         image_type_labels = {"photo": "Foto", "graphic": "Grafik", "illustration": "Illustration"}
         image_label = image_type_labels.get(image.get("image_type"), "Billede")
         credit = esc(image.get("credit", ""))
