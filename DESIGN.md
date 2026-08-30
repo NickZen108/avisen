@@ -1,6 +1,6 @@
 # Design — Morgentidende
 
-Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Det visuelle design er fortsat låst.
+Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Brugeren har samme dag godkendt dark mode med en diskret skydeknap øverst. Det visuelle design er fortsat låst bortset fra disse udtrykkeligt godkendte ændringer.
 
 ## Farver
 
@@ -11,6 +11,7 @@ Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring
 - Tema-boks `#E8E2D4`
 - Accent `#3D5270`
 - Guld `#C9A227`
+- Dark mode bruger de låste tema-variabler i `docs/theme.css`; det lyse tema forbliver standardpaletten.
 
 ## Typografi
 
@@ -23,6 +24,7 @@ Forside: lead + rail + tre kort + fire smalle.
 Artikelside: `article-grid` + sidespalte + `.below` fire spalter med foto.
 Nyhed/kommentar om samme sag: `.related-teaser` begge veje.
 Flere stykker om samme tema: `.theme-box`.
+Dark mode-kontrollen ligger diskret øverst til højre i masthead på forside og artikelsider. Første besøg følger systemets tema; et manuelt valg huskes lokalt i browseren.
 
 ## Genereret HTML
 
@@ -40,12 +42,14 @@ Låst:
 
 - `docs/style.css`
 - `docs/signup.css`
+- `docs/theme.css`
+- `docs/theme.js`
 - `docs/logo.svg`
 - `docs/logo-mark.svg`
 - grundstruktur i generatorens header/footer/layout
 
 ## Forbudt uden ny brugerordre
 
-style.css-grids, header, logo-fil, wordmark-størrelse, grundfarver eller ny layoutstruktur.
+style.css-grids, header, logo-fil, wordmark-størrelse, grundfarver, dark mode-udtryk eller ny layoutstruktur.
 
 Tilladt inden for låsen: nye artikler, teaser-tekst, sitemap, story clusters, `.related-teaser`, `.theme-box`, offentlige metode-/rettelsessider og metadata.
