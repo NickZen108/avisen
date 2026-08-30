@@ -2,8 +2,10 @@ import { DurableObject } from "cloudflare:workers";
 
 const FEEDS = [
   { name: "DR", url: "https://www.dr.dk/nyheder/service/feeds/allenyheder" },
-  { name: "TV2", url: "https://www.tv2.dk/rss" },
-  { name: "Berlingske", url: "https://www.berlingske.dk/rss" },
+  { name: "TV2", url: "https://services.tv2.dk/api/feeds/nyheder/rss" },
+  { name: "The Local Denmark", url: "https://feeds.thelocal.com/rss/dk" },
+  { name: "BBC Denmark", url: "https://feeds.bbci.co.uk/news/topics/cvenzmgyg1lt/rss.xml" },
+  { name: "Euronews Denmark", url: "https://www.euronews.com/rss?level=tag&name=Denmark" },
 ];
 
 const jsonHeaders = {
