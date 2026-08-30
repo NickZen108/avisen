@@ -18,6 +18,21 @@ Alle agenter læser først `HUSREGLER.md` og følger prioriteten dér. Hver agen
 12. **Udgiver** — afleverer godkendt struktureret indhold som en newsroom-PR; GitHub Actions merger kun et testet SHA og bygger derefter live-output.
 13. **Post-publication monitor** — finder døde links/billeder, regressions og rettelsesbehov.
 
+## Hvor den interne redaktionelle linje virker
+
+Den borgerligt-liberale/klassisk-liberale orientering i `EDITORIAL.md` er **intern** og må ikke bruges som offentlig branding. Den virker forskellige steder i flowet med forskellige beføjelser:
+
+- **Scan:** opdager underbelyste signaler om frihed, ytringsfrihed, demokrati, overvågning, statsmagt, skatter/afgifter/regulering, cost-benefit, religiøs ekstremisme og relevante kultur/religionsspørgsmål.
+- **Nyhedsdesk:** må bruge linjen til emnevalg og til at formulere spørgsmål/vinkler, men kun hvis historien har selvstændig nyhedsværdi. Ingen ønsket konklusion på forhånd.
+- **Research:** undersøger hele regnestykket og søger stærk dokumentation samt relevante citater fra flere reelle sider af en strid. Ingen cherry-picking.
+- **Fact checker:** prøver aktivt at falsificere både fakta og den valgte vinkel og kontrollerer, at den interne linje ikke har sænket dokumentationskravene.
+- **Journalist:** viser relevante gevinster, omkostninger, frihedseffekter, alternativer og stærke modargumenter, når ledgeren bærer dem. Nyheden argumenterer ikke for avisens linje.
+- **Etik/fairness:** stopper skjult agitation, falsk balance og kollektiv generalisering; religion og kultur må kritiseres sagligt som idéer, institutioner og praksisser.
+- **Kommentator:** her må værdigrundlaget bruges åbent i argumentationen, men kommentaren skal bygge på verificerede fakta og besvare det stærkeste relevante modargument.
+- **Forsideredaktør:** sikrer, at veldokumenterede friheds-/demokrati-/statsmagtshistorier ikke systematisk drukner, men må ikke gøre forsiden til en ideologisk kampagneside.
+
+Sprog, SEO, billede, teknisk QA og udgiver må **ikke** ændre den politiske substans eller skubbe artiklen længere i en ideologisk retning.
+
 ## Leveringsvej — ingen AI må skrive direkte til main
 
 Mens Morgentidende kører i gratis eksperimentfase, er AI redaktionen og GitHub Actions maskinrummet.
