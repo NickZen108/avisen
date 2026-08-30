@@ -29,6 +29,16 @@
       "authoritative_for": "Forklaring af Rayleigh-spredning og hvorfor solopgang/solnedgang fremstår rødlig"
     },
     {
+      "id": "S3",
+      "name": "Royal Observatory Greenwich: Why is the sky blue?",
+      "url": "https://www.rmg.co.uk/stories/space-astronomy/why-sky-blue",
+      "published_at": null,
+      "accessed_at": "2026-08-30T13:25:00Z",
+      "type": "primary",
+      "source_group": "royal-observatory-rayleigh",
+      "authoritative_for": "Forklaring af Rayleigh-spredning og at betegnelsen er opkaldt efter Lord Rayleigh, John William Strutt"
+    },
+    {
       "id": "IMG1",
       "name": "Wikimedia Commons: Rayleigh sunlight scattering.svg",
       "url": "https://commons.wikimedia.org/wiki/File:Rayleigh_sunlight_scattering.svg",
@@ -44,12 +54,8 @@
       "id": "F01",
       "claim": "Sollys, der ser hvidt ud, består af synligt lys med forskellige farver og bølgelængder.",
       "status": "verified",
-      "source_ids": [
-        "S1"
-      ],
-      "independent_groups": [
-        "nasa-blue-sky"
-      ],
+      "source_ids": ["S1"],
+      "independent_groups": ["nasa-blue-sky"],
       "checked_at": "2026-08-30T10:10:00Z",
       "notes": "NASA forklarer farvespektret og forskelle i bølgelængde."
     },
@@ -57,12 +63,8 @@
       "id": "F02",
       "claim": "Blåt lys har kortere bølgelængde end rødt lys og spredes stærkere af små molekyler i atmosfæren; derfor ser en klar himmel typisk blå ud.",
       "status": "verified",
-      "source_ids": [
-        "S1"
-      ],
-      "independent_groups": [
-        "nasa-blue-sky"
-      ],
+      "source_ids": ["S1"],
+      "independent_groups": ["nasa-blue-sky"],
       "checked_at": "2026-08-30T10:10:00Z",
       "notes": "Grundforklaring hos NASA Space Place."
     },
@@ -70,14 +72,19 @@
       "id": "F03",
       "claim": "Ved solopgang og solnedgang passerer sollyset gennem mere atmosfære, så de kortere bølgelængder spredes væk fra den direkte synslinje, mens mere rødligt lys når frem.",
       "status": "verified",
-      "source_ids": [
-        "S2"
-      ],
-      "independent_groups": [
-        "nasa-giss-rayleigh"
-      ],
+      "source_ids": ["S2"],
+      "independent_groups": ["nasa-giss-rayleigh"],
       "checked_at": "2026-08-30T10:10:00Z",
       "notes": "NASA GISS beskriver den længere vej gennem atmosfæren og den rødlige rest af det direkte lys."
+    },
+    {
+      "id": "F04",
+      "claim": "Betegnelsen Rayleigh-spredning er opkaldt efter den britiske fysiker Lord Rayleigh, John William Strutt.",
+      "status": "verified",
+      "source_ids": ["S3"],
+      "independent_groups": ["royal-observatory-rayleigh"],
+      "checked_at": "2026-08-30T13:25:00Z",
+      "notes": "Royal Observatory Greenwich forklarer direkte navnets oprindelse."
     }
   ],
   "numbers": [],
@@ -92,9 +99,10 @@
   },
   "fact_check": {
     "status": "pass",
-    "checked_at": "2026-08-30T10:10:00Z",
+    "checked_at": "2026-08-30T13:25:00Z",
     "notes": [
-      "Evergreen videnskabsforklaring baseret på to NASA-kilder. Grafiklicens kontrolleret på Wikimedia Commons."
+      "Evergreen videnskabsforklaring baseret på NASA og Royal Observatory Greenwich.",
+      "Rayleigh-navnets oprindelse er verificeret særskilt hos Royal Observatory Greenwich."
     ]
   }
 }
