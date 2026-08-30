@@ -16,7 +16,10 @@ Færdig struktureret artikel og repository state.
 4. Kontrollér generated-marker, én H1, category, canonical, schema og tider.
 5. Kontrollér design-lock.
 6. Kontrollér interne links og relevante billeder.
-7. Kontrollér almindelig sitemap og news-sitemap.
+7. Kontrollér `figure`-blokke: filen skal findes, alt-tekst skal være udfyldt, og grafikken skal stå ved det afsnit, den forklarer.
+8. Ved forklaringsgrafik skal mobilvisningen kontrolleres: grafik må gerne gå næsten til skærmkanten, men må ikke give vandret scroll; labels og tal skal kunne læses uden zoom. Hvis en bred grafik bliver ulæselig, kræv højere format, færre labels eller flere separate grafikker.
+9. Kontrollér at teasere under artiklen peger på live sider og ikke skaber døde links.
+10. Kontrollér almindelig sitemap og news-sitemap.
 
 ## Forbud
 Ingen redaktionel omskrivning. Ingen direkte CSS/layout-fix for at få build grønt. Ingen bypass af fejl.
