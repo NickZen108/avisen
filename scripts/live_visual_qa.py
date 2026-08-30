@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Post-publication visual QA for recent Morgentidende articles.
 
-This is the deterministic companion to the Live proofreader agent. It verifies
-that canonical hero images are actually present on the live page and that image
-assets return plausible image responses instead of HTML/error payloads.
+Deterministic companion to the Live proofreader agent. It verifies canonical
+lead heroes, image assets, alt text and local image-cache output. Visual taste,
+cropping and dark-mode appearance remain agent/browser-review responsibilities.
 """
 from __future__ import annotations
 
@@ -17,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BASE = "https://morgentidende.nicolaipetersen108.workers.dev/"
+MANIFEST = ROOT / "docs" / "img" / "cache" / "manifest.json"
 
 
 class ImgParser(HTMLParser):
@@ -37,7 +38,7 @@ def parse_time(value: str) -> datetime:
 
 
 def get(url: str, limit: int = 5_000_000) -> tuple[int, str, bytes, str]:
-    req = urllib.request.Request(url, headers={"User-Agent": "MorgentidendeVisualQA/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "MorgentidendeVisualQA/1.1"})
     with urllib.request.urlopen(req, timeout=25) as response:
         body = response.read(limit)
         return response.status, response.headers.get("content-type", ""), body, response.geturl()
@@ -52,10 +53,20 @@ def plausible_image(content_type: str, body: bytes) -> bool:
         body.startswith(b"\xff\xd8\xff")
         or body.startswith(b"\x89PNG\r\n\x1a\n")
         or body.startswith((b"GIF87a", b"GIF89a"))
-        or body.startswith(b"RIFF") and b"WEBP" in body[:16]
+        or (body.startswith(b"RIFF") and b"WEBP" in body[:16])
         or head.startswith(b"<svg")
         or b"<svg" in head
     ) and len(body) >= 100
+
+
+def load_manifest() -> dict:
+    if not MANIFEST.exists():
+        return {}
+    try:
+        value = json.loads(MANIFEST.read_text(encoding="utf-8"))
+        return value if isinstance(value, dict) else {}
+    except Exception:
+        return {}
 
 
 def main() -> int:
@@ -67,7 +78,9 @@ def main() -> int:
 
     base = args.base_url.rstrip("/") + "/"
     cutoff = datetime.now(timezone.utc) - timedelta(hours=args.recent_hours)
+    manifest = load_manifest()
     faults: list[str] = []
+    notes: list[str] = []
     checked_pages = 0
     checked_images = 0
 
@@ -102,16 +115,25 @@ def main() -> int:
 
         hp = ImgParser()
         hp.feed(html)
+        image_meta = article.get("image") or {}
+        canonical_image = image_meta.get("src")
+
+        # A legacy article may intentionally have no image. Pipeline-v2 editorial
+        # gates decide whether a new article needs one; live QA verifies what was
+        # actually approved rather than inventing a post-publication requirement.
         if not hp.images:
-            faults.append(f"side {slug}: ingen <img>-elementer på live-siden")
+            if canonical_image and image_meta.get("placement", "lead") == "lead":
+                faults.append(f"side {slug}: godkendt lead-hero mangler på live-siden")
+            else:
+                notes.append(f"side {slug}: ingen live-billeder at kontrollere")
             continue
 
-        canonical_image = (article.get("image") or {}).get("src")
         resolved_live = {urllib.parse.urljoin(final_url, img["src"]) for img in hp.images}
-        if canonical_image:
-            resolved_canonical = urllib.parse.urljoin(base, canonical_image)
-            if resolved_canonical not in resolved_live and canonical_image not in {img["src"] for img in hp.images}:
-                faults.append(f"side {slug}: canonical hero findes ikke i live HTML: {canonical_image}")
+        if canonical_image and image_meta.get("placement", "lead") == "lead":
+            cached = (manifest.get(canonical_image) or {}).get("public_url")
+            expected = cached or urllib.parse.urljoin(base, canonical_image)
+            if expected not in resolved_live and canonical_image not in {img["src"] for img in hp.images}:
+                faults.append(f"side {slug}: canonical/cached hero findes ikke i live HTML: {canonical_image}")
 
         for img in hp.images:
             src = urllib.parse.urljoin(final_url, img["src"])
@@ -142,6 +164,9 @@ def main() -> int:
         lines.extend(f"- {fault}" for fault in faults)
     else:
         lines.append("PASS")
+    if notes:
+        lines.extend(["", "## Notes"])
+        lines.extend(f"- {note}" for note in notes)
     report.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
     return 1 if faults else 0
