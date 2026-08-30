@@ -5,15 +5,16 @@
   "category": "Nyhed",
   "weight": "D",
   "title": "Test: Morgentidendes automatiske publiceringsmotor kører",
-  "standfirst": "Denne testartikel er publiceret for at kontrollere hele kæden fra newsroom-branch og faktaledger til Quality gates, auto-merge, build og live-side.",
+  "standfirst": "Denne testartikel verificerer nu hele kæden fra newsroom-branch og faktaledger til Quality gates, exact-SHA auto-merge, eksplicit build, publisher-commit og post-deploy-vagt.",
   "byline": "Morgentidende Redaktion",
   "published_at": "2026-08-30T09:36:00Z",
-  "updated_at": null,
+  "updated_at": "2026-08-30T09:42:00Z",
   "manual_review": false,
   "ledger": "sources/2026-08-30-publiceringsmotor-self-test.json",
   "claim_ids": [
     "F01",
-    "F02"
+    "F02",
+    "F03"
   ],
   "seo": {
     "title": "Test af Morgentidendes automatiske publiceringsmotor",
@@ -37,6 +38,14 @@
     {
       "type": "p",
       "text": "Når artiklen er live, er testen bestået hele vejen gennem build og deployment. Artiklen kan derefter fjernes eller stå som dokumentation for systemtesten."
+    },
+    {
+      "type": "h2",
+      "text": "Anden gennemløbstest"
+    },
+    {
+      "type": "p",
+      "text": "Efter den første test blev backend-kæden rettet, så auto-merge eksplicit starter det strukturerede build, og et nyt publisher-commit eksplicit starter post-deploy-vagten. Denne opdatering tester netop den fulde kæde."
     }
   ],
   "source_ids_to_display": [
