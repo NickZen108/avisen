@@ -114,10 +114,27 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
     body = article.get("body") or []
     if not body:
         err(f"{path.name}: body er tom")
-    allowed_blocks = {"p", "h2", "h3", "ul", "ol", "blockquote"}
+    allowed_blocks = {"p", "h2", "h3", "ul", "ol", "blockquote", "figure"}
     for i, block in enumerate(body):
         if not isinstance(block, dict) or block.get("type") not in allowed_blocks:
             err(f"{path.name}: body[{i}] har ugyldig type")
+            continue
+        if block.get("type") == "figure":
+            src = str(block.get("src", "")).strip()
+            alt = str(block.get("alt", "")).strip()
+            if not src:
+                err(f"{path.name}: body[{i}] figure mangler src")
+            if not alt:
+                err(f"{path.name}: body[{i}] figure mangler alt")
+            if src and not (src.startswith("../img/") or re.match(r"^https?://", src)):
+                err(f"{path.name}: body[{i}] figure src skal være ../img/... eller http(s)-URL")
+            if src.startswith("../img/"):
+                local = (ROOT / "docs" / "artikler" / src).resolve()
+                docs_root = (ROOT / "docs").resolve()
+                if docs_root not in local.parents or not local.exists():
+                    err(f"{path.name}: body[{i}] lokal figure findes ikke: {src}")
+            if "wide" in block and not isinstance(block.get("wide"), bool):
+                err(f"{path.name}: body[{i}] figure wide skal være bool")
 
     seo = article.get("seo") or {}
     if not seo.get("title") or not seo.get("description"):
@@ -130,6 +147,8 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
                 err(f"{path.name}: image mangler udfyldt {field}")
         if image.get("image_type") not in {"photo", "illustration", "graphic"}:
             err(f"{path.name}: ugyldig image_type")
+        if image.get("placement", "lead") not in {"lead", "inline", "none"}:
+            err(f"{path.name}: image placement skal være lead, inline eller none")
         for field in ["src", "source_url"]:
             value = str(image.get(field, "")).strip()
             if value and not re.match(r"^https?://", value):
@@ -274,7 +293,7 @@ def main() -> int:
     validate_public_text()
     validate_frontpage()
 
-    if not args.prebuild:
+    if not prebuild:
         if not (ROOT / "docs" / "news-sitemap.xml").exists():
             err("docs/news-sitemap.xml mangler efter build")
 
