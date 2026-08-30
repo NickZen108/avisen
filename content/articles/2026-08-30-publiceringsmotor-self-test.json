@@ -8,7 +8,7 @@
   "standfirst": "Denne testartikel verificerer nu hele kæden fra newsroom-branch og faktaledger til Quality gates, exact-SHA auto-merge, eksplicit build, publisher-commit og post-deploy-vagt.",
   "byline": "Morgentidende Redaktion",
   "published_at": "2026-08-30T09:36:00Z",
-  "updated_at": "2026-08-30T09:42:00Z",
+  "updated_at": "2026-08-30T09:46:00Z",
   "manual_review": false,
   "ledger": "sources/2026-08-30-publiceringsmotor-self-test.json",
   "claim_ids": [
@@ -46,6 +46,10 @@
     {
       "type": "p",
       "text": "Efter den første test blev backend-kæden rettet, så auto-merge eksplicit starter det strukturerede build, og et nyt publisher-commit eksplicit starter post-deploy-vagten. Denne opdatering tester netop den fulde kæde."
+    },
+    {
+      "type": "p",
+      "text": "Systemtest 11.46: Denne linje blev tilføjet for at verificere hele den automatiske publiceringskæde endnu en gang efter de seneste backend-rettelser."
     }
   ],
   "source_ids_to_display": [
