@@ -7,6 +7,10 @@ on:
       - 'docs/**'
       - 'wrangler.jsonc'
       - '.github/workflows/cloudflare-deploy.yml'
+  workflow_run:
+    workflows: ['Build structured edition']
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,10 +22,13 @@ concurrency:
 
 jobs:
   deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout latest generated main
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Deploy Worker and static assets
         uses: cloudflare/wrangler-action@v3
