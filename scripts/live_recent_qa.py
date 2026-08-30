@@ -4,11 +4,11 @@ from __future__ import annotations
 import argparse,json,subprocess,urllib.parse,urllib.request
 from datetime import datetime,timezone,timedelta
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1];DEFAULT_BASE="https://nickzen108.github.io/avisen/"
+ROOT=Path(__file__).resolve().parents[1];DEFAULT_BASE="https://morgentidende.nicolaipetersen108.workers.dev/"
 def parse(v):return datetime.fromisoformat(v.replace("Z","+00:00")).astimezone(timezone.utc)
 def check(u):
  try:
-  with urllib.request.urlopen(urllib.request.Request(u,headers={"User-Agent":"MorgentidendeLiveQA/3.1"}),timeout=20) as r:b=r.read(2000000);s=r.status
+  with urllib.request.urlopen(urllib.request.Request(u,headers={"User-Agent":"MorgentidendeLiveQA/3.2"}),timeout=20) as r:b=r.read(2000000);s=r.status
   if s>=400:return f"HTTP {s} {u}"
   t=b.decode("utf-8",errors="replace")
   return f"template-marker {u}" if "{{" in t or "}}" in t else None
