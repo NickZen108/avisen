@@ -4,6 +4,14 @@ on:
   workflow_run:
     workflows: ["Deploy to Cloudflare Workers"]
     types: [completed]
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/live_qa.py'
+      - 'scripts/live_recent_qa.py'
+      - 'scripts/live_visual_qa.py'
+      - 'agents/live-proofreader.md'
+      - '.github/workflows/post-publication-qa.yml'
   schedule:
     - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
