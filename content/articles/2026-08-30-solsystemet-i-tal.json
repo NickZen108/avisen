@@ -1,5 +1,5 @@
 {
-  "status": "scheduled",
+  "status": "published",
   "story_id": "2026-08-30-solsystemet-i-tal",
   "slug": "2026-08-30-solsystemet-i-tal",
   "category": "Videnskab",
@@ -7,7 +7,7 @@
   "title": "Solsystemet i tal: Fra 58 millioner til 4,5 milliarder kilometer",
   "standfirst": "Planeternes rækkefølge er nem at lære. Afstandsspringene er sværere at forestille sig. Her er de otte planeter sat på én skala med NASA-tal.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-08-30T11:38:30Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-08-30-solsystemet-i-tal.json",
@@ -81,5 +81,5 @@
   "related": [],
   "correction_note": null,
   "scheduled_for": "2026-08-30T11:30:00Z",
-  "released_from_schedule_at": null
+  "released_from_schedule_at": "2026-08-30T11:38:30Z"
 }
