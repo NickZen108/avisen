@@ -1,0 +1,113 @@
+{
+  "story_id": "2026-08-30-roman-rumteleskop",
+  "article_slug": "2026-08-30-roman-rumteleskop-opsendt",
+  "assignment": {
+    "category": "Videnskab",
+    "weight": "C",
+    "core_question": "Hvad er status for opsendelsen af NASA's Nancy Grace Roman Space Telescope den 30. august 2026?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "NASA: NASA’s Dark Universe-Seeking Nancy Grace Roman Space Telescope Launches",
+      "url": "https://www.nasa.gov/news-release/nasas-dark-universe-seeking-nancy-grace-roman-space-telescope-launches/",
+      "published_at": "2026-08-30",
+      "accessed_at": "2026-08-30T17:00:00Z",
+      "type": "primary",
+      "source_group": "nasa-official",
+      "authoritative_for": "Opsendelsestidspunkt, sted, raket, succesfuld adskillelse, solpaneler, missionformål"
+    },
+    {
+      "id": "S2",
+      "name": "Reuters: NASA launches powerful new Roman Space Telescope from Florida",
+      "url": "https://www.reuters.com/science/nasa-launches-powerful-new-roman-space-telescope-florida-2026-08-30/",
+      "published_at": "2026-08-30",
+      "accessed_at": "2026-08-30T17:00:00Z",
+      "type": "secondary",
+      "source_group": "reuters",
+      "authoritative_for": "Bekræftelse af opsendelse og overordnede mål"
+    },
+    {
+      "id": "S3",
+      "name": "Space.com: Liftoff! NASA's Roman Space Telescope soars to the stars",
+      "url": "https://www.space.com/space-exploration/launches-spacecraft/nasa-roman-space-telescope-launch-success-on-a-spacex-falcon-heavy-rocket-spectacular-launch-video",
+      "published_at": "2026-08-30",
+      "accessed_at": "2026-08-30T17:00:00Z",
+      "type": "secondary",
+      "source_group": "spacecom",
+      "authoritative_for": "Detaljer om WFI og coronagraf"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "NASA's Nancy Grace Roman Space Telescope blev opsendt den 30. august 2026 kl. 7:26 EDT (13:26 dansk tid) fra Launch Complex 39A på Kennedy Space Center i Florida om bord på en SpaceX Falcon Heavy-raket.",
+      "status": "verified",
+      "source_ids": ["S1", "S2"],
+      "independent_groups": ["nasa-official", "reuters"],
+      "checked_at": "2026-08-30T17:00:00Z",
+      "notes": "Bekræftet af NASA's officielle pressemeddelelse og Reuters."
+    },
+    {
+      "id": "F02",
+      "claim": "Raketten adskilte sig fra observatoriet 31 minutter efter opsendelsen, og solpaneler samt lavere instrument-solskærm blev bekræftet udfoldet 1 time og 23 minutter efter opsendelsen.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["nasa-official"],
+      "checked_at": "2026-08-30T17:00:00Z",
+      "notes": "Direkte fra NASA."
+    },
+    {
+      "id": "F03",
+      "claim": "Missionen har som hovedmål at undersøge mørk energi, mørk materie og exoplaneter ved hjælp af et bredt synsfelt og infrarød observation. Teleskopet er på vej til L2-punktet cirka 1,5 millioner kilometer fra Jorden.",
+      "status": "verified",
+      "source_ids": ["S1", "S2"],
+      "independent_groups": ["nasa-official", "reuters"],
+      "checked_at": "2026-08-30T17:00:00Z",
+      "notes": "NASA og Reuters."
+    },
+    {
+      "id": "F04",
+      "claim": "Roman er et flagskibsmission med en anslået pris på omkring 4 milliarder dollar og en primær missionsvarighed på fem år.",
+      "status": "verified",
+      "source_ids": ["S2", "S3"],
+      "independent_groups": ["reuters", "spacecom"],
+      "checked_at": "2026-08-30T17:00:00Z",
+      "notes": "Bekræftet i flere kilder."
+    }
+  ],
+  "numbers": [
+    {
+      "id": "N01",
+      "value": "7:26 a.m. EDT",
+      "unit": "tid",
+      "context": "opsendelsestidspunkt",
+      "source_ids": ["S1"]
+    },
+    {
+      "id": "N02",
+      "value": "1.5 million km",
+      "unit": "afstand",
+      "context": "til L2",
+      "source_ids": ["S1"]
+    }
+  ],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-08-30T17:05:00Z",
+    "notes": [
+      "Alle bærende fakta er bekræftet af NASA's officielle release og uafhængige nyhedsbureauer.",
+      "Ingen navngivne personer udsat for beskyldninger."
+    ]
+  }
+}
