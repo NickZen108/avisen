@@ -1,9 +1,14 @@
-# Scan 2026-08-30 02:51 UTC
+# Scan 2026-08-30 13:20 UTC
 
 Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 
 ## DR
 - Kort nyt | DR
+- Landboforening melder om stor opbakning til protestmøde
+- Tre anholdt for voldeligt overfald i Horsens
+- 17-årig uledsaget bilist er kørt ind i to huse
+- Københavnertradition aflyst på grund af regnvejr
+- Bilist sigtet for vanvidskørsel efter u-vending i Øresundstunnelen
 - Voldeligt overfald udløste større politiindsats i Horsens
 - Britisk højrefløjsprovokatør udvist af USA
 - Kemikalieudslip med saltsyre i Nibe
@@ -14,11 +19,6 @@ Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 - Fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i London
 - Sigtede for angreb mod Hadsten Skole accepterer forlænget fængsling
 - To ministre fra Moderaterne søger orlov fra Folketinget
-- Teenager mistænkt for medvirken til drab under svensk sværdangreb
-- 67-årig får livsvarigt fængsel for krigsforbrydelser i Rwanda
-- Take That indtager Tinderbox
-- To teenagere anholdt for grov vold på folkeskole
-- Det skal koste 30.000 kroner for en parkeringslicens i København, mener Alternativet
 
 ## TV2
 - (feed ikke nået)
