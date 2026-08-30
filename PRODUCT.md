@@ -1,18 +1,51 @@
 # Produktplan — Morgentidende
 
-## 1. Nyhedsbrev (nu)
+## Fase 1 — kvalitet og direkte læserrelation (nu)
 
-Tilmelding på forsiden og `/nyhedsbrev.html`.
-Adresser går til redaktionens Gmail via Formsubmit — **ikke** ind i det offentlige GitHub-repo (GDPR).
-Næste skridt: Buttondown eller Listmonk + en automation der hver eftermiddag samler dagens live-artikler til ét brev.
+Ingen paywall. Ingen annoncepres, der former redaktionelle valg.
 
-## 2. Betalt stof (når der er &gt; ca. 2.000 daglige læsere)
+Prioriteter:
 
-Gratis: nyhedsoverblik, guides, videnskab, historie.
-Betalt: lange features, særundersøgelser, arkiv.
-Teknisk: først Stripe + simpel lås på udvalgte slugs. Ikke før trafikmåling virker (Plausible).
-Avisen må ikke føles som paywall-først.
+1. stabil automatiseret redaktion med lav fejlrate
+2. direkte trafik og tilbagevendende læsere
+3. nyhedsbrev
+4. Google News/Discover/søgning som distribution, ikke som eneste afhængighed
+5. måling af corrections, engagement, story clusters og kategori-mix
+6. mere original journalistik: offentlige dokumenter, datasæt, egne beregninger og direkte spørgsmål
 
-## 3. Kommentar-agent (senere)
+Tilmelding findes på forsiden og `/nyhedsbrev.html`. Adresser må ikke gemmes i det offentlige GitHub-repo.
 
-Agenten skriver **udkast** til navngivne, relevante folketingsmedlemmer, ministre eller styrelser: én sag, ét konkret spørgsmål, deadline, citat-aftale. Redaktøren godkender før afsendelse. Ingen masseudsendelse. Offentlig e-mail, ikke privat. Svar går ind i research-memoet.
+## Analytics
+
+Analytics skal kobles på så tidligt som praktisk muligt, men rapporter må aldrig opfinde trafikdata. Foretræk en privatlivsvenlig løsning som Plausible eller tilsvarende. Før en konto/site-id er konfigureret, markeres trafikdata som `UNAVAILABLE`.
+
+Mål senere mindst:
+
+- daglige og ugentlige læsere
+- direkte vs. søgning/social/referral
+- tilbagevendende læsere
+- engageret tid/completion hvor muligt
+- nyhedsbrevstilmeldinger
+- corrections pr. 100 publiceringer
+- andel originale historier vs. omskrivning
+
+## Fase 2 — 5.000+ daglige læsere
+
+Først når Morgentidende stabilt har **5.000+ daglige læsere**, vurderes monetisering.
+
+Mulige indtægter i prioriteret rækkefølge:
+
+- frivilligt medlemskab/støtte
+- let, tydeligt mærket annoncering/sponsorater uden redaktionel indflydelse
+- betalt premium-stof: lange features, særundersøgelser og arkiv
+- abonnement, hvis loyalitet og betalingsvillighed faktisk kan dokumenteres
+
+Gratis basis skal fortsat rumme væsentlige nyheder, guides og offentligt vigtigt stof. Avisen må ikke føles paywall-først.
+
+Teknisk betalingsløsning vælges først, når trafik og retention er målt. Ingen implementering af Stripe/paywall før tærsklen eller ny brugerordre.
+
+## Direkte spørgsmål-agent (senere)
+
+Agenten kan udarbejde **udkast** til navngivne, relevante folketingsmedlemmer, ministre, myndigheder, virksomheder eller fagpersoner: én sag, konkrete spørgsmål, svarfrist og tydelig citataftale.
+
+Redaktør godkender før afsendelse. Ingen masseudsendelse. Brug offentlige professionelle kontaktoplysninger, ikke private. Svar går ind i research-ledgeren som en kilde og står ikke alene, hvis påstanden kræver uafhængig dokumentation.
