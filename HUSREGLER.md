@@ -78,8 +78,17 @@ Teknisk live-QA og redaktionel overvågning er to forskellige opgaver:
 - GitHub/live QA kontrollerer HTTP, markup, interne assets og de netop ændrede/recent publicerede URL'er.
 - Live proofreader læser den renderede side, som læseren ser, for tekst-/renderingsfejl og forskelle fra canonical indhold.
 - Redaktionel update-monitor leder efter nye oplysninger, der ændrer et bærende claim, story-vægt eller lead.
+- A/breaking-stof overvåges aktivt de første 6 timer, mens almindelige historier kun genåbnes ved et konkret væsentligt signal; se `agents/post-publication.md`.
 
 Ingen af dem må lave stille materielle rettelser.
+
+## Offentlig metode og intern værktøjsbrug
+
+Den offentlige avis skal beskrive dokumentation, kildearbejde, ansvar, rettelser og redaktionelle principper sandfærdigt. **Foreløbig skal offentlige sider ikke fremhæve, markedsføre eller kvantificere brugen af AI, sprogmodeller eller automatisering.**
+
+Det er samtidig forbudt at skabe et falsk indtryk ved at opfinde menneskelige journalister, redaktører, øjenvidner eller eksperter eller ved at påstå, at en tekst er menneskeskrevet, hvis det ikke kan dokumenteres. Standardbyline `Morgentidende Redaktion` er en organisationsbyline og må bruges.
+
+Den interne `AI-POLICY.md` gælder uændret for research, kildebrug, billeder og kvalitet. Hvis lovgivning, platformskrav eller presseetiske hensyn senere kræver en konkret offentlig AI-oplysning, går dette krav foran ønsket om lav profil.
 
 ## Transparens og rettelser
 
