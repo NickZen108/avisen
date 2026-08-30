@@ -65,12 +65,24 @@ def check_design_lock() -> None:
 
 
 def claim_has_required_support(claim: dict, sources: dict[str, dict]) -> bool:
-    groups = {g for g in claim.get("independent_groups", []) if g}
+    """Derive independence from the ledger sources, never from claim-supplied labels."""
+    groups: set[str] = set()
+    for sid in claim.get("source_ids", []):
+        src = sources.get(sid)
+        if not src:
+            continue
+        group = str(src.get("source_group", "")).strip()
+        if group:
+            groups.add(group)
     if len(groups) >= 2:
         return True
     for sid in claim.get("source_ids", []):
         src = sources.get(sid)
-        if src and src.get("type") in {"primary", "paper", "interview"} and src.get("authoritative_for"):
+        if (
+            src
+            and src.get("type") in {"primary", "paper", "interview"}
+            and str(src.get("authoritative_for", "")).strip()
+        ):
             return True
     return False
 
@@ -114,10 +126,14 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
     image = article.get("image")
     if image is not None:
         for field in ["src", "alt", "credit", "license", "source_url", "image_type"]:
-            if field not in image:
-                err(f"{path.name}: image mangler {field}")
+            if not str(image.get(field, "")).strip():
+                err(f"{path.name}: image mangler udfyldt {field}")
         if image.get("image_type") not in {"photo", "illustration", "graphic"}:
             err(f"{path.name}: ugyldig image_type")
+        for field in ["src", "source_url"]:
+            value = str(image.get(field, "")).strip()
+            if value and not re.match(r"^https?://", value):
+                err(f"{path.name}: image {field} skal være http(s)-URL")
 
     ledger_path = ROOT / str(article.get("ledger", ""))
     if not ledger_path.exists():
@@ -136,6 +152,13 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
             continue
         if article.get("status") == "published" and claim.get("status") != "verified":
             err(f"{path.name}: publiceret claim {claim_id} er ikke verified")
+        if article.get("status") == "published":
+            for sid in claim.get("source_ids", []):
+                src = sources.get(sid)
+                if not src:
+                    err(f"{path.name}: claim {claim_id} peger på ukendt source_id {sid}")
+                elif not str(src.get("source_group", "")).strip():
+                    err(f"{path.name}: source {sid} mangler source_group")
         if article.get("status") == "published" and not claim_has_required_support(claim, sources):
             err(f"{path.name}: claim {claim_id} mangler uafhængig eller autoritativ støtte")
 
@@ -143,8 +166,8 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
         err(f"{path.name}: Kommentar mangler related_news_slug")
 
     if article.get("status") == "published":
-        if article.get("manual_review"):
-            err(f"{path.name}: manual_review=true må ikke autopubliceres")
+        if article.get("manual_review") and not article.get("manual_review_completed"):
+            err(f"{path.name}: manual_review=true kræver manual_review_completed=true før publicering")
         if (ledger.get("fact_check") or {}).get("status") != "pass":
             err(f"{path.name}: fact_check.status skal være pass før publicering")
         published = article.get("published_at")
