@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 780" role="img" aria-labelledby="title desc">
+<title id="title">Hvorfor solnedgangen ser rød ud</title>
+<desc id="desc">Når Solen står lavt, går lyset en længere vej gennem atmosfæren. Meget af det blå lys spredes væk, mens mere rødt og orange lys når øjet.</desc>
+<defs>
+  <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfefff"/><stop offset="1" stop-color="#fff0cf"/></linearGradient>
+  <marker id="blueArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#1877d2"/></marker>
+  <marker id="redArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#e5532d"/></marker>
+  <style>
+    .title{font:700 42px Arial,sans-serif;fill:#14243a}.label{font:700 29px Arial,sans-serif;fill:#1e2a38}.small{font:24px Arial,sans-serif;fill:#33485d}.blue{fill:#176db9}.red{fill:#d84a28}
+  </style>
+</defs>
+<rect width="900" height="780" fill="#f7f2e8"/>
+<text x="45" y="62" class="title">Hvorfor ser solnedgangen rød ud?</text>
+<rect x="35" y="92" width="830" height="625" rx="28" fill="url(#sunset)" stroke="#e1cdb8" stroke-width="3"/>
+
+<!-- Ground and atmosphere -->
+<path d="M45 660 Q445 520 855 660 L855 717 L45 717 Z" fill="#c9d9c0" stroke="#8cab7a" stroke-width="3"/>
+<path d="M65 610 Q450 335 835 610" fill="none" stroke="#9fd3f4" stroke-width="110" opacity=".42"/>
+
+<!-- Low sun -->
+<circle cx="120" cy="585" r="58" fill="#ffb13c" stroke="#e9782e" stroke-width="6"/>
+<text x="55" y="685" class="label">Solen står lavt</text>
+
+<!-- Long path through atmosphere -->
+<path d="M175 575 C350 500 610 500 790 590" stroke="#7259c5" stroke-width="6" fill="none"/>
+<path d="M175 584 C350 512 610 512 790 599" stroke="#2678ce" stroke-width="6" fill="none"/>
+<path d="M175 594 C350 526 610 526 790 609" stroke="#edb43b" stroke-width="7" fill="none"/>
+<path d="M175 605 C350 540 610 540 790 620" stroke="#e5532d" stroke-width="10" fill="none" marker-end="url(#redArrow)"/>
+
+<text x="260" y="180" class="label">Lyset går en længere vej</text>
+<text x="260" y="214" class="label">gennem atmosfæren</text>
+<path d="M440 225 C420 280 420 355 440 455" fill="none" stroke="#33485d" stroke-width="4"/>
+
+<!-- Blue scattering away -->
+<g stroke="#1877d2" stroke-width="6" marker-end="url(#blueArrow)">
+  <line x1="350" y1="515" x2="300" y2="420"/><line x1="430" y1="500" x2="445" y2="390"/><line x1="515" y1="503" x2="555" y2="405"/><line x1="600" y1="520" x2="660" y2="435"/>
+</g>
+<text x="220" y="340" class="label blue">Meget af det blå lys</text>
+<text x="220" y="374" class="label blue">spredes væk undervejs</text>
+
+<!-- Observer -->
+<circle cx="812" cy="615" r="18" fill="#c58b62"/><path d="M792 636 L832 636 L850 714 L774 714 Z" fill="#254b72"/>
+<text x="465" y="665" class="label red">Mere rødt og orange lys</text>
+<text x="465" y="699" class="label red">fortsætter mod øjet</text>
+
+<!-- Explanation box -->
+<rect x="55" y="105" width="170" height="170" rx="18" fill="#fffdf8" stroke="#c8d5df" stroke-width="3"/>
+<text x="78" y="145" class="label">Kort sagt</text>
+<text x="78" y="184" class="small">Længere vej</text>
+<text x="78" y="214" class="small">= mere blåt lys</text>
+<text x="78" y="244" class="small">spredes væk.</text>
+</svg>
