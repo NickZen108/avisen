@@ -1,0 +1,8 @@
+# Git blob SHA  path
+# Opdateres kun efter udtrykkelig brugerordre om designændring.
+5f5976f28f723c4f0ae0fa17d40e13aff4ac4bb4 docs/style.css
+19c0c2ace05968ca427cc51977105059170034a4 docs/signup.css
+1c79eb821797aa7061d8780b1eda4d2533155971 docs/logo.svg
+815c7911616bfe97d61fa6a245b31f3bda0473fc docs/logo-mark.svg
+5d49f36e74e843d8cac88f55ec5da664b775adf6 templates/article.html
+4097e85392c8f76938912871ede1edb075648d55 templates/index.html
