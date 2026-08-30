@@ -1,0 +1,126 @@
+{
+  "story_id": "2026-08-30-guide-staerkere-login",
+  "article_slug": "2026-08-30-guide-staerkere-login",
+  "assignment": {
+    "category": "Guide",
+    "weight": "D",
+    "core_question": "Hvad kan en almindelig bruger gøre for at få stærkere login uden unødige password-regler?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "NIST SP 800-63B: Authentication and Authenticator Management",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63b.html",
+      "published_at": "2025-07-01T00:00:00Z",
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "primary",
+      "source_group": "nist-800-63b-4",
+      "authoritative_for": "NIST's krav og anbefalinger om passwordlængde, sammensætningsregler, periodiske skift og phishing-resistens"
+    },
+    {
+      "id": "S2",
+      "name": "CISA: Require Multifactor Authentication",
+      "url": "https://www.cisa.gov/audiences/small-and-medium-businesses/secure-your-business/require-multifactor-authentication",
+      "published_at": null,
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "primary",
+      "source_group": "cisa-mfa",
+      "authoritative_for": "CISA's anbefaling om MFA og prioritering af phishing-resistente metoder"
+    },
+    {
+      "id": "S3",
+      "name": "NIST: Giving SP 800-63B a Boost – Syncable Authenticators",
+      "url": "https://www.nist.gov/news-events/news/2024/04/giving-nist-sp-800-63b-boost-nist-sp-800-63b-supplement-incorporating",
+      "published_at": "2024-04-23T00:00:00Z",
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "primary",
+      "source_group": "nist-passkeys",
+      "authoritative_for": "NIST's beskrivelse af korrekt implementerede synkroniserbare autentifikatorer som FIDO-passkeys"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "NIST kræver mindst 15 tegn for passwords, der bruges som eneste loginfaktor, og anbefaler ikke tvungne blandinger af store bogstaver, tal og symboler.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nist-800-63b-4"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "Gælder verifier-krav i NIST SP 800-63B-4."
+    },
+    {
+      "id": "F02",
+      "claim": "NIST anbefaler ikke periodiske passwordskift uden tegn på kompromittering.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nist-800-63b-4"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "Password skal ændres ved evidens for kompromittering, ikke blot efter kalender."
+    },
+    {
+      "id": "F03",
+      "claim": "Passwords er ikke phishing-resistente, og CISA anbefaler MFA med fokus på phishing-resistente metoder, hvor det er muligt.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "independent_groups": [
+        "nist-800-63b-4",
+        "cisa-mfa"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "NIST beskriver phishing-resistens; CISA anbefaler den stærkeste tilgængelige MFA."
+    },
+    {
+      "id": "F04",
+      "claim": "NIST beskriver korrekt implementerede FIDO-passkeys som en phishing-resistent autentifikator.",
+      "status": "verified",
+      "source_ids": [
+        "S3"
+      ],
+      "independent_groups": [
+        "nist-passkeys"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "Formuleringen er betinget af korrekt implementering."
+    }
+  ],
+  "numbers": [
+    {
+      "id": "N01",
+      "value": 15,
+      "unit": "tegn",
+      "period": "gældende NIST SP 800-63B-4",
+      "population": "password som eneste autentifikationsfaktor",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-08-30T10:10:00Z",
+    "notes": [
+      "Guide bygger på gældende NIST- og CISA-vejledning. Ingen sikkerhedsmetode fremstilles som absolut garanti."
+    ]
+  }
+}
