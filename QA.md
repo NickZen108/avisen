@@ -1,28 +1,77 @@
-# Korrekturvagt
+# Kvalitetskontrol
 
-Se AGENTS.md, afsnittet Korrekturvagt. Første pligt: slet interne noter på alle sider.
+QA består af både deterministiske tests og selvstændige redaktionelle gates. Et grønt build er nødvendigt, men ikke tilstrækkeligt til publicering.
 
-## Dansk (obligatorisk)
+## 1. Fakta
 
-Hvert dansk ord i H1, title, ticker, manchet og brødtekst skal kunne stå i Retskrivningsordbogen (dsn.dk). Opdigtede eller forvrængede ord er veto.
+- hver publiceret struktureret artikel har en faktaledger
+- ledgeren indeholder claim-id, kilde, dato, source-group og status
+- tal, navne, datoer, embeder og direkte citater er særskilt verificeret
+- to URLs fra samme bureau/pressemeddelelse tæller ikke som to uafhængige kilder
+- `manual_review: true` må ikke autopubliceres
 
-Når et sådant ord findes: ret ikke kun ordet. Læs hele sætningen det indgår i. Tjek grammatik, forståelighed og husets sprog (kort, aktiv, dansk). Er konstruktionen skæv, omskriv sætningen. Eksempel: »mellem bødsel og ytringsfrihed« → »mellem bøde og ytringsfrihed«, eller en ny klar sætning — ikke et plaster på det ene ord.
+## 2. Dansk
 
-Undtagelser for enkeltord: egennavne, citater på originalsprog, etablerede fremmedord og forkortelser, tal og enheder.
+Sprog-gaten kontrollerer hele sætninger, ikke blot ordbogsopslag. Retskrivningsordbogen er reference; legitime sammensætninger, bøjningsformer, egennavne og fagord kan være korrekte uden selvstændigt opslag.
 
-Ikke omskriv hele artiklen. Ændr ikke meningen.
+Kontrollér H1, title, manchet, brødtekst, ticker og teasere for:
 
-## Døde billeder (obligatorisk)
+- stave- og grammatikfejl
+- brudte sætninger
+- maskinoversættelsesdansk og anglificering
+- mærkelige opdigtede ord
+- forkert juridisk status
+- ændret betydning efter sproglig omskrivning
 
-Tematisk match er ikke nok. Hvert `<img>` på forside, artikelside, rail og `.below` skal hentes.
+## 3. Design og generering
 
-Dødt foto, hvis én af delene gælder:
+- nye artikler skal komme fra `content/articles/`
+- genereret HTML skal have generated-marker
+- nye direkte håndskrevne HTML-artikler er FAIL
+- låste designfiler skal matche `config/design-lock.txt`
+- journalistiske commits må ikke ændre CSS/logo/layout
 
-- HTTP 404, 5xx, timeout eller tomt svar
-- src peger på en wikiside, ikke en rå billedfil
-- alt-teksten vises i en grå kasse på den live side
-- filen i `docs/img/` findes, men src peger et andet sted hen og det andet sted er dødt
+## 4. Metadata og tid
 
-Handling: erstat src med lokal fil i `docs/img/` hvis den findes; ellers med en verificeret rå billed-URL. Commit. Skriv fil og årsag i `reports/qa/`.
+- én H1
+- én gyldig kategori
+- canonical URL
+- korrekt `lang=da`
+- publiceringstid = faktisk live-tid; ingen fremtid
+- `updated_at` kun ved substantiel opdatering
+- NewsArticle/Article-schema svarer til genren
+- meta description er beskrivende, ikke clickbait
 
-Et foto der matcher emnet, men ikke loader, er veto — samme regel som foto-mismatch i EDITORIAL.md.
+## 5. Links og billeder
+
+Hvert link og billede på live forside samt aktuelle artikler skal kunne hentes. Dødt foto er FAIL. Tematisk match alene er ikke nok.
+
+Billedgate kontrollerer desuden:
+
+- motiv passer til overskrift/sted/tid
+- ophav og licens er registreret
+- alt-tekst beskriver motivet
+- generativ illustration er tydeligt mærket og ikke brugt som dokumentarfoto
+
+## 6. Story clusters
+
+- ingen unødvendige dublet-URLs
+- kommentar om aktuel sag har `related_news_slug`
+- nyhed og kommentar linker begge veje
+- kanonisk artikel opdateres ved samme fortsættende hændelse
+
+## 7. Post-publication
+
+Post-publication monitor kører regelmæssigt og rapporterer:
+
+1. døde links og billeder
+2. build-/markupfejl
+3. utilsigtede interne noter
+4. rettelser eller nye fakta, der ændrer artikelens præmis
+5. forside der har et forældet lead
+
+Materielle fejl håndteres efter `CORRECTIONS.md`; de rettes ikke stille.
+
+## Rapporter
+
+Teknisk/visuel QA skriver til `reports/qa/`. Rapporten må ikke opfinde metrics eller erklære PASS på checks, den ikke faktisk har kørt.
