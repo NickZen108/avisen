@@ -7,6 +7,7 @@ Kort. Aktivt. Dansk. Præcist. Seriøst uden at være stift.
 - Skriv den vigtigste oplysning først.
 - Brug korte, konkrete sætninger og aktive verber.
 - Forklar fagord første gang de bruges.
+- Foretræk almindelige danske ord og naturlige danske forklaringer frem for mindre kendte fremmedord og faglige låneord, når betydningen bevares. Hvis fagtermen er nyttig, kan den stå i parentes første gang, fx »små partikler og dråber i luften (aerosoler)«. Brug den etablerede fagterm, når en dansk omskrivning bliver upræcis, kunstig eller misvisende.
 - Oversæt betydning, ikke syntaks. Undgå engelske sætningsmønstre og maskinoversættelsesdansk.
 - Undgå AI-fyld: »det er værd at bemærke«, »i en tid hvor«, »rejser spørgsmål om«, »kun tiden vil vise«, medmindre formuleringen faktisk bærer information.
 - Ingen slang i nyheder. Ingen hån, sarkasme eller dramatisk overdrivelse.
@@ -23,6 +24,7 @@ Sprog-gaten kontrollerer:
 - uklare stedord og referencer
 - forkert oversatte titler/embeder
 - anglificering og mærkelige sammensætninger
+- unødvendige mindre kendte fremmedord, når et præcist og naturligt dansk ord eller udtryk findes
 - gentagelser og kunstige overgange
 - om omskrivning ændrer fakta eller nuance
 
