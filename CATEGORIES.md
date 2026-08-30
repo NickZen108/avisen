@@ -20,7 +20,7 @@ Nyhed · Krimi · Politik · Økonomi · Udland · Forbruger · Kultur · Videns
 
 **Forbruger** — priser, rettigheder, regler, produkter, privatøkonomi og praktiske konsekvenser for husholdningen.
 
-**Kultur** — kunst, medier, skole, religion, køn, idédebat og kulturkonflikter. Emnevalg styres af nyhedsværdi, ikke en fast ideologisk slagside.
+**Kultur** — kunst, medier, skole, religion, køn, idédebat og kulturkonflikter. Emnevalg styres af nyhedsværdi; den interne redaktionelle orientering må bruges som opmærksomhedsfilter, men ikke som facit.
 
 **Videnskab** — forskning, teknik, udgravninger og dokumenterede nye resultater. Paper/primærkilde før populariserende omtale.
 
@@ -49,9 +49,15 @@ På en normal rullende syvdagesperiode sigtes efter:
 
 Store nyhedsdage må bryde fordelingen. Systemet må aldrig lave en svag artikel for at ramme en procent. Guardrails bruges kun til at opdage systematisk ensidighed over tid.
 
+## Forsidebredde
+
+Det rullende stofmix er ikke nok i sig selv. Den aktuelle forside skal også føles bred. På en normal nyhedsdag skal forsideredaktøren derfor tilstræbe synlige historier fra flere forskellige hovedstofområder og sikre, at ikke-politiske emner ikke rutinemæssigt skubbes væk af politik, ideologi eller kulturkamp.
+
+Som praktisk guardrail bør de øverste 8–12 forsidehistorier normalt rumme mindst 4 hovedstofområder og mindst 2 klart ikke-politiske stykker, hvis gode kandidater findes. Ekstraordinære nyhedsdage kan naturligt bryde dette. Der må aldrig produceres fyld for at opfylde guardrailen.
+
 ## Emner er ikke sektioner
 
-Klima, krig, indvandring, islam, EU, LGBT, AI og andre tilbagevendende emner ligger under den relevante journalistiske kategori. De må ikke blive automatisk prioriteret eller nedprioriteret af ideologiske årsager.
+Klima, krig, indvandring, islam, EU, LGBT, AI og andre tilbagevendende emner ligger under den relevante journalistiske kategori. De må ikke blive automatisk prioriteret eller nedprioriteret alene af ideologiske årsager. Den interne redaktionelle linje må gøre redaktionen ekstra opmærksom på bestemte oversete spørgsmål, men forsiden skal fortsat være bred og nyhedsværdistyret.
 
 ## Dubletter
 

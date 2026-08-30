@@ -2,6 +2,12 @@
 
 Forsiden er en redaktionel prioritering, ikke en sortering efter publiceringstid eller klik.
 
+## Offentlig fremtoning
+
+Forsiden skal udadtil virke **neutral, afbalanceret og bred**. Den interne borgerligt-liberale/klassisk-liberale redaktionelle orientering må hjælpe redaktionen med at opdage underbelyste spørgsmål, men må ikke kunne aflæses som en ensidig politisk kampagne på forsiden.
+
+En førstegangslæser skal møde en almindelig seriøs netavis med relevante historier fra flere dele af samfundet — ikke en politisk blog. Politik og værdikampe må gerne fylde, når nyhedsdagen kræver det, men skal normalt stå side om side med ikke-politiske historier om fx økonomi, forbrug, videnskab, sundhed, kultur, sport, teknologi, historie, mennesker og hverdagsliv.
+
 ## Eligibility
 
 En artikel kan først indgå i ranking, når alle krævede gates er PASS. Kommentar, Guide og ren evergreen kan ikke blive lead alene på grund af friskhed eller trafik.
@@ -54,11 +60,30 @@ Forsiden skal normalt have:
 
 - mindst én tung nyhed, hvis sådan findes
 - flere uafhængige stofområder
+- tydelig tilstedeværelse af ikke-politiske emner, når der findes gode relevante stykker
 - ikke fem næsten ens artikler fra samme story cluster
+- ikke en række artikler der alle bekræfter samme politiske eller kulturelle tese
 - kommentar som sekundær placering, aldrig som automatisk lead
-- blanding af hårdt stof og nytte/dybde efter `CATEGORIES.md`
+- blanding af hårdt stof, nytte, viden, kultur/liv og dybde efter `CATEGORIES.md`
+
+Som praktisk guardrail på en normal nyhedsdag bør de øverste 8–12 synlige forsidehistorier som udgangspunkt komme fra mindst **4 forskellige hovedstofområder**, og mindst **2 bør være klart ikke-politiske**, hvis der findes publicerbare kandidater af rimelig kvalitet. Dette er en breddeguardrail, ikke en kvote: en stor krig, terrorhændelse, valgdag eller anden ekstraordinær begivenhed må naturligt dominere.
+
+Politik, ideologi, religion, køn, indvandring, klima og kulturkamp må tilsammen ikke rutinemæssigt dominere hele forsiden alene fordi de passer til avisens interne redaktionelle objektiv. Forsideredaktøren skal aktivt kontrollere, om en lige så væsentlig historie om fx økonomi, forbrug, sundhed, videnskab, sport, teknologi, kultur eller hverdagsliv er blevet skubbet urimeligt langt ned.
 
 Ved stor national/international begivenhed må én story cluster dominere midlertidigt, men de enkelte stykker skal have forskellige funktioner: live/nyhed, forklaring, økonomisk konsekvens, fakta, kommentar osv.
+
+## Neutralitetscheck før forside-save
+
+Forsideredaktøren skal før hver substantiel forsideændring spørge:
+
+1. Ville en ny læser opfatte forsiden som en bred avis eller som en politisk kampagneside?
+2. Er de øverste historier fordelt på flere reelt forskellige emner?
+3. Er ikke-politiske historier med reel nyhedsværdi synlige nok?
+4. Er avisens interne redaktionelle linje kun synlig gennem gode spørgsmål og emnevalg — ikke gennem ensidig ophobning?
+5. Er kommentarer tydeligt sekundære i forhold til nyheder?
+6. Har en politisk/ideologisk historie fået for høj placering alene fordi den passer til avisens interne orientering?
+
+Hvis svaret på 1 er »kampagneside« eller på 6 er »ja«, skal forsiden genbalanceres, medmindre en ekstraordinær nyhedssituation sagligt forklarer dominansen.
 
 ## Klik og analytics
 
