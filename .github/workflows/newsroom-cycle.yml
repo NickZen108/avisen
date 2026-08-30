@@ -1,8 +1,9 @@
-name: Post-publication QA
+name: Newsroom cycle
 
 on:
-  schedule:
-    - cron: '17 * * * *'
+  workflow_run:
+    workflows: ["Breaking scan"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -13,7 +14,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  live-qa:
+  prepare-queue:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,16 +27,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Live smoke test
-        run: python scripts/live_qa.py --report reports/qa/live-latest.md
-      - name: Commit QA report
+      - name: Build machine-readable candidate queue
+        run: python scripts/newsroom_queue.py
+      - name: Commit queue only when signals changed
         run: |
-          git config user.name "morgentidende-qa"
+          git config user.name "morgentidende-newsroom"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reports/qa/live-latest.md
+          git add queue/candidates.json
           if git diff --cached --quiet; then
-            echo "Ingen rapportændring"
+            echo "Ingen ændring i kandidatlisten"
           else
-            git commit -m "qa: hourly live smoke test"
+            git commit -m "newsroom: refresh candidate queue"
             git push
           fi

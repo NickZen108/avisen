@@ -8,11 +8,20 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: morgentidende-main-writes
+  cancel-in-progress: false
+
 jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Sync main
+        run: git pull --ff-only origin main
       - name: Hent overskrifter
         run: bash scripts/scan-feeds.sh
       - name: Commit scan-notat

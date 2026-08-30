@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
-"""Hourly live smoke test for the public Morgentidende site."""
+"""Live smoke test for the public Morgentidende site.
+
+Hard failures are faults under our control: front page/internal articles/internal
+assets unavailable or unresolved generator placeholders. External image failures
+are reported as soft because transient third-party outages must never trigger an
+automatic rollback.
+"""
 from __future__ import annotations
 
 import argparse
 import html.parser
 import time
-import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-UA = "MorgentidendeLiveQA/1.0"
+UA = "MorgentidendeLiveQA/2.0"
 
 
 class LinkParser(html.parser.HTMLParser):
@@ -34,7 +39,7 @@ def fetch(url: str, timeout: int = 20) -> tuple[int, bytes]:
         return response.status, response.read(2_000_000)
 
 
-def check_url(url: str) -> str | None:
+def fetch_failure(url: str) -> str | None:
     try:
         status, _ = fetch(url)
         if status >= 400:
@@ -44,31 +49,44 @@ def check_url(url: str) -> str | None:
         return f"FETCH {url}: {exc}"
 
 
+def unresolved_marker(body: bytes, url: str) -> str | None:
+    text = body.decode("utf-8", errors="replace")
+    if "{{" in text or "}}" in text:
+        return f"Uafløst template-marker: {url}"
+    return None
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default="https://nickzen108.github.io/avisen/")
     parser.add_argument("--report", default="reports/qa/live-latest.md")
-    parser.add_argument("--strict", action="store_true")
+    parser.add_argument("--strict", action="store_true", help="fail on hard or soft failures")
+    parser.add_argument("--strict-internal", action="store_true", help="fail only on hard/internal failures")
     args = parser.parse_args()
 
     base = args.base_url.rstrip("/") + "/"
-    failures: list[str] = []
+    base_host = urllib.parse.urlparse(base).netloc
+    hard: list[str] = []
+    soft: list[str] = []
     checked: set[str] = set()
 
     try:
         status, body = fetch(base)
+        checked.add(base)
         if status >= 400:
-            failures.append(f"Forside HTTP {status}")
+            hard.append(f"Forside HTTP {status}")
             body = b""
+        elif marker := unresolved_marker(body, base):
+            hard.append(marker)
     except Exception as exc:
-        failures.append(f"Forside kunne ikke hentes: {exc}")
+        hard.append(f"Forside kunne ikke hentes: {exc}")
         body = b""
 
     parser_html = LinkParser()
     if body:
         parser_html.feed(body.decode("utf-8", errors="replace"))
 
-    article_urls = []
+    article_urls: list[str] = []
     for href in parser_html.links:
         url = urllib.parse.urljoin(base, href)
         if "/artikler/" in url and url.endswith(".html") and url not in article_urls:
@@ -81,36 +99,58 @@ def main() -> int:
             status, article_body = fetch(url)
             checked.add(url)
             if status >= 400:
-                failures.append(f"Artikel HTTP {status}: {url}")
+                hard.append(f"Artikel HTTP {status}: {url}")
                 continue
+            if marker := unresolved_marker(article_body, url):
+                hard.append(marker)
             p = LinkParser()
             p.feed(article_body.decode("utf-8", errors="replace"))
             for src in p.images:
                 image_urls.add(urllib.parse.urljoin(url, src))
         except Exception as exc:
-            failures.append(f"Artikel kunne ikke hentes: {url}: {exc}")
+            hard.append(f"Artikel kunne ikke hentes: {url}: {exc}")
 
     for url in sorted(image_urls):
         if url in checked:
             continue
-        failure = check_url(url)
+        failure = fetch_failure(url)
         checked.add(url)
         if failure:
-            failures.append(failure)
+            host = urllib.parse.urlparse(url).netloc
+            if host == base_host:
+                hard.append(f"Internt asset: {failure}")
+            else:
+                soft.append(f"Eksternt asset: {failure}")
         time.sleep(0.05)
 
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    lines = [f"# Live QA {stamp}", "", f"Base: {base}", f"Artikler testet: {len(article_urls[:30])}", f"URLs/assets testet: {len(checked)}", ""]
-    if failures:
-        lines += ["## FAIL", ""] + [f"- {x}" for x in failures]
+    lines = [
+        f"# Live QA {stamp}",
+        "",
+        f"Base: {base}",
+        f"Artikler testet: {len(article_urls[:30])}",
+        f"URLs/assets testet: {len(checked)}",
+        "",
+    ]
+    if hard:
+        lines += ["## HARD FAIL", ""] + [f"- {x}" for x in hard] + [""]
     else:
-        lines += ["## PASS", "", "Ingen døde forside-/artikel-/billed-URLs fundet i denne smoke test."]
+        lines += ["## HARD PASS", "", "Ingen interne/live-kritiske fejl fundet.", ""]
+    if soft:
+        lines += ["## SOFT WARN", ""] + [f"- {x}" for x in soft]
+    else:
+        lines += ["## SOFT PASS", "", "Ingen eksterne asset-fejl fundet."]
 
     report = Path(args.report)
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"Live QA: {'FAIL' if failures else 'PASS'} ({len(failures)} fejl)")
-    return 1 if failures and args.strict else 0
+
+    print(f"Live QA: {len(hard)} hard, {len(soft)} soft")
+    if args.strict and (hard or soft):
+        return 1
+    if args.strict_internal and hard:
+        return 1
+    return 0
 
 
 if __name__ == "__main__":

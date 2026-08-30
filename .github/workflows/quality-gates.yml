@@ -8,6 +8,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: quality-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
 jobs:
   quality:
     runs-on: ubuntu-latest
@@ -18,6 +22,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Script syntax
+        run: |
+          python -m compileall -q scripts
+          bash -n scripts/scan-feeds.sh
       - name: Prebuild gates
         run: python scripts/quality_gate.py --prebuild
       - name: Deterministic build
