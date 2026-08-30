@@ -1,16 +1,33 @@
-name: Post-publication technical QA
+name: Post-publication QA
+
 on:
-  schedule: [{cron: '7,22,37,52 * * * *'}]
+  workflow_run:
+    workflows: ["Deploy to Cloudflare Workers"]
+    types: [completed]
+  schedule:
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
-permissions: {contents: write}
-concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: morgentidende-post-publication-qa
+  cancel-in-progress: true
+
 jobs:
   live-qa:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: {ref: main, fetch-depth: 0}
+        with:
+          ref: main
+          fetch-depth: 0
       - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
-      - name: Live technical QA of frontpage and recent articles
-        run: python scripts/live_recent_qa.py --recent-hours 24 --report reports/qa/live-latest.md
+        with:
+          python-version: '3.12'
+      - name: Live text, rendering and internal-link QA
+        run: python scripts/live_recent_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-latest.md
+      - name: Live image and graphics QA
+        run: python scripts/live_visual_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-visual-latest.md
