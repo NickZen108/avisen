@@ -1,5 +1,5 @@
 {
-  "status": "scheduled",
+  "status": "published",
   "story_id": "2026-08-30-guide-staerkere-login",
   "slug": "2026-08-30-guide-staerkere-login",
   "category": "Guide",
@@ -7,7 +7,7 @@
   "title": "Guide: Et stærkere login uden password-akrobatik",
   "standfirst": "Længde slår tvungne specialtegn, og et kodeord alene beskytter ikke mod phishing. Her er en enkel opskrift baseret på NIST og CISA.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-08-30T11:38:30Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-08-30-guide-staerkere-login.json",
@@ -88,5 +88,5 @@
   "related": [],
   "correction_note": null,
   "scheduled_for": "2026-08-30T11:00:00Z",
-  "released_from_schedule_at": null
+  "released_from_schedule_at": "2026-08-30T11:38:30Z"
 }
