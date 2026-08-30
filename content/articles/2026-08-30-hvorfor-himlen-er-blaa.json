@@ -1,5 +1,5 @@
 {
-  "status": "scheduled",
+  "status": "published",
   "story_id": "2026-08-30-hvorfor-himlen-er-blaa",
   "slug": "2026-08-30-hvorfor-himlen-er-blaa",
   "category": "Videnskab",
@@ -7,7 +7,7 @@
   "title": "Derfor er himlen blå – og solnedgangen rød",
   "standfirst": "Det samme sollys kan give en blå middagshimmel og en rød solnedgang. Forklaringen ligger i lysets bølgelængder og den vej, det tager gennem atmosfæren.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-08-30T11:38:30Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-08-30-hvorfor-himlen-er-blaa.json",
@@ -76,5 +76,5 @@
   "related": [],
   "correction_note": null,
   "scheduled_for": "2026-08-30T10:30:00Z",
-  "released_from_schedule_at": null
+  "released_from_schedule_at": "2026-08-30T11:38:30Z"
 }
