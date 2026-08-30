@@ -18,12 +18,12 @@
     "canonical": null
   },
   "image": {
-    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/sollys-hero.svg",
-    "alt": "Blå himmel med gyldent sollys og rød-orange solnedgang over en fjern horisont",
-    "credit": "Morgentidende",
-    "license": "Morgentidende",
-    "source_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/sollys-hero.svg",
-    "image_type": "illustration",
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_with_blue_sky.jpg",
+    "alt": "Blå himmel, der går over i varme orange og røde farver ved solnedgang over horisonten",
+    "credit": "Aman kumar yadav / Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sunset_with_blue_sky.jpg",
+    "image_type": "photo",
     "placement": "lead"
   },
   "body": [
