@@ -18,11 +18,11 @@
     "canonical": null
   },
   "image": {
-    "src": "../img/sollys-hero.svg",
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/sollys-hero.svg",
     "alt": "Blå himmel med gyldent sollys og rød-orange solnedgang over en fjern horisont",
     "credit": "Morgentidende",
     "license": "Morgentidende",
-    "source_url": null,
+    "source_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/sollys-hero.svg",
     "image_type": "illustration",
     "placement": "lead"
   },
