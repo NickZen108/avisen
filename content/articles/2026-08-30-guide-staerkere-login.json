@@ -22,7 +22,14 @@
     "description": "Praktisk guide til stærkere login baseret på NIST og CISA: lange passwords, MFA og phishing-resistente passkeys.",
     "canonical": null
   },
-  "image": null,
+  "image": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer_keyboard.jpg",
+    "alt": "Sort computertastatur",
+    "credit": "Joe lope / Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Computer_keyboard.jpg",
+    "image_type": "photo"
+  },
   "body": [
     {
       "type": "p",
