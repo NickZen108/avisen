@@ -1,0 +1,67 @@
+{
+  "story_id": "2026-08-30-publiceringsmotor-self-test",
+  "article_slug": "2026-08-30-publiceringsmotor-self-test",
+  "assignment": {
+    "category": "Nyhed",
+    "weight": "D",
+    "core_question": "Kan Morgentidendes newsroom-pipeline skrive, QA-teste og auto-merge en rigtig struktureret artikel?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "GitHub PR #8 og Actions-log for connector self-test",
+      "url": "https://github.com/NickZen108/avisen/pull/8",
+      "published_at": "2026-08-30T09:35:26Z",
+      "accessed_at": "2026-08-30T09:36:00Z",
+      "type": "primary",
+      "source_group": "github-pr-8",
+      "authoritative_for": "PR-status, merge-status og den testede newsroom-pipeline i NickZen108/avisen"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "PR #8 blev auto-merget af github-actions[bot] efter en succesfuld Quality gates-kørsel.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "github-pr-8"
+      ],
+      "checked_at": "2026-08-30T09:36:00Z",
+      "notes": "Verificeret direkte i GitHub PR- og workflowdata."
+    },
+    {
+      "id": "F02",
+      "claim": "Selvtesten omfattede branch-oprettelse, filskrivning, pull request, quality gates og auto-merge.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "github-pr-8"
+      ],
+      "checked_at": "2026-08-30T09:36:00Z",
+      "notes": "Verificeret direkte i repo- og workflowdata."
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-08-30T09:36:00Z",
+    "notes": [
+      "Teknisk selvtest; primærkilden er repoets egne GitHub-data."
+    ]
+  }
+}
