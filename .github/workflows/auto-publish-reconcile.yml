@@ -88,15 +88,18 @@ jobs:
             done <<< "$ARTICLE_FILES"
             [ "$BLOCKED" = false ] || continue
 
-            RUNS=$(gh api -X GET "/repos/${GITHUB_REPOSITORY}/actions/workflows/quality-gates.yml/runs"               -f event='pull_request' -f branch="$HEAD_REF" -f per_page=50)
-            PASSED=$(printf '%s' "$RUNS" | jq -r --arg sha "$HEAD_SHA"               '[.workflow_runs[] | select(.head_sha == $sha and .status == "completed" and .conclusion == "success")] | length')
-            [ "$PASSED" -gt 0 ] || continue
-
             if [ "$BASE_SHA" != "$CURRENT_MAIN" ]; then
-              echo "PR #$NUMBER er bag main; opdaterer branch og kræver ny Quality gate"
-              gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/update-branch"                 -f expected_head_sha="$HEAD_SHA"
+              echo "PR #$NUMBER er bag main; opdaterer branch og dispatcher ny Quality gate"
+              gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/update-branch" -f expected_head_sha="$HEAD_SHA"
+              NEW_SHA=$(gh api "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}" --jq '.head.sha')
+              gh workflow run quality-gates.yml --ref "$HEAD_REF"
+              echo "Ny head er $NEW_SHA; Quality gates er eksplicit startet"
               exit 0
             fi
+
+            RUNS=$(gh api -X GET "/repos/${GITHUB_REPOSITORY}/actions/workflows/quality-gates.yml/runs" -f branch="$HEAD_REF" -f per_page=50)
+            PASSED=$(printf '%s' "$RUNS" | jq -r --arg sha "$HEAD_SHA"               '[.workflow_runs[] | select(.head_sha == $sha and .status == "completed" and .conclusion == "success")] | length')
+            [ "$PASSED" -gt 0 ] || continue
 
             echo "Reconciler merger PR #$NUMBER ved testet SHA $HEAD_SHA"
             MERGE=$(gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/merge"               -f merge_method='squash'               -f sha="$HEAD_SHA"               -f commit_title="$TITLE")
