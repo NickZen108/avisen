@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+<title id="t">Hvorfor himlen er blå om dagen og solnedgangen rød</title><desc id="d">To pædagogiske paneler viser Rayleigh-spredning om dagen og ved solnedgang.</desc>
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfeaff"/><stop offset="1" stop-color="#f7fbff"/></linearGradient>
+ <linearGradient id="sunset" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff0cf"/><stop offset="1" stop-color="#dfefff"/></linearGradient>
+ <marker id="arrB" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#1877d2"/></marker>
+ <marker id="arrR" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#e5532d"/></marker>
+ <style>.h{font:700 30px Arial,sans-serif;fill:#15253b}.l{font:600 19px Arial,sans-serif;fill:#1d2a39}.s{font:16px Arial,sans-serif;fill:#34495e}.b{fill:#1877d2}.r{fill:#e5532d}.box{fill:#fffdf8;stroke:#c8d5df;stroke-width:2}</style>
+</defs>
+<rect width="1200" height="900" fill="#f7f2e8"/>
+<text x="60" y="62" class="h">Hvorfor himlen er blå – og solnedgangen rød</text>
+<rect x="45" y="90" width="1110" height="345" rx="24" fill="url(#sky)" stroke="#c3d8e8" stroke-width="2"/>
+<text x="75" y="132" class="h" font-size="26">1. Om dagen: det blå lys spredes mest</text>
+<circle cx="145" cy="215" r="48" fill="#ffd34e" stroke="#f2b632" stroke-width="5"/>
+<g stroke="#f2b632" stroke-width="4"><line x1="145" y1="148" x2="145" y2="130"/><line x1="93" y1="165" x2="78" y2="151"/><line x1="197" y1="165" x2="212" y2="151"/><line x1="78" y1="215" x2="58" y2="215"/><line x1="212" y1="215" x2="232" y2="215"/></g>
+<text x="85" y="292" class="l">Sollys</text>
+<path d="M195 220 L530 285" stroke="#fff" stroke-width="42" opacity=".9"/>
+<path d="M195 211 L530 276" stroke="#7b5dc7" stroke-width="4"/><path d="M195 218 L530 283" stroke="#287bd1" stroke-width="4"/><path d="M195 225 L530 290" stroke="#39a96b" stroke-width="4"/><path d="M195 232 L530 297" stroke="#f0b73d" stroke-width="4"/><path d="M195 239 L530 304" stroke="#e85d3f" stroke-width="4"/>
+<path d="M360 386 Q595 170 895 220 Q1030 245 1120 330" fill="none" stroke="#8cc8f2" stroke-width="65" opacity=".42"/>
+<text x="755" y="174" class="s">Atmosfæren består af molekyler,</text><text x="755" y="196" class="s">som kan sprede sollyset.</text>
+<g fill="#86bff0" stroke="#4b95d0"><circle cx="535" cy="288" r="7"/><circle cx="560" cy="300" r="6"/><circle cx="510" cy="310" r="5"/><circle cx="590" cy="270" r="5"/><circle cx="620" cy="310" r="5"/></g>
+<g stroke="#1877d2" stroke-width="4" marker-end="url(#arrB)"><line x1="545" y1="292" x2="545" y2="225"/><line x1="548" y1="295" x2="610" y2="235"/><line x1="550" y1="300" x2="640" y2="300"/><line x1="548" y1="305" x2="615" y2="355"/><line x1="535" y1="306" x2="535" y2="375"/><line x1="528" y1="303" x2="465" y2="350"/><line x1="525" y1="295" x2="460" y2="250"/></g>
+<path d="M535 305 C650 330 770 340 890 350" stroke="#e5532d" stroke-width="5" fill="none" marker-end="url(#arrR)"/><path d="M535 296 C650 316 770 325 890 333" stroke="#efb440" stroke-width="5" fill="none"/>
+<text x="680" y="270" class="l b">Korte blå bølgelængder</text><text x="680" y="294" class="l b">spredes i mange retninger</text>
+<text x="725" y="380" class="l r">Rødt lys spredes mindre</text>
+<circle cx="1010" cy="335" r="14" fill="#c58b62"/><path d="M995 350 L1025 350 L1038 408 L982 408 Z" fill="#254b72"/><line x1="1000" y1="408" x2="992" y2="426" stroke="#263238" stroke-width="8"/><line x1="1020" y1="408" x2="1028" y2="426" stroke="#263238" stroke-width="8"/>
+<text x="930" y="292" class="l">Øjet modtager</text><text x="930" y="315" class="l b">blåt lys fra hele himlen</text>
+<rect x="45" y="460" width="1110" height="390" rx="24" fill="url(#sunset)" stroke="#e1cdb8" stroke-width="2"/>
+<text x="75" y="505" class="h" font-size="26">2. Ved solnedgang: lyset går en længere vej</text>
+<path d="M75 785 Q590 600 1125 785" fill="#c9d9c0" stroke="#8cab7a" stroke-width="3"/>
+<path d="M80 745 Q600 500 1120 745" fill="none" stroke="#a8d7f5" stroke-width="70" opacity=".40"/>
+<circle cx="135" cy="690" r="45" fill="#ffb33f" stroke="#ee7c32" stroke-width="5"/>
+<text x="72" y="760" class="l">Solen står lavt</text>
+<path d="M180 686 C420 650 720 650 1015 700" stroke="#7b5dc7" stroke-width="4" fill="none"/><path d="M180 692 C420 660 720 660 1015 705" stroke="#287bd1" stroke-width="4" fill="none"/><path d="M180 698 C420 670 720 670 1015 710" stroke="#f0b73d" stroke-width="5" fill="none"/><path d="M180 705 C420 680 720 680 1015 718" stroke="#e5532d" stroke-width="8" fill="none" marker-end="url(#arrR)"/>
+<g stroke="#1877d2" stroke-width="3" marker-end="url(#arrB)" opacity=".9"><line x1="420" y1="666" x2="390" y2="605"/><line x1="500" y1="663" x2="520" y2="595"/><line x1="590" y1="665" x2="555" y2="610"/><line x1="690" y1="670" x2="710" y2="605"/><line x1="785" y1="680" x2="820" y2="625"/></g>
+<text x="370" y="555" class="l b">Meget af det blå lys spredes væk undervejs</text>
+<text x="610" y="750" class="l r">Mere rødt og orange lys fortsætter mod øjet</text>
+<circle cx="1045" cy="710" r="14" fill="#c58b62"/><path d="M1030 725 L1060 725 L1074 793 L1016 793 Z" fill="#254b72"/>
+<rect x="75" y="535" width="250" height="105" rx="14" class="box"/><text x="92" y="565" class="s">Rayleigh-spredning:</text><text x="92" y="590" class="s">korte bølgelængder spredes</text><text x="92" y="615" class="s">mere end lange bølgelængder.</text>
+<text x="75" y="833" class="s">Illustration: Morgentidende · skematisk og ikke målfast</text>
+</svg>
