@@ -20,6 +20,10 @@ jobs:
           github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
       - name: Guard newsroom PR and merge tested SHA
         env:
           GH_TOKEN: ${{ github.token }}
@@ -88,6 +92,15 @@ jobs:
             echo "$BAD"
             exit 1
           fi
+
+          ARTICLE_FILES=$(printf '%s' "$FILES" | jq -r '.[] | select(.filename | startswith("content/articles/")) | .filename')
+          while IFS= read -r ARTICLE; do
+            [ -z "$ARTICLE" ] && continue
+            if jq -e '.manual_review == true' "$ARTICLE" >/dev/null; then
+              echo "STOP: $ARTICLE kræver manuel review og må ikke autopubliceres"
+              exit 1
+            fi
+          done <<< "$ARTICLE_FILES"
 
           echo "Merging PR #${NUMBER} at tested SHA ${TESTED_SHA}"
           gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/merge" \
