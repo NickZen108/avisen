@@ -13,7 +13,6 @@ import mimetypes
 import re
 import time
 import urllib.error
-import urllib.parse
 import urllib.request
 from pathlib import Path
 from urllib.parse import urlparse
@@ -23,8 +22,15 @@ DOCS = ROOT / "docs"
 CACHE = DOCS / "img" / "cache"
 MANIFEST = CACHE / "manifest.json"
 PUBLIC_BASE = "https://morgentidende.nicolaipetersen108.workers.dev"
-UA = "MorgentidendeImageCache/1.1 (+https://morgentidende.nicolaipetersen108.workers.dev/)"
+UA = "MorgentidendeImageCache/1.2 (+https://morgentidende.nicolaipetersen108.workers.dev/)"
 IMG_RE = re.compile(r'<img\b[^>]*\bsrc=["\'](https?://[^"\']+)["\']', re.I)
+
+# Grandfathered hand-written pages can contain old image URLs that no longer
+# exist. Repair them in generated/public HTML without pretending the old URL is
+# healthy. New structured articles must instead be fixed in canonical content.
+LEGACY_REPLACEMENTS = {
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Grubenhaus_Warendorf.jpg": "../img/soften.svg",
+}
 
 EXT_BY_TYPE = {
     "image/jpeg": ".jpg",
@@ -73,9 +79,6 @@ def plausible_image(content_type: str, body: bytes) -> bool:
 
 
 def origin_request_url(url: str) -> str:
-    # Wikimedia explicitly supports a width parameter on Special:FilePath and
-    # redirects to a thumbnail. This is friendlier than repeatedly fetching
-    # multi-megabyte originals and materially reduces 429/rate-limit risk.
     if "commons.wikimedia.org/wiki/Special:FilePath/" in url and "width=" not in url:
         separator = "&" if "?" in url else "?"
         return url + separator + "width=1600"
@@ -114,10 +117,23 @@ def html_files() -> list[Path]:
     return [p for p in files if p.exists()]
 
 
+def repair_legacy_html(pages: list[Path]) -> None:
+    for page in pages:
+        text = page.read_text(encoding="utf-8")
+        changed = text
+        for source, replacement in LEGACY_REPLACEMENTS.items():
+            changed = changed.replace(source, replacement)
+        if changed != text:
+            page.write_text(changed, encoding="utf-8")
+            print(f"repaired legacy image reference in {page.relative_to(ROOT)}")
+
+
 def main() -> int:
     CACHE.mkdir(parents=True, exist_ok=True)
     manifest = load_manifest()
     pages = html_files()
+    repair_legacy_html(pages)
+
     sources: list[str] = []
     seen: set[str] = set()
     for page in pages:
@@ -157,7 +173,6 @@ def main() -> int:
 
     MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    # Rewrite only generated output. Canonical editorial JSON is untouched.
     for page in pages:
         text = page.read_text(encoding="utf-8")
         changed = text
