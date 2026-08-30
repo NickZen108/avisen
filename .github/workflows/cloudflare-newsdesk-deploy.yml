@@ -29,3 +29,21 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: '4.127.1'
           command: deploy --config cloudflare/newsdesk/wrangler.jsonc
+
+      - name: Smoke-test health and candidates
+        run: |
+          set -euo pipefail
+          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          for i in 1 2 3 4 5 6; do
+            if curl --fail --silent --show-error "$BASE/health" -o /tmp/health.json && \
+               curl --fail --silent --show-error "$BASE/candidates" -o /tmp/candidates.json; then
+              break
+            fi
+            sleep 5
+          done
+          jq -e '.ok == true and .runtime == "cloudflare-workers" and .service == "morgentidende-newsdesk"' /tmp/health.json >/dev/null
+          jq -e '.runtime == "cloudflare-workers" and (.signals | type == "array") and (.feeds | type == "array") and (.fingerprint | type == "string")' /tmp/candidates.json >/dev/null
+          echo "Health:"
+          jq '{ok,runtime,signal_count,latest_generated_at,last_attempt_at}' /tmp/health.json
+          echo "Candidates:"
+          jq '{runtime,generated_at,signal_count,feeds,fingerprint}' /tmp/candidates.json
