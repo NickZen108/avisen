@@ -1,6 +1,11 @@
 # Rapporter
 
 Daglig: `reports/daily/YYYY-MM-DD.md`  
-Ugentlig: `reports/weekly/YYYY-Www.md`
+Ugentlig: `reports/weekly/YYYY-Www.md`  
+Teknisk/live QA: `reports/qa/`
 
-Indtil Plausible eller GA er koblet på GitHub Pages, er sidesvisninger **ikke** tilgængelige. Rapporten må ikke opfinde trafiktal. Den måler i stedet: publicerede stykker, søgbarhed, omtaler og X.
+Rapporter må kun bruge data, der faktisk findes. Indtil analytics er koblet på, skrives `analytics: UNAVAILABLE`; sidevisninger, retention og læsertal må ikke estimeres eller opfindes.
+
+Daglig rapport måler bl.a. publiceringer, A/B/C/D, kategori-mix, killed/hold, dubletter/updates, corrections, QA-fejl og manual review.
+
+Ugentlig rapport ser efter systematiske mønstre: corrections pr. 100 stykker, kildediversitet, originalitet, stofmix, kommentardel, story clusters og analytics/nyhedsbrev når data findes.
