@@ -1,5 +1,5 @@
 {
-  "status": "scheduled",
+  "status": "published",
   "story_id": "2026-08-30-apollo-11-otte-dage",
   "slug": "2026-08-30-apollo-11-otte-dage",
   "category": "Historie",
@@ -7,7 +7,7 @@
   "title": "Apollo 11: Otte dage fra Florida til Månen og hjem igen",
   "standfirst": "Tre astronauter lettede 16. juli 1969. Fire dage senere gik to af dem på Månen. Den 24. juli var besætningen tilbage på Jorden.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-08-30T13:28:42Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-08-30-apollo-11-otte-dage.json",
@@ -80,5 +80,5 @@
   "related": [],
   "correction_note": null,
   "scheduled_for": "2026-08-30T12:00:00Z",
-  "released_from_schedule_at": null
+  "released_from_schedule_at": "2026-08-30T13:28:42Z"
 }
