@@ -22,7 +22,8 @@ AI bruges kun til det, scripts ikke bør foregive at kunne: nyhedsværdi, resear
 8. Merge til `main` udløser `Build structured edition`, som genererer `docs/` fra canonical struktureret indhold.
 9. Alle workflows der skriver til `main`, bruger samme concurrency-lock, så scan, kø, publish, QA og rollback ikke kan overskrive hinanden.
 10. `Post-deploy guard` giver GitHub Pages tid til at deploye og tester derefter tre gange. Kun ved vedvarende **interne** fejl kan det seneste genererede publisher-commit rulles tilbage. Tredjepartsbilleder kan give advarsel, men aldrig automatisk rollback.
-11. `Post-publication QA` kører fortsat hver time og skriver live-rapport.
+11. `Release scheduled articles` kører fire gange i timen og frigiver kun canonical artikler med `status: scheduled`, et nået `scheduled_for`, fuldt bestået QA og `manual_review: false`. Ved frigivelse sættes den faktiske `published_at`; derefter bygger den normale publisher live-output.
+12. `Post-publication QA` kører fortsat hver time og skriver live-rapport.
 
 ## Hvad GitHub Actions ikke må gøre i gratis fase
 
@@ -32,6 +33,7 @@ AI bruges kun til det, scripts ikke bør foregive at kunne: nyhedsværdi, resear
 - masseproducere fyldartikler
 - auto-merge system-, design-, workflow-, template- eller scriptændringer
 - auto-publicere `manual_review: true`
+- frigive en planlagt artikel før `scheduled_for` eller uden bestået fact check
 
 ## Auto-publish allowlist
 
