@@ -1,1 +1,80 @@
-{"pipeline_version":2,"status":"ready","release_requested":true,"story_id":"2026-08-30-island-eu-referendum","slug":"2026-08-30-island-afviser-eu-forhandlinger","category":"Udland","weight":"B","title":"Island siger nej til nye EU-forhandlinger","standfirst":"52,8 procent stemte nej til at genoptage Islands EU-optagelsesforhandlinger, mens 47,2 procent stemte ja. Valgdeltagelsen var 82,5 procent.","byline":"Morgentidende Redaktion","published_at":null,"updated_at":null,"manual_review":false,"ledger":"sources/2026-08-30-island-afviser-eu-forhandlinger.json","claim_ids":["F01","F02","F03","F04","F05","F06","F07"],"seo":{"title":"Island siger nej til nye EU-forhandlinger","description":"52,8 procent af de islandske vælgere afviste at genoptage EU-optagelsesforhandlingerne. Fiskeri, selvbestemmelse, økonomi og sikkerhed fyldte i debatten.","canonical":null},"image":null,"body":[{"type":"p","text":"Islandske vælgere har afvist at genoptage landets optagelsesforhandlinger med EU. Nej-siden fik 52,8 procent af stemmerne mod 47,2 procent til ja-siden, og 82,5 procent af de stemmeberettigede deltog."},{"type":"p","text":"Afstemningen handlede ikke om at melde Island ind i EU her og nu. Spørgsmålet var, om landet skulle genoptage optagelsesforhandlingerne, og resultatet var rådgivende."},{"type":"h2","text":"Fiskeri og selvbestemmelse fyldte på nej-siden"},{"type":"p","text":"Modstanderne fremhævede især kontrollen med Islands fiskeri og landets selvbestemmelse. Fiskeriet er en central del af islandsk økonomi og identitet, og bekymring for EU's fælles fiskeripolitik var et af de vigtigste argumenter mod nye forhandlinger."},{"type":"h2","text":"Ja-siden pegede på økonomi og tættere europæiske bånd"},{"type":"p","text":"Tilhængerne argumenterede blandt andet for, at et tættere forhold til EU og på sigt mulig brug af euroen kunne give større økonomisk stabilitet og lavere renter. De pegede også på sikkerhed og tættere europæisk samarbejde som argumenter for at genåbne forhandlingerne."},{"type":"p","text":"Premierminister Kristrún Frostadóttir har efter resultatet sagt, at regeringen vil respektere afgørelsen og ikke gå videre med EU-sporet i den nuværende regeringsperiode. Regeringen vil i stedet fokusere på Islands eksisterende forhold til EU gennem EØS-aftalen."},{"type":"p","text":"Island søgte om EU-medlemskab i 2009 efter finanskrisen. Forhandlingerne blev senere standset."}],"source_ids_to_display":["S1","S2","S3","S4"],"related_news_slug":null,"related":[],"correction_note":null,"scheduled_for":null,"released_from_schedule_at":null}
+{
+  "pipeline_version": 2,
+  "status": "published",
+  "release_requested": false,
+  "story_id": "2026-08-30-island-eu-referendum",
+  "slug": "2026-08-30-island-afviser-eu-forhandlinger",
+  "category": "Udland",
+  "weight": "B",
+  "title": "Island siger nej til nye EU-forhandlinger",
+  "standfirst": "52,8 procent stemte nej til at genoptage Islands EU-optagelsesforhandlinger, mens 47,2 procent stemte ja. Valgdeltagelsen var 82,5 procent.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": "2026-08-30T18:16:10Z",
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-08-30-island-afviser-eu-forhandlinger.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "F07"
+  ],
+  "seo": {
+    "title": "Island siger nej til nye EU-forhandlinger",
+    "description": "52,8 procent af de islandske vælgere afviste at genoptage EU-optagelsesforhandlingerne. Fiskeri, selvbestemmelse, økonomi og sikkerhed fyldte i debatten.",
+    "canonical": null
+  },
+  "image": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "Islandske vælgere har afvist at genoptage landets optagelsesforhandlinger med EU. Nej-siden fik 52,8 procent af stemmerne mod 47,2 procent til ja-siden, og 82,5 procent af de stemmeberettigede deltog."
+    },
+    {
+      "type": "p",
+      "text": "Afstemningen handlede ikke om at melde Island ind i EU her og nu. Spørgsmålet var, om landet skulle genoptage optagelsesforhandlingerne, og resultatet var rådgivende."
+    },
+    {
+      "type": "h2",
+      "text": "Fiskeri og selvbestemmelse fyldte på nej-siden"
+    },
+    {
+      "type": "p",
+      "text": "Modstanderne fremhævede især kontrollen med Islands fiskeri og landets selvbestemmelse. Fiskeriet er en central del af islandsk økonomi og identitet, og bekymring for EU's fælles fiskeripolitik var et af de vigtigste argumenter mod nye forhandlinger."
+    },
+    {
+      "type": "h2",
+      "text": "Ja-siden pegede på økonomi og tættere europæiske bånd"
+    },
+    {
+      "type": "p",
+      "text": "Tilhængerne argumenterede blandt andet for, at et tættere forhold til EU og på sigt mulig brug af euroen kunne give større økonomisk stabilitet og lavere renter. De pegede også på sikkerhed og tættere europæisk samarbejde som argumenter for at genåbne forhandlingerne."
+    },
+    {
+      "type": "p",
+      "text": "Premierminister Kristrún Frostadóttir har efter resultatet sagt, at regeringen vil respektere afgørelsen og ikke gå videre med EU-sporet i den nuværende regeringsperiode. Regeringen vil i stedet fokusere på Islands eksisterende forhold til EU gennem EØS-aftalen."
+    },
+    {
+      "type": "p",
+      "text": "Island søgte om EU-medlemskab i 2009 efter finanskrisen. Forhandlingerne blev senere standset."
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-08-30T18:16:10Z"
+  }
+}
