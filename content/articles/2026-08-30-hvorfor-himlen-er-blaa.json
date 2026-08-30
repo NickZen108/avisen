@@ -8,37 +8,98 @@
   "standfirst": "Det samme sollys kan give en blå middagshimmel og en rød solnedgang. Forklaringen ligger i lysets bølgelængder og den vej, det tager gennem atmosfæren.",
   "byline": "Morgentidende Redaktion",
   "published_at": "2026-08-30T11:38:30Z",
-  "updated_at": null,
+  "updated_at": "2026-08-30T13:36:00Z",
   "manual_review": false,
   "ledger": "sources/2026-08-30-hvorfor-himlen-er-blaa.json",
-  "claim_ids": ["F01", "F02", "F03"],
+  "claim_ids": ["F01", "F02", "F03", "F04"],
   "seo": {
     "title": "Hvorfor er himlen blå og solnedgangen rød?",
     "description": "En kort videnskabelig forklaring på Rayleigh-spredning, blå himmel og røde solnedgange.",
     "canonical": null
   },
   "image": {
-    "src": "https://nickzen108.github.io/avisen/img/morgentidende-sollys.svg",
-    "alt": "Pædagogisk illustration i to paneler: om dagen spredes blåt lys i atmosfæren, mens mere rødt og orange lys når øjet ved solnedgang",
+    "src": "https://nickzen108.github.io/avisen/img/himmel-blaa-forklaring.svg",
+    "alt": "Pædagogisk illustration af hvordan korte blå bølgelængder spredes i atmosfæren",
     "credit": "Morgentidende",
     "license": "Morgentidende",
-    "source_url": "https://nickzen108.github.io/avisen/img/morgentidende-sollys.svg",
-    "image_type": "illustration"
+    "source_url": "https://nickzen108.github.io/avisen/img/himmel-blaa-forklaring.svg",
+    "image_type": "illustration",
+    "placement": "inline"
   },
   "body": [
-    {"type":"p","text":"Solen sender ikke et særligt blåt lys ned over os. Det synlige sollys rummer hele farvespektret. Når lyset rammer Jordens atmosfære, møder det molekyler og små partikler, som kan sprede lyset i andre retninger."},
-    {"type":"h2","text":"De korte bølger spredes mest"},
-    {"type":"p","text":"Blåt lys har kortere bølgelængde end rødt lys. De små molekyler i luften spreder de korte bølgelængder mere effektivt end de lange. Derfor kommer der relativt meget blåt, spredt lys til vores øjne fra alle retninger på en klar dag."},
-    {"type":"p","text":"Fænomenet kaldes Rayleigh-spredning. Det beskriver netop, hvordan lys spredes af partikler, der er små sammenlignet med lysets bølgelængde."},
-    {"type":"h2","text":"Hvorfor bliver aftenen rød?"},
-    {"type":"p","text":"Når Solen står lavt, skal lyset gennem en længere strækning af atmosfæren, før det når øjet. Undervejs bliver en større del af de korte, blå bølgelængder spredt væk fra den direkte synslinje. Det lys, der fortsætter direkte mod os, er derfor relativt rigere på røde og orange bølgelængder."},
-    {"type":"p","text":"Støv, små partikler og dråber i luften samt skyer kan ændre farvernes styrke og udseende, så to solnedgange ikke behøver ligne hinanden."},
-    {"type":"h2","text":"Grafikken"},
-    {"type":"p","text":"Artiklens grafik er en skematisk illustration af Rayleigh-spredning. Den er ikke et fotografi af en konkret atmosfærisk hændelse."}
+    {
+      "type": "p",
+      "text": "Solen sender ikke et særligt blåt lys ned over os. Det synlige sollys rummer hele farvespektret. Når lyset rammer Jordens atmosfære, møder det molekyler og små partikler, som kan sprede lyset i andre retninger."
+    },
+    {
+      "type": "h2",
+      "text": "De korte bølger spredes mest"
+    },
+    {
+      "type": "p",
+      "text": "Blåt lys har kortere bølgelængde end rødt lys. De små molekyler i luften spreder de korte bølgelængder mere effektivt end de lange. Derfor kommer der relativt meget blåt, spredt lys til vores øjne fra alle retninger på en klar dag."
+    },
+    {
+      "type": "figure",
+      "src": "../img/himmel-blaa-forklaring.svg",
+      "alt": "Sollys rammer atmosfæren, hvor blå bølgelængder spredes i mange retninger, mens rødt og orange lys spredes mindre",
+      "caption": "Om dagen spredes især de korte blå bølgelængder i mange retninger.",
+      "credit": "Morgentidende",
+      "wide": true
+    },
+    {
+      "type": "p",
+      "text": "Fænomenet kaldes Rayleigh-spredning. Det er opkaldt efter den britiske fysiker Lord Rayleigh, hvis borgerlige navn var John William Strutt. Han arbejdede i 1800-tallet med, hvordan lys spredes, og hans navn hænger derfor fast ved netop denne forklaring. Udtrykket beskriver den type spredning, der opstår, når lyset møder partikler, som er meget mindre end lysets bølgelængde. Det er altså navnet på en fysisk mekanisme, ikke på en særlig slags lys."
+    },
+    {
+      "type": "h2",
+      "text": "Hvorfor bliver aftenen rød?"
+    },
+    {
+      "type": "p",
+      "text": "Når Solen står lavt, skal lyset gennem en længere strækning af atmosfæren, før det når øjet. Undervejs bliver en større del af de korte, blå bølgelængder spredt væk fra den direkte synslinje. Det lys, der fortsætter direkte mod os, er derfor relativt rigere på røde og orange bølgelængder."
+    },
+    {
+      "type": "figure",
+      "src": "../img/solnedgang-roed-forklaring.svg",
+      "alt": "Når Solen står lavt, passerer lyset gennem mere atmosfære, så blåt lys spredes væk og mere rødt og orange lys når øjet",
+      "caption": "Ved solnedgang går lyset en længere vej gennem atmosfæren, så mere af det blå lys spredes væk undervejs.",
+      "credit": "Morgentidende",
+      "wide": true
+    },
+    {
+      "type": "p",
+      "text": "Støv, små partikler og dråber i luften samt skyer kan ændre farvernes styrke og udseende, så to solnedgange ikke behøver ligne hinanden. Grundmekanismen er dog den samme: jo længere vej sollyset har gennem atmosfæren, desto mere af det blå lys kan nå at blive spredt væk."
+    }
   ],
-  "source_ids_to_display": ["S1", "S2"],
+  "source_ids_to_display": ["S1", "S2", "S3"],
   "related_news_slug": null,
-  "related": [],
+  "related": [
+    {
+      "slug": "2026-08-30-solsystemet-i-tal",
+      "category": "Videnskab",
+      "title": "Solsystemet i tal",
+      "teaser": "Fra Merkur til Neptun: sådan gør den astronomiske enhed de enorme afstande lettere at forstå.",
+      "image_src": "../img/planeter-au-forklaring.svg",
+      "image_alt": "Grafik over planeternes afstande målt i astronomiske enheder"
+    },
+    {
+      "slug": "2026-08-30-apollo-11-otte-dage",
+      "category": "Historie",
+      "title": "Apollo 11: Otte dage til Månen og hjem",
+      "teaser": "Tidslinjen fra opsendelsen 16. juli 1969 til hjemkomsten otte kalenderdage senere.",
+      "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+      "image_alt": "Saturn V-raketten med Apollo 11 ved opsendelsen"
+    },
+    {
+      "slug": "2026-08-30-guide-staerkere-login",
+      "category": "Guide",
+      "title": "Et stærkere login uden password-akrobatik",
+      "teaser": "Lange, unikke kodeord, flerfaktorlogin og passkeys forklaret enkelt.",
+      "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer_keyboard.jpg",
+      "image_alt": "Sort computertastatur"
+    }
+  ],
   "correction_note": null,
   "scheduled_for": "2026-08-30T10:30:00Z",
   "released_from_schedule_at": "2026-08-30T11:38:30Z"
