@@ -8,11 +8,20 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: morgentidende-main-writes
+  cancel-in-progress: false
+
 jobs:
   live-qa:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Sync main
+        run: git pull --ff-only origin main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
