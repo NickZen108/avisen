@@ -135,6 +135,28 @@ def build_article(path: Path) -> None:
         related_teaser = f'<aside class="related-teaser"><strong>Relateret:</strong> <a href="{esc(article["related_news_slug"])}.html">Læs den faktuelle nyhedsartikel</a></aside>'
     og_image = f'<meta property="og:image" content="{esc(image["src"])}">' if image and image.get("src") else ""
 
+    article_image_html = ""
+    if image and image.get("src"):
+        image_type_labels = {"photo": "Foto", "graphic": "Grafik", "illustration": "Illustration"}
+        image_label = image_type_labels.get(image.get("image_type"), "Billede")
+        credit = esc(image.get("credit", ""))
+        license_label = esc(image.get("license", ""))
+        source_url = image.get("source_url")
+        if source_url:
+            credit_html = f'<a href="{esc(source_url)}" rel="nofollow noopener">{credit}</a>'
+        else:
+            credit_html = credit
+        caption_bits = [f"{image_label}: {credit_html}"] if credit_html else [image_label]
+        if license_label:
+            caption_bits.append(license_label)
+        caption = " · ".join(caption_bits)
+        article_image_html = (
+            '<figure class="lead-fig">'
+            f'<img src="{esc(image["src"])}" alt="{esc(image.get("alt", ""))}" style="height:auto;max-height:none;object-fit:contain">'
+            f'<figcaption>{caption}</figcaption>'
+            '</figure>'
+        )
+
     replacements = {
         "{{SOURCE_PATH}}": esc(path.relative_to(ROOT)),
         "{{PAGE_TITLE}}": esc(page_title),
@@ -150,6 +172,7 @@ def build_article(path: Path) -> None:
         "{{PUBLISHED_LABEL}}": esc(dk_label(article["published_at"])),
         "{{UPDATED_LABEL}}": updated_label,
         "{{BYLINE}}": esc(article.get("byline", "Morgentidende Redaktion")),
+        "{{ARTICLE_IMAGE_HTML}}": article_image_html,
         "{{BODY_HTML}}": render_blocks(article.get("body", [])),
         "{{SOURCES_HTML}}": source_html(article, ledger),
         "{{CORRECTION_HTML}}": correction_html,
