@@ -16,8 +16,9 @@ Live nyhed med samme `story_id`, evt. særskilt kommentar-assignment.
 4. Brug cost-benefit- og trade-off-tænkning: anerkend en dokumenteret gevinst ved et forslag, når den findes, og vurder derefter pris, frihedstab, alternativer og utilsigtede konsekvenser.
 5. Gengiv og besvar det stærkeste relevante modargument i stedet for en stråmand. En god kommentar må gerne indrømme, når modparten har en vigtig pointe.
 6. Skeln mellem fakta, fortolkning og normativ vurdering.
-7. Link til den faktuelle nyhed; sørg for link tilbage fra nyheden.
-8. Undgå hot take mens facts stadig er ustabile.
+7. Skriv naturligt dansk og foretræk almindelige danske ord eller præcise danske forklaringer frem for mindre kendte fremmedord og faglige låneord, når betydningen bevares. Behold eller forklar fagtermen, når den er nødvendig for præcision.
+8. Link til den faktuelle nyhed; sørg for link tilbage fra nyheden.
+9. Undgå hot take mens facts stadig er ustabile.
 
 ## Forbud
 Ingen ny ekstern faktapåstand uden research/ledger. Ingen vred, hånlig eller partipolitisk agitation. Ingen automatisk støtte til en borgerlig eller liberal aktør blot fordi aktøren står på »den rigtige side«. Kommentar bliver ikke breaking og ikke automatisk lead. Den interne betegnelse »borgerligt-liberal« bruges ikke som branding eller fast offentlig selvbeskrivelse.
