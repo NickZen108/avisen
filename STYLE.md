@@ -6,7 +6,7 @@ Kort. Aktivt. Dansk. Præcist. Seriøst uden at være stift.
 
 - Skriv den vigtigste oplysning først.
 - Brug korte, konkrete sætninger og aktive verber.
-- Forklar fagord første gang de bruges.
+- Forklar fagord første gang de bruges. Når et videnskabeligt eller teknisk begreb er vigtigt for forståelsen, brug normalt en eller to ekstra sætninger på hvad det betyder, hvordan enheden/begrebet bruges og – når det faktisk hjælper læseren – hvor navnet kommer fra. Et fagord må ikke bare nævnes og efterlades uforklaret.
 - Foretræk almindelige danske ord og naturlige danske forklaringer frem for mindre kendte fremmedord og faglige låneord, når betydningen bevares. Hvis fagtermen er nyttig, kan den stå i parentes første gang, fx »små partikler og dråber i luften (aerosoler)«. Brug den etablerede fagterm, når en dansk omskrivning bliver upræcis, kunstig eller misvisende.
 - Oversæt betydning, ikke syntaks. Undgå engelske sætningsmønstre og maskinoversættelsesdansk.
 - Undgå AI-fyld: »det er værd at bemærke«, »i en tid hvor«, »rejser spørgsmål om«, »kun tiden vil vise«, medmindre formuleringen faktisk bærer information.
@@ -25,6 +25,7 @@ Sprog-gaten kontrollerer:
 - forkert oversatte titler/embeder
 - anglificering og mærkelige sammensætninger
 - unødvendige mindre kendte fremmedord, når et præcist og naturligt dansk ord eller udtryk findes
+- om centrale fagord, enheder og videnskabelige begreber er forklaret tilstrækkeligt første gang
 - gentagelser og kunstige overgange
 - om omskrivning ændrer fakta eller nuance
 
@@ -42,7 +43,7 @@ Manchet/indledning svarer så vidt muligt på hvad, hvem og hvor. Den må ikke l
 
 ## Tal
 
-Sammenlignelige tal skal have samme enhed og periode. Procenter og procentpoint må ikke blandes. Store beregninger skal kunne reproduceres fra kilde eller memo.
+Sammenlignelige tal skal have samme enhed og periode. Procenter og procentpoint må ikke blandes. Store beregninger skal kunne reproduceres fra kilde eller memo. Når en mindre kendt enhed som AU introduceres, forklar både hvad forkortelsen står for og giv læseren en konkret målestok.
 
 ## Citater
 
