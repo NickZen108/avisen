@@ -1,60 +1,71 @@
-# SEO-agent — Morgentidende
+# SEO og discovery — Morgentidende
 
-Kører efter journalisten og før redaktøren. Må ikke ændre fakta.
+SEO kører efter journalist, fact check, sprog og etik. SEO må aldrig ændre fakta, vinkel, juridisk status eller redaktionel vægt for at jagte søgninger.
 
 ## Alle artikler
 
-- Én H1 = overskriften. Ingen clickbait.
-- `<title>`: maks. 60 tegn, søgeord først, « – Morgentidende» til sidst.
-- Meta description: 140–160 tegn, sagligt, med primært søgeord.
-- Slug: 2–4 danske søgeord, bindestreg.
-- Første afsnit svarer på hvad/hvem/hvor.
-- Internt link når der findes ældre stof.
-- Open Graph + Schema.org.
-- Alt-tekst som beskrivelse.
-- Ingen stuffing, ingen «chok«/«bedste nogensinde«.
+- én H1
+- `<title>` præcist og normalt højst ca. 60 tegn inkl. `– Morgentidende`, når det kan ske uden at gøre titlen kunstig
+- meta description beskriver sagen klart; ca. 140–160 tegn er mål, ikke tvang
+- kort, stabil slug med 2–6 meningsbærende ord
+- canonical URL
+- Open Graph
+- korrekt Schema.org-type
+- beskrivende alt-tekst
+- interne links, når de faktisk hjælper læseren
+- ingen keyword stuffing, clickbait eller kunstige FAQ-afsnit
 
-## Guides og Features (særligt skarpt)
+## Nyheder
 
-Disse skal kunne stå alene i Google som eviggrønt stof. Nyheder rangerer kort; guides rangerer længe.
+Nyheder skrives for læseren først. SEO-agenten må ikke indsætte gentagne søgefraser i brødteksten eller ændre H1 til et mere sensationelt søgeord.
 
-### Research før skrivning
+Schema: `NewsArticle`.
 
-1. Vælg **én primær søgefrase** som et menneske ville taste (fx «bedre parforhold 5 råd«, «hvorfor sover jeg dårligt«, «grubehuse vikingetid danmark«).
-2. Find 2–3 **long-tail**-varianter (spørgsmål: hvordan, hvorfor, hvad koster, hvor mange).
-3. Tjek at vi ikke allerede har en guide på samme frase.
+Ved en fortsættende historie skal den kanoniske URL opdateres frem for at skabe næsten identiske URLs. Gammel artikel får ikke nyt `datePublished`; substantiel opdatering får `dateModified`.
 
-### Titel og H1
+## Guide, feature og historie
 
-Mønstre der virker uden at lyde som affiliate:
+Evergreen-stof må gerne planlægges med søgeintention, men kun når emnet har selvstændig redaktionel værdi.
 
-- Guide: «Fem vaner der giver nattesøvnen en chance« / «Sådan …« / «Hvad du skal vide om …«
-- Feature: konkret emne + sted eller tal («82 grubehuse ved Søften«)
+Research kan identificere:
 
-Søgefrasen skal stå i H1, i første 100 ord og i én H2. Ikke i hver sætning.
+- én primær brugerintention
+- 2–3 naturlige spørgsmål
+- eksisterende Morgentidende-stof for at undgå kannibalisering
 
-### Struktur (featured snippet)
+Struktur vælges efter emnet. Nummererede trin, FAQ og HowTo bruges kun, når de faktisk passer — ikke som obligatorisk SEO-skabelon.
 
-- Første afsnit: 40–60 ord der svarer direkte på søgningen.
-- Guide: nummererede trin som H2 (`## 1. …`). Kort afsnit under hvert trin.
-- Feature: H2 efter logik (hvad, hvordan, hvad betyder det, kilder).
-- Boks eller liste midt i teksten (5 punkter), så Google kan trække den ud.
-- Afsnit **Ofte stillede spørgsmål** med 3–5 spørgsmål som H3. Korte svar.
+Vejledende længde:
 
-### Schema
+- Guide: typisk 700–1400 ord
+- Feature: typisk 800–1600 ord
 
-- Guide: `HowTo` (trin) **og** `FAQPage` **og** `Article`.
-- Feature/videnskab: `Article` + `FAQPage` hvis der er FAQ.
-- Nyhed: kun `NewsArticle`.
+Kortere er bedre, hvis emnet er dækket. Ingen fyld for ordantal.
 
-### Længde
+## Schema
 
-Guide 700–1400 ord. Feature 800–1600. Dæk emnet, så læseren ikke behøver en anden side.
+- Nyhed: `NewsArticle`
+- Feature/historie: `Article`
+- Guide: `Article`; `HowTo` kun ved reelle trin; `FAQPage` kun ved ægte FAQ-indhold
+- Kommentar: `OpinionNewsArticle` hvis understøttet i generatoren, ellers `Article` med tydelig kategori
 
-### E-E-A-T uden at bluffe
+## News sitemap
 
-Byline Morgentidende. Kilder med URL (SST, museum, tidsskrift). Dato synlig. Opdateringslinje hvis stof genbruges.
+`docs/news-sitemap.xml` genereres automatisk og indeholder kun relevante nye artikler fra de seneste to døgn. `docs/sitemap.xml` er den almindelige langsigtede sitemap.
 
-## Sitemap
+## Discovery og loyalitet
 
-`docs/sitemap.xml` får URL når udgiveren lægger stykket live — ikke mens det står i kø.
+Morgentidende optimerer ikke kun for Google. Discovery-mål er:
+
+- direkte besøg
+- tilbagevendende læsere
+- nyhedsbrev
+- RSS/notifikationer når de etableres
+- interne story clusters
+- søgning og Google News/Discover som distributionskanaler
+
+Rå klik må ikke styre lead eller få systemet til at lære tabloidisme. Engagement bruges senere som sekundært signal sammen med redaktionel vægt.
+
+## E-E-A-T og transparens
+
+Byline: `Morgentidende Redaktion`, medmindre en faktisk navngiven skribent står bag. Kilder, dato, rettelser og metode skal være synlige. Der må aldrig opfindes en ekspert eller forfatterprofil for SEO.
