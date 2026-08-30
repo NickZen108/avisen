@@ -1,0 +1,117 @@
+{
+  "story_id": "2026-08-30-kyiv-myla-ammunition-depot",
+  "article_slug": "2026-08-30-kyiv-myla-ammunitionslager",
+  "assignment": {
+    "category": "Udland",
+    "weight": "A",
+    "core_question": "Hvad er den seneste verificerede status efter det russiske angreb og den efterfølgende detonation ved Myla i Kyiv-regionen?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Ukraines præsident Volodymyr Zelenskyj, officiel Telegram-kanal",
+      "url": "https://t.me/s/V_Zelenskiy_official/20640",
+      "published_at": "2026-08-30T14:15:00+03:00",
+      "accessed_at": "2026-08-30T15:39:00+02:00",
+      "type": "primary",
+      "source_group": "ukrainian-presidency",
+      "authoritative_for": "Ukraines officielle opdatering om dødstal, sårede, savnede og redningsarbejdet"
+    },
+    {
+      "id": "S2",
+      "name": "Reuters",
+      "url": "https://www.reuters.com/world/europe/kyiv-region-strike-death-toll-rises-38-zelenskiy-says-2026-08-30/",
+      "published_at": "2026-08-30",
+      "accessed_at": "2026-08-30T15:39:00+02:00",
+      "type": "news",
+      "source_group": "reuters-reporting",
+      "authoritative_for": "Selvstændig nyhedsrapportering om angrebet, lageret og den seneste officielle status"
+    },
+    {
+      "id": "S3",
+      "name": "Ukraines præsident, officiel hjemmeside",
+      "url": "https://www.president.gov.ua/en/news/pislya-situaciyi-u-vishnevomu-she-odin-takij-zlochin-ce-abso-106165",
+      "published_at": "2026-08-29T15:05:00+03:00",
+      "accessed_at": "2026-08-30T15:39:00+02:00",
+      "type": "primary",
+      "source_group": "ukrainian-presidency",
+      "authoritative_for": "Officiel beskrivelse af angrebet, ammunitionslageret, efterfølgende detonation og undersøgelsen af opbevaringen"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Ukraines præsident oplyste 30. august, at 38 mennesker er døde efter et russisk angreb og den efterfølgende detonation ved Myla i Kyiv-regionen.",
+      "status": "verified",
+      "source_ids": ["S1", "S2"],
+      "independent_groups": ["ukrainian-presidency", "reuters-reporting"],
+      "checked_at": "2026-08-30T15:39:00+02:00",
+      "notes": "Dødstallet er en officiel ukrainsk status gengivet af Reuters."
+    },
+    {
+      "id": "F02",
+      "claim": "20 mennesker er ifølge den seneste officielle status kommet til skade, heriblandt to børn, og fire personer regnes som savnede.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["ukrainian-presidency"],
+      "checked_at": "2026-08-30T15:39:00+02:00",
+      "notes": "Primærkilden er autoritativ for regeringens aktuelle redningsstatus."
+    },
+    {
+      "id": "F03",
+      "claim": "Angrebet ramte et militært lager med blandt andet granater, miner, droner og anden ammunition, hvorefter der skete omfattende sekundære eksplosioner.",
+      "status": "verified",
+      "source_ids": ["S2", "S3"],
+      "independent_groups": ["reuters-reporting", "ukrainian-presidency"],
+      "checked_at": "2026-08-30T15:39:00+02:00",
+      "notes": "Både officiel ukrainsk beskrivelse og Reuters-reporting."
+    },
+    {
+      "id": "F04",
+      "claim": "Ukrainske myndigheder undersøger, hvorfor ammunition blev opbevaret tæt på beboelse; Zelenskyj har offentligt kaldt opbevaringen groft uansvarlig.",
+      "status": "verified",
+      "source_ids": ["S3", "S2"],
+      "independent_groups": ["ukrainian-presidency", "reuters-reporting"],
+      "checked_at": "2026-08-30T15:39:00+02:00",
+      "notes": "Artiklen gengiver kritikken som Zelenskyjs vurdering, ikke som avisens."
+    },
+    {
+      "id": "F05",
+      "claim": "Redningsfolk har slukket størstedelen af brandene, mens ukrainske mineryddere fortsat arbejder i et område med betydelig forurening af eksplosiver.",
+      "status": "verified",
+      "source_ids": ["S1", "S2"],
+      "independent_groups": ["ukrainian-presidency", "reuters-reporting"],
+      "checked_at": "2026-08-30T15:39:00+02:00",
+      "notes": "Aktuel status 30. august."
+    }
+  ],
+  "numbers": [
+    {"claim_id":"F01","value":38,"unit":"døde","period":"30. august 2026","source_id":"S1"},
+    {"claim_id":"F02","value":20,"unit":"tilskadekomne","period":"30. august 2026","source_id":"S1"},
+    {"claim_id":"F02","value":4,"unit":"savnede","period":"30. august 2026","source_id":"S1"}
+  ],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": "Artiklen rapporterer en krigshændelse ud fra officiel ukrainsk status og Reuters; den fremsætter ikke en ny selvstændig beskyldning mod en identificerbar privat part."
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-08-30T15:39:00+02:00",
+    "notes": [
+      "Tal, sted, dato og hændelsesforløb er kontrolleret mod primærkilde og Reuters.",
+      "Dødstal kan ændre sig; teksten angiver tydeligt, at det er den aktuelle officielle status.",
+      "Ingen direkte citater anvendes.",
+      "Etik/fairness: PASS. Ingen børn identificeres; ingen grafiske detaljer; Zelenskyjs kritik attribueres.",
+      "Sprog: PASS. Neutral dansk nyhedstekst uden kommentar.",
+      "Billede: PASS uden billede; ingen uverificeret dokumentarisk grafik anvendes.",
+      "SEO/discovery: PASS. Titel og beskrivelse matcher dokumenterede fakta.",
+      "Teknisk QA: canonical JSON-format og tilladte newsroom-filer; endelig build-gate køres i GitHub Actions."
+    ]
+  }
+}
