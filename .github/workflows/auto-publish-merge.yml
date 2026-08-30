@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 
 concurrency:
   group: morgentidende-main-writes
@@ -103,7 +104,18 @@ jobs:
           done <<< "$ARTICLE_FILES"
 
           echo "Merging PR #${NUMBER} at tested SHA ${TESTED_SHA}"
-          gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/merge" \
+          MERGE=$(gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${NUMBER}/merge" \
             -f merge_method='squash' \
             -f sha="${TESTED_SHA}" \
-            -f commit_title="${TITLE}"
+            -f commit_title="${TITLE}")
+
+          MERGED=$(printf '%s' "$MERGE" | jq -r '.merged')
+          MERGE_SHA=$(printf '%s' "$MERGE" | jq -r '.sha // empty')
+          if [ "$MERGED" != "true" ] || [ -z "$MERGE_SHA" ]; then
+            echo "FAIL: GitHub bekræftede ikke merge"
+            printf '%s\n' "$MERGE"
+            exit 1
+          fi
+
+          echo "Merged as $MERGE_SHA; dispatching structured build explicitly"
+          gh workflow run build-publish.yml --ref main
