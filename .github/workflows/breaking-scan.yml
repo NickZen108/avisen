@@ -22,13 +22,22 @@ jobs:
           fetch-depth: 0
       - name: Sync main
         run: git pull --ff-only origin main
-      - name: Hent overskrifter
-        run: bash scripts/scan-feeds.sh
-      - name: Commit scan-notat
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Sync Cloudflare Newsdesk runtime
+        run: |
+          if python scripts/sync_cloudflare_scan.py; then
+            echo "Cloudflare Newsdesk synced"
+          else
+            echo "Cloudflare Newsdesk unavailable; using temporary GitHub fallback"
+            bash scripts/scan-feeds.sh
+          fi
+      - name: Commit scan state
         run: |
           git config user.name "morgentidende-scan"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add scan/latest.md
+          git add scan/latest.md queue/candidates.json
           if git diff --cached --quiet; then
             echo "Ingen ændring"
           else
