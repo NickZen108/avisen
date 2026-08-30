@@ -65,6 +65,16 @@ For pipeline-v2-artikler skal `content/frontpage.json` normalt kun referere til 
 
 Legacy-artikler uden struktureret canonical kilde kan fortsat have eksplicitte displayfelter.
 
+## Hero-billeder
+
+Hero-billeder skal være visuelt stærke, relevante og egnede til både desktop og mobil. Et teknisk diagram er som udgangspunkt forklaringsgrafik inde i artiklen, ikke artikelens hero, medmindre grafikken selv er historien.
+
+Prioritet er: 1) relevant, lovligt og æstetisk stærkt foto, 2) relevant redaktionel illustration, 3) genereret illustration til tidløse, forklarende, videnskabelige eller guideprægede emner, hvis et godt foto ikke findes.
+
+Genereret materiale må aldrig fremstilles som dokumentarfoto af en virkelig hændelse, person eller specifik scene. Det registreres som `image_type: illustration`. Dokumentarfotos må gerne få et diskret, ensartet redaktionelt filter eller farvebehandling, hvis det forbedrer helhedsindtrykket, men må ikke manipuleres, så dokumentarisk betydning ændres.
+
+Hero-billedet skal have dækkende alt-tekst og beskæres eller vælges, så hovedmotivet fungerer i både stor hero, kort og mobilvisning.
+
 ## Design og kode
 
 Nye artikler skrives som struktureret indhold under `content/` og genereres til `docs/`. Journalist- og redaktøragenter må ikke håndredigere CSS, logo, header, grids eller andre låste designfiler. Låste filer verificeres maskinelt.
