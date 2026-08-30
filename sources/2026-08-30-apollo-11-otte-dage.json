@@ -1,0 +1,135 @@
+{
+  "story_id": "2026-08-30-apollo-11-otte-dage",
+  "article_slug": "2026-08-30-apollo-11-otte-dage",
+  "assignment": {
+    "category": "Historie",
+    "weight": "D",
+    "core_question": "Hvordan forløb Apollo 11 fra opsendelse til hjemkomst på otte dage?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "NASA: Apollo 11",
+      "url": "https://www.nasa.gov/mission/apollo-11/",
+      "published_at": null,
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "primary",
+      "source_group": "nasa-apollo11",
+      "authoritative_for": "Besætning, opsendelsesdato, månelanding, roller og splashdown for Apollo 11"
+    },
+    {
+      "id": "IMG1",
+      "name": "Wikimedia Commons: Launch of the Saturn V with Apollo 11",
+      "url": "https://commons.wikimedia.org/wiki/File:Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+      "published_at": null,
+      "accessed_at": "2026-08-30T10:10:00Z",
+      "type": "other",
+      "source_group": "commons-apollo11-launch",
+      "authoritative_for": "Fotografiets NASA-oprindelse og public-domain-status"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Apollo 11 havde Neil Armstrong, Buzz Aldrin og Michael Collins som besætning og blev opsendt 16. juli 1969.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nasa-apollo11"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "NASA mission page."
+    },
+    {
+      "id": "F02",
+      "claim": "Neil Armstrong var det første menneske på Månen, Buzz Aldrin det andet, mens Michael Collins var pilot på kommandomodulet.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nasa-apollo11"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "Roller og rækkefølge fremgår af NASA's mission-side."
+    },
+    {
+      "id": "F03",
+      "claim": "Måneaktiviteten fandt sted 20. juli 1969, og Armstrong og Aldrin opholdt sig omtrent 22 timer på Månen før opstigning.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nasa-apollo11"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "NASA angiver datoen 20. juli og en cirka 22 timers måneopholdstid."
+    },
+    {
+      "id": "F04",
+      "claim": "Apollo 11 landede i havet 24. juli 1969.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "nasa-apollo11"
+      ],
+      "checked_at": "2026-08-30T10:10:00Z",
+      "notes": "NASA angiver splashdown 24. juli 1969."
+    }
+  ],
+  "numbers": [
+    {
+      "id": "N01",
+      "value": 3,
+      "unit": "astronauter",
+      "period": "Apollo 11",
+      "population": "besætning",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "N02",
+      "value": 22,
+      "unit": "timer cirka",
+      "period": "20.-21. juli 1969",
+      "population": "Armstrong og Aldrins ophold på Månen",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "N03",
+      "value": 8,
+      "unit": "dage",
+      "period": "16.-24. juli 1969",
+      "population": "kalenderdage fra opsendelse til splashdown",
+      "formula": "24-16",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-08-30T10:10:00Z",
+    "notes": [
+      "Historisk feature baseret på NASA's primære missionsside. Fotografiets ophav/licens kontrolleret på Wikimedia Commons."
+    ]
+  }
+}
