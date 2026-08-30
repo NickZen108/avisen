@@ -20,15 +20,20 @@ En lavere regel må aldrig ophæve en højere. Ved tvivl: stop og send til redak
 
 ## Hårde gates
 
-Intet må gå live, hvis ét af disse punkter fejler:
+Intet nyt pipeline-v2-stykke må gå live, hvis ét af disse punkter fejler:
 
 - bærende fakta er ikke dokumenteret efter `SOURCES.md`
+- coverage sweep mangler, eller en legitim begrænsning ikke er dokumenteret
+- Fact checker har ikke PASS
+- Nyhedsdesk har ikke efter research/fact check bekræftet `PUBLISH` eller `UPDATE`
 - tal, datoer, navne, titler eller citater kan ikke spores til faktaledgeren
-- en væsentlig modpart mangler i en konkret strid
-- alvorlig beskyldning mod navngiven person ikke er forelagt eller undtagelsen dokumenteret
+- påkrævet forelæggelse/modpart mangler, eller frist/undtagelse ikke er dokumenteret
 - nyhedsværdi/freshness ikke passer til genren
 - artikel og kommentar er blandet sammen
-- sprog-, etik-, billede-, design- eller build-gate siger FAIL
+- sprog-, etik-, billede- eller SEO-opgaven er uafklaret
+- Slutredaktørens uafhængige final approval mangler eller ikke matcher den aktuelle redaktionelle slutversion
+- frontpage-, design- eller build-gate siger FAIL
+- `manual_review: true` forsøges autopubliceret uden eksplicit afsluttet manuel review
 - publiceringstid er fremtidig eller opdigtet
 - en ny artikel er blot en dublet af en eksisterende story cluster
 
@@ -36,9 +41,29 @@ Tom plads slår et svagt eller usikkert stykke. Der findes ingen volumenregel, s
 
 ## Adskillelse af ansvar
 
-Ingen agent godkender sit eget arbejde. Research skriver ikke artikel. Journalist godkender ikke fakta. SEO må ikke ændre fakta. Sprog må ikke ændre mening. Udgiver må ikke omgå et FAIL.
+Ingen agent må alene gøre sit eget arbejde publiceringsklart. En agent må markere sin egen delopgave som færdig, men den endelige publiceringsgodkendelse kommer fra en anden rolle.
 
-Pipeline: Scan → Nyhedsdesk → Research → Fact check → Journalist → Sprog → Etik/fairness → SEO/discovery → Billede → Teknisk QA → Forsideredaktør → Udgiver → Post-publication monitor.
+Research skriver ikke artikel. Fact checker skriver ikke artiklen og genresearcher ikke hele historien uden grund. Journalist godkender ikke fakta. Sprog må ikke ændre mening. Etik må ikke omskrive fakta. Billede vælger billedmateriale før SEO færdiggør delingsmetadata. SEO må ikke ændre journalistikken. Slutredaktøren ændrer ikke teksten ved PASS; ved fejl sender den tilbage til den ansvarlige agent. Udgiver må kun ændre publiceringsmetadata efter final approval og må aldrig omgå et FAIL.
+
+Pipeline:
+
+Scan → Nyhedsdesk/assignment → Research → Fact check → Nyhedsdesk/recheck → Journalist → Sprog → Etik/fairness → Billede → SEO/discovery → Slutredaktør → Forsideredaktør → Teknisk QA → Udgiver → live teknisk QA → Live proofreader → Redaktionel update-monitor.
+
+## Pipeline v2 og versionsbinding
+
+Nye autopublicerbare artikler bruger `pipeline_version: 2`.
+
+Slutredaktørens approval ligger under `reports/editorial/approvals/<slug>.json` og indeholder et snapshot af den godkendte **redaktionelle** artikelversion. Efter approval må Udgiver/GitHub kun ændre publiceringsmetadata såsom `status`, `published_at`, `scheduled_for`, `release_requested` og tekniske releasefelter.
+
+Hvis titel, manchet, brødtekst, claim-liste, SEO, billede, kilder til visning, relaterede links, kategori, byline, correction note eller andre redaktionelle felter ændres efter approval, bliver approval ugyldig og Slutredaktøren skal køre igen.
+
+Gamle allerede publicerede strukturerede artikler uden `pipeline_version: 2` er grandfathered. En ny `[AUTO]`-PR må ikke autopublicere en artikel uden pipeline v2.
+
+## Forsiden
+
+For pipeline-v2-artikler skal `content/frontpage.json` normalt kun referere til artiklens `slug`. Titel, manchet/teaser, kategori, billede og publiceringstid hentes fra den kanoniske artikel ved build. Dermed kan en gammel kopi på forsiden ikke modsige en senere rettelse i artiklen.
+
+Legacy-artikler uden struktureret canonical kilde kan fortsat have eksplicitte displayfelter.
 
 ## Design og kode
 
@@ -46,9 +71,21 @@ Nye artikler skrives som struktureret indhold under `content/` og genereres til 
 
 Legacy-artikler i `docs/artikler/` er grandfathered, men ved større redaktionel opdatering skal de migreres til den strukturerede pipeline.
 
+## Post-publication
+
+Teknisk live-QA og redaktionel overvågning er to forskellige opgaver:
+
+- GitHub/live QA kontrollerer HTTP, markup, interne assets og de netop ændrede/recent publicerede URL'er.
+- Live proofreader læser den renderede side, som læseren ser, for tekst-/renderingsfejl og forskelle fra canonical indhold.
+- Redaktionel update-monitor leder efter nye oplysninger, der ændrer et bærende claim, story-vægt eller lead.
+
+Ingen af dem må lave stille materielle rettelser.
+
 ## Transparens og rettelser
 
 Væsentlige fejl rettes åbent efter `CORRECTIONS.md`. Der må ikke laves stille materielle rettelser. AI er et værktøj, aldrig en kilde; se `AI-POLICY.md`.
+
+Den offentlige rettelseslog genereres fra `content/corrections.json`; `docs/rettelser.html` er output og må ikke være den kanoniske log.
 
 ## Ændring af regler
 

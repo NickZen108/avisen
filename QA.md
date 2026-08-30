@@ -1,77 +1,40 @@
 # Kvalitetskontrol
 
-QA består af både deterministiske tests og selvstændige redaktionelle gates. Et grønt build er nødvendigt, men ikke tilstrækkeligt til publicering.
+QA består af redaktionelle gates, deterministiske tests og live-kontrol. Et grønt build er nødvendigt, men ikke tilstrækkeligt til publicering.
 
-## 1. Fakta
+## Pipeline v2
 
-- hver publiceret struktureret artikel har en faktaledger
-- ledgeren indeholder claim-id, kilde, dato, source-group og status
-- tal, navne, datoer, embeder og direkte citater er særskilt verificeret
-- to URLs fra samme bureau/pressemeddelelse tæller ikke som to uafhængige kilder
-- `manual_review: true` må ikke autopubliceres
+Nye auto-publicerede artikler skal have `pipeline_version: 2`.
 
-## 2. Dansk
+Før `ready`, `scheduled` eller `published` kræves coverage sweep, `fact_check.status: pass`, `desk_recheck.status: publish|update`, opfyldt forelæggelse og matching `reports/editorial/approvals/<slug>.json`.
 
-Sprog-gaten kontrollerer hele sætninger, ikke blot ordbogsopslag. Retskrivningsordbogen er reference; legitime sammensætninger, bøjningsformer, egennavne og fagord kan være korrekte uden selvstændigt opslag.
+Approval-gates `language`, `ethics`, `image`, `seo`, `final_editor` skal være `pass`. Final approval indeholder et snapshot af de redaktionelle artikeldata. Ændres journalistisk indhold efter approval, er det FAIL.
 
-Kontrollér H1, title, manchet, brødtekst, ticker og teasere for:
+Gamle allerede publicerede v1-artikler er grandfathered. En ny `[AUTO]`-PR må ikke ændre/publicere en artikel uden pipeline v2.
 
-- stave- og grammatikfejl
-- brudte sætninger
-- maskinoversættelsesdansk og anglificering
-- mærkelige opdigtede ord
-- forkert juridisk status
-- ændret betydning efter sproglig omskrivning
+## Fakta
 
-## 3. Design og generering
+- claim-id'er findes i ledgeren
+- publicable claims er `verified`
+- bærende claims har autoritativ primærstøtte eller reelt uafhængig støtte
+- source-groups afledes af sources
 
-- nye artikler skal komme fra `content/articles/`
-- genereret HTML skal have generated-marker
-- nye direkte håndskrevne HTML-artikler er FAIL
-- låste designfiler skal matche `config/design-lock.txt`
-- journalistiske commits må ikke ændre CSS/logo/layout
+## Billede før SEO
 
-## 4. Metadata og tid
+Billedredaktøren afslutter billedvalg/licens/alt-tekst før SEO færdiggør Open Graph og delingsmetadata.
 
-- én H1
-- én gyldig kategori
-- canonical URL
-- korrekt `lang=da`
-- publiceringstid = faktisk live-tid; ingen fremtid
-- `updated_at` kun ved substantiel opdatering
-- NewsArticle/Article-schema svarer til genren
-- meta description er beskrivende, ikke clickbait
+## Forside
 
-## 5. Links og billeder
+Pipeline-v2-artikler refereres normalt kun med `slug` i `content/frontpage.json`. Builderen henter canonical titel, kategori, manchet, billede og publiceringstid fra artiklen. Legacy-artikler kan beholde eksplicitte displayfelter.
 
-Hvert link og billede på live forside samt aktuelle artikler skal kunne hentes. Dødt foto er FAIL. Tematisk match alene er ikke nok.
+## Metadata og tid
 
-Billedgate kontrollerer desuden:
+`published_at` sættes af release-motoren ved faktisk release/build, ikke ved PR-oprettelse.
 
-- motiv passer til overskrift/sted/tid
-- ophav og licens er registreret
-- alt-tekst beskriver motivet
-- generativ illustration er tydeligt mærket og ikke brugt som dokumentarfoto
+## Live QA
 
-## 6. Story clusters
+Efter deploy kontrolleres forsiden, eksplicit netop ændrede artikel-URL'er, recent publicerede artikler, interne assets og template-markers. Live proofreader er en separat redaktionel korrektur af den renderede side.
 
-- ingen unødvendige dublet-URLs
-- kommentar om aktuel sag har `related_news_slug`
-- nyhed og kommentar linker begge veje
-- kanonisk artikel opdateres ved samme fortsættende hændelse
+## Rettelser
 
-## 7. Post-publication
-
-Post-publication monitor kører regelmæssigt og rapporterer:
-
-1. døde links og billeder
-2. build-/markupfejl
-3. utilsigtede interne noter
-4. rettelser eller nye fakta, der ændrer artikelens præmis
-5. forside der har et forældet lead
-
-Materielle fejl håndteres efter `CORRECTIONS.md`; de rettes ikke stille.
-
-## Rapporter
-
-Teknisk/visuel QA skriver til `reports/qa/`. Rapporten må ikke opfinde metrics eller erklære PASS på checks, den ikke faktisk har kørt.
+`content/corrections.json` er canonical offentlig rettelseslog. `docs/rettelser.html` genereres. Materielle fejl må ikke rettes stille.

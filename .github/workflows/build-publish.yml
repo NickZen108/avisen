@@ -1,66 +1,36 @@
 name: Build structured edition
-
 on:
   push:
     branches: [main]
-    paths:
-      - 'content/**'
-      - 'sources/**'
-      - 'templates/**'
-      - 'config/**'
-      - 'scripts/build_all.py'
-      - 'scripts/quality_gate.py'
-      - '.github/workflows/build-publish.yml'
-      - '.github/workflows/auto-publish-merge.yml'
+    paths: ['content/**','sources/**','templates/**','config/**','scripts/build_all.py','scripts/build_all_v2.py','scripts/quality_gate.py','scripts/pipeline_v2_gate.py','scripts/release_ready.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
   workflow_dispatch:
-
-permissions:
-  contents: write
-  actions: write
-
-concurrency:
-  group: morgentidende-main-writes
-  cancel-in-progress: false
-
+permissions: {contents: write, actions: write}
+concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-      - name: Sync latest main after queue wait
-        run: |
-          git fetch origin main
-          git reset --hard origin/main
+        with: {ref: main, fetch-depth: 0}
+      - name: Sync latest main
+        run: git fetch origin main && git reset --hard origin/main
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Prebuild gates
-        run: python scripts/quality_gate.py --prebuild
+        with: {python-version: '3.12'}
+      - name: Release approved ready articles
+        run: python scripts/release_ready.py
+      - name: Gates before build
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py
       - name: Build
-        run: python scripts/build_all.py
-      - name: Postbuild gates
-        run: python scripts/quality_gate.py
-      - name: Commit generated public files
+        run: python scripts/build_all_v2.py
+      - name: Gates after build
+        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py
+      - name: Commit release + generated files
         id: publish
         run: |
-          git config user.name "morgentidende-publisher"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html docs/artikler docs/sitemap.xml docs/news-sitemap.xml
-          if git diff --cached --quiet; then
-            echo "published=false" >> "$GITHUB_OUTPUT"
-            echo "Ingen genererede ændringer"
-          else
-            git commit -m "publish: build structured edition"
-            git push
-            echo "published=true" >> "$GITHUB_OUTPUT"
-            echo "publisher_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Dispatch post-deploy guard for exact publisher commit
+          git config user.name "morgentidende-publisher"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/articles docs/index.html docs/artikler docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml
+          if git diff --cached --quiet; then echo "published=false" >> "$GITHUB_OUTPUT"; else git commit -m "publish: build structured edition"; git push; echo "published=true" >> "$GITHUB_OUTPUT"; echo "publisher_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"; fi
+      - name: Dispatch post-deploy guard
         if: ${{ steps.publish.outputs.published == 'true' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PUBLISHER_SHA: ${{ steps.publish.outputs.publisher_sha }}
+        env: {GH_TOKEN: '${{ github.token }}', PUBLISHER_SHA: '${{ steps.publish.outputs.publisher_sha }}'}
         run: gh workflow run post-deploy-guard.yml --ref main -f target_sha="$PUBLISHER_SHA"

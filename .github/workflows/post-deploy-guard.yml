@@ -1,79 +1,31 @@
 name: Post-deploy guard
-
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'docs/**'
   workflow_dispatch:
     inputs:
-      target_sha:
-        description: Exact publisher commit SHA to verify and, if safe, roll back
-        required: false
-        type: string
-
-permissions:
-  contents: write
-
-concurrency:
-  group: morgentidende-main-writes
-  cancel-in-progress: false
-
+      target_sha: {description: Exact publisher SHA, required: true, type: string}
+permissions: {contents: write}
+concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
 jobs:
   smoke-and-safe-rollback:
-    if: ${{ github.event_name == 'workflow_dispatch' || !startsWith(github.event.head_commit.message, 'rollback:') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
+        with: {ref: main, fetch-depth: 0}
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Wait for Pages and test internal site health
+        with: {python-version: '3.12'}
+      - name: Wait and test exact/recent live pages
         id: smoke
         continue-on-error: true
+        env: {TARGET_SHA: '${{ inputs.target_sha }}'}
         run: |
-          set -u
           sleep 45
-          for attempt in 1 2 3; do
-            echo "Smoke attempt $attempt"
-            if python scripts/live_qa.py --strict-internal --report /tmp/post-deploy.md; then
-              exit 0
-            fi
-            [ "$attempt" -lt 3 ] && sleep 30
-          done
+          for n in 1 2 3; do python scripts/live_recent_qa.py --target-sha "$TARGET_SHA" --recent-hours 24 --report /tmp/post-deploy.md && exit 0; [ "$n" -lt 3 ] && sleep 30; done
           exit 1
-      - name: Record failure and safely roll back latest generated publish
-        if: ${{ steps.smoke.outcome == 'failure' && (github.event_name == 'push' || inputs.target_sha != '') }}
-        env:
-          TARGET_SHA: ${{ inputs.target_sha || github.sha }}
+      - name: Safe rollback latest publisher commit
+        if: ${{ steps.smoke.outcome == 'failure' }}
+        env: {TARGET_SHA: '${{ inputs.target_sha }}'}
         run: |
-          set -euo pipefail
-          git fetch origin main
-          git reset --hard origin/main
-
-          SUBJECT=$(git show -s --format=%s "$TARGET_SHA")
-          if [[ "$SUBJECT" != "publish: build structured edition" ]]; then
-            echo "Live-kritisk fejl, men target er ikke et genereret publisher-commit. Ingen automatisk rollback."
-            cat /tmp/post-deploy.md || true
-            exit 1
-          fi
-
-          LATEST_DOCS_SHA=$(git log -1 --format=%H -- docs/)
-          if [ "$LATEST_DOCS_SHA" != "$TARGET_SHA" ]; then
-            echo "Et nyere docs-commit findes allerede; gammelt publish rulles ikke tilbage."
-            cat /tmp/post-deploy.md || true
-            exit 1
-          fi
-
-          mkdir -p reports/qa
-          cp /tmp/post-deploy.md reports/qa/rollback-latest.md
-          git config user.name "morgentidende-safety"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git revert --no-commit "$TARGET_SHA"
-          git add reports/qa/rollback-latest.md
-          git commit -m "rollback: failed post-deploy internal smoke test"
-          git push
-          echo "Publisher-output blev rullet tilbage efter tre interne smoke-test-fejl."
+          set -euo pipefail; git fetch origin main; git reset --hard origin/main
+          [ "$(git show -s --format=%s "$TARGET_SHA")" = "publish: build structured edition" ] || { cat /tmp/post-deploy.md || true; exit 1; }
+          [ "$(git log -1 --format=%H -- docs/)" = "$TARGET_SHA" ] || { cat /tmp/post-deploy.md || true; exit 1; }
+          mkdir -p reports/qa; cp /tmp/post-deploy.md reports/qa/rollback-latest.md; git config user.name morgentidende-safety; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"; git revert --no-commit "$TARGET_SHA"; git add reports/qa/rollback-latest.md; git commit -m "rollback: failed post-deploy internal smoke test"; git push

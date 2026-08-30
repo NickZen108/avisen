@@ -1,48 +1,14 @@
 {
+  "schema_version": 2,
   "story_id": "YYYY-MM-DD-short-story-id",
   "article_slug": "YYYY-MM-DD-short-slug",
-  "assignment": {
-    "category": "Nyhed",
-    "weight": "B",
-    "core_question": "",
-    "manual_review": false
-  },
-  "sources": [
-    {
-      "id": "S1",
-      "name": "",
-      "url": "",
-      "published_at": null,
-      "accessed_at": "",
-      "type": "primary",
-      "source_group": "",
-      "authoritative_for": ""
-    }
-  ],
-  "claims": [
-    {
-      "id": "F01",
-      "claim": "",
-      "status": "verified",
-      "source_ids": ["S1"],
-      "independent_groups": [""],
-      "checked_at": "",
-      "notes": ""
-    }
-  ],
+  "assignment": {"category":"Nyhed","weight":"B","core_question":"","manual_review":false},
+  "sources": [{"id":"S1","name":"","url":"","published_at":null,"accessed_at":"","type":"primary","source_group":"","authoritative_for":""}],
+  "coverage_sweep": {"status":"pending","editorial_source_ids":[],"independent_source_groups":[],"limitations":null,"notes":[]},
+  "claims": [{"id":"F01","claim":"","status":"verified","source_ids":["S1"],"independent_groups":[""],"checked_at":"","notes":""}],
   "numbers": [],
   "quotes": [],
-  "right_of_reply": {
-    "required": false,
-    "party": null,
-    "contacted_at": null,
-    "deadline": null,
-    "response": null,
-    "exception": null
-  },
-  "fact_check": {
-    "status": "pending",
-    "checked_at": null,
-    "notes": []
-  }
+  "right_of_reply": {"required":false,"party":null,"contacted_at":null,"deadline":null,"response":null,"exception":null},
+  "fact_check": {"status":"pending","checked_at":null,"notes":[]},
+  "desk_recheck": {"status":"pending","checked_at":null,"rationale":""}
 }

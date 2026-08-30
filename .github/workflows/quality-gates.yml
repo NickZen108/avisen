@@ -1,37 +1,25 @@
 name: Quality gates
-
 on:
   pull_request:
   workflow_dispatch:
-  push:
-    branches: [main]
-
-permissions:
-  contents: read
-
-concurrency:
-  group: quality-${{ github.event.pull_request.number || github.sha }}
-  cancel-in-progress: true
-
+  push: {branches: [main]}
+permissions: {contents: read}
+concurrency: {group: 'quality-${{ github.event.pull_request.number || github.sha }}', cancel-in-progress: true}
 jobs:
   quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        with: {fetch-depth: 0}
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+        with: {python-version: '3.12'}
       - name: Script syntax
-        run: |
-          python -m compileall -q scripts
-          bash -n scripts/scan-feeds.sh
+        run: python -m compileall -q scripts && bash -n scripts/scan-feeds.sh
       - name: Prebuild gates
-        run: python scripts/quality_gate.py --prebuild
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py
       - name: Deterministic build
-        run: python scripts/build_all.py
+        run: python scripts/build_all_v2.py
       - name: Postbuild gates
-        run: python scripts/quality_gate.py
+        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py
       - name: Show generated drift
         run: git diff --check

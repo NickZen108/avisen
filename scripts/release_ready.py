@@ -13,12 +13,11 @@ def main():
  for path in sorted(ARTICLE_DIR.glob('*.json')):
   if path.name.startswith('_'): continue
   x=json.loads(path.read_text(encoding='utf-8'))
-  if x.get('status')!='scheduled': continue
-  sf=x.get('scheduled_for')
-  if not sf: raise SystemExit(f'{path.name}: scheduled_for mangler')
-  if parse_iso(sf).astimezone(timezone.utc)>now: continue
+  if x.get('pipeline_version')!=2 or x.get('status')!='ready' or x.get('release_requested') is not True: continue
   if x.get('manual_review'): raise SystemExit(f'{path.name}: manual_review må ikke auto-release')
-  if x.get('pipeline_version')==2 and not (ROOT/'reports'/'editorial'/'approvals'/f"{x['slug']}.json").exists(): raise SystemExit(f'{path.name}: final approval mangler')
-  x['status']='published'; x['published_at']=stamp; x['released_from_schedule_at']=stamp; x['release_requested']=False; x['publication']={'release_mode':'scheduled','released_at':stamp,'scheduled_for':sf}; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); n+=1
- print(f'Scheduled release: {n} article(s)'); return 0
+  ledger=json.loads((ROOT/str(x.get('ledger',''))).read_text(encoding='utf-8'))
+  if (ledger.get('fact_check') or {}).get('status')!='pass' or (ledger.get('desk_recheck') or {}).get('status') not in {'publish','update'}: raise SystemExit(f'{path.name}: redaktionelle gates mangler')
+  if not (ROOT/'reports'/'editorial'/'approvals'/f"{x['slug']}.json").exists(): raise SystemExit(f'{path.name}: final approval mangler')
+  x['status']='published'; x['published_at']=stamp; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); n+=1
+ print(f'Ready release: {n} article(s)'); return 0
 if __name__=='__main__': raise SystemExit(main())

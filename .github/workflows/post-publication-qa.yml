@@ -1,80 +1,16 @@
-name: Post-publication QA
-
+name: Post-publication technical QA
 on:
-  schedule:
-    - cron: '7,22,37,52 * * * *'
+  schedule: [{cron: '7,22,37,52 * * * *'}]
   workflow_dispatch:
-
-permissions:
-  contents: write
-  actions: write
-
-concurrency:
-  group: morgentidende-main-writes
-  cancel-in-progress: false
-
+permissions: {contents: write}
+concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
 jobs:
   live-qa:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-      - name: Sync main
-        run: git pull --ff-only origin main
+        with: {ref: main, fetch-depth: 0}
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Fallback release of due scheduled articles
-        id: release
-        run: |
-          python scripts/release_scheduled.py
-          if git diff --quiet -- content/articles; then
-            echo "released=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "released=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Validate released canonical state
-        if: ${{ steps.release.outputs.released == 'true' }}
-        run: python scripts/quality_gate.py --prebuild
-
-      - name: Commit fallback release
-        if: ${{ steps.release.outputs.released == 'true' }}
-        run: |
-          git config user.name "morgentidende-scheduler-watchdog"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/articles/*.json
-          git commit -m "schedule: watchdog release due articles"
-          git push
-
-      - name: Dispatch build after fallback release
-        if: ${{ steps.release.outputs.released == 'true' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run build-publish.yml --ref main
-
-      - name: Live smoke test
-        if: ${{ steps.release.outputs.released != 'true' }}
-        id: live_qa
-        continue-on-error: true
-        run: python scripts/live_qa.py --strict --report reports/qa/live-latest.md
-
-      - name: Commit QA report
-        if: ${{ steps.release.outputs.released != 'true' && always() }}
-        run: |
-          git config user.name "morgentidende-qa"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reports/qa/live-latest.md
-          if git diff --cached --quiet; then
-            echo "Ingen rapportændring"
-          else
-            git commit -m "qa: live smoke test"
-            git push
-          fi
-
-      - name: Fail workflow when live QA found hard or soft faults
-        if: ${{ steps.release.outputs.released != 'true' && steps.live_qa.outcome == 'failure' }}
-        run: exit 1
+        with: {python-version: '3.12'}
+      - name: Live technical QA of frontpage and recent articles
+        run: python scripts/live_recent_qa.py --recent-hours 24 --report reports/qa/live-latest.md

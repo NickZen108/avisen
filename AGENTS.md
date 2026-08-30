@@ -1,97 +1,79 @@
 # Agenter — Morgentidende
 
-Alle agenter læser først `HUSREGLER.md` og følger prioriteten dér. Hver agent har en komplet prompt i `agents/`. Ingen agent må godkende sit eget arbejde eller omgå et FAIL.
+Alle agenter læser først `HUSREGLER.md` og følger prioriteten dér. En agent må markere sin egen opgave som færdig, men må ikke alene gøre sit eget arbejde publiceringsklart eller ophæve et FAIL.
 
 ## Pipeline
 
 1. **Scan** — finder signaler og kandidater. Skriver ikke artikler.
-2. **Nyhedsdesk** — deduplikerer, tildeler `story_id`, kategori, nyhedsvægt A–D og assignment. Kan KILL.
-3. **Research** — producerer faktaledger og kildememo. Ingen artikelprosa.
-4. **Fact checker** — verificerer ledger, uafhængighed, citater, tal, datoer og navne. PASS/FAIL.
-5. **Journalist** — skriver kun ud fra godkendt ledger.
-6. **Sprogredaktør** — dansk, klarhed og overskrift. Må ikke ændre fakta.
-7. **Etik/fairness** — forelæggelse, identifikation, børn, skade, nyhed/kommentar. Kan kræve manual review.
-8. **SEO/discovery** — metadata, schema, intern linking og søgbarhed. Må ikke styre fakta eller gøre nyhed til SEO-produkt.
-9. **Billedredaktør** — match, ophav, licens, autenticitet og alt-tekst.
-10. **Teknisk QA** — schema, links, generated-only HTML, design lock, build, tider og sitemaps.
-11. **Forsideredaktør** — vælger lead og placering efter `FRONTPAGE.md`, ikke efter alder alene.
-12. **Udgiver** — afleverer godkendt struktureret indhold som en newsroom-PR; GitHub Actions merger kun et testet SHA og bygger derefter live-output.
-13. **Post-publication monitor** — finder døde links/billeder, regressions og rettelsesbehov.
+2. **Nyhedsdesk / assignment** — deduplikerer, tildeler `story_id`, kategori, vægt og researchopgave. Kan KILL/HOLD.
+3. **Research** — udfører coverage sweep og bygger faktaledger/kildememo. Ingen artikelprosa.
+4. **Fact checker** — falsificerer researchen, åbner originalkilder, kontrollerer claims, uafhængighed, citater, tal og målrettet mod-evidens. PASS/FAIL.
+5. **Nyhedsdesk / recheck** — ser på det faktiske dokumenterede resultat og vælger `PUBLISH`, `UPDATE`, `HOLD` eller `KILL`. Historien er ikke automatisk værd at skrive, bare fordi den var værd at researche.
+6. **Journalist** — skriver kun ud fra PASS-ledger og recheck.
+7. **Sprogredaktør** — dansk, klarhed og overskrift. Må ikke ændre fakta.
+8. **Etik/fairness** — forelæggelse, identifikation, børn, skade, fairness og nyhed/kommentar. Kan kræve manual review.
+9. **Billedredaktør** — match, ophav, licens, autenticitet, grafik og alt-tekst.
+10. **SEO/discovery** — metadata, schema, delingsmetadata og intern linking efter billedvalget. Må ikke styre fakta/vinkel.
+11. **Slutredaktør** — uafhængigt anden-tjek af hele den færdige redaktionelle version mod ledger og tidligere gates. Retter ikke ved PASS; opretter final approval snapshot.
+12. **Forsideredaktør** — vælger lead og placering. Pipeline-v2-artikler refereres normalt kun med `slug`.
+13. **Teknisk QA** — schema, links, canonical frontpage refs, generated-only HTML, design lock, build, tider og sitemaps.
+14. **Udgiver** — ændrer kun publiceringsmetadata og afleverer newsroom-PR. Sætter ikke selv en opdigtet live-tid.
+15. **Live technical QA** — GitHub-kontrol af live forside, netop ændrede/recent artikler, links/assets og template-markers.
+16. **Live proofreader** — læser renderet artikel/forside for sproglige eller visuelle fejl og sammenholder med canonical indhold.
+17. **Redaktionel update-monitor** — leder efter nye oplysninger, der kan ændre claims, artikel eller forsidevægt.
 
-## Hvor den interne redaktionelle linje virker
+Ved materiel fejl: Post-publication incident → Fact checker genåbner claims → Correction editor → relevante fag-gates → Slutredaktør → Udgiver → offentlig rettelseslog.
 
-Den borgerligt-liberale/klassisk-liberale orientering i `EDITORIAL.md` er **intern** og må ikke bruges som offentlig branding. Den virker forskellige steder i flowet med forskellige beføjelser:
+## Pipeline v2
 
-- **Scan:** opdager underbelyste signaler om frihed, ytringsfrihed, demokrati, overvågning, statsmagt, skatter/afgifter/regulering, cost-benefit, religiøs ekstremisme og relevante kultur/religionsspørgsmål.
-- **Nyhedsdesk:** må bruge linjen til emnevalg og til at formulere spørgsmål/vinkler, men kun hvis historien har selvstændig nyhedsværdi. Ingen ønsket konklusion på forhånd.
-- **Research:** undersøger hele regnestykket og søger stærk dokumentation samt relevante citater fra flere reelle sider af en strid. Ingen cherry-picking.
-- **Fact checker:** prøver aktivt at falsificere både fakta og den valgte vinkel og kontrollerer, at den interne linje ikke har sænket dokumentationskravene.
-- **Journalist:** viser relevante gevinster, omkostninger, frihedseffekter, alternativer og stærke modargumenter, når ledgeren bærer dem. Nyheden argumenterer ikke for avisens linje.
-- **Etik/fairness:** stopper skjult agitation, falsk balance og kollektiv generalisering; religion og kultur må kritiseres sagligt som idéer, institutioner og praksisser.
-- **Kommentator:** her må værdigrundlaget bruges åbent i argumentationen, men kommentaren skal bygge på verificerede fakta og besvare det stærkeste relevante modargument.
-- **Forsideredaktør:** sikrer, at veldokumenterede friheds-/demokrati-/statsmagtshistorier ikke systematisk drukner, men må ikke gøre forsiden til en ideologisk kampagneside.
+Alle nye autopublicerbare artikler skal have `pipeline_version: 2`.
 
-Sprog, SEO, billede, teknisk QA og udgiver må **ikke** ændre den politiske substans eller skubbe artiklen længere i en ideologisk retning.
+Research udfylder `coverage_sweep` i ledgeren. Fact checker udfylder `fact_check`. Nyhedsdesk udfylder `desk_recheck`. Før publicering opretter Slutredaktør `reports/editorial/approvals/<slug>.json`.
 
-## Leveringsvej — ingen AI må skrive direkte til main
+Approval-filen indeholder:
+- `status: pass`
+- story/slug
+- tidspunkt
+- status for language, ethics, image, seo og final_editor
+- et snapshot af artikelens redaktionelle felter
 
-Mens Morgentidende kører i gratis eksperimentfase, er AI redaktionen og GitHub Actions maskinrummet.
+Quality gate sammenholder snapshot og nuværende artikel efter at rent tekniske/publiceringsfelter er fjernet. Ændres journalistisk indhold bagefter, bliver approval ugyldig.
 
-Et autopublicerbart stykke skal afleveres sådan:
+## Leveringsvej
 
-1. Opret branch `edition/YYYYMMDD-HHMM-slug` eller `newsroom/...` fra seneste `main`.
-2. Ændr kun canonical redaktionelle filer, normalt `content/articles/**`, `sources/**` og eventuelt `content/frontpage.json`.
-3. Opret PR mod `main` med titel der begynder `[AUTO] `.
-4. PR-body skal indeholde `<!-- morgentidende-auto-publish -->`.
-5. AI må **ikke** merge PR'en og må ikke skrive genereret `docs/`-HTML.
-6. `Quality gates` tester PR-head. `Auto-publish merge` merger kun præcis det testede SHA, kun fra eget repo, kun fra newsroom-branch og kun hvis filerne er på allowlisten.
-7. Efter merge bygger `Build structured edition` public-output og sitemaps. Post-deploy guard tester live-sitet og kan kun rulle et genereret publisher-commit tilbage ved vedvarende interne fejl.
+Et nyt autopublicerbart stykke afleveres sådan:
+
+1. Arbejd på `edition/*` eller `newsroom/*` fra seneste `main`.
+2. Research/Fact check/Nyhedsdesk recheck færdiggøres.
+3. Journalist → Sprog → Etik → Billede → SEO.
+4. Slutredaktør opretter final approval snapshot.
+5. Forsideredaktør opdaterer eventuelt `content/frontpage.json` med canonical slug-reference.
+6. Teknisk QA køres.
+7. Udgiver sætter ved umiddelbar publicering `status: ready` og `release_requested: true`; `published_at` forbliver tom.
+8. PR mod `main` har titel `[AUTO] ...` og body-markøren `<!-- morgentidende-auto-publish -->`.
+9. Quality gates tester det præcise PR-head. Auto-publish merge accepterer kun pipeline-v2-artikler fra eget repo og allowlisten.
+10. Efter merge sætter GitHub release-tidspunktet, bygger public-output og kører live-kontrol.
+
+Ved planlagt stof sætter Udgiver kun planlægningsmetadata; faktisk `published_at` sættes ved release.
 
 Højrisiko, `manual_review: true`, regelændringer, designændringer, workflows, scripts og andre systemændringer må aldrig bruge auto-publish-markøren.
 
-## Separate formater
-
-**Kommentator** — må først skrive aktuel kommentar, når en faktuel nyhed om samme `story_id` er live. Kommentar bliver ikke automatisk lead.
-
-**Daglig rapport** — måler produktion, kvalitet, corrections, coverage-mix, direkte søgbarhed og analytics når de findes. Ingen opdigtede trafiktal.
-
-**Ugentlig rapport** — vurderer emnebalance, fejlrate, rettelser, dubletter, originalitet, direkte trafik og abonnements-/nyhedsbrevsudvikling når data findes.
-
 ## Stopregler
 
-En kørsel uden ny publicering er tilladt og ofte korrekt. Følgende er derimod fejl:
+Fejl omfatter blandt andet:
 
 - artikel uden godkendt ledger
-- samme faktum fremstillet som to uafhængige kilder, selv om begge stammer fra samme bureau/pressemeddelelse
-- fakta uden claim-id
-- citat uden kilde og ordlyd
-- højrisikostof autopubliceret trods `manual_review: true`
-- kommentar før nyhed om samme aktuelle sag
-- direkte redigering af låst design
+- coverage sweep markeret PASS med færre end tre reelt uafhængige source-groups
+- samme bureau/pressemeddelelse talt flere gange
+- Fact check PASS uden desk recheck `publish|update`
+- pipeline-v2-artikel uden matching final approval
+- påkrævet forelæggelse uden kontakt/fristsvar eller dokumenteret undtagelse
+- v2-forsidepost der kopierer titel/teaser/billede i stedet for canonical slug-reference
+- højrisikostof autopubliceret
 - fremtidigt/opdigtet publiceringstidspunkt
-- dublet-URL uden selvstændig nyhed
-- AI-commit direkte til `main`
-- auto-publish-PR der ændrer scripts, workflows, templates, design eller genereret `docs/`
+- auto-publish-PR der ændrer scripts, workflows, templates eller design
 
 ## Prompts
 
-De operative prompts ligger i:
-
-- `agents/scan.md`
-- `agents/newsdesk.md`
-- `agents/research.md`
-- `agents/fact-check.md`
-- `agents/journalist.md`
-- `agents/language.md`
-- `agents/ethics.md`
-- `agents/seo.md`
-- `agents/image.md`
-- `agents/technical-qa.md`
-- `agents/frontpage.md`
-- `agents/publisher.md`
-- `agents/post-publication.md`
-- `agents/commentator.md`
-- `agents/daily-report.md`
-- `agents/weekly-report.md`
-
-Hver prompt følger samme format: Formål → Skal læse → Input → Handling → Forbud → Output → PASS/FAIL/STOP.
+Operative prompts ligger i `agents/`, herunder:
+`newsdesk.md`, `research.md`, `fact-check.md`, `journalist.md`, `language.md`, `ethics.md`, `image.md`, `seo.md`, `final-editor.md`, `frontpage.md`, `technical-qa.md`, `publisher.md`, `live-proofreader.md`, `post-publication.md` og `correction-editor.md`.

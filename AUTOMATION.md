@@ -1,57 +1,25 @@
 # Gratis automationsarkitektur — eksperimentfase
 
-Målet i denne fase er maksimal stabilitet uden betalte AI-API-kald.
-
 ## Princip
 
-**AI = redaktion. GitHub Actions = maskinrum.**
+Redaktionel intelligens = AI/redaktion. GitHub Actions = deterministisk maskinrum.
 
-GitHub Actions på standard runners bruges til alt deterministisk arbejde i det offentlige repo: scanning, kø, quality gates, merge-vagt, build, sitemaps, deployment-kontrol, retries, QA og rollback-sikkerhed.
+## Pipeline v2
 
-AI bruges kun til det, scripts ikke bør foregive at kunne: nyhedsværdi, research, kildevurdering, faktaledger, journalistik, sprog, fairness og forsidevurdering. I eksperimentfasen kommer AI-arbejdet fra ChatGPT-automation/manuel ChatGPT-brug — **ikke** fra OpenAI-, xAI-, Anthropic- eller andre betalte API-kald inde i GitHub Actions.
+1. Scan/queue finder kandidater.
+2. Nyhedsdesk assignment.
+3. Research coverage sweep + ledger.
+4. Fact checker falsificerer claims.
+5. Nyhedsdesk recheck `publish|update|hold|kill`.
+6. Journalist → Sprog → Etik → Billede → SEO.
+7. Slutredaktør opretter `reports/editorial/approvals/<slug>.json` med snapshot.
+8. Forsideredaktør bruger canonical slug-reference for v2.
+9. Teknisk QA.
+10. Udgiver gør artiklen `ready` + `release_requested: true`, men sætter ikke `published_at`.
+11. `[AUTO]` PR testes; merge accepterer kun pipeline-v2-artikler og allowlisten.
+12. Efter merge sætter `release_ready.py` faktisk `published_at` ved build/release.
+13. Generatoren bygger public-output og offentlig rettelseslog.
+14. Post-deploy guard tester forside + netop ændrede/recent artikel-URL'er.
+15. Live proofreader og redaktionel update-monitor er redaktionelle AI-opgaver, ikke GitHub-heuristikker.
 
-## Gratis flow
-
-1. `Breaking scan` kører hvert 15. minut og skriver `scan/latest.md`.
-2. `Newsroom cycle` kører efter et vellykket scan og laver `queue/candidates.json` uden AI. Filen er kun en kandidat-inventarliste; den er ikke en redaktionel vurdering.
-3. ChatGPT-redaktionen læser køen + aktuelle kilder og udfører den fulde agentpipeline.
-4. Godkendt autopublicerbart stof afleveres på branch `edition/*` eller `newsroom/*` som en PR mod `main`.
-5. Auto-PR skal have titelprefix `[AUTO] ` og body-markøren `<!-- morgentidende-auto-publish -->`.
-6. `Quality gates` bygger og tester PR-head deterministisk.
-7. `Auto-publish merge` kan kun merge PR'er fra dette repo, med korrekt branch/prefix/marker, med højst 50 ændrede filer, uden deletions og kun fra en snæver redaktionel allowlist. Den merger præcis det SHA, der bestod testen.
-8. Merge til `main` udløser `Build structured edition`, som genererer `docs/` fra canonical struktureret indhold.
-9. Alle workflows der skriver til `main`, bruger samme concurrency-lock, så scan, kø, publish, QA og rollback ikke kan overskrive hinanden.
-10. `Post-deploy guard` giver GitHub Pages tid til at deploye og tester derefter tre gange. Kun ved vedvarende **interne** fejl kan det seneste genererede publisher-commit rulles tilbage. Tredjepartsbilleder kan give advarsel, men aldrig automatisk rollback.
-11. `Release scheduled articles` kører fire gange i timen og frigiver kun canonical artikler med `status: scheduled`, et nået `scheduled_for`, fuldt bestået QA og `manual_review: false`. Ved frigivelse sættes den faktiske `published_at`; derefter bygger den normale publisher live-output.
-12. `Post-publication QA` kører fortsat hver time og skriver live-rapport.
-
-## Hvad GitHub Actions ikke må gøre i gratis fase
-
-- kalde en betalt LLM/API
-- skrive journalistik ud fra en overskrift alene
-- afgøre breaking, fairness eller source-independence med simple heuristikker
-- masseproducere fyldartikler
-- auto-merge system-, design-, workflow-, template- eller scriptændringer
-- auto-publicere `manual_review: true`
-- frigive en planlagt artikel før `scheduled_for` eller uden bestået fact check
-
-## Auto-publish allowlist
-
-En `[AUTO]` newsroom-PR må kun ændre:
-
-- `content/articles/**`
-- `content/frontpage.json`
-- `sources/**`
-- `killed/**`
-- `scheduled/**`
-- `reports/editorial/**`
-
-En fjernet fil stopper auto-merge. Ændringer udenfor listen stopper auto-merge.
-
-## Systemændringer
-
-Ændringer af regler, scripts, workflows, templates, design, CSS og generatorer skal gå gennem en almindelig PR uden auto-publish-markør og skal bevidst godkendes/merges som systemarbejde.
-
-## Senere
-
-Når formatet er stabilt og økonomien kan bære det, kan AI-redaktionen flyttes ind i GitHub Actions via en model-API. Arkitekturen ændres ikke: API-agenten afleverer stadig kun en newsroom-PR; den får aldrig direkte live-adgang.
+Final approval sammenlignes maskinelt med artikelens redaktionelle snapshot. Udgiver må bagefter kun ændre publiceringsmetadata.
