@@ -30,6 +30,7 @@ IMG_RE = re.compile(r'<img\b[^>]*\bsrc=["\'](https?://[^"\']+)["\']', re.I)
 # healthy. New structured articles must instead be fixed in canonical content.
 LEGACY_REPLACEMENTS = {
     "https://commons.wikimedia.org/wiki/Special:FilePath/Grubenhaus_Warendorf.jpg": "../img/soften.svg",
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn_from_Kongens_Nytorv.jpg": "https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn-Copenhagen.jpg",
 }
 
 EXT_BY_TYPE = {
