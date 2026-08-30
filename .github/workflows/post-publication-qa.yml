@@ -2,11 +2,12 @@ name: Post-publication QA
 
 on:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: morgentidende-main-writes
@@ -25,12 +26,44 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Fallback release of due scheduled articles
+        id: release
+        run: |
+          python scripts/release_scheduled.py
+          if git diff --quiet -- content/articles; then
+            echo "released=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "released=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate released canonical state
+        if: ${{ steps.release.outputs.released == 'true' }}
+        run: python scripts/quality_gate.py --prebuild
+
+      - name: Commit fallback release
+        if: ${{ steps.release.outputs.released == 'true' }}
+        run: |
+          git config user.name "morgentidende-scheduler-watchdog"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/articles/*.json
+          git commit -m "schedule: watchdog release due articles"
+          git push
+
+      - name: Dispatch build after fallback release
+        if: ${{ steps.release.outputs.released == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run build-publish.yml --ref main
+
       - name: Live smoke test
+        if: ${{ steps.release.outputs.released != 'true' }}
         id: live_qa
         continue-on-error: true
         run: python scripts/live_qa.py --strict --report reports/qa/live-latest.md
+
       - name: Commit QA report
-        if: ${{ always() }}
+        if: ${{ steps.release.outputs.released != 'true' && always() }}
         run: |
           git config user.name "morgentidende-qa"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -38,9 +71,10 @@ jobs:
           if git diff --cached --quiet; then
             echo "Ingen rapportændring"
           else
-            git commit -m "qa: hourly live smoke test"
+            git commit -m "qa: live smoke test"
             git push
           fi
+
       - name: Fail workflow when live QA found hard or soft faults
-        if: ${{ steps.live_qa.outcome == 'failure' }}
+        if: ${{ steps.release.outputs.released != 'true' && steps.live_qa.outcome == 'failure' }}
         run: exit 1
