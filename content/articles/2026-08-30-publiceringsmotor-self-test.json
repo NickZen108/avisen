@@ -1,0 +1,50 @@
+{
+  "status": "published",
+  "story_id": "2026-08-30-publiceringsmotor-self-test",
+  "slug": "2026-08-30-publiceringsmotor-self-test",
+  "category": "Nyhed",
+  "weight": "D",
+  "title": "Test: Morgentidendes automatiske publiceringsmotor kører",
+  "standfirst": "Denne testartikel er publiceret for at kontrollere hele kæden fra newsroom-branch og faktaledger til Quality gates, auto-merge, build og live-side.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": "2026-08-30T09:36:00Z",
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-08-30-publiceringsmotor-self-test.json",
+  "claim_ids": [
+    "F01",
+    "F02"
+  ],
+  "seo": {
+    "title": "Test af Morgentidendes automatiske publiceringsmotor",
+    "description": "Teknisk testartikel, der verificerer Morgentidendes newsroom-pipeline fra GitHub-branch til live-publicering.",
+    "canonical": null
+  },
+  "image": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "Dette er en teknisk testartikel. Den er oprettet for at kontrollere, at Morgentidendes automatiske newsroom-kæde kan gennemføre en rigtig struktureret publicering uden direkte skrivning til main."
+    },
+    {
+      "type": "h2",
+      "text": "Hvad testen kontrollerer"
+    },
+    {
+      "type": "p",
+      "text": "Kæden omfatter en frisk newsroom-branch, en struktureret artikel, en faktaledger, GitHubs Quality gates og et efterfølgende auto-merge af det præcise testede SHA."
+    },
+    {
+      "type": "p",
+      "text": "Når artiklen er live, er testen bestået hele vejen gennem build og deployment. Artiklen kan derefter fjernes eller stå som dokumentation for systemtesten."
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null
+}
