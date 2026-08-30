@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-30T13:20:18+00:00",
+  "scan_label": "2026-08-30 13:20 UTC",
+  "fingerprint": "0dc1b8235be3a5565ade4cd871eee125ef41419d1c381a04ab0acfbc029b1799",
+  "signal_count": 16,
+  "signals": [
+    {
+      "source": "DR",
+      "headline": "17-årig uledsaget bilist er kørt ind i to huse",
+      "normalized": "17 årig uledsaget bilist er kørt ind i to huse"
+    },
+    {
+      "source": "DR",
+      "headline": "Bilist sigtet for vanvidskørsel efter u-vending i Øresundstunnelen",
+      "normalized": "bilist sigtet for vanvidskørsel efter u vending i øresundstunnelen"
+    },
+    {
+      "source": "DR",
+      "headline": "Britisk højrefløjsprovokatør udvist af USA",
+      "normalized": "britisk højrefløjsprovokatør udvist af usa"
+    },
+    {
+      "source": "DR",
+      "headline": "Fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i London",
+      "normalized": "fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i london"
+    },
+    {
+      "source": "DR",
+      "headline": "Fra i dag vil trafikken over Øresund være besværet",
+      "normalized": "fra i dag vil trafikken over øresund være besværet"
+    },
+    {
+      "source": "DR",
+      "headline": "Kemikalieudslip med saltsyre i Nibe",
+      "normalized": "kemikalieudslip med saltsyre i nibe"
+    },
+    {
+      "source": "DR",
+      "headline": "Kort nyt | DR",
+      "normalized": "kort nyt dr"
+    },
+    {
+      "source": "DR",
+      "headline": "Københavnertradition aflyst på grund af regnvejr",
+      "normalized": "københavnertradition aflyst på grund af regnvejr"
+    },
+    {
+      "source": "DR",
+      "headline": "Landboforening melder om stor opbakning til protestmøde",
+      "normalized": "landboforening melder om stor opbakning til protestmøde"
+    },
+    {
+      "source": "DR",
+      "headline": "Meget vand på Fynske Motorvej giver problemer",
+      "normalized": "meget vand på fynske motorvej giver problemer"
+    },
+    {
+      "source": "DR",
+      "headline": "Populær fyret ukrainsk forsvarsminister skal rådgive Italiens forsvarsminister",
+      "normalized": "populær fyret ukrainsk forsvarsminister skal rådgive italiens forsvarsminister"
+    },
+    {
+      "source": "DR",
+      "headline": "Sigtede for angreb mod Hadsten Skole accepterer forlænget fængsling",
+      "normalized": "sigtede for angreb mod hadsten skole accepterer forlænget fængsling"
+    },
+    {
+      "source": "DR",
+      "headline": "To ministre fra Moderaterne søger orlov fra Folketinget",
+      "normalized": "to ministre fra moderaterne søger orlov fra folketinget"
+    },
+    {
+      "source": "DR",
+      "headline": "Tre anholdt for voldeligt overfald i Horsens",
+      "normalized": "tre anholdt for voldeligt overfald i horsens"
+    },
+    {
+      "source": "DR",
+      "headline": "Trump og Venezuela annoncerer 'den største olieaftale i verdenshistorien'",
+      "normalized": "trump og venezuela annoncerer den største olieaftale i verdenshistorien"
+    },
+    {
+      "source": "DR",
+      "headline": "Voldeligt overfald udløste større politiindsats i Horsens",
+      "normalized": "voldeligt overfald udløste større politiindsats i horsens"
+    }
+  ],
+  "exact_clusters": [],
+  "editorial_status": "UNRANKED",
+  "warning": "This queue is an inventory, not a news-value or verification decision."
+}
