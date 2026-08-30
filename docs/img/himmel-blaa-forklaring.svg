@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 780" role="img" aria-labelledby="title desc">
+<title id="title">Hvorfor himlen ser blå ud om dagen</title>
+<desc id="desc">Sollys rammer atmosfæren. Korte blå bølgelængder spredes i mange retninger, mens røde og orange bølgelængder spredes mindre.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdeaff"/><stop offset="1" stop-color="#f7fbff"/></linearGradient>
+  <marker id="blueArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#1877d2"/></marker>
+  <marker id="redArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#e5532d"/></marker>
+  <style>
+    .title{font:700 42px Arial,sans-serif;fill:#14243a}.label{font:700 29px Arial,sans-serif;fill:#1e2a38}.small{font:24px Arial,sans-serif;fill:#33485d}.blue{fill:#176db9}.red{fill:#d84a28}
+  </style>
+</defs>
+<rect width="900" height="780" fill="#f7f2e8"/>
+<text x="45" y="62" class="title">Hvorfor ser himlen blå ud?</text>
+<rect x="35" y="92" width="830" height="625" rx="28" fill="url(#sky)" stroke="#bdd9eb" stroke-width="3"/>
+
+<!-- Sun and incoming white light -->
+<circle cx="130" cy="205" r="58" fill="#ffd34e" stroke="#efb52f" stroke-width="6"/>
+<g stroke="#efb52f" stroke-width="5"><line x1="130" y1="124" x2="130" y2="98"/><line x1="70" y1="145" x2="49" y2="125"/><line x1="190" y1="145" x2="211" y2="125"/><line x1="49" y1="205" x2="22" y2="205"/></g>
+<text x="70" y="292" class="label">Sollys</text>
+<path d="M188 205 L430 330" stroke="#fff" stroke-width="58" opacity=".94"/>
+<path d="M190 190 L430 315" stroke="#7259c5" stroke-width="6"/><path d="M190 199 L430 324" stroke="#2678ce" stroke-width="6"/><path d="M190 208 L430 333" stroke="#3aa267" stroke-width="6"/><path d="M190 217 L430 342" stroke="#edb43b" stroke-width="6"/><path d="M190 226 L430 351" stroke="#e6593e" stroke-width="6"/>
+
+<!-- Atmosphere -->
+<path d="M250 650 Q465 210 825 355" fill="none" stroke="#82c4f0" stroke-width="105" opacity=".40"/>
+<text x="510" y="170" class="label">Atmosfæren</text>
+<text x="510" y="202" class="small">består af molekyler,</text>
+<text x="510" y="232" class="small">som kan sprede lyset.</text>
+
+<!-- Scattering -->
+<g fill="#86bff0" stroke="#4b95d0" stroke-width="2"><circle cx="435" cy="335" r="9"/><circle cx="465" cy="350" r="8"/><circle cx="410" cy="360" r="7"/><circle cx="490" cy="318" r="7"/><circle cx="520" cy="360" r="7"/></g>
+<g stroke="#1877d2" stroke-width="6" marker-end="url(#blueArrow)">
+  <line x1="445" y1="335" x2="445" y2="245"/><line x1="450" y1="340" x2="535" y2="260"/><line x1="455" y1="350" x2="570" y2="350"/><line x1="450" y1="360" x2="535" y2="430"/><line x1="435" y1="365" x2="435" y2="465"/><line x1="425" y1="360" x2="345" y2="430"/><line x1="425" y1="342" x2="350" y2="285"/>
+</g>
+<text x="540" y="282" class="label blue">Blåt lys spredes</text>
+<text x="540" y="316" class="label blue">i mange retninger</text>
+
+<!-- Red continues -->
+<path d="M445 365 C560 392 670 408 790 430" stroke="#e5532d" stroke-width="8" fill="none" marker-end="url(#redArrow)"/>
+<path d="M445 352 C560 375 670 388 790 405" stroke="#efb440" stroke-width="7" fill="none"/>
+<text x="520" y="475" class="label red">Rødt og orange lys</text>
+<text x="520" y="509" class="label red">spredes mindre</text>
+
+<!-- Observer -->
+<circle cx="750" cy="585" r="18" fill="#c58b62"/><path d="M730 606 L770 606 L788 695 L712 695 Z" fill="#254b72"/>
+<text x="470" y="575" class="label">Øjet modtager blåt lys</text>
+<text x="470" y="609" class="label">fra hele himlen</text>
+<path d="M700 595 C630 560 570 515 500 455" fill="none" stroke="#1877d2" stroke-width="5" stroke-dasharray="10 10" marker-end="url(#blueArrow)"/>
+
+<!-- Explanation -->
+<rect x="55" y="625" width="570" height="115" rx="18" fill="#fffdf8" stroke="#c8d5df" stroke-width="3"/>
+<text x="80" y="665" class="label">Rayleigh-spredning</text>
+<text x="80" y="702" class="small">Korte bølgelængder spredes mere</text>
+<text x="80" y="732" class="small">end lange bølgelængder.</text>
+</svg>
