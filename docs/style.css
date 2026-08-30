@@ -114,6 +114,25 @@ a:hover { text-decoration: underline; text-underline-offset: .16em; }
 .article-rail { border-left: 1px solid var(--rule); padding-left: 1.1rem; }
 .article-rail .rail-item { font-size: .92rem; }
 
+.article-graphic {
+  margin: 1.15rem 0 1.55rem;
+  background: transparent;
+}
+.article-graphic img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #f7f2e8;
+}
+.article-graphic figcaption {
+  margin-top: .35rem;
+  padding: 0;
+  font-family: var(--sans);
+  font-size: .72rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
 .related-teaser {
   margin: 1.2rem 0 0;
   padding: .85rem 1rem;
@@ -177,6 +196,13 @@ footer { border-top: 1px solid var(--ink); padding: 1.6rem 0 2.2rem; background:
   .layout, .article-grid, .stack { grid-template-columns: 1fr; }
   .rail, .article-rail { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); }
   .lead-fig img { height: 16rem; }
+  .article-graphic--wide {
+    width: calc(100vw - .5rem);
+    max-width: none;
+    margin-left: calc(50% - 50vw + .25rem);
+    margin-right: calc(50% - 50vw + .25rem);
+  }
+  .article-graphic--wide figcaption { padding-inline: .75rem; }
 }
 @media (max-width: 520px) {
   .narrow, .below { grid-template-columns: 1fr; }
