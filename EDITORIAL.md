@@ -1,67 +1,70 @@
-# 1. Redaktionel linje
+# Redaktionel linje — Morgentidende
 
 Navn på alle flader: **Morgentidende**.
 
-Seriøs broadsheet. Ikke partiblad. Ikke vred. Nyheden skal kunne læses af en uenig. Holdningen vises i emnevalg og i stykker mærket Kommentar.
+Morgentidende er en seriøs, uafhængig dansk netavis. Nyhedsstof udvælges efter dokumenteret nyhedsværdi og offentlig interesse — ikke efter om historien passer til en politisk eller kulturel linje. Holdning hører kun hjemme i tydeligt mærkede kommentarer.
 
-## Sprog
+## Grundprincipper
 
-Kort. Aktiv. Dansk. Kedeligt og klart. Ingen slang.
-
-## Forbudt på siden
-
-Ingen intern note. Ingen redaktørstemme. Ingen »ikke en facitliste«, »ikke avisens«, »ingen frit foto«.
+1. **Sandhed før hastighed.** Hellere senere end forkert.
+2. **Nyhed før volumen.** Ingen fyldartikler og ingen tvungen timeproduktion.
+3. **Fakta og vurdering adskilles.** Nyheder beskriver; kommentarer argumenterer.
+4. **Fairness er relevant vægt, ikke kunstig 50/50.** Modpositioner med reel betydning skal gengives loyalt; dokumenteret fakta får ikke samme vægt som udokumenterede påstande.
+5. **Kilder er synlige og sporbare.** AI-output er aldrig kilde.
+6. **Rettelser er åbne.** Materielle fejl korrigeres med note og tidsstempel.
+7. **Ingen falsk autoritet.** Ingen opdigtede journalister, klienter, øjenvidner eller eksperter.
 
 ## Nyhed er ikke kommentar
 
-En nyhed må ikke slutte med avisens vurdering. Sådanne sætninger hører i Kommentar eller ud.
+En nyhed må ikke slutte med avisens vurdering, insinuation eller moralske konklusion. Kommentarer mærkes `Kommentar` og ligger i en selvstændig fil/URL. En kommentar om en aktuel sag publiceres først, når en faktuel nyhedsartikel om samme sag findes og linkes begge veje.
 
-## Udgivelsestid
+## Fairness og forelæggelse
 
-Tidspunktet på artiklen er det øjeblik, filen lander i `docs/` og går live. Dansk tid. Format: `29. august 2026 kl. 19.23`.
+Når en artikel indeholder konkrete, potentielt skadelige beskyldninger mod en identificerbar person, virksomhed eller institution, skal den berørte part have en reel mulighed for at svare før publicering, medmindre:
 
-Forbudt: at sætte kl. 06.00, at datere frem i tiden, at genbruge et gammelt klokkeslæt. Planlagt kø får først tid, når den faktisk publiceres.
+- forholdet allerede er ubestridt dokumenteret i en primær offentlig kilde, eller
+- akut offentlig sikkerhed gør øjeblikkelig publicering nødvendig.
 
-`<time datetime>` skal være samme tid i ISO.
+Undtagelsen skal fremgå af research-memoet. Ved alvorlige beskyldninger, børn, selvmord, seksualforbrydelser, privat helbred, identifikation i kriminalstof eller anden høj risiko går stykket til `manual_review: true` og må ikke autopubliceres.
 
-## Foto og kredit
+## Krimi
 
-Forside og teasere: ingen fotograf-linje. Artikelside: kredit når licensen kræver det. Foto matcher overskriftens sted og emne.
+Skriv sigtet, tiltalt, dømt og frifundet korrekt. Ingen er dømt før dom. Identifikation kræver selvstændig relevans og proportionalitet. Børn og mindreårige anonymiseres som udgangspunkt.
 
-## Forside-lead
+## Citater
 
-Som DR, TV 2 og Berlingske på nettet: vægt først, tid bagefter. Leadet er den sag, der bærer udgaven nu. Ikke det nyeste ur.
+Citatoverskrift kun ved ordret, verificeret citat. Oversættelser markeres ikke som direkte citat, medmindre den danske ordlyd er dokumenteret som autoriseret. Ellers parafrasér.
 
-Rangorden, højest først:
-1. Breaking med konkret, pågående hændelse.
-2. Krimi og ret med navngivne tiltalte og ny proces.
-3. Vedtaget eller officielt brudt stof (Folketing, kommune, styrelse, dom).
-4. Politisk eller kommunalt udspil, takster, målinger.
-5. Feature, guide, historie, sundhed uden brud.
+## Publiceringstid
 
-Kommentar og guide bliver aldrig lead. Time-artiklen arver ikke 1-eren, fordi den er ny.
+Tidspunktet på artiklen er det øjeblik, den faktisk genereres til `docs/` og går live. Dansk tid. Format: `30. august 2026 kl. 14.23`. `<time datetime>` skal være samme tidspunkt i ISO 8601.
 
-Breaking overtager leadet med det samme. Bliver til næste vurdering.
+Planlagt stof får først publiceringstid ved faktisk publicering. Ingen fremdatering og ingen genbrug af gammelt klokkeslæt. Ved substantiel senere opdatering vises både oprindelig publicering og `Opdateret`.
 
-Et lead uden ny udvikling i sagen rykker ned efter otte timer, eller ved midnat, hvis der findes et yngre stykke længere oppe i rangordenen — eller et udspil, når intet tungere er tilbage. En retssag må blive til aften, så længe den er dagens tungeste. Den må ikke stå som evig 1-er, når intet nyt er sket og der ligger frisk stof.
+## Billeder
 
-Når lead skiftes: det gamle går i rail eller første kort. Foto, H1 og manchet følger den nye sag. Ticker må være et andet stykke (det seneste). Rør ikke CSS.
+Dokumentariske nyhedsbilleder må ikke være generativt skabte eller manipulerede, så de forestiller en virkelig begivenhed, der ikke er fotograferet. AI-grafik må kun bruges som tydeligt mærket **Illustration** og må ikke kunne forveksles med dokumentation.
 
-## Anden-tjek (obligatorisk før commit)
+Billede skal passe til sted, tid og emne. Ophav/licens registreres. Forside og teaser behøver ikke fotograf-linje; artikelside viser kredit, når licensen kræver det.
 
-1. Sidste afsnit en vurdering fra avisen? → flyt eller slet.
-2. Intern note? → slet.
-3. Citat ordret med kilde i memoet? Ellers veto.
-4. Egennavne forklaret første gang?
-5. Foto matcher overskrift?
-6. Dårlig oversættelse? → omskriv.
-7. Er klokkeslættet det faktiske publiceringstidspunkt? Nej → ret før commit.
-8. Bærer leadet stadig udgaven, eller skal det rykke efter forside-reglen?
+## Byline og transparens
 
-## Citatoverskrift, etnicitet, vægtning
+Standardbyline er `Morgentidende Redaktion`, medmindre en faktisk navngiven skribent står bag. Offentlige sider skal tydeligt forklare redaktionel metode, AI-brug, kontakt og rettelser.
 
-Citatoverskrift kun ordret. Etnicitet kun som tegn i anden halvdel. Mindst 4 af 10 ikke-politiske.
+## Lead og forside
 
-## Tvivl
+Forsiden styres af `FRONTPAGE.md`: vægt først, tid bagefter. Den nyeste artikel er ikke automatisk lead. Kommentar, guide og SEO-stof bliver aldrig lead alene på grund af alder eller klik.
 
-Vred eller partiblad: vælg den neutrale linje.
+## Obligatorisk anden-tjek før publicering
+
+- Er sidste afsnit en vurdering fra avisen? → flyt til Kommentar eller slet.
+- Findes alle bærende fakta i faktaledgeren?
+- Er egennavne, tal og datoer verificeret?
+- Er relevant modpart med?
+- Er kategori og nyhedsvægt korrekt?
+- Er historien allerede dækket i samme story cluster?
+- Matcher billede og licens?
+- Er publiceringstiden faktisk?
+- Er leadplaceringen begrundet efter `FRONTPAGE.md`?
+
+Ved tvivl: vælg den neutrale, dokumenterede formulering eller stop.
