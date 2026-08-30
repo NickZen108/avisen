@@ -1,4 +1,6 @@
-# Redaktørtjek 29. aug. 2026 aften
+# Historisk redaktørtjek — 29. aug. 2026 aften
+
+**Status:** incident-/præcedenslog. Dette er ikke en aktiv agentprompt og må ikke overtrumfe `HUSREGLER.md`, `EDITORIAL.md` eller `SOURCES.md`.
 
 ## Underkendt eller rettet
 - Christoffersen »nul evidens for folkedrab«: ikke genfundet i denne runde. Fjernet.
@@ -9,9 +11,16 @@
 - Heunicke »ikke dyrere« belagt i DR 1. okt 2025 og JP sep 2025.
 - Siumut *og* Naleraq vil have ICJ. Broberg: kun stater kan indbringe.
 
-## Godkendt
+## Godkendt dengang
 - Lyngby: DR + Berlingske + TT. Alle nægter. Ikke dømt.
 - Søften: Moesgaard/Ritzau/AP.
 - Moms-mad: The Local/Ritzau 27. aug 2026.
 - Gottman-guide: bog, ikke opdigtede klienter.
 - Starlink: earnings call + selskabsudsagn, markeret.
+
+## Læring
+
+- Kildeophav skal deduplikeres; flere medier er ikke automatisk flere uafhængige kilder.
+- Dato/freshness er en selvstændig gate.
+- Tal med forskellige definitioner eller datoer må ikke blandes.
+- Juridisk status og partspositioner skal kontrolleres ordret mod kilden.
