@@ -1,0 +1,25 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "morgentidende-newsdesk",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-30",
+  "workers_dev": true,
+  "preview_urls": false,
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "NEWSROOM_STATE",
+        "class_name": "NewsroomState"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["NewsroomState"]
+    }
+  ]
+}
