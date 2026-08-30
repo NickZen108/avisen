@@ -13,6 +13,7 @@ import mimetypes
 import re
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 from urllib.parse import urlparse
@@ -22,7 +23,7 @@ DOCS = ROOT / "docs"
 CACHE = DOCS / "img" / "cache"
 MANIFEST = CACHE / "manifest.json"
 PUBLIC_BASE = "https://morgentidende.nicolaipetersen108.workers.dev"
-UA = "MorgentidendeImageCache/1.0 (+https://morgentidende.nicolaipetersen108.workers.dev/)"
+UA = "MorgentidendeImageCache/1.1 (+https://morgentidende.nicolaipetersen108.workers.dev/)"
 IMG_RE = re.compile(r'<img\b[^>]*\bsrc=["\'](https?://[^"\']+)["\']', re.I)
 
 EXT_BY_TYPE = {
@@ -71,11 +72,22 @@ def plausible_image(content_type: str, body: bytes) -> bool:
     ) and len(body) >= 100
 
 
+def origin_request_url(url: str) -> str:
+    # Wikimedia explicitly supports a width parameter on Special:FilePath and
+    # redirects to a thumbnail. This is friendlier than repeatedly fetching
+    # multi-megabyte originals and materially reduces 429/rate-limit risk.
+    if "commons.wikimedia.org/wiki/Special:FilePath/" in url and "width=" not in url:
+        separator = "&" if "?" in url else "?"
+        return url + separator + "width=1600"
+    return url
+
+
 def fetch_image(url: str) -> tuple[bytes, str, str]:
-    delay = 2
+    request_url = origin_request_url(url)
+    delay = 3
     last_error: Exception | None = None
-    for attempt in range(5):
-        req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"})
+    for attempt in range(3):
+        req = urllib.request.Request(request_url, headers={"User-Agent": UA, "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"})
         try:
             with urllib.request.urlopen(req, timeout=40) as response:
                 body = response.read(20_000_000)
@@ -90,7 +102,7 @@ def fetch_image(url: str) -> tuple[bytes, str, str]:
                 raise
         except Exception as exc:
             last_error = exc
-        if attempt < 4:
+        if attempt < 2:
             time.sleep(delay)
             delay *= 2
     raise RuntimeError(f"image fetch failed after retries: {url}: {last_error}")
