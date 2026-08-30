@@ -1,0 +1,114 @@
+{
+  "story_id": "2026-08-30-north-cyprus-ferry-capsize",
+  "article_slug": "2026-08-30-nordcypern-faerge-kaentret",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "core_question": "Hvad er sikkert kendt om den kæntrede passagerfærge ud for Kyrenia, og hvor langt er redningsaktionen?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Reuters",
+      "url": "https://www.reuters.com/world/europe/boat-with-around-270-people-capsizes-off-north-cyprus-media-says-2026-08-30/",
+      "published_at": "2026-08-30",
+      "accessed_at": "2026-08-30T13:48:42+02:00",
+      "type": "news",
+      "source_group": "reuters-own-reporting",
+      "authoritative_for": "Reuters' selvstændige rapportering og gengivelse af oplysninger fra Kyrenias borgmester og tyrkisk-cypriotiske medier om kæntringen og redningsaktionen."
+    },
+    {
+      "id": "S2",
+      "name": "Cyprus Mail",
+      "url": "https://cyprus-mail.com/2026/08/30/passenger-ferry-capsizes-off-kyrenia",
+      "published_at": "2026-08-30",
+      "accessed_at": "2026-08-30T13:48:42+02:00",
+      "type": "news",
+      "source_group": "cyprus-mail-own-reporting",
+      "authoritative_for": "Lokal selvstændig rapportering om færgens afgang fra Kyrenia, kæntringen og indsatsen fra kystvagt og redningshelikopter."
+    },
+    {
+      "id": "S3",
+      "name": "soL Haber",
+      "url": "https://haber.sol.org.tr/haber/girne-aciklarinda-yolcu-gemisi-alabora-oldu-258-kisiden-159una-ulasildi-413335",
+      "published_at": "2026-08-30",
+      "accessed_at": "2026-08-30T13:48:42+02:00",
+      "type": "news",
+      "source_group": "sol-haber-reporting",
+      "authoritative_for": "Tyrkisk rapportering med oplysninger fra Kyrenias borgmester og transportminister om passagertal, redningsstatus og kystvagtens indsats."
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "En passagerfærge kæntrede søndag ud for Kyrenia i Nordcypern, og en sø- og redningsaktion blev iværksat.",
+      "status": "verified",
+      "source_ids": ["S1", "S2", "S3"],
+      "independent_groups": ["reuters-own-reporting", "cyprus-mail-own-reporting", "sol-haber-reporting"],
+      "checked_at": "2026-08-30T13:48:42+02:00",
+      "notes": "Kæntringen og den igangværende redningsaktion rapporteres samstemmende af internationale og lokale medier."
+    },
+    {
+      "id": "F02",
+      "claim": "Kyrenias borgmester Murat Senkul har oplyst, at omkring 270 personer inklusive besætning var om bord.",
+      "status": "verified",
+      "source_ids": ["S1", "S2", "S3"],
+      "independent_groups": ["reuters-own-reporting", "cyprus-mail-own-reporting", "sol-haber-reporting"],
+      "checked_at": "2026-08-30T13:48:42+02:00",
+      "notes": "Kilderne gengiver borgmesteren. Reuters/soL omtaler også tallet 258 passagerer; derfor bruges 'omkring 270 personer inklusive besætning' og ikke et endeligt manifesttal."
+    },
+    {
+      "id": "F03",
+      "claim": "Reuters og soL rapporterede med henvisning til borgmesteren, at 159 af 258 passagerer var nået af redningsmandskab på det tidspunkt, deres oplysninger blev indsamlet.",
+      "status": "verified",
+      "source_ids": ["S1", "S3"],
+      "independent_groups": ["reuters-own-reporting", "sol-haber-reporting"],
+      "checked_at": "2026-08-30T13:48:42+02:00",
+      "notes": "Status er tidsfølsom og kan hurtigt ændre sig; den gengives med tydelig tids-/kildeattribution."
+    },
+    {
+      "id": "F04",
+      "claim": "Færgen var sejlet fra Kyrenia mod den tyrkiske havn Tasucu, da den kæntrede kort efter afgang.",
+      "status": "verified",
+      "source_ids": ["S2", "S3"],
+      "independent_groups": ["cyprus-mail-own-reporting", "sol-haber-reporting"],
+      "checked_at": "2026-08-30T13:48:42+02:00",
+      "notes": "Bekræftet af to lokale/regionale nyhedskilder."
+    },
+    {
+      "id": "F05",
+      "claim": "Årsagen til kæntringen var ikke fastslået ved redaktionens kontrol.",
+      "status": "verified",
+      "source_ids": ["S1", "S3"],
+      "independent_groups": ["reuters-own-reporting", "sol-haber-reporting"],
+      "checked_at": "2026-08-30T13:48:42+02:00",
+      "notes": "soL gengiver transportminister Erhan Arikli for, at årsagen først skal klarlægges ved undersøgelse."
+    }
+  ],
+  "numbers": [
+    {"claim_id":"F02","value":270,"unit":"personer cirka, inkl. besætning","period":"ombord ved ulykken","source_id":"S2"},
+    {"claim_id":"F03","value":258,"unit":"passagerer","period":"oplyst manifest/status under redningsaktionen","source_id":"S1"},
+    {"claim_id":"F03","value":159,"unit":"personer nået","period":"status ved Reuters/soL-rapportering","source_id":"S1"}
+  ],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": "Ingen egen skadelig beskyldning fremsættes; artiklen beskriver en igangværende redningshændelse og markerer usikre/tidsfølsomme oplysninger."
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-08-30T13:48:42+02:00",
+    "notes": [
+      "Kæntring og redningsaktion er bekræftet af tre uafhængige nyhedsgrupper.",
+      "Forskellen mellem cirka 270 personer inklusive besætning og 258 passagerer er bevaret og forklaret, ikke udglattet.",
+      "Ingen dødstal eller savnet-tal publiceres, fordi redningsaktionen er i gang og status kan ændre sig hurtigt.",
+      "Ingen direkte citater anvendes.",
+      "Årsagen fremstilles som uafklaret."
+    ]
+  }
+}
