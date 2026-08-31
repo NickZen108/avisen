@@ -22,6 +22,7 @@ APPROVALS = ROOT / "reports" / "editorial" / "approvals"
 AUTO_IMG = ROOT / "docs" / "img" / "auto"
 FRONTPAGE = ROOT / "content" / "frontpage.json"
 DEFAULT_URL = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/editorial/latest"
+PUBLIC_SITE = "https://morgentidende.nicolaipetersen108.workers.dev"
 
 
 def fail(message: str) -> None:
@@ -142,16 +143,6 @@ def save_hero(media: dict) -> Path:
     return target
 
 
-def update_frontpage(slug: str) -> None:
-    state = json.loads(FRONTPAGE.read_text(encoding="utf-8"))
-    state["ticker"] = {"slug": slug}
-    for key, limit in (("rail", 5), ("narrow", 8)):
-        items = [x for x in state.get(key, []) if x.get("slug") != slug]
-        items.insert(0, {"slug": slug})
-        state[key] = items[:limit]
-    FRONTPAGE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", help="JSON package already fetched from Cloudflare")
@@ -170,8 +161,8 @@ def main() -> int:
         return 0
 
     hero_path = save_hero(media)
-    article["image"]["src"] = f"/img/auto/{hero_path.name}"
-    article["image"]["source_url"] = None
+    article["image"]["src"] = f"{PUBLIC_SITE}/img/auto/{hero_path.name}"
+    article["image"]["source_url"] = media["url"]
     article["automation_origin"] = "cloudflare-workers-ai"
 
     # Approval snapshot must match canonical article after all editorial mutations.
@@ -184,7 +175,6 @@ def main() -> int:
     article_path.write_text(json.dumps(article, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (SOURCES / f"{slug}.json").write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (APPROVALS / f"{slug}.json").write_text(json.dumps(approval, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    update_frontpage(slug)
     print(f"Imported Cloudflare editorial package: {slug}; hero={hero_path.relative_to(ROOT)}")
     return 0
 
