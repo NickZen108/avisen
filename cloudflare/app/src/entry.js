@@ -1,12 +1,18 @@
 import app from './index.js';
 
 const PUBLIC_SITE = 'https://morgentidende.nicolaipetersen108.workers.dev';
+const CONTROL_ROOM_SOURCE = 'https://raw.githubusercontent.com/NickZen108/avisen/main/docs/kontrolrum/index.html';
 
 async function controlRoomResponse() {
-  const upstream = await fetch(`${PUBLIC_SITE}/kontrolrum/index.html`, {
-    headers: { 'user-agent': 'Morgentidende-Control-Room-Proxy/1.0' },
+  const upstream = await fetch(CONTROL_ROOM_SOURCE, {
+    headers: {
+      'accept': 'text/html',
+      'user-agent': 'Morgentidende-Control-Room-Proxy/1.1',
+    },
+    cf: { cacheTtl: 0, cacheEverything: false },
   });
   if (!upstream.ok) {
+    console.error('control room upstream failed', upstream.status, upstream.statusText);
     return new Response('Kontrolrummet kunne ikke indlæses.', {
       status: 502,
       headers: {
