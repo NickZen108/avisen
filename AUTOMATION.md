@@ -2,7 +2,9 @@
 
 ## Princip
 
-Redaktionel intelligens = AI/redaktion. GitHub Actions = deterministisk maskinrum.
+Redaktionel intelligens = ChatGPT/redaktion. GitHub Actions = deterministisk maskinrum.
+
+Grok, Grok Bot og xAI-automatiseringer er ikke en del af avisen. De må ikke skrive, scanne, korrekturlæse eller committe her. Se `AI-POLICY.md`.
 
 ## Pipeline v2
 
@@ -20,6 +22,6 @@ Redaktionel intelligens = AI/redaktion. GitHub Actions = deterministisk maskinru
 12. Efter merge sætter `release_ready.py` faktisk `published_at` ved build/release.
 13. Generatoren bygger public-output og offentlig rettelseslog.
 14. Post-deploy guard tester forside + netop ændrede/recent artikel-URL'er.
-15. Live proofreader og redaktionel update-monitor er redaktionelle AI-opgaver, ikke GitHub-heuristikker.
+15. Live proofreader og redaktionel update-monitor er redaktionelle ChatGPT-opgaver, ikke GitHub-heuristikker og ikke Grok.
 
 Final approval sammenlignes maskinelt med artikelens redaktionelle snapshot. Udgiver må bagefter kun ændre publiceringsmetadata.
