@@ -1,0 +1,21 @@
+{
+  "schema_version":2,"story_id":"2026-08-31-faergeforlis-video-redningsaktion","article_slug":"2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion",
+  "assignment":{"category":"Udland","weight":"B","core_question":"Hvad viser verificerede videooptagelser fra redningsaktionen?","manual_review":false},
+  "sources":[
+    {"id":"S1","name":"Reuters","url":"https://www.reuters.com/world/europe/boat-with-around-270-people-capsizes-off-north-cyprus-media-says-2026-08-30/","published_at":"2026-08-31T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"news","source_group":"reuters-reporting","authoritative_for":"Video description, rescue operation and cause status"},
+    {"id":"S2","name":"Associated Press","url":"https://apnews.com/article/e7753be49f345d1b1f1579013b241e9e","published_at":"2026-08-31T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"news","source_group":"ap-reporting","authoritative_for":"Video description and rescue operation"},
+    {"id":"S3","name":"The Guardian","url":"https://www.theguardian.com/world/live/2026/aug/30/northern-cyprus-ferry-capsizes-latest-news-updates","published_at":"2026-08-31T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"news","source_group":"guardian-reporting","authoritative_for":"Rescue operation"},
+    {"id":"S4","name":"Al Jazeera","url":"https://www.aljazeera.com/news/2026/8/30/ferry-carrying-260-people-capsizes-off-northern-cyprus-coast","published_at":"2026-08-30T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"news","source_group":"aljazeera-reporting","authoritative_for":"Cause remains under investigation"},
+    {"id":"S5","name":"NDTV Video","url":"https://www.ndtv.com/video/ferry-carrying-nearly-270-passengers-and-crew-capsizes-off-northern-cyprus-1150474","published_at":"2026-08-30T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"video","source_group":"ndtv-video","authoritative_for":"Public video page showing rescue footage"},
+    {"id":"S6","name":"The Irish Times Video","url":"https://www.irishtimes.com/video/video/2026/08/30/ferry-capsizes-off-northern-cyprus/","published_at":"2026-08-30T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"video","source_group":"irish-times-video","authoritative_for":"Public Reuters video page from the capsize"}
+  ],
+  "coverage_sweep":{"status":"pass","editorial_source_ids":["S1","S2","S3","S4","S5","S6"],"independent_source_groups":["reuters-reporting","ap-reporting","guardian-reporting","aljazeera-reporting","ndtv-video","irish-times-video"],"limitations":null,"notes":["Videoens indhold er krydstjekket mod tekstlige beskrivelser af samme redningsscene."]},
+  "claims":[
+    {"id":"F01","claim":"Videooptagelser fra hændelsen viser overlevende i redningsveste ved den kæntrede færge under redningsaktionen.","status":"verified","source_ids":["S1","S2","S5","S6"],"independent_groups":["reuters-reporting","ap-reporting","ndtv-video","irish-times-video"],"checked_at":"2026-08-31T05:52:00Z","notes":""},
+    {"id":"F02","claim":"Både og helikoptere deltog i redningsindsatsen omkring den kæntrede færge.","status":"verified","source_ids":["S1","S3","S5"],"independent_groups":["reuters-reporting","guardian-reporting","ndtv-video"],"checked_at":"2026-08-31T05:52:00Z","notes":""},
+    {"id":"F03","claim":"Årsagen til forliset er fortsat ikke endeligt fastslået.","status":"verified","source_ids":["S1","S2","S4"],"independent_groups":["reuters-reporting","ap-reporting","aljazeera-reporting"],"checked_at":"2026-08-31T05:52:00Z","notes":""}
+  ],
+  "numbers":[],"quotes":[],"right_of_reply":{"required":false,"party":null,"contacted_at":null,"deadline":null,"response":null,"exception":null},
+  "fact_check":{"status":"pass","checked_at":"2026-08-31T05:52:00Z","notes":["Videomaterialet er behandlet som dokumentation for synlige scener, ikke som dokumentation for ulykkens årsag."]},
+  "desk_recheck":{"status":"publish","checked_at":"2026-08-31T05:52:00Z","rationale":"Verificeret visuelt materiale har høj prioritet på aktiv lead-sag og tilfører en selvstændig dokumentarisk vinkel."}
+}
