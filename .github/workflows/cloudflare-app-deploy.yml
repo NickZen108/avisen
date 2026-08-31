@@ -1,0 +1,49 @@
+name: Deploy Cloudflare App Runtime
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cloudflare/app/**'
+      - '.github/workflows/cloudflare-app-deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: morgentidende-cloudflare-app
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Deploy app Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.127.1'
+          command: deploy --config cloudflare/app/wrangler.toml
+
+      - name: Smoke-test app runtime
+        run: |
+          set -euo pipefail
+          BASE='https://morgentidende-app.nicolaipetersen108.workers.dev'
+          for i in 1 2 3 4 5 6; do
+            if curl --fail --silent --show-error "$BASE/health" -o /tmp/health.json; then
+              break
+            fi
+            sleep 5
+          done
+          jq -e '.ok == true and (.missing_config | length) == 0' /tmp/health.json >/dev/null
+          curl --silent --show-error -o /tmp/me.json -w '%{http_code}' "$BASE/api/me" | grep -qx '401'
+          echo 'App health:'
+          jq . /tmp/health.json
