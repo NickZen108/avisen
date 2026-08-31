@@ -17,8 +17,8 @@ def idx():
 def resolve(i,ix):
  a=ix.get(i["slug"])
  if not a or a.get("pipeline_version")!=2:return i
- im=a.get("image") or {}
- return {"slug":a["slug"],"category":a["category"],"title":a["title"],"standfirst":a["standfirst"],"teaser":a["standfirst"],"published_label":legacy.dk_label(a["published_at"]),"image_src":im.get("src",""),"image_alt":im.get("alt","")}
+ im=a.get("image") or {};video=a.get("video") or {}
+ return {"slug":a["slug"],"category":a["category"],"title":a["title"],"standfirst":a["standfirst"],"teaser":a["standfirst"],"published_label":legacy.dk_label(a["published_at"]),"image_src":im.get("src",""),"image_alt":im.get("alt",""),"video":video}
 def lead_followups(lead_slug,ix):
  labels={"update":"Ny udvikling","video":"Video","images":"Billeder","eyewitness":"Øjenvidne","background":"Baggrund","timeline":"Tidslinje","commentary":"Kommentar"}
  items=[a for a in ix.values() if a.get("related_news_slug")==lead_slug and a.get("slug")!=lead_slug]
@@ -34,13 +34,18 @@ def unrelated_to_lead(x,lead_slug,ix):
  if not slug or slug==lead_slug:return False
  a=ix.get(slug)
  return not (a and a.get("related_news_slug")==lead_slug)
+def lead_visual(l):
+ v=l.get("video") or {}
+ if v.get("provider")=="youtube" and v.get("id") and v.get("frontpage_hero") is True:
+  return legacy.youtube_embed(v,autoplay=bool(v.get("frontpage_autoplay")),css_class="frontpage-video-hero")
+ return f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}"></figure>' if l.get("image_src") else ""
 def front():
  s=load(ROOT/"content"/"frontpage.json");ix=idx();t=(ROOT/"templates"/"index.html").read_text(encoding="utf-8")
  from datetime import datetime
  d=datetime.fromisoformat(s["date"]).date();dl=f"{legacy.WEEKDAYS[d.weekday()]} {d.day}. {legacy.MONTHS[d.month-1]} {d.year}"
  tk=resolve(s["ticker"],ix);ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(tk["title"])}</a></p>'
- l=resolve(s["lead"],ix);im=f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}"></figure>' if l.get("image_src") else ""
- lead_article='<section class="lead">'+im+f'<p class="section-label">{esc(l["category"])}</p><h1><a href="{legacy.front_item_url(l["slug"])}">{esc(l["title"])}</a></h1><p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
+ l=resolve(s["lead"],ix);visual=lead_visual(l)
+ lead_article='<section class="lead">'+visual+f'<p class="section-label">{esc(l["category"])}</p><h1><a href="{legacy.front_item_url(l["slug"])}">{esc(l["title"])}</a></h1><p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
  lead='<div class="lead-column">'+lead_article+lead_followups(l["slug"],ix)+'</div>'
  rail=['<aside class="rail"><p class="rail-title">Også i dag</p>']
  seen=set();rail_candidates=[]
