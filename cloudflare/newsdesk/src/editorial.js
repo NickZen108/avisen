@@ -182,7 +182,10 @@ async function writeArticle(env, assignment, dossier) {
 
 async function finalReview(env, assignment, dossier, article) {
   const system = `Du er uafhængig slutredaktør på Morgentidende. Kontrollér artikel mod verificerede claims. PASS kun hvis: dansk sprog er klart og korrekt; ingen påstand går videre end dokumentationen; pluralisme/attribution er rimelig; etik er forsvarlig; SEO er nøgtern; hero-prompten er relevant og ikke udformet som falsk dokumentarfoto. Hvis noget materielt mangler eller er usikkert: hold. Returnér kun struktureret output.`;
-  return aiJson(env, system, JSON.stringify({ assignment, claims: dossier.claims, contradictions: dossier.contradictions, article }), finalSchema, 1400);
+  const review = await aiJson(env, system, JSON.stringify({ assignment, claims: dossier.claims, contradictions: dossier.contradictions, article }), finalSchema, 1400);
+  const componentGates = [review.language, review.ethics, review.image, review.seo, review.final_editor];
+  review.decision = componentGates.every((gate) => gate === "pass") ? "pass" : "hold";
+  return review;
 }
 
 async function generateHero(env, article) {
