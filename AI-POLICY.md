@@ -2,6 +2,20 @@
 
 Morgentidende bruger automatisering og sprogmodeller som redaktionelle værktøjer. AI er aldrig en kilde og får ikke lov til at publicere uden de samme dokumentations- og kvalitetskrav som andet redaktionelt arbejde.
 
+## Tilladte og forbudte modeller i produktion
+
+**Tilladt produktionsforfatter:** ChatGPT (OpenAI), under de øvrige regler i denne fil og i `AGENTS.md`.
+
+**Forbudt i repoet og i live-redaktionen:** Grok, Grok Bot, Grok Automations og øvrige xAI-agenter. De må ikke:
+
+- skrive, omskrive eller korrekturlæse artikler
+- ændre forside, ticker, HTML, CSS eller metadata
+- committe til `NickZen108/avisen`
+- køre scan-, redaktør-, korrektur- eller udgiver-opgaver
+- efterlade intern note, agentstemme eller parallel pipeline, der kan forvirre ChatGPT
+
+Grok-automatiseringer, der tidligere kørte mod dette repo, er arkiveret uden for GitHub. De må ikke genaktiveres uden eksplicit ny ordre fra udgiver.
+
 ## AI må
 
 - opdage emner og mønstre
