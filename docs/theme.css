@@ -15,6 +15,12 @@ html[data-theme="dark"] .article-graphic img { background: #171B20; }
 html[data-theme="dark"] input { color-scheme: dark; }
 
 .lead-column { min-width: 0; }
+.lead-column--story-package {
+  padding: 1rem 1rem .35rem;
+  border: 1px solid var(--rule);
+  background: #F2EEE4;
+}
+html[data-theme="dark"] .lead-column--story-package { background: #24211C; }
 
 /* Hero photos/illustrations must fill the newspaper frame. Inline explanatory
    graphics use .article-graphic and keep their contain behaviour. !important
@@ -50,13 +56,13 @@ html[data-theme="dark"] input { color-scheme: dark; }
 .article-video--inline { margin: 1.15rem 0 1.4rem; }
 .article-outlink { font-weight: 600; text-decoration: underline; text-underline-offset: .15em; }
 
-/* Story package is an extension of the lead column. Keep the thin gold relation bar. */
+/* Follow-ups live inside the shared lead panel; keep only the thin gold relation bar. */
 .lead-package {
-  margin: .75rem 0 1.4rem;
-  padding: .9rem 1rem .35rem;
-  border: 1px solid var(--rule);
+  margin: .9rem 0 .35rem;
+  padding: .9rem 0 .15rem 1rem;
+  border: 0;
   border-left: .32rem solid var(--gold);
-  background: #F2EEE4;
+  background: transparent;
 }
 .lead-package__title,
 .rail-title {
@@ -82,7 +88,6 @@ html[data-theme="dark"] input { color-scheme: dark; }
   text-transform: uppercase;
   color: var(--accent);
 }
-html[data-theme="dark"] .lead-package { background: #24211C; }
 
 .masthead-inner { position: relative; }
 .theme-toggle {
@@ -125,6 +130,7 @@ html[data-theme="dark"] .theme-toggle__thumb { transform: translateX(1rem); }
 
 @media (max-width: 720px) {
   .theme-toggle__label { display: none; }
+  .lead-column--story-package { padding: .75rem .75rem .2rem; }
   .lead-fig > img { height: 15rem !important; max-height: 15rem !important; }
   .lead-followup { grid-template-columns: 4.7rem 1fr; gap: .5rem; }
 }
