@@ -8,6 +8,9 @@
   "triggers": {
     "crons": ["*/5 * * * *"]
   },
+  "ai": {
+    "binding": "AI"
+  },
   "durable_objects": {
     "bindings": [
       {
