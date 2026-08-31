@@ -11,6 +11,7 @@ bucket_name = "morgentidende-media"
 
 [vars]
 APP_ENV = "development"
-# SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY may be plain runtime vars.
+SUPABASE_URL = "https://vwujgfhcsumsdjigccnr.supabase.co"
+SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Csuat0-kcP8P-7yUZy8a8g_jDmC9472"
 # SUPABASE_SERVICE_ROLE_KEY, GITHUB_TOKEN and any signing secrets MUST be Worker secrets.
-# ADMIN_EMAIL is a bootstrap hint only; admin assignment is still server-side and audited.
+# Admin assignment is server-side and audited; never trust a browser-supplied role.
