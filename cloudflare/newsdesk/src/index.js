@@ -138,7 +138,7 @@ async function getState(env, path = "/state") { return stateStub(env).fetch(`htt
 async function persistEditorial(env, result) {
   const clone = structuredClone(result);
   if (clone.status === "approved" && clone.media?.base64) {
-    const media = clone.media; delete clone.media.base64; clone.media.url = publicMediaUrl(media.key);
+    const media = { ...clone.media }; delete clone.media.base64; clone.media.url = publicMediaUrl(media.key);
     await stateStub(env).fetch("https://state/media/store", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(media) });
   }
   await stateStub(env).fetch("https://state/editorial/store", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(clone) });
