@@ -2,7 +2,7 @@ name: Build structured edition
 on:
   push:
     branches: [main]
-    paths: ['content/**','sources/**','templates/**','config/**','scripts/build_all.py','scripts/build_all_v2.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/pipeline_v2_gate.py','scripts/release_ready.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
+    paths: ['content/**','sources/**','templates/**','config/**','scripts/build_all.py','scripts/build_all_v2.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/pipeline_v2_gate.py','scripts/prepublish_surface_qa.py','scripts/release_ready.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
   workflow_dispatch:
 permissions: {contents: write, actions: write}
 concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
@@ -19,13 +19,13 @@ jobs:
       - name: Release approved ready articles
         run: python scripts/release_ready.py
       - name: Gates before build
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
       - name: Build
         run: python scripts/build_all_v2.py
       - name: Cache public images locally
         run: python scripts/cache_public_images.py
       - name: Gates after build
-        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py
+        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
       - name: Commit release + generated files
         id: publish
         run: |
