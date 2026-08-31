@@ -151,15 +151,25 @@ async function buildDossier(env, assignment, selected) {
   const usable = researched.filter((x) => (x.excerpt || "").length >= 160);
   if (distinctSources(usable).length < 3) return { decision: "hold", rationale: "Kunne ikke hente læsbart materiale fra tre forskellige kilder", researched: usable };
   const sourcePayload = usable.map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url, excerpt: s.excerpt.slice(0, 12000) }));
-  const system = `Du er Morgentidendes research- og fact-check-desk. Arbejd kun ud fra de vedlagte kildetekster; AI er aldrig en kilde. For hver bærende faktuel påstand skal du angive de kilder, der faktisk støtter den. Materielle claims skal normalt have støtte fra mindst to uafhængige kilder. Hvis kilderne modsiger hinanden på en bærende oplysning, hvis historien kræver forelæggelse/ret til svar, eller hvis den samlede dokumentation er for svag, skal decision være hold. Skeln klart mellem verificerede fakta og påstande/udsagn. Returnér kun struktureret output.`;
+  const system = `Du er Morgentidendes research- og fact-check-desk. Arbejd kun ud fra de vedlagte kildetekster; AI er aldrig en kilde. For hver bærende faktuel påstand skal du angive de kilder, der faktisk støtter den. Materielle claims skal have støtte fra mindst to uafhængige kilder. En oplysning, der kun støttes af én kilde, skal markeres uncertain og må ikke bruges som verificeret claim. Hvis mindst tre materielle claims hver støttes af mindst to uafhængige kilder, right_of_reply_required er false, og der ikke er en konkret bærende modsigelse eller anden dokumentationsblokering, SKAL decision være publish. Brug kun hold når rationale beskriver det konkrete dokumentations-, modsigelses- eller forelæggelsesproblem. Skeln klart mellem verificerede fakta og påstande/udsagn. Returnér kun struktureret output.`;
   const dossier = await aiJson(env, system, JSON.stringify({ assignment, sources: sourcePayload }), dossierSchema, 3600);
   dossier.researched = usable;
   if (dossier.right_of_reply_required) dossier.decision = "hold";
+
+  for (const claim of dossier.claims) {
+    const indexes = [...new Set((claim.source_indexes || []).filter((i) => Number.isInteger(i) && i >= 0 && i < usable.length))];
+    claim.source_indexes = indexes;
+    const independentSources = new Set(indexes.map((i) => usable[i]?.source).filter(Boolean));
+    if (claim.status === "verified" && independentSources.size < 2) {
+      claim.status = "uncertain";
+      claim.notes = `${claim.notes || ""} Nedgraderet af deterministic gate: mindre end to uafhængige kilder.`.trim();
+    }
+  }
+
   const verified = dossier.claims.filter((c) => c.status === "verified");
-  const weak = verified.filter((c) => new Set(c.source_indexes || []).size < 2);
-  if (verified.length < 3 || weak.length > 0) {
+  if (verified.length < 3) {
     dossier.decision = "hold";
-    dossier.rationale = `${dossier.rationale || ""} Deterministic gate: alle bærende claims skal have mindst to kilder.`.trim();
+    dossier.rationale = `${dossier.rationale || ""} Deterministic gate: færre end tre bærende claims har støtte fra mindst to uafhængige kilder.`.trim();
   }
   return dossier;
 }
