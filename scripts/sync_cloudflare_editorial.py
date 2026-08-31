@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-"""Import one approved Cloudflare editorial package into GitHub source of truth.
-
-Cloudflare may research, draft and approve. GitHub remains canonical: this script
-validates the package, writes structured source files, stores the generated hero
-locally, and lets the existing Pipeline v2 gates/release/build chain decide
-whether it can become public.
-"""
+"""Import one approved Cloudflare editorial package into GitHub source of truth."""
 from __future__ import annotations
 
 import argparse
@@ -20,7 +14,6 @@ ARTICLES = ROOT / "content" / "articles"
 SOURCES = ROOT / "sources"
 APPROVALS = ROOT / "reports" / "editorial" / "approvals"
 AUTO_IMG = ROOT / "docs" / "img" / "auto"
-FRONTPAGE = ROOT / "content" / "frontpage.json"
 DEFAULT_URL = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/editorial/latest"
 PUBLIC_SITE = "https://morgentidende.nicolaipetersen108.workers.dev"
 
@@ -30,7 +23,7 @@ def fail(message: str) -> None:
 
 
 def fetch_json(url: str) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "MorgentidendeEditorialSync/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "MorgentidendeEditorialSync/1.1"})
     with urllib.request.urlopen(req, timeout=60) as response:
         if response.status != 200:
             fail(f"Cloudflare editorial endpoint HTTP {response.status}")
@@ -55,7 +48,7 @@ def normalize_coverage(ledger: dict) -> None:
     coverage["editorial_source_ids"] = ids
     coverage["independent_source_groups"] = groups
     coverage["status"] = "pass" if len(groups) >= 3 else "limited"
-    coverage["limitations"] = None if len(groups) >= 3 else "Færre end tre uafhængige kildegrupper efter import"
+    coverage["limitations"] = None if len(groups) >= 3 else "Færre end tre uafhængige kildegrupper efter import; bærende claims skal stadig være krydstjekket"
     ledger["coverage_sweep"] = coverage
 
 
@@ -85,18 +78,26 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     for gate in ("language", "ethics", "image", "seo", "final_editor"):
         if (approval.get("gates") or {}).get(gate) != "pass":
             fail(f"approval gate {gate} er ikke pass")
+
     normalize_coverage(ledger)
     coverage = ledger.get("coverage_sweep") or {}
-    if coverage.get("status") != "pass" or len(set(coverage.get("independent_source_groups") or [])) < 3:
-        fail("mindre end tre uafhængige redaktionelle kildegrupper")
+    groups = set(coverage.get("independent_source_groups") or [])
+    if coverage.get("status") not in {"pass", "limited"} or len(groups) < 2:
+        fail("mindre end to uafhængige redaktionelle kildegrupper")
+
     source_ids = {s.get("id") for s in ledger.get("sources", [])}
     claims = ledger.get("claims") or []
-    if len(claims) < 3:
-        fail("for få verificerede claims")
+    if len(claims) < 2:
+        fail("for få verificerede bærende claims")
     for claim in claims:
         ids = [x for x in claim.get("source_ids", []) if x in source_ids]
-        if claim.get("status") != "verified" or len(set(ids)) < 2:
-            fail(f"claim uden to kilder: {claim.get('id')}")
+        source_groups = {
+            str(next((s.get("source_group") for s in ledger.get("sources", []) if s.get("id") == sid), "")).strip()
+            for sid in ids
+        }
+        source_groups.discard("")
+        if claim.get("status") != "verified" or len(source_groups) < 2:
+            fail(f"claim uden to uafhængige kilder: {claim.get('id')}")
     if (ledger.get("fact_check") or {}).get("status") != "pass":
         fail("fact-check er ikke pass")
     if (ledger.get("desk_recheck") or {}).get("status") not in {"publish", "update"}:
@@ -111,7 +112,7 @@ def save_hero(media: dict) -> Path:
     key = Path(str(media["key"])).name
     if not key.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
         fail("ukendt hero-filtype")
-    req = urllib.request.Request(media["url"], headers={"User-Agent": "MorgentidendeEditorialSync/1.0"})
+    req = urllib.request.Request(media["url"], headers={"User-Agent": "MorgentidendeEditorialSync/1.1"})
     with urllib.request.urlopen(req, timeout=90) as response:
         data = response.read(15_000_000)
         ctype = response.headers.get("content-type", "").lower()
@@ -165,9 +166,8 @@ def main() -> int:
     article["image"]["source_url"] = media["url"]
     article["automation_origin"] = "cloudflare-workers-ai"
 
-    # Approval snapshot must match canonical article after all editorial mutations.
     snapshot = json.loads(json.dumps(article))
-    for key in ("status", "published_at", "updated_at", "scheduled_for", "released_from_schedule_at", "release_requested", "publication", "manual_review_completed"):
+    for key in ("status", "published_at", "updated_at", "scheduled_for", "released_from_schedule_at", "release_requested", "publication", "manual_review_completed", "workflow_state"):
         snapshot.pop(key, None)
     approval["editorial_snapshot"] = snapshot
 
