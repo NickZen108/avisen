@@ -13,8 +13,10 @@ jobs:
         with: {fetch-depth: 0}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
       - name: Script syntax
-        run: python -m compileall -q scripts && bash -n scripts/scan-feeds.sh
+        run: python -m compileall -q scripts && bash -n scripts/scan-feeds.sh && node --check cloudflare/app/src/index.js && node --check cloudflare/site-worker.js && node --check cloudflare/newsdesk/src/index.js && node --check cloudflare/newsdesk/src/editorial.js
       - name: Secret leak gate
         run: python scripts/secret_scan.py
       - name: Normalize prematurely-ready articles
