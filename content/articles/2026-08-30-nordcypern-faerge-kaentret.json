@@ -17,40 +17,24 @@
     "description": "En passagerfærge er kæntret ud for Kyrenia i Nordcypern. Omkring 270 personer inklusive besætning var ifølge borgmesteren om bord, og redningsaktionen fortsætter.",
     "canonical": null
   },
-  "image": null,
+  "image": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Car_Passenger_Ferry_Adamantios_Korais.jpg",
+    "alt": "Passagerfærge til søs",
+    "credit": "Wikimedia Commons · arkivfoto, ikke færgen i hændelsen",
+    "license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Car_Passenger_Ferry_Adamantios_Korais.jpg",
+    "image_type": "photo",
+    "placement": "lead"
+  },
   "body": [
-    {
-      "type": "p",
-      "text": "En passagerfærge kæntrede søndag ud for Kyrenia i Nordcypern kort efter afgang mod den tyrkiske havn Tasucu. Kystvagt, andre fartøjer og en redningshelikopter er sat ind i en igangværende redningsaktion."
-    },
-    {
-      "type": "p",
-      "text": "Kyrenias borgmester, Murat Senkul, har oplyst, at omkring 270 personer inklusive besætning var om bord. Reuters og det tyrkiske medie soL rapporterede samtidig med henvisning til borgmesteren, at 159 af 258 passagerer var nået af redningsmandskab på det tidspunkt, oplysningerne blev indsamlet."
-    },
-    {
-      "type": "h2",
-      "text": "Tallene kan ændre sig"
-    },
-    {
-      "type": "p",
-      "text": "De forskellige tal beskriver ikke nødvendigvis det samme: omkring 270 omfatter ifølge borgmesteren både passagerer og besætning, mens 258 er oplyst som antallet af passagerer. Redningsaktionen er fortsat i gang, og Morgentidende betragter derfor status som foreløbig."
-    },
-    {
-      "type": "p",
-      "text": "Lokale medier rapporterer, at færgen fik problemer få kilometer fra kysten. Den præcise årsag til kæntringen er endnu ikke fastslået."
-    },
-    {
-      "type": "h2",
-      "text": "Kystvagt og civile fartøjer deltager"
-    },
-    {
-      "type": "p",
-      "text": "Cyprus Mail rapporterer, at tyrkisk-cypriotiske kystvagtsfartøjer blev sendt til stedet, og at en redningshelikopter blev sat ind som støtte. Andre fartøjer fra Kyrenia sejlede også ud for at hjælpe."
-    },
-    {
-      "type": "p",
-      "text": "Historien opdateres, når myndighederne offentliggør en mere sikker samlet status for de ombordværende og redningsarbejdet."
-    }
+    {"type":"p","text":"En passagerfærge kæntrede søndag ud for Kyrenia i Nordcypern kort efter afgang mod den tyrkiske havn Tasucu. Kystvagt, andre fartøjer og en redningshelikopter er sat ind i en igangværende redningsaktion."},
+    {"type":"p","text":"Kyrenias borgmester, Murat Senkul, har oplyst, at omkring 270 personer inklusive besætning var om bord. Reuters og det tyrkiske medie soL rapporterede samtidig med henvisning til borgmesteren, at 159 af 258 passagerer var nået af redningsmandskab på det tidspunkt, oplysningerne blev indsamlet."},
+    {"type":"h2","text":"Tallene kan ændre sig"},
+    {"type":"p","text":"De forskellige tal beskriver ikke nødvendigvis det samme: omkring 270 omfatter ifølge borgmesteren både passagerer og besætning, mens 258 er oplyst som antallet af passagerer. Redningsaktionen er fortsat i gang, og Morgentidende betragter derfor status som foreløbig."},
+    {"type":"p","text":"Lokale medier rapporterer, at færgen fik problemer få kilometer fra kysten. Den præcise årsag til kæntringen er endnu ikke fastslået."},
+    {"type":"h2","text":"Kystvagt og civile fartøjer deltager"},
+    {"type":"p","text":"Cyprus Mail rapporterer, at tyrkisk-cypriotiske kystvagtsfartøjer blev sendt til stedet, og at en redningshelikopter blev sat ind som støtte. Andre fartøjer fra Kyrenia sejlede også ud for at hjælpe."},
+    {"type":"p","text":"Historien opdateres, når myndighederne offentliggør en mere sikker samlet status for de ombordværende og redningsarbejdet."}
   ],
   "source_ids_to_display": ["S1", "S2", "S3"],
   "related_news_slug": null,
