@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-08-31T09:33:16Z",
+  "counts": {
+    "published": 5,
+    "checking": 1
+  },
+  "blocked_count": 1,
+  "articles": [
+    {
+      "slug": "2026-08-30-island-afviser-eu-forhandlinger",
+      "title": "Island siger nej til nye EU-forhandlinger",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-08-31-faergeforlis-kaptajn-og-syv-fra-besaetningen-tilbageholdt",
+      "title": "Kaptajn og syv fra besætningen tilbageholdt efter færgeforlis",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
+      "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-08-31-grand-canyon-flash-flood-en-doed-og-cirka-15-savnet",
+      "title": "Flash flood i Grand Canyon: En død og omkring 15 savnet",
+      "status": "checking",
+      "release_requested": false,
+      "resume_from": "final_editor",
+      "reasons": [
+        "coverage sweep mangler/er ugyldigt",
+        "fact-check PASS mangler",
+        "newsdesk recheck PUBLISH/UPDATE mangler",
+        "final approval gates er ikke PASS"
+      ]
+    },
+    {
+      "slug": "2026-08-31-oejenvidner-fortaeller-om-brag-og-kaos-foer-faergen-kaentrede",
+      "title": "Øjenvidner fortæller om brag og kaos før færgen kæntrede",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion",
+      "title": "Video: Passagerer klamrer sig til kæntret færge under redningsaktionen",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    }
+  ]
+}

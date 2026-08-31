@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "checking",
+  "release_requested": false,
   "story_id": "2026-08-31-grand-canyon-flash-flood",
   "slug": "2026-08-31-grand-canyon-flash-flood-en-doed-og-cirka-15-savnet",
   "category": "Udland",
@@ -13,7 +13,12 @@
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-08-31-grand-canyon-flash-flood-en-doed-og-cirka-15-savnet.json",
-  "claim_ids": ["F01", "F02", "F03", "F04"],
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04"
+  ],
   "seo": {
     "title": "Flash flood i Grand Canyon: En død og omkring 15 savnet",
     "description": "Flash flood i Grand Canyon: En død, omkring 15 savnet og over 60 evakueret. Vandledning ødelagt.",
@@ -29,13 +34,32 @@
     "placement": "lead"
   },
   "body": [
-    {"type": "p", "text": "En kraftig flash flood ramte Bright Angel Canyon og Phantom Ranch-området i Grand Canyon National Park lørdag eftermiddag omkring klokken 14.30 lokal tid. National Park Service oplyser, at mindst 62 personer er evakueret fra området."},
-    {"type": "p", "text": "Kroppen af en 46-årig mand blev fundet søndag aften nær Crystal Rapids langs Colorado River. Omkring 15 personer er stadig savnet eller uaccounted for, efter at et tidligere estimat på omkring 20 blev justeret."},
-    {"type": "p", "text": "Overflommen ødelagde næsten alle gangbroer over Bright Angel Creek, sendte store sten, metalstrukturer og andet debris ud i Colorado River og beskadigede den eneste vandledning, der forsyner turister og beboere i parken."},
-    {"type": "p", "text": "Fra mandag er overnatning på lodges og hoteller inden for parken indstillet på grund af begrænset vandforsyning. Parken forbliver åben for dagbrug. North Kaibab Trail og Phantom Ranch er lukket indtil videre."},
-    {"type": "p", "text": "National Park Service beder offentligheden om oplysninger om vandrere eller backpackere, der opholdt sig i Bright Angel Creek-korridoren den 29. august, eller som havde reservation på campgrounds i området."}
+    {
+      "type": "p",
+      "text": "En kraftig flash flood ramte Bright Angel Canyon og Phantom Ranch-området i Grand Canyon National Park lørdag eftermiddag omkring klokken 14.30 lokal tid. National Park Service oplyser, at mindst 62 personer er evakueret fra området."
+    },
+    {
+      "type": "p",
+      "text": "Kroppen af en 46-årig mand blev fundet søndag aften nær Crystal Rapids langs Colorado River. Omkring 15 personer er stadig savnet eller uaccounted for, efter at et tidligere estimat på omkring 20 blev justeret."
+    },
+    {
+      "type": "p",
+      "text": "Overflommen ødelagde næsten alle gangbroer over Bright Angel Creek, sendte store sten, metalstrukturer og andet debris ud i Colorado River og beskadigede den eneste vandledning, der forsyner turister og beboere i parken."
+    },
+    {
+      "type": "p",
+      "text": "Fra mandag er overnatning på lodges og hoteller inden for parken indstillet på grund af begrænset vandforsyning. Parken forbliver åben for dagbrug. North Kaibab Trail og Phantom Ranch er lukket indtil videre."
+    },
+    {
+      "type": "p",
+      "text": "National Park Service beder offentligheden om oplysninger om vandrere eller backpackere, der opholdt sig i Bright Angel Creek-korridoren den 29. august, eller som havde reservation på campgrounds i området."
+    }
   ],
-  "source_ids_to_display": ["S1", "S2", "S3"],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3"
+  ],
   "related_news_slug": null,
   "related": [],
   "correction_note": null,
@@ -45,5 +69,16 @@
   "publication": {
     "release_mode": "immediate",
     "released_at": null
+  },
+  "workflow_state": {
+    "state": "blocked",
+    "blocked_at": "2026-08-31T09:33:16Z",
+    "resume_from": "final_editor",
+    "reasons": [
+      "coverage sweep mangler/er ugyldigt",
+      "fact-check PASS mangler",
+      "newsdesk recheck PUBLISH/UPDATE mangler",
+      "final approval gates er ikke PASS"
+    ]
   }
 }
