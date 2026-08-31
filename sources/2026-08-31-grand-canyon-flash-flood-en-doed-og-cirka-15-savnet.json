@@ -1,0 +1,22 @@
+{
+  "story_id": "2026-08-31-grand-canyon-flash-flood",
+  "slug": "2026-08-31-grand-canyon-flash-flood-en-doed-og-cirka-15-savnet",
+  "coverage_sweep": {
+    "status": "PASS",
+    "independent_source_groups": 3,
+    "notes": "NPS primary, CNN/AP/Al Jazeera secondary, LA Times confirmation"
+  },
+  "claims": [
+    {"id": "F01", "text": "Flash flood began approx 14:30 local time 29 Aug 2026 in Bright Angel Canyon/Phantom Ranch", "sources": ["S1"], "status": "verified"},
+    {"id": "F02", "text": "At least 62 evacuated; body of 46-year-old man recovered near Crystal Rapids", "sources": ["S1", "S2"], "status": "verified"},
+    {"id": "F03", "text": "Approximately 15 missing or unaccounted for", "sources": ["S1", "S2"], "status": "verified"},
+    {"id": "F04", "text": "Water pipeline destroyed; overnight lodging suspended from Monday", "sources": ["S1", "S3"], "status": "verified"}
+  ],
+  "sources": [
+    {"id": "S1", "name": "National Park Service", "url": "https://www.nps.gov/grca/learn/news/significant-flash-flooding-closes-phantom-ranch-and-north-kaibab-trail.htm", "type": "primary"},
+    {"id": "S2", "name": "CNN / AP", "url": "https://www.cnn.com/2026/08/30/us/grand-canyon-flooding-missing-persons", "type": "secondary"},
+    {"id": "S3", "name": "Al Jazeera / LA Times", "url": "https://www.aljazeera.com/news/2026/8/31/dozens-evacuated-and-about-15-missing-after-grand-canyon-flash-flood", "type": "secondary"}
+  ],
+  "fact_check": {"status": "PASS", "checker": "agent", "notes": "Claims traced to NPS and corroborating reports"},
+  "desk_recheck": {"status": "PUBLISH", "weight": "B", "notes": "Clear B-story, non-political, public interest"}
+}
