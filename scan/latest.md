@@ -1,25 +1,25 @@
-# Scan 2026-08-31T05:15:27.340Z (Cloudflare runtime)
+# Scan 2026-08-31T06:50:27.498Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
 ## Al Jazeera
-- Butcher of Bosnia Ratko Mladic still hailed as a hero by some Serbs
-- Dozens evacuated and about 15 missing after Grand Canyon flash flood
+- Aston Villa vs Arsenal: Premier League – prediction, team news, lineups
+- FIFA president Infantino ‘must go’, says former UEFA boss Platini
 - Flash flooding in Grand Canyon leaves more than 20 people missing
-- Former Israeli soldiers pose as Pro-Palestinian supporters in the US
+- Global coral reef coverage risks irreversible decline, new report warns
 - Iran attacks US bases in Jordan after US strikes Larak Island
 - Iran targets Jordan after first US attack in a month
 - Iran war live: Tehran says it attacked bases in Jordan, UAE after US strike
-- Israeli settler rabbi says Palestinians should leave the occupied West Bank
 - Israeli strike kills 3-year-old child in Gaza
 - Jose Andres renews call for investigation into WCK Gaza staff killings
 - Lamine Yamal getting back to ‘top level’, Barcelona coach Flick says
 - Mamdani lookalike contest draws hundreds of hopefuls in New York
 - Niger mutiny puts Russia’s expanding role in the Sahel to the test
+- One dead and about 15 people missing after flash flood in Grand Canyon
 - ‘Opening a new chapter’: Syria reopens embassy in Libya after talks
 - People return to their flood-ravaged homes in Nepal
-- Real Madrid cruise past Malaga 4-0 to maintain Mourinho’s perfect start
 - Russia, China leaders to meet at Shanghai Cooperation Organisation summit
+- Tennis great Djokovic exits US Open in first round amid tears and pain
 - Tunisia swelters as power cuts disrupt water supplies
 - Two Palestinians reported dead as Israeli forces raid Nablus
 - US plans to sanction another bank to keep economic pressure on Iran
@@ -91,21 +91,21 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## DR
 - 17-årig uledsaget bilist er kørt ind i to huse
-- 67-årig får livsvarigt fængsel for krigsforbrydelser i Rwanda
+- August er den dyreste måned for strøm siden 2022
 - Bilist sigtet for vanvidskørsel efter u-vending i Øresundstunnelen
 - Britisk højrefløjsprovokatør udvist af USA
 - Fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i London
 - Fra i dag vil trafikken over Øresund være besværet
+- Historie om Yahya Hassans familie får snart teaterpremiere
 - Kemikalieudslip med saltsyre i Nibe
 - Københavnertradition aflyst på grund af regnvejr
 - Landboforening melder om stor opbakning til protestmøde
 - Meget vand på Fynske Motorvej giver problemer
 - Populær fyret ukrainsk forsvarsminister skal rådgive Italiens forsvarsminister
+- Seks personer har indtil videre fået omvendt fodlænke
 - Sigtede for angreb mod Hadsten Skole accepterer forlænget fængsling
-- Take That indtager Tinderbox
-- Teenager mistænkt for medvirken til drab under svensk sværdangreb
 - To ministre fra Moderaterne søger orlov fra Folketinget
-- Traktorer med banner spærrer Sallingsundbroen
+- Traktorer med banner spærrede Sallingsundbroen
 - Tre anholdt for voldeligt overfald i Horsens
 - Trump og Venezuela annoncerer 'den største olieaftale i verdenshistorien'
 - USA angriber for første gang i en måned Iran
@@ -113,6 +113,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Euronews
 - Authorities in Nepal carry out temporary burials of unidentified flood victims causing public outrage
+- Body of 46-year-old man recovered after Grand Canyon flash flood, park service says
 - Captain arrested after eight people die in ferry capsize off northern Cyprus
 - Guinea-Bissau junta puts new constitution to referendum as opposition urges boycott
 - Guinea-Bissau votes in referendum to rewrite constitution and boost presidential powers
@@ -124,16 +125,15 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Kazakhstan’s government steps down as newly elected Kurultai holds first session
 - Latest news bulletin | August 29th, 2026 – Evening
 - Latest news bulletin | August 29th, 2026 – Midday
-- Latest news bulletin | August 29th, 2026 – Morning
 - Latest news bulletin | August 30th, 2026 – Evening
 - Latest news bulletin | August 30th, 2026 – Midday
 - Latest news bulletin | August 30th, 2026 – Morning
 - Latest news bulletin | August 31st, 2026 – Morning
 - Music, lights and drones: Uzbekistan celebrates 35 years of independence
 - Nepal warns of more possible floods as communities grapple with devastation and death toll rises
-- Norway mourns king Harald V as crown prince Haakon becomes king
-- Number of missing in Nepal floods rises to nearly 3,000 as UNICEF says 17,000 children need aid
 - Oil prices higher as US-Iran tensions flare and Warsh fans rate hikes
+- Six wounded after car bomb explodes in front of Mexico police station, officials say
+- 'They wrote little letters': How kids in Portugal are making money off their neighbours' plastic waste
 - Trump hits out at NBC journalist Kristen Welker, calling for her to face 'rebuke or punishment'
 - US forces strike Iranian rocket launchers in Strait of Hormuz as IRGC warns of 'retaliatory response'
 - US strikes deal to control 65 billion barrels of Venezuela's oil reserves, Trump says
@@ -143,27 +143,27 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Guardian World
 - At least 93,000 ‘in great need’ after Nepal-Tibet flash floods, says Red Cross
-- At least eight dead and 18 missing after ferry capsizes off northern Cyprus
-- Australia news live: NSW won’t appeal ruling that found anti-Israel vandalism was not antisemitic; body of newborn baby found in bin in Sydney
+- Australia news live: Body of newborn baby found in Sydney bin as police concerned for mother’s welfare
+- Australians missing in Nepal targeted by ‘heartbreaking’ and ‘abhorrent’ racist slurs
 - Bondi library returns book How to Sell a Genocide to shelves after State Library ‘outlines the law’
 - Canada erects giant ‘Lake Ontario’ sign as spat with Trump over name escalates
 - Captain and crew arrested after at least eight die in northern Cyprus ferry disaster – as it happened
 - Egyptian queen’s 673-diamond necklace stolen in Vienna smash-and-grab raid
-- Embattled Sydney property developer Bathla warns it could fold by the end of the week
 - ‘Everything’s smashed to bits’: Ukrainians turn anger on those storing weapons near their villages
 - Families of 33 missing Britons rush to Nepal as fears grow of more floods
+- Goodbye to Babylon Berlin, the 1920s TV drama that has eerily foreshadowed real-life politics
+- Icac lawyer tells Charles Perrottet the key to lying is ‘you have to be really good at remembering it’
 - Jason Arday accuser given three-month teaching ban but can continue research
-- Man who murdered Molly Ticehurst will not face life in jail, judge says
 - Nepal-Tibet flood rescue efforts resume after being halted by overflowing lake
+- Newborn baby’s body found in Sydney rubbish bin as police hold ‘serious concerns’ for mother
 - Palestinian woman and NBC News team reportedly attacked in West Bank
 - People fleeing Sudan civil war face ‘dire and deteriorating’ conditions in refuge city
 - Rejoining the EU, Burnham’s donors and the bedroom tax: Politics Weekly answers your questions – podcast
-- ‘Sad day in Australian sport’: tributes flow for trailblazing boxing great Tony Mundine
 - Search continues as number missing in Nepal-Tibet floods rises to 2,478 – as it happened
 - South African police arrest two Thai men for allegedly smuggling parrot eggs
 - Trump announces new US oil agreement with Venezuela
 - UK urged to help free British-Egyptian ‘arrested in Cairo over sister’s activism’
-- US strikes Iranian launchers in strait of Hormuz, sparking reprisal attack on airbases in Jordan
+- US strikes Iranian launchers in strait of Hormuz, sparking reprisal attack on airbases in Jordan and UAE
 - USS Abraham Lincoln to visit port in Thailand after more than 250 days at sea
 - Venezuela’s Delcy Rodríguez defends ‘endless’ benefits of her oil deal with Trump
 - Venezuelan opposition up in arms over reports US wants big stake in oil and gas
@@ -191,7 +191,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Iceland votes &#039;No&#039; to resuming EU talks
 - Midterms: What Americans in Europe need to know about changes to mail-in voting
 - On the Agenda: What&#039;s happening in Denmark this week?
+- Today in Denmark: A roundup of the latest news on Monday
 - Today in Denmark: A roundup of the latest news on Thursday
 - What&#039;s the difference between Schengen and EU free movement rules?
-- What changes in Denmark in September 2026?
 - What you should know before agreeing to buy a Danish &#039;andelsbolig&#039;

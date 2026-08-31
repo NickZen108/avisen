@@ -1,8 +1,8 @@
 {
   "schema_version": 3,
   "runtime": "cloudflare-workers",
-  "generated_at": "2026-08-31T05:15:27.340Z",
-  "fingerprint": "6acf948b3aeb3fe9d5ce9bdb890b3eb00981af7907eddd74813c2b834500583f",
+  "generated_at": "2026-08-31T06:50:27.498Z",
+  "fingerprint": "3ec0cb748071357756039c68eecf36eba0d94e807f44d72b860e293857f08882",
   "signal_count": 177,
   "feeds": [
     {
@@ -84,13 +84,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/17-aarig-uledsaget-bilist-er-koert-ind-i-huse"
     },
     {
-      "source": "DR",
-      "headline": "67-årig får livsvarigt fængsel for krigsforbrydelser i Rwanda",
-      "normalized": "67 årig får livsvarigt fængsel for krigsforbrydelser i rwanda",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/67-aarig-faar-livsvarigt-faengsel-krigsforbrydelser-i-rwanda"
-    },
-    {
       "source": "BBC World",
       "headline": "97-year-old woman rescued after Nepali floods looked like 'a warrior'",
       "normalized": "97 year old woman rescued after nepali floods looked like a warrior",
@@ -110,6 +103,13 @@
       "normalized": "allan little i met dangerously fanatical mladi early in bosnian war",
       "description": "BBC special correspondent Allan Little met the \"Butcher of Bosnia\" in the early months of the Bosnian war.",
       "url": "https://www.bbc.co.uk/news/articles/cgl744j0ww1o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Aston Villa vs Arsenal: Premier League – prediction, team news, lineups",
+      "normalized": "aston villa vs arsenal premier league prediction team news lineups",
+      "description": "Declan Rice continues to star for Arsenal, who may add Julian Alvarez to ranks, but hosts Villa are sore from sales.",
+      "url": "https://www.aljazeera.com/sports/2026/8/31/aston-villa-vs-arsenal-premier-league-prediction-team-news-lineups?traffic_source=rss"
     },
     {
       "source": "BBC Europe",
@@ -133,16 +133,16 @@
       "url": "https://www.theguardian.com/world/2026/aug/28/nepal-tibet-flash-floods-red-cross-rescuers-death-toll"
     },
     {
-      "source": "Guardian World",
-      "headline": "At least eight dead and 18 missing after ferry capsizes off northern Cyprus",
-      "normalized": "at least eight dead and 18 missing after ferry capsizes off northern cyprus",
-      "description": "<p>Authorities say 237 people rescued and search under way for those who remain unaccounted for</p><p>At least eight people have died and 18 people are missing after a ferry carrying nearly 270 passengers and crew capsized off the coast of Turkish-occupied northern Cyprus, local authorities said.</p><p>The territory’s prime minister, Ünal Üstel, told the state-run TRT news channel on Sunday that 237 people had been rescued. A search was under way for those who remained unaccounted for.</p> <a href=\"https://www.theguardian.com/world/2026/aug/30/ferry-capsizes-northern-cyprus\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/world/2026/aug/30/ferry-capsizes-northern-cyprus"
+      "source": "DR",
+      "headline": "August er den dyreste måned for strøm siden 2022",
+      "normalized": "august er den dyreste måned for strøm siden 2022",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/august-er-den-dyreste-maaned-stroem-siden-2022"
     },
     {
       "source": "Guardian World",
-      "headline": "Australia news live: NSW won’t appeal ruling that found anti-Israel vandalism was not antisemitic; body of newborn baby found in bin in Sydney",
-      "normalized": "australia news live nsw won t appeal ruling that found anti israel vandalism was not antisemitic body of newborn baby found in bin in sydney",
+      "headline": "Australia news live: Body of newborn baby found in Sydney bin as police concerned for mother’s welfare",
+      "normalized": "australia news live body of newborn baby found in sydney bin as police concerned for mother s welfare",
       "description": "<p>Follow the day’s news live</p><ul><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>The Australian government is working with Russian officials in a bid to secure the release of Australian <strong>Oscar Jenkins</strong>, <strong>Matt Thistlethwaite</strong> says.<br><br> Speaking to ABC news breakfast, the assistant minister for foreign affairs declined to answer whether a prisoner swap was on the table.</p><p>Obviously, we try and negotiate as best we can on behalf of all Australians who find themselves in difficulties such as this. We obviously have to abide by international laws and we always uphold them. But the Australian officials on the ground will work with their counterparts to ensure that, hopefully he’s returned to Australia safely.</p> <a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Continue reading...</a>",
       "url": "https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb"
     },
@@ -152,6 +152,13 @@
       "normalized": "australia usually hosts the world s biggest cuttlefish mating event not this year",
       "description": "According to official figures only 1,811 cuttlefish turned up to mate this year, down 97% on last year.",
       "url": "https://www.bbc.co.uk/news/articles/c75gyw0nkzno?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Guardian World",
+      "headline": "Australians missing in Nepal targeted by ‘heartbreaking’ and ‘abhorrent’ racist slurs",
+      "normalized": "australians missing in nepal targeted by heartbreaking and abhorrent racist slurs",
+      "description": "<p>As families await news after the catastrophe, community members appeal for compassion in the face of hateful rhetoric</p><p>A slew of racist social media comments have been made towards Australians missing in the <a href=\"https://www.theguardian.com/world/nepal-tibet-flood-disaster\">catastrophic Nepal-Tibet floods</a>, prompting calls for greater accountability of major platforms to remove hateful rhetoric.</p><p>On Monday, the total number of Australians missing after flash floods triggered by a massive glacier collapse in the Himalayas rose to 43, and the overall death toll was at least 810 people.</p> <a href=\"https://www.theguardian.com/australia-news/2026/aug/31/australians-missing-in-nepal-targeted-by-heartbreaking-and-abhorrent-racist-slurs\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/australia-news/2026/aug/31/australians-missing-in-nepal-targeted-by-heartbreaking-and-abhorrent-racist-slurs"
     },
     {
       "source": "Euronews",
@@ -182,6 +189,13 @@
       "url": "https://www.dr.dk/nyheder/seneste/bilist-sigtet-vanvidskoersel-efter-u-vending-i-oeresundstunnelen"
     },
     {
+      "source": "Euronews",
+      "headline": "Body of 46-year-old man recovered after Grand Canyon flash flood, park service says",
+      "normalized": "body of 46 year old man recovered after grand canyon flash flood park service says",
+      "description": "Popular tourist spots, including the Bright Angel Campground, the North Kaibab Trail and Phantom Ranch, home to a historic canteen and dormitories, remained closed on Sunday.",
+      "url": "http://www.euronews.com/2026/08/31/body-of-46-year-old-man-recovered-after-grand-canyon-flash-flood-park-service-says"
+    },
+    {
       "source": "Guardian World",
       "headline": "Bondi library returns book How to Sell a Genocide to shelves after State Library ‘outlines the law’",
       "normalized": "bondi library returns book how to sell a genocide to shelves after state library outlines the law",
@@ -208,13 +222,6 @@
       "normalized": "britisk højrefløjsprovokatør udvist af usa",
       "description": "",
       "url": "https://www.dr.dk/nyheder/seneste/britisk-hoejrefloejsprovokatoer-udvist-af-usa"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Butcher of Bosnia Ratko Mladic still hailed as a hero by some Serbs",
-      "normalized": "butcher of bosnia ratko mladic still hailed as a hero by some serbs",
-      "description": "Hundreds of Bosnian Serbs gathered to pay tribute to former Bosnian Serb commander Ratko Mladić.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/30/30-08-sv-mladic-serbs-tributes-bosnia-fm?traffic_source=rss"
     },
     {
       "source": "Guardian World",
@@ -301,13 +308,6 @@
       "url": "https://www.bbc.co.uk/news/articles/cpwlrrzp8eeo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Dozens evacuated and about 15 missing after Grand Canyon flash flood",
-      "normalized": "dozens evacuated and about 15 missing after grand canyon flash flood",
-      "description": "More than 60 people have been evacuated after flooding swept large boulders and other debris into the Colorado River.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/dozens-evacuated-and-about-15-missing-after-grand-canyon-flash-flood?traffic_source=rss"
-    },
-    {
       "source": "BBC Europe",
       "headline": "Dutch health institute issues 'red alert' over Trump-shaped ecstasy pills",
       "normalized": "dutch health institute issues red alert over trump shaped ecstasy pills",
@@ -334,13 +334,6 @@
       "normalized": "eight killed and 18 missing after ferry capsizes off northern cyprus",
       "description": "A search and rescue operation is under way after a ferry carrying nearly 270 people turns over after leaving port.",
       "url": "https://www.bbc.co.uk/news/articles/c770jyd4l7lo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "Guardian World",
-      "headline": "Embattled Sydney property developer Bathla warns it could fold by the end of the week",
-      "normalized": "embattled sydney property developer bathla warns it could fold by the end of the week",
-      "description": "<p>Administrators said it would be forced to close the business if it failed to secure additional funding, revealing hundreds of staff have not been paid for weeks</p><p>The administrators of embattled property developer Bathla Group have said the company will fold by the end of the week unless they can secure additional funding to keep it afloat.</p><p>The insolvency advisory Teneo assumed control of Bathla’s operations on 25 August after the Sydney-based construction company went into voluntary administration.</p> <a href=\"https://www.theguardian.com/australia-news/2026/aug/31/embattled-sydney-property-developer-bathla-warns-it-could-fold-by-the-end-of-the-week\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/australia-news/2026/aug/31/embattled-sydney-property-developer-bathla-warns-it-could-fold-by-the-end-of-the-week"
     },
     {
       "source": "The Local Denmark",
@@ -378,6 +371,13 @@
       "url": "https://www.theguardian.com/world/2026/aug/28/families-missing-britons-nepal-flash-floods"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "FIFA president Infantino ‘must go’, says former UEFA boss Platini",
+      "normalized": "fifa president infantino must go says former uefa boss platini",
+      "description": "In a scathing interview, French great Michel Platini accuses Infantino of always loving &#039;money and power&#039;.",
+      "url": "https://www.aljazeera.com/sports/2026/8/31/fifa-president-infantino-must-go-says-former-uefa-boss-platini?traffic_source=rss"
+    },
+    {
       "source": "DR",
       "headline": "Fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i London",
       "normalized": "fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i london",
@@ -413,13 +413,6 @@
       "url": "https://www.bbc.co.uk/news/articles/cvgym9rz07zo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Former Israeli soldiers pose as Pro-Palestinian supporters in the US",
-      "normalized": "former israeli soldiers pose as pro palestinian supporters in the us",
-      "description": "Former Israeli soldiers posed as pro-Palestinian supporters in New York City to deceive people into engaging with them.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/30/former-israeli-soldiers-pose-as-pro-palestinian-supporters-in-the-us?traffic_source=rss"
-    },
-    {
       "source": "DR",
       "headline": "Fra i dag vil trafikken over Øresund være besværet",
       "normalized": "fra i dag vil trafikken over øresund være besværet",
@@ -439,6 +432,20 @@
       "normalized": "germany hosts denmark austria ahead of eu budget battle",
       "description": "Meeting in Berlin, leaders from Europe&#039;s \"frugal\" states were expected to coordinate a campaign to pressure the EU to cut down it&#039;s next budget.",
       "url": "https://www.thelocal.dk/20260827/germany-hosts-denmark-austria-ahead-of-eu-budget-battle"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Global coral reef coverage risks irreversible decline, new report warns",
+      "normalized": "global coral reef coverage risks irreversible decline new report warns",
+      "description": "Coral reefs make up just 1 percent of ocean coverage, but host a quarter of all life in the sea.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/global-coral-reef-coverage-risks-irreversible-decline-new-report-warns?traffic_source=rss"
+    },
+    {
+      "source": "Guardian World",
+      "headline": "Goodbye to Babylon Berlin, the 1920s TV drama that has eerily foreshadowed real-life politics",
+      "normalized": "goodbye to babylon berlin the 1920s tv drama that has eerily foreshadowed real life politics",
+      "description": "<p>The long-running drama reaches Hitler’s rise to power in its final season as its creators reflect on the unsettling parallels between Weimar Germany and the present day</p><p>It’s the global hit TV series that pulled audiences straight into the chaotic hedonism of 1920s Germany, dramatising the brilliance and brittleness of a newly built democratic system with unprecedented ambition.</p><p>But in the 13 years that the German makers of <a href=\"https://www.theguardian.com/tv-and-radio/2022/nov/18/how-babylon-berlin-became-tvs-most-decadent-drama\">Babylon Berlin</a> have worked on the show, modern democracies from the US to Hungary to South Korea have come under pressure in ways the creators say they could never have imagined when they started.</p> <a href=\"https://www.theguardian.com/tv-and-radio/2026/aug/31/goodbye-to-babylon-berlin-the-1920s-tv-drama-that-has-eerily-foreshadowed-real-life-politics\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/tv-and-radio/2026/aug/31/goodbye-to-babylon-berlin-the-1920s-tv-drama-that-has-eerily-foreshadowed-real-life-politics"
     },
     {
       "source": "BBC Europe",
@@ -483,6 +490,13 @@
       "url": "http://www.euronews.com/2026/08/29/heavy-gunfire-in-niger-capital-as-clashes-reported-at-presidential-palace"
     },
     {
+      "source": "DR",
+      "headline": "Historie om Yahya Hassans familie får snart teaterpremiere",
+      "normalized": "historie om yahya hassans familie får snart teaterpremiere",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/historie-om-yahya-hassans-familie-faar-snart-teaterpremiere"
+    },
+    {
       "source": "The Local Denmark",
       "headline": "How much of Denmark&#039;s VAT cut on food will be reflected in prices?",
       "normalized": "how much of denmark 039 s vat cut on food will be reflected in prices",
@@ -495,6 +509,13 @@
       "normalized": "hundreds of foreign nationals among the missing following deadly nepal floods",
       "description": "On Friday, Nepal's tourism board put the number of tourists still \"out of communication\" at 622 - 471 of which were foreign tourists.",
       "url": "http://www.euronews.com/2026/08/29/hundreds-of-foreign-nationals-among-the-missing-following-deadly-nepal-floods"
+    },
+    {
+      "source": "Guardian World",
+      "headline": "Icac lawyer tells Charles Perrottet the key to lying is ‘you have to be really good at remembering it’",
+      "normalized": "icac lawyer tells charles perrottet the key to lying is you have to be really good at remembering it",
+      "description": "<p>Perrottet disagrees when counsel assisting Peggy Dwyer SC claims brother of former NSW premier is not truthful and ‘constructing evidence’</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>A brother of former New South Wales premier Dominic Perrottet has told Icac he would lie to a property developer about delivering political outcomes “to keep him on side”, but Charles Perrottet has denied lying to the state’s anti-corruption watchdog.</p><p>Charles Perrottet, who is among three Liberal figures alleged to have anticipated receiving $2m in prohibited political donations from Jean Nassif, told the Independent Commission Against Corruption (Icac) on Monday that he “made up” updates for the pro",
+      "url": "https://www.theguardian.com/australia-news/2026/aug/31/icac-charles-perrottet-lawyer-ntwnfb"
     },
     {
       "source": "The Local Denmark",
@@ -558,13 +579,6 @@
       "normalized": "iran war live tehran says it attacked bases in jordan uae after us strike",
       "description": "CENTCOM says US forces bombed two IRGC rocket launchers on Larak Island which presented an &#039;imminent threat&#039;.",
       "url": "https://www.aljazeera.com/news/liveblog/2026/8/31/iran-war-live-irgc-attacks-us-bases-in-jordan-after-us-bombs-larak-island?traffic_source=rss"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Israeli settler rabbi says Palestinians should leave the occupied West Bank",
-      "normalized": "israeli settler rabbi says palestinians should leave the occupied west bank",
-      "description": "Video shows an Israeli settler rabbi telling peace activists that non-Jews in Israel have no national rights.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/30/israeli-settler-rabbi-says-palestinians-should-leave-the-occupied-west-bank?traffic_source=rss"
     },
     {
       "source": "Al Jazeera",
@@ -645,13 +659,6 @@
     },
     {
       "source": "Euronews",
-      "headline": "Latest news bulletin | August 29th, 2026 – Morning",
-      "normalized": "latest news bulletin august 29th 2026 morning",
-      "description": "Catch up with the most important stories from around Europe and beyond this August 29th, 2026 - latest news, breaking news, World, Business, Entertainment, Politics, Culture, Travel.",
-      "url": "http://www.euronews.com/video/2026/08/29/latest-news-bulletin-august-29th-2026-morning"
-    },
-    {
-      "source": "Euronews",
       "headline": "Latest news bulletin | August 30th, 2026 – Evening",
       "normalized": "latest news bulletin august 30th 2026 evening",
       "description": "Catch up with the most important stories from around Europe and beyond this August 30th, 2026 - latest news, breaking news, World, Business, Entertainment, Politics, Culture, Travel.",
@@ -684,13 +691,6 @@
       "normalized": "mamdani lookalike contest draws hundreds of hopefuls in new york",
       "description": "Hundreds gathered for a Zohran Mamdani lookalike contest in New York, with nine contestants vying for votes.",
       "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/08-31-26-mamdani-nyc-lookalike-sv?traffic_source=rss"
-    },
-    {
-      "source": "Guardian World",
-      "headline": "Man who murdered Molly Ticehurst will not face life in jail, judge says",
-      "normalized": "man who murdered molly ticehurst will not face life in jail judge says",
-      "description": "<p>Justice Natalie Adams says she is troubled by expert evidence about rape allegations in slain woman’s police statement</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>Molly Ticehurst’s ex-boyfriend will not face a life sentence for her domestic violence murder, a crime which galvanised a national movement against gendered abuse.</p><p>Ticehurst, a 28-year-old childcare educator, was found dead in her home at Forbes, in the New South Wales central-west, in the early hours of 22 April 2024.</p> <a href=\"https://www.theguardian.com/australia-news/2026/aug/31/molly-ticehurst-domestic-violence-murder-daniel-billings-sentence-ntwnfb\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/australia-news/2026/aug/31/molly-ticehurst-domestic-violence-murder-daniel-billings-sentence-ntwnfb"
     },
     {
       "source": "BBC Europe",
@@ -756,18 +756,18 @@
       "url": "http://www.euronews.com/2026/08/30/nepal-warns-of-more-possible-floods-as-communities-grapple-with-devastation"
     },
     {
+      "source": "Guardian World",
+      "headline": "Newborn baby’s body found in Sydney rubbish bin as police hold ‘serious concerns’ for mother",
+      "normalized": "newborn baby s body found in sydney rubbish bin as police hold serious concerns for mother",
+      "description": "<p>Police urge mother to attend hospital after baby’s body discovered in Harrow Road in Auburn</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p></p><p>New South Wales police have appealed for information to find the mother of a newborn baby boy, whose body was discovered in a rubbish bin in Auburn in Sydney’s south-west on Monday morning.</p><p>Police said emergency services responded to reports of the body of a baby located in a rubbish bin along Harrow Road in Auburn at 11.20am, with officers from the Auburn police area command finding the body of a newborn boy.</p> <a href=\"https://www.theguardian.com/australia-news/2026/aug/31/baby-body-found-garbage-rubbish-bin-harrow-road-auburn-sydney-n",
+      "url": "https://www.theguardian.com/australia-news/2026/aug/31/baby-body-found-garbage-rubbish-bin-harrow-road-auburn-sydney-ntwnfb"
+    },
+    {
       "source": "Al Jazeera",
       "headline": "Niger mutiny puts Russia’s expanding role in the Sahel to the test",
       "normalized": "niger mutiny puts russia s expanding role in the sahel to the test",
       "description": "Failed uprising in Niamey exposed tensions in Niger’s military, and the role of the Africa Corps in suppressing unrest.",
       "url": "https://www.aljazeera.com/news/2026/8/31/niger-mutiny-puts-russias-expanding-role-in-the-sahel-to-the-test?traffic_source=rss"
-    },
-    {
-      "source": "Euronews",
-      "headline": "Norway mourns king Harald V as crown prince Haakon becomes king",
-      "normalized": "norway mourns king harald v as crown prince haakon becomes king",
-      "description": "Norway mourns King Harald V after his death at 89 on Friday. Prime Minister Jonas Gahr Støre joined officials and crowds paying tribute outside the Royal Palace in Oslo.",
-      "url": "http://www.euronews.com/video/2026/08/28/norway-mourns-king-harald-v-as-crown-prince-haakon-becomes-king"
     },
     {
       "source": "BBC Europe",
@@ -792,13 +792,6 @@
     },
     {
       "source": "Euronews",
-      "headline": "Number of missing in Nepal floods rises to nearly 3,000 as UNICEF says 17,000 children need aid",
-      "normalized": "number of missing in nepal floods rises to nearly 3 000 as unicef says 17 000 children need aid",
-      "description": "Rescuers were battling through mud even as the threat of new floods loomed, with emergency teams recovering 682 bodies so far.",
-      "url": "http://www.euronews.com/2026/08/28/number-of-missing-in-nepal-floods-passes-2400-as-unicef-says-17000-children-need-aid"
-    },
-    {
-      "source": "Euronews",
       "headline": "Oil prices higher as US-Iran tensions flare and Warsh fans rate hikes",
       "normalized": "oil prices higher as us iran tensions flare and warsh fans rate hikes",
       "description": "Oil prices climbed on Monday morning as tensions flared once again in the Middle East and as investors weighed a potential US rate hike.",
@@ -810,6 +803,13 @@
       "normalized": "on the agenda what 039 s happening in denmark this week",
       "description": "A week with a wide variety of festivals, from food to kites to water sports to literature to music, as well as political events, Denmark&#039;s national flag day, and more. See what else is lined up in this week’s agenda.",
       "url": "https://www.thelocal.dk/20260829/on-the-agenda-whats-happening-in-denmark-this-week-6"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "One dead and about 15 people missing after flash flood in Grand Canyon",
+      "normalized": "one dead and about 15 people missing after flash flood in grand canyon",
+      "description": "Dozens evacuated from US national park after flash flood hits the area of Bright Angel Canyon and Phantom Ranch.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/dozens-evacuated-and-about-15-missing-after-grand-canyon-flash-flood?traffic_source=rss"
     },
     {
       "source": "Al Jazeera",
@@ -854,13 +854,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/populaer-fyret-ukrainsk-forsvarsminister-skal-raadgive-italiens-minister"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Real Madrid cruise past Malaga 4-0 to maintain Mourinho’s perfect start",
-      "normalized": "real madrid cruise past malaga 4 0 to maintain mourinho s perfect start",
-      "description": "Jude Bellingham and Kylian Mbappe on the scoresheet as Jose Mourinho&#039;s Real Madrid continues to move at pace in La Liga.",
-      "url": "https://www.aljazeera.com/sports/2026/8/30/real-madrid-cruise-past-malaga-4-0-to-maintain-mourinhos-perfect-start?traffic_source=rss"
-    },
-    {
       "source": "Guardian World",
       "headline": "Rejoining the EU, Burnham’s donors and the bedroom tax: Politics Weekly answers your questions – podcast",
       "normalized": "rejoining the eu burnham s donors and the bedroom tax politics weekly answers your questions podcast",
@@ -889,13 +882,6 @@
       "url": "https://www.bbc.co.uk/news/articles/c5ye8egg596o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "Guardian World",
-      "headline": "‘Sad day in Australian sport’: tributes flow for trailblazing boxing great Tony Mundine",
-      "normalized": "sad day in australian sport tributes flow for trailblazing boxing great tony mundine",
-      "description": "<p>Fellow boxers, sporting figures, politicians and celebrities have paid tribute to the champion boxer and community leader, who died aged 75</p><ul><li><p><em><strong>Warning:</strong> Aboriginal and Torres Strait Islander readers are advised that this article contains images and names of Indigenous Australians who have died</em></p></li><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>Tributes are pouring in for Indigenous Australia boxing great, Tony Mundine, who has died aged 75.</p><p>The Guardian understands that the Bundjalung man and father of former world champion boxer and NRL star Anthony Mundine had a heart attack on Sunday, and was in hospital surrounded by family when he passed.</p> <a",
-      "url": "https://www.theguardian.com/sport/2026/aug/31/australian-boxing-great-tony-mundine-dies-aged-75-ntwnfb"
-    },
-    {
       "source": "BBC World",
       "headline": "Satellite images reveal scale of flood devastation in Nepal villages",
       "normalized": "satellite images reveal scale of flood devastation in nepal villages",
@@ -908,6 +894,13 @@
       "normalized": "search continues as number missing in nepal tibet floods rises to 2 478 as it happened",
       "description": "<p>This live blog is now closed</p><ul><li><p><a href=\"https://www.theguardian.com/world/ng-interactive/2026/aug/28/the-flood-took-everything-i-have-survivors-grieve-for-relatives-and-homes-swept-away-in-nepal\">‘The flood took everything I have’: survivors grieve for relatives and homes swept away in Nepal</a></p></li><li><p><a href=\"https://www.theguardian.com/world/2026/aug/27/nepal-tibet-flash-flood-visual-guide-why-how-flooding-happened-floods-cause-reason-explained\">Visual guide: how the deadly flooding unfolded</a></p></li><li><p><a href=\"https://www.theguardian.com/world/2026/aug/26/tell-us-have-you-been-affected-by-the-flash-floods-on-the-nepal-tibet-border\">Tell us: have you been affected by the flash floods?</a></p></li></ul><p><strong>More now on the Nepali army’s <a href=\"https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates?CMP=share_btn_url&amp;page=with%3Ablock-6a9107bf8f089f2cda798d55#block-6a9107bf8f089f2cda798d55\">rescue operation</a> to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding</strong>.</p><p>“Two helicopters have been dispatched but it is c",
       "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates"
+    },
+    {
+      "source": "DR",
+      "headline": "Seks personer har indtil videre fået omvendt fodlænke",
+      "normalized": "seks personer har indtil videre fået omvendt fodlænke",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/seks-personer-har-indtil-videre-faaet-omvendt-fodlaenke"
     },
     {
       "source": "BBC Europe",
@@ -924,6 +917,13 @@
       "url": "https://www.dr.dk/nyheder/seneste/sigtede-angreb-mod-hadsten-skole-accepterer-forlaenget-faengsling"
     },
     {
+      "source": "Euronews",
+      "headline": "Six wounded after car bomb explodes in front of Mexico police station, officials say",
+      "normalized": "six wounded after car bomb explodes in front of mexico police station officials say",
+      "description": "Zacatecas is key to the drug trade because it links central Mexico with the north and west of the country and features routes that are key to smuggling cocaine and other narcotics to the United States.",
+      "url": "http://www.euronews.com/2026/08/31/six-wounded-after-car-bomb-explodes-in-front-of-mexico-police-station-officials-say"
+    },
+    {
       "source": "BBC World",
       "headline": "Somali piracy surges as the impact of the US-Iran war ripples outwards",
       "normalized": "somali piracy surges as the impact of the us iran war ripples outwards",
@@ -938,13 +938,6 @@
       "url": "https://www.theguardian.com/world/2026/aug/26/south-african-police-arrest-two-thai-men-smuggling-parrot-eggs"
     },
     {
-      "source": "DR",
-      "headline": "Take That indtager Tinderbox",
-      "normalized": "take that indtager tinderbox",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/take-that-indtager-tinderbox"
-    },
-    {
       "source": "BBC Europe",
       "headline": "Tate brothers blast US jail conditions as they seek bail in UK extradition fight",
       "normalized": "tate brothers blast us jail conditions as they seek bail in uk extradition fight",
@@ -952,11 +945,11 @@
       "url": "https://www.bbc.co.uk/news/articles/c9v9nndjznvo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "DR",
-      "headline": "Teenager mistænkt for medvirken til drab under svensk sværdangreb",
-      "normalized": "teenager mistænkt for medvirken til drab under svensk sværdangreb",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/teenager-mistaenkt-medvirken-til-drab-under-svensk-svaerdangreb"
+      "source": "Al Jazeera",
+      "headline": "Tennis great Djokovic exits US Open in first round amid tears and pain",
+      "normalized": "tennis great djokovic exits us open in first round amid tears and pain",
+      "description": "Novak Djokovic&#039;s pursuit of a 25th Grand Slam ends in a five-set defeat to unseeded Argentinian player Mariano Navone.",
+      "url": "https://www.aljazeera.com/sports/2026/8/31/tennis-great-djokovic-exits-us-open-in-first-round-amid-tears-and-pain?traffic_source=rss"
     },
     {
       "source": "BBC Europe",
@@ -987,11 +980,25 @@
       "url": "https://www.bbc.co.uk/news/articles/c8en3n29wdro?at_medium=RSS&at_campaign=rss"
     },
     {
+      "source": "Euronews",
+      "headline": "'They wrote little letters': How kids in Portugal are making money off their neighbours' plastic waste",
+      "normalized": "they wrote little letters how kids in portugal are making money off their neighbours plastic waste",
+      "description": "The first ever bottle deposit return scheme in southern Europe is helping the environment - and funding kids' bucket list trips.",
+      "url": "http://www.euronews.com/2026/08/31/i-dont-mind-begging-volta-offers-an-opportunity-to-many"
+    },
+    {
       "source": "DR",
       "headline": "To ministre fra Moderaterne søger orlov fra Folketinget",
       "normalized": "to ministre fra moderaterne søger orlov fra folketinget",
       "description": "",
       "url": "https://www.dr.dk/nyheder/seneste/ministre-fra-moderaterne-soeger-orlov-fra-folketinget"
+    },
+    {
+      "source": "The Local Denmark",
+      "headline": "Today in Denmark: A roundup of the latest news on Monday",
+      "normalized": "today in denmark a roundup of the latest news on monday",
+      "description": "Excavation confirms largest ever silver find from the Viking Age, &#039;People of Danish descent&#039; to fall to below 70 percent of population by 2100, and other news from Denmark on Monday.",
+      "url": "https://www.thelocal.dk/20260831/today-in-denmark-a-roundup-of-the-latest-news-on-monday-59"
     },
     {
       "source": "The Local Denmark",
@@ -1002,9 +1009,9 @@
     },
     {
       "source": "DR",
-      "headline": "Traktorer med banner spærrer Sallingsundbroen",
-      "normalized": "traktorer med banner spærrer sallingsundbroen",
-      "description": "Politiet ved ikke, hvem der er ansvarlige for vejspærringen.",
+      "headline": "Traktorer med banner spærrede Sallingsundbroen",
+      "normalized": "traktorer med banner spærrede sallingsundbroen",
+      "description": "Politiet ved ikke, hvem der er ansvarlig for vejspærringen.",
       "url": "https://www.dr.dk/nyheder/seneste/traktorer-med-banner-spaerrer-sallingsundbroen"
     },
     {
@@ -1100,9 +1107,9 @@
     },
     {
       "source": "Guardian World",
-      "headline": "US strikes Iranian launchers in strait of Hormuz, sparking reprisal attack on airbases in Jordan",
-      "normalized": "us strikes iranian launchers in strait of hormuz sparking reprisal attack on airbases in jordan",
-      "description": "<p>US says it attacked sites in Larak Island to prevent launch of sea mines, prompting Iran’s ⁠Revolutionary Guard to strike airbases in Jordan used by US forces</p><p>Iran has launched retaliatory strikes on airbases in Jordan after the United States attacked Iranian rocket launchers on an island in the strait of Hormuz, the first such strikes in a month.</p><p>“I can confirm that earlier today US forces struck two Iranian launchers on Larak island,” a US official said on Sunday. “Islamic ⁠Revolutionary Guard Corps forces were observed preparing to launch rockets with sea mines into the strait of Hormuz.”</p> <a href=\"https://www.theguardian.com/world/2026/aug/30/us-strikes-iranian-launchers-on-larak-island-amid-strait-of-hormuz-tensions\">Continue reading...</a>",
+      "headline": "US strikes Iranian launchers in strait of Hormuz, sparking reprisal attack on airbases in Jordan and UAE",
+      "normalized": "us strikes iranian launchers in strait of hormuz sparking reprisal attack on airbases in jordan and uae",
+      "description": "<p>US says it attacked Larak Island to prevent launch of sea mines, prompting reprisals against airbases used by US forces, with tanker fire also reported in strait</p><p>Iran has launched retaliatory strikes on airbases in Jordan and the United Arab Emirates after the US attacked Iranian rocket launchers in the strait of Hormuz, the first such hostilities in a month.</p><p>Hours later, Iranian state TV later reported that a supertanker had caught fire after hitting two naval mines while attempting to pass through the southern side of the strait. It ‌did not identify the vessel or provide information ​about its crew.</p> <a href=\"https://www.theguardian.com/world/2026/aug/30/us-strikes-iranian-launchers-on-larak-island-amid-strait-of-hormuz-tensions\">Continue reading...</a>",
       "url": "https://www.theguardian.com/world/2026/aug/30/us-strikes-iranian-launchers-on-larak-island-amid-strait-of-hormuz-tensions"
     },
     {
@@ -1209,13 +1216,6 @@
       "normalized": "what are the implications of the us venezuela oil deal",
       "description": "Opposition in Venezuela as interim leader insists the deal with Washington will help with the country&#039;s recovery.",
       "url": "https://www.aljazeera.com/video/inside-story/2026/8/31/what-are-the-implications-of-the-us-venezuela-oil-deal?traffic_source=rss"
-    },
-    {
-      "source": "The Local Denmark",
-      "headline": "What changes in Denmark in September 2026?",
-      "normalized": "what changes in denmark in september 2026",
-      "description": "Free museums for young people, Flag Day and the Copenhagen Half Marathon are among the events and changes to look out for this September.",
-      "url": "https://www.thelocal.dk/20260826/what-changes-in-denmark-in-september-2026"
     },
     {
       "source": "Guardian World",
