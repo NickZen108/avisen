@@ -2,8 +2,8 @@
 """Post-publication visual QA for recent Morgentidende articles.
 
 Deterministic companion to the Live proofreader agent. It verifies canonical
-lead heroes, image assets, alt text and local image-cache output. Visual taste,
-cropping and dark-mode appearance remain agent/browser-review responsibilities.
+lead heroes, image assets, accessible alt handling and local image-cache output.
+Visual taste, cropping and dark-mode appearance remain browser-review concerns.
 """
 from __future__ import annotations
 
@@ -38,7 +38,7 @@ def parse_time(value: str) -> datetime:
 
 
 def get(url: str, limit: int = 5_000_000) -> tuple[int, str, bytes, str]:
-    req = urllib.request.Request(url, headers={"User-Agent": "MorgentidendeVisualQA/1.1"})
+    req = urllib.request.Request(url, headers={"User-Agent": "MorgentidendeVisualQA/1.2"})
     with urllib.request.urlopen(req, timeout=25) as response:
         body = response.read(limit)
         return response.status, response.headers.get("content-type", ""), body, response.geturl()
@@ -67,6 +67,16 @@ def load_manifest() -> dict:
         return value if isinstance(value, dict) else {}
     except Exception:
         return {}
+
+
+def valid_alt_handling(img: dict[str, str]) -> bool:
+    """Require an alt attribute; allow alt="" only for explicitly decorative brand art."""
+    if "alt" not in img:
+        return False
+    if img.get("alt", "").strip():
+        return True
+    classes = set(str(img.get("class", "")).split())
+    return "brand-sun" in classes
 
 
 def main() -> int:
@@ -118,9 +128,6 @@ def main() -> int:
         image_meta = article.get("image") or {}
         canonical_image = image_meta.get("src")
 
-        # A legacy article may intentionally have no image. Pipeline-v2 editorial
-        # gates decide whether a new article needs one; live QA verifies what was
-        # actually approved rather than inventing a post-publication requirement.
         if not hp.images:
             if canonical_image and image_meta.get("placement", "lead") == "lead":
                 faults.append(f"side {slug}: godkendt lead-hero mangler på live-siden")
@@ -137,9 +144,8 @@ def main() -> int:
 
         for img in hp.images:
             src = urllib.parse.urljoin(final_url, img["src"])
-            alt = img.get("alt", "").strip()
-            if not alt:
-                faults.append(f"side {slug}: billede mangler alt-tekst: {src}")
+            if not valid_alt_handling(img):
+                faults.append(f"side {slug}: billede mangler gyldig alt-håndtering: {src}")
             try:
                 img_status, img_type, img_body, img_final = get(src)
                 checked_images += 1
@@ -152,13 +158,7 @@ def main() -> int:
 
     report = Path(args.report)
     report.parent.mkdir(parents=True, exist_ok=True)
-    lines = [
-        "# Live visual QA",
-        "",
-        f"Pages checked: {checked_pages}",
-        f"Images checked: {checked_images}",
-        "",
-    ]
+    lines = ["# Live visual QA", "", f"Pages checked: {checked_pages}", f"Images checked: {checked_images}", ""]
     if faults:
         lines.append("FAIL")
         lines.extend(f"- {fault}" for fault in faults)
