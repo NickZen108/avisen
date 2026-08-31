@@ -113,6 +113,16 @@ Den fulde kilde- og claim-dokumentation skal fortsat ligge i ledgeren og bestå 
 
 Relaterede interne links må aldrig bruge CMS-agtig tekst som `Læs den faktuelle nyhedsartikel`. Vis i stedet den faktiske rubrik på den artikel, der linkes til, under en menneskelig label som `Mere om sagen`.
 
+## Lægmandssprog, fremmedord og måleenheder
+
+Morgentidende skrives til almindelige læsere, ikke til fagfolk. **Hvis et fremmedord, fagudtryk, teknisk begreb eller brancheudtryk kan erstattes af almindeligt dansk uden at miste vigtig præcision, skal det erstattes.** Skriv fx `andre planeter` før eller i stedet for `exoplaneter`, og `større/bredere kortlægninger` eller en konkret dansk forklaring i stedet for engelske fagord som `surveys`, medmindre selve fagtermen er nødvendig.
+
+Hvis en nødvendig term ikke kan oversættes enkelt eller præcist nok, skal den **forklares første gang den optræder med 1–2 korte sætninger i direkte lægmandssprog**. Forklaringen skal fortælle, hvad begrebet er, og hvorfor det betyder noget i netop historien. Eksempel: Et `Lagrange-punkt` må ikke stå uforklaret; læseren skal kort få at vide, at det er et område i rummet, hvor tyngdekraften fra to store legemer gør det muligt for et rumfartøj at holde en stabil placering med relativt lidt brændstof.
+
+**Uvant mål og enheder skal omsættes til en enhed, en dansk læser umiddelbart forstår.** Nautiske mil, feet, miles, Fahrenheit, acres, pounds og tilsvarende må ikke stå alene i almindelig nyhedstekst. Brug som hovedregel kilometer, meter, kilometer i timen, Celsius, kvadratkilometer/hektar og kilogram. Hvis originalenheden har redaktionel betydning, kan den stå i parentes efter den letforståelige omregning, fx `cirka 7,4 kilometer (4 nautiske mil)`.
+
+Sprogredaktøren skal aktivt lede efter sådanne ord og enheder før PASS. Slutredaktøren skal betragte uforklaret nødvendig fagsprog eller en uvant måleenhed uden lægmandsomregning som en redaktionel fejl, ikke blot som et stilspørgsmål.
+
 ## Design og kode
 
 Nye artikler skrives som struktureret indhold under `content/` og genereres til `docs/`. Journalist- og redaktøragenter må ikke håndredigere CSS, logo, header, grids eller andre låste designfiler. Låste filer verificeres maskinelt.
