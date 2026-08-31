@@ -1,0 +1,1191 @@
+{
+  "schema_version": 1,
+  "articles": {
+    "2026-08-30-apollo-11-otte-dage": [
+      {
+        "hash": "76cb11306be49490ba75b08d51d72fd8e066b90ae46db86137584fbceb9147cd",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Apollo 11: Otte dage fra Florida til Månen og hjem igen",
+        "story_id": "2026-08-30-apollo-11-otte-dage",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-08-30-apollo-11-otte-dage",
+          "slug": "2026-08-30-apollo-11-otte-dage",
+          "category": "Historie",
+          "weight": "D",
+          "title": "Apollo 11: Otte dage fra Florida til Månen og hjem igen",
+          "standfirst": "Tre astronauter lettede 16. juli 1969. Fire dage senere gik to af dem på Månen. Den 24. juli var besætningen tilbage på Jorden.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-30-apollo-11-otte-dage.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Apollo 11: Tidslinjen fra opsendelse til Månen og hjem",
+            "description": "Kort historisk tidslinje for Apollo 11: Armstrong, Aldrin og Collins fra 16. til 24. juli 1969.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+            "alt": "Saturn V-raketten med Apollo 11 løfter fra affyringsrampen",
+            "credit": "NASA/JSC; efterbehandling Cygni_18 / Wikimedia Commons",
+            "license": "Public domain (NASA, USA)",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+            "image_type": "photo"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Apollo 11 kan lyde som en lang historisk epoke. Selve rejsen fra opsendelse til hjemkomst lå inden for otte kalenderdage i juli 1969."
+            },
+            {
+              "type": "h2",
+              "text": "16. juli: Tre mand forlader Jorden"
+            },
+            {
+              "type": "p",
+              "text": "Neil Armstrong, Buzz Aldrin og Michael Collins blev sendt af sted 16. juli 1969. Armstrong var missionens kommandør, Aldrin pilot på månemodulet og Collins pilot på kommandomodulet."
+            },
+            {
+              "type": "h2",
+              "text": "20. juli: To går ned, én bliver i kredsløb"
+            },
+            {
+              "type": "p",
+              "text": "Armstrong og Aldrin landede med månemodulet, mens Collins fortsatte omkring Månen i kommandomodulet. Armstrong blev det første menneske på Månen, Aldrin det andet."
+            },
+            {
+              "type": "p",
+              "text": "NASA beskriver Armstrong og Aldrins samlede ophold på Månen som omtrent 22 timer, før månemodulets opstigningstrin lettede for at mødes med Collins igen."
+            },
+            {
+              "type": "h2",
+              "text": "24. juli: Tilbage på Jorden"
+            },
+            {
+              "type": "p",
+              "text": "Den 24. juli sluttede missionen med splashdown. Fra opsendelsen den 16. til hjemkomsten den 24. juli var der gået otte kalenderdage."
+            },
+            {
+              "type": "h2",
+              "text": "Et fotografi, ikke en rekonstruktion"
+            },
+            {
+              "type": "p",
+              "text": "Artiklens registrerede billede viser den virkelige Apollo 11-opsendelse. Det stammer fra NASA og er registreret som public domain i USA; det er ikke AI-genereret."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "IMG1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": "2026-08-30T12:00:00Z"
+        }
+      }
+    ],
+    "2026-08-30-guide-staerkere-login": [
+      {
+        "hash": "83e5b69497e1b92b55fe6f92e51c6aa4f83304d1201784f15494ec3bd26707ef",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Guide: Et stærkere login uden password-akrobatik",
+        "story_id": "2026-08-30-guide-staerkere-login",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-08-30-guide-staerkere-login",
+          "slug": "2026-08-30-guide-staerkere-login",
+          "category": "Guide",
+          "weight": "D",
+          "title": "Guide: Et stærkere login uden password-akrobatik",
+          "standfirst": "Længde slår tvungne specialtegn, og et kodeord alene beskytter ikke mod phishing. Her er en enkel opskrift baseret på NIST og CISA.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-30-guide-staerkere-login.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Stærkere login: password, MFA og passkeys",
+            "description": "Praktisk guide til stærkere login baseret på NIST og CISA: lange passwords, MFA og phishing-resistente passkeys.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer_keyboard.jpg",
+            "alt": "Sort computertastatur",
+            "credit": "Joe lope / Wikimedia Commons",
+            "license": "CC BY-SA 4.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Computer_keyboard.jpg",
+            "image_type": "photo"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Mange har lært, at et godt password skal ligne et vredt modem: store og små bogstaver, tal, specialtegn og et obligatorisk udråbstegn. Den nyere NIST-vejledning lægger mere vægt på længde end på sådanne faste sammensætningsregler."
+            },
+            {
+              "type": "h2",
+              "text": "1. Gør passwordet langt"
+            },
+            {
+              "type": "p",
+              "text": "NIST kræver mindst 15 tegn, når passwordet er den eneste autentifikationsfaktor. Lange passphrases med flere ord kan være lettere at huske end korte, kunstigt komplekse passwords."
+            },
+            {
+              "type": "h2",
+              "text": "2. Skift ikke bare for kalenderens skyld"
+            },
+            {
+              "type": "p",
+              "text": "NIST anbefaler ikke tvungne periodiske skift, medmindre der er tegn på, at passwordet er kompromitteret. Hyppige, mekaniske skift kan i praksis føre til forudsigelige variationer af det samme password."
+            },
+            {
+              "type": "h2",
+              "text": "3. Brug mere end ét lag"
+            },
+            {
+              "type": "p",
+              "text": "Et password er ikke phishing-resistent. CISA anbefaler multifaktor-login og fremhæver phishing-resistente metoder som den stærkeste retning, når de er tilgængelige."
+            },
+            {
+              "type": "h2",
+              "text": "4. Overvej passkeys"
+            },
+            {
+              "type": "p",
+              "text": "NIST beskriver korrekt implementerede FIDO-passkeys som phishing-resistente. De binder login kryptografisk til den rigtige tjeneste i stedet for at bede dig om at indtaste en genbrugelig hemmelighed på en webside."
+            },
+            {
+              "type": "h2",
+              "text": "En enkel prioritering"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "Brug et langt og unikt password, hvis tjenesten kræver password.",
+                "Slå multifaktor-login til.",
+                "Vælg en phishing-resistent metode som passkey/FIDO, når tjenesten tilbyder det.",
+                "Skift straks legitimationsoplysninger, hvis der er tegn på kompromittering.",
+                "Undgå at genbruge samme password på flere tjenester."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Guiden reducerer risiko; den fjerner den ikke. En kompromitteret enhed, social manipulation eller en dårlig implementering kan stadig skabe problemer."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": "2026-08-30T11:00:00Z"
+        }
+      }
+    ],
+    "2026-08-30-hvorfor-himlen-er-blaa": [
+      {
+        "hash": "fe78e62bbac782a0c1f57a46352ba696411eb811892d5d17b0dfb19f4df15d22",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Derfor er himlen blå – og solnedgangen rød",
+        "story_id": "2026-08-30-hvorfor-himlen-er-blaa",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-08-30-hvorfor-himlen-er-blaa",
+          "slug": "2026-08-30-hvorfor-himlen-er-blaa",
+          "category": "Videnskab",
+          "weight": "D",
+          "title": "Derfor er himlen blå – og solnedgangen rød",
+          "standfirst": "Det samme sollys kan give en blå middagshimmel og en rød solnedgang. Forklaringen ligger i lysets bølgelængder og den vej, det tager gennem atmosfæren.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-30-hvorfor-himlen-er-blaa.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Hvorfor er himlen blå og solnedgangen rød?",
+            "description": "En kort videnskabelig forklaring på Rayleigh-spredning, blå himmel og røde solnedgange.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_with_blue_sky.jpg",
+            "alt": "Blå himmel, der går over i varme orange og røde farver ved solnedgang over horisonten",
+            "credit": "Aman kumar yadav / Wikimedia Commons",
+            "license": "CC BY-SA 4.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Sunset_with_blue_sky.jpg",
+            "image_type": "photo",
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Solen sender ikke et særligt blåt lys ned over os. Det synlige sollys rummer hele farvespektret. Når lyset rammer Jordens atmosfære, møder det molekyler og små partikler, som kan sprede lyset i andre retninger."
+            },
+            {
+              "type": "h2",
+              "text": "De korte bølger spredes mest"
+            },
+            {
+              "type": "p",
+              "text": "Blåt lys har kortere bølgelængde end rødt lys. De små molekyler i luften spreder de korte bølgelængder mere effektivt end de lange. Derfor kommer der relativt meget blåt, spredt lys til vores øjne fra alle retninger på en klar dag."
+            },
+            {
+              "type": "figure",
+              "src": "../img/himmel-blaa-forklaring.svg",
+              "alt": "Sollys rammer atmosfæren, hvor blå bølgelængder spredes i mange retninger, mens rødt og orange lys spredes mindre",
+              "caption": "Om dagen spredes især de korte blå bølgelængder i mange retninger.",
+              "credit": "Morgentidende",
+              "wide": true
+            },
+            {
+              "type": "p",
+              "text": "Fænomenet kaldes Rayleigh-spredning. Det er opkaldt efter den britiske fysiker Lord Rayleigh, hvis borgerlige navn var John William Strutt. Han arbejdede i 1800-tallet med, hvordan lys spredes, og hans navn hænger derfor fast ved netop denne forklaring. Udtrykket beskriver den type spredning, der opstår, når lyset møder partikler, som er meget mindre end lysets bølgelængde. Det er altså navnet på en fysisk mekanisme, ikke på en særlig slags lys."
+            },
+            {
+              "type": "h2",
+              "text": "Hvorfor bliver aftenen rød?"
+            },
+            {
+              "type": "p",
+              "text": "Når Solen står lavt, skal lyset gennem en længere strækning af atmosfæren, før det når øjet. Undervejs bliver en større del af de korte, blå bølgelængder spredt væk fra den direkte synslinje. Det lys, der fortsætter direkte mod os, er derfor relativt rigere på røde og orange bølgelængder."
+            },
+            {
+              "type": "figure",
+              "src": "../img/solnedgang-roed-forklaring.svg",
+              "alt": "Når Solen står lavt, passerer lyset gennem mere atmosfære, så blåt lys spredes væk og mere rødt og orange lys når øjet",
+              "caption": "Ved solnedgang går lyset en længere vej gennem atmosfæren, så mere af det blå lys spredes væk undervejs.",
+              "credit": "Morgentidende",
+              "wide": true
+            },
+            {
+              "type": "p",
+              "text": "Støv, små partikler og dråber i luften samt skyer kan ændre farvernes styrke og udseende, så to solnedgange ikke behøver ligne hinanden. Grundmekanismen er dog den samme: jo længere vej sollyset har gennem atmosfæren, desto mere af det blå lys kan nå at blive spredt væk."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [
+            {
+              "slug": "2026-08-30-solsystemet-i-tal",
+              "category": "Videnskab",
+              "title": "Solsystemet i tal",
+              "teaser": "Fra Merkur til Neptun: sådan gør den astronomiske enhed de enorme afstande lettere at forstå.",
+              "image_src": "../img/planeter-au-forklaring.svg",
+              "image_alt": "Grafik over planeternes afstande målt i astronomiske enheder"
+            },
+            {
+              "slug": "2026-08-30-apollo-11-otte-dage",
+              "category": "Historie",
+              "title": "Apollo 11: Otte dage til Månen og hjem",
+              "teaser": "Tidslinjen fra opsendelsen 16. juli 1969 til hjemkomsten otte kalenderdage senere.",
+              "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+              "image_alt": "Saturn V-raketten med Apollo 11 ved opsendelsen"
+            },
+            {
+              "slug": "2026-08-30-guide-staerkere-login",
+              "category": "Guide",
+              "title": "Et stærkere login uden password-akrobatik",
+              "teaser": "Lange, unikke kodeord, flerfaktorlogin og passkeys forklaret enkelt.",
+              "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer_keyboard.jpg",
+              "image_alt": "Sort computertastatur"
+            }
+          ],
+          "correction_note": null,
+          "scheduled_for": "2026-08-30T10:30:00Z"
+        }
+      }
+    ],
+    "2026-08-30-island-afviser-eu-forhandlinger": [
+      {
+        "hash": "b1d7303e72a340bb9a5c2c851cb1b0ad6040316d6151a9000bcd1791aeb28973",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Island siger nej til nye EU-forhandlinger",
+        "story_id": "2026-08-30-island-eu-referendum",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-08-30-island-eu-referendum",
+          "slug": "2026-08-30-island-afviser-eu-forhandlinger",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Island siger nej til nye EU-forhandlinger",
+          "standfirst": "52,8 procent stemte nej til at genoptage Islands EU-optagelsesforhandlinger, mens 47,2 procent stemte ja. Den islandske valgmyndighed opgjorde valgdeltagelsen til 82,6 procent.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-30-island-afviser-eu-forhandlinger.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07"
+          ],
+          "seo": {
+            "title": "Island siger nej til nye EU-forhandlinger",
+            "description": "52,8 procent af de islandske vælgere afviste at genoptage EU-optagelsesforhandlingerne. Fiskeri, selvbestemmelse, økonomi og sikkerhed fyldte i debatten.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Iceland_EU.svg",
+            "alt": "Kort over Island med EU-flag",
+            "credit": "Wikimedia Commons",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Iceland_EU.svg",
+            "image_type": "illustration"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Islandske vælgere har afvist at genoptage landets optagelsesforhandlinger med EU. Nej-siden fik 52,8 procent af stemmerne mod 47,2 procent til ja-siden. Den islandske valgmyndighed opgjorde valgdeltagelsen til 82,6 procent."
+            },
+            {
+              "type": "p",
+              "text": "Afstemningen handlede ikke om at melde Island ind i EU her og nu. Spørgsmålet var, om landet skulle genoptage optagelsesforhandlingerne, og resultatet var rådgivende."
+            },
+            {
+              "type": "h2",
+              "text": "Fiskeri og selvbestemmelse fyldte på nej-siden"
+            },
+            {
+              "type": "p",
+              "text": "Modstanderne fremhævede især kontrollen med Islands fiskeri og landets selvbestemmelse. Fiskeriet er en central del af islandsk økonomi og identitet, og bekymring for EU's fælles fiskeripolitik var et af de vigtigste argumenter mod nye forhandlinger."
+            },
+            {
+              "type": "h2",
+              "text": "Ja-siden pegede på økonomi og tættere europæiske bånd"
+            },
+            {
+              "type": "p",
+              "text": "Tilhængerne argumenterede blandt andet for, at et tættere forhold til EU og på sigt mulig brug af euroen kunne give større økonomisk stabilitet og lavere renter. De pegede også på sikkerhed og tættere europæisk samarbejde som argumenter for at genåbne forhandlingerne."
+            },
+            {
+              "type": "p",
+              "text": "Premierminister Kristrún Frostadóttir har efter resultatet sagt, at regeringen vil respektere afgørelsen og ikke gå videre med EU-sporet i den nuværende regeringsperiode. Regeringen vil i stedet fokusere på Islands eksisterende forhold til EU gennem EØS-aftalen."
+            },
+            {
+              "type": "p",
+              "text": "Island søgte om EU-medlemskab i 2009 efter finanskrisen. Forhandlingerne blev senere standset."
+            }
+          ],
+          "source_ids_to_display": [
+            "S5",
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null
+        }
+      }
+    ],
+    "2026-08-30-kyiv-myla-ammunitionslager": [
+      {
+        "hash": "7d32329689a556b0286a9f0ec6aeeb33c204cd7b487311987a56299ce8f11d51",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "38 døde efter angreb og eksplosioner ved Kyiv",
+        "story_id": "2026-08-30-kyiv-myla-ammunition-depot",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-08-30-kyiv-myla-ammunition-depot",
+          "slug": "2026-08-30-kyiv-myla-ammunitionslager",
+          "category": "Udland",
+          "weight": "A",
+          "title": "38 døde efter angreb og eksplosioner ved Kyiv",
+          "standfirst": "Et russisk angreb ramte et ukrainsk ammunitionslager ved landsbyen Myla. Fire mennesker savnes fortsat, mens myndighederne undersøger, hvorfor ammunitionen blev opbevaret tæt på boliger.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-30-kyiv-myla-depot.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05"
+          ],
+          "seo": {
+            "title": "38 døde efter angreb og eksplosioner ved Kyiv",
+            "description": "38 mennesker er døde efter et russisk angreb og efterfølgende eksplosioner ved et ammunitionslager i Myla i Kyiv-regionen. Fire savnes.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Panoramic_view_to_the_Podil_district_in_Kyiv.jpg",
+            "alt": "Panorama over Kyiv og byens horisont",
+            "credit": "Alexey laa / Wikimedia Commons · arkivfoto",
+            "license": "CC BY-SA 4.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Panoramic_view_to_the_Podil_district_in_Kyiv.jpg",
+            "image_type": "photo",
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Dødstallet efter et russisk angreb på et ammunitionslager i Kyiv-regionen er steget til 38, oplyser Ukraines præsident, Volodymyr Zelenskyj, søndag. Fire mennesker regnes fortsat som savnede."
+            },
+            {
+              "type": "p",
+              "text": "Angrebet ramte et militært lager ved landsbyen Myla i Bucha-distriktet. Granater, miner, droner og anden ammunition eksploderede efter træfferen og forårsagede omfattende ødelæggelser i området."
+            },
+            {
+              "type": "p",
+              "text": "Ifølge den seneste officielle ukrainske status er 20 mennesker kommet til skade, heriblandt to børn. Redningsfolk har fået slukket størstedelen af brandene, men mineryddere arbejder fortsat med eksplosiver i et betydeligt forurenet område."
+            },
+            {
+              "type": "h2",
+              "text": "Opbevaringen bliver undersøgt"
+            },
+            {
+              "type": "p",
+              "text": "Ukrainske myndigheder undersøger samtidig, hvorfor så store mængder ammunition blev opbevaret tæt på beboelse. Zelenskyj har kaldt placeringen groft uansvarlig og krævet, at omstændighederne bliver klarlagt."
+            },
+            {
+              "type": "h2",
+              "text": "Dødstallet kan fortsat ændre sig"
+            },
+            {
+              "type": "p",
+              "text": "Eftersøgningen og oprydningen fortsætter. De 38 døde er derfor den senest verificerede officielle status og ikke nødvendigvis det endelige dødstal."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null
+        }
+      }
+    ],
+    "2026-08-30-nordcypern-faerge-kaentret": [
+      {
+        "hash": "f8e8c60a213bdbd4b432ecf88a845f94a3fa58fc9212ddc40a4b736379e70698",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Passagerfærge kæntret ud for Nordcypern – redningsaktion i gang",
+        "story_id": "2026-08-30-north-cyprus-ferry-capsize",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-08-30-north-cyprus-ferry-capsize",
+          "slug": "2026-08-30-nordcypern-faerge-kaentret",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Passagerfærge kæntret ud for Nordcypern – redningsaktion i gang",
+          "standfirst": "Omkring 270 personer inklusive besætning var ifølge Kyrenias borgmester om bord. Redningsmandskab arbejder fortsat ved færgen, og de endelige tal er endnu ikke klarlagt.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-30-nordcypern-faerge.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05"
+          ],
+          "seo": {
+            "title": "Passagerfærge kæntret ud for Nordcypern – redningsaktion i gang",
+            "description": "En passagerfærge er kæntret ud for Kyrenia i Nordcypern. Omkring 270 personer inklusive besætning var ifølge borgmesteren om bord, og redningsaktionen fortsætter.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Car_Passenger_Ferry_Adamantios_Korais.jpg",
+            "alt": "Passagerfærge til søs",
+            "credit": "Wikimedia Commons · arkivfoto, ikke færgen i hændelsen",
+            "license": "CC BY-SA 4.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Car_Passenger_Ferry_Adamantios_Korais.jpg",
+            "image_type": "photo",
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "En passagerfærge kæntrede søndag ud for Kyrenia i Nordcypern kort efter afgang mod den tyrkiske havn Tasucu. Kystvagt, andre fartøjer og en redningshelikopter er sat ind i en igangværende redningsaktion."
+            },
+            {
+              "type": "p",
+              "text": "Kyrenias borgmester, Murat Senkul, har oplyst, at omkring 270 personer inklusive besætning var om bord. Reuters og det tyrkiske medie soL rapporterede samtidig med henvisning til borgmesteren, at 159 af 258 passagerer var nået af redningsmandskab på det tidspunkt, oplysningerne blev indsamlet."
+            },
+            {
+              "type": "h2",
+              "text": "Tallene kan ændre sig"
+            },
+            {
+              "type": "p",
+              "text": "De forskellige tal beskriver ikke nødvendigvis det samme: omkring 270 omfatter ifølge borgmesteren både passagerer og besætning, mens 258 er oplyst som antallet af passagerer. Redningsaktionen er fortsat i gang, og Morgentidende betragter derfor status som foreløbig."
+            },
+            {
+              "type": "p",
+              "text": "Lokale medier rapporterer, at færgen fik problemer få kilometer fra kysten. Den præcise årsag til kæntringen er endnu ikke fastslået."
+            },
+            {
+              "type": "h2",
+              "text": "Kystvagt og civile fartøjer deltager"
+            },
+            {
+              "type": "p",
+              "text": "Cyprus Mail rapporterer, at tyrkisk-cypriotiske kystvagtsfartøjer blev sendt til stedet, og at en redningshelikopter blev sat ind som støtte. Andre fartøjer fra Kyrenia sejlede også ud for at hjælpe."
+            },
+            {
+              "type": "p",
+              "text": "Historien opdateres, når myndighederne offentliggør en mere sikker samlet status for de ombordværende og redningsarbejdet."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null
+        }
+      }
+    ],
+    "2026-08-30-roman-rumteleskop-opsendt": [
+      {
+        "hash": "2f68a2028feaf33232d749a7f31cb4523aa77f4134661c8e1008e35388169076",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "NASA opsender Nancy Grace Roman-rumteleskopet",
+        "story_id": "2026-08-30-roman-rumteleskop",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-08-30-roman-rumteleskop",
+          "slug": "2026-08-30-roman-rumteleskop-opsendt",
+          "category": "Videnskab",
+          "weight": "C",
+          "title": "NASA opsender Nancy Grace Roman-rumteleskopet",
+          "standfirst": "Det nye rumteleskop blev opsendt søndag morgen fra Florida med en Falcon Heavy-raket. Missionen skal undersøge mørk energi, mørk materie og planeter uden for vores solsystem.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-30-roman-rumteleskop.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "NASA opsender Roman-rumteleskopet – mørk energi og andre planeter",
+            "description": "Nancy Grace Roman Space Telescope blev opsendt 30. august 2026 fra Kennedy Space Center. Her er missionen forklaret i almindeligt sprog.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Falcon_Heavy_Demo_Mission_%2840126462231%29.jpg",
+            "alt": "SpaceX Falcon Heavy-raket under opsendelse",
+            "credit": "SpaceX / Wikimedia Commons",
+            "license": "CC0 / public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Falcon_Heavy_Demo_Mission_(40126462231).jpg",
+            "image_type": "photo"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "NASA's Nancy Grace Roman Space Telescope blev opsendt søndag den 30. august 2026 kl. 13.26 dansk tid fra affyringsrampe 39A på Kennedy Space Center i Florida. Opsendelsen skete med en SpaceX Falcon Heavy-raket."
+            },
+            {
+              "type": "p",
+              "text": "Ifølge NASA adskilte raketten sig fra rumteleskopet 31 minutter efter opsendelsen. Solpaneler og en solskærm blev foldet ud som planlagt. Kontrolcentret på Goddard Space Flight Center modtog teleskopets første måle- og statusdata syv minutter efter opsendelsen."
+            },
+            {
+              "type": "h2",
+              "text": "På vej 1,5 millioner kilometer fra Jorden"
+            },
+            {
+              "type": "p",
+              "text": "Teleskopet er nu på en cirka tre måneder lang rejse til et område i rummet omkring 1,5 millioner kilometer fra Jorden. Området kaldes Lagrange-punkt L2. Her kan et rumfartøj ved hjælp af Jordens og Solens tyngdekraft holde omtrent samme placering i forhold til Jorden og Solen med forholdsvis små kurskorrektioner."
+            },
+            {
+              "type": "h2",
+              "text": "Missionens mål"
+            },
+            {
+              "type": "p",
+              "text": "Roman har et kamera med meget stort synsfelt, som kan fotografere store områder af himlen i infrarødt lys. Infrarødt lys har længere bølgelængder end det lys, vores øjne kan se, og kan blandt andet afsløre kølige eller meget fjerne objekter."
+            },
+            {
+              "type": "p",
+              "text": "Missionen skal blandt andet undersøge mørk energi og mørk materie. Det er betegnelser for to fænomener, som forskere mener påvirker universets udvikling og galaksernes bevægelser, men som endnu ikke er fuldt forstået. Teleskopet skal også finde og undersøge planeter, der kredser om andre stjerner end Solen. Missionen er planlagt til fem år og har en anslået pris på omkring 4 milliarder dollar."
+            },
+            {
+              "type": "p",
+              "text": "Teleskopet er opkaldt efter astronomen Nancy Grace Roman, som spillede en central rolle i udviklingen af Hubble-rumteleskopet. Hvor Hubble og James Webb ofte undersøger små områder af himlen meget detaljeret, er Roman bygget til hurtigere at fotografere og kortlægge langt større områder af himlen ad gangen."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2"
+          ],
+          "related_news_slug": null,
+          "related": [
+            {
+              "slug": "2026-08-30-hvorfor-himlen-er-blaa",
+              "category": "Videnskab",
+              "title": "Derfor er himlen blå – og solnedgangen rød",
+              "teaser": "Rayleigh-spredning forklarer både den blå himmel og de røde solnedgange.",
+              "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rayleigh_sunlight_scattering.svg",
+              "image_alt": "Grafik over Rayleigh-spredning"
+            },
+            {
+              "slug": "2026-08-30-solsystemet-i-tal",
+              "category": "Videnskab",
+              "title": "Solsystemet i tal",
+              "teaser": "Fra Merkur til Neptun: planeternes afstande sat på én skala med NASA-tal.",
+              "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Solar_System_graphic_by_NASA.png",
+              "image_alt": "NASA-grafik over solsystemet"
+            },
+            {
+              "slug": "2026-08-30-apollo-11-otte-dage",
+              "category": "Historie",
+              "title": "Apollo 11: Otte dage til Månen og hjem",
+              "teaser": "Tidslinjen fra opsendelsen 16. juli 1969 til hjemkomsten.",
+              "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+              "image_alt": "Saturn V med Apollo 11"
+            }
+          ],
+          "correction_note": null,
+          "scheduled_for": null
+        }
+      }
+    ],
+    "2026-08-30-solsystemet-i-tal": [
+      {
+        "hash": "cea13a3567d6c950d571bc56e58fec2621ef515c1bad97ab4f938bf810b437da",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Solsystemet i tal: Fra 58 millioner til 4,5 milliarder kilometer",
+        "story_id": "2026-08-30-solsystemet-i-tal",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-08-30-solsystemet-i-tal",
+          "slug": "2026-08-30-solsystemet-i-tal",
+          "category": "Videnskab",
+          "weight": "D",
+          "title": "Solsystemet i tal: Fra 58 millioner til 4,5 milliarder kilometer",
+          "standfirst": "Planeternes rækkefølge er nem at lære. Afstandsspringene er sværere at forestille sig. Her er de otte planeter sat på én skala med NASA-tal.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-30-solsystemet-i-tal.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Planeternes afstand fra Solen – solsystemet i tal",
+            "description": "NASA-tal for de otte planeters gennemsnitlige afstand fra Solen, fra Merkur til Neptun.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://nickzen108.github.io/avisen/img/planeter-au-forklaring.svg",
+            "alt": "Pædagogisk illustration af planeternes gennemsnitlige afstand fra Solen målt i astronomiske enheder, AU",
+            "credit": "Morgentidende",
+            "license": "Morgentidende",
+            "source_url": "https://nickzen108.github.io/avisen/img/planeter-au-forklaring.svg",
+            "image_type": "illustration",
+            "placement": "inline"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Solsystemet tegnes ofte som en pæn række planeter med næsten ens mellemrum. Det gør modellen læsbar, men den skjuler, hvor voldsomt afstandene vokser, når man bevæger sig ud fra Solen."
+            },
+            {
+              "type": "h2",
+              "text": "De otte planeter"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "Merkur: cirka 58 millioner km fra Solen.",
+                "Venus: cirka 108 millioner km.",
+                "Jorden: cirka 149,7 millioner km.",
+                "Mars: cirka 227,9 millioner km.",
+                "Jupiter: cirka 778 millioner km.",
+                "Saturn: cirka 1,4 milliarder km.",
+                "Uranus: cirka 2,9 milliarder km.",
+                "Neptun: cirka 4,5 milliarder km."
+              ]
+            },
+            {
+              "type": "h2",
+              "text": "Jorden som målestok – sådan fungerer AU"
+            },
+            {
+              "type": "p",
+              "text": "Astronomer bruger ofte den astronomiske enhed, forkortet AU, når de sammenligner afstande i solsystemet. Én AU svarer omtrent til Jordens gennemsnitlige afstand fra Solen, cirka 149,6 millioner kilometer. Når Jupiter ligger omkring 5,2 AU fra Solen, betyder det derfor omtrent 5,2 gange Jordens solafstand. Neptun ligger omkring 30 AU ude. AU er altså først og fremmest en praktisk målestok, der gør meget store tal lettere at sammenligne. Enheden ændrer ikke afstanden; den ændrer blot måden, vi skriver tallet på."
+            },
+            {
+              "type": "figure",
+              "src": "../img/planeter-au-forklaring.svg",
+              "alt": "To skalaer viser de indre planeter fra 0 til 2 AU og de ydre planeter fra 0 til 31 AU, med Jorden som reference ved 1 AU",
+              "caption": "Én AU er omtrent Jordens gennemsnitlige afstand fra Solen. De indre og ydre planeter vises på hver sin skala, så afstandene kan læses på en mobilskærm.",
+              "credit": "Morgentidende",
+              "wide": true
+            },
+            {
+              "type": "h2",
+              "text": "Grafikken snyder med vilje"
+            },
+            {
+              "type": "p",
+              "text": "Grafikken er en oversigtsgrafik, ikke en målfast gengivelse af både planetstørrelser og afstande på én gang. De indre planeter vises derfor på en kortere skala end de ydre, så forskellene faktisk kan ses på en mobilskærm. Ellers ville Merkur, Venus, Jorden og Mars næsten klumpe sammen tæt ved Solen."
+            },
+            {
+              "type": "p",
+              "text": "Pointen i tallene er ikke at gøre solsystemet lille nok til en skolebogsside, men at vise hvor hurtigt skalaen ændrer sig. Fra Jorden til Jupiter vokser afstanden til godt fem AU, mens Neptun ligger omkring 30 AU fra Solen."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2"
+          ],
+          "related_news_slug": null,
+          "related": [
+            {
+              "slug": "2026-08-30-hvorfor-himlen-er-blaa",
+              "category": "Videnskab",
+              "title": "Derfor er himlen blå – og solnedgangen rød",
+              "teaser": "Rayleigh-spredning forklaret med to enkle grafikker om dagslys og solnedgang.",
+              "image_src": "../img/himmel-blaa-forklaring.svg",
+              "image_alt": "Grafik over hvorfor himlen ser blå ud"
+            },
+            {
+              "slug": "2026-08-30-apollo-11-otte-dage",
+              "category": "Historie",
+              "title": "Apollo 11: Otte dage til Månen og hjem",
+              "teaser": "Tre astronauter lettede 16. juli 1969. Fire dage senere gik to af dem på Månen.",
+              "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg",
+              "image_alt": "Saturn V-raketten med Apollo 11 ved opsendelsen"
+            },
+            {
+              "slug": "2026-08-30-guide-staerkere-login",
+              "category": "Guide",
+              "title": "Et stærkere login uden password-akrobatik",
+              "teaser": "Lange, unikke kodeord, flerfaktorlogin og passkeys forklaret enkelt.",
+              "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Computer_keyboard.jpg",
+              "image_alt": "Sort computertastatur"
+            }
+          ],
+          "correction_note": null,
+          "scheduled_for": "2026-08-30T11:30:00Z"
+        }
+      }
+    ],
+    "2026-08-30-usa-venezuela-olieaftale": [
+      {
+        "hash": "557aa650dcb4283c4ada663cd197726d7ea4613c8021af214a5df6b2dcdb6a6f",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Venezuela: Olieaftale med USA skal løbe i 25 år",
+        "story_id": "2026-08-30-us-venezuela-oil-deal",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-08-30-us-venezuela-oil-deal",
+          "slug": "2026-08-30-usa-venezuela-olieaftale",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Venezuela: Olieaftale med USA skal løbe i 25 år",
+          "standfirst": "Aftalen omfatter ifølge Venezuelas midlertidige præsident 17 oliefelter og et mål om produktion over 1,5 millioner tønder om dagen. De fulde vilkår for den amerikanske kontrol er fortsat uklare.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-30-venezuela-olieaftale.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05"
+          ],
+          "seo": {
+            "title": "Venezuela: Olieaftale med USA skal løbe i 25 år",
+            "description": "Venezuela oplyser, at energiaftalen med USA løber i 25 år og omfatter 17 oliefelter. Centrale juridiske og kommercielle vilkår er stadig uklare.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Refiner%C3%ADa_El_Palito%2C_Carabobo%2C_Venezuela.JPG",
+            "alt": "Olieraffinaderiet El Palito i Carabobo, Venezuela",
+            "credit": "Marive Casimiro / Wikimedia Commons · arkivfoto",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Refiner%C3%ADa_El_Palito,_Carabobo,_Venezuela.JPG",
+            "image_type": "photo",
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Venezuelas midlertidige præsident, Delcy Rodriguez, har søndag givet nye oplysninger om landets store energiaftale med USA. Ifølge Rodriguez skal projektet løbe i 25 år og omfatte udvikling af 17 strategiske oliefelter."
+            },
+            {
+              "type": "p",
+              "text": "Målet er ifølge den venezuelanske regering en produktion på mere end 1,5 millioner tønder råolie om dagen. Rodriguez anslår samtidig, at projektet kan give den venezuelanske stat 209 milliarder dollar i indtægter. Det er et regeringsestimat og ikke en garanteret indtægt."
+            },
+            {
+              "type": "h2",
+              "text": "USA's kontrol er ikke fuldt beskrevet"
+            },
+            {
+              "type": "p",
+              "text": "USA's præsident, Donald Trump, har beskrevet aftalen som en ordning, der giver amerikansk side majoritetskontrol over mere end 65 milliarder tønder af Venezuelas dokumenterede oliereserver. Men de fulde aftalevilkår og den præcise juridiske konstruktion bag kontrollen er endnu ikke offentliggjort."
+            },
+            {
+              "type": "p",
+              "text": "Det betyder, at der fortsat er forskel på det, regeringerne siger, aftalen skal gøre, og det, offentligheden kan kontrollere i de konkrete kontrakter. Venezuelas regering fastholder, at landet beholder ejerskab og suverænitet over naturressourcerne."
+            },
+            {
+              "type": "h2",
+              "text": "Kritik fra flere sider i Venezuela"
+            },
+            {
+              "type": "p",
+              "text": "Aftalen har udløst kritik i Venezuela. Financial Times beskriver modstand både blandt oppositionspolitikere og tidligere profiler med rødder i chavismen. Kritikken retter sig blandt andet mod gennemsigtigheden, den juridiske forankring og omfanget af amerikansk indflydelse på olieindustrien."
+            },
+            {
+              "type": "p",
+              "text": "Aftalen kan på længere sigt få betydning for både Venezuelas økonomi og det internationale oliemarked. Hvor hurtigt produktionen faktisk kan løftes, afhænger imidlertid af investeringer, infrastruktur og de kontrakter, som endnu ikke er fuldt offentlige."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null
+        }
+      }
+    ],
+    "2026-08-31-faergeforlis-kaptajn-og-syv-fra-besaetningen-tilbageholdt": [
+      {
+        "hash": "8dd6df1c8643bf1ce5faea5de2b9a186acdf9e337e57612c5751e5933acb1436",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Kaptajn og syv fra besætningen tilbageholdt efter færgeforlis",
+        "story_id": "2026-08-31-faergeforlis-efterforskning",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-08-31-faergeforlis-efterforskning",
+          "slug": "2026-08-31-faergeforlis-kaptajn-og-syv-fra-besaetningen-tilbageholdt",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Kaptajn og syv fra besætningen tilbageholdt efter færgeforlis",
+          "standfirst": "Efterforskningen af færgekatastrofen ud for Nordcypern er i gang. Kaptajnen og syv andre fra besætningen er tilbageholdt, mens eftersøgningen fortsætter.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-31-faergeforlis-kaptajn-og-syv-fra-besaetningen-tilbageholdt.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Kaptajn og syv fra besætningen tilbageholdt efter færgeforlis",
+            "description": "Kaptajnen og syv besætningsmedlemmer er tilbageholdt efter færgekatastrofen ud for Nordcypern.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
+            "alt": "Redaktionel illustration af færgekatastrofen ud for Nordcypern",
+            "credit": "Morgentidende",
+            "license": "Morgentidende",
+            "source_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
+            "image_type": "illustration",
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Politiet har tilbageholdt færgens kaptajn og syv andre besætningsmedlemmer, mens myndighederne undersøger, hvorfor passagerfærgen kæntrede ud for Kyrenia i Nordcypern."
+            },
+            {
+              "type": "p",
+              "text": "Reuters, Associated Press, The Guardian og Al Jazeera beskriver alle tilbageholdelserne som led i efterforskningen. Der er på nuværende tidspunkt ikke fastslået en endelig årsag til forliset."
+            },
+            {
+              "type": "p",
+              "text": "De seneste opgørelser er fortsat i bevægelse. Reuters rapporterer mindst otte døde og 18 savnede, mens andre medier tidligere har opereret med lidt andre tal. Rednings- og eftersøgningsarbejdet fortsætter."
+            },
+            {
+              "type": "p",
+              "text": "Færgen var på vej fra Kyrenia mod Taşucu i Tyrkiet med 267 personer om bord. Den begyndte at tage vand ind kort efter afgangen søndag."
+            },
+            {
+              "type": "p",
+              "text": "Vidneudsagn om fartøjets bevægelser og besætningens håndtering indgår nu i den offentlige debat om ulykken, men anklager mod enkeltpersoner er ikke det samme som fastslåede fakta. Morgentidende følger efterforskningen og opdaterer sagen, når myndighederne fremlægger verificerbare nye oplysninger."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
+          "followup_type": "update",
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null
+        }
+      }
+    ],
+    "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet": [
+      {
+        "hash": "b815506a921a751f2b1e019d92b85255fb806dab80d278174ce2fdfaca7eecc2",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
+        "story_id": "2026-08-31-faergekatastrofe-ud-for-nordcypern",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-08-31-faergekatastrofe-ud-for-nordcypern",
+          "slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
+          "standfirst": "Mindst otte mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern. Færgen var på vej fra Kyrenia i Nordcypern til Tyrkiet, da den kapsejlede.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
+            "description": "Færgekatastrofe ud for Nordcypern: Mindst otte mennesker omkommet og 18 savnet.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kyrenia_Harbour_5.JPG",
+            "alt": "Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken",
+            "credit": "Julian Nyča / Wikimedia Commons",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Kyrenia_Harbour_5.JPG",
+            "image_type": "photo",
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Mindst otte mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern, ifølge BBC Europe og BBC World.",
+              "type": "p"
+            },
+            {
+              "text": "Færgen var på vej fra Kyrenia i Nordcypern til Tyrkiet, da den kapsejlede cirka 7,4 kilometer ud for kysten.",
+              "type": "p"
+            },
+            {
+              "text": "Kaptajnen og besætningen er arresteret efter ulykken, oplyser Guardian World.",
+              "type": "p"
+            },
+            {
+              "text": "Færgekatastrofen ud for Nordcypern er blevet bekræftet af flere kilder, herunder BBC Europe, BBC World og Guardian World.",
+              "type": "p"
+            },
+            {
+              "text": "Der er ikke offentliggjort flere oplysninger om årsagen til ulykken endnu.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-08-31-oejenvidner-fortaeller-om-brag-og-kaos-foer-faergen-kaentrede": [
+      {
+        "hash": "99ec8fc9ffc5b5273034c26f733e0f40a422da283de918bddaa2761c853d03d8",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Øjenvidner fortæller om brag og kaos før færgen kæntrede",
+        "story_id": "2026-08-31-faergeforlis-oejenvidner",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-08-31-faergeforlis-oejenvidner",
+          "slug": "2026-08-31-oejenvidner-fortaeller-om-brag-og-kaos-foer-faergen-kaentrede",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Øjenvidner fortæller om brag og kaos før færgen kæntrede",
+          "standfirst": "Overlevende beskriver hårde slag mod vandet og et kraftigt brag ved stævnen. Men årsagen til katastrofen er fortsat ikke fastslået.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-31-oejenvidner-fortaeller-om-brag-og-kaos-foer-faergen-kaentrede.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Øjenvidner fortæller om brag og kaos før færgen kæntrede",
+            "description": "Overlevende fortæller om hårde slag, vandindtrængning og et brag før færgen kæntrede ud for Nordcypern.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
+            "alt": "Redaktionel illustration af færgekatastrofen ud for Nordcypern",
+            "credit": "Morgentidende",
+            "license": "Morgentidende",
+            "source_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
+            "image_type": "illustration",
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Flere overlevende har beskrevet voldsomme minutter, før færgen kæntrede ud for Nordcypern. Beretningerne peger på hårde bevægelser, vandindtrængning og et kraftigt brag ved fartøjets forende."
+            },
+            {
+              "type": "p",
+              "text": "Reuters citerer en overlevende for, at den toskrogede færge bevægede sig meget uroligt og gentagne gange slog hårdt mod vandoverfladen. Ifølge beretningen blev stævnen beskadiget ved et hårdt slag, hvorefter vand trængte ind."
+            },
+            {
+              "type": "p",
+              "text": "South China Morning Post og Turkish Minute gengiver desuden en overlevendes forklaring om et brag eller en eksplosion ved stævnen. Det er et øjenvidneudsagn og ikke en fastslået årsagsforklaring."
+            },
+            {
+              "type": "p",
+              "text": "The Guardian har ligeledes omtalt beretninger om et højt brag efterfulgt af hurtig vandindtrængning. Myndighederne har endnu ikke konkluderet, hvad der udløste forliset."
+            },
+            {
+              "type": "p",
+              "text": "Forskellen mellem øjenvidners oplevelse og den tekniske årsag er vigtig. Brag kan skyldes flere ting, og efterforskningen skal blandt andet klarlægge fartøjets tilstand, vejret og hændelsesforløbet."
+            },
+            {
+              "type": "p",
+              "text": "Kaptajnen og syv andre fra besætningen er tilbageholdt under efterforskningen. Det betyder ikke, at ansvar eller skyld er fastslået."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S3",
+            "S5",
+            "S6"
+          ],
+          "related_news_slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
+          "followup_type": "eyewitness",
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null
+        }
+      }
+    ],
+    "2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion": [
+      {
+        "hash": "917c7cb691de8d2d2eb9ab297c62211a9782d92f7618aa2fd137ebd54fa3cf9f",
+        "recorded_at": "2026-08-31T16:39:01+00:00",
+        "title": "Video: Passagerer klamrer sig til kæntret færge under redningsaktionen",
+        "story_id": "2026-08-31-faergeforlis-video-redningsaktion",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-08-31-faergeforlis-video-redningsaktion",
+          "slug": "2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Video: Passagerer klamrer sig til kæntret færge under redningsaktionen",
+          "standfirst": "Optagelser fra Nordcypern viser overlevende i redningsveste ved den kæntrede færge, mens både og helikoptere deltager i redningsarbejdet.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Video: Passagerer klamrer sig til kæntret færge under redningsaktionen",
+            "description": "Video fra færgekatastrofen ud for Nordcypern viser overlevende ved det kæntrede skrog og en omfattende redningsaktion.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
+            "alt": "Redaktionel illustration af færgekatastrofen ud for Nordcypern",
+            "credit": "Morgentidende",
+            "license": "Morgentidende",
+            "source_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
+            "image_type": "illustration",
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Video fra redningsaktionen viser mennesker i redningsveste på og omkring den kæntrede færge ud for Kyrenia, mens både og helikoptere arbejder omkring fartøjet."
+            },
+            {
+              "type": "p",
+              "text": "Reuters og Associated Press beskriver optagelser, hvor overlevende venter på hjælp ved det omvendte skrog. De samme scener kan ses på offentlige videosider hos blandt andre NDTV og The Irish Times."
+            },
+            {
+              "type": "p",
+              "text": "Se video hos NDTV: https://www.ndtv.com/video/ferry-carrying-nearly-270-passengers-and-crew-capsizes-off-northern-cyprus-1150474"
+            },
+            {
+              "type": "p",
+              "text": "Se Reuters-video hos The Irish Times: https://www.irishtimes.com/video/video/2026/08/30/ferry-capsizes-off-northern-cyprus/"
+            },
+            {
+              "type": "p",
+              "text": "Optagelserne dokumenterer redningssituationen, men de dokumenterer ikke i sig selv årsagen til forliset. Myndighederne efterforsker fortsat, hvorfor færgen tog vand ind og kæntrede kort efter afgangen."
+            },
+            {
+              "type": "p",
+              "text": "Færgen havde 267 mennesker om bord. Mindst otte er meldt omkommet, og eftersøgningen efter savnede fortsætter."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S5",
+            "S6"
+          ],
+          "related_news_slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
+          "followup_type": "video",
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null
+        }
+      }
+    ]
+  },
+  "generated_at": "2026-08-31T16:39:01+00:00"
+}

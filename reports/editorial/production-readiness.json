@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-31T16:39:02+00:00",
+  "status": "yellow",
+  "published_count": 13,
+  "hard_failures": [],
+  "warnings": [
+    "1 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
+  ],
+  "metrics": {
+    "possible_duplicate_pairs": [],
+    "source_independence_flags": [
+      {
+        "slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
+        "unique_urls": 4,
+        "unique_hosts": 3,
+        "unique_groups": 4,
+        "declared_groups": 4,
+        "duplicate_urls": {
+          "https://www.bbc.co.uk/news/articles/c86xwqez4npo?at_medium=RSS&at_campaign=rss": [
+            "S1",
+            "S2"
+          ],
+          "https://www.bbc.co.uk/news/articles/c770jyd4l7lo?at_medium=RSS&at_campaign=rss": [
+            "S3",
+            "S4"
+          ]
+        }
+      }
+    ],
+    "update_model_flags": [],
+    "accessibility_flags": [],
+    "performance_flags": [],
+    "recommendation_overlap": []
+  }
+}
