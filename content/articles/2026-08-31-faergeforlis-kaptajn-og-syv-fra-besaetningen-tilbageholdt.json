@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-08-31-faergeforlis-efterforskning",
   "slug": "2026-08-31-faergeforlis-kaptajn-og-syv-fra-besaetningen-tilbageholdt",
   "category": "Udland",
@@ -9,21 +9,65 @@
   "title": "Kaptajn og syv fra besætningen tilbageholdt efter færgeforlis",
   "standfirst": "Efterforskningen af færgekatastrofen ud for Nordcypern er i gang. Kaptajnen og syv andre fra besætningen er tilbageholdt, mens eftersøgningen fortsætter.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-08-31T06:23:44Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-08-31-faergeforlis-kaptajn-og-syv-fra-besaetningen-tilbageholdt.json",
-  "claim_ids": ["F01","F02","F03"],
-  "seo": {"title":"Kaptajn og syv fra besætningen tilbageholdt efter færgeforlis","description":"Kaptajnen og syv besætningsmedlemmer er tilbageholdt efter færgekatastrofen ud for Nordcypern.","canonical":null},
-  "image": {"src":"https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg","alt":"Redaktionel illustration af færgekatastrofen ud for Nordcypern","credit":"Morgentidende","license":"Morgentidende","source_url":"https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg","image_type":"illustration","placement":"lead"},
-  "body": [
-    {"type":"p","text":"Politiet har tilbageholdt færgens kaptajn og syv andre besætningsmedlemmer, mens myndighederne undersøger, hvorfor passagerfærgen kæntrede ud for Kyrenia i Nordcypern."},
-    {"type":"p","text":"Reuters, Associated Press, The Guardian og Al Jazeera beskriver alle tilbageholdelserne som led i efterforskningen. Der er på nuværende tidspunkt ikke fastslået en endelig årsag til forliset."},
-    {"type":"p","text":"De seneste opgørelser er fortsat i bevægelse. Reuters rapporterer mindst otte døde og 18 savnede, mens andre medier tidligere har opereret med lidt andre tal. Rednings- og eftersøgningsarbejdet fortsætter."},
-    {"type":"p","text":"Færgen var på vej fra Kyrenia mod Taşucu i Tyrkiet med 267 personer om bord. Den begyndte at tage vand ind kort efter afgangen søndag."},
-    {"type":"p","text":"Vidneudsagn om fartøjets bevægelser og besætningens håndtering indgår nu i den offentlige debat om ulykken, men anklager mod enkeltpersoner er ikke det samme som fastslåede fakta. Morgentidende følger efterforskningen og opdaterer sagen, når myndighederne fremlægger verificerbare nye oplysninger."}
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03"
   ],
-  "source_ids_to_display":["S1","S2","S3","S4"],
-  "related_news_slug":"2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
-  "followup_type":"update","related":[],"correction_note":null,"scheduled_for":null,"released_from_schedule_at":null
+  "seo": {
+    "title": "Kaptajn og syv fra besætningen tilbageholdt efter færgeforlis",
+    "description": "Kaptajnen og syv besætningsmedlemmer er tilbageholdt efter færgekatastrofen ud for Nordcypern.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
+    "alt": "Redaktionel illustration af færgekatastrofen ud for Nordcypern",
+    "credit": "Morgentidende",
+    "license": "Morgentidende",
+    "source_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
+    "image_type": "illustration",
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "type": "p",
+      "text": "Politiet har tilbageholdt færgens kaptajn og syv andre besætningsmedlemmer, mens myndighederne undersøger, hvorfor passagerfærgen kæntrede ud for Kyrenia i Nordcypern."
+    },
+    {
+      "type": "p",
+      "text": "Reuters, Associated Press, The Guardian og Al Jazeera beskriver alle tilbageholdelserne som led i efterforskningen. Der er på nuværende tidspunkt ikke fastslået en endelig årsag til forliset."
+    },
+    {
+      "type": "p",
+      "text": "De seneste opgørelser er fortsat i bevægelse. Reuters rapporterer mindst otte døde og 18 savnede, mens andre medier tidligere har opereret med lidt andre tal. Rednings- og eftersøgningsarbejdet fortsætter."
+    },
+    {
+      "type": "p",
+      "text": "Færgen var på vej fra Kyrenia mod Taşucu i Tyrkiet med 267 personer om bord. Den begyndte at tage vand ind kort efter afgangen søndag."
+    },
+    {
+      "type": "p",
+      "text": "Vidneudsagn om fartøjets bevægelser og besætningens håndtering indgår nu i den offentlige debat om ulykken, men anklager mod enkeltpersoner er ikke det samme som fastslåede fakta. Morgentidende følger efterforskningen og opdaterer sagen, når myndighederne fremlægger verificerbare nye oplysninger."
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "related_news_slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
+  "followup_type": "update",
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-08-31T06:23:44Z"
+  }
 }
