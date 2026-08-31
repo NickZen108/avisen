@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-31T09:49:54Z",
+  "generated_at": "2026-08-31T11:39:05Z",
   "counts": {
     "published": 5,
-    "checking": 1
+    "checking": 2
   },
-  "blocked_count": 1,
+  "blocked_count": 2,
   "articles": [
     {
       "slug": "2026-08-30-island-afviser-eu-forhandlinger",
@@ -40,7 +40,22 @@
         "coverage sweep mangler/er ugyldigt",
         "fact-check PASS mangler",
         "newsdesk recheck PUBLISH/UPDATE mangler",
-        "final approval gates er ikke PASS"
+        "approval gate language er ikke PASS",
+        "approval gate ethics er ikke PASS",
+        "approval gate image er ikke PASS",
+        "approval gate seo er ikke PASS",
+        "approval gate final_editor er ikke PASS",
+        "artiklen er ændret efter final approval"
+      ]
+    },
+    {
+      "slug": "2026-08-31-koraller-bleger-for-hyppigt-til-at-komme-sig",
+      "title": "Koraller bleger for hyppigt til at komme sig, advarer global rapport",
+      "status": "checking",
+      "release_requested": false,
+      "resume_from": "research",
+      "reasons": [
+        "ledger mangler"
       ]
     },
     {

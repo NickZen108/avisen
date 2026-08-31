@@ -78,7 +78,12 @@
       "coverage sweep mangler/er ugyldigt",
       "fact-check PASS mangler",
       "newsdesk recheck PUBLISH/UPDATE mangler",
-      "final approval gates er ikke PASS"
+      "approval gate language er ikke PASS",
+      "approval gate ethics er ikke PASS",
+      "approval gate image er ikke PASS",
+      "approval gate seo er ikke PASS",
+      "approval gate final_editor er ikke PASS",
+      "artiklen er ændret efter final approval"
     ]
   }
 }
