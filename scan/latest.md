@@ -1,174 +1,172 @@
-# Scan 2026-08-31T06:50:27.498Z (Cloudflare runtime)
+# Scan 2026-08-31T15:00:19.672Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
 ## Al Jazeera
-- Aston Villa vs Arsenal: Premier League – prediction, team news, lineups
-- FIFA president Infantino ‘must go’, says former UEFA boss Platini
-- Flash flooding in Grand Canyon leaves more than 20 people missing
-- Global coral reef coverage risks irreversible decline, new report warns
-- Iran attacks US bases in Jordan after US strikes Larak Island
-- Iran targets Jordan after first US attack in a month
-- Iran war live: Tehran says it attacked bases in Jordan, UAE after US strike
-- Israeli strike kills 3-year-old child in Gaza
-- Jose Andres renews call for investigation into WCK Gaza staff killings
-- Lamine Yamal getting back to ‘top level’, Barcelona coach Flick says
-- Mamdani lookalike contest draws hundreds of hopefuls in New York
-- Niger mutiny puts Russia’s expanding role in the Sahel to the test
-- One dead and about 15 people missing after flash flood in Grand Canyon
-- ‘Opening a new chapter’: Syria reopens embassy in Libya after talks
-- People return to their flood-ravaged homes in Nepal
-- Russia, China leaders to meet at Shanghai Cooperation Organisation summit
-- Tennis great Djokovic exits US Open in first round amid tears and pain
-- Tunisia swelters as power cuts disrupt water supplies
-- Two Palestinians reported dead as Israeli forces raid Nablus
-- US plans to sanction another bank to keep economic pressure on Iran
-- Venezuela’s Maduro shares first photos from US detention
-- Video: Raging floodwaters sweep away lorry in the Philippines
-- Vote count starts in Guinea-Bissau referendum on strengthening presidency
-- What are the implications of the US-Venezuela oil deal?
-- What is Notting Hill Carnival’s Jab Jab parade?
+- After the flash flood disaster, here is what Nepal really needs
+- Can Iran use rockets to mine the Strait of Hormuz, as US claims?
+- Fire breaks out after unidentified explosions at oil refinery in Baghdad
+- Fire breaks out after unidentified explosions at oil refinery in Baghdad
+- Greece signs $3.5bn air defence deal with Israel
+- Iran attacks Jordan, UAE after US bombs Larak Island: What’s the latest?
+- Kazakhstan’s Tokayev appoints longtime adviser as vice president
+- Liverpool sign Bradley Barcola from Paris Saint-Germain
+- Manchester City sign Brazilian winger Allan Elias from Palmeiras
+- More value in Cairo’s trash, but less for those who collect it
+- Nepal tunnel traps hinder flood rescue: How many are dead or missing?
+- Pakistan, Saudi Arabia, Turkiye meet: What’s next for their defence pact?
+- Rescuers search for 18 missing after boat capsizes off Northern Cyprus
+- Sleeping in on weekends is good for the heart: What research has shown
+- South Korea court gives church leader two years in jail for bribery
+- Spain’s Sanchez says Russia, Israel spread disinformation on Ceuta crisis
+- The looming failure of Operation Economic Outcast
+- Transfer day: What and when is the deadline for club football signings?
+- Turkiye, Saudi Arabia, Pakistan hold first Mecca defence pact meeting
+- UAE intercepts drone after US and Iran exchange attacks
+- Venus Williams bows out of US Open with straight-sets defeat to Sofia Kenin
+- War and heat: Why are wheat prices soaring?
+- Who are the economic winners and losers of the US-Israel war on Iran?
+- Why is piracy picking up off Somalia’s coast again?
+- Xi, Modi and Putin attend SCO summit: What’s on the agenda?
 
 ## BBC Europe
 - Allan Little: I met dangerously fanatical Mladić early in Bosnian war
 - At least 37 dead and hundreds evacuated after strike on Kyiv weapons depot
+- BBC visits smouldering Kyiv market after Russian strikes
 - Belugas and dolphins rescued from closed Canadian park arrive in Spain
 - Berlin is being blackmailed by hackers, mayor says
 - British woman killed in stabbing at German railway station
 - Convicted Bosnian Serb war criminal Mladić dies aged 84
-- Dutch health institute issues 'red alert' over Trump-shaped ecstasy pills
-- Eight killed and 18 missing after ferry capsizes off northern Cyprus
-- France relaxes strict cheese-making rules after prolonged drought
+- Djokovic in tears during US Open first-round exit
 - Greenland says findings on genocide allegation not final
 - Iceland votes against restarting EU membership talks
-- Jellyfish force partial shutdown of French nuclear plant
-- Manhunt after shooting at Swiss rave kills woman, 22, and injures five
+- Is UK's Storm Shadow missile a game changer for Ukraine?
+- Man arrested after Swiss rave shooting that killed woman
 - Memory wars: Election clash over Germany's Nazi past as AfD eyes power in east
+- Moment €9m worth of art stolen from Italy museum
+- Moment tornado tears through southern France
 - Norway's King Harald dies aged 89: A beloved monarch buffeted by family crises
 - Norway's new king remembers 'my dear father' in first speech
-- Oslo mayor calls off wedding ceremony after death of Norway's king
-- Shootings surge as drug gangs torment Brussels
-- Tate brothers blast US jail conditions as they seek bail in UK extradition fight
+- Russian strikes destroy 12 million books ahead of Ukraine's first week back at school
+- 'She slipped out of my hand' - couple's children missing after ferry capsizes
 - The monstrous crimes of Ratko Mladic, the 'Butcher of Bosnia'
 - 'The record will fall' - Werro takes aim at 43-year-old 800m mark
 - They fell in love - then had to check they weren't brother and sister
-- Uefa preparing criminal legal action against Infantino
 - Violence breaks out in Ceuta as migrant crisis continues
-- What we should make of CIA boss's secret trip to Moscow
 - WhatsApp chat used to launder cash for crime and extremism
 - When is the Champions League draw and who is in each pot?
 - Who is Norway's new King Haakon VIII?
+- Why is Ukraine's ex-defence minister calling for wartime elections?
 
 ## BBC World
-- 15 hikers feared missing after 'terrifying' flash flooding hits Grand Canyon
 - 97-year-old woman rescued after Nepali floods looked like 'a warrior'
 - 'A giant leap forward': Nasa launches powerful new space telescope
-- At least 37 dead and hundreds evacuated after strike on Kyiv weapons depot
-- Australia usually hosts the world's biggest cuttlefish mating event - not this year
+- Algeria president seeks death penalty for arsonists after deadly forest fires
+- BBC tracks one week of Israeli settler violence in occupied West Bank
 - British woman killed in stabbing at German railway station
 - Deadly strike on Kyiv warehouse prompts evacuations
+- Dolly Parton laid to rest alongside husband in Nashville
 - Dolly Parton's dad couldn't read - it inspired her to send books to millions of children
-- Eight killed and 18 missing after ferry capsizes off northern Cyprus
-- Ex-White House teleprompter operator ordered to pay $172,000 for Trump speech bets
-- Footage of Tibet floods is being heavily censored in China - and we know little about victims there
-- Forget Starbucks coffee - Gen Z like their drinks ice cold
-- Former Ecuadorian president imprisoned for corruption
+- From playing Serena Williams on screen to following in her footsteps
 - Head teacher evacuated 900 children minutes before Nepal floods hit school
+- How the US-Canada trade war is being felt on both sides of the border
 - Iceland votes against restarting EU membership talks
+- Man arrested after Swiss rave shooting that killed woman
 - Manhunt after shooting at Swiss rave kills woman, 22, and injures five
+- Monza memories - Italian GP in pictures through the years
+- 'Moonies' church leader jailed for two years over bribery offences
 - Nepal flood relief vehicles trapped as heavy rain turns roads to mud
-- Norway's new king remembers 'my dear father' in first speech
-- Right-wing commentator Milo Yiannopoulos deported from US to UK
+- One dead and more than a dozen missing after 'terrifying' flash flood hits Grand Canyon
+- Passengers stranded as strike disrupts flights at Kenya's main airport
 - Russia says it helped to repel Niger attempted coup
-- Satellite images reveal scale of flood devastation in Nepal villages
-- Somali piracy surges as the impact of the US-Iran war ripples outwards
-- They fell in love - then had to check they weren't brother and sister
+- 'She slipped out of my hand' - couple's children missing after ferry capsizes
+- South African airline defends low-altitude aerial stunt over packed stadium
+- The jury's options in Lindsay Clancy's murder trial
 - Trump hails 'historic' deal for US to control 65bn barrels of Venezuela's oil
 - US and Iran trade strikes for first time in weeks
-- What tariffs will really cost Canadians and Americans
 - WhatsApp chat used to launder cash for crime and extremism
 - Zambian opposition leader charged with treason
 
 ## DR
 - 17-årig uledsaget bilist er kørt ind i to huse
+- 2.000 elkunder var uden strøm på Sydsjælland
+- Antallet af bekræftede ebola-tilfælde når 6.000 i DR Congo
 - August er den dyreste måned for strøm siden 2022
-- Bilist sigtet for vanvidskørsel efter u-vending i Øresundstunnelen
-- Britisk højrefløjsprovokatør udvist af USA
-- Fire erkender sig skyldige i brandangreb på jødisk ambulancetjeneste i London
-- Fra i dag vil trafikken over Øresund være besværet
+- Dagens første skybrud registreret
+- Far idømmes seks års fængsel for dødsvold mod spædbarn
+- Frankrig og Sverige underskriver forsvarsaftale
 - Historie om Yahya Hassans familie får snart teaterpremiere
-- Kemikalieudslip med saltsyre i Nibe
+- Hver fjerde ung er på skærmen over seks timer dagligt
+- Ida Auken rejser til Grønland
 - Københavnertradition aflyst på grund af regnvejr
 - Landboforening melder om stor opbakning til protestmøde
-- Meget vand på Fynske Motorvej giver problemer
-- Populær fyret ukrainsk forsvarsminister skal rådgive Italiens forsvarsminister
+- Mor og datter får tilsammen 23 års fængsel
+- Pedro Sánchez: Israel og Rusland udnyttede Ceuta-krisen
 - Seks personer har indtil videre fået omvendt fodlænke
-- Sigtede for angreb mod Hadsten Skole accepterer forlænget fængsling
-- To ministre fra Moderaterne søger orlov fra Folketinget
+- Sigtelse mod lastbilschauffør efter dødsulykke med politielev droppet
 - Traktorer med banner spærrede Sallingsundbroen
 - Tre anholdt for voldeligt overfald i Horsens
-- Trump og Venezuela annoncerer 'den største olieaftale i verdenshistorien'
 - USA angriber for første gang i en måned Iran
-- Voldeligt overfald udløste større politiindsats i Horsens
+- VVS'er får ti års fængsel for at overvåge kokain-transport
 
 ## Euronews
+- 200 bikers gather at Italy's Castel Gandolfo for motorcycle blessing
 - Authorities in Nepal carry out temporary burials of unidentified flood victims causing public outrage
 - Body of 46-year-old man recovered after Grand Canyon flash flood, park service says
+- Buenos Aires welcomes 800 couples for Tango BA World Championship
 - Captain arrested after eight people die in ferry capsize off northern Cyprus
-- Guinea-Bissau junta puts new constitution to referendum as opposition urges boycott
+- Exclusive: US naval blockade is paralysing daily life, Iranians tell Euronews
+- Flash flood hits Grand Canyon’s Phantom Ranch, more than 20 people missing
 - Guinea-Bissau votes in referendum to rewrite constitution and boost presidential powers
-- Heavy gunfire in Niger capital as clashes reported at presidential palace
-- Hundreds of foreign nationals among the missing following deadly Nepal floods
 - Icelanders react as the EU referendum results come in
 - India and Uzbekistan deepen ties, eye $5bn trade and long-term uranium supplies
-- Iran fires retaliatory strikes following US attacks on Larak island in the Strait of Hormuz
-- Kazakhstan’s government steps down as newly elected Kurultai holds first session
+- Iran launches strikes on Jordan after US attacks an island in Hormuz
 - Latest news bulletin | August 29th, 2026 – Evening
-- Latest news bulletin | August 29th, 2026 – Midday
 - Latest news bulletin | August 30th, 2026 – Evening
 - Latest news bulletin | August 30th, 2026 – Midday
 - Latest news bulletin | August 30th, 2026 – Morning
+- Latest news bulletin | August 31st, 2026 – Midday
 - Latest news bulletin | August 31st, 2026 – Morning
-- Music, lights and drones: Uzbekistan celebrates 35 years of independence
+- Michael Jackson fans dance to Thriller to mark King of Pop's 68th birthday
+- Nepal flood death toll passes 900 as search for survivors continues
 - Nepal warns of more possible floods as communities grapple with devastation and death toll rises
 - Oil prices higher as US-Iran tensions flare and Warsh fans rate hikes
 - Six wounded after car bomb explodes in front of Mexico police station, officials say
 - 'They wrote little letters': How kids in Portugal are making money off their neighbours' plastic waste
 - Trump hits out at NBC journalist Kristen Welker, calling for her to face 'rebuke or punishment'
+- UN racial discrimination committee presents legal case for broad slavery reparations
 - US forces strike Iranian rocket launchers in Strait of Hormuz as IRGC warns of 'retaliatory response'
-- US strikes deal to control 65 billion barrels of Venezuela's oil reserves, Trump says
-- Uzbekistan marks 35 years of independence as president outlines plans for next decade
 - Venezuela says it will retain 'sovereignty' over its oil reserves despite US deal
 - What we know about Trump’s deal giving the US access to Venezuela’s oil
 
 ## Guardian World
 - At least 93,000 ‘in great need’ after Nepal-Tibet flash floods, says Red Cross
-- Australia news live: Body of newborn baby found in Sydney bin as police concerned for mother’s welfare
 - Australians missing in Nepal targeted by ‘heartbreaking’ and ‘abhorrent’ racist slurs
-- Bondi library returns book How to Sell a Genocide to shelves after State Library ‘outlines the law’
+- British family plead with French authorities to release body of relative who died in the Channel
 - Canada erects giant ‘Lake Ontario’ sign as spat with Trump over name escalates
-- Captain and crew arrested after at least eight die in northern Cyprus ferry disaster – as it happened
+- China is concealing scale of flood disaster, say Tibet campaigners
+- Countries legally obliged to consider slavery reparations, says UN committee
 - Egyptian queen’s 673-diamond necklace stolen in Vienna smash-and-grab raid
-- ‘Everything’s smashed to bits’: Ukrainians turn anger on those storing weapons near their villages
-- Families of 33 missing Britons rush to Nepal as fears grow of more floods
+- First US military attacks on Iran in a month prompt retaliation
+- French high schools rush to put Macron’s phone ban into force
+- Germany poised to identify suspect in Leipzig drone attack on Ukrainian plane
 - Goodbye to Babylon Berlin, the 1920s TV drama that has eerily foreshadowed real-life politics
 - Icac lawyer tells Charles Perrottet the key to lying is ‘you have to be really good at remembering it’
-- Jason Arday accuser given three-month teaching ban but can continue research
-- Nepal-Tibet flood rescue efforts resume after being halted by overflowing lake
+- Iran’s economy in crisis as US launches new sanctions campaign
+- Man who murdered Molly Ticehurst unlikely to face life in jail, court hears
+- Morocco not to blame for Ceuta border breach, says Spanish PM
+- Nearly 20 people still missing after ferry capsizes ⁠off northern Cyprus
+- Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels
 - Newborn baby’s body found in Sydney rubbish bin as police hold ‘serious concerns’ for mother
-- Palestinian woman and NBC News team reportedly attacked in West Bank
 - People fleeing Sudan civil war face ‘dire and deteriorating’ conditions in refuge city
-- Rejoining the EU, Burnham’s donors and the bedroom tax: Politics Weekly answers your questions – podcast
+- Qantas ground crews vote for right to strike amid pay dispute – as it happened
 - Search continues as number missing in Nepal-Tibet floods rises to 2,478 – as it happened
-- South African police arrest two Thai men for allegedly smuggling parrot eggs
 - Trump announces new US oil agreement with Venezuela
-- UK urged to help free British-Egyptian ‘arrested in Cairo over sister’s activism’
-- US strikes Iranian launchers in strait of Hormuz, sparking reprisal attack on airbases in Jordan and UAE
-- USS Abraham Lincoln to visit port in Thailand after more than 250 days at sea
+- Trump says US will ‘hit Iran hard’ as hostilities resume – Middle East crisis live
 - Venezuela’s Delcy Rodríguez defends ‘endless’ benefits of her oil deal with Trump
 - Venezuelan opposition up in arms over reports US wants big stake in oil and gas
-- Victorian prisoners to be sent out to repair roads under Labor’s pothole plan
 - Was it a mistake for 99 Colombian guerrillas to lay down their arms?
+- Weather tracker: Warm Yellow Sea strengthens storms in South Korea
 - What could Meta’s US settlement mean around the world – and what now for other claims against firm?
 
 ## TV2
@@ -177,21 +175,21 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## The Local Denmark
 - &#039;Automatic bias&#039;: How having a foreign name in Denmark affects life
 - &#039;Be patient&#039;: Social Democrat MP sees no new Danish citizenships until late 2027
+- &#039;Warning to Europe&#039;: How Iceland&#039;s &#039;No&#039; vote is a blow to the EU
 - Danish government increases budgetary surplus by 8.5 billion kroner
 - Danish government predicts higher property prices next year
-- Danish PM confident VAT cut on food will be passed to consumers
 - Danish royals mourn passing of Norway&#039;s King Harald
 - Danish word of the day: kondolerer
 - Danish word of the day: Madpakke
+- Denmark set to host annual &#039;citizenship day&#039; for thousands of new Danes
 - EU chief to visit Greenland in September to boost ties
 - EU demands Meta &#039;protect our kids&#039; after US settlement
-- Germany hosts Denmark, Austria ahead of EU budget battle
+- Gardener discovers Denmark&#039;s largest Viking hoard while digging patio
 - Greenland to present report on forced contraceptions
-- How much of Denmark&#039;s VAT cut on food will be reflected in prices?
 - Iceland votes &#039;No&#039; to resuming EU talks
 - Midterms: What Americans in Europe need to know about changes to mail-in voting
 - On the Agenda: What&#039;s happening in Denmark this week?
+- OPINION: The Danish flag-obsession is more &#039;hyggelig&#039; than threatening
 - Today in Denmark: A roundup of the latest news on Monday
-- Today in Denmark: A roundup of the latest news on Thursday
 - What&#039;s the difference between Schengen and EU free movement rules?
 - What you should know before agreeing to buy a Danish &#039;andelsbolig&#039;
