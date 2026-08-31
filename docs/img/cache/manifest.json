@@ -17,6 +17,12 @@
     "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Berlaymont_building.jpg/1920px-Berlaymont_building.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
     "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/8d58306069921ec7a24a.jpg"
   },
+  "https://commons.wikimedia.org/wiki/Special:FilePath/Car_Passenger_Ferry_Adamantios_Korais.jpg": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/4a0f00a6a2e28c7b5696.jpg",
+    "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Car_Passenger_Ferry_Adamantios_Korais.jpg/1920px-Car_Passenger_Ferry_Adamantios_Korais.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/4a0f00a6a2e28c7b5696.jpg"
+  },
   "https://commons.wikimedia.org/wiki/Special:FilePath/Christiansborg.jpg": {
     "content_type": "image/jpeg",
     "file": "/img/cache/a54277126e3af9c0842c.jpg",
@@ -76,6 +82,12 @@
     "file": "/img/cache/f65fe22fc7f85deca68f.jpg",
     "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Nyhavn-Copenhagen.jpg/1920px-Nyhavn-Copenhagen.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
     "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/f65fe22fc7f85deca68f.jpg"
+  },
+  "https://commons.wikimedia.org/wiki/Special:FilePath/Panoramic_view_to_the_Podil_district_in_Kyiv.jpg": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/78fc4ac36d7029632113.jpg",
+    "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Panoramic_view_to_the_Podil_district_in_Kyiv.jpg/1920px-Panoramic_view_to_the_Podil_district_in_Kyiv.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/78fc4ac36d7029632113.jpg"
   },
   "https://commons.wikimedia.org/wiki/Special:FilePath/Rayleigh_sunlight_scattering.svg": {
     "content_type": "image/webp",
