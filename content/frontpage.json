@@ -1,18 +1,12 @@
 {
-  "date": "2026-08-30",
+  "date": "2026-08-31",
   "edition_label": "Danmarks nye avis",
-  "lead_rationale": "Krimi/ret med navngivet proces og konkret ny udvikling; beholdes som legacy lead indtil næste redaktionelle refresh.",
+  "lead_rationale": "Ny international B-historie med dødsfald og igangværende rednings-/eftersøgningsforløb; nyere og væsentligere end gårsdagens legacy lead.",
   "ticker": {
     "slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet"
   },
   "lead": {
-    "slug": "2026-08-30-svensk-teenager-lyngby-drabsforsoeg",
-    "category": "Krimi",
-    "title": "16-årig svensker står i Lyngby tiltalt for drab på bestilling",
-    "standfirst": "Anklagemyndigheden siger, at han som 15-årig kom fra Linköping til en lejlighed i Værløse. Politiet anholdt ham, før der blev skudt. Tre danskere er medtiltalte. Alle nægter.",
-    "published_label": "30. august 2026 kl. 06.00",
-    "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lyngby_Station.jpg",
-    "image_alt": "Lyngby Station"
+    "slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet"
   },
   "rail": [
     {
