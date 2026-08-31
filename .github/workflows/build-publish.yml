@@ -21,7 +21,7 @@ jobs:
         run: git fetch origin main && git reset --hard origin/main
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: Release approved ready articles
+      - name: Release approved ready articles; park incomplete ones
         run: python scripts/release_ready.py
       - name: Gates before build
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
@@ -31,11 +31,11 @@ jobs:
         run: python scripts/cache_public_images.py
       - name: Gates after build
         run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
-      - name: Commit release + generated files
+      - name: Commit release + recovery state + generated files
         id: publish
         run: |
           git config user.name "morgentidende-publisher"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/articles content/frontpage.json docs/index.html docs/artikler docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/img/cache
+          git add content/articles content/frontpage.json reports/editorial/pipeline-health.json docs/index.html docs/artikler docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/img/cache
           if git diff --cached --quiet; then echo "published=false" >> "$GITHUB_OUTPUT"; else git commit -m "publish: build structured edition"; git push; echo "published=true" >> "$GITHUB_OUTPUT"; echo "publisher_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"; fi
       - name: Dispatch post-deploy guard
         if: ${{ steps.publish.outputs.published == 'true' }}
