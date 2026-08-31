@@ -18,9 +18,16 @@ Dramatik og klikværdi er legitime billedhensyn mellem ellers korrekte valg: st�
 
 Hvis et lead går live med et acceptabelt men ikke optimalt foto eller med illustration, skal det **ikke forsinke publiceringen**. Markér leaden til permanent photo watch, og fortsæt efter publicering med at søge efter et klart bedre, juridisk brugbart dokumentarfoto. Finder du et bedre foto, send ændringen gennem Billedredaktør → nødvendig etik/kildekontrol → Slutredaktør og udskift hero straks efter PASS. Et eksisterende acceptabelt hero beholdes, indtil erstatningen er verificeret og klar.
 
+## Video og screengrabs
+Når levende, verificeret video er stærkere end det bedste stillfoto, må Billedredaktøren anbefale en officiel video-embed som artikelhero eller frontpage-hero. YouTube bruges via den officielle embeddable player; videofilen kopieres ikke.
+
+Et screengrab fra en video kan bruges som dokumentarisk hero, når selve optagelsen er central for historien **og** brugen er juridisk forsvarlig: fx Creative Commons/public domain, udtrykkelig tilladelse/licens eller efter en konkret redaktionel citat-/reportagevurdering efter gældende ret. At materialet ligger på YouTube, eller at et andet medie har brugt et screengrab, er ikke i sig selv en licens. Kreditering og link/embed til originalen er obligatorisk, men erstatter ikke rettighedsvurderingen.
+
+Screengrabs må aldrig manipuleres, så hændelsesforløb eller dokumentarisk betydning ændres. Er rettighedsgrundlaget uklart, bruges den officielle embed eller et andet lovligt hero.
+
 ## Øvrige historier
 Prioritér: 1) et relevant, lovligt og æstetisk stærkt foto, 2) en relevant redaktionel illustration, 3) en genereret illustration til tidløse, forklarende, videnskabelige eller guideprægede emner, hvis et godt foto ikke findes. Et diskret og ensartet redaktionelt filter/farvelook er tilladt på dokumentarfotos, hvis betydningen ikke ændres.
 
 Ingen generativt dokumentarfoto af virkelige hændelser, personer eller specifikke scener. Genereret billedmateriale registreres som `image_type: illustration`.
 
-Output: billedmetadata/figure-blokke + `IMAGE_COMPLETE` eller FAIL.
+Output: billedmetadata/figure-/video-metadata + `IMAGE_COMPLETE` eller FAIL.
