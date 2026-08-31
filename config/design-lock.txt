@@ -7,5 +7,5 @@ b1857a55a4da498c0ad3dc672a34cf4793f3848f docs/theme.js
 5acbd2ed9cc9b9e4877fcc2586366662002031bf docs/short-videos.js
 1c79eb821797aa7061d8780b1eda4d2533155971 docs/logo.svg
 815c7911616bfe97d61fa6a245b31f3bda0473fc docs/logo-mark.svg
-3392c86830b247acbaedc013cb00c73209ae6bcc templates/article.html
-3f4cde8b48915ed17139ee4c6b4194fa950b3448 templates/index.html
+d338cff28ae76aaa1d93bff3d2be5d4cf4533644 templates/article.html
+06ec394ef266293f9fee510a52f68dd9cb64219c templates/index.html
