@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 """Editorial layout enhancements applied after the canonical build.
 
-Keeps generated pages deterministic: every article gets an eight-story news
-continuation, while features/science/health/relationships receive a distinct
-premium magazine shelf on both the front page and article pages.
+Keeps generated pages deterministic: every article gets two eight-story news
+continuations with hero images, with the premium magazine shelf between them.
 """
 from __future__ import annotations
 
 import html
 import json
 import re
-from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,29 +63,40 @@ def teaser(article: dict, max_len: int = 150) -> str:
     return cut + "…"
 
 
-def more_news_html(items: list[dict], current_slug: str) -> str:
-    choices = [a for a in items if a.get("slug") != current_slug and is_news(a)][:8]
+def news_choices(items: list[dict], current_slug: str, *, offset: int = 0, exclude: set[str] | None = None) -> list[dict]:
+    excluded = set(exclude or set()) | {current_slug}
+    candidates = [a for a in items if a.get("slug") not in excluded and is_news(a)]
+    choices = candidates[offset:offset + 8]
     if len(choices) < 8:
-        used = {a.get("slug") for a in choices} | {current_slug}
-        choices += [a for a in items if a.get("slug") not in used and not is_feature(a)][: 8 - len(choices)]
+        used = {a.get("slug") for a in choices} | excluded
+        fallback = [a for a in items if a.get("slug") not in used and not is_feature(a)]
+        choices += fallback[: 8 - len(choices)]
+    return choices[:8]
+
+
+def more_news_html(items: list[dict], current_slug: str, *, offset: int = 0, heading: str = "Flere nyheder", exclude: set[str] | None = None) -> tuple[str, set[str]]:
+    choices = news_choices(items, current_slug, offset=offset, exclude=exclude)
     if not choices:
-        return ""
+        return "", set()
     cards = []
-    for a in choices[:8]:
+    for a in choices:
+        image = a.get("image") or {}
+        src = str(image.get("src") or "").strip()
+        alt = str(image.get("alt") or "").strip()
+        hero = f'<a class="more-news-card__hero" href="{esc(a["slug"])}.html"><img src="{esc(src)}" alt="{esc(alt)}" loading="lazy" decoding="async"></a>' if src else ""
         cards.append(
             '<article class="more-news-card">'
+            f'{hero}'
             f'<p class="section-label more-news__category">{esc(a.get("category") or "Nyhed")}</p>'
             f'<h2><a href="{esc(a["slug"])}.html">{esc(a["title"])}</a></h2>'
             f'<p>{esc(teaser(a, 120))}</p>'
             '</article>'
         )
-    return '<section class="wrap below"><h2 class="below-heading">Flere nyheder</h2>' + "".join(cards) + "</section>"
+    return '<section class="wrap below"><h2 class="below-heading">' + esc(heading) + '</h2>' + "".join(cards) + "</section>", {str(a.get("slug")) for a in choices}
 
 
 def feature_html(items: list[dict], *, prefix: str, current_slug: str | None = None) -> str:
     choices = [a for a in items if a.get("slug") != current_slug and is_feature(a)][:4]
-    # Keep the shelf populated during the early life of the newspaper. Prefer
-    # feature categories, but fall back to the most evergreen-looking stories.
     if len(choices) < 4:
         used = {a.get("slug") for a in choices} | ({current_slug} if current_slug else set())
         fallback = [a for a in items if a.get("slug") not in used and a.get("category") not in {"Krimi"}]
@@ -116,15 +125,16 @@ def feature_html(items: list[dict], *, prefix: str, current_slug: str | None = N
 def enhance_article(path: Path, items: list[dict]) -> None:
     current_slug = path.stem
     text = path.read_text(encoding="utf-8")
-    news = more_news_html(items, current_slug)
-    existing = re.compile(r'<section class="wrap below">.*?</section>', re.S)
-    if existing.search(text):
-        text = existing.sub(news, text, count=1)
-    elif news:
-        text = text.replace("<footer>", news + "\n<footer>", 1)
+    # Remove the canonical one-row related block and any enhancement blocks from an earlier build.
+    text = re.sub(r'<section class="wrap below">.*?</section>', '', text, flags=re.S)
+    text = re.sub(r'<section class="feature-shelf".*?</section>', '', text, flags=re.S)
+
+    first, used = more_news_html(items, current_slug, heading="Flere nyheder")
     shelf = feature_html(items, prefix="", current_slug=current_slug)
-    if shelf:
-        text = text.replace("<footer>", shelf + "\n<footer>", 1)
+    second, _ = more_news_html(items, current_slug, offset=8, heading="Mere fra Morgentidende", exclude=used)
+    block = "\n".join(x for x in (first, shelf, second) if x)
+    if block:
+        text = text.replace("<footer>", block + "\n<footer>", 1)
     path.write_text(text, encoding="utf-8")
 
 
