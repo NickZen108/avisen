@@ -14,6 +14,18 @@ html[data-theme="dark"] .card img,
 html[data-theme="dark"] .article-graphic img { background: #171B20; }
 html[data-theme="dark"] input { color-scheme: dark; }
 
+/* Hero photos/illustrations must fill the newspaper frame. Inline explanatory
+   graphics use .article-graphic and keep their contain behaviour. !important
+   intentionally overrides an older generated inline style until legacy output
+   has been fully regenerated. */
+.lead-fig > img {
+  width: 100% !important;
+  height: 22rem !important;
+  max-height: 22rem !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
 .masthead-inner { position: relative; }
 .theme-toggle {
   position: absolute;
@@ -55,4 +67,5 @@ html[data-theme="dark"] .theme-toggle__thumb { transform: translateX(1rem); }
 
 @media (max-width: 720px) {
   .theme-toggle__label { display: none; }
+  .lead-fig > img { height: 15rem !important; max-height: 15rem !important; }
 }
