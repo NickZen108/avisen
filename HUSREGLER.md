@@ -65,6 +65,20 @@ For pipeline-v2-artikler skal `content/frontpage.json` normalt kun referere til 
 
 Legacy-artikler uden struktureret canonical kilde kan fortsat have eksplicitte displayfelter.
 
+## Lead-opfølgninger
+
+Når en historie bliver lead, åbnes straks en aktiv sagspakke. Målet er normalt 2–3 selvstændige opfølgere så hurtigt som dokumentation og kvalitet tillader; de behøver ikke udkomme samtidig.
+
+Nyhedsdesk skal straks åbne mindst tre parallelle researchspor: (1) nye væsentlige fakta, (2) autentisk video/billeder fra hændelsen og (3) den stærkeste øvrige vinkel som øjenvidne, baggrund, tidslinje, tidligere lignende hændelser eller tydeligt mærket Kommentar.
+
+**Verificeret video og stærke autentiske billeder har samme topprioritet som store faktuelle opdateringer** såsom nye dødstal, redningsarbejde eller anholdelser. Der skal søges aktivt efter visuelt materiale hos primærkilder, myndigheder, redaktionelle medier, YouTube og andre åbne platforme. Materialet må først bruges, når ophav, kontekst, dato/sted og juridisk/platformsmæssig brug er tilstrækkeligt afklaret. Genereret materiale må aldrig fremstilles som dokumentation fra den virkelige hændelse.
+
+En visuel opfølger må gerne have en direkte, præcis rubrik som `Video: Her ...` eller `Billeder: ...`, hvis materialet faktisk dokumenterer det beskrevne. Klikværdi er et legitimt hensyn ved valg mellem ellers forsvarlige vinkler, men kan aldrig erstatte dokumentation, etik eller relevans.
+
+Hver opfølger skal have selvstændig nyhedsværdi eller funktion og må ikke blot omskrive leaden. Den mærkes med `related_news_slug` til leaden samt `followup_type`: `update`, `video`, `images`, `eyewitness`, `background`, `timeline` eller `commentary`.
+
+Publicerede opfølgere vises samlet tæt på leaden i en tydeligt beslægtet, let anderledes farvet `Mere om sagen`-boks. `Kommentar`, `Video` og `Billeder` skal mærkes synligt, så genren er klar.
+
 ## Hero-billeder
 
 Hero-billeder skal være visuelt stærke, relevante og egnede til både desktop og mobil. Et teknisk diagram er som udgangspunkt forklaringsgrafik inde i artiklen, ikke artikelens hero, medmindre grafikken selv er historien.
