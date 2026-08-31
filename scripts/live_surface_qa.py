@@ -111,18 +111,21 @@ def main() -> int:
                 faults.append(f"{slug}: canonical lead-hero er ikke renderet som lead-fig")
                 continue
             hero_url = urllib.parse.urljoin(final, src)
+            ctype = ""
             try:
                 ctype, body, _ = fetch(hero_url)
+                if "svg" in ctype.lower() or hero_url.lower().split("?", 1)[0].endswith(".svg"):
+                    continue
                 with Image.open(io.BytesIO(body)) as im:
                     w, h = im.size
                     heroes_checked += 1
-                    if im.format != "SVG" and (w < 600 or h < 300):
+                    if w < 600 or h < 300:
                         faults.append(f"{slug}: hero-kilde for lille {w}x{h}")
                     if w <= 0 or h <= 0:
                         faults.append(f"{slug}: ugyldige hero-dimensioner")
             except Exception as exc:
-                # Pillow cannot decode SVG; live_visual_qa already validates SVG payloads.
-                if not hero_url.lower().split("?", 1)[0].endswith(".svg") and "svg" not in ctype.lower() if 'ctype' in locals() else True:
+                is_svg = "svg" in ctype.lower() or hero_url.lower().split("?", 1)[0].endswith(".svg")
+                if not is_svg:
                     faults.append(f"{slug}: hero kan ikke dimensionskontrolleres: {exc}")
 
     report = Path(args.report); report.parent.mkdir(parents=True, exist_ok=True)
