@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "description": "Contract from authenticated chronicler app to GitHub editorial pipeline after Kronik-agent PASS.",
+  "required": [
+    "submission_id",
+    "revision_no",
+    "content_hash",
+    "author",
+    "locale",
+    "title",
+    "category",
+    "standfirst",
+    "body",
+    "agent_review",
+    "publish_request"
+  ],
+  "rules": {
+    "agent_review_decision": "pass",
+    "agent_review_hash_must_equal_content_hash": true,
+    "publish_request_hash_must_equal_content_hash": true,
+    "published_at_set_by_release_only": true,
+    "github_target": "content/contributions/<locale>/<slug>.json",
+    "hero": "R2 URL plus alt/license/credit metadata; never raw upload bytes in GitHub",
+    "genre": "commentary",
+    "frontpage_automatic": false
+  }
+}
