@@ -1,9 +1,9 @@
 {
   "schema_version": 3,
   "runtime": "cloudflare-workers",
-  "generated_at": "2026-08-31T15:00:19.672Z",
-  "fingerprint": "fa62f299f29fc290a1a8edf9283c3ac53aaaed8c160b89cb444af6bd831643c6",
-  "signal_count": 175,
+  "generated_at": "2026-08-31T20:45:19.553Z",
+  "fingerprint": "26d62fb4693c9135a76b4759ddfd79b0692d3b2370475f0c30125a4b5c29a1f2",
+  "signal_count": 176,
   "feeds": [
     {
       "source": "DR",
@@ -78,13 +78,6 @@
     },
     {
       "source": "DR",
-      "headline": "17-årig uledsaget bilist er kørt ind i to huse",
-      "normalized": "17 årig uledsaget bilist er kørt ind i to huse",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/17-aarig-uledsaget-bilist-er-koert-ind-i-huse"
-    },
-    {
-      "source": "DR",
       "headline": "2.000 elkunder var uden strøm på Sydsjælland",
       "normalized": "2 000 elkunder var uden strøm på sydsjælland",
       "description": "",
@@ -106,17 +99,10 @@
     },
     {
       "source": "BBC World",
-      "headline": "'A giant leap forward': Nasa launches powerful new space telescope",
-      "normalized": "a giant leap forward nasa launches powerful new space telescope",
-      "description": "The US space agency's telescope is starting a multi-year mission to create a new map of the universe and learn more about dark energy and dark matter.",
-      "url": "https://www.bbc.co.uk/news/articles/ce87e55vgpjo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "After the flash flood disaster, here is what Nepal really needs",
-      "normalized": "after the flash flood disaster here is what nepal really needs",
-      "description": "The country urgently needs to set up early warning systems, monitoring and safe shelters.",
-      "url": "https://www.aljazeera.com/opinions/2026/8/31/after-the-flash-flood-disaster-here-is-what-nepal-really-needs?traffic_source=rss"
+      "headline": "Across Latin America, 'aura battles' burst onto the scene",
+      "normalized": "across latin america aura battles burst onto the scene",
+      "description": "Young people across Latin America are taking part in the contests where participants compete to prove who has the most charisma.",
+      "url": "https://www.bbc.co.uk/news/videos/c158z7g23zqo?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "BBC World",
@@ -124,6 +110,13 @@
       "normalized": "algeria president seeks death penalty for arsonists after deadly forest fires",
       "description": "President Abdelmadjid Tebboune says he is not ruling out foul play after 100 wildfires were recorded.",
       "url": "https://www.bbc.co.uk/news/articles/cvgy41lwe0jo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Euronews",
+      "headline": "Algerian president seeks to impose death penalty on arsonists",
+      "normalized": "algerian president seeks to impose death penalty on arsonists",
+      "description": "Algeria declared three days of mourning after wildfires killed 12 people and injured dozens. Authorities said 46 fires remained active, with 54 people hospitalised for burns, including six in critical condition.",
+      "url": "http://www.euronews.com/2026/08/31/algerian-president-seeks-to-impose-death-penalty-on-arsonists"
     },
     {
       "source": "BBC Europe",
@@ -140,6 +133,13 @@
       "url": "https://www.dr.dk/nyheder/seneste/antallet-af-bekraeftede-ebola-tilfaelde-naar-6-000-i-dr-congo"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "Aston Villa vs Arsenal LIVE: Premier League",
+      "normalized": "aston villa vs arsenal live premier league",
+      "description": "Follow updates as Villa host Arsenal, including the build-up, analysis, and live text commentary of the game.",
+      "url": "https://www.aljazeera.com/sports/liveblog/2026/8/31/live-aston-villa-vs-arsenal-premier-league?traffic_source=rss"
+    },
+    {
       "source": "BBC Europe",
       "headline": "At least 37 dead and hundreds evacuated after strike on Kyiv weapons depot",
       "normalized": "at least 37 dead and hundreds evacuated after strike on kyiv weapons depot",
@@ -154,13 +154,6 @@
       "url": "https://www.theguardian.com/world/2026/aug/28/nepal-tibet-flash-floods-red-cross-rescuers-death-toll"
     },
     {
-      "source": "DR",
-      "headline": "August er den dyreste måned for strøm siden 2022",
-      "normalized": "august er den dyreste måned for strøm siden 2022",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/august-er-den-dyreste-maaned-stroem-siden-2022"
-    },
-    {
       "source": "Guardian World",
       "headline": "Australians missing in Nepal targeted by ‘heartbreaking’ and ‘abhorrent’ racist slurs",
       "normalized": "australians missing in nepal targeted by heartbreaking and abhorrent racist slurs",
@@ -173,13 +166,6 @@
       "normalized": "authorities in nepal carry out temporary burials of unidentified flood victims causing public outrage",
       "description": "Temporary burials of hundreds of the catastrophic flood victims have caused public outrage in parts of the country who accused authorities of not following Hindu burial rites and mismanaging the situation.",
       "url": "http://www.euronews.com/2026/08/31/authorities-in-nepal-carry-out-temporary-burials-of-unidentified-flood-victims-causing-pub"
-    },
-    {
-      "source": "BBC World",
-      "headline": "BBC tracks one week of Israeli settler violence in occupied West Bank",
-      "normalized": "bbc tracks one week of israeli settler violence in occupied west bank",
-      "description": "The BBC's Lucy Williamson reports on settler attacks on Palestinians, which have been observed over the last week alone.",
-      "url": "https://www.bbc.co.uk/news/videos/c3wjq1188g9o?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "BBC Europe",
@@ -211,20 +197,27 @@
     },
     {
       "source": "Guardian World",
-      "headline": "British family plead with French authorities to release body of relative who died in the Channel",
-      "normalized": "british family plead with french authorities to release body of relative who died in the channel",
-      "description": "<p>Jasmeet Wadhwa, who fled Taliban persecution in Afghanistan, lost his life in April</p><p>A British family is pleading with French authorities to release the body of a relative that officials have held for five months after he died in the Channel in April.</p><p>Jasmeet Wadhwa, 32, died while <a href=\"https://www.infomigrants.net/en/post/70720/two-migrants-die-in-channel-crossing-attempt-off-gravelines\">attempting to reach the UK</a> on a dinghy on 1 April with his mother, Harbans Kaur Wadhwa, after they fled Taliban persecution in Afghanistan in January of this year.</p> <a href=\"https://www.theguardian.com/uk-news/2026/aug/31/british-family-plead-with-french-authorities-to-release-body-of-relative-who-died-in-the-channel\">Continue reading...</a>",
+      "headline": "Border area between Nepal and China where 33 Australians are missing still almost entirely cut off",
+      "normalized": "border area between nepal and china where 33 australians are missing still almost entirely cut off",
+      "description": "<p>Majority of missing Australians were near Gyirong Port minutes before impact. Rescuers say the area is now destroyed, covered in metres of silt and debris</p><ul><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>It has been almost a week since the <a href=\"https://www.theguardian.com/world/nepal-tibet-flood-disaster\">catastrophic floods in Nepal</a> and not even a vehicle can get into the area where the majority of missing Australians were last heard from.</p><p>Gyirong Port, the border area between Nepal and China, was the first to be hit. Images from Chinese rescue teams who have managed to get in by helicopter or hiking show the area has been completely flattened. The immigration building, the power lines, everything, just wiped away.</p> <a href=\"https://www.theguardian.com/world/2026/sep/01/nepal-china-border-area-gyirong-port-almost-entirely-cut-off-missing-australians-ntwnfb\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/world/2026/sep/01/nepal-china-border-area-gyirong-port-almost-entirely-cut-off-missing-australians-ntwnfb"
+    },
+    {
+      "source": "DR",
+      "headline": "Brand i polsk dronefabrik efterforskes som terror",
+      "normalized": "brand i polsk dronefabrik efterforskes som terror",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/brand-i-polsk-dronefabrik-efterforskes-som-terror"
+    },
+    {
+      "source": "Guardian World",
+      "headline": "British family pleads with French authorities to release body of relative who died in Channel",
+      "normalized": "british family pleads with french authorities to release body of relative who died in channel",
+      "description": "<p>Jasmeet Wadhwa, who fled Taliban persecution in Afghanistan, lost his life while trying to reach UK in April</p><p>A British family is pleading with French authorities to release the body of a relative that officials have held for five months after he died in the Channel in April.</p><p>Jasmeet Wadhwa, 32, died while <a href=\"https://www.infomigrants.net/en/post/70720/two-migrants-die-in-channel-crossing-attempt-off-gravelines\">attempting to reach the UK</a> on a dinghy on 1 April with his mother, Harbans Kaur Wadhwa, after they fled Taliban persecution in Afghanistan in January.</p> <a href=\"https://www.theguardian.com/uk-news/2026/aug/31/british-family-plead-with-french-authorities-to-release-body-of-relative-who-died-in-the-channel\">Continue reading...</a>",
       "url": "https://www.theguardian.com/uk-news/2026/aug/31/british-family-plead-with-french-authorities-to-release-body-of-relative-who-died-in-the-channel"
     },
     {
       "source": "BBC Europe",
-      "headline": "British woman killed in stabbing at German railway station",
-      "normalized": "british woman killed in stabbing at german railway station",
-      "description": "A 27-year-old German man was arrested immediately after the incident in Rosenheim, Bavaria.",
-      "url": "https://www.bbc.co.uk/news/articles/cx2zy118q7ko?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "BBC World",
       "headline": "British woman killed in stabbing at German railway station",
       "normalized": "british woman killed in stabbing at german railway station",
       "description": "A 27-year-old German man was arrested immediately after the incident in Rosenheim, Bavaria.",
@@ -236,13 +229,6 @@
       "normalized": "buenos aires welcomes 800 couples for tango ba world championship",
       "description": "Tango BA brings 800 couples from 47 countries to Buenos Aires, with world championship finals taking place at the Teatro Gran Rex.",
       "url": "http://www.euronews.com/video/2026/08/31/buenos-aires-welcomes-800-couples-for-tango-ba-world-championship"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Can Iran use rockets to mine the Strait of Hormuz, as US claims?",
-      "normalized": "can iran use rockets to mine the strait of hormuz as us claims",
-      "description": "Analysts say it&#039;s implausible but Iran is well-versed in adapting conventional weapons to suit its needs.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/can-iran-use-rockets-to-mine-the-strait-of-hormuz-as-us-claims?traffic_source=rss"
     },
     {
       "source": "Guardian World",
@@ -266,6 +252,13 @@
       "url": "https://www.theguardian.com/world/2026/aug/31/china-concealing-scale-nepal-flood-disaster-say-tibet-campaigners"
     },
     {
+      "source": "BBC World",
+      "headline": "Company offering reward for safe return of truckload of beer",
+      "normalized": "company offering reward for safe return of truckload of beer",
+      "description": "Police say a thief presented false documentation at a California distribution centre before driving off with the shipment.",
+      "url": "https://www.bbc.co.uk/news/articles/c780wzj86pno?at_medium=RSS&at_campaign=rss"
+    },
+    {
       "source": "BBC Europe",
       "headline": "Convicted Bosnian Serb war criminal Mladić dies aged 84",
       "normalized": "convicted bosnian serb war criminal mladi dies aged 84",
@@ -285,6 +278,13 @@
       "normalized": "dagens første skybrud registreret",
       "description": "",
       "url": "https://www.dr.dk/nyheder/seneste/dagens-foerste-skybrud-registreret"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Damaged Gaza ambulance becomes ‘dream bus’ for children",
+      "normalized": "damaged gaza ambulance becomes dream bus for children",
+      "description": "A damaged ambulance in Gaza has been converted by the Palestinian Red Crescent Society into the ‘Dream Bus’.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/damaged-gaza-ambulance-becomes-dream-bus-for-children?traffic_source=rss"
     },
     {
       "source": "The Local Denmark",
@@ -320,6 +320,13 @@
       "normalized": "danish word of the day madpakke",
       "description": "Feeling a bit peckish? It&#039;s time to get stuck in to the word of the day.",
       "url": "https://www.thelocal.dk/20220420/danish-word-of-the-day-madpakke"
+    },
+    {
+      "source": "DR",
+      "headline": "Danmark genåbner ambassade i Syrien efter 14 år",
+      "normalized": "danmark genåbner ambassade i syrien efter 14 år",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/danmark-genaabner-ambassade-i-syrien-efter-14-aar"
     },
     {
       "source": "BBC World",
@@ -379,6 +386,20 @@
     },
     {
       "source": "Euronews",
+      "headline": "Eurasian nations gather in Bishkek to forge stronger ties, new alliances",
+      "normalized": "eurasian nations gather in bishkek to forge stronger ties new alliances",
+      "description": "Heads of 21 global and rising powers gather in Bishkek for the SCO summit as wars strain the global order. China and Russia have previously used the SCO to project their influence and their stand against the West, but the middle powers are now there to seek new economic and political momentum.",
+      "url": "http://www.euronews.com/2026/08/31/eurasian-nations-gather-in-bishkek-to-forge-stronger-ties-new-alliances"
+    },
+    {
+      "source": "BBC World",
+      "headline": "Ex-congressman George Santos banned from betting platform for life",
+      "normalized": "ex congressman george santos banned from betting platform for life",
+      "description": "The prediction market operator Kalshi says Santos made barred trades and misleading comments that influenced prices.",
+      "url": "https://www.bbc.co.uk/news/articles/cpwlxy49225o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Euronews",
       "headline": "Exclusive: US naval blockade is paralysing daily life, Iranians tell Euronews",
       "normalized": "exclusive us naval blockade is paralysing daily life iranians tell euronews",
       "description": "A Euronews Farsi exclusive shows how a reinstated US naval blockade is paralysing Iran’s trade, driving 70% inflation and pushing families into survival mode. From stranded cargo to empty tables, Iranian citizens speak out on the worsening humanitarian crisis.",
@@ -393,24 +414,24 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Fire breaks out after unidentified explosions at oil refinery in Baghdad",
-      "normalized": "fire breaks out after unidentified explosions at oil refinery in baghdad",
-      "description": "A fire broke out following unidentified explosions at the Al-Dora power plant south of the Iraqi capital, Baghdad.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/fire-breaks-out-after-unidentified-explosions-at-oil-refinery-in-baghdad-2?traffic_source=rss"
+      "headline": "Far-right Israeli Minister Ben-Gvir and settlers storm Al-Aqsa Mosque",
+      "normalized": "far right israeli minister ben gvir and settlers storm al aqsa mosque",
+      "description": "Israeli Minister Ben-Gvir storms Al-Aqsa Mosque compound with settlers, violating decades-old status quo arrangement.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/far-right-israeli-minister-ben-gvir-and-settlers-storm-al-aqsa-mosque?traffic_source=rss"
     },
     {
       "source": "Al Jazeera",
-      "headline": "Fire breaks out after unidentified explosions at oil refinery in Baghdad",
-      "normalized": "fire breaks out after unidentified explosions at oil refinery in baghdad",
-      "description": "A fire broke out following unidentified explosions at the Al-Dora power plant south of the Iraqi capital, Baghdad.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/fire-breaks-out-after-unidentified-explosions-at-oil-refinery-in-baghdad?traffic_source=rss"
+      "headline": "Firecracker factory blast in India kills 8 children",
+      "normalized": "firecracker factory blast in india kills 8 children",
+      "description": "Videos reveal demolished houses and desperate rescue efforts after third such blast at a firecracker factory this year.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/firecracker-factory-blast-in-india-kills-8-children?traffic_source=rss"
     },
     {
-      "source": "Guardian World",
-      "headline": "First US military attacks on Iran in a month prompt retaliation",
-      "normalized": "first us military attacks on iran in a month prompt retaliation",
-      "description": "<p>US attacks Iranian rocket launchers on island in strait of Hormuz and Tehran targets US bases in Jordan and UAE</p><p>The US has reverted to military attacks on Iran for the first time in a month, firing missiles and drones at Iranian rocket launchers on an island in the strait of Hormuz, prompting the Iranian military to attack US military bases in Jordan and the United Arab Emirates.</p><p>US Central Command said it acted late on Sunday after it detected the Iranians planning to fire fresh mines into the strait. Last week Donald Trump claimed the US navy had cleared the strait of mines for the first time since the conflict started on 28 February, a claim the Iranians rejected as lies.</p> <a href=\"https://www.theguardian.com/world/2026/aug/30/us-strikes-iranian-launchers-on-larak-island-amid-strait-of-hormuz-tensions\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/world/2026/aug/30/us-strikes-iranian-launchers-on-larak-island-amid-strait-of-hormuz-tensions"
+      "source": "DR",
+      "headline": "Fiskeri efter blåmuslinger i Limfjorden begrænses",
+      "normalized": "fiskeri efter blåmuslinger i limfjorden begrænses",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/fiskeri-efter-blaamuslinger-i-limfjorden-begraenses"
     },
     {
       "source": "Euronews",
@@ -455,20 +476,6 @@
       "url": "https://www.theguardian.com/world/2026/aug/31/germany-leipzig-drone-attack-ukrainian-plane"
     },
     {
-      "source": "Guardian World",
-      "headline": "Goodbye to Babylon Berlin, the 1920s TV drama that has eerily foreshadowed real-life politics",
-      "normalized": "goodbye to babylon berlin the 1920s tv drama that has eerily foreshadowed real life politics",
-      "description": "<p>The long-running drama reaches Hitler’s rise to power in its final season as its creators reflect on the unsettling parallels between Weimar Germany and the present day</p><p>It’s the global hit TV series that pulled audiences straight into the chaotic hedonism of 1920s Germany, dramatising the brilliance and brittleness of a newly built democratic system with unprecedented ambition.</p><p>But in the 13 years that the German makers of <a href=\"https://www.theguardian.com/tv-and-radio/2022/nov/18/how-babylon-berlin-became-tvs-most-decadent-drama\">Babylon Berlin</a> have worked on the show, modern democracies from the US to Hungary to South Korea have come under pressure in ways the creators say they could never have imagined when they started.</p> <a href=\"https://www.theguardian.com/tv-and-radio/2026/aug/31/goodbye-to-babylon-berlin-the-1920s-tv-drama-that-has-eerily-foreshadowed-real-life-politics\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/tv-and-radio/2026/aug/31/goodbye-to-babylon-berlin-the-1920s-tv-drama-that-has-eerily-foreshadowed-real-life-politics"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Greece signs $3.5bn air defence deal with Israel",
-      "normalized": "greece signs 3 5bn air defence deal with israel",
-      "description": "Greece signs $3.5bn deal with Israel to acquire its first multi-layered air defence network by 2029.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/greece-signs-3-5bn-air-defence-deal-with-israel?traffic_source=rss"
-    },
-    {
       "source": "BBC Europe",
       "headline": "Greenland says findings on genocide allegation not final",
       "normalized": "greenland says findings on genocide allegation not final",
@@ -483,6 +490,13 @@
       "url": "https://www.thelocal.dk/20260828/greenland-to-present-report-on-forced-contraceptions"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "GTA 6: Why is the world’s most anticipated game facing backlash?",
+      "normalized": "gta 6 why is the world s most anticipated game facing backlash",
+      "description": "You paid for it. But do you actually own it? GTA 6 is exposing a bigger battle over the future of gaming.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/gta-6-why-is-the-worlds-most-anticipated-game-facing-backlash-2?traffic_source=rss"
+    },
+    {
       "source": "Euronews",
       "headline": "Guinea-Bissau votes in referendum to rewrite constitution and boost presidential powers",
       "normalized": "guinea bissau votes in referendum to rewrite constitution and boost presidential powers",
@@ -490,18 +504,11 @@
       "url": "http://www.euronews.com/2026/08/30/guinea-bissau-votes-in-referendum-to-rewrite-constitution-and-boost-presidential-powers"
     },
     {
-      "source": "BBC World",
-      "headline": "Head teacher evacuated 900 children minutes before Nepal floods hit school",
-      "normalized": "head teacher evacuated 900 children minutes before nepal floods hit school",
-      "description": "Rajendra Dawadi leapt into action after receiving warnings over waters heading towards his school.",
-      "url": "https://www.bbc.co.uk/news/articles/c5ymvdm5520o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "DR",
-      "headline": "Historie om Yahya Hassans familie får snart teaterpremiere",
-      "normalized": "historie om yahya hassans familie får snart teaterpremiere",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/historie-om-yahya-hassans-familie-faar-snart-teaterpremiere"
+      "source": "Guardian World",
+      "headline": "Head of Viktor Orbán’s favourite thinktank quits over unpaid wages",
+      "normalized": "head of viktor orbán s favourite thinktank quits over unpaid wages",
+      "description": "<p>Frank Furedi announces resignation from MCC Brussels after organisation’s staff ‘not paid in July or August’</p><p>The head of Viktor Orbán’s favourite Brussels thinktank has quit, citing unpaid wages since the change of government in Hungary.</p><p>The sociology professor Frank Furedi said he was resigning as the executive director of MCC Brussels with “immediate effect” on Monday over “persistent failure to provide the contractually agreed funds”.</p> <a href=\"https://www.theguardian.com/politics/2026/aug/31/viktor-orbans-thinktank-mcc-brussels-crisis-frank-furedi-quits\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/politics/2026/aug/31/viktor-orbans-thinktank-mcc-brussels-crisis-frank-furedi-quits"
     },
     {
       "source": "BBC World",
@@ -511,6 +518,13 @@
       "url": "https://www.bbc.co.uk/news/articles/c4g4r4lxx25o?at_medium=RSS&at_campaign=rss"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "How will the Mecca agreement become an operational framework?",
+      "normalized": "how will the mecca agreement become an operational framework",
+      "description": "Officials from Turkiye, Saudi Arabia and Pakistan meet to discuss implementing the pact.",
+      "url": "https://www.aljazeera.com/video/inside-story/2026/8/31/how-will-the-mecca-agreement-become-an-operational-framework?traffic_source=rss"
+    },
+    {
       "source": "DR",
       "headline": "Hver fjerde ung er på skærmen over seks timer dagligt",
       "normalized": "hver fjerde ung er på skærmen over seks timer dagligt",
@@ -518,11 +532,11 @@
       "url": "https://www.dr.dk/nyheder/seneste/hver-fjerde-ung-er-paa-skaermen-over-seks-timer-dagligt"
     },
     {
-      "source": "Guardian World",
-      "headline": "Icac lawyer tells Charles Perrottet the key to lying is ‘you have to be really good at remembering it’",
-      "normalized": "icac lawyer tells charles perrottet the key to lying is you have to be really good at remembering it",
-      "description": "<p>Perrottet disagrees when counsel assisting Peggy Dwyer SC claims brother of former NSW premier is not truthful and ‘constructing evidence’</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>A brother of former New South Wales premier Dominic Perrottet has told Icac he would lie to a property developer about delivering political outcomes “to keep him on side”, but Charles Perrottet has denied lying to the state’s anti-corruption watchdog.</p><p>Charles Perrottet, who is among three Liberal figures alleged to have anticipated receiving $2m in prohibited political donations from Jean Nassif, told the Independent Commission Against Corruption (Icac) on Monday that he “made up” updates for the pro",
-      "url": "https://www.theguardian.com/australia-news/2026/aug/31/icac-charles-perrottet-lawyer-ntwnfb"
+      "source": "BBC World",
+      "headline": "'I haven't lost my hope' - the search for missing loved ones",
+      "normalized": "i haven t lost my hope the search for missing loved ones",
+      "description": "Relatives of those still missing in the fatal floods in Nepal hold onto hope that their loved ones have survived.",
+      "url": "https://www.bbc.co.uk/news/videos/c4g79v842xjo?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "The Local Denmark",
@@ -533,13 +547,6 @@
     },
     {
       "source": "BBC Europe",
-      "headline": "Iceland votes against restarting EU membership talks",
-      "normalized": "iceland votes against restarting eu membership talks",
-      "description": "Broadcaster RUV reports that 52.8% of voters rejected the government's proposal to resume accession talks.",
-      "url": "https://www.bbc.co.uk/news/articles/c70le8ed1plo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "BBC World",
       "headline": "Iceland votes against restarting EU membership talks",
       "normalized": "iceland votes against restarting eu membership talks",
       "description": "Broadcaster RUV reports that 52.8% of voters rejected the government's proposal to resume accession talks.",
@@ -568,10 +575,31 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Iran attacks Jordan, UAE after US bombs Larak Island: What’s the latest?",
-      "normalized": "iran attacks jordan uae after us bombs larak island what s the latest",
-      "description": "The retaliatory attacks came after the US targeted two Iranian launchers on Larak Island in the Strait of Hormuz.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/iran-attacks-jordan-uae-after-us-bombs-larak-island-whats-the-latest?traffic_source=rss"
+      "headline": "India rejects Hague court order to restore Indus waters pact with Pakistan",
+      "normalized": "india rejects hague court order to restore indus waters pact with pakistan",
+      "description": "New Delhi says the Permanent Court of Arbitration has no jurisdiction over its sovereign choice.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/india-rejects-hague-court-order-to-restore-indus-waters-pact-with-pakistan?traffic_source=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "India’s PM Modi urges end to Ukraine war in talks with Russia’s Putin",
+      "normalized": "india s pm modi urges end to ukraine war in talks with russia s putin",
+      "description": "India’s PM Narendra Modi told Russian President Putin that India supports every effort to end the war in Ukraine.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/indias-pm-modi-urges-end-to-ukraine-war-in-talks-with-russias-putin?traffic_source=rss"
+    },
+    {
+      "source": "DR",
+      "headline": "Indiens premierminister opfordrer til at standse krigen i Ukraine",
+      "normalized": "indiens premierminister opfordrer til at standse krigen i ukraine",
+      "description": "Indien bragte krigen i Ukraine op i tale.",
+      "url": "https://www.dr.dk/nyheder/seneste/indiens-premierminister-opfordrer-til-standse-krigen-i-ukraine"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Iran could face economic collapse in months, US Treasury’s Bessent warns",
+      "normalized": "iran could face economic collapse in months us treasury s bessent warns",
+      "description": "Treasury Secretary Scott Bessent weighs in on the US&#039;s economic pressure campaign at a meeting of G20 finance ministers.",
+      "url": "https://www.aljazeera.com/economy/2026/8/31/iran-could-face-economic-collapse-in-months-us-treasurys-bessent-warns?traffic_source=rss"
     },
     {
       "source": "Euronews",
@@ -596,31 +624,17 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Kazakhstan’s Tokayev appoints longtime adviser as vice president",
-      "normalized": "kazakhstan s tokayev appoints longtime adviser as vice president",
-      "description": "Erlan Karin has served as a top ⁠⁠aide to Tokayev since he took over the presidency in 2019.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/kazakhstans-president-taps-longtime-adviser-for-vice-president-role?traffic_source=rss"
+      "headline": "Israel’s Ben-Gvir storms Al-Aqsa mosque in occupied East Jerusalem",
+      "normalized": "israel s ben gvir storms al aqsa mosque in occupied east jerusalem",
+      "description": "Far-right minister entered Islam’s third-holiest site alongside settlers under protection of Israeli occupation forces.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/israeli-hardliner-storms-al-aqsa-mosque-in-occupied-east-jerusalem?traffic_source=rss"
     },
     {
-      "source": "DR",
-      "headline": "Københavnertradition aflyst på grund af regnvejr",
-      "normalized": "københavnertradition aflyst på grund af regnvejr",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/koebenhavnertradition-aflyst-paa-grund-af-regnvejr"
-    },
-    {
-      "source": "DR",
-      "headline": "Landboforening melder om stor opbakning til protestmøde",
-      "normalized": "landboforening melder om stor opbakning til protestmøde",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/landboforening-melder-om-stor-opbakning-til-protestmoede"
-    },
-    {
-      "source": "Euronews",
-      "headline": "Latest news bulletin | August 29th, 2026 – Evening",
-      "normalized": "latest news bulletin august 29th 2026 evening",
-      "description": "Catch up with the most important stories from around Europe and beyond this August 29th, 2026 - latest news, breaking news, World, Business, Entertainment, Politics, Culture, Travel.",
-      "url": "http://www.euronews.com/video/2026/08/29/latest-news-bulletin-august-29th-2026-evening"
+      "source": "BBC World",
+      "headline": "John Galliano exhibition at New York Met cancelled after backlash",
+      "normalized": "john galliano exhibition at new york met cancelled after backlash",
+      "description": "The exhibition faced criticism over the British fashion designer's conviction for making antisemitic remarks in 2011.",
+      "url": "https://www.bbc.co.uk/news/articles/c4gkp6pgy03o?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "Euronews",
@@ -631,17 +645,10 @@
     },
     {
       "source": "Euronews",
-      "headline": "Latest news bulletin | August 30th, 2026 – Midday",
-      "normalized": "latest news bulletin august 30th 2026 midday",
-      "description": "Catch up with the most important stories from around Europe and beyond this August 30th, 2026 - latest news, breaking news, World, Business, Entertainment, Politics, Culture, Travel.",
-      "url": "http://www.euronews.com/video/2026/08/30/latest-news-bulletin-august-30th-2026-midday"
-    },
-    {
-      "source": "Euronews",
-      "headline": "Latest news bulletin | August 30th, 2026 – Morning",
-      "normalized": "latest news bulletin august 30th 2026 morning",
-      "description": "Catch up with the most important stories from around Europe and beyond this August 30th, 2026 - latest news, breaking news, World, Business, Entertainment, Politics, Culture, Travel.",
-      "url": "http://www.euronews.com/video/2026/08/30/latest-news-bulletin-august-30th-2026-morning"
+      "headline": "Latest news bulletin | August 31st, 2026 – Evening",
+      "normalized": "latest news bulletin august 31st 2026 evening",
+      "description": "Catch up with the most important stories from around Europe and beyond this August 31st, 2026 - latest news, breaking news, World, Business, Entertainment, Politics, Culture, Travel.",
+      "url": "http://www.euronews.com/video/2026/08/31/latest-news-bulletin-august-31st-2026-evening"
     },
     {
       "source": "Euronews",
@@ -659,10 +666,10 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Liverpool sign Bradley Barcola from Paris Saint-Germain",
-      "normalized": "liverpool sign bradley barcola from paris saint germain",
-      "description": "Barcola&#039;s move comes as Liverpool seek to reinforce their forward line after Mohamed Salah&#039;s departure.",
-      "url": "https://www.aljazeera.com/sports/2026/8/31/liverpool-sign-bradley-barcola-from-paris-saint-germain?traffic_source=rss"
+      "headline": "‘Let Data Reign’: Trump decries opposition to data centres in US",
+      "normalized": "let data reign trump decries opposition to data centres in us",
+      "description": "Despite concerns over electricity and water consumption, US president calls on communities to embrace data centres.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/let-data-reign-trump-decries-opposition-to-data-centres-in-us?traffic_source=rss"
     },
     {
       "source": "BBC Europe",
@@ -686,25 +693,18 @@
       "url": "https://www.theguardian.com/australia-news/2026/aug/31/molly-ticehurst-domestic-violence-murder-daniel-billings-sentence-ntwnfb"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Manchester City sign Brazilian winger Allan Elias from Palmeiras",
-      "normalized": "manchester city sign brazilian winger allan elias from palmeiras",
-      "description": "Elias joins the Premier League club on a five-year contract, their sixth signing in the summer transfer window.",
-      "url": "https://www.aljazeera.com/sports/2026/8/31/manchester-city-sign-brazilian-winger-allan-elias-from-palmeiras?traffic_source=rss"
-    },
-    {
-      "source": "BBC World",
-      "headline": "Manhunt after shooting at Swiss rave kills woman, 22, and injures five",
-      "normalized": "manhunt after shooting at swiss rave kills woman 22 and injures five",
-      "description": "Five others in their twenties were injured after shots were fired at a techno event near Zurich.",
-      "url": "https://www.bbc.co.uk/news/articles/c9qr750je1go?at_medium=RSS&at_campaign=rss"
-    },
-    {
       "source": "BBC Europe",
       "headline": "Memory wars: Election clash over Germany's Nazi past as AfD eyes power in east",
       "normalized": "memory wars election clash over germany s nazi past as afd eyes power in east",
       "description": "Remembering its role in the World Wars is a key aspect of modern Germany's identity but the AfD argues it is time to take a more positive view of the past.",
       "url": "https://www.bbc.co.uk/news/articles/cddv43d4jn2o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC World",
+      "headline": "Messi retires from international football with 'nothing left to give'",
+      "normalized": "messi retires from international football with nothing left to give",
+      "description": "Argentina great Lionel Messi announces his retirement from international football, saying it was a decision that \"hurt\" but he understands \"the time has come\".",
+      "url": "https://www.bbc.co.uk/sport/football/articles/ceq89y38elro?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "Euronews",
@@ -756,25 +756,11 @@
       "url": "https://www.dr.dk/nyheder/seneste/mor-og-datter-faar-tilsammen-23-aars-faengsel"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "More value in Cairo’s trash, but less for those who collect it",
-      "normalized": "more value in cairo s trash but less for those who collect it",
-      "description": "War on Iran disrupts imports, driving demand for Cairo’s recycled waste, but rising costs squeeze recyclers.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/more-value-in-cairos-trash-but-less-for-those-who-collect-it?traffic_source=rss"
-    },
-    {
       "source": "Guardian World",
       "headline": "Morocco not to blame for Ceuta border breach, says Spanish PM",
       "normalized": "morocco not to blame for ceuta border breach says spanish pm",
       "description": "<p>Pedro Sánchez says two countries cooperating and accuses Israel and Russia of spreading fake news about migration</p><p>Spain’s prime minister, Pedro Sánchez, has said there is no evidence to suggest the Moroccan government was behind last month’s <a href=\"https://www.theguardian.com/world/2026/jul/31/ceuta-spain-morocco-border-deaths\">massive border crossing into Ceuta</a> but accused Israel and Russia of spreading disinformation.</p><p>As many as <a href=\"https://elpais.com/espana/2026-08-07/las-ong-de-marruecos-elevan-a-141-la-cifra-de-muertos-a-ambos-lados-de-la-frontera-de-ceuta.html\">141 people are thought to have died</a> trying to enter the Spanish enclave at the end of July. The influx of about 70,000 men, women and children unleashed a political crisis, a humanitarian emergency and <a href=\"https://www.theguardian.com/commentisfree/2026/aug/12/ceuta-showed-just-how-easy-it-is-to-divide-europe\">reignited tensions within the EU over immigration</a>.</p> <a href=\"https://www.theguardian.com/world/2026/aug/31/morocco-ceuta-border-breach-spanish-pm-migration-pedro-sanchez\">Continue reading...</a>",
       "url": "https://www.theguardian.com/world/2026/aug/31/morocco-ceuta-border-breach-spanish-pm-migration-pedro-sanchez"
-    },
-    {
-      "source": "Guardian World",
-      "headline": "Nearly 20 people still missing after ferry capsizes ⁠off northern Cyprus",
-      "normalized": "nearly 20 people still missing after ferry capsizes off northern cyprus",
-      "description": "<p>Divers join search teams scouring deep waters for ⁠any survivors, with eight people so far confirmed to have died</p><p>Nearly 20 people are still missing after a ferry <a href=\"https://www.theguardian.com/world/2026/aug/30/ferry-capsizes-northern-cyprus\">capsized ⁠off northern Cyprus</a>, killing at least eight, as divers join search teams scouring deep waters for ⁠any survivors.</p><p>The double-hulled ⁠ferry ​with 267 people onboard took in water and flipped over on Sunday just off the port city ⁠of Kyrenia, leaving survivors clinging to the upturned hull. They were rescued by passing vessels and members of the coastguard.</p> <a href=\"https://www.theguardian.com/world/2026/aug/31/missing-ferry-capsizes-cyprus\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/world/2026/aug/31/missing-ferry-capsizes-cyprus"
     },
     {
       "source": "Euronews",
@@ -791,25 +777,25 @@
       "url": "https://www.bbc.co.uk/news/videos/c5ydwy004v0o?at_medium=RSS&at_campaign=rss"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "Nepal FM speaks to Al Jazeera on devastating floods",
+      "normalized": "nepal fm speaks to al jazeera on devastating floods",
+      "description": "Nepal FM speaks to Al Jazeera on devastating floods",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/nepal-fm-speaks-to-al-jazeera-on-devastating-floods?traffic_source=rss"
+    },
+    {
+      "source": "BBC World",
+      "headline": "Nepal rescuers blast hillside in search of hydropower workers as families wait anxiously",
+      "normalized": "nepal rescuers blast hillside in search of hydropower workers as families wait anxiously",
+      "description": "Rescuers have resorted to explosives as they struggle to reach trapped workers, as the flooding death toll reaches 939.",
+      "url": "https://www.bbc.co.uk/news/articles/c5ylvgq9q71o?at_medium=RSS&at_campaign=rss"
+    },
+    {
       "source": "Guardian World",
       "headline": "Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels",
       "normalized": "nepal rescuers race to reach hundreds feared trapped in hydropower tunnels",
-      "description": "<p>Workers thought to be stuck in underground areas at 11 sites after last week’s devastating flash floods</p><p>Rescue teams are working to reach more than 900 missing hydropower workers, hundreds of whom are feared trapped in the tunnels and underground areas of 11 hydropower projects in Nepal after the <a href=\"https://www.theguardian.com/world/nepal-tibet-flood-disaster\">devastating flash floods</a>, ​the ⁠country’s disaster ​management authority has said.</p><p>The death toll from the <a href=\"https://www.theguardian.com/world/video/2026/aug/27/timeline-of-how-deadly-nepal-and-tibet-flash-flood-unfolded-explainer\">⁠unprecedented deluge</a> of ice, rock, mud ​and debris on Wednesday last week has risen to 903, with 16 more dead reported in Tibet. <strong> </strong>Nearly 5,000 are missing on the two sides of the border.</p> <a href=\"https://www.theguardian.com/world/2026/aug/31/nepal-tibet-floods-rescuers-hundreds-trapped-hydropower\">Continue reading...</a>",
+      "description": "<p>Workers thought to be stuck in underground areas at 11 sites after last week’s devastating flash floods</p><p>Rescue teams are working to reach more than 900 missing hydropower workers, hundreds of whom are feared trapped in the tunnels and underground areas of 12<strong> </strong>hydropower projects in Nepal after the <a href=\"https://www.theguardian.com/world/nepal-tibet-flood-disaster\">devastating flash floods</a>, ​the ⁠country’s disaster ​management authority has said.</p><p>The death toll from the <a href=\"https://www.theguardian.com/world/video/2026/aug/27/timeline-of-how-deadly-nepal-and-tibet-flash-flood-unfolded-explainer\">⁠unprecedented deluge</a> of ice, rock, mud ​and debris on Wednesday last week has risen to 939 people, with 16 more dead reported in Tibet. <strong> </strong> More than 4,400 are missing on the two sides of the border.</p> <a href=\"https://www.theguardian.com/world/2026/aug/31/nepal-tibet-floods-rescuers-hundreds-trapped-hydropower\">Continue reading...</a>",
       "url": "https://www.theguardian.com/world/2026/aug/31/nepal-tibet-floods-rescuers-hundreds-trapped-hydropower"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Nepal tunnel traps hinder flood rescue: How many are dead or missing?",
-      "normalized": "nepal tunnel traps hinder flood rescue how many are dead or missing",
-      "description": "Flash floods on the Nepal-Tibet border have left nearly 5,000 people missing, many trapped in hydropower tunnels.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/nepal-tunnel-traps-hinder-flood-rescue-how-many-are-dead-or-missing?traffic_source=rss"
-    },
-    {
-      "source": "Euronews",
-      "headline": "Nepal warns of more possible floods as communities grapple with devastation and death toll rises",
-      "normalized": "nepal warns of more possible floods as communities grapple with devastation and death toll rises",
-      "description": "Flood warning notifications were issued to people's phones throughout Sunday morning as rescue workers tried to evacuate a main route connecting Kathmandu to one of the places most severely affected by Wednesday's devastating floods.",
-      "url": "http://www.euronews.com/2026/08/30/nepal-warns-of-more-possible-floods-as-communities-grapple-with-devastation"
     },
     {
       "source": "Guardian World",
@@ -833,6 +819,13 @@
       "url": "https://www.bbc.co.uk/news/articles/cvgy79wmv4jo?at_medium=RSS&at_campaign=rss"
     },
     {
+      "source": "DR",
+      "headline": "Ny type kaninpest fundet i danske harer",
+      "normalized": "ny type kaninpest fundet i danske harer",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/ny-type-kaninpest-fundet-i-danske-harer"
+    },
+    {
       "source": "Euronews",
       "headline": "Oil prices higher as US-Iran tensions flare and Warsh fans rate hikes",
       "normalized": "oil prices higher as us iran tensions flare and warsh fans rate hikes",
@@ -847,13 +840,6 @@
       "url": "https://www.thelocal.dk/20260829/on-the-agenda-whats-happening-in-denmark-this-week-6"
     },
     {
-      "source": "BBC World",
-      "headline": "One dead and more than a dozen missing after 'terrifying' flash flood hits Grand Canyon",
-      "normalized": "one dead and more than a dozen missing after terrifying flash flood hits grand canyon",
-      "description": "\"It was a beautiful day - and then people were screaming,\" one hiker tells the BBC, as 15 people are missing.",
-      "url": "https://www.bbc.co.uk/news/articles/clylkjyez1do?at_medium=RSS&at_campaign=rss"
-    },
-    {
       "source": "The Local Denmark",
       "headline": "OPINION: The Danish flag-obsession is more &#039;hyggelig&#039; than threatening",
       "normalized": "opinion the danish flag obsession is more 039 hyggelig 039 than threatening",
@@ -862,10 +848,17 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Pakistan, Saudi Arabia, Turkiye meet: What’s next for their defence pact?",
-      "normalized": "pakistan saudi arabia turkiye meet what s next for their defence pact",
-      "description": "As US-Iran strikes resume, three nations test their pact&#039;s substance and who might join next.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/pakistan-saudi-arabia-turkiye-meet-whats-next-for-their-defence-pact?traffic_source=rss"
+      "headline": "Over 6,000 Ebola cases confirmed in DRC as death toll nears 3,000",
+      "normalized": "over 6 000 ebola cases confirmed in drc as death toll nears 3 000",
+      "description": "Outbreak in the DRC &#039;the fastest-spreading Ebola epidemic ever recorded,&#039; as country struggles to contain infections.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/over-6000-ebola-cases-confirmed-in-drc-as-death-toll-nears-3000?traffic_source=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Palestinian farmers rebuild what Israeli settlers destroy in West Bank",
+      "normalized": "palestinian farmers rebuild what israeli settlers destroy in west bank",
+      "description": "Israeli settler pogroms destroy greenhouses and crops, but Burin&#039;s farmers insist on rebuilding.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/palestinian-farmers-rebuild-what-israeli-settlers-destroy-in-west-bank?traffic_source=rss"
     },
     {
       "source": "BBC World",
@@ -889,25 +882,32 @@
       "url": "https://www.theguardian.com/world/2026/aug/30/humanitarian-crisis-worsening-refuge-civilians-sudan-el-obeid"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "Photos: Nearly 1,000 dead, thousands missing in Nepal–China border floods",
+      "normalized": "photos nearly 1 000 dead thousands missing in nepal china border floods",
+      "description": "Over 4,000 people remain missing after deadly floods swept through Nepal and Tibet, leaving families in despair.",
+      "url": "https://www.aljazeera.com/gallery/2026/8/31/photos-nearly-1000-dead-thousands-missing-in-nepal-china-border?traffic_source=rss"
+    },
+    {
+      "source": "DR",
+      "headline": "Politiet advarer om kø inden traktordemonstration",
+      "normalized": "politiet advarer om kø inden traktordemonstration",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/politiet-advarer-om-koe-inden-traktordemonstration"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Principal who saved 900 students recalls Nepal’s devastating flood",
+      "normalized": "principal who saved 900 students recalls nepal s devastating flood",
+      "description": "Nepal school principal Rajendra Dawadi recalls the devastating floods that forced him to evacuate over 900 students.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/principal-who-saved-900-students-recalls-nepals-devastating-flood?traffic_source=rss"
+    },
+    {
       "source": "Guardian World",
       "headline": "Qantas ground crews vote for right to strike amid pay dispute – as it happened",
       "normalized": "qantas ground crews vote for right to strike amid pay dispute as it happened",
       "description": "<p>This blog is now closed</p><ul><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>The Australian government is working with Russian officials in a bid to secure the release of Australian <strong>Oscar Jenkins</strong>, <strong>Matt Thistlethwaite</strong> says.<br><br> Speaking to ABC news breakfast, the assistant minister for foreign affairs declined to answer whether a prisoner swap was on the table.</p><p>Obviously, we try and negotiate as best we can on behalf of all Australians who find themselves in difficulties such as this. We obviously have to abide by international laws and we always uphold them. But the Australian officials on the ground will work with their counterparts to ensure that, hopefully he’s returned to Australia safely.</p> <a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Continue reading...</a>",
       "url": "https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Rescuers search for 18 missing after boat capsizes off Northern Cyprus",
-      "normalized": "rescuers search for 18 missing after boat capsizes off northern cyprus",
-      "description": "The captain and crew of the ferry have been brought before a judge and placed under formal arrest.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/rescue-teams-continue-search-for-missing-after-north-cyprus-ferry-sinking?traffic_source=rss"
-    },
-    {
-      "source": "BBC World",
-      "headline": "Russia says it helped to repel Niger attempted coup",
-      "normalized": "russia says it helped to repel niger attempted coup",
-      "description": "Soldiers tried to attack a key military base early on Saturday morning, authorities say, but were thwarted.",
-      "url": "https://www.bbc.co.uk/news/articles/c5ye8egg596o?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "BBC Europe",
@@ -924,24 +924,24 @@
       "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates"
     },
     {
-      "source": "DR",
-      "headline": "Seks personer har indtil videre fået omvendt fodlænke",
-      "normalized": "seks personer har indtil videre fået omvendt fodlænke",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/seks-personer-har-indtil-videre-faaet-omvendt-fodlaenke"
+      "source": "Al Jazeera",
+      "headline": "She is still in the sea, mother describes losing daughter in ferry disaster",
+      "normalized": "she is still in the sea mother describes losing daughter in ferry disaster",
+      "description": "Parents recount desperate attempts to save their children after a ferry capsized off Northern Cyprus on 30 August.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/she-is-still-in-the-sea-mother-describes-losing-daughter-in-ferry-disaster?traffic_source=rss"
     },
     {
       "source": "BBC Europe",
-      "headline": "'She slipped out of my hand' - couple's children missing after ferry capsizes",
-      "normalized": "she slipped out of my hand couple s children missing after ferry capsizes",
-      "description": "Ayten and Hayri Bicer's two young children are among 20 missing in an incident that killed eight.",
+      "headline": "'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus",
+      "normalized": "she slipped out of my hand children missing after ferry sinks off northern cyprus",
+      "description": "Ayten and Hayri Bicer's two young children are among 20 missing in an incident that killed eight people.",
       "url": "https://www.bbc.co.uk/news/articles/c1mv5ggg1l8o?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "BBC World",
-      "headline": "'She slipped out of my hand' - couple's children missing after ferry capsizes",
-      "normalized": "she slipped out of my hand couple s children missing after ferry capsizes",
-      "description": "Ayten and Hayri Bicer's two young children are among 20 missing in an incident that killed eight.",
+      "headline": "'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus",
+      "normalized": "she slipped out of my hand children missing after ferry sinks off northern cyprus",
+      "description": "Ayten and Hayri Bicer's two young children are among 20 missing in an incident that killed eight people.",
       "url": "https://www.bbc.co.uk/news/articles/c1mv5ggg1l8o?at_medium=RSS&at_campaign=rss"
     },
     {
@@ -959,11 +959,32 @@
       "url": "http://www.euronews.com/2026/08/31/six-wounded-after-car-bomb-explodes-in-front-of-mexico-police-station-officials-say"
     },
     {
+      "source": "DR",
+      "headline": "Skib mistænkt for at være del af skyggeflåden bordet af EU-mission",
+      "normalized": "skib mistænkt for at være del af skyggeflåden bordet af eu mission",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/skib-mistaenkt-vaere-del-af-skyggeflaaden-bordet-af-eu-mission"
+    },
+    {
       "source": "Al Jazeera",
-      "headline": "Sleeping in on weekends is good for the heart: What research has shown",
-      "normalized": "sleeping in on weekends is good for the heart what research has shown",
-      "description": "Study finds that catching up on sleep at weekends is linked to a lower risk of hypertension.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/sleeping-in-on-weekends-is-good-for-the-heart-what-research-has-shown?traffic_source=rss"
+      "headline": "Sony, Warner Music sue Anthropic, saying it pirated songs to train its AI",
+      "normalized": "sony warner music sue anthropic saying it pirated songs to train its ai",
+      "description": "Anthropic pirated hundreds of lyrics from The Beatles, Taylor Swift, Michael Jackson and other artists, lawsuit says.",
+      "url": "https://www.aljazeera.com/economy/2026/8/31/sony-warner-music-sue-anthropic-saying-it-pirated-songs-to-train-its-ai?traffic_source=rss"
+    },
+    {
+      "source": "Euronews",
+      "headline": "South African airline Airlink defends dramatic stadium flyover",
+      "normalized": "south african airline airlink defends dramatic stadium flyover",
+      "description": "Footage of the flyover quickly began circulating on social media, prompting mixed reactions as some expressed concerns over safety.",
+      "url": "http://www.euronews.com/2026/08/31/south-african-airline-airlink-defends-dramatic-stadium-flyover"
+    },
+    {
+      "source": "Guardian World",
+      "headline": "South African airline defends dramatic low-level flyby before rugby union clash",
+      "normalized": "south african airline defends dramatic low level flyby before rugby union clash",
+      "description": "<ul><li><p>Cape Town stunt sparks major debate over safety risks</p></li><li><p>Airlink insists flyby conducted according to regulations</p></li></ul><p>A pre-game stunt involving two passenger jets flying dramatically low over a stadium in South Africa drew huge cheers from the estimated crowd of 56,000 people, but also sparked a major debate over safety risks. The flyby by two Embraer jets, operated by the local airline Airlink, happened on Saturday before the second rugby union Test <a href=\"https://www.theguardian.com/sport/2026/aug/29/south-africa-new-zealand-greatest-rivalry-rugby-union-match-report\">between South Africa and New Zealand</a> in Cape Town.</p><p>The flight tracking service Flightradar24 estimated that the lead jet passed just 41-46 feet (12-14 metres) above the roof of Cape Town Stadium, with the crowd and the world’s top-ranked rugby teams below. The second jet, which was very close behind, flew through a cloud of pink dust that shot up from the stadium roof as part of the show.</p> <a href=\"https://www.theguardian.com/sport/2026/aug/31/south-african-airline-defends-dramatic-low-level-flyby-before-rugby-union-springboks-new-zealand\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/sport/2026/aug/31/south-african-airline-defends-dramatic-low-level-flyby-before-rugby-union-springboks-new-zealand"
     },
     {
       "source": "BBC World",
@@ -973,32 +994,11 @@
       "url": "https://www.bbc.co.uk/news/articles/c3rew8jqny5o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "South Korea court gives church leader two years in jail for bribery",
-      "normalized": "south korea court gives church leader two years in jail for bribery",
-      "description": "South Korea court gives church leader two years in jail for bribery",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/south-korea-court-gives-church-leader-two-years-in-jail-for-bribery?traffic_source=rss"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Spain’s Sanchez says Russia, Israel spread disinformation on Ceuta crisis",
-      "normalized": "spain s sanchez says russia israel spread disinformation on ceuta crisis",
-      "description": "Sanchez cited EU research which had found that Russia ⁠and ⁠Israel both spread disinformation during the crisis.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/spains-sanchez-condemns-russia-israel-disinformation-during-ceuta-crisis?traffic_source=rss"
-    },
-    {
       "source": "BBC World",
       "headline": "The jury's options in Lindsay Clancy's murder trial",
       "normalized": "the jury s options in lindsay clancy s murder trial",
       "description": "Jurors have five options before them as they decide the fate of the former nurse charged with killing her three children.",
       "url": "https://www.bbc.co.uk/news/articles/c93vgv4kr49o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "The looming failure of Operation Economic Outcast",
-      "normalized": "the looming failure of operation economic outcast",
-      "description": "The latest package of US sanctions on Iran is unlikely to achieve Washington’s objectives.",
-      "url": "https://www.aljazeera.com/opinions/2026/8/31/the-looming-failure-of-operation-economic-outcast?traffic_source=rss"
     },
     {
       "source": "BBC Europe",
@@ -1029,6 +1029,20 @@
       "url": "http://www.euronews.com/2026/08/31/i-dont-mind-begging-volta-offers-an-opportunity-to-many"
     },
     {
+      "source": "DR",
+      "headline": "To anholdt efter knivstikkeri ved værtshus i Aalborg",
+      "normalized": "to anholdt efter knivstikkeri ved værtshus i aalborg",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/anholdt-efter-knivstikkeri-ved-vaertshus-i-aalborg"
+    },
+    {
+      "source": "DR",
+      "headline": "To personer døde under oversvømmelser i Grand Canyon",
+      "normalized": "to personer døde under oversvømmelser i grand canyon",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/personer-doede-under-oversvoemmelser-i-grand-canyon"
+    },
+    {
       "source": "The Local Denmark",
       "headline": "Today in Denmark: A roundup of the latest news on Monday",
       "normalized": "today in denmark a roundup of the latest news on monday",
@@ -1036,25 +1050,11 @@
       "url": "https://www.thelocal.dk/20260831/today-in-denmark-a-roundup-of-the-latest-news-on-monday-59"
     },
     {
-      "source": "DR",
-      "headline": "Traktorer med banner spærrede Sallingsundbroen",
-      "normalized": "traktorer med banner spærrede sallingsundbroen",
-      "description": "Politiet ved ikke, hvem der er ansvarlig for vejspærringen.",
-      "url": "https://www.dr.dk/nyheder/seneste/traktorer-med-banner-spaerrer-sallingsundbroen"
-    },
-    {
       "source": "Al Jazeera",
-      "headline": "Transfer day: What and when is the deadline for club football signings?",
-      "normalized": "transfer day what and when is the deadline for club football signings",
-      "description": "Which players will Man United, Man City, Arsenal, Real Madrid and Barcelona sign and for how much? Al Jazeera explains.",
-      "url": "https://www.aljazeera.com/sports/2026/8/31/transfer-deadline-day-2026-football-summer-signing-window-barcola-gakpo-alvarez?traffic_source=rss"
-    },
-    {
-      "source": "DR",
-      "headline": "Tre anholdt for voldeligt overfald i Horsens",
-      "normalized": "tre anholdt for voldeligt overfald i horsens",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/tre-anholdt-voldeligt-overfald-i-horsens"
+      "headline": "Top US general says no plans to send troops to polls for November elections",
+      "normalized": "top us general says no plans to send troops to polls for november elections",
+      "description": "Remarks come in response to concerns from Democrats that military could be used to interfere in elections.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/top-us-general-says-no-plans-to-send-troops-to-polls-for-november-elections?traffic_source=rss"
     },
     {
       "source": "Guardian World",
@@ -1064,13 +1064,6 @@
       "url": "https://www.theguardian.com/us-news/2026/aug/28/trump-venezuela-oil-agreement"
     },
     {
-      "source": "BBC World",
-      "headline": "Trump hails 'historic' deal for US to control 65bn barrels of Venezuela's oil",
-      "normalized": "trump hails historic deal for us to control 65bn barrels of venezuela s oil",
-      "description": "Venezuelan interim president says the unusual agreement will help revive her country's economy.",
-      "url": "https://www.bbc.co.uk/news/articles/cx2zlwe7qj1o?at_medium=RSS&at_campaign=rss"
-    },
-    {
       "source": "Euronews",
       "headline": "Trump hits out at NBC journalist Kristen Welker, calling for her to face 'rebuke or punishment'",
       "normalized": "trump hits out at nbc journalist kristen welker calling for her to face rebuke or punishment",
@@ -1078,25 +1071,53 @@
       "url": "http://www.euronews.com/2026/08/30/trump-hits-out-at-nbc-journalist-kristen-welker-calling-for-her-to-face-rebuke-or-punishme"
     },
     {
+      "source": "BBC World",
+      "headline": "Trump pushes Apple to change 'Lake Ontario' to 'Lake America' on its maps",
+      "normalized": "trump pushes apple to change lake ontario to lake america on its maps",
+      "description": "The request comes after Google made the switch for US-based users over the weekend. MapQuest, another US map provider, said it will not change the name.",
+      "url": "https://www.bbc.co.uk/news/articles/c2l80eq5lxno?at_medium=RSS&at_campaign=rss"
+    },
+    {
       "source": "Guardian World",
-      "headline": "Trump says US will ‘hit Iran hard’ as hostilities resume – Middle East crisis live",
-      "normalized": "trump says us will hit iran hard as hostilities resume middle east crisis live",
-      "description": "<p>Iran responded to an assault on its Larak Island by targeting US bases in Jordan</p><ul><li><p><a href=\"https://www.theguardian.com/world/2026/aug/30/us-strikes-iranian-launchers-on-larak-island-amid-strait-of-hormuz-tensions\">First US military attacks on Iran in a month prompt retaliation</a></p></li></ul><p><a href=\"https://www.theguardian.com/world/live/2026/aug/31/us-iran-israel-hormuz-oil-donald-trump-larak-kharg-island-uae-jordan-latest-news-updates?page=with%3Ablock-6a9543438f08187a5f76fcce#block-6a9543438f08187a5f76fcce\">Coinciding with this week’s G20 meeting</a>, the EU has issued a statement saying it will work with the US and other allied countries to maintain economic pressure against Iran.</p><p>“The ‌EU welcomes efforts at ensuring that Iran ceases its destabilising activities and engages in peace negotiations with good ‌faith, also through additional economic pressure, including through ​the US-led Operation Economic Outcast,” it said in reference to the pressure strategy the White House describes as “an unprecedented campaign to sever every remaining economic lifeline sustaining” the Islamic republic.</p> <a href=\"https://www.theguardian.com/world/live/2026/aug/",
+      "headline": "Trump says US will ‘hit Iran hard’ as hostilities resume – as it happened",
+      "normalized": "trump says us will hit iran hard as hostilities resume as it happened",
+      "description": "<p>Iran responded to an assault on its Larak Island by targeting US bases in Jordan</p><ul><li><p><a href=\"https://www.theguardian.com/world/2026/aug/31/trump-threatens-further-action-us-iran-exchange-fire\">Trump threatens further action as US and Iran exchange fire in new flare-up</a></p></li></ul><p><a href=\"https://www.theguardian.com/world/live/2026/aug/31/us-iran-israel-hormuz-oil-donald-trump-larak-kharg-island-uae-jordan-latest-news-updates?page=with%3Ablock-6a9543438f08187a5f76fcce#block-6a9543438f08187a5f76fcce\">Coinciding with this week’s G20 meeting</a>, the EU has issued a statement saying it will work with the US and other allied countries to maintain economic pressure against Iran.</p><p>“The ‌EU welcomes efforts at ensuring that Iran ceases its destabilising activities and engages in peace negotiations with good ‌faith, also through additional economic pressure, including through ​the US-led Operation Economic Outcast,” it said in reference to the pressure strategy the White House describes as “an unprecedented campaign to sever every remaining economic lifeline sustaining” the Islamic republic.</p> <a href=\"https://www.theguardian.com/world/live/2026/aug/31/us-iran-",
       "url": "https://www.theguardian.com/world/live/2026/aug/31/us-iran-israel-hormuz-oil-donald-trump-larak-kharg-island-uae-jordan-latest-news-updates"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Turkiye, Saudi Arabia, Pakistan hold first Mecca defence pact meeting",
-      "normalized": "turkiye saudi arabia pakistan hold first mecca defence pact meeting",
-      "description": "Turkiye, Saudi Arabia, Pakistan hold first Mecca defence pact meeting",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/turkiye-saudi-arabia-pakistan-hold-first-mecca-defence-pact-meeting?traffic_source=rss"
+      "source": "Guardian World",
+      "headline": "Trump threatens further action as US and Iran exchange fire in new flare-up",
+      "normalized": "trump threatens further action as us and iran exchange fire in new flare up",
+      "description": "<p>Washington says it acted after observing Iran was planning to deploy fresh mines in strait of Hormuz</p><p>The US and Iran have exchanged fire for the first time in a month, with missiles and drones fired at Iranian rocket launchers on an island in the strait of Hormuz, and Iran targeting US military bases in Jordan and the United Arab Emirates in response.</p><p>The US president, Donald Trump, on Monday threatened further action. The US is to trying to prise open Tehran’s grip on shipping going through the strait, which before the war accounted for a fifth of the world’s seaborne energy supply. Washington claimed that Iranian control over the waterway had been loosened by repeated US attacks on Iranian missile launchers and radars.</p> <a href=\"https://www.theguardian.com/world/2026/aug/31/trump-threatens-further-action-us-iran-exchange-fire\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/world/2026/aug/31/trump-threatens-further-action-us-iran-exchange-fire"
     },
     {
       "source": "Al Jazeera",
-      "headline": "UAE intercepts drone after US and Iran exchange attacks",
-      "normalized": "uae intercepts drone after us and iran exchange attacks",
-      "description": "The UAE says it intercepted a drone coming from Iran and rejected &#039;false&#039; reports of an attack on its Al Menhad airbase.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/uae-intercepts-drone-after-us-and-iran-exchange-attacks?traffic_source=rss"
+      "headline": "Tunisia protests: Water, power cuts and rising anger",
+      "normalized": "tunisia protests water power cuts and rising anger",
+      "description": "Tunisia protests: Water, power cuts and rising anger",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/tunisia-protests-water-power-cuts-and-rising-anger?traffic_source=rss"
+    },
+    {
+      "source": "Guardian World",
+      "headline": "Turkish deep-sea search vessel joins efforts to retrieve 20 still missing after Cyprus ferry disaster",
+      "normalized": "turkish deep sea search vessel joins efforts to retrieve 20 still missing after cyprus ferry disaster",
+      "description": "<p>TCG Isin expected to play vital role in locating Filo Jet’s voyage data recorder 514 metres below surface</p><p>A deep-sea search and rescue vessel is on its way to Cyprus as Turkey joins efforts to retrieve the 20 people still missing after a passenger ferry capsized off the island’s northern coast.</p><p>The TCG Isin<em> </em>will join the vast operation to find survivors after the high-speed ferry sank on Sunday barely four nautical miles outside the port town of Kyrenia.</p> <a href=\"https://www.theguardian.com/world/2026/aug/31/turkish-deep-sea-search-vessel-tcg-isin-retrieve-20-missing-cyprus-ferry\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/world/2026/aug/31/turkish-deep-sea-search-vessel-tcg-isin-retrieve-20-missing-cyprus-ferry"
+    },
+    {
+      "source": "BBC World",
+      "headline": "Two dead and more than a dozen missing after 'terrifying' flash flood hits Grand Canyon",
+      "normalized": "two dead and more than a dozen missing after terrifying flash flood hits grand canyon",
+      "description": "\"It was a beautiful day - and then people were screaming,\" one hiker tells the BBC, as 14 people are missing.",
+      "url": "https://www.bbc.co.uk/news/articles/clylkjyez1do?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Ukrainians mourn community leader killed in Russian strike on Myla",
+      "normalized": "ukrainians mourn community leader killed in russian strike on myla",
+      "description": "Ukrainians gathered to mourn Taras Didych, who was killed while rushing to help after a Russian strike.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/ukrainians-mourn-community-leader-killed-in-russian-strike-on-myla?traffic_source=rss"
     },
     {
       "source": "Euronews",
@@ -1120,11 +1141,25 @@
       "url": "http://www.euronews.com/2026/08/30/us-forces-strike-iranian-rocket-launchers-in-strait-of-hormuz-as-irgc-warns-of-retaliatory"
     },
     {
-      "source": "DR",
-      "headline": "USA angriber for første gang i en måned Iran",
-      "normalized": "usa angriber for første gang i en måned iran",
-      "description": "Iran har som modsvar angrebet to amerikanske baser i Jordan med ballistiske missiler, rapporterer iranske statsmedier.",
-      "url": "https://www.dr.dk/nyheder/seneste/usa-angriber-foerste-gang-i-en-maaned-iran"
+      "source": "BBC World",
+      "headline": "US singer D4vd's celebrity lawyers withdraw from murder case",
+      "normalized": "us singer d4vd s celebrity lawyers withdraw from murder case",
+      "description": "The singer, 21, will be now represented by a public defender in the murder trial of 14-year-old Celeste Rivas Hernandez. He has pleaded not guilty.",
+      "url": "https://www.bbc.co.uk/news/articles/crr451lpl4no?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "BBC World",
+      "headline": "US Supreme Court clears way for Trump to keep building White House ballroom",
+      "normalized": "us supreme court clears way for trump to keep building white house ballroom",
+      "description": "The National Trust for Historic Preservation argued the president did not have authority to proceed with construction.",
+      "url": "https://www.bbc.co.uk/news/articles/c9w457e7ydlo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Vance says Trump ‘sending a message’ to Iran with AI-generated video",
+      "normalized": "vance says trump sending a message to iran with ai generated video",
+      "description": "Video depicting Kharg Island being attacked is later followed by more warnings from President Trump.",
+      "url": "https://www.aljazeera.com/economy/2026/8/31/vance-says-trump-sending-a-message-to-iran-with-ai-generated-video?traffic_source=rss"
     },
     {
       "source": "Guardian World",
@@ -1148,13 +1183,6 @@
       "url": "https://www.theguardian.com/world/2026/aug/28/us-venezuela-oil-gas-stake"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Venus Williams bows out of US Open with straight-sets defeat to Sofia Kenin",
-      "normalized": "venus williams bows out of us open with straight sets defeat to sofia kenin",
-      "description": "The 46-year-old US veteran loses to wildcard compatriot but will play in women&#039;s doubles with sister Serena Williams.",
-      "url": "https://www.aljazeera.com/sports/2026/8/31/venus-williams-bows-out-of-us-open-with-straight-sets-defeat-to-sofia-kenin?traffic_source=rss"
-    },
-    {
       "source": "BBC Europe",
       "headline": "Violence breaks out in Ceuta as migrant crisis continues",
       "normalized": "violence breaks out in ceuta as migrant crisis continues",
@@ -1170,10 +1198,10 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "War and heat: Why are wheat prices soaring?",
-      "normalized": "war and heat why are wheat prices soaring",
-      "description": "Russia and Ukraine have stepped up attacks on their respective grain terminals in the Black Sea.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/war-and-heat-why-are-wheat-prices-soaring?traffic_source=rss"
+      "headline": "War on Iran: US bombs Iran",
+      "normalized": "war on iran us bombs iran",
+      "description": "War on Iran: US bombs Iran",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/war-on-iran-us-bombs-iran?traffic_source=rss"
     },
     {
       "source": "Guardian World",
@@ -1190,6 +1218,13 @@
       "url": "https://www.theguardian.com/environment/2026/aug/31/weather-tracker-warm-yellow-sea-storms-south-korea"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "Western Balkans truck drivers threaten EU border blockade",
+      "normalized": "western balkans truck drivers threaten eu border blockade",
+      "description": "Drivers demand an exemption to 90-day limit to stay in Schengen area, saying current rules stop them from working.",
+      "url": "https://www.aljazeera.com/economy/2026/8/31/western-balkans-truck-drivers-threaten-eu-border-blockade?traffic_source=rss"
+    },
+    {
       "source": "The Local Denmark",
       "headline": "What&#039;s the difference between Schengen and EU free movement rules?",
       "normalized": "what 039 s the difference between schengen and eu free movement rules",
@@ -1197,11 +1232,11 @@
       "url": "https://www.thelocal.dk/20260828/whats-the-difference-between-schengen-and-eu-free-movement-rules"
     },
     {
-      "source": "Guardian World",
-      "headline": "What could Meta’s US settlement mean around the world – and what now for other claims against firm?",
-      "normalized": "what could meta s us settlement mean around the world and what now for other claims against firm",
-      "description": "<p>Other governments could seek similar concessions, while separate legal action is pending in places ranging from Kenya to the Netherlands</p><p>In October 2021, Abrham Meareg’s father, a professor of chemistry in Ethiopia’s northern town of Bahir Dar, was shot at close range and died outside his family home. This was in the middle of the country’s civil war.</p><p>For weeks, Facebook’s algorithm had actively promoted posts calling for the academic to be murdered, according to Meareg and Foxglove, a nonprofit organisation supporting <a href=\"https://www.theguardian.com/technology/2025/apr/03/meta-faces-18bn-lawsuit-over-claims-it-inflamed-violence-in-ethiopia\">Meareg’s lawsuit against the company</a> in Kenya. These posts included photos of his father and his home address.</p> <a href=\"https://www.theguardian.com/technology/2026/aug/28/meta-facebook-us-lawsuit-settlement-world-impact\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/technology/2026/aug/28/meta-facebook-us-lawsuit-settlement-world-impact"
+      "source": "Al Jazeera",
+      "headline": "What to know: US court hearing held for alleged Lockerbie bombmaker",
+      "normalized": "what to know us court hearing held for alleged lockerbie bombmaker",
+      "description": "Abu Agila Mohammad Mas’ud Kheir Al-Marimi is the third person charged in the downing of Pan Am Flight 103.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/what-to-know-us-court-hearing-held-for-alleged-lockerbie-bombmaker?traffic_source=rss"
     },
     {
       "source": "Euronews",
@@ -1239,13 +1274,6 @@
       "url": "https://www.bbc.co.uk/sport/football/articles/c3v0q3r554xo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Who are the economic winners and losers of the US-Israel war on Iran?",
-      "normalized": "who are the economic winners and losers of the us israel war on iran",
-      "description": "Airlines and automakers have taken a hit, while banks and energy firms have raked in big profits.",
-      "url": "https://www.aljazeera.com/economy/2026/8/31/who-are-the-economic-winners-and-losers-of-the-us-israel-war-on-iran?traffic_source=rss"
-    },
-    {
       "source": "BBC Europe",
       "headline": "Who is Norway's new King Haakon VIII?",
       "normalized": "who is norway s new king haakon viii",
@@ -1253,59 +1281,14 @@
       "url": "https://www.bbc.co.uk/news/articles/cp841114eg6o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Why is piracy picking up off Somalia’s coast again?",
-      "normalized": "why is piracy picking up off somalia s coast again",
-      "description": "Piracy is surging back off Somalia&#039;s coast, though not yet at the scale of its 2011 peak.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/why-is-piracy-picking-up-off-somalias-coast-again?traffic_source=rss"
-    },
-    {
       "source": "BBC Europe",
       "headline": "Why is Ukraine's ex-defence minister calling for wartime elections?",
       "normalized": "why is ukraine s ex defence minister calling for wartime elections",
       "description": "Mykhailo Fedorov has called for elections, without addressing concerns over how they could be held while at war.",
       "url": "https://www.bbc.co.uk/news/videos/c62eyn5ggnzo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Xi, Modi and Putin attend SCO summit: What’s on the agenda?",
-      "normalized": "xi modi and putin attend sco summit what s on the agenda",
-      "description": "The two-day summit aims to promote a vision of a multipolar world and mutual trade ties amid Trump&#039;s unilateralism.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/xi-modi-and-putin-set-to-meet-for-sco-summit-whats-on-the-agenda?traffic_source=rss"
-    },
-    {
-      "source": "BBC World",
-      "headline": "Zambian opposition leader charged with treason",
-      "normalized": "zambian opposition leader charged with treason",
-      "description": "Mundubile had previously gone into hiding at a United Nations building in Zambia's capital.",
-      "url": "https://www.bbc.co.uk/news/articles/c20lwqpx70qo?at_medium=RSS&at_campaign=rss"
     }
   ],
   "exact_clusters": [
-    {
-      "normalized": "british woman killed in stabbing at german railway station",
-      "sources": [
-        "BBC Europe",
-        "BBC World"
-      ],
-      "headlines": [
-        "British woman killed in stabbing at German railway station",
-        "British woman killed in stabbing at German railway station"
-      ],
-      "note": "Exact normalized headline match only; not proof of independent sourcing."
-    },
-    {
-      "normalized": "iceland votes against restarting eu membership talks",
-      "sources": [
-        "BBC Europe",
-        "BBC World"
-      ],
-      "headlines": [
-        "Iceland votes against restarting EU membership talks",
-        "Iceland votes against restarting EU membership talks"
-      ],
-      "note": "Exact normalized headline match only; not proof of independent sourcing."
-    },
     {
       "normalized": "man arrested after swiss rave shooting that killed woman",
       "sources": [
@@ -1319,14 +1302,14 @@
       "note": "Exact normalized headline match only; not proof of independent sourcing."
     },
     {
-      "normalized": "she slipped out of my hand couple s children missing after ferry capsizes",
+      "normalized": "she slipped out of my hand children missing after ferry sinks off northern cyprus",
       "sources": [
         "BBC Europe",
         "BBC World"
       ],
       "headlines": [
-        "'She slipped out of my hand' - couple's children missing after ferry capsizes",
-        "'She slipped out of my hand' - couple's children missing after ferry capsizes"
+        "'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus",
+        "'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus"
       ],
       "note": "Exact normalized headline match only; not proof of independent sourcing."
     },

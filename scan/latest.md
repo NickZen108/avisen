@@ -1,33 +1,33 @@
-# Scan 2026-08-31T15:00:19.672Z (Cloudflare runtime)
+# Scan 2026-08-31T20:45:19.553Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
 ## Al Jazeera
-- After the flash flood disaster, here is what Nepal really needs
-- Can Iran use rockets to mine the Strait of Hormuz, as US claims?
-- Fire breaks out after unidentified explosions at oil refinery in Baghdad
-- Fire breaks out after unidentified explosions at oil refinery in Baghdad
-- Greece signs $3.5bn air defence deal with Israel
-- Iran attacks Jordan, UAE after US bombs Larak Island: What’s the latest?
-- Kazakhstan’s Tokayev appoints longtime adviser as vice president
-- Liverpool sign Bradley Barcola from Paris Saint-Germain
-- Manchester City sign Brazilian winger Allan Elias from Palmeiras
-- More value in Cairo’s trash, but less for those who collect it
-- Nepal tunnel traps hinder flood rescue: How many are dead or missing?
-- Pakistan, Saudi Arabia, Turkiye meet: What’s next for their defence pact?
-- Rescuers search for 18 missing after boat capsizes off Northern Cyprus
-- Sleeping in on weekends is good for the heart: What research has shown
-- South Korea court gives church leader two years in jail for bribery
-- Spain’s Sanchez says Russia, Israel spread disinformation on Ceuta crisis
-- The looming failure of Operation Economic Outcast
-- Transfer day: What and when is the deadline for club football signings?
-- Turkiye, Saudi Arabia, Pakistan hold first Mecca defence pact meeting
-- UAE intercepts drone after US and Iran exchange attacks
-- Venus Williams bows out of US Open with straight-sets defeat to Sofia Kenin
-- War and heat: Why are wheat prices soaring?
-- Who are the economic winners and losers of the US-Israel war on Iran?
-- Why is piracy picking up off Somalia’s coast again?
-- Xi, Modi and Putin attend SCO summit: What’s on the agenda?
+- Aston Villa vs Arsenal LIVE: Premier League
+- Damaged Gaza ambulance becomes ‘dream bus’ for children
+- Far-right Israeli Minister Ben-Gvir and settlers storm Al-Aqsa Mosque
+- Firecracker factory blast in India kills 8 children
+- GTA 6: Why is the world’s most anticipated game facing backlash?
+- How will the Mecca agreement become an operational framework?
+- India rejects Hague court order to restore Indus waters pact with Pakistan
+- India’s PM Modi urges end to Ukraine war in talks with Russia’s Putin
+- Iran could face economic collapse in months, US Treasury’s Bessent warns
+- Israel’s Ben-Gvir storms Al-Aqsa mosque in occupied East Jerusalem
+- ‘Let Data Reign’: Trump decries opposition to data centres in US
+- Nepal FM speaks to Al Jazeera on devastating floods
+- Over 6,000 Ebola cases confirmed in DRC as death toll nears 3,000
+- Palestinian farmers rebuild what Israeli settlers destroy in West Bank
+- Photos: Nearly 1,000 dead, thousands missing in Nepal–China border floods
+- Principal who saved 900 students recalls Nepal’s devastating flood
+- She is still in the sea, mother describes losing daughter in ferry disaster
+- Sony, Warner Music sue Anthropic, saying it pirated songs to train its AI
+- Top US general says no plans to send troops to polls for November elections
+- Tunisia protests: Water, power cuts and rising anger
+- Ukrainians mourn community leader killed in Russian strike on Myla
+- Vance says Trump ‘sending a message’ to Iran with AI-generated video
+- War on Iran: US bombs Iran
+- Western Balkans truck drivers threaten EU border blockade
+- What to know: US court hearing held for alleged Lockerbie bombmaker
 
 ## BBC Europe
 - Allan Little: I met dangerously fanatical Mladić early in Bosnian war
@@ -48,7 +48,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Norway's King Harald dies aged 89: A beloved monarch buffeted by family crises
 - Norway's new king remembers 'my dear father' in first speech
 - Russian strikes destroy 12 million books ahead of Ukraine's first week back at school
-- 'She slipped out of my hand' - couple's children missing after ferry capsizes
+- 'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus
 - The monstrous crimes of Ratko Mladic, the 'Butcher of Bosnia'
 - 'The record will fall' - Werro takes aim at 43-year-old 800m mark
 - They fell in love - then had to check they weren't brother and sister
@@ -60,78 +60,79 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## BBC World
 - 97-year-old woman rescued after Nepali floods looked like 'a warrior'
-- 'A giant leap forward': Nasa launches powerful new space telescope
+- Across Latin America, 'aura battles' burst onto the scene
 - Algeria president seeks death penalty for arsonists after deadly forest fires
-- BBC tracks one week of Israeli settler violence in occupied West Bank
-- British woman killed in stabbing at German railway station
+- Company offering reward for safe return of truckload of beer
 - Deadly strike on Kyiv warehouse prompts evacuations
 - Dolly Parton laid to rest alongside husband in Nashville
 - Dolly Parton's dad couldn't read - it inspired her to send books to millions of children
+- Ex-congressman George Santos banned from betting platform for life
 - From playing Serena Williams on screen to following in her footsteps
-- Head teacher evacuated 900 children minutes before Nepal floods hit school
 - How the US-Canada trade war is being felt on both sides of the border
-- Iceland votes against restarting EU membership talks
+- 'I haven't lost my hope' - the search for missing loved ones
+- John Galliano exhibition at New York Met cancelled after backlash
 - Man arrested after Swiss rave shooting that killed woman
-- Manhunt after shooting at Swiss rave kills woman, 22, and injures five
+- Messi retires from international football with 'nothing left to give'
 - Monza memories - Italian GP in pictures through the years
 - 'Moonies' church leader jailed for two years over bribery offences
 - Nepal flood relief vehicles trapped as heavy rain turns roads to mud
-- One dead and more than a dozen missing after 'terrifying' flash flood hits Grand Canyon
+- Nepal rescuers blast hillside in search of hydropower workers as families wait anxiously
 - Passengers stranded as strike disrupts flights at Kenya's main airport
-- Russia says it helped to repel Niger attempted coup
-- 'She slipped out of my hand' - couple's children missing after ferry capsizes
+- 'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus
 - South African airline defends low-altitude aerial stunt over packed stadium
 - The jury's options in Lindsay Clancy's murder trial
-- Trump hails 'historic' deal for US to control 65bn barrels of Venezuela's oil
+- Trump pushes Apple to change 'Lake Ontario' to 'Lake America' on its maps
+- Two dead and more than a dozen missing after 'terrifying' flash flood hits Grand Canyon
 - US and Iran trade strikes for first time in weeks
+- US singer D4vd's celebrity lawyers withdraw from murder case
+- US Supreme Court clears way for Trump to keep building White House ballroom
 - WhatsApp chat used to launder cash for crime and extremism
-- Zambian opposition leader charged with treason
 
 ## DR
-- 17-årig uledsaget bilist er kørt ind i to huse
 - 2.000 elkunder var uden strøm på Sydsjælland
 - Antallet af bekræftede ebola-tilfælde når 6.000 i DR Congo
-- August er den dyreste måned for strøm siden 2022
+- Brand i polsk dronefabrik efterforskes som terror
 - Dagens første skybrud registreret
+- Danmark genåbner ambassade i Syrien efter 14 år
 - Far idømmes seks års fængsel for dødsvold mod spædbarn
+- Fiskeri efter blåmuslinger i Limfjorden begrænses
 - Frankrig og Sverige underskriver forsvarsaftale
-- Historie om Yahya Hassans familie får snart teaterpremiere
 - Hver fjerde ung er på skærmen over seks timer dagligt
 - Ida Auken rejser til Grønland
-- Københavnertradition aflyst på grund af regnvejr
-- Landboforening melder om stor opbakning til protestmøde
+- Indiens premierminister opfordrer til at standse krigen i Ukraine
 - Mor og datter får tilsammen 23 års fængsel
+- Ny type kaninpest fundet i danske harer
 - Pedro Sánchez: Israel og Rusland udnyttede Ceuta-krisen
-- Seks personer har indtil videre fået omvendt fodlænke
+- Politiet advarer om kø inden traktordemonstration
 - Sigtelse mod lastbilschauffør efter dødsulykke med politielev droppet
-- Traktorer med banner spærrede Sallingsundbroen
-- Tre anholdt for voldeligt overfald i Horsens
-- USA angriber for første gang i en måned Iran
+- Skib mistænkt for at være del af skyggeflåden bordet af EU-mission
+- To anholdt efter knivstikkeri ved værtshus i Aalborg
+- To personer døde under oversvømmelser i Grand Canyon
 - VVS'er får ti års fængsel for at overvåge kokain-transport
 
 ## Euronews
 - 200 bikers gather at Italy's Castel Gandolfo for motorcycle blessing
+- Algerian president seeks to impose death penalty on arsonists
 - Authorities in Nepal carry out temporary burials of unidentified flood victims causing public outrage
 - Body of 46-year-old man recovered after Grand Canyon flash flood, park service says
 - Buenos Aires welcomes 800 couples for Tango BA World Championship
 - Captain arrested after eight people die in ferry capsize off northern Cyprus
+- Eurasian nations gather in Bishkek to forge stronger ties, new alliances
 - Exclusive: US naval blockade is paralysing daily life, Iranians tell Euronews
 - Flash flood hits Grand Canyon’s Phantom Ranch, more than 20 people missing
 - Guinea-Bissau votes in referendum to rewrite constitution and boost presidential powers
 - Icelanders react as the EU referendum results come in
 - India and Uzbekistan deepen ties, eye $5bn trade and long-term uranium supplies
 - Iran launches strikes on Jordan after US attacks an island in Hormuz
-- Latest news bulletin | August 29th, 2026 – Evening
 - Latest news bulletin | August 30th, 2026 – Evening
-- Latest news bulletin | August 30th, 2026 – Midday
-- Latest news bulletin | August 30th, 2026 – Morning
+- Latest news bulletin | August 31st, 2026 – Evening
 - Latest news bulletin | August 31st, 2026 – Midday
 - Latest news bulletin | August 31st, 2026 – Morning
 - Michael Jackson fans dance to Thriller to mark King of Pop's 68th birthday
 - Nepal flood death toll passes 900 as search for survivors continues
-- Nepal warns of more possible floods as communities grapple with devastation and death toll rises
 - Oil prices higher as US-Iran tensions flare and Warsh fans rate hikes
 - Six wounded after car bomb explodes in front of Mexico police station, officials say
+- South African airline Airlink defends dramatic stadium flyover
 - 'They wrote little letters': How kids in Portugal are making money off their neighbours' plastic waste
 - Trump hits out at NBC journalist Kristen Welker, calling for her to face 'rebuke or punishment'
 - UN racial discrimination committee presents legal case for broad slavery reparations
@@ -142,32 +143,32 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## Guardian World
 - At least 93,000 ‘in great need’ after Nepal-Tibet flash floods, says Red Cross
 - Australians missing in Nepal targeted by ‘heartbreaking’ and ‘abhorrent’ racist slurs
-- British family plead with French authorities to release body of relative who died in the Channel
+- Border area between Nepal and China where 33 Australians are missing still almost entirely cut off
+- British family pleads with French authorities to release body of relative who died in Channel
 - Canada erects giant ‘Lake Ontario’ sign as spat with Trump over name escalates
 - China is concealing scale of flood disaster, say Tibet campaigners
 - Countries legally obliged to consider slavery reparations, says UN committee
 - Egyptian queen’s 673-diamond necklace stolen in Vienna smash-and-grab raid
-- First US military attacks on Iran in a month prompt retaliation
 - French high schools rush to put Macron’s phone ban into force
 - Germany poised to identify suspect in Leipzig drone attack on Ukrainian plane
-- Goodbye to Babylon Berlin, the 1920s TV drama that has eerily foreshadowed real-life politics
-- Icac lawyer tells Charles Perrottet the key to lying is ‘you have to be really good at remembering it’
+- Head of Viktor Orbán’s favourite thinktank quits over unpaid wages
 - Iran’s economy in crisis as US launches new sanctions campaign
 - Man who murdered Molly Ticehurst unlikely to face life in jail, court hears
 - Morocco not to blame for Ceuta border breach, says Spanish PM
-- Nearly 20 people still missing after ferry capsizes ⁠off northern Cyprus
 - Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels
 - Newborn baby’s body found in Sydney rubbish bin as police hold ‘serious concerns’ for mother
 - People fleeing Sudan civil war face ‘dire and deteriorating’ conditions in refuge city
 - Qantas ground crews vote for right to strike amid pay dispute – as it happened
 - Search continues as number missing in Nepal-Tibet floods rises to 2,478 – as it happened
+- South African airline defends dramatic low-level flyby before rugby union clash
 - Trump announces new US oil agreement with Venezuela
-- Trump says US will ‘hit Iran hard’ as hostilities resume – Middle East crisis live
+- Trump says US will ‘hit Iran hard’ as hostilities resume – as it happened
+- Trump threatens further action as US and Iran exchange fire in new flare-up
+- Turkish deep-sea search vessel joins efforts to retrieve 20 still missing after Cyprus ferry disaster
 - Venezuela’s Delcy Rodríguez defends ‘endless’ benefits of her oil deal with Trump
 - Venezuelan opposition up in arms over reports US wants big stake in oil and gas
 - Was it a mistake for 99 Colombian guerrillas to lay down their arms?
 - Weather tracker: Warm Yellow Sea strengthens storms in South Korea
-- What could Meta’s US settlement mean around the world – and what now for other claims against firm?
 
 ## TV2
 - (feed ikke nået; status=530)
