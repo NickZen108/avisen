@@ -22,8 +22,13 @@ def main():
             cards.append(f'<button class="short-video-card" type="button" data-youtube-id="{e(x["id"])}" data-video-title="{e(x.get("title") or "Video")}" aria-label="Afspil: {e(x.get("title") or "Video")}"><img src="{e(thumb)}" alt="" loading="lazy"><span class="short-video-card__shade"></span><strong>{e(x.get("title") or "Video")}</strong><small>{e(x.get("topic") or "Video")}</small><span class="short-video-card__play" aria-hidden="true">▶</span></button>')
         section='<section class="short-videos wrap" aria-labelledby="short-video-title"><div class="short-videos__head"><h2 id="short-video-title">Korte videoer</h2><p>Nyheder, natur, sport, teknologi og øjeblikke værd at se.</p></div><div class="short-videos__rail">'+''.join(cards)+'</div></section><dialog class="video-dialog" id="short-video-dialog"><button class="video-dialog__close" type="button" aria-label="Luk video">×</button><div class="video-dialog__frame"></div></dialog><script src="short-videos.js" defer></script>'
     text=INDEX.read_text(encoding='utf-8')
-    marker='<!-- SHORT_VIDEOS -->'
-    if marker in text: text=text.replace(marker,section)
+    # Replace the full indented marker line so an empty feed cannot leave
+    # whitespace-only output that fails git diff --check.
+    marker='  <!-- SHORT_VIDEOS -->'
+    if marker in text:
+        text=text.replace(marker,section)
+    else:
+        text=text.replace('<!-- SHORT_VIDEOS -->',section)
     INDEX.write_text(text,encoding='utf-8'); print(f'Short videos rendered: {len(items[:maximum]) if len(items)>=minimum else 0}')
     return 0
 if __name__=='__main__': raise SystemExit(main())
