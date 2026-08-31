@@ -86,12 +86,22 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
     article = read_json(path)
     if article is None or path.name.startswith("_"):
         return
+    status = article.get("status")
+    valid_statuses = {"draft", "researching", "checking", "editing", "ready", "scheduled", "published"}
+    if status not in valid_statuses:
+        err(f"{path.name}: ugyldig status")
+        return
+
+    # Arbejdsstykker må være ufuldstændige uden at stoppe hele avisen. Deres mangler
+    # registreres/routes af release_ready + pipeline-health. Hårde publiceringsgates
+    # gælder først, når et stykke forsøger at blive ready/scheduled/published.
+    if status in {"draft", "researching", "checking", "editing"}:
+        return
+
     required = ["status", "story_id", "slug", "category", "weight", "title", "standfirst", "byline", "manual_review", "ledger", "claim_ids", "seo", "body"]
     for field in required:
         if field not in article:
             err(f"{path.name}: mangler felt {field}")
-    if article.get("status") not in {"draft", "researching", "checking", "editing", "ready", "scheduled", "published"}:
-        err(f"{path.name}: ugyldig status")
     if article.get("category") not in categories:
         err(f"{path.name}: ugyldig kategori {article.get('category')!r}")
     if article.get("weight") not in {"A", "B", "C", "D"}:
