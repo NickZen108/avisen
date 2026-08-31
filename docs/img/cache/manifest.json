@@ -148,5 +148,35 @@
     "file": "/img/cache/1f1f593e426efa89ce2b.jpg",
     "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/V%C3%A6rl%C3%B8se_Station_01.jpg/1920px-V%C3%A6rl%C3%B8se_Station_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
     "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/1f1f593e426efa89ce2b.jpg"
+  },
+  "https://i.ytimg.com/vi/8cBaHXLtmZg/hqdefault.jpg": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/212b319f849ad5ab8ad7.jpg",
+    "origin_final_url": "https://i.ytimg.com/vi/8cBaHXLtmZg/hqdefault.jpg",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/212b319f849ad5ab8ad7.jpg"
+  },
+  "https://i.ytimg.com/vi/fQHxqWDNcgw/hqdefault.jpg": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/d349f4ce0b9e90545d76.jpg",
+    "origin_final_url": "https://i.ytimg.com/vi/fQHxqWDNcgw/hqdefault.jpg",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/d349f4ce0b9e90545d76.jpg"
+  },
+  "https://i.ytimg.com/vi/uNuhG3kS7so/hqdefault.jpg": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/cb6bf647cdc82bd3c8fa.jpg",
+    "origin_final_url": "https://i.ytimg.com/vi/uNuhG3kS7so/hqdefault.jpg",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/cb6bf647cdc82bd3c8fa.jpg"
+  },
+  "https://i.ytimg.com/vi/ueBf0RsDaOE/hqdefault.jpg": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/e7bb79d879eeafafa9df.jpg",
+    "origin_final_url": "https://i.ytimg.com/vi/ueBf0RsDaOE/hqdefault.jpg",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/e7bb79d879eeafafa9df.jpg"
+  },
+  "https://i.ytimg.com/vi/vI0M_ARdKaM/hqdefault.jpg": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/946821a58e56ba99adaf.jpg",
+    "origin_final_url": "https://i.ytimg.com/vi/vI0M_ARdKaM/hqdefault.jpg",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/946821a58e56ba99adaf.jpg"
   }
 }
