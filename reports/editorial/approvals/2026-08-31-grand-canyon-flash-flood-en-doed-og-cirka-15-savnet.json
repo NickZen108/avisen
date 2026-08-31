@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "slug": "2026-08-31-grand-canyon-flash-flood-en-doed-og-cirka-15-savnet",
+  "story_id": "2026-08-31-grand-canyon-flash-flood",
+  "approved_at": "2026-08-31T09:05:00Z",
+  "language": "pass",
+  "ethics": "pass",
+  "image": "pass",
+  "seo": "pass",
+  "final_editor": "pass",
+  "snapshot": {
+    "title": "Flash flood i Grand Canyon: En død og omkring 15 savnet",
+    "standfirst": "En 46-årig mand er fundet død, og omkring 15 personer er savnet eller uaccounted for efter en kraftig flash flood i Grand Canyon National Park lørdag eftermiddag. Mindst 62 personer er evakueret.",
+    "category": "Udland",
+    "weight": "B"
+  },
+  "anden_tjek": {
+    "no_evaluative_ending": true,
+    "facts_in_ledger": true,
+    "names_dates_verified": true,
+    "category_weight_correct": true,
+    "image_match": true,
+    "publication_time_actual": true
+  }
+}
