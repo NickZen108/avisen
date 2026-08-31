@@ -1,10 +1,10 @@
 # Design — Morgentidende
 
-Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Brugeren har samme dag godkendt dark mode med en diskret skydeknap øverst. Den 31. august 2026 godkendte brugeren en skarpere ikke-kursiv wordmark samt en mindre sticky masthead på artikelsider. Det visuelle design er fortsat låst bortset fra disse udtrykkeligt godkendte ændringer.
+Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Brugeren har samme dag godkendt dark mode med en diskret skydeknap øverst. Den 31. august 2026 godkendte brugeren en skarpere ikke-kursiv wordmark samt en mindre sticky masthead på artikelsider. Samme dag godkendte brugeren en lysere varm papirbaggrund samt kontrolleret variation i forsidens rubriktypografi. Det visuelle design er fortsat låst bortset fra disse udtrykkeligt godkendte ændringer.
 
 ## Farver
 
-- Papir `#F3EEE4`
+- Papir `#F8F5EF` — næsten hvid med en diskret varm tone
 - Blæk `#161513`
 - Header/footer `#1B2430`
 - Ticker `#121820`
@@ -12,6 +12,8 @@ Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring
 - Accent `#3D5270`
 - Guld `#C9A227`
 - Dark mode bruger de låste tema-variabler i `docs/theme.css`; det lyse tema forbliver standardpaletten.
+
+Den varme papirfarve skal give Morgentidende en egen identitet uden at gøre siden beige, retro eller bogagtig. Store neutrale flader skal ved første blik opleves næsten hvide.
 
 ## Typografi
 
@@ -21,6 +23,21 @@ På artikelsider er mastheaden sticky og kompakt: wordmark omkring `1.55–2rem`
 
 Brød: Source Serif 4. Kicker/UI: Source Sans 3.
 
+`Også i dag` og `Mere om sagen` bruger samme serif-familie og omtrent samme visuelle vægt. Kategorilabels forbliver små sans serif-labels.
+
+## Rubrikhierarki på forsiden
+
+Forsiden skal have kontrolleret variation, ikke én mekanisk rubrikstil. Canonical artikeltitel ændres ikke af rendererens typografi.
+
+- `classic`: almindelig seriøs rubrik.
+- `split`: ved en naturlig kolon-opdeling kan anslaget før kolon stå tydeligere/federe, mens resten står lettere.
+- `video`: `Video:` eller `Billeder:` kan få diskret accentfarve og stærkere vægt.
+- `quote`: citatrubrik får egen diskret typografisk behandling, men ikke dekorativ overdrivelse.
+
+Blandet fed/normal skrift og to farver bruges kun på udvalgte historier, især lead, stærke kort eller verificeret video. De må ikke dominere hele forsiden. Smalle lister og højre rail skal som udgangspunkt være roligere.
+
+Builderen må vælge en sikker visuel stil ud fra en allerede godkendt canonical rubrik — fx `Video:` eller en naturlig kolon-opdeling — men må aldrig ændre ordlyden eller opfinde et citat. En eksplicit redaktionel `headline_style` kan overstyre den sikre standard, når den er en del af den godkendte artikelversion.
+
 ## Sideskabelon
 
 Forside: lead + rail + tre kort + fire smalle.
@@ -29,7 +46,7 @@ Nyhed/kommentar om samme sag: `.related-teaser` begge veje.
 Flere stykker om samme tema: `.theme-box`.
 Dark mode-kontrollen ligger diskret øverst til højre i masthead på forside og artikelsider. Første besøg følger systemets tema; et manuelt valg huskes lokalt i browseren.
 
-På artikelsider skal mastheaden være sticky. Den sticky artikelmasthead viser den kompakte Morgentidende-wordmark og dark-mode-kontrollen; den skal ikke vokse til forsidens fulde højde ved scroll.
+På artikelsider skal mastheaden være sticky. Den sticky artikelmasthead viser den kompakte Morgentidende-wordmark og dark-mode-kontrollen; den skal ikke vokse til forsidens fulde højde ved scroll. På mobil skal knappen være lodret centreret i mastheaden og må aldrig overlappe wordmarken.
 
 ## Genereret HTML
 
@@ -55,6 +72,6 @@ Låst:
 
 ## Forbudt uden ny brugerordre
 
-style.css-grids, header, logo-fil, wordmark-størrelse/font, grundfarver, dark mode-udtryk eller ny layoutstruktur.
+style.css-grids, header, logo-fil, wordmark-størrelse/font, grundfarver, dark mode-udtryk, rubrikdesignsystem eller ny layoutstruktur.
 
 Tilladt inden for låsen: nye artikler, teaser-tekst, sitemap, story clusters, `.related-teaser`, `.theme-box`, offentlige metode-/rettelsessider og metadata.
