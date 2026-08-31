@@ -1,7 +1,16 @@
 const JSON_HEADERS = { 'content-type': 'application/json; charset=utf-8' };
+const PUBLIC_SITE = 'https://morgentidende.nicolaipetersen108.workers.dev';
 
-function json(data, status = 200) {
-  return new Response(JSON.stringify(data), { status, headers: JSON_HEADERS });
+function json(data, status = 200, extraHeaders = {}) {
+  return new Response(JSON.stringify(data), { status, headers: { ...JSON_HEADERS, ...extraHeaders } });
+}
+
+function htmlPage(title, body, status = 200, extraHeaders = {}) {
+  return new Response(`<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)} – Morgentidende</title><style>body{font-family:system-ui,sans-serif;background:#f8f5ef;color:#171717;margin:0}.wrap{max-width:720px;margin:8vh auto;padding:28px;background:white;border:1px solid #d8d2c8}h1{font-family:Georgia,serif}a{color:#1b2430}.roles{color:#666}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}</style></head><body><main class="wrap">${body}</main></body></html>`, { status, headers: { 'content-type': 'text/html; charset=utf-8', ...extraHeaders } });
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>'"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[ch]));
 }
 
 function missingConfig(env) {
@@ -9,9 +18,19 @@ function missingConfig(env) {
   return required.filter((k) => !env[k]);
 }
 
+function cookieValue(req, name) {
+  const raw = req.headers.get('cookie') || '';
+  for (const part of raw.split(';')) {
+    const [key, ...rest] = part.trim().split('=');
+    if (key === name) return decodeURIComponent(rest.join('='));
+  }
+  return null;
+}
+
 function bearerToken(req) {
   const auth = req.headers.get('authorization') || '';
-  return auth.startsWith('Bearer ') ? auth.slice(7).trim() : null;
+  if (auth.startsWith('Bearer ')) return auth.slice(7).trim();
+  return cookieValue(req, 'mt_access');
 }
 
 function jwtClaims(token) {
@@ -34,7 +53,7 @@ async function supabaseUser(req, env) {
   });
   if (!res.ok) return null;
   const user = await res.json();
-  return { user, claims: jwtClaims(token) };
+  return { user, claims: jwtClaims(token), token };
 }
 
 async function serviceQuery(env, path, init = {}) {
@@ -45,15 +64,46 @@ async function serviceQuery(env, path, init = {}) {
   return fetch(`${env.SUPABASE_URL}/rest/v1/${path}`, { ...init, headers });
 }
 
+function expandRoles(roles) {
+  const out = new Set(roles || []);
+  if (out.has('admin')) ['reader', 'chronicler', 'editor'].forEach((r) => out.add(r));
+  if (out.has('editor')) ['reader', 'chronicler'].forEach((r) => out.add(r));
+  if (out.has('chronicler')) out.add('reader');
+  return [...out];
+}
+
+async function bootstrapGrantedRoles(user, env) {
+  if (!user?.id || !user?.email || !user?.email_confirmed_at) return;
+  const email = user.email.trim().toLowerCase();
+  const grantRes = await serviceQuery(env, `access_grants?email=eq.${encodeURIComponent(email)}&select=roles&limit=1`);
+  if (!grantRes.ok) throw new Error(`access grant lookup failed: ${grantRes.status}`);
+  const grants = await grantRes.json();
+  if (!grants.length) return;
+  const desired = expandRoles(grants[0].roles || []);
+  const currentRes = await serviceQuery(env, `user_roles?user_id=eq.${encodeURIComponent(user.id)}&select=role`);
+  if (!currentRes.ok) throw new Error(`role lookup failed: ${currentRes.status}`);
+  const current = new Set((await currentRes.json()).map((x) => x.role));
+  const missing = desired.filter((role) => !current.has(role));
+  if (!missing.length) return;
+  const insert = await serviceQuery(env, 'user_roles', {
+    method: 'POST',
+    headers: { Prefer: 'resolution=ignore-duplicates,return=minimal' },
+    body: JSON.stringify(missing.map((role) => ({ user_id: user.id, role, granted_by: user.id }))),
+  });
+  if (!insert.ok) throw new Error(`role bootstrap failed: ${insert.status}`);
+  await audit(env, user.id, 'roles_bootstrapped', 'user', user.id, { roles: missing });
+}
+
 async function rolesFor(userId, env) {
   const r = await serviceQuery(env, `user_roles?user_id=eq.${encodeURIComponent(userId)}&select=role`);
   if (!r.ok) throw new Error(`role lookup failed: ${r.status}`);
-  return (await r.json()).map((x) => x.role);
+  return expandRoles((await r.json()).map((x) => x.role));
 }
 
 async function requireUser(req, env, accepted = [], options = {}) {
   const session = await supabaseUser(req, env);
   if (!session) return { error: json({ error: 'unauthorized' }, 401) };
+  await bootstrapGrantedRoles(session.user, env);
   const roles = await rolesFor(session.user.id, env);
   if (accepted.length && !accepted.some((r) => roles.includes(r))) {
     return { error: json({ error: 'forbidden' }, 403) };
@@ -61,7 +111,7 @@ async function requireUser(req, env, accepted = [], options = {}) {
   if (options.requireAal2 && session.claims?.aal !== 'aal2') {
     return { error: json({ error: 'mfa_required', required_aal: 'aal2' }, 403) };
   }
-  return { user: session.user, roles, claims: session.claims };
+  return { user: session.user, roles, claims: session.claims, token: session.token };
 }
 
 async function audit(env, actorId, action, objectType, objectId = null, metadata = {}) {
@@ -70,6 +120,68 @@ async function audit(env, actorId, action, objectType, objectId = null, metadata
     headers: { Prefer: 'return=minimal' },
     body: JSON.stringify({ actor_id: actorId, action, object_type: objectType, object_id: objectId, metadata }),
   });
+}
+
+async function requestFields(req) {
+  const type = req.headers.get('content-type') || '';
+  if (type.includes('application/json')) return req.json();
+  const form = await req.formData();
+  return Object.fromEntries(form.entries());
+}
+
+function authCookies(session) {
+  const ttl = Math.max(60, Number(session.expires_in || 3600));
+  return [
+    `mt_access=${encodeURIComponent(session.access_token)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${ttl}`,
+    `mt_refresh=${encodeURIComponent(session.refresh_token || '')}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=2592000`,
+  ];
+}
+
+async function authSession(req, env) {
+  const fields = await requestFields(req);
+  const email = String(fields.email || '').trim().toLowerCase();
+  const password = String(fields.password || '');
+  const mode = fields.mode === 'signup' ? 'signup' : 'login';
+  if (!email || password.length < 8) return htmlPage('Login', '<h1>Kunne ikke fortsætte</h1><p>Indtast en gyldig e-mail og en adgangskode på mindst 8 tegn.</p><p><a href="'+PUBLIC_SITE+'/login.html">Tilbage til login</a></p>', 400);
+  const endpoint = mode === 'signup' ? `${env.SUPABASE_URL}/auth/v1/signup` : `${env.SUPABASE_URL}/auth/v1/token?grant_type=password`;
+  const res = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', apikey: env.SUPABASE_PUBLISHABLE_KEY },
+    body: JSON.stringify({ email, password }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    return htmlPage('Login', `<h1>Login mislykkedes</h1><p>${escapeHtml(data.msg || data.message || data.error_description || 'Kontrollér e-mail og adgangskode.')}</p><p><a href="${PUBLIC_SITE}/login.html">Prøv igen</a></p>`, 401);
+  }
+  if (mode === 'signup' && !data.access_token) {
+    return htmlPage('Bekræft e-mail', `<h1>Tjek din indbakke</h1><p>Vi har sendt en bekræftelse til <strong>${escapeHtml(email)}</strong>. Når e-mailen er bekræftet, kan du logge ind.</p><p><a href="${PUBLIC_SITE}/login.html">Til login</a></p>`);
+  }
+  const user = data.user;
+  if (user) await bootstrapGrantedRoles(user, env);
+  const roles = user ? await rolesFor(user.id, env) : [];
+  if (user) await audit(env, user.id, 'login', 'user', user.id, { roles });
+  const headers = new Headers({ location: '/account' });
+  for (const cookie of authCookies(data)) headers.append('set-cookie', cookie);
+  return new Response(null, { status: 303, headers });
+}
+
+async function accountPage(req, env) {
+  const auth = await requireUser(req, env);
+  if (auth.error) return Response.redirect(`${PUBLIC_SITE}/login.html`, 303);
+  const isAdmin = auth.roles.includes('admin');
+  const isChronicler = auth.roles.includes('chronicler');
+  const mfaNote = isAdmin && auth.claims?.aal !== 'aal2' ? '<p><strong>Admin:</strong> 2-faktor-login skal aktiveres, før Kontrolrummet kan udføre adminhandlinger.</p>' : '';
+  const actions = [`<a href="${PUBLIC_SITE}/">Til avisen</a>`, `<a href="${PUBLIC_SITE}/abonnement.html">Abonnement</a>`];
+  if (isChronicler) actions.push(`<a href="${PUBLIC_SITE}/kronikoer/">Kronikørdesk</a>`);
+  if (isAdmin) actions.push(`<a href="${PUBLIC_SITE}/kontrolrum/">Kontrolrum</a>`);
+  return htmlPage('Konto', `<h1>Velkommen</h1><p>${escapeHtml(auth.user.email || '')}</p>${mfaNote}<p class="roles">Adgang: ${escapeHtml(auth.roles.join(', '))}</p><div class="actions">${actions.join('')}</div><form method="post" action="/auth/logout" style="margin-top:28px"><button type="submit">Log ud</button></form>`);
+}
+
+function logout() {
+  const headers = new Headers({ location: `${PUBLIC_SITE}/` });
+  headers.append('set-cookie', 'mt_access=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0');
+  headers.append('set-cookie', 'mt_refresh=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0');
+  return new Response(null, { status: 303, headers });
 }
 
 async function kronikCheck(req, env, user) {
@@ -140,6 +252,9 @@ export default {
     if (missing.length) return json({ error: 'not_configured', missing }, 503);
 
     try {
+      if (url.pathname === '/auth/session' && req.method === 'POST') return authSession(req, env);
+      if (url.pathname === '/auth/logout' && req.method === 'POST') return logout();
+      if (url.pathname === '/account' && req.method === 'GET') return accountPage(req, env);
       if (url.pathname === '/api/me' && req.method === 'GET') {
         const auth = await requireUser(req, env);
         if (auth.error) return auth.error;
