@@ -1,5 +1,7 @@
 name: Cloudflare editorial sync
 
+# Pushes to this workflow intentionally force a live Cloudflare editorial cycle,
+# which gives us a production end-to-end proof without bypassing any gate.
 on:
   push:
     branches: [main]
