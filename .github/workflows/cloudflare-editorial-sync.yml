@@ -1,0 +1,72 @@
+name: Cloudflare editorial sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync_cloudflare_editorial.py'
+      - '.github/workflows/cloudflare-editorial-sync.yml'
+  schedule:
+    - cron: '12,42 * * * *'
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Run a fresh Cloudflare editorial cycle before syncing'
+        required: false
+        default: 'true'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: morgentidende-editorial-import
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Sync latest main
+        run: git fetch origin main && git reset --hard origin/main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image normalizer
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Fetch editorial package
+        env:
+          FORCE_INPUT: ${{ github.event.inputs.force_run }}
+        run: |
+          set -euo pipefail
+          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          FORCE='false'
+          if [ "${{ github.event_name }}" = 'push' ]; then FORCE='true'; fi
+          if [ "${{ github.event_name }}" = 'workflow_dispatch' ] && [ "${FORCE_INPUT:-true}" = 'true' ]; then FORCE='true'; fi
+          if [ "$FORCE" = 'true' ]; then
+            curl --fail --silent --show-error --max-time 240 -X POST "$BASE/run-editorial" -o /tmp/editorial.json
+          else
+            curl --fail --silent --show-error --max-time 60 "$BASE/editorial/latest" -o /tmp/editorial.json
+          fi
+          python -m json.tool /tmp/editorial.json >/dev/null
+          jq '{status,stage,generated_at,slug,reason,runtime}' /tmp/editorial.json
+      - name: Import approved package
+        run: python scripts/sync_cloudflare_editorial.py --input /tmp/editorial.json
+      - name: Canonical gates before commit
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py
+      - name: Commit canonical article package
+        run: |
+          set -euo pipefail
+          git config user.name 'morgentidende-cloudflare-editorial'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/articles sources reports/editorial/approvals content/frontpage.json docs/img/auto 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo 'Ingen ny godkendt artikel at importere'
+          else
+            git commit -m 'editorial: import Cloudflare-approved story'
+            git pull --rebase origin main
+            git push origin main
+          fi
