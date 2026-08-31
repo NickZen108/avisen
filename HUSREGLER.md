@@ -99,6 +99,20 @@ Genereret materiale må aldrig fremstilles som dokumentarfoto af en virkelig hæ
 
 Hero-billedet skal have dækkende alt-tekst og beskæres eller vælges, så hovedmotivet fungerer i både stor hero, kort og mobilvisning.
 
+## Video, screengrabs, links og offentlige kilder
+
+Når en verificeret video er stærkere end det bedste stillfoto, må den officielle embed bruges som hero i artiklen og — efter Forsideredaktørens vurdering — som levende hero på forsiden. YouTube bruges via den officielle embeddable player. Frontpage-autoplay må kun ske muted; autoplay med lyd er forbudt. Hvis embed ikke virker, skal siden falde tilbage til et godkendt hero-foto.
+
+Videoartikler skal som standard have rækkefølgen **rubrik → manchet → stor 16:9 video → forklarende tekst**. Der søges YouTube/primærkilder først, så læseren så vidt muligt kan se materialet uden at forlade Morgentidende.
+
+Et screengrab fra YouTube eller anden video kan bruges som hero, når optagelsen er central for journalistikken og brugen har et dokumenteret juridisk grundlag, fx CC/public domain, licens/tilladelse eller en konkret forsvarlig citat-/reportagevurdering. At videoen er offentlig på YouTube, eller at et andet medie har screengrabbet den, giver ikke i sig selv Morgentidende en licens. Kreditering og link/embed til originalen er påkrævet, men erstatter ikke rettighedsvurderingen.
+
+**Rå URL'er må ikke stå som læsetekst.** Eksterne links skal altid have et kort, menneskeligt linknavn som `Se optagelserne hos ...` eller kildens/dokumentets navn. Eksterne links bruges kun, når de giver konkret dokumentations- eller oplevelsesværdi.
+
+Den fulde kilde- og claim-dokumentation skal fortsat ligge i ledgeren og bestå alle interne gates, men **en standardsektion med en liste over alle eksterne kilder vises ikke automatisk offentligt**. Det er ikke et krav, at læseren sendes videre til Reuters/AP/etc. fra hver artikel. Originale dokumenter, video, primærkilder og andet med selvstændig læserværdi kan stadig linkes kontekstuelt i artiklen.
+
+Relaterede interne links må aldrig bruge CMS-agtig tekst som `Læs den faktuelle nyhedsartikel`. Vis i stedet den faktiske rubrik på den artikel, der linkes til, under en menneskelig label som `Mere om sagen`.
+
 ## Design og kode
 
 Nye artikler skrives som struktureret indhold under `content/` og genereres til `docs/`. Journalist- og redaktøragenter må ikke håndredigere CSS, logo, header, grids eller andre låste designfiler. Låste filer verificeres maskinelt.
