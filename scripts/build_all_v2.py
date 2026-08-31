@@ -25,19 +25,33 @@ def lead_followups(lead_slug,ix):
  items.sort(key=lambda a:a.get("published_at") or "",reverse=True)
  if not items:return ""
  rows=[]
- for a in items[:3]:
+ for a in items[:4]:
   kind=a.get("followup_type") or ("commentary" if a.get("category")=="Kommentar" else "update")
   rows.append(f'<a class="lead-followup" href="{legacy.front_item_url(a["slug"])}"><span class="lead-followup__type">{esc(labels.get(kind,"Mere"))}</span><strong>{esc(a["title"])}</strong></a>')
  return '<aside class="lead-package" aria-label="Mere om sagen"><p class="lead-package__title">Mere om sagen</p>'+''.join(rows)+'</aside>'
+def unrelated_to_lead(x,lead_slug,ix):
+ slug=x.get("slug")
+ if not slug or slug==lead_slug:return False
+ a=ix.get(slug)
+ return not (a and a.get("related_news_slug")==lead_slug)
 def front():
  s=load(ROOT/"content"/"frontpage.json");ix=idx();t=(ROOT/"templates"/"index.html").read_text(encoding="utf-8")
  from datetime import datetime
  d=datetime.fromisoformat(s["date"]).date();dl=f"{legacy.WEEKDAYS[d.weekday()]} {d.day}. {legacy.MONTHS[d.month-1]} {d.year}"
  tk=resolve(s["ticker"],ix);ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(tk["title"])}</a></p>'
- l=resolve(s["lead"],ix);im=f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}"></figure>' if l.get("image_src") else "";lead='<section class="lead">'+im+f'<p class="section-label">{esc(l["category"])}</p><h1><a href="{legacy.front_item_url(l["slug"])}">{esc(l["title"])}</a></h1><p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'+lead_followups(l["slug"],ix)
+ l=resolve(s["lead"],ix);im=f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}"></figure>' if l.get("image_src") else ""
+ lead_article='<section class="lead">'+im+f'<p class="section-label">{esc(l["category"])}</p><h1><a href="{legacy.front_item_url(l["slug"])}">{esc(l["title"])}</a></h1><p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
+ lead='<div class="lead-column">'+lead_article+lead_followups(l["slug"],ix)+'</div>'
  rail=['<aside class="rail"><p class="rail-title">Også i dag</p>']
- for raw in s.get("rail",[]):
-  x=resolve(raw,ix);pic=f'<img src="{esc(x["image_src"])}" alt="{esc(x.get("image_alt",""))}">' if x.get("image_src") else "";rail.append(f'<a class="rail-item" href="{legacy.front_item_url(x["slug"])}">{pic}<span><span>{esc(x["category"])}</span> {esc(x["title"])}</span></a>')
+ seen=set();rail_candidates=[]
+ for group in (s.get("rail",[]),s.get("narrow",[]),s.get("stack",[])):
+  for raw in group:
+   x=resolve(raw,ix)
+   if x.get("slug") in seen or not unrelated_to_lead(x,l["slug"],ix):continue
+   seen.add(x["slug"]);rail_candidates.append(x)
+ for x in rail_candidates[:5]:
+  pic=f'<img src="{esc(x["image_src"])}" alt="{esc(x.get("image_alt",""))}">' if x.get("image_src") else ""
+  rail.append(f'<a class="rail-item" href="{legacy.front_item_url(x["slug"])}">{pic}<span><span>{esc(x["category"])}</span> {esc(x["title"])}</span></a>')
  rail.append("</aside>");stack=['<section class="stack">']
  for raw in s.get("stack",[]):
   x=resolve(raw,ix);pic=f'<a href="{legacy.front_item_url(x["slug"])}"><img src="{esc(x["image_src"])}" alt="{esc(x.get("image_alt",""))}"></a>' if x.get("image_src") else "";stack.append(f'<article class="card">{pic}<p class="section-label">{esc(x["category"])}</p><h2><a href="{legacy.front_item_url(x["slug"])}">{esc(x["title"])}</a></h2><p>{esc(x.get("teaser",x.get("standfirst","")))}</p></article>')
