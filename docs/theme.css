@@ -26,6 +26,39 @@ html[data-theme="dark"] input { color-scheme: dark; }
   object-position: center !important;
 }
 
+/* A lead package visually groups fast follow-ups without making them look like
+   a second lead. The warmer paper tone remains distinct in light and dark mode. */
+.lead-package {
+  margin: .75rem 0 1.4rem;
+  padding: .9rem 1rem .35rem;
+  border: 1px solid var(--rule);
+  border-left: .32rem solid var(--gold);
+  background: #F2EEE4;
+}
+.lead-package__title {
+  margin: 0 0 .35rem;
+  font: 700 .78rem/1.2 var(--sans);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.lead-followup {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: .7rem;
+  align-items: baseline;
+  padding: .55rem 0;
+  border-top: 1px solid var(--rule);
+  color: var(--ink);
+  text-decoration: none;
+}
+.lead-followup__type {
+  font: 700 .7rem/1.2 var(--sans);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+html[data-theme="dark"] .lead-package { background: #24211C; }
+
 .masthead-inner { position: relative; }
 .theme-toggle {
   position: absolute;
@@ -68,4 +101,5 @@ html[data-theme="dark"] .theme-toggle__thumb { transform: translateX(1rem); }
 @media (max-width: 720px) {
   .theme-toggle__label { display: none; }
   .lead-fig > img { height: 15rem !important; max-height: 15rem !important; }
+  .lead-followup { grid-template-columns: 4.7rem 1fr; gap: .5rem; }
 }
