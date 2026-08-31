@@ -1,0 +1,16 @@
+name = "morgentidende-app"
+main = "src/index.js"
+compatibility_date = "2026-08-31"
+
+[ai]
+binding = "AI"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "morgentidende-media"
+
+[vars]
+APP_ENV = "development"
+# SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY may be plain runtime vars.
+# SUPABASE_SERVICE_ROLE_KEY, GITHUB_TOKEN and any signing secrets MUST be Worker secrets.
+# ADMIN_EMAIL is a bootstrap hint only; admin assignment is still server-side and audited.
