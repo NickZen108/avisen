@@ -12,15 +12,16 @@ Alle agenter læser først `HUSREGLER.md` og følger prioriteten dér. En agent 
 6. **Journalist** — skriver kun ud fra PASS-ledger og recheck.
 7. **Sprogredaktør** — dansk, klarhed og overskrift. Må ikke ændre fakta.
 8. **Etik/fairness** — forelæggelse, identifikation, børn, skade, fairness og nyhed/kommentar. Kan kræve manual review.
-9. **Billedredaktør** — match, ophav, licens, autenticitet, grafik og alt-tekst.
-10. **SEO/discovery** — metadata, schema, delingsmetadata og intern linking efter billedvalget. Må ikke styre fakta/vinkel.
-11. **Slutredaktør** — uafhængigt anden-tjek af hele den færdige redaktionelle version mod ledger og tidligere gates. Retter ikke ved PASS; opretter final approval snapshot.
-12. **Forsideredaktør** — vælger lead og placering. Pipeline-v2-artikler refereres normalt kun med `slug`.
-13. **Teknisk QA** — schema, links, canonical frontpage refs, generated-only HTML, design lock, build, tider og sitemaps.
-14. **Udgiver** — ændrer kun publiceringsmetadata og afleverer newsroom-PR. Sætter ikke selv en opdigtet live-tid.
-15. **Live technical QA** — GitHub-kontrol af live forside, netop ændrede/recent artikler, links/assets og template-markers.
-16. **Live proofreader** — læser renderet artikel/forside for sproglige eller visuelle fejl og sammenholder med canonical indhold.
-17. **Redaktionel update-monitor** — leder efter nye oplysninger, der kan ændre claims, artikel eller forsidevægt.
+9. **Billedredaktør** — match, ophav, licens, autenticitet, grafik og alt-tekst; driver permanent lead photo watch.
+10. **Videoredaktør** — finder/verificerer embeds, prioriterer autentisk hændelsesvideo og afgør sammen med Billedredaktør om video er stærkere end stillfoto.
+11. **SEO/discovery** — metadata, schema, delingsmetadata og intern linking efter billed-/videovalget. Må ikke styre fakta/vinkel.
+12. **Slutredaktør** — uafhængigt anden-tjek af hele den færdige redaktionelle version mod ledger og tidligere gates. Retter ikke ved PASS; opretter final approval snapshot.
+13. **Forsideredaktør** — vælger lead og placering, inkl. om en verificeret video skal være levende hero. Pipeline-v2-artikler refereres normalt kun med `slug`.
+14. **Teknisk QA** — schema, links, canonical frontpage refs, generated-only HTML, design lock, build, tider og sitemaps.
+15. **Udgiver** — ændrer kun publiceringsmetadata og afleverer newsroom-PR. Sætter ikke selv en opdigtet live-tid.
+16. **Live technical QA** — GitHub-kontrol af live forside, netop ændrede/recent artikler, links/assets, embeds og template-markers.
+17. **Live proofreader** — læser renderet artikel/forside for sproglige eller visuelle fejl og sammenholder med canonical indhold.
+18. **Redaktionel update-monitor** — leder efter nye oplysninger, der kan ændre claims, artikel eller forsidevægt.
 
 Ved materiel fejl: Post-publication incident → Fact checker genåbner claims → Correction editor → relevante fag-gates → Slutredaktør → Udgiver → offentlig rettelseslog.
 
@@ -45,7 +46,7 @@ Et nyt autopublicerbart stykke afleveres sådan:
 
 1. Arbejd på `edition/*` eller `newsroom/*` fra seneste `main`.
 2. Research/Fact check/Nyhedsdesk recheck færdiggøres.
-3. Journalist → Sprog → Etik → Billede → SEO.
+3. Journalist → Sprog → Etik → Billede/Video → SEO.
 4. Slutredaktør opretter final approval snapshot.
 5. Forsideredaktør opdaterer eventuelt `content/frontpage.json` med canonical slug-reference.
 6. Teknisk QA køres.
@@ -76,4 +77,4 @@ Fejl omfatter blandt andet:
 ## Prompts
 
 Operative prompts ligger i `agents/`, herunder:
-`newsdesk.md`, `research.md`, `fact-check.md`, `journalist.md`, `language.md`, `ethics.md`, `image.md`, `seo.md`, `final-editor.md`, `frontpage.md`, `technical-qa.md`, `publisher.md`, `live-proofreader.md`, `post-publication.md` og `correction-editor.md`.
+`newsdesk.md`, `research.md`, `fact-check.md`, `journalist.md`, `language.md`, `ethics.md`, `image.md`, `video.md`, `seo.md`, `final-editor.md`, `frontpage.md`, `technical-qa.md`, `publisher.md`, `live-proofreader.md`, `post-publication.md` og `correction-editor.md`.
