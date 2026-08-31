@@ -2,7 +2,7 @@ const TEXT_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 const IMAGE_MODEL = "@cf/black-forest-labs/flux-1-schnell";
 const PUBLIC_BASE = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev";
 
-const CATEGORIES = ["Nyhed", "Krimi", "Politik", "Økonomi", "Udland", "Forbruger", "Kultur", "Videnskab", "Sundhed", "Parforhold", "Sport"];
+const CATEGORIES = ["Danmark", "Udland", "Politik", "Penge", "Krimi", "Videnskab & teknologi", "Sundhed", "Kultur & medier", "Sport", "Liv"];
 
 function nowIso() { return new Date().toISOString(); }
 function slugify(value) {
@@ -94,7 +94,7 @@ const dossierSchema = {
     contradictions: { type: "array", items: { type: "string" } },
     claims: {
       type: "array",
-      minItems: 3,
+      minItems: 2,
       maxItems: 12,
       items: {
         type: "object",
@@ -106,6 +106,15 @@ const dossierSchema = {
     },
   },
   required: ["decision", "rationale", "core_question", "right_of_reply_required", "contradictions", "claims"],
+};
+
+const deskRecheckSchema = {
+  type: "object",
+  properties: {
+    decision: { type: "string", enum: ["publish", "update", "hold", "kill"] },
+    rationale: { type: "string" },
+  },
+  required: ["decision", "rationale"],
 };
 
 const articleSchema = {
@@ -142,7 +151,7 @@ function signalSummary(scan) {
 }
 
 async function chooseAssignment(env, scan) {
-  const system = `Du er Newsdesk på Morgentidende, en dansk generalistisk netavis med både danske og store internationale nyheder. Vælg højst én aktuel historie til behandling. Kvalitet slår volumen. En historie opfylder Newsdesk-kriteriet, når mindst tre forskellige redaktionelle kilder i input tydeligt dækker samme væsentlige, aktuelle begivenhed eller samme bærende nye oplysning. Samme wire genudgivet flere steder tæller ikke som flere uafhængige kilder, hvis det er åbenlyst. En direkte dansk vinkel er et plus, men IKKE et krav for store internationale begivenheder, katastrofer, krige, økonomiske chok, videnskabelige gennembrud eller andre historier med klar almen nyhedsværdi. Hvis du selv i rationale konstaterer, at mindst tre forskellige redaktionelle kilder dækker samme store aktuelle historie, og du ikke samtidig identificerer et konkret dokumentations-, etik- eller uafhængighedsproblem, SKAL decision være publish og signal_indexes skal pege på mindst tre af de relevante kilder. Brug kun hold når kriteriet faktisk ikke er opfyldt eller du kan beskrive den konkrete grund. Dokumenterbarhed er altid et krav. Returnér kun struktureret output.`;
+  const system = `Du er Newsdesk på Morgentidende, en dansk generalistisk netavis. Vælg højst én væsentlig, aktuel historie til research. Newsdesk er en assignment-desk, ikke en publiceringsgate: kræv ikke tre færdige kilder allerede her. Foretræk historier der ses hos mindst to uafhængige kilder, men en stærk breaking-historie eller tydelig primær oplysning må gerne sendes til Research med færre, fordi Research netop skal udvide kildegrundlaget. Vælg hold kun ved lav nyhedsværdi, dublet, åbenlys utroværdighed eller konkret risiko, der gør research meningsløs. Vælg alle signaler, der sandsynligvis handler om samme historie, så Research får bredest muligt startmateriale. Returnér kun struktureret output.`;
   return aiJson(env, system, JSON.stringify({ generated_at: scan.generated_at, signals: signalSummary(scan) }), assignmentSchema, 1600);
 }
 
@@ -151,17 +160,17 @@ function validateAssignment(assignment, scan) {
   if (assignment.decision !== "publish") return { ok: false, reason: assignment.rationale || "Newsdesk hold" };
   const indexes = [...new Set(assignment.signal_indexes.filter((i) => Number.isInteger(i) && i >= 0 && i < scan.signals.length))];
   const selected = indexes.map((i) => ({ ...scan.signals[i], signal_index: i }));
-  if (distinctSources(selected).length < 3) return { ok: false, reason: "Mindre end tre forskellige kilder efter deterministic recheck" };
-  if (selected.filter((x) => x.url).length < 3) return { ok: false, reason: "Mindre end tre kilde-URL'er" };
+  if (selected.length < 1) return { ok: false, reason: "Newsdesk valgte ingen brugbare signaler" };
+  if (selected.filter((x) => x.url).length < 1) return { ok: false, reason: "Ingen kilde-URL til research" };
   return { ok: true, selected };
 }
 
 async function buildDossier(env, assignment, selected) {
   const researched = await Promise.all(selected.map(fetchExcerpt));
   const usable = researched.filter((x) => (x.excerpt || "").length >= 160);
-  if (distinctSources(usable).length < 3) return { decision: "hold", rationale: "Kunne ikke hente læsbart materiale fra tre forskellige kilder", researched: usable };
+  if (distinctSources(usable).length < 2) return { decision: "hold", rationale: "Research kunne kun hente læsbart materiale fra én kilde; kræver mindst én uafhængig kontrolkilde før automatisk publicering", researched: usable };
   const sourcePayload = usable.map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url, excerpt: s.excerpt.slice(0, 12000) }));
-  const system = `Du er Morgentidendes research- og fact-check-desk. Arbejd kun ud fra de vedlagte kildetekster; AI er aldrig en kilde. For hver bærende faktuel påstand skal du angive de kilder, der faktisk støtter den. Materielle claims skal have støtte fra mindst to uafhængige kilder. En oplysning, der kun støttes af én kilde, skal markeres uncertain og må ikke bruges som verificeret claim. Hvis mindst tre materielle claims hver støttes af mindst to uafhængige kilder, right_of_reply_required er false, og der ikke er en konkret bærende modsigelse eller anden dokumentationsblokering, SKAL decision være publish. Brug kun hold når rationale beskriver det konkrete dokumentations-, modsigelses- eller forelæggelsesproblem. Skeln klart mellem verificerede fakta og påstande/udsagn. Returnér kun struktureret output.`;
+  const system = `Du er Morgentidendes Research og Fact checker i to adskilte mentale trin. Arbejd kun ud fra de vedlagte kildetekster; AI er aldrig en kilde. Research sammenligner kilder, modpositioner, konsekvenser og usikkerhed. Fact checker forsøger derefter at falsificere bærende claims. Et materielt claim er automatisk verificeret, når mindst to reelt uafhængige kilder støtter det. Enkeltkilde-oplysninger skal normalt markeres uncertain og må ikke bruges som fastslået faktum. To solide verificerede materielle claims er nok til et kort nyhedsstykke; opfind ikke ekstra claims for at nå et antal. Tre eller flere uafhængige source-groups er ønsket coverage PASS, men to kan være dokumenteret LIMITED coverage og må ikke i sig selv blokere en tidskritisk eller enkel historie. Hvis right_of_reply_required er true, eller en bærende modsigelse ikke kan løses, skal decision være hold. Returnér kun struktureret output.`;
   const dossier = await aiJson(env, system, JSON.stringify({ assignment, sources: sourcePayload }), dossierSchema, 3600);
   dossier.researched = usable;
   if (dossier.right_of_reply_required) dossier.decision = "hold";
@@ -177,21 +186,26 @@ async function buildDossier(env, assignment, selected) {
   }
 
   const verified = dossier.claims.filter((c) => c.status === "verified");
-  if (verified.length < 3) {
+  if (verified.length < 2) {
     dossier.decision = "hold";
-    dossier.rationale = `${dossier.rationale || ""} Deterministic gate: færre end tre bærende claims har støtte fra mindst to uafhængige kilder.`.trim();
+    dossier.rationale = `${dossier.rationale || ""} Deterministic gate: færre end to bærende claims har støtte fra mindst to uafhængige kilder.`.trim();
   }
   return dossier;
 }
 
+async function deskRecheck(env, assignment, dossier) {
+  const system = `Du er Nyhedsdesk ved det korte recheck efter Fact checker. Du skal IKKE genresearche eller gentage fact check. Se kun på det dokumenterede resultat: Er historien stadig aktuel og væsentlig nok til at publicere, og svarer den dokumenterede kerne stadig til assignment? Vælg publish/update med en kort konkret begrundelse, medmindre dokumentationen har gjort historien uvæsentlig, dublet eller misvisende. Brug hold/kill kun med en konkret redaktionel grund.`;
+  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions, rationale: dossier.rationale }), deskRecheckSchema, 700);
+}
+
 async function writeArticle(env, assignment, dossier) {
   const sources = dossier.researched.map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));
-  const system = `Du er journalist og derefter sprogagent på en nøgtern dansk netavis. Skriv præcist dansk uden sensationssprog. Brug KUN de verificerede claims i dossieret. Gør attribution tydelig, når noget er et udsagn og ikke et fastslået faktum. Ingen opdigtede citater. Kort nyhedsformat med logisk struktur. Hero-prompten skal beskrive en flot, bred redaktionel illustration, som symboliserer emnet uden at foregive at være et dokumentarfoto af den konkrete virkelige hændelse eller konkrete personer. Ingen tekst i billedet.`;
+  const system = `Du er journalist på Morgentidende. Skriv præcist, levende dansk uden at gå videre end dokumentationen. Brug KUN de verificerede claims i dossieret. Gør attribution tydelig, når noget er et udsagn. Ingen opdigtede citater. Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, og forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger. Omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. Hero-prompten skal beskrive en flot bred redaktionel illustration uden at foregive at være dokumentarfoto af den konkrete hændelse eller konkrete personer. Ingen tekst i billedet.`;
   return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, 3800);
 }
 
 async function finalReview(env, assignment, dossier, article) {
-  const system = `Du er uafhængig slutredaktør på Morgentidende. Kontrollér artikel mod de verificerede claims. Returnér KUN konkrete publiceringsblokerende problemer. Et problem er blokerende hvis sproget er materielt uklart eller forkert, en påstand går videre end dokumentationen, attribution/pluralisme er utilstrækkelig, etik er uforsvarlig, SEO er misvisende, eller hero-prompten ligner falsk dokumentarfoto. Hvis kontrollen er tilfredsstillende, skal blocking_issues være en tom liste. Skriv ikke positive observationer som problemer.`;
+  const system = `Du er uafhængig slutredaktør på Morgentidende. Kontrollér den færdige artikel mod de verificerede claims uden at genresearche hele historien. Returnér KUN konkrete publiceringsblokerende problemer. Bloker ved materielt uklart/forkert sprog, uforklaret nødvendigt fagsprog, påstande ud over dokumentationen, utilstrækkelig attribution/pluralisme, etisk problem, misvisende SEO eller en hero-prompt der ligner falsk dokumentarfoto. Små stilpræferencer er ikke blockers. Hvis artiklen er forsvarlig, skal blocking_issues være tom.`;
   const raw = await aiJson(env, system, JSON.stringify({ assignment, claims: dossier.claims, contradictions: dossier.contradictions, article }), finalSchema, 1400);
   const issues = Array.isArray(raw.blocking_issues) ? raw.blocking_issues.filter((x) => x?.gate && x?.issue) : [];
   const failed = new Set(issues.map((x) => x.gate));
@@ -202,8 +216,17 @@ async function finalReview(env, assignment, dossier, article) {
     image: failed.has("image") ? "hold" : "pass",
     seo: failed.has("seo") ? "hold" : "pass",
     final_editor: failed.has("final_editor") ? "hold" : "pass",
+    issues,
     notes: issues.map((x) => `${x.gate}: ${x.issue}`),
   };
+}
+
+async function reviseFixableIssues(env, assignment, dossier, article, review) {
+  const fixable = (review.issues || []).filter((x) => ["language", "seo", "image"].includes(x.gate));
+  const hard = (review.issues || []).filter((x) => !["language", "seo", "image"].includes(x.gate));
+  if (!fixable.length || hard.length) return article;
+  const system = `Du er den ansvarlige fagagent for en enkelt revision. Ret KUN de konkrete language/seo/image-prompt-problemer i listen. Bevar alle verificerede fakta, vinkel og betydning. Du må ikke tilføje nye claims. Returnér hele artikelobjektet i samme schema. Lægmandssprog og metriske enheder er obligatoriske.`;
+  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), article, issues: fixable }), articleSchema, 3000);
 }
 
 async function generateHero(env, article) {
@@ -213,7 +236,7 @@ async function generateHero(env, article) {
   return raw.image;
 }
 
-function makeLedger(storyId, slug, assignment, dossier, accessedAt) {
+function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   const sources = dossier.researched.map((s, i) => ({
     id: `S${i + 1}`, name: s.source, url: s.final_url || s.url, published_at: null, accessed_at: accessedAt,
     type: "news", source_group: sourceGroup(s.source), authoritative_for: s.headline || "Independent coverage",
@@ -227,11 +250,11 @@ function makeLedger(storyId, slug, assignment, dossier, accessedAt) {
     schema_version: 2, story_id: storyId, article_slug: slug,
     assignment: { category: assignment.category, weight: assignment.weight, core_question: dossier.core_question || assignment.core_question, manual_review: false },
     sources,
-    coverage_sweep: { status: groups.length >= 3 ? "pass" : "limited", editorial_source_ids: sources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 3 ? null : "Færre end tre uafhængige kildegrupper", notes: ["Cloudflare editorial runtime fetched and compared the source texts before drafting."] },
+    coverage_sweep: { status: groups.length >= 3 ? "pass" : "limited", editorial_source_ids: sources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 3 ? null : "Færre end tre uafhængige kildegrupper; bærende claims er stadig krydstjekket", notes: ["Cloudflare editorial runtime fetched and compared the source texts before drafting."] },
     claims, numbers: [], quotes: [],
     right_of_reply: { required: false, party: null, contacted_at: null, deadline: null, response: null, exception: null },
-    fact_check: { status: "pass", checked_at: accessedAt, notes: ["Independent Cloudflare fact-check stage passed; deterministic claim-support gate required at least two source indexes for each published material claim."] },
-    desk_recheck: { status: "publish", checked_at: accessedAt, rationale: assignment.rationale || "Newsdesk selected the story after multi-source comparison." },
+    fact_check: { status: "pass", checked_at: accessedAt, notes: ["Fact-check stage passed; deterministic claim-support gate kræver mindst to uafhængige kilder for publicerede materielle claims."] },
+    desk_recheck: { status: desk.decision, checked_at: accessedAt, rationale: desk.rationale },
   };
 }
 
@@ -242,10 +265,20 @@ export async function runEditorialCycle(env, scan) {
   if (!check.ok) return { status: "hold", stage: "newsdesk", checked_at: startedAt, reason: check.reason, scan_fingerprint: scan.fingerprint };
 
   const dossier = await buildDossier(env, assignment, check.selected);
-  if (dossier.decision !== "publish") return { status: "hold", stage: "fact-check", checked_at: startedAt, reason: dossier.rationale || "Fact check hold", scan_fingerprint: scan.fingerprint };
+  if (dossier.decision !== "publish") return { status: "hold", stage: dossier.right_of_reply_required ? "ethics" : "fact-check", checked_at: startedAt, reason: dossier.rationale || "Fact check hold", scan_fingerprint: scan.fingerprint };
 
-  const article = await writeArticle(env, assignment, dossier);
-  const review = await finalReview(env, assignment, dossier, article);
+  const desk = await deskRecheck(env, assignment, dossier);
+  if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint };
+
+  let article = await writeArticle(env, assignment, dossier);
+  let review = await finalReview(env, assignment, dossier, article);
+  if (review.decision !== "pass") {
+    const revised = await reviseFixableIssues(env, assignment, dossier, article, review);
+    if (JSON.stringify(revised) !== JSON.stringify(article)) {
+      article = revised;
+      review = await finalReview(env, assignment, dossier, article);
+    }
+  }
   if (review.decision !== "pass" || [review.language, review.ethics, review.image, review.seo, review.final_editor].some((x) => x !== "pass")) {
     return { status: "hold", stage: "final-editor", checked_at: startedAt, reason: (review.notes || []).join("; ") || "Final editor hold", scan_fingerprint: scan.fingerprint };
   }
@@ -255,7 +288,7 @@ export async function runEditorialCycle(env, scan) {
   const storyId = `${date}-${slugify(assignment.title_hint || article.title)}`.slice(0, 96).replace(/-+$/g, "");
   const imageKey = `${slug}.jpg`;
   const imageBase64 = await generateHero(env, article);
-  const ledger = makeLedger(storyId, slug, assignment, dossier, startedAt);
+  const ledger = makeLedger(storyId, slug, assignment, dossier, desk, startedAt);
   const claimIds = ledger.claims.map((c) => c.id);
   const canonical = {
     pipeline_version: 2, status: "ready", release_requested: true, story_id: storyId, slug,
@@ -267,14 +300,14 @@ export async function runEditorialCycle(env, scan) {
     body: article.body, source_ids_to_display: ledger.sources.slice(0, 6).map((s) => s.id), related_news_slug: null, related: [], correction_note: null, scheduled_for: null, released_from_schedule_at: null,
   };
   const approvalSnapshot = JSON.parse(JSON.stringify(canonical));
-  for (const key of ["status", "published_at", "updated_at", "scheduled_for", "released_from_schedule_at", "release_requested", "publication", "manual_review_completed"]) delete approvalSnapshot[key];
+  for (const key of ["status", "published_at", "updated_at", "scheduled_for", "released_from_schedule_at", "release_requested", "publication", "manual_review_completed", "workflow_state"]) delete approvalSnapshot[key];
   const approval = { schema_version: 1, status: "pass", story_id: storyId, article_slug: slug, checked_at: startedAt, gates: { language: "pass", ethics: "pass", image: "pass", seo: "pass", final_editor: "pass" }, editorial_snapshot: approvalSnapshot };
 
   return {
     status: "approved", schema_version: 1, generated_at: startedAt, scan_fingerprint: scan.fingerprint,
     runtime: "cloudflare-workers-ai", model: TEXT_MODEL, story_id: storyId, slug, article: canonical, ledger, approval,
     media: { key: imageKey, content_type: "image/jpeg", base64: imageBase64 },
-    audit: { assignment, final_review: review, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
+    audit: { assignment, desk_recheck: desk, final_review: review, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
   };
 }
 
