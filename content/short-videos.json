@@ -2,5 +2,64 @@
   "schema_version": 1,
   "minimum_to_render": 3,
   "maximum_on_frontpage": 6,
-  "items": []
+  "editorial_mix": {
+    "news": 35,
+    "science_space_tech": 20,
+    "sport": 15,
+    "nature_animals": 15,
+    "culture_people": 10,
+    "visual_wildcard": 5
+  },
+  "items": [
+    {
+      "status": "verified",
+      "provider": "youtube",
+      "id": "8cBaHXLtmZg",
+      "title": "De vildeste verdensrekorder fra 2026",
+      "topic": "Underholdning",
+      "source_name": "Guinness World Records",
+      "source_url": "https://www.youtube.com/watch?v=8cBaHXLtmZg",
+      "verified_at": "2026-08-31T12:15:00Z"
+    },
+    {
+      "status": "verified",
+      "provider": "youtube",
+      "id": "fQHxqWDNcgw",
+      "title": "Dyreadfærd fanget på film for første gang",
+      "topic": "Natur",
+      "source_name": "BBC Earth",
+      "source_url": "https://www.youtube.com/watch?v=fQHxqWDNcgw",
+      "verified_at": "2026-08-31T12:15:00Z"
+    },
+    {
+      "status": "verified",
+      "provider": "youtube",
+      "id": "uNuhG3kS7so",
+      "title": "NASA: Det skal der ske i rummet i 2026",
+      "topic": "Rum & teknologi",
+      "source_name": "NASA",
+      "source_url": "https://www.youtube.com/watch?v=uNuhG3kS7so",
+      "verified_at": "2026-08-31T12:15:00Z"
+    },
+    {
+      "status": "verified",
+      "provider": "youtube",
+      "id": "ueBf0RsDaOE",
+      "title": "Europas store rummissioner i 2026",
+      "topic": "Videnskab",
+      "source_name": "ESA",
+      "source_url": "https://www.youtube.com/watch?v=ueBf0RsDaOE",
+      "verified_at": "2026-08-31T12:15:00Z"
+    },
+    {
+      "status": "verified",
+      "provider": "youtube",
+      "id": "vI0M_ARdKaM",
+      "title": "Ugens mærkeligste og vildeste verdensrekorder",
+      "topic": "Underholdning",
+      "source_name": "Guinness World Records",
+      "source_url": "https://www.youtube.com/watch?v=vI0M_ARdKaM",
+      "verified_at": "2026-08-31T12:15:00Z"
+    }
+  ]
 }
