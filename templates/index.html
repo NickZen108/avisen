@@ -21,12 +21,14 @@
   <link rel="stylesheet" href="style.css?v=7">
   <link rel="stylesheet" href="signup.css">
   <link rel="stylesheet" href="theme.css?v=4">
+  <link rel="stylesheet" href="morgentidende-ui.css?v=1">
   <script src="theme.js?v=1"></script>
 </head>
 <body>
   <header class="masthead">
     <div class="wrap masthead-inner">
-      <a class="wordmark" href="./">Morgentidende</a>
+      <a class="wordmark" href="./"><img class="brand-sun" src="morning-sun.svg" alt=""><span>Morgentidende</span></a>
+      <a class="account-link" href="login.html" aria-label="Log ind"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0"/></svg><span>Log ind</span></a>
       <button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Skift mellem lyst og mørkt tema"><span class="theme-toggle__label">Mørk</span><span class="theme-toggle__track" aria-hidden="true"><span class="theme-toggle__thumb"></span></span></button>
       <div class="dateline"><time datetime="{{DATE_ISO}}">{{DATE_LABEL}}</time><span>{{EDITION_LABEL}}</span></div>
       <nav class="nav">
@@ -40,9 +42,11 @@
     {{LEAD_HTML}}
     {{RAIL_HTML}}
     {{STACK_HTML}}
-    {{NARROW_HTML}}
   </main>
   <!-- SHORT_VIDEOS -->
+  <main class="wrap layout layout--continuation">
+    {{NARROW_HTML}}
+  </main>
   <section class="signup" id="nyhedsbrev">
     <div class="wrap">
       <h2>Få avisen i indbakken</h2>
