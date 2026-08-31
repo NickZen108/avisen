@@ -2,6 +2,7 @@ name: Cloudflare editorial sync
 
 # Pushes to this workflow intentionally force a live Cloudflare editorial cycle,
 # which gives us a production end-to-end proof without bypassing any gate.
+# E2E rerun after the Newsdesk world-news relevance correction.
 on:
   push:
     branches: [main]
@@ -58,7 +59,7 @@ jobs:
       - name: Import approved package
         run: python scripts/sync_cloudflare_editorial.py --input /tmp/editorial.json
       - name: Canonical gates before commit
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
       - name: Commit canonical article package
         run: |
           set -euo pipefail
