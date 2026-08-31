@@ -1,3 +1,5 @@
+:root { --paper: #F8F5EF; }
+
 html[data-theme="dark"] {
   --paper: #111417;
   --ink: #ECE8E0;
@@ -18,7 +20,7 @@ html[data-theme="dark"] input { color-scheme: dark; }
 .lead-column--story-package {
   padding: 1rem 1rem .35rem;
   border: 1px solid var(--rule);
-  background: #F2EEE4;
+  background: #F4F1EA;
 }
 html[data-theme="dark"] .lead-column--story-package { background: #24211C; }
 
@@ -72,6 +74,18 @@ html[data-theme="dark"] .lead-column--story-package { background: #24211C; }
   text-transform: none;
   color: var(--ink);
 }
+.rail-item > span {
+  font-family: var(--serif);
+  font-size: 1.03rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.rail-item > span > span {
+  font-family: var(--sans);
+  font-size: .62rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
 .lead-followup {
   display: grid;
   grid-template-columns: 5.5rem 1fr;
@@ -88,6 +102,15 @@ html[data-theme="dark"] .lead-column--story-package { background: #24211C; }
   text-transform: uppercase;
   color: var(--accent);
 }
+
+/* Controlled headline variation: factual by default; split/video styles only
+   when the builder sees a suitable, already approved canonical headline. */
+.headline--split { font-weight: 400 !important; }
+.headline--split .headline-kicker { font-weight: 700; }
+.headline--split .headline-rest { font-weight: 400; }
+.headline--video .headline-kicker { color: var(--accent); font-weight: 700; }
+.headline--quote { font-weight: 600; }
+.lead .headline--split .headline-kicker { font-weight: 700; }
 
 .masthead-inner { position: relative; }
 .theme-toggle {
