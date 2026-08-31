@@ -65,6 +65,12 @@
     "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iceland_EU.svg/1920px-Iceland_EU.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
     "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/abf2b534406f6e9f8348.webp"
   },
+  "https://commons.wikimedia.org/wiki/Special:FilePath/Kyrenia_Harbour.jpg": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/ec6a86a8cd3d79a0738b.jpg",
+    "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Kyrenia_Harbour.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/ec6a86a8cd3d79a0738b.jpg"
+  },
   "https://commons.wikimedia.org/wiki/Special:FilePath/Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg": {
     "content_type": "image/jpeg",
     "file": "/img/cache/5b8adb18b823534a481a.jpg",
