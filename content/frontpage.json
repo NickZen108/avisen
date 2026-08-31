@@ -24,7 +24,7 @@
     {
       "slug": "2026-08-30-roman-rumteleskop-opsendt",
       "category": "Videnskab",
-      "title": "NASA opsender Roman-rumteleskopet",
+      "title": "NASA sender nyt teleskop på jagt efter andre planeter og universets mørke mysterier",
       "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Falcon_Heavy_Demo_Mission_%2840126462231%29.jpg",
       "image_alt": "SpaceX Falcon Heavy under opsendelse"
     }
@@ -33,7 +33,7 @@
     {
       "slug": "2026-08-29-dsa-ytringsfrihed",
       "category": "Feature",
-      "title": "DSA mellem bøde og tale",
+      "title": "120 mio. euro til X: Derfor er EU's digitale regler blevet en kamp om ytringsfrihed",
       "teaser": "X fik 120 mio. euro. Räsänen blev dømt for en kirkebog. Vance kaldte det truslen indefra.",
       "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Berlaymont_building.jpg",
       "image_alt": "Berlaymont, Europa-Kommissionen"
@@ -41,7 +41,7 @@
     {
       "slug": "2026-08-29-usa-canada-handelskrig",
       "category": "Udland",
-      "title": "Har Trump en pointe?",
+      "title": "Trump siger 60 mia. dollar: USA's officielle tal er 48,3",
       "teaser": "USA: vareunderskud 48,3 mia. dollar i 2025. Trump sagde 60. Canada svarer 8. september.",
       "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ambassador_Bridge.jpg",
       "image_alt": "Ambassador Bridge mellem USA og Canada"
@@ -49,7 +49,7 @@
     {
       "slug": "2026-08-29-parkering-30000-koebenhavn",
       "category": "Forbruger",
-      "title": "P-licens til 30.000 kroner",
+      "title": "30.000 kroner for at parkere ved hjemmet: Nyt forslag vil hæve beboerlicensen",
       "teaser": "Alternativet vil hæve beboerparkering i København. Borgerlige grupper kalder det skævt. Ikke vedtaget.",
       "image_src": "https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn-Copenhagen.jpg",
       "image_alt": "Nyhavn i København"
@@ -71,25 +71,25 @@
     {
       "slug": "2026-08-30-roman-rumteleskop-opsendt",
       "category": "Videnskab",
-      "title": "NASA opsender Roman-rumteleskopet",
-      "teaser": "Flagskibsmissionen skal undersøge mørk energi, mørk materie og exoplaneter."
+      "title": "NASA sender nyt teleskop på jagt efter andre planeter og universets mørke mysterier",
+      "teaser": "Det nye teleskop skal undersøge mørk energi, mørk materie og planeter uden for vores solsystem."
     },
     {
       "slug": "2026-08-30-wegovy-stopper",
       "category": "Sundhed",
-      "title": "Halvdelen stopper Wegovy inden et år",
+      "title": "Hver anden stopper med Wegovy inden et år",
       "teaser": "Aarhus: 49 procent ophørte. Pris og bivirkninger."
     },
     {
       "slug": "2026-08-30-spiralsagen-to-rapporter",
       "category": "Politik",
-      "title": "Siumut og Naleraq vil have Haag",
+      "title": "Spiralsagen: To grønlandske partier vil gå til Haag",
       "teaser": "To rapporter. Naalakkersuisut har ikke kunnet fastslå folkedrab."
     },
     {
       "slug": "2026-08-30-ukraine-stoette-per-dansker",
       "category": "Økonomi",
-      "title": "13.400 kr. pr. dansker",
+      "title": "13.400 kroner pr. dansker: Så stor er Danmarks Ukraine-støtte",
       "teaser": "UM: 80,6 milliarder besluttet siden 2022."
     }
   ]
