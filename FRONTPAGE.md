@@ -54,6 +54,16 @@ Breaking overtager lead straks **kun** hvis den er vigtigere end nuværende lead
 
 Ved hurtige hændelser kan headline være konservativ: det sikkert kendte først. Usikkerhed er bedre end falsk præcision.
 
+## Rubrikker og klikstyrke
+
+Rubrikker er en del af forsidens redigering, ikke bare kopier af en neutral databaseetiket. For A- og B-historier og andre historier med tydeligt forsidepotentiale skal Rubrikredaktøren normalt levere tre kandidater efter `agents/headline.md`: **faktuel**, **skarp/nysgerrighed** og **menneskelig/citat**, når materialet tillader det.
+
+Forsideredaktøren vælger den stærkeste rubrikform til historien og placeringen. Hård breaking, politik og tung samfundsnyhed må gerne være klassisk og direkte. Video, krimi, forbruger, stærke menneskehistorier og visuelle opfølgere må oftere bruge en skarpere eller mere menneskelig indgang.
+
+Klikstyrke er legitimt, men må aldrig skabes ved falsk mystik, skjult hovedoplysning, juridisk overdrivelse eller citater som ikke er dokumenteret ordret.
+
+Forsiden skal have kontrolleret variation. En stærk lead kan bruge delt fed/normal rubrik ved en naturlig kolon-opdeling. `Video:` og `Billeder:` kan få diskret accentfarve. Citatrubrikker må bruges, når citatet faktisk bærer historien. Smalle lister og højre rail skal være roligere, så ikke alle historier råber samtidig.
+
 ## Forsidens balance
 
 Forsiden skal normalt have:
