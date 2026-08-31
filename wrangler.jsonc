@@ -1,10 +1,12 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "morgentidende",
+  "main": "cloudflare/site-worker.js",
   "compatibility_date": "2026-08-30",
   "workers_dev": true,
   "assets": {
     "directory": "./docs",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "none"
   }
