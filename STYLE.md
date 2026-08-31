@@ -33,9 +33,22 @@ Sprog-agenten må aldrig ændre tal, navn, dato, citat, juridisk status eller fa
 
 ## Overskrift
 
-Overskriften skal kunne holdes af brødteksten. Ingen clickbait, ingen spørgsmål der skjuler manglende viden, ingen faktapåstand stærkere end kilden. Brug konkret subjekt og handling, når det er muligt.
+Overskriften skal kunne holdes fuldt ud af brødteksten og dokumentationen. **Klikstyrke er et legitimt redaktionelt mål, men falsk mystik og overdrivelse er ikke.** En god rubrik må gerne være dramatisk, længere, menneskelig eller nysgerrighedsskabende, når historien faktisk bærer det.
 
-Citat i H1 kun ved verificeret ordret citat i faktaledgeren. Kommentar må gerne være skarp; nyheds-H1 skal være neutral.
+For A- og B-historier samt andre oplagte forsidehistorier skal Rubrikredaktøren normalt udvikle tre kandidater: (1) faktuel, (2) skarp/nysgerrighed og (3) menneskelig/citat, når materialet tillader det. Forsideredaktøren vælger den stærkeste til placeringen.
+
+Rubrikker må variere i form, så forsiden ikke får én monoton stemme:
+
+- klassisk faktuel rubrik til tungt nyhedsstof
+- delt rubrik med et kort anslag før kolon og en forklarende anden del
+- `Video:`/`Billeder:` når materialet er en central del af historien
+- citatrubrik når et verificeret ordret citat faktisk er historiens stærkeste indgang
+
+En delt rubrik må typografisk blande fed og normal skrift. `Video:` eller et kort anslag må på udvalgte forsideplaceringer bruge accentfarve. Sådanne virkemidler skal bruges sparsomt; variationen skal gøre forsiden levende, ikke kulørt.
+
+Ingen spørgsmål der skjuler manglende viden, ingen faktapåstand stærkere end kilden, og ingen clickbait-formler der bevidst tilbageholder den afgørende oplysning. Brug konkret subjekt og handling, når det er muligt.
+
+Citat i H1 kun ved verificeret ordret citat i faktaledgeren. Kommentar må gerne være skarp; nyheds-H1 skal fortsat være neutral i sin faktuelle betydning.
 
 ## Manchet og første afsnit
 
