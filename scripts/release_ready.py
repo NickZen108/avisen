@@ -12,7 +12,9 @@ def add_to_frontpage(article):
  slug=article['slug']; state=json.loads(FRONTPAGE.read_text(encoding='utf-8'))
  state['date']=slug[:10]
  state['ticker']={'slug':slug}
- if article.get('weight') in {'A','B'}:
+ # A/B hovedhistorier kan overtage lead, men opfølgere skal blive samlet
+ # under deres eksisterende parent lead i "Mere om sagen".
+ if article.get('weight') in {'A','B'} and not article.get('related_news_slug'):
   state['lead']={'slug':slug}
   state['lead_rationale']=f"Ny {article.get('weight')}-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead."
  for key,limit in (('rail',5),('narrow',8)):
