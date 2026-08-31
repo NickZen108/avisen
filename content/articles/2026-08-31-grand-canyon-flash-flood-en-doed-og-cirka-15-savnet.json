@@ -73,7 +73,7 @@
   "workflow_state": {
     "state": "blocked",
     "blocked_at": "2026-08-31T09:33:16Z",
-    "resume_from": "final_editor",
+    "resume_from": "research",
     "reasons": [
       "coverage sweep mangler/er ugyldigt",
       "fact-check PASS mangler",

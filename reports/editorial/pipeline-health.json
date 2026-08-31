@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T09:33:16Z",
+  "generated_at": "2026-08-31T09:34:25Z",
   "counts": {
     "published": 5,
     "checking": 1
@@ -35,7 +35,7 @@
       "title": "Flash flood i Grand Canyon: En død og omkring 15 savnet",
       "status": "checking",
       "release_requested": false,
-      "resume_from": "final_editor",
+      "resume_from": "research",
       "reasons": [
         "coverage sweep mangler/er ugyldigt",
         "fact-check PASS mangler",
