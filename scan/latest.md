@@ -1,4 +1,4 @@
-# Scan 2026-08-31T05:05:27.273Z (Cloudflare runtime)
+# Scan 2026-08-31T05:15:27.340Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -114,7 +114,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## Euronews
 - Authorities in Nepal carry out temporary burials of unidentified flood victims causing public outrage
 - Captain arrested after eight people die in ferry capsize off northern Cyprus
-- Fans welcome Céline Dion outside her Paris hotel as she prepares to launch a 16‑show arena residency
 - Guinea-Bissau junta puts new constitution to referendum as opposition urges boycott
 - Guinea-Bissau votes in referendum to rewrite constitution and boost presidential powers
 - Heavy gunfire in Niger capital as clashes reported at presidential palace
@@ -129,6 +128,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Latest news bulletin | August 30th, 2026 – Evening
 - Latest news bulletin | August 30th, 2026 – Midday
 - Latest news bulletin | August 30th, 2026 – Morning
+- Latest news bulletin | August 31st, 2026 – Morning
 - Music, lights and drones: Uzbekistan celebrates 35 years of independence
 - Nepal warns of more possible floods as communities grapple with devastation and death toll rises
 - Norway mourns king Harald V as crown prince Haakon becomes king
@@ -144,12 +144,12 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## Guardian World
 - At least 93,000 ‘in great need’ after Nepal-Tibet flash floods, says Red Cross
 - At least eight dead and 18 missing after ferry capsizes off northern Cyprus
-- Australia news live: NSW will not appeal ruling that found anti-Israel vandalism was not antisemitic; Rowland says no plans to ban import of smart glasses
+- Australia news live: NSW won’t appeal ruling that found anti-Israel vandalism was not antisemitic; body of newborn baby found in bin in Sydney
 - Bondi library returns book How to Sell a Genocide to shelves after State Library ‘outlines the law’
 - Canada erects giant ‘Lake Ontario’ sign as spat with Trump over name escalates
 - Captain and crew arrested after at least eight die in northern Cyprus ferry disaster – as it happened
-- Cash settlements on home insurance claims leaving vulnerable Australians short-changed, Asic says
 - Egyptian queen’s 673-diamond necklace stolen in Vienna smash-and-grab raid
+- Embattled Sydney property developer Bathla warns it could fold by the end of the week
 - ‘Everything’s smashed to bits’: Ukrainians turn anger on those storing weapons near their villages
 - Families of 33 missing Britons rush to Nepal as fears grow of more floods
 - Jason Arday accuser given three-month teaching ban but can continue research

@@ -1,8 +1,8 @@
 {
   "schema_version": 3,
   "runtime": "cloudflare-workers",
-  "generated_at": "2026-08-31T05:05:27.273Z",
-  "fingerprint": "472d5070f10847ef8a84a2106cad691adeb4177acc242cfa22dfaf8b2e16adfc",
+  "generated_at": "2026-08-31T05:15:27.340Z",
+  "fingerprint": "6acf948b3aeb3fe9d5ce9bdb890b3eb00981af7907eddd74813c2b834500583f",
   "signal_count": 177,
   "feeds": [
     {
@@ -141,8 +141,8 @@
     },
     {
       "source": "Guardian World",
-      "headline": "Australia news live: NSW will not appeal ruling that found anti-Israel vandalism was not antisemitic; Rowland says no plans to ban import of smart glasses",
-      "normalized": "australia news live nsw will not appeal ruling that found anti israel vandalism was not antisemitic rowland says no plans to ban import of smart glasses",
+      "headline": "Australia news live: NSW won’t appeal ruling that found anti-Israel vandalism was not antisemitic; body of newborn baby found in bin in Sydney",
+      "normalized": "australia news live nsw won t appeal ruling that found anti israel vandalism was not antisemitic body of newborn baby found in bin in sydney",
       "description": "<p>Follow the day’s news live</p><ul><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>The Australian government is working with Russian officials in a bid to secure the release of Australian <strong>Oscar Jenkins</strong>, <strong>Matt Thistlethwaite</strong> says.<br><br> Speaking to ABC news breakfast, the assistant minister for foreign affairs declined to answer whether a prisoner swap was on the table.</p><p>Obviously, we try and negotiate as best we can on behalf of all Australians who find themselves in difficulties such as this. We obviously have to abide by international laws and we always uphold them. But the Australian officials on the ground will work with their counterparts to ensure that, hopefully he’s returned to Australia safely.</p> <a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Continue reading...</a>",
       "url": "https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb"
     },
@@ -236,13 +236,6 @@
       "normalized": "captain arrested after eight people die in ferry capsize off northern cyprus",
       "description": "Eight other crew members who were on board when the boat set sail from Kyreneia have also been arrested. Investigations into the accident are still underway.",
       "url": "http://www.euronews.com/2026/08/30/passenger-ship-carrying-270-people-sinks-off-coast-of-northern-cyprus"
-    },
-    {
-      "source": "Guardian World",
-      "headline": "Cash settlements on home insurance claims leaving vulnerable Australians short-changed, Asic says",
-      "normalized": "cash settlements on home insurance claims leaving vulnerable australians short changed asic says",
-      "description": "<p>Corporate regulator finds insurers settling most claims with cash rather than by managing repairs or rebuilding, warning of ‘unfair outcomes’ for homeowners</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>Home insurers are overwhelmingly paying cash to settle claims, leaving Australians to foot blowouts in repair costs for their cyclone-damaged homes.</p><p>The corporate regulator is calling for “realistic” bigger payouts, warning the practice could cause “unfair outcomes” for people already in vulnerable positions.</p> <a href=\"https://www.theguardian.com/australia-news/2026/aug/31/cash-settlements-home-insurance-cyclone-disaster-repairs-vulnerable-australians-asic\">Continue reading...</a",
-      "url": "https://www.theguardian.com/australia-news/2026/aug/31/cash-settlements-home-insurance-cyclone-disaster-repairs-vulnerable-australians-asic"
     },
     {
       "source": "BBC Europe",
@@ -343,6 +336,13 @@
       "url": "https://www.bbc.co.uk/news/articles/c770jyd4l7lo?at_medium=RSS&at_campaign=rss"
     },
     {
+      "source": "Guardian World",
+      "headline": "Embattled Sydney property developer Bathla warns it could fold by the end of the week",
+      "normalized": "embattled sydney property developer bathla warns it could fold by the end of the week",
+      "description": "<p>Administrators said it would be forced to close the business if it failed to secure additional funding, revealing hundreds of staff have not been paid for weeks</p><p>The administrators of embattled property developer Bathla Group have said the company will fold by the end of the week unless they can secure additional funding to keep it afloat.</p><p>The insolvency advisory Teneo assumed control of Bathla’s operations on 25 August after the Sydney-based construction company went into voluntary administration.</p> <a href=\"https://www.theguardian.com/australia-news/2026/aug/31/embattled-sydney-property-developer-bathla-warns-it-could-fold-by-the-end-of-the-week\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/australia-news/2026/aug/31/embattled-sydney-property-developer-bathla-warns-it-could-fold-by-the-end-of-the-week"
+    },
+    {
       "source": "The Local Denmark",
       "headline": "EU chief to visit Greenland in September to boost ties",
       "normalized": "eu chief to visit greenland in september to boost ties",
@@ -376,13 +376,6 @@
       "normalized": "families of 33 missing britons rush to nepal as fears grow of more floods",
       "description": "<p>Desperate relatives trying to reach loved ones last seen in area where entire villages have been swept away</p><ul><li><p><a href=\"https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates\">Nepal-Tibet flash flood – latest updates</a></p></li><li><p><a href=\"https://www.theguardian.com/world/2026/aug/27/nepal-tibet-flash-flood-visual-guide-why-how-flooding-happened-floods-cause-reason-explained\">Visual guide: how the deadly flooding unfolded</a></p></li><li><p><a href=\"https://www.theguardian.com/world/2026/aug/26/tell-us-have-you-been-affected-by-the-flash-floods-on-the-nepal-tibet-border\">Tell us: have you been affected by the flash floods?</a></p></li></ul><p>Families are rushing to Nepal to search for the 33 British nationals who are still missing, as fears mount over the risk of a second wave of flooding in the region.</p><p><a href=\"https://www.theguardian.com/world/2026/aug/28/flash-flood-risk-halt-rescue-tibet-nepal-death-toll-china-lake-burst\">The catastrophic flash floods that hit Nepal and Tibet on Wednesday</a>, thundering down valleys and sweeping away entire villages, have killed at least 538 people, wh",
       "url": "https://www.theguardian.com/world/2026/aug/28/families-missing-britons-nepal-flash-floods"
-    },
-    {
-      "source": "Euronews",
-      "headline": "Fans welcome Céline Dion outside her Paris hotel as she prepares to launch a 16‑show arena residency",
-      "normalized": "fans welcome céline dion outside her paris hotel as she prepares to launch a 16 show arena residency",
-      "description": "Fans welcome Céline Dion outside her Paris hotel as she prepares to launch a 16‑show arena residency, her first major concert run since revealing her stiff‑person syndrome diagnosis.",
-      "url": "http://www.euronews.com/video/2026/08/28/fans-welcome-celine-dion-outside-her-paris-hotel-as-she-prepares-to-launch-a-16show-arena-"
     },
     {
       "source": "DR",
@@ -677,6 +670,13 @@
       "normalized": "latest news bulletin august 30th 2026 morning",
       "description": "Catch up with the most important stories from around Europe and beyond this August 30th, 2026 - latest news, breaking news, World, Business, Entertainment, Politics, Culture, Travel.",
       "url": "http://www.euronews.com/video/2026/08/30/latest-news-bulletin-august-30th-2026-morning"
+    },
+    {
+      "source": "Euronews",
+      "headline": "Latest news bulletin | August 31st, 2026 – Morning",
+      "normalized": "latest news bulletin august 31st 2026 morning",
+      "description": "Catch up with the most important stories from around Europe and beyond this August 31st, 2026 - latest news, breaking news, World, Business, Entertainment, Politics, Culture, Travel.",
+      "url": "http://www.euronews.com/video/2026/08/31/latest-news-bulletin-august-31st-2026-morning"
     },
     {
       "source": "Al Jazeera",
@@ -1004,7 +1004,7 @@
       "source": "DR",
       "headline": "Traktorer med banner spærrer Sallingsundbroen",
       "normalized": "traktorer med banner spærrer sallingsundbroen",
-      "description": "",
+      "description": "Politiet ved ikke, hvem der er ansvarlige for vejspærringen.",
       "url": "https://www.dr.dk/nyheder/seneste/traktorer-med-banner-spaerrer-sallingsundbroen"
     },
     {
