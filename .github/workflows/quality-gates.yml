@@ -16,10 +16,10 @@ jobs:
       - name: Script syntax
         run: python -m compileall -q scripts && bash -n scripts/scan-feeds.sh
       - name: Prebuild gates
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
       - name: Deterministic build
         run: python scripts/build_all_v2.py
       - name: Postbuild gates
-        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py
+        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
       - name: Show generated drift
         run: git diff --check
