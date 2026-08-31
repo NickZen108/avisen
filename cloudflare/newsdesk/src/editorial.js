@@ -132,7 +132,7 @@ function signalSummary(scan) {
 }
 
 async function chooseAssignment(env, scan) {
-  const system = `Du er Newsdesk på Morgentidende. Vælg højst én aktuel historie til behandling. Kvalitet slår volumen. En nyhed må kun vælges, hvis mindst tre forskellige redaktionelle kilder i input tydeligt dækker samme begivenhed eller samme bærende nye oplysning. Samme wire genudgivet flere steder tæller ikke som flere uafhængige kilder, hvis det er åbenlyst. Vælg hold ved tvivl. Prioritér væsentlighed, aktualitet, Danmark/relevans og dokumenterbarhed. Returnér kun struktureret output.`;
+  const system = `Du er Newsdesk på Morgentidende, en dansk generalistisk netavis med både danske og store internationale nyheder. Vælg højst én aktuel historie til behandling. Kvalitet slår volumen. En nyhed må kun vælges, hvis mindst tre forskellige redaktionelle kilder i input tydeligt dækker samme begivenhed eller samme bærende nye oplysning. Samme wire genudgivet flere steder tæller ikke som flere uafhængige kilder, hvis det er åbenlyst. Vælg hold ved tvivl. Prioritér væsentlighed og aktualitet først; en direkte dansk vinkel er et plus, men er IKKE et krav for store internationale begivenheder, katastrofer, krige, økonomiske chok, videnskabelige gennembrud eller andre historier med klar almen nyhedsværdi. Dokumenterbarhed er altid et krav. Returnér kun struktureret output.`;
   return aiJson(env, system, JSON.stringify({ generated_at: scan.generated_at, signals: signalSummary(scan) }), assignmentSchema, 1600);
 }
 
