@@ -6,6 +6,12 @@
   const initial = saved === "dark" || saved === "light" ? saved : (systemDark ? "dark" : "light");
   document.documentElement.dataset.theme = initial;
 
+  const rootPrefix = location.pathname.includes("/artikler/") ? "../" : "./";
+  const css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = `${rootPrefix}account-ui.css?v=1`;
+  document.head.appendChild(css);
+
   const sync = () => {
     const button = document.querySelector(".theme-toggle");
     if (!button) return;
@@ -15,8 +21,20 @@
     if (label) label.textContent = dark ? "Lys" : "Mørk";
   };
 
+  const addAccountLink = () => {
+    const masthead = document.querySelector(".masthead-inner");
+    if (!masthead || masthead.querySelector(".account-link")) return;
+    const link = document.createElement("a");
+    link.className = "account-link";
+    link.href = `${rootPrefix}login.html`;
+    link.setAttribute("aria-label", "Log ind");
+    link.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 20c.8-4.1 3.3-6 7.5-6s6.7 1.9 7.5 6"></path></svg><span>Log ind</span>';
+    masthead.appendChild(link);
+  };
+
   const ready = () => {
     sync();
+    addAccountLink();
     const button = document.querySelector(".theme-toggle");
     if (!button) return;
     button.addEventListener("click", () => {
