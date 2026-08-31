@@ -19,15 +19,13 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
+ARTICLE_DIR = ROOT / "content" / "articles"
 CACHE = DOCS / "img" / "cache"
 MANIFEST = CACHE / "manifest.json"
 PUBLIC_BASE = "https://morgentidende.nicolaipetersen108.workers.dev"
 UA = "MorgentidendeImageCache/1.2 (+https://morgentidende.nicolaipetersen108.workers.dev/)"
 IMG_RE = re.compile(r'<img\b[^>]*\bsrc=["\'](https?://[^"\']+)["\']', re.I)
 
-# Grandfathered hand-written pages can contain old image URLs that no longer
-# exist. Repair them in generated/public HTML without pretending the old URL is
-# healthy. New structured articles must instead be fixed in canonical content.
 LEGACY_REPLACEMENTS = {
     "https://commons.wikimedia.org/wiki/Special:FilePath/Grubenhaus_Warendorf.jpg": "../img/soften.svg",
     "https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn_from_Kongens_Nytorv.jpg": "https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn-Copenhagen.jpg",
@@ -112,9 +110,27 @@ def fetch_image(url: str) -> tuple[bytes, str, str]:
     raise RuntimeError(f"image fetch failed after retries: {url}: {last_error}")
 
 
+def public_article_names() -> set[str]:
+    names: set[str] = set()
+    for p in ARTICLE_DIR.glob("*.json"):
+        if p.name.startswith("_"):
+            continue
+        try:
+            article = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if article.get("status") == "published" and article.get("slug"):
+            names.add(f"{article['slug']}.html")
+    legacy = ROOT / "config" / "legacy-articles.txt"
+    if legacy.exists():
+        names.update(x.strip() for x in legacy.read_text(encoding="utf-8").splitlines() if x.strip() and not x.lstrip().startswith("#"))
+    return names
+
+
 def html_files() -> list[Path]:
     files = [DOCS / "index.html"]
-    files.extend(sorted((DOCS / "artikler").glob("*.html")))
+    allowed = public_article_names()
+    files.extend(p for p in sorted((DOCS / "artikler").glob("*.html")) if p.name in allowed)
     return [p for p in files if p.exists()]
 
 
