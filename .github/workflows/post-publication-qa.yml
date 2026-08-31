@@ -39,8 +39,33 @@ jobs:
       - name: Install visual verifier
         run: python -m pip install --disable-pip-version-check pillow
       - name: Live text, rendering and internal-link QA
+        id: textqa
+        continue-on-error: true
         run: python scripts/live_recent_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-latest.md
       - name: Live image and graphics QA
+        id: visualqa
+        continue-on-error: true
         run: python scripts/live_visual_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-visual-latest.md
       - name: Live responsive, dark-mode and hero QA
+        id: surfaceqa
+        continue-on-error: true
         run: python scripts/live_surface_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-surface-latest.md
+      - name: Upload QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-publication-qa-${{ github.run_id }}
+          path: reports/qa/*.md
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Aggregate live QA result
+        if: always()
+        env:
+          TEXT: ${{ steps.textqa.outcome }}
+          VISUAL: ${{ steps.visualqa.outcome }}
+          SURFACE: ${{ steps.surfaceqa.outcome }}
+        run: |
+          echo "text=$TEXT visual=$VISUAL surface=$SURFACE"
+          test "$TEXT" = success
+          test "$VISUAL" = success
+          test "$SURFACE" = success
