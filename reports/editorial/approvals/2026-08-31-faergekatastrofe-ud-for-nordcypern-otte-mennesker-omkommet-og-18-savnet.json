@@ -3,7 +3,7 @@
   "status": "pass",
   "story_id": "2026-08-31-faergekatastrofe-ud-for-nordcypern",
   "article_slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
-  "checked_at": "2026-08-31T05:38:23.225Z",
+  "checked_at": "2026-08-31T06:52:57Z",
   "gates": {
     "language": "pass",
     "ethics": "pass",
@@ -22,55 +22,29 @@
     "byline": "Morgentidende Redaktion",
     "manual_review": false,
     "ledger": "sources/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.json",
-    "claim_ids": [
-      "F01",
-      "F02",
-      "F03"
-    ],
+    "claim_ids": ["F01", "F02", "F03"],
     "seo": {
       "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
       "description": "Færgekatastrofe ud for Nordcypern: Mindst otte mennesker omkommet og 18 savnet.",
       "canonical": null
     },
     "image": {
-      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
-      "alt": "En illustration af en færge i nød, omgivet af livreddingsveste og redningsbåde, på en stormfuld havoverflade.",
-      "credit": "Morgentidende",
-      "license": "Morgentidende",
-      "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.jpg",
-      "image_type": "illustration",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kyrenia_Harbour.jpg",
+      "alt": "Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken",
+      "credit": "Heavenl1y / Wikimedia Commons",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kyrenia_Harbour.jpg",
+      "image_type": "photo",
       "placement": "lead"
     },
     "body": [
-      {
-        "text": "Mindst otte mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern, ifølge BBC Europe og BBC World.",
-        "type": "p"
-      },
-      {
-        "text": "Færgen var på vej fra Kyrenia i Nordcypern til Tyrkiet, da den kapsejlede omkring 4 nautiske mil ud for kysten.",
-        "type": "p"
-      },
-      {
-        "text": "Kaptajnen og besætningen er arresteret efter ulykken, oplyser Guardian World.",
-        "type": "p"
-      },
-      {
-        "text": "Færgekatastrofen ud for Nordcypern er blevet bekræftet af flere kilder, herunder BBC Europe, BBC World og Guardian World.",
-        "type": "p"
-      },
-      {
-        "text": "Der er ikke offentliggjort flere oplysninger om årsagen til ulykken endnu.",
-        "type": "p"
-      }
+      {"text": "Mindst otte mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern, ifølge BBC Europe og BBC World.", "type": "p"},
+      {"text": "Færgen var på vej fra Kyrenia i Nordcypern til Tyrkiet, da den kapsejlede omkring 4 nautiske mil ud for kysten.", "type": "p"},
+      {"text": "Kaptajnen og besætningen er arresteret efter ulykken, oplyser Guardian World.", "type": "p"},
+      {"text": "Færgekatastrofen ud for Nordcypern er blevet bekræftet af flere kilder, herunder BBC Europe, BBC World og Guardian World.", "type": "p"},
+      {"text": "Der er ikke offentliggjort flere oplysninger om årsagen til ulykken endnu.", "type": "p"}
     ],
-    "source_ids_to_display": [
-      "S1",
-      "S2",
-      "S3",
-      "S4",
-      "S5",
-      "S6"
-    ],
+    "source_ids_to_display": ["S1", "S2", "S3", "S4", "S5", "S6"],
     "related_news_slug": null,
     "related": [],
     "correction_note": null,
