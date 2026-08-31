@@ -14,6 +14,34 @@ def snap(a):
  x=copy.deepcopy(a)
  for k in PUB:x.pop(k,None)
  return x
+def published_slugs():
+ out=[]
+ for p in sorted(ARTICLE_DIR.glob('*.json'),reverse=True):
+  if p.name.startswith('_'): continue
+  try:x=load(p)
+  except Exception:continue
+  if x.get('status')=='published' and x.get('slug'): out.append(x['slug'])
+ return out
+def repair_frontpage(blocked_slug):
+ if not FRONTPAGE.exists(): return
+ state=load(FRONTPAGE); changed=False
+ for key in ('rail','stack','narrow'):
+  before=state.get(key,[]) or []; after=[x for x in before if x.get('slug')!=blocked_slug]
+  if after!=before: state[key]=after; changed=True
+ candidates=[]
+ for key in ('lead','ticker'):
+  s=(state.get(key) or {}).get('slug')
+  if s and s!=blocked_slug: candidates.append(s)
+ for key in ('rail','narrow','stack'):
+  candidates.extend(x.get('slug') for x in state.get(key,[]) if x.get('slug'))
+ candidates.extend(published_slugs())
+ fallback=next((s for s in candidates if s and s!=blocked_slug),None)
+ for key in ('ticker','lead'):
+  if (state.get(key) or {}).get('slug')==blocked_slug:
+   if fallback: state[key]={'slug':fallback}
+   else: state[key]={}
+   changed=True
+ if changed: FRONTPAGE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def add_to_frontpage(article):
  slug=article['slug']; state=load(FRONTPAGE); state['date']=slug[:10]; state['ticker']={'slug':slug}
  if article.get('weight') in {'A','B'} and not article.get('related_news_slug'):
@@ -56,8 +84,9 @@ def main():
   if x.get('pipeline_version')!=2: continue
   reasons,resume=diagnose(path,x) if x.get('status') in {'ready','checking','editing','researching'} else ([],None)
   if x.get('status')=='ready' and x.get('release_requested') is True and reasons:
-   x['status']='checking'; x['release_requested']=False; x['workflow_state']={'state':'blocked','blocked_at':stamp,'resume_from':resume,'reasons':reasons}; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); recovered+=1
+   x['status']='checking'; x['release_requested']=False; x['workflow_state']={'state':'blocked','blocked_at':stamp,'resume_from':resume,'reasons':reasons}; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); repair_frontpage(x.get('slug')); recovered+=1
   elif x.get('status') in {'checking','editing','researching'} and reasons:
+   repair_frontpage(x.get('slug'))
    ws=x.get('workflow_state') or {}; changed=ws.get('resume_from')!=resume or ws.get('reasons')!=reasons or ws.get('state') not in {'blocked','needs_attention'}
    if changed:
     ws.update({'state':'blocked','resume_from':resume,'reasons':reasons}); ws.setdefault('blocked_at',stamp); x['workflow_state']=ws; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
