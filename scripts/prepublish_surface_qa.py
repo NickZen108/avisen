@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""Deterministic pre-publish surface checks for Morgentidende.
+
+This complements fact/editorial gates: it protects hero/media metadata and the
+shared light/dark responsive shell before generated HTML can be deployed.
+"""
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+ARTICLES = ROOT / "content" / "articles"
+
+
+def load(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def main() -> int:
+    faults: list[str] = []
+
+    # Shared shell must retain the responsive viewport and accessible dark-mode switch.
+    for template_name in ("article.html", "index.html"):
+        path = ROOT / "templates" / template_name
+        text = path.read_text(encoding="utf-8")
+        for needle, label in (
+            ('name="viewport"', "responsive viewport"),
+            ("theme.css", "dark-mode CSS"),
+            ("theme.js", "dark-mode JS"),
+            ('class="theme-toggle"', "dark-mode toggle"),
+            ('role="switch"', "accessible switch semantics"),
+        ):
+            if needle not in text:
+                faults.append(f"{template_name}: mangler {label}")
+
+    theme_css = (ROOT / "docs" / "theme.css").read_text(encoding="utf-8")
+    theme_js = (ROOT / "docs" / "theme.js").read_text(encoding="utf-8")
+    if "prefers-color-scheme" not in theme_js and "prefers-color-scheme" not in theme_css:
+        faults.append("dark mode følger ikke systempræference")
+    if "localStorage" not in theme_js:
+        faults.append("dark mode husker ikke brugerens valg")
+
+    for path in sorted(ARTICLES.glob("*.json")):
+        if path.name.startswith("_"):
+            continue
+        article = load(path)
+        if article.get("status") not in {"ready", "published"}:
+            continue
+        image = article.get("image")
+        origin = article.get("automation_origin")
+
+        # New autonomous Cloudflare articles are held to the full hero standard.
+        if origin == "cloudflare-workers-ai":
+            if not isinstance(image, dict):
+                faults.append(f"{path.name}: autonom artikel mangler hero")
+                continue
+            if image.get("placement", "lead") != "lead":
+                faults.append(f"{path.name}: autonom artikel har ikke lead-hero")
+            if image.get("image_type") not in {"photo", "illustration"}:
+                faults.append(f"{path.name}: ugyldig hero-type {image.get('image_type')!r}")
+            if image.get("image_type") == "graphic":
+                faults.append(f"{path.name}: teknisk grafik må ikke være autonom hero")
+            for key in ("src", "alt", "credit", "license"):
+                if not str(image.get(key) or "").strip():
+                    faults.append(f"{path.name}: hero mangler {key}")
+            src = str(image.get("src") or "")
+            if src.lower().endswith(".svg"):
+                faults.append(f"{path.name}: autonom hero må ikke være SVG/diagram")
+            if src.startswith("/img/"):
+                local = ROOT / "docs" / src.lstrip("/")
+                if not local.exists():
+                    faults.append(f"{path.name}: lokal hero findes ikke: {src}")
+
+        # Every declared lead image, including older articles, needs basic truthful metadata.
+        if isinstance(image, dict) and image.get("src") and image.get("placement", "lead") == "lead":
+            if not str(image.get("alt") or "").strip():
+                faults.append(f"{path.name}: lead-billede mangler alt-tekst")
+            if not str(image.get("credit") or "").strip():
+                faults.append(f"{path.name}: lead-billede mangler kredit")
+            if image.get("image_type") == "photo" and not str(image.get("license") or "").strip():
+                faults.append(f"{path.name}: foto mangler licens")
+
+        for i, block in enumerate(article.get("body") or []):
+            if block.get("type") != "figure":
+                continue
+            if not str(block.get("src") or "").strip():
+                faults.append(f"{path.name}: figur {i} mangler src")
+            if not str(block.get("alt") or "").strip():
+                faults.append(f"{path.name}: figur {i} mangler alt-tekst")
+
+    # Generated hero CSS must have a crop-safe default; diagrams are inline/contain.
+    style = (ROOT / "docs" / "style.css").read_text(encoding="utf-8")
+    if not re.search(r"\.lead-fig\s+img\s*\{[^}]*object-fit:\s*cover", style, re.S):
+        faults.append("style.css: hero mangler object-fit: cover")
+    if not re.search(r"\.article-graphic\s+img\s*\{[^}]*object-fit:\s*contain", style, re.S):
+        faults.append("style.css: inline grafik mangler object-fit: contain")
+
+    if faults:
+        print("PREPUBLISH SURFACE QA: FAIL")
+        for fault in faults:
+            print("-", fault)
+        return 1
+    print("PREPUBLISH SURFACE QA: PASS")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
