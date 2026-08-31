@@ -10,53 +10,23 @@
   },
   "sources": [
     {
-      "id": "S1",
-      "name": "BBC Europe",
-      "url": "https://www.bbc.co.uk/news/articles/c86xwqez4npo?at_medium=RSS&at_campaign=rss",
-      "published_at": null,
-      "accessed_at": "2026-08-31T05:38:23.225Z",
-      "type": "news",
-      "source_group": "bbc-europe-reporting",
-      "authoritative_for": "At least 37 dead and hundreds evacuated after strike on Kyiv weapons depot"
-    },
-    {
-      "id": "S2",
-      "name": "BBC World",
-      "url": "https://www.bbc.co.uk/news/articles/c86xwqez4npo?at_medium=RSS&at_campaign=rss",
-      "published_at": null,
-      "accessed_at": "2026-08-31T05:38:23.225Z",
-      "type": "news",
-      "source_group": "bbc-world-reporting",
-      "authoritative_for": "At least 37 dead and hundreds evacuated after strike on Kyiv weapons depot"
-    },
-    {
       "id": "S3",
-      "name": "BBC Europe",
+      "name": "BBC",
       "url": "https://www.bbc.co.uk/news/articles/c770jyd4l7lo?at_medium=RSS&at_campaign=rss",
       "published_at": null,
       "accessed_at": "2026-08-31T05:38:23.225Z",
       "type": "news",
-      "source_group": "bbc-europe-reporting",
-      "authoritative_for": "Eight killed and 18 missing after ferry capsizes off northern Cyprus"
-    },
-    {
-      "id": "S4",
-      "name": "BBC World",
-      "url": "https://www.bbc.co.uk/news/articles/c770jyd4l7lo?at_medium=RSS&at_campaign=rss",
-      "published_at": null,
-      "accessed_at": "2026-08-31T05:38:23.225Z",
-      "type": "news",
-      "source_group": "bbc-world-reporting",
+      "source_group": "bbc-reporting",
       "authoritative_for": "Eight killed and 18 missing after ferry capsizes off northern Cyprus"
     },
     {
       "id": "S5",
-      "name": "Guardian World",
+      "name": "The Guardian",
       "url": "https://www.theguardian.com/world/live/2026/aug/30/northern-cyprus-ferry-capsizes-latest-news-updates",
       "published_at": null,
       "accessed_at": "2026-08-31T05:38:23.225Z",
       "type": "news",
-      "source_group": "guardian-world-reporting",
+      "source_group": "guardian-reporting",
       "authoritative_for": "Captain and crew arrested after at least eight die in northern Cyprus ferry disaster – as it happened"
     },
     {
@@ -72,23 +42,12 @@
   ],
   "coverage_sweep": {
     "status": "pass",
-    "editorial_source_ids": [
-      "S1",
-      "S2",
-      "S3",
-      "S4",
-      "S5",
-      "S6"
-    ],
-    "independent_source_groups": [
-      "bbc-europe-reporting",
-      "bbc-world-reporting",
-      "guardian-world-reporting",
-      "euronews-reporting"
-    ],
+    "editorial_source_ids": ["S3", "S5", "S6"],
+    "independent_source_groups": ["bbc-reporting", "guardian-reporting", "euronews-reporting"],
     "limitations": null,
     "notes": [
-      "Cloudflare editorial runtime fetched and compared the source texts before drafting."
+      "Cloudflare editorial runtime fetched and compared the source texts before drafting.",
+      "Source lineage normalized after publication: duplicate BBC feed entries were collapsed to one underlying BBC report."
     ]
   },
   "claims": [
@@ -96,18 +55,8 @@
       "id": "F01",
       "claim": "Flere mennesker er omkommet efter en færgekatastrofe ud for Nordcypern",
       "status": "verified",
-      "source_ids": [
-        "S3",
-        "S4",
-        "S5",
-        "S6"
-      ],
-      "independent_groups": [
-        "bbc-europe-reporting",
-        "bbc-world-reporting",
-        "guardian-world-reporting",
-        "euronews-reporting"
-      ],
+      "source_ids": ["S3", "S5", "S6"],
+      "independent_groups": ["bbc-reporting", "guardian-reporting", "euronews-reporting"],
       "checked_at": "2026-08-31T05:38:23.225Z",
       "notes": ""
     },
@@ -115,37 +64,17 @@
       "id": "F02",
       "claim": "Mindst 8 mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern",
       "status": "verified",
-      "source_ids": [
-        "S3",
-        "S4",
-        "S5",
-        "S6"
-      ],
-      "independent_groups": [
-        "bbc-europe-reporting",
-        "bbc-world-reporting",
-        "guardian-world-reporting",
-        "euronews-reporting"
-      ],
+      "source_ids": ["S3", "S5", "S6"],
+      "independent_groups": ["bbc-reporting", "guardian-reporting", "euronews-reporting"],
       "checked_at": "2026-08-31T05:38:23.225Z",
       "notes": ""
     },
     {
       "id": "F03",
-      "claim": "Færgen var på vej fra Kyrenia i Nordcypern til Tåsùcu i Tyrkiet, da den kapsejlede omkring 4 nautiske mil ud for kysten",
+      "claim": "Færgen var på vej fra Kyrenia i Nordcypern til Taşucu i Tyrkiet, da den kapsejlede omkring 4 nautiske mil ud for kysten",
       "status": "verified",
-      "source_ids": [
-        "S3",
-        "S4",
-        "S5",
-        "S6"
-      ],
-      "independent_groups": [
-        "bbc-europe-reporting",
-        "bbc-world-reporting",
-        "guardian-world-reporting",
-        "euronews-reporting"
-      ],
+      "source_ids": ["S3", "S5", "S6"],
+      "independent_groups": ["bbc-reporting", "guardian-reporting", "euronews-reporting"],
       "checked_at": "2026-08-31T05:38:23.225Z",
       "notes": ""
     }
@@ -164,12 +93,12 @@
     "status": "pass",
     "checked_at": "2026-08-31T05:38:23.225Z",
     "notes": [
-      "Independent Cloudflare fact-check stage passed; deterministic claim-support gate required at least two source indexes for each published material claim."
+      "Independent Cloudflare fact-check stage passed; material claims are supported by BBC, The Guardian and Euronews as distinct underlying reports."
     ]
   },
   "desk_recheck": {
     "status": "publish",
     "checked_at": "2026-08-31T05:38:23.225Z",
-    "rationale": "Mindst tre forskellige kilder (BBC Europe, BBC World og Guardian World) dækker samme begivenhed om færgekatastrofen ud for Nordcypern."
+    "rationale": "Tre forskellige underliggende kilder – BBC, The Guardian og Euronews – dækker samme begivenhed om færgekatastrofen ud for Nordcypern."
   }
 }
