@@ -2,7 +2,7 @@
 # Opdateres kun efter udtrykkelig brugerordre om designændring.
 63b74d1af3510b9e86e7eaf1fedc31b45347b393 docs/style.css
 19c0c2ace05968ca427cc51977105059170034a4 docs/signup.css
-a9fd9b595474dff6c8dceb7419b725fb2abf2255 docs/theme.css
+c7b9acaa545d95070afb6ffda9644f6ba456d0ec docs/theme.css
 b1857a55a4da498c0ad3dc672a34cf4793f3848f docs/theme.js
 5acbd2ed9cc9b9e4877fcc2586366662002031bf docs/short-videos.js
 1c79eb821797aa7061d8780b1eda4d2533155971 docs/logo.svg
