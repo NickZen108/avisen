@@ -1,0 +1,158 @@
+#!/usr/bin/env python3
+"""Editorial layout enhancements applied after the canonical build.
+
+Keeps generated pages deterministic: every article gets an eight-story news
+continuation, while features/science/health/relationships receive a distinct
+premium magazine shelf on both the front page and article pages.
+"""
+from __future__ import annotations
+
+import html
+import json
+import re
+from datetime import datetime
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+ARTICLES = ROOT / "content" / "articles"
+DOCS = ROOT / "docs"
+
+FEATURE_CATEGORIES = {
+    "Feature", "Features", "Videnskab", "Sundhed", "Parforhold", "Kultur",
+    "Forbruger", "Guide", "Liv", "Teknologi", "Viden",
+}
+NEWS_CATEGORIES = {
+    "Nyhed", "Nyheder", "Politik", "Økonomi", "Udland", "Krimi", "Sport",
+    "Danmark", "Internationalt", "Erhverv",
+}
+
+
+def esc(value: object) -> str:
+    return html.escape(str(value or ""), quote=True)
+
+
+def published() -> list[dict]:
+    items: list[dict] = []
+    for path in ARTICLES.glob("*.json"):
+        if path.name.startswith("_"):
+            continue
+        try:
+            article = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if article.get("status") == "published" and article.get("slug") and article.get("title"):
+            items.append(article)
+    items.sort(key=lambda a: a.get("published_at") or "", reverse=True)
+    return items
+
+
+def is_feature(article: dict) -> bool:
+    return str(article.get("category") or "") in FEATURE_CATEGORIES
+
+
+def is_news(article: dict) -> bool:
+    category = str(article.get("category") or "")
+    if category in NEWS_CATEGORIES:
+        return True
+    return category not in FEATURE_CATEGORIES and category not in {"Kommentar", "Kronik", "Debat"}
+
+
+def teaser(article: dict, max_len: int = 150) -> str:
+    text = str(article.get("standfirst") or article.get("teaser") or "").strip()
+    if len(text) <= max_len:
+        return text
+    cut = text[:max_len].rsplit(" ", 1)[0].rstrip(" ,;:-")
+    return cut + "…"
+
+
+def more_news_html(items: list[dict], current_slug: str) -> str:
+    choices = [a for a in items if a.get("slug") != current_slug and is_news(a)][:8]
+    if len(choices) < 8:
+        used = {a.get("slug") for a in choices} | {current_slug}
+        choices += [a for a in items if a.get("slug") not in used and not is_feature(a)][: 8 - len(choices)]
+    if not choices:
+        return ""
+    cards = []
+    for a in choices[:8]:
+        cards.append(
+            '<article class="more-news-card">'
+            f'<p class="section-label more-news__category">{esc(a.get("category") or "Nyhed")}</p>'
+            f'<h2><a href="{esc(a["slug"])}.html">{esc(a["title"])}</a></h2>'
+            f'<p>{esc(teaser(a, 120))}</p>'
+            '</article>'
+        )
+    return '<section class="wrap below"><h2 class="below-heading">Flere nyheder</h2>' + "".join(cards) + "</section>"
+
+
+def feature_html(items: list[dict], *, prefix: str, current_slug: str | None = None) -> str:
+    choices = [a for a in items if a.get("slug") != current_slug and is_feature(a)][:4]
+    # Keep the shelf populated during the early life of the newspaper. Prefer
+    # feature categories, but fall back to the most evergreen-looking stories.
+    if len(choices) < 4:
+        used = {a.get("slug") for a in choices} | ({current_slug} if current_slug else set())
+        fallback = [a for a in items if a.get("slug") not in used and a.get("category") not in {"Krimi"}]
+        choices += fallback[: 4 - len(choices)]
+    if not choices:
+        return ""
+    cards = []
+    for a in choices[:4]:
+        cards.append(
+            f'<a class="feature-card" href="{prefix}{esc(a["slug"])}.html">'
+            f'<span class="feature-card__category">{esc(a.get("category") or "Feature")}</span>'
+            f'<strong>{esc(a["title"])}</strong>'
+            f'<p>{esc(teaser(a, 105))}</p>'
+            '</a>'
+        )
+    return (
+        '<section class="feature-shelf" aria-label="Perspektiv og liv">'
+        '<div class="feature-shelf__head"><div>'
+        '<p class="feature-shelf__eyebrow">Morgentidende magasin</p>'
+        '<h2 class="feature-shelf__title">Perspektiv &amp; liv</h2>'
+        '</div><p class="feature-shelf__deck">Videnskab, sundhed, kultur, relationer og historier med længere levetid end nyhedsstrømmen.</p></div>'
+        '<div class="feature-shelf__grid">' + "".join(cards) + '</div></section>'
+    )
+
+
+def enhance_article(path: Path, items: list[dict]) -> None:
+    current_slug = path.stem
+    text = path.read_text(encoding="utf-8")
+    news = more_news_html(items, current_slug)
+    existing = re.compile(r'<section class="wrap below">.*?</section>', re.S)
+    if existing.search(text):
+        text = existing.sub(news, text, count=1)
+    elif news:
+        text = text.replace("<footer>", news + "\n<footer>", 1)
+    shelf = feature_html(items, prefix="", current_slug=current_slug)
+    if shelf:
+        text = text.replace("<footer>", shelf + "\n<footer>", 1)
+    path.write_text(text, encoding="utf-8")
+
+
+def enhance_front(items: list[dict]) -> None:
+    path = DOCS / "index.html"
+    if not path.exists():
+        return
+    text = path.read_text(encoding="utf-8")
+    shelf = feature_html(items, prefix="artikler/")
+    if not shelf:
+        return
+    marker = "<!-- SHORT_VIDEOS -->"
+    if marker in text:
+        text = text.replace(marker, shelf + "\n  " + marker, 1)
+    else:
+        text = text.replace('<section class="signup"', shelf + '\n<section class="signup"', 1)
+    path.write_text(text, encoding="utf-8")
+
+
+def main() -> None:
+    items = published()
+    for path in sorted((DOCS / "artikler").glob("*.html")):
+        if path.name.startswith("_"):
+            continue
+        enhance_article(path, items)
+    enhance_front(items)
+    print(f"Design enhancements OK: {len(items)} published articles")
+
+
+if __name__ == "__main__":
+    main()
