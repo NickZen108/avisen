@@ -1,36 +1,58 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse,json
+import argparse,copy,json
 from datetime import datetime,timezone
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; ARTICLE_DIR=ROOT/'content'/'articles'; FRONTPAGE=ROOT/'content'/'frontpage.json'
+ROOT=Path(__file__).resolve().parents[1]; ARTICLE_DIR=ROOT/'content'/'articles'; FRONTPAGE=ROOT/'content'/'frontpage.json'; REPORT=ROOT/'reports'/'editorial'/'pipeline-health.json'
+PUB={"status","published_at","updated_at","scheduled_for","released_from_schedule_at","release_requested","publication","manual_review_completed","workflow_state"}
 def parse_iso(v):
  d=datetime.fromisoformat(v.replace('Z','+00:00'))
  if d.tzinfo is None: raise ValueError('timezone mangler')
  return d
+def load(path): return json.loads(path.read_text(encoding='utf-8'))
+def snap(a):
+ x=copy.deepcopy(a)
+ for k in PUB:x.pop(k,None)
+ return x
 def add_to_frontpage(article):
- slug=article['slug']; state=json.loads(FRONTPAGE.read_text(encoding='utf-8'))
- state['date']=slug[:10]
- state['ticker']={'slug':slug}
- # A/B hovedhistorier kan overtage lead, men opfølgere skal blive samlet
- # under deres eksisterende parent lead i "Mere om sagen".
+ slug=article['slug']; state=load(FRONTPAGE); state['date']=slug[:10]; state['ticker']={'slug':slug}
  if article.get('weight') in {'A','B'} and not article.get('related_news_slug'):
-  state['lead']={'slug':slug}
-  state['lead_rationale']=f"Ny {article.get('weight')}-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead."
+  state['lead']={'slug':slug}; state['lead_rationale']=f"Ny {article.get('weight')}-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead."
  for key,limit in (('rail',5),('narrow',8)):
-  items=[x for x in state.get(key,[]) if x.get('slug')!=slug]
-  items.insert(0,{'slug':slug}); state[key]=items[:limit]
+  items=[x for x in state.get(key,[]) if x.get('slug')!=slug]; items.insert(0,{'slug':slug}); state[key]=items[:limit]
  FRONTPAGE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+def diagnose(path,x):
+ reasons=[]; resume='final_editor'
+ if x.get('manual_review'): reasons.append('manual_review kræver menneskelig afslutning'); resume='manual_review'
+ lp=ROOT/str(x.get('ledger',''))
+ if not lp.exists(): return ['ledger mangler'],'research'
+ l=load(lp); c=l.get('coverage_sweep') or {}; f=l.get('fact_check') or {}; d=l.get('desk_recheck') or {}
+ if c.get('status') not in {'pass','limited','not_required'}: reasons.append('coverage sweep mangler/er ugyldigt'); resume='research'
+ if f.get('status')!='pass' or not f.get('checked_at'): reasons.append('fact-check PASS mangler'); resume='fact_check'
+ if d.get('status') not in {'publish','update'} or not d.get('checked_at') or not str(d.get('rationale') or '').strip(): reasons.append('newsdesk recheck PUBLISH/UPDATE mangler'); resume='desk_recheck'
+ ap=ROOT/'reports'/'editorial'/'approvals'/f"{x['slug']}.json"
+ if not ap.exists(): reasons.append('final approval mangler'); resume='final_editor'
+ else:
+  a=load(ap)
+  if a.get('status')!='pass' or any((a.get('gates') or {}).get(g)!='pass' for g in ['language','ethics','image','seo','final_editor']): reasons.append('final approval gates er ikke PASS'); resume='final_editor'
+  elif a.get('editorial_snapshot')!=snap(x): reasons.append('artiklen er ændret efter final approval'); resume='final_editor'
+ return reasons,resume
+def write_health(rows,stamp):
+ REPORT.parent.mkdir(parents=True,exist_ok=True)
+ counts={}
+ for r in rows: counts[r['status']]=counts.get(r['status'],0)+1
+ REPORT.write_text(json.dumps({'generated_at':stamp,'counts':counts,'blocked_count':sum(bool(r.get('reasons')) for r in rows),'articles':rows},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def main():
- p=argparse.ArgumentParser(); p.add_argument('--now'); a=p.parse_args(); now=parse_iso(a.now).astimezone(timezone.utc) if a.now else datetime.now(timezone.utc); stamp=now.replace(microsecond=0).isoformat().replace('+00:00','Z'); n=0
+ p=argparse.ArgumentParser(); p.add_argument('--now'); p.add_argument('--normalize-only',action='store_true'); a=p.parse_args(); now=parse_iso(a.now).astimezone(timezone.utc) if a.now else datetime.now(timezone.utc); stamp=now.replace(microsecond=0).isoformat().replace('+00:00','Z'); released=0; recovered=0; rows=[]
  for path in sorted(ARTICLE_DIR.glob('*.json')):
   if path.name.startswith('_'): continue
-  x=json.loads(path.read_text(encoding='utf-8'))
-  if x.get('pipeline_version')!=2 or x.get('status')!='ready' or x.get('release_requested') is not True: continue
-  if x.get('manual_review'): raise SystemExit(f'{path.name}: manual_review må ikke auto-release')
-  ledger=json.loads((ROOT/str(x.get('ledger',''))).read_text(encoding='utf-8'))
-  if (ledger.get('fact_check') or {}).get('status')!='pass' or (ledger.get('desk_recheck') or {}).get('status') not in {'publish','update'}: raise SystemExit(f'{path.name}: redaktionelle gates mangler')
-  if not (ROOT/'reports'/'editorial'/'approvals'/f"{x['slug']}.json").exists(): raise SystemExit(f'{path.name}: final approval mangler')
-  x['status']='published'; x['published_at']=stamp; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); add_to_frontpage(x); n+=1
- print(f'Ready release: {n} article(s)'); return 0
+  x=load(path)
+  if x.get('pipeline_version')!=2: continue
+  reasons,resume=diagnose(path,x) if x.get('status') in {'ready','checking','editing','researching'} else ([],None)
+  if x.get('status')=='ready' and x.get('release_requested') is True and reasons:
+   x['status']='checking'; x['release_requested']=False; x['workflow_state']={'state':'blocked','blocked_at':stamp,'resume_from':resume,'reasons':reasons}; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); recovered+=1
+  elif x.get('status')=='ready' and x.get('release_requested') is True and not reasons and not a.normalize_only:
+   x['status']='published'; x['published_at']=stamp; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; x.pop('workflow_state',None); path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); add_to_frontpage(x); released+=1
+  rows.append({'slug':x.get('slug'),'title':x.get('title'),'status':x.get('status'),'release_requested':x.get('release_requested'),'resume_from':resume if reasons else None,'reasons':reasons})
+ write_health(rows,stamp); print(f'Ready release: {released}; recovered/parked: {recovered}'); return 0
 if __name__=='__main__': raise SystemExit(main())
