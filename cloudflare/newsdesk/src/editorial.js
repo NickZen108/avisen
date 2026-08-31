@@ -208,7 +208,7 @@ async function finalReview(env, assignment, dossier, article) {
 
 async function generateHero(env, article) {
   const prompt = `${article.hero_prompt}. Wide 16:9 editorial illustration for a serious Danish newspaper, visually strong, elegant, realistic lighting but clearly illustrative rather than documentary evidence, no words, no logos, no watermarks.`;
-  const raw = await env.AI.run(IMAGE_MODEL, { prompt, seed: Math.floor(Math.random() * 100000) });
+  const raw = await env.AI.run(IMAGE_MODEL, { prompt });
   if (!raw?.image || typeof raw.image !== "string") throw new Error("Image model returned no base64 image");
   return raw.image;
 }
