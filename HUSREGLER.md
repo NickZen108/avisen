@@ -77,7 +77,9 @@ En visuel opfølger må gerne have en direkte, præcis rubrik som `Video: Her ..
 
 Hver opfølger skal have selvstændig nyhedsværdi eller funktion og må ikke blot omskrive leaden. Den mærkes med `related_news_slug` til leaden samt `followup_type`: `update`, `video`, `images`, `eyewitness`, `background`, `timeline` eller `commentary`.
 
-Publicerede opfølgere vises samlet tæt på leaden i en tydeligt beslægtet, let anderledes farvet `Mere om sagen`-boks. `Kommentar`, `Video` og `Billeder` skal mærkes synligt, så genren er klar.
+Publicerede opfølgere vises samlet **neden under leadartiklen som en direkte forlængelse af leadkolonnen** i en tydeligt beslægtet, let anderledes farvet `Mere om sagen`-boks med den tynde relation-bjælke bevaret. Boksen viser normalt højst 3–4 af de stærkeste aktuelle opfølgere; øvrige opfølgere kan fortsat være tilgængelige via artiklerne/sagspakken. `Kommentar`, `Video` og `Billeder` skal mærkes synligt, så genren er klar.
+
+Højre spalte ved leaden skal fortsat være den almindelige `Også i dag`-blanding af **andre** nyheder. Selve leaden og dens `related_news_slug`-opfølgere må ikke fylde denne spalte, når de allerede ligger i `Mere om sagen`.
 
 ## Hero-billeder
 
@@ -85,7 +87,13 @@ Hero-billeder skal være visuelt stærke, relevante og egnede til både desktop 
 
 **Husregel: Brug rigtige fotos, når de er gode, relevante og juridisk brugbare; ellers generér et flot hero-billede.** Et middelmådigt stock-/Commons-foto vælges ikke bare fordi det er nemt at licensere. Kvalitet og relevans skal være høj nok til et professionelt nyhedsmedie.
 
-Prioritet er derfor: 1) relevant, lovligt og æstetisk stærkt foto, 2) flot genereret hero-billede, når et godt foto ikke findes eller ikke er tilstrækkeligt visuelt stærkt, 3) relevant redaktionel illustration, når illustrationsformen passer bedre til historien.
+For **leadnyheder** er prioriteringen skærpet. Søg først efter: 1) dokumentarfoto fra selve hændelsen, 2) foto af redningsaktion/overlevende/pårørende/politi/ambulance/havn/gerningssted eller anden direkte scene, 3) den konkrete lokalitet, 4) dramatisk relevant miljøfoto fra området, der tydeligt bruges som kontekst, og først derefter 5) illustration/genereret hero. Dramatik og klikværdi er legitime hensyn mellem ellers korrekte billeder.
+
+Et dramatisk billede fra en anden hændelse må aldrig bruges eller beskæres/billedtekstes, så læseren kan tro, at det er dokumentation fra den aktuelle hændelse. Et generisk eller lokalt kontekstfoto skal beskrives sandfærdigt som kontekst.
+
+**Permanent lead photo watch:** Hvis et lead publiceres med et acceptabelt men ikke optimalt foto eller med illustration, beholdes heroen midlertidigt, mens Billedredaktør/update-monitor fortsætter med at lede efter et klart bedre, juridisk brugbart dokumentarfoto, så længe historien er lead. Et bedre fund skal verificeres for ophav, licens, dato/sted og kontekst og derefter routes gennem Billedredaktør → nødvendig etik/kildekontrol → Slutredaktør. Efter PASS udskiftes hero uden unødig forsinkelse og live-QA køres igen. Photo watch må aldrig forsinke selve publiceringen af en væsentlig historie.
+
+For øvrige historier er prioriteten: 1) relevant, lovligt og æstetisk stærkt foto, 2) flot genereret hero-billede, når et godt foto ikke findes eller ikke er tilstrækkeligt visuelt stærkt, 3) relevant redaktionel illustration, når illustrationsformen passer bedre til historien.
 
 Genereret materiale må aldrig fremstilles som dokumentarfoto af en virkelig hændelse, person eller specifik scene. Det registreres som `image_type: illustration`. Dokumentarfotos må gerne få et diskret, ensartet redaktionelt filter eller farvebehandling, hvis det forbedrer helhedsindtrykket, men må ikke manipuleres, så dokumentarisk betydning ændres.
 
@@ -104,6 +112,7 @@ Teknisk live-QA og redaktionel overvågning er to forskellige opgaver:
 - GitHub/live QA kontrollerer HTTP, markup, interne assets og de netop ændrede/recent publicerede URL'er.
 - Live proofreader læser den renderede side, som læseren ser, for tekst-/renderingsfejl og forskelle fra canonical indhold.
 - Redaktionel update-monitor leder efter nye oplysninger, der ændrer et bærende claim, story-vægt eller lead.
+- Aktuelle leadhistorier er altid omfattet af permanent photo watch, også hvis de kun er vægt B.
 - A/breaking-stof overvåges aktivt de første 6 timer, mens almindelige historier kun genåbnes ved et konkret væsentligt signal; se `agents/post-publication.md`.
 
 Ingen af dem må lave stille materielle rettelser.
