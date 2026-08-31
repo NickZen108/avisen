@@ -19,12 +19,22 @@ def resolve(i,ix):
  if not a or a.get("pipeline_version")!=2:return i
  im=a.get("image") or {}
  return {"slug":a["slug"],"category":a["category"],"title":a["title"],"standfirst":a["standfirst"],"teaser":a["standfirst"],"published_label":legacy.dk_label(a["published_at"]),"image_src":im.get("src",""),"image_alt":im.get("alt","")}
+def lead_followups(lead_slug,ix):
+ labels={"update":"Ny udvikling","video":"Video","images":"Billeder","eyewitness":"Øjenvidne","background":"Baggrund","timeline":"Tidslinje","commentary":"Kommentar"}
+ items=[a for a in ix.values() if a.get("related_news_slug")==lead_slug and a.get("slug")!=lead_slug]
+ items.sort(key=lambda a:a.get("published_at") or "",reverse=True)
+ if not items:return ""
+ rows=[]
+ for a in items[:3]:
+  kind=a.get("followup_type") or ("commentary" if a.get("category")=="Kommentar" else "update")
+  rows.append(f'<a class="lead-followup" href="{legacy.front_item_url(a["slug"])}"><span class="lead-followup__type">{esc(labels.get(kind,"Mere"))}</span><strong>{esc(a["title"])}</strong></a>')
+ return '<aside class="lead-package" aria-label="Mere om sagen"><p class="lead-package__title">Mere om sagen</p>'+''.join(rows)+'</aside>'
 def front():
  s=load(ROOT/"content"/"frontpage.json");ix=idx();t=(ROOT/"templates"/"index.html").read_text(encoding="utf-8")
  from datetime import datetime
  d=datetime.fromisoformat(s["date"]).date();dl=f"{legacy.WEEKDAYS[d.weekday()]} {d.day}. {legacy.MONTHS[d.month-1]} {d.year}"
  tk=resolve(s["ticker"],ix);ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(tk["title"])}</a></p>'
- l=resolve(s["lead"],ix);im=f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}"></figure>' if l.get("image_src") else "";lead='<section class="lead">'+im+f'<p class="section-label">{esc(l["category"])}</p><h1><a href="{legacy.front_item_url(l["slug"])}">{esc(l["title"])}</a></h1><p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
+ l=resolve(s["lead"],ix);im=f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}"></figure>' if l.get("image_src") else "";lead='<section class="lead">'+im+f'<p class="section-label">{esc(l["category"])}</p><h1><a href="{legacy.front_item_url(l["slug"])}">{esc(l["title"])}</a></h1><p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'+lead_followups(l["slug"],ix)
  rail=['<aside class="rail"><p class="rail-title">Også i dag</p>']
  for raw in s.get("rail",[]):
   x=resolve(raw,ix);pic=f'<img src="{esc(x["image_src"])}" alt="{esc(x.get("image_alt",""))}">' if x.get("image_src") else "";rail.append(f'<a class="rail-item" href="{legacy.front_item_url(x["slug"])}">{pic}<span><span>{esc(x["category"])}</span> {esc(x["title"])}</span></a>')
