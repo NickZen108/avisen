@@ -25,22 +25,30 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Normalize supported image model arguments
+      - name: Normalize Newsdesk runtime compatibility
         run: |
           python - <<'PY'
           from pathlib import Path
-          path = Path('cloudflare/newsdesk/src/editorial.js')
-          text = path.read_text()
+
+          editorial = Path('cloudflare/newsdesk/src/editorial.js')
+          text = editorial.read_text()
           old = 'const raw = await env.AI.run(IMAGE_MODEL, { prompt, seed: Math.floor(Math.random() * 100000) });'
           new = 'const raw = await env.AI.run(IMAGE_MODEL, { prompt });'
           if old in text:
-              path.write_text(text.replace(old, new))
+              editorial.write_text(text.replace(old, new))
+
+          index = Path('cloudflare/newsdesk/src/index.js')
+          text = index.read_text()
+          old = 'const media = clone.media; delete clone.media.base64; clone.media.url = publicMediaUrl(media.key);'
+          new = 'const media = { ...clone.media }; delete clone.media.base64; clone.media.url = publicMediaUrl(media.key);'
+          if old in text:
+              index.write_text(text.replace(old, new))
           PY
-          if ! git diff --quiet -- cloudflare/newsdesk/src/editorial.js; then
+          if ! git diff --quiet -- cloudflare/newsdesk/src/editorial.js cloudflare/newsdesk/src/index.js; then
             git config user.name 'morgentidende-runtime-fix'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add cloudflare/newsdesk/src/editorial.js
-            git commit -m 'fix: use supported Flux image arguments'
+            git add cloudflare/newsdesk/src/editorial.js cloudflare/newsdesk/src/index.js
+            git commit -m 'fix: persist generated hero before stripping payload'
             git pull --rebase origin main
             git push origin main
           fi
