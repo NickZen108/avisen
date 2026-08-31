@@ -3,7 +3,7 @@
   "status": "pass",
   "story_id": "2026-08-31-faergekatastrofe-ud-for-nordcypern",
   "article_slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
-  "checked_at": "2026-08-31T06:52:57Z",
+  "checked_at": "2026-08-31T06:59:30Z",
   "gates": {
     "language": "pass",
     "ethics": "pass",
@@ -29,11 +29,11 @@
       "canonical": null
     },
     "image": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kyrenia_Harbour.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kyrenia_Harbour_5.JPG",
       "alt": "Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken",
-      "credit": "Heavenl1y / Wikimedia Commons",
-      "license": "Public domain",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Kyrenia_Harbour.jpg",
+      "credit": "Julian Nyča / Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kyrenia_Harbour_5.JPG",
       "image_type": "photo",
       "placement": "lead"
     },
