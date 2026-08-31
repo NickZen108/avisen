@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -38,14 +39,56 @@ def esc(value) -> str:
     return html.escape(str(value), quote=True)
 
 
+def youtube_embed(video: dict, *, autoplay: bool = False, css_class: str = "article-video") -> str:
+    if not video or video.get("provider") != "youtube" or not video.get("id"):
+        return ""
+    vid = re.sub(r"[^A-Za-z0-9_-]", "", str(video["id"]))
+    if not vid:
+        return ""
+    params = "playsinline=1&rel=0"
+    if autoplay:
+        params += "&autoplay=1&mute=1"
+    title = esc(video.get("title") or "Video")
+    return (
+        f'<div class="{css_class}">'
+        f'<iframe src="https://www.youtube-nocookie.com/embed/{vid}?{params}" title="{title}" '
+        'loading="lazy" referrerpolicy="strict-origin-when-cross-origin" '
+        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+        '</div>'
+    )
+
+
+def render_text_with_links(text: str) -> str:
+    """Render raw outbound URLs as readable hyperlinks instead of exposed URLs."""
+    text = str(text or "")
+    m = re.fullmatch(r"\s*(.+?):\s*(https?://\S+)\s*", text)
+    if m:
+        label, url = m.groups()
+        return f'<a href="{esc(url)}" rel="nofollow noopener" target="_blank">{esc(label)}</a>'
+    parts = re.split(r"(https?://[^\s<]+)", text)
+    out = []
+    for part in parts:
+        if re.fullmatch(r"https?://[^\s<]+", part or ""):
+            out.append(f'<a href="{esc(part)}" rel="nofollow noopener" target="_blank">Eksternt link</a>')
+        else:
+            out.append(esc(part))
+    return "".join(out)
+
+
 def render_blocks(blocks: list[dict]) -> str:
     out: list[str] = []
     for block in blocks:
         kind = block.get("type")
         if kind in {"p", "h2", "h3", "blockquote"}:
-            out.append(f"<{kind}>{esc(block.get('text', ''))}</{kind}>")
+            out.append(f"<{kind}>{render_text_with_links(block.get('text', ''))}</{kind}>")
+        elif kind == "link":
+            label = esc(block.get("label") or "Læs mere")
+            url = esc(block.get("url") or "")
+            out.append(f'<p><a class="article-outlink" href="{url}" rel="nofollow noopener" target="_blank">{label}</a></p>')
+        elif kind == "youtube":
+            out.append(youtube_embed({"provider": "youtube", "id": block.get("id"), "title": block.get("title")}, css_class="article-video article-video--inline"))
         elif kind in {"ul", "ol"}:
-            items = "".join(f"<li>{esc(x)}</li>" for x in block.get("items", []))
+            items = "".join(f"<li>{render_text_with_links(x)}</li>" for x in block.get("items", []))
             out.append(f"<{kind}>{items}</{kind}>")
         elif kind == "figure":
             src = esc(block.get("src", ""))
@@ -77,19 +120,10 @@ def render_blocks(blocks: list[dict]) -> str:
 
 
 def source_html(article: dict, ledger: dict) -> str:
-    wanted = article.get("source_ids_to_display", [])
-    sources = {s.get("id"): s for s in ledger.get("sources", [])}
-    rows = []
-    for sid in wanted:
-        source = sources.get(sid)
-        if not source:
-            continue
-        name = esc(source.get("name") or sid)
-        url = source.get("url")
-        rows.append(f'<li><a href="{esc(url)}" rel="nofollow noopener">{name}</a></li>' if url else f"<li>{name}</li>")
-    if not rows:
-        return ""
-    return '<section class="article-sources"><h2>Kilder</h2><ul>' + "".join(rows) + "</ul></section>"
+    # Kildelisten er fortsat fuldt bevaret i ledger/canonical data, men vises
+    # ikke som standard offentligt. Eksterne links bruges kun, når de har en
+    # konkret læserværdi i selve artiklen.
+    return ""
 
 
 def related_html(article: dict) -> tuple[str, str]:
@@ -115,6 +149,16 @@ def related_html(article: dict) -> tuple[str, str]:
     )
 
 
+def linked_article_title(slug: str) -> str:
+    path = ARTICLE_DIR / f"{slug}.json"
+    if path.exists():
+        try:
+            return str(load_json(path).get("title") or slug)
+        except Exception:
+            pass
+    return slug
+
+
 def build_article(path: Path) -> None:
     article = load_json(path)
     if path.name.startswith("_") or article.get("status") != "published":
@@ -133,6 +177,7 @@ def build_article(path: Path) -> None:
     news_categories = {"Nyhed", "Krimi", "Politik", "Økonomi", "Udland", "Forbruger", "Kultur", "Videnskab", "Sundhed", "Parforhold", "Sport"}
     schema_type = "NewsArticle" if category in news_categories else "Article"
     image = article.get("image")
+    video = article.get("video") or {}
 
     schema = {
         "@context": "https://schema.org",
@@ -156,11 +201,15 @@ def build_article(path: Path) -> None:
     correction_html = f'<aside class="theme-box"><strong>Rettelse:</strong> {esc(correction)}</aside>' if correction else ""
     related_teaser = ""
     if article.get("related_news_slug"):
-        related_teaser = f'<aside class="related-teaser"><strong>Relateret:</strong> <a href="{esc(article["related_news_slug"])}.html">Læs den faktuelle nyhedsartikel</a></aside>'
+        related_slug = str(article["related_news_slug"])
+        related_title = linked_article_title(related_slug)
+        related_teaser = f'<aside class="related-teaser"><strong>Mere om sagen:</strong> <a href="{esc(related_slug)}.html">{esc(related_title)}</a></aside>'
     og_image = f'<meta property="og:image" content="{esc(image["src"])}">' if image and image.get("src") else ""
 
     article_image_html = ""
-    if image and image.get("src") and image.get("placement", "lead") == "lead":
+    if article.get("followup_type") == "video" and video.get("provider") == "youtube" and video.get("id"):
+        article_image_html = youtube_embed(video, autoplay=False, css_class="article-video article-video--hero")
+    elif image and image.get("src") and image.get("placement", "lead") == "lead":
         image_type_labels = {"photo": "Foto", "graphic": "Grafik", "illustration": "Illustration"}
         image_label = image_type_labels.get(image.get("image_type"), "Billede")
         credit = esc(image.get("credit", ""))
