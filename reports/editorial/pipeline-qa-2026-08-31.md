@@ -60,11 +60,16 @@ Readability-gaten i GitHub kunne opdage fagsprog efter runtime havde færdiggjor
 
 **Rettet:** Journalist-prompten kræver nu lægmandssprog, forklaring af nødvendige fagtermer og metriske/danske enheder allerede ved første skrivning. GitHub-readability-gaten bevares som sikkerhedsnet.
 
+### 11. En ufærdig artikel kunne stoppe hele avisen
+Global `quality_gate.py` validerede også artikler med status `draft`, `researching`, `checking` og `editing` som om de forsøgte at blive publiceret. Under QA blev en koral-historie korrekt parkeret af recovery-systemet, men hele buildet fejlede bagefter, fordi dens ledger endnu ikke fandtes.
+
+**Rettet:** Arbejdsstykker må nu være ufuldstændige uden at blokere resten af avisen. Deres mangler spores i pipeline-health/recovery. De hårde globale publiceringsgates starter først ved `ready`, `scheduled` eller `published`. En ufærdig artikel kan derfor ikke længere holde andre færdige artikler tilbage.
+
 ## Redundansvurdering
 
 - **Research vs Fact check:** Begge er nødvendige, men Fact checker må kun challenge/falsificere det allerede indsamlede grundlag og ikke genresearche hele historien. Dette er nu tydeligere, men Cloudflare-runtime udfører dem stadig i samme AI-kald. Det er funktionelt hurtigt, men mindre uafhængigt end den ideelle rollemodel.
 - **Fact check vs Slutredaktør:** Begge beholdes. Slutredaktøren skal ikke gentage hele fact check; den kontrollerer den færdige tekst mod ledgeren og stikprøver bærende claims.
-- **Sprog vs readability gate:** Sprogredaktør/Jounalist forebygger; readability-gate er deterministisk sikkerhedsnet. Ikke unødvendig dublet.
+- **Sprog vs readability gate:** Sprogredaktør/Journalist forebygger; readability-gate er deterministisk sikkerhedsnet. Ikke unødvendig dublet.
 - **Teknisk QA før publicering vs live QA:** Begge nødvendige. Første kontrollerer build/canonical/schema; anden kontrollerer den faktiske live-rendering.
 - **Live QA vs live proofreader:** Forskellige formål: teknik vs læseroplevelse/sprog. Behold begge, men live proofreader skal kun åbne nyligt ændrede sider.
 
