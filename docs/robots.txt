@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://nickzen108.github.io/avisen/sitemap.xml
-Sitemap: https://nickzen108.github.io/avisen/news-sitemap.xml
+Disallow: /kontrolrum/
+Sitemap: https://morgentidende.nicolaipetersen108.workers.dev/sitemap.xml
+Sitemap: https://morgentidende.nicolaipetersen108.workers.dev/news-sitemap.xml
