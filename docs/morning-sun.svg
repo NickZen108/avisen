@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Morgensol">
+  <g fill="#E8B84B">
+    <path d="M100 30A70 70 0 0 1 169 92H142A43 43 0 0 0 100 55Z"/>
+    <path d="M100 30A70 70 0 0 0 31 92H58A43 43 0 0 1 100 55Z"/>
+    <path d="M100 32V8h7l-2 25Z"/>
+    <path d="M76 37 65 13l7-2 10 24Z"/>
+    <path d="m56 50-20-19 5-5 19 20Z"/>
+    <path d="M41 70 15 58l3-7 25 13Z"/>
+    <path d="m124 37 11-24-7-2-10 24Z"/>
+    <path d="m144 50 20-19-5-5-19 20Z"/>
+    <path d="m159 70 26-12-3-7-25 13Z"/>
+    <path d="M58 93a42 42 0 0 1 84 0Z"/>
+  </g>
+  <g fill="#14253D">
+    <path d="M25 101h150l-5 13H30Z"/>
+    <path d="M34 120h132l-8 13H42Z"/>
+    <path d="M47 139h106l-13 13H60Z"/>
+    <path d="M66 158h68l-19 12H85Z"/>
+  </g>
+</svg>
