@@ -1,6 +1,6 @@
 # Design — Morgentidende
 
-Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Brugeren har samme dag godkendt dark mode med en diskret skydeknap øverst. Det visuelle design er fortsat låst bortset fra disse udtrykkeligt godkendte ændringer.
+Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Brugeren har samme dag godkendt dark mode med en diskret skydeknap øverst. Den 31. august 2026 godkendte brugeren en skarpere ikke-kursiv wordmark samt en mindre sticky masthead på artikelsider. Det visuelle design er fortsat låst bortset fra disse udtrykkeligt godkendte ændringer.
 
 ## Farver
 
@@ -15,8 +15,11 @@ Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring
 
 ## Typografi
 
-Wordmark: Fraunces italic, `clamp(2.35rem, 5.6vw, 3.85rem)`.
-Brød: Source Serif 4. Kicker: Source Sans 3.
+Wordmark: **Roboto Slab 700**, ikke kursiv, med let negativ bogstavafstand for et mere kantet og autoritativt avisudtryk. På forsiden bruges fortsat stor wordmark `clamp(2.35rem, 5.6vw, 3.85rem)`.
+
+På artikelsider er mastheaden sticky og kompakt: wordmark omkring `1.55–2rem` på desktop og cirka `1.45rem` på mobil. Den forbliver synlig ved scroll uden at optage unødigt meget læseareal.
+
+Brød: Source Serif 4. Kicker/UI: Source Sans 3.
 
 ## Sideskabelon
 
@@ -25,6 +28,8 @@ Artikelside: `article-grid` + sidespalte + `.below` fire spalter med foto.
 Nyhed/kommentar om samme sag: `.related-teaser` begge veje.
 Flere stykker om samme tema: `.theme-box`.
 Dark mode-kontrollen ligger diskret øverst til højre i masthead på forside og artikelsider. Første besøg følger systemets tema; et manuelt valg huskes lokalt i browseren.
+
+På artikelsider skal mastheaden være sticky. Den sticky artikelmasthead viser den kompakte Morgentidende-wordmark og dark-mode-kontrollen; den skal ikke vokse til forsidens fulde højde ved scroll.
 
 ## Genereret HTML
 
@@ -50,6 +55,6 @@ Låst:
 
 ## Forbudt uden ny brugerordre
 
-style.css-grids, header, logo-fil, wordmark-størrelse, grundfarver, dark mode-udtryk eller ny layoutstruktur.
+style.css-grids, header, logo-fil, wordmark-størrelse/font, grundfarver, dark mode-udtryk eller ny layoutstruktur.
 
 Tilladt inden for låsen: nye artikler, teaser-tekst, sitemap, story clusters, `.related-teaser`, `.theme-box`, offentlige metode-/rettelsessider og metadata.
