@@ -9,11 +9,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: morgentidende-cloudflare-newsdesk
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -21,6 +21,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Normalize supported image model arguments
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('cloudflare/newsdesk/src/editorial.js')
+          text = path.read_text()
+          old = 'const raw = await env.AI.run(IMAGE_MODEL, { prompt, seed: Math.floor(Math.random() * 100000) });'
+          new = 'const raw = await env.AI.run(IMAGE_MODEL, { prompt });'
+          if old in text:
+              path.write_text(text.replace(old, new))
+          PY
+          if ! git diff --quiet -- cloudflare/newsdesk/src/editorial.js; then
+            git config user.name 'morgentidende-runtime-fix'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add cloudflare/newsdesk/src/editorial.js
+            git commit -m 'fix: use supported Flux image arguments'
+            git pull --rebase origin main
+            git push origin main
+          fi
 
       - name: Deploy Newsdesk Worker
         uses: cloudflare/wrangler-action@v3
