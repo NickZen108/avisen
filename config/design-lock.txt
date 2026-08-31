@@ -5,7 +5,7 @@
 c7b9acaa545d95070afb6ffda9644f6ba456d0ec docs/theme.css
 62ff0cb904ad1afb0b08639313941a8eabd32e1f docs/theme.js
 e48d5f4592a8a24d7b3a87ef1956fed642bdbe2f docs/account-ui.css
-328f5a19320957a01d5c562e5bb7b905fb91741a docs/morgentidende-ui.css
+d8fee2251781d29edb66ad8eadf145d0928e27c3 docs/morgentidende-ui.css
 5acbd2ed9cc9b9e4877fcc2586366662002031bf docs/short-videos.js
 1c79eb821797aa7061d8780b1eda4d2533155971 docs/logo.svg
 83f1e071db636d0b3db652fdf8af2af926150d02 docs/logo-mark.svg
