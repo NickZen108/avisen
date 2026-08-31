@@ -3,11 +3,16 @@ on:
   push:
     branches: [main]
     paths: ['content/**','sources/**','templates/**','config/**','scripts/build_all.py','scripts/build_all_v2.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/pipeline_v2_gate.py','scripts/prepublish_surface_qa.py','scripts/release_ready.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
+  workflow_run:
+    workflows: ['Cloudflare editorial sync']
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 permissions: {contents: write, actions: write}
 concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
 jobs:
   build:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +35,7 @@ jobs:
         id: publish
         run: |
           git config user.name "morgentidende-publisher"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/articles docs/index.html docs/artikler docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/img/cache
+          git add content/articles content/frontpage.json docs/index.html docs/artikler docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/img/cache
           if git diff --cached --quiet; then echo "published=false" >> "$GITHUB_OUTPUT"; else git commit -m "publish: build structured edition"; git push; echo "published=true" >> "$GITHUB_OUTPUT"; echo "publisher_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"; fi
       - name: Dispatch post-deploy guard
         if: ${{ steps.publish.outputs.published == 'true' }}
