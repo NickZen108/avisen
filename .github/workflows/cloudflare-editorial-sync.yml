@@ -3,7 +3,7 @@ name: Cloudflare editorial sync
 # Pushes to this workflow intentionally force a live Cloudflare editorial cycle,
 # which gives us a production end-to-end proof without bypassing any gate.
 # E2E run after the Newsdesk decision-consistency correction.
-# Verification trigger: 2026-08-31T05:14Z after fact-check normalization.
+# Verification trigger: 2026-08-31T05:17Z after final-editor normalization.
 on:
   push:
     branches: [main]
