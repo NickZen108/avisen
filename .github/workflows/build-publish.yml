@@ -2,7 +2,7 @@ name: Build structured edition
 on:
   push:
     branches: [main]
-    paths: ['content/**','sources/**','reports/editorial/approvals/**','templates/**','config/**','scripts/build_all.py','scripts/build_all_v2.py','scripts/build_short_videos.py','scripts/build_control_room.py','scripts/design_enhancements.py','scripts/reader_experience.py','scripts/article_history.py','scripts/editorial_analytics.py','scripts/production_readiness.py','scripts/golden_path_gate.py','scripts/seo_surface_fix.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/pipeline_v2_gate.py','scripts/readability_gate.py','scripts/prepublish_surface_qa.py','scripts/release_ready.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
+    paths: ['content/**','sources/**','reports/editorial/approvals/**','templates/**','config/**','scripts/build_all.py','scripts/build_all_v2.py','scripts/build_short_videos.py','scripts/build_control_room.py','scripts/design_enhancements.py','scripts/reader_experience.py','scripts/article_history.py','scripts/editorial_analytics.py','scripts/production_readiness.py','scripts/golden_path_gate.py','scripts/source_independence_gate.py','scripts/queue_recovery.py','scripts/seo_surface_fix.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/pipeline_v2_gate.py','scripts/readability_gate.py','scripts/prepublish_surface_qa.py','scripts/release_ready.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
   workflow_run:
     workflows: ['Cloudflare editorial sync']
     types: [completed]
@@ -24,18 +24,18 @@ jobs:
       - name: Release approved ready articles; park incomplete ones
         run: python scripts/release_ready.py
       - name: Gates before build
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Build
-        run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/article_history.py && python scripts/editorial_analytics.py && python scripts/production_readiness.py && python scripts/build_control_room.py && python scripts/seo_surface_fix.py
+        run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/article_history.py && python scripts/editorial_analytics.py && python scripts/production_readiness.py && python scripts/queue_recovery.py && python scripts/build_control_room.py && python scripts/seo_surface_fix.py
       - name: Cache public images locally
         run: python scripts/cache_public_images.py
       - name: Gates after build
-        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py && python scripts/golden_path_gate.py && python scripts/production_readiness.py
+        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py && python scripts/golden_path_gate.py && python scripts/production_readiness.py
       - name: Commit release + recovery state + generated files
         id: publish
         run: |
           git config user.name "morgentidende-publisher"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/articles content/frontpage.json reports/editorial/pipeline-health.json reports/editorial/production-readiness.json reports/editorial/article-versions.json reports/editorial/editorial-analytics.json docs/index.html docs/artikler docs/emner docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/robots.txt docs/kontrolrum docs/img/cache
+          git add content/articles content/frontpage.json queue/recovery.json reports/editorial/pipeline-health.json reports/editorial/production-readiness.json reports/editorial/article-versions.json reports/editorial/editorial-analytics.json docs/index.html docs/artikler docs/emner docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/robots.txt docs/kontrolrum docs/img/cache
           if git diff --cached --quiet; then echo "published=false" >> "$GITHUB_OUTPUT"; else git commit -m "publish: build structured edition"; git push; echo "published=true" >> "$GITHUB_OUTPUT"; echo "publisher_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"; fi
       - name: Dispatch post-deploy guard
         if: ${{ steps.publish.outputs.published == 'true' }}
