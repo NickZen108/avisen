@@ -5,7 +5,7 @@
   "category": "Videnskab",
   "weight": "C",
   "title": "NASA opsender Nancy Grace Roman-rumteleskopet",
-  "standfirst": "Det nye flagskibsobservatorium blev opsendt søndag morgen fra Florida med en Falcon Heavy-raket. Missionen skal undersøge mørk energi, mørk materie og exoplaneter.",
+  "standfirst": "Det nye rumteleskop blev opsendt søndag morgen fra Florida med en Falcon Heavy-raket. Missionen skal undersøge mørk energi, mørk materie og planeter uden for vores solsystem.",
   "byline": "Morgentidende Redaktion",
   "published_at": "2026-08-30T17:05:00Z",
   "updated_at": null,
@@ -13,8 +13,8 @@
   "ledger": "sources/2026-08-30-roman-rumteleskop.json",
   "claim_ids": ["F01", "F02", "F03", "F04"],
   "seo": {
-    "title": "NASA opsender Roman-rumteleskopet – mørk energi og exoplaneter",
-    "description": "Nancy Grace Roman Space Telescope blev opsendt 30. august 2026 fra Kennedy Space Center. Her er fakta om missionen.",
+    "title": "NASA opsender Roman-rumteleskopet – mørk energi og andre planeter",
+    "description": "Nancy Grace Roman Space Telescope blev opsendt 30. august 2026 fra Kennedy Space Center. Her er missionen forklaret i almindeligt sprog.",
     "canonical": null
   },
   "image": {
@@ -28,19 +28,19 @@
   "body": [
     {
       "type": "p",
-      "text": "NASA's Nancy Grace Roman Space Telescope blev opsendt søndag den 30. august 2026 kl. 7.26 EDT, svarende til 13.26 dansk tid, fra Launch Complex 39A på Kennedy Space Center i Florida. Opsendelsen skete om bord på en SpaceX Falcon Heavy-raket."
+      "text": "NASA's Nancy Grace Roman Space Telescope blev opsendt søndag den 30. august 2026 kl. 13.26 dansk tid fra affyringsrampe 39A på Kennedy Space Center i Florida. Opsendelsen skete med en SpaceX Falcon Heavy-raket."
     },
     {
       "type": "p",
-      "text": "Ifølge NASA adskilte raketten sig fra observatoriet 31 minutter efter opsendelsen. Solpaneler og den lavere instrument-solskærm blev bekræftet udfoldet 1 time og 23 minutter efter opsendelsen. Jordkontrol på Goddard Space Flight Center modtog telemetridata syv minutter efter liftoff."
+      "text": "Ifølge NASA adskilte raketten sig fra rumteleskopet 31 minutter efter opsendelsen. Solpaneler og en solskærm blev foldet ud som planlagt. Kontrolcentret på Goddard Space Flight Center modtog teleskopets første måle- og statusdata syv minutter efter opsendelsen."
     },
     {
       "type": "h2",
-      "text": "På vej mod L2"
+      "text": "På vej 1,5 millioner kilometer fra Jorden"
     },
     {
       "type": "p",
-      "text": "Teleskopet er nu på en tre måneder lang rejse på omkring 1,5 millioner kilometer til det andet Lagrange-punkt mellem Solen og Jorden, kendt som L2. Herfra skal det gennemføre sine observationer."
+      "text": "Teleskopet er nu på en cirka tre måneder lang rejse til et område i rummet omkring 1,5 millioner kilometer fra Jorden. Området kaldes Lagrange-punkt L2. Her kan et rumfartøj ved hjælp af Jordens og Solens tyngdekraft holde omtrent samme placering i forhold til Jorden og Solen med forholdsvis små kurskorrektioner."
     },
     {
       "type": "h2",
@@ -48,11 +48,15 @@
     },
     {
       "type": "p",
-      "text": "Roman er udstyret med et Wide Field Instrument, der kombinerer et stort synsfelt med skarp infrarød vision. Hovedmålene er at kortlægge store dele af himlen for at undersøge mørk energi og mørk materie samt at finde og karakterisere exoplaneter. Missionen har en primær varighed på fem år og en anslået pris på omkring 4 milliarder dollar."
+      "text": "Roman har et kamera med meget stort synsfelt, som kan fotografere store områder af himlen i infrarødt lys. Infrarødt lys har længere bølgelængder end det lys, vores øjne kan se, og kan blandt andet afsløre kølige eller meget fjerne objekter."
     },
     {
       "type": "p",
-      "text": "Teleskopet er opkaldt efter astronomen Nancy Grace Roman, der spillede en central rolle i udviklingen af Hubble-rumteleskopet. Det supplerer Hubble og James Webb Space Telescope ved at levere bredere surveys i stedet for detaljerede nærbilleder."
+      "text": "Missionen skal blandt andet undersøge mørk energi og mørk materie. Det er betegnelser for to fænomener, som forskere mener påvirker universets udvikling og galaksernes bevægelser, men som endnu ikke er fuldt forstået. Teleskopet skal også finde og undersøge planeter, der kredser om andre stjerner end Solen. Missionen er planlagt til fem år og har en anslået pris på omkring 4 milliarder dollar."
+    },
+    {
+      "type": "p",
+      "text": "Teleskopet er opkaldt efter astronomen Nancy Grace Roman, som spillede en central rolle i udviklingen af Hubble-rumteleskopet. Hvor Hubble og James Webb ofte undersøger små områder af himlen meget detaljeret, er Roman bygget til hurtigere at fotografere og kortlægge langt større områder af himlen ad gangen."
     }
   ],
   "source_ids_to_display": ["S1", "S2"],
