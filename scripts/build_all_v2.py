@@ -46,7 +46,9 @@ def front():
  tk=resolve(s["ticker"],ix);ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(tk["title"])}</a></p>'
  l=resolve(s["lead"],ix);visual=lead_visual(l)
  lead_article='<section class="lead">'+visual+f'<p class="section-label">{esc(l["category"])}</p><h1><a href="{legacy.front_item_url(l["slug"])}">{esc(l["title"])}</a></h1><p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
- lead='<div class="lead-column">'+lead_article+lead_followups(l["slug"],ix)+'</div>'
+ followups=lead_followups(l["slug"],ix)
+ lead_class="lead-column lead-column--story-package" if followups else "lead-column"
+ lead=f'<div class="{lead_class}">'+lead_article+followups+'</div>'
  rail=['<aside class="rail"><p class="rail-title">Også i dag</p>']
  seen=set();rail_candidates=[]
  for group in (s.get("rail",[]),s.get("narrow",[]),s.get("stack",[])):
