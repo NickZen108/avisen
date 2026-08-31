@@ -38,10 +38,9 @@ async function supabaseUser(req, env) {
 }
 
 async function serviceQuery(env, path, init = {}) {
-  if (!env.SUPABASE_SERVICE_ROLE_KEY) throw new Error('service role secret missing');
+  if (!env.SUPABASE_SECRET_KEY) throw new Error('supabase secret key missing');
   const headers = new Headers(init.headers || {});
-  headers.set('apikey', env.SUPABASE_SERVICE_ROLE_KEY);
-  headers.set('authorization', `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`);
+  headers.set('apikey', env.SUPABASE_SECRET_KEY);
   if (!headers.has('content-type')) headers.set('content-type', 'application/json');
   return fetch(`${env.SUPABASE_URL}/rest/v1/${path}`, { ...init, headers });
 }
