@@ -1,0 +1,39 @@
+name: Recovery rehearsal
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 3 * * 1'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/post-deploy-guard.yml'
+      - '.github/workflows/recovery-rehearsal.yml'
+      - 'scripts/live_recent_qa.py'
+permissions:
+  contents: read
+jobs:
+  rollback-dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Find latest publisher commit
+        id: target
+        run: |
+          SHA="$(git log --format='%H %s' --all | awk '$2=="publish:" && $3=="build" && $4=="structured" && $5=="edition" {print $1; exit}')"
+          test -n "$SHA"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+      - name: Rehearse rollback in isolated worktree
+        env:
+          TARGET_SHA: ${{ steps.target.outputs.sha }}
+        run: |
+          set -euo pipefail
+          git worktree add --detach /tmp/rollback-rehearsal HEAD
+          cd /tmp/rollback-rehearsal
+          test "$(git show -s --format=%s "$TARGET_SHA")" = "publish: build structured edition"
+          git config user.name morgentidende-rehearsal
+          git config user.email noreply@example.invalid
+          git revert --no-commit "$TARGET_SHA"
+          test -n "$(git diff --cached --name-only)"
+          git revert --abort || true
+          echo "Rollback rehearsal PASS for $TARGET_SHA"

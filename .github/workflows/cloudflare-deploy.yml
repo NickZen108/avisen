@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'docs/**'
+      - 'cloudflare/site-worker.js'
       - 'wrangler.jsonc'
       - '.github/workflows/cloudflare-deploy.yml'
   workflow_run:
@@ -29,7 +30,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-
       - name: Deploy Worker and static assets
         uses: cloudflare/wrangler-action@v3
         with:
