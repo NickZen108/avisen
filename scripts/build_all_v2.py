@@ -41,7 +41,10 @@ def lead_followups(lead_slug,ix):
  rows=[]
  for a in items[:4]:
   kind=a.get("followup_type") or ("commentary" if a.get("category")=="Kommentar" else "update")
-  rows.append(f'<a class="lead-followup" href="{legacy.front_item_url(a["slug"])}"><span class="lead-followup__type">{esc(labels.get(kind,"Mere"))}</span><strong>{esc(a["title"])}</strong></a>')
+  category=str(a.get("category") or "Nyhed")
+  special=labels.get(kind) if kind in {"video","images","commentary"} else None
+  label=category if not special or special.casefold()==category.casefold() else f"{category} · {special}"
+  rows.append(f'<a class="lead-followup" href="{legacy.front_item_url(a["slug"])}"><span class="lead-followup__type">{esc(label)}</span><strong>{esc(a["title"])}</strong></a>')
  return '<aside class="lead-package" aria-label="Mere om sagen"><p class="lead-package__title">Mere om sagen</p>'+''.join(rows)+'</aside>'
 def unrelated_to_lead(x,lead_slug,ix):
  slug=x.get("slug")
