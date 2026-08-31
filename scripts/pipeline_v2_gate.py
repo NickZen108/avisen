@@ -5,7 +5,7 @@ import argparse,copy,json,sys
 from datetime import datetime,timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]
-PUB={"status","published_at","updated_at","scheduled_for","released_from_schedule_at","release_requested","publication","manual_review_completed"}
+PUB={"status","published_at","updated_at","scheduled_for","released_from_schedule_at","release_requested","publication","manual_review_completed","workflow_state"}
 def err(x): ERRORS.append(x)
 def load(p):
  try:return json.loads(p.read_text(encoding="utf-8"))
@@ -35,7 +35,8 @@ def coverage(name,a,l,s):
  if st=="pass" and len(groups)<3:err(f"{name}: coverage PASS kræver mindst 3 uafhængige source-groups")
  if st=="limited" and not str(c.get("limitations") or "").strip():err(f"{name}: limited coverage kræver begrundelse")
  if st=="not_required":
-  if a.get("category") not in {"Guide","Kommentar"}:err(f"{name}: not_required coverage ikke tilladt")
+  article_type=str(a.get("format") or a.get("genre") or a.get("category") or "")
+  if article_type not in {"Guide","Kommentar"}:err(f"{name}: not_required coverage kun tilladt for Guide/Kommentar")
   if not str(c.get("limitations") or "").strip():err(f"{name}: not_required kræver begrundelse")
 def ror(name,l):
  r=l.get("right_of_reply") or {}
@@ -62,6 +63,7 @@ def approval(path,a):
 def article(path):
  a=load(path)
  if not a or path.name.startswith("_") or a.get("pipeline_version")!=2 or a.get("status") not in {"ready","scheduled","published"}:return
+ if a.get("manual_review") and not a.get("manual_review_completed"):err(f"{path.name}: manual_review er ikke afsluttet")
  lp=ROOT/str(a.get("ledger",""))
  if not lp.exists():err(f"{path.name}: ledger mangler");return
  l=load(lp)
