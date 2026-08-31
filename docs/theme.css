@@ -212,13 +212,17 @@ html[data-theme="dark"] .newsletter-card { background: rgba(255,255,255,.025); }
 
 @media (max-width: 720px) {
   .theme-toggle__label { display: none; }
-  .theme-toggle {
-    top: .3rem;
-    right: .05rem;
-    transform: none;
+  body:not(.article-page) .wordmark {
+    padding-inline: 0;
+    margin-bottom: 2.15rem;
+    font-size: clamp(2rem, 11vw, 2.35rem);
+  }
+  body:not(.article-page) .theme-toggle {
+    top: 2.55rem;
+    right: 50%;
+    transform: translateX(50%);
     padding: .2rem 0;
   }
-  body:not(.article-page) .wordmark { padding-inline: 2.75rem; }
   .article-page .theme-toggle { top: 50%; right: .15rem; transform: translateY(-50%); }
   .lead-column--story-package { padding: .75rem .75rem .2rem; }
   .lead-fig > img { height: 15rem !important; max-height: 15rem !important; }
