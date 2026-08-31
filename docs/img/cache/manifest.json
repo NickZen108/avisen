@@ -71,6 +71,12 @@
     "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Kyrenia_Harbour.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled",
     "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/ec6a86a8cd3d79a0738b.jpg"
   },
+  "https://commons.wikimedia.org/wiki/Special:FilePath/Kyrenia_Harbour_5.JPG": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/467192e584223d434a8f.jpg",
+    "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Kyrenia_Harbour_5.JPG/1920px-Kyrenia_Harbour_5.JPG?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/467192e584223d434a8f.jpg"
+  },
   "https://commons.wikimedia.org/wiki/Special:FilePath/Launch_of_the_Saturn_V_with_Apollo_11_(48300001196).jpg": {
     "content_type": "image/jpeg",
     "file": "/img/cache/5b8adb18b823534a481a.jpg",
