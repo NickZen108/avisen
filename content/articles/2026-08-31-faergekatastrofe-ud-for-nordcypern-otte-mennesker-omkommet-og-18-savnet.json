@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-08-31-faergekatastrofe-ud-for-nordcypern",
   "slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
   "category": "Udland",
@@ -9,7 +9,7 @@
   "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
   "standfirst": "Mindst otte mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern. Færgen var på vej fra Kyrenia i Nordcypern til Tyrkiet, da den kapsejlede.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-08-31T05:39:49Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.json",
@@ -67,5 +67,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-08-31T05:39:49Z"
+  }
 }
