@@ -22,20 +22,22 @@ def add_to_frontpage(article):
   items=[x for x in state.get(key,[]) if x.get('slug')!=slug]; items.insert(0,{'slug':slug}); state[key]=items[:limit]
  FRONTPAGE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def diagnose(path,x):
- reasons=[]; resume='final_editor'
- if x.get('manual_review'): reasons.append('manual_review kræver menneskelig afslutning'); resume='manual_review'
+ reasons=[]; missing=[]
+ if x.get('manual_review'): reasons.append('manual_review kræver menneskelig afslutning'); missing.append('manual_review')
  lp=ROOT/str(x.get('ledger',''))
  if not lp.exists(): return ['ledger mangler'],'research'
  l=load(lp); c=l.get('coverage_sweep') or {}; f=l.get('fact_check') or {}; d=l.get('desk_recheck') or {}
- if c.get('status') not in {'pass','limited','not_required'}: reasons.append('coverage sweep mangler/er ugyldigt'); resume='research'
- if f.get('status')!='pass' or not f.get('checked_at'): reasons.append('fact-check PASS mangler'); resume='fact_check'
- if d.get('status') not in {'publish','update'} or not d.get('checked_at') or not str(d.get('rationale') or '').strip(): reasons.append('newsdesk recheck PUBLISH/UPDATE mangler'); resume='desk_recheck'
+ if c.get('status') not in {'pass','limited','not_required'}: reasons.append('coverage sweep mangler/er ugyldigt'); missing.append('research')
+ if f.get('status')!='pass' or not f.get('checked_at'): reasons.append('fact-check PASS mangler'); missing.append('fact_check')
+ if d.get('status') not in {'publish','update'} or not d.get('checked_at') or not str(d.get('rationale') or '').strip(): reasons.append('newsdesk recheck PUBLISH/UPDATE mangler'); missing.append('desk_recheck')
  ap=ROOT/'reports'/'editorial'/'approvals'/f"{x['slug']}.json"
- if not ap.exists(): reasons.append('final approval mangler'); resume='final_editor'
+ if not ap.exists(): reasons.append('final approval mangler'); missing.append('final_editor')
  else:
   a=load(ap)
-  if a.get('status')!='pass' or any((a.get('gates') or {}).get(g)!='pass' for g in ['language','ethics','image','seo','final_editor']): reasons.append('final approval gates er ikke PASS'); resume='final_editor'
-  elif a.get('editorial_snapshot')!=snap(x): reasons.append('artiklen er ændret efter final approval'); resume='final_editor'
+  if a.get('status')!='pass' or any((a.get('gates') or {}).get(g)!='pass' for g in ['language','ethics','image','seo','final_editor']): reasons.append('final approval gates er ikke PASS'); missing.append('final_editor')
+  elif a.get('editorial_snapshot')!=snap(x): reasons.append('artiklen er ændret efter final approval'); missing.append('final_editor')
+ priority=['manual_review','research','fact_check','desk_recheck','language','ethics','image','seo','final_editor']
+ resume=next((step for step in priority if step in missing),None)
  return reasons,resume
 def write_health(rows,stamp):
  REPORT.parent.mkdir(parents=True,exist_ok=True)
@@ -51,6 +53,8 @@ def main():
   reasons,resume=diagnose(path,x) if x.get('status') in {'ready','checking','editing','researching'} else ([],None)
   if x.get('status')=='ready' and x.get('release_requested') is True and reasons:
    x['status']='checking'; x['release_requested']=False; x['workflow_state']={'state':'blocked','blocked_at':stamp,'resume_from':resume,'reasons':reasons}; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); recovered+=1
+  elif x.get('status') in {'checking','editing','researching'} and reasons and (x.get('workflow_state') or {}).get('resume_from')!=resume:
+   ws=x.get('workflow_state') or {}; ws.update({'state':'blocked','resume_from':resume,'reasons':reasons}); ws.setdefault('blocked_at',stamp); x['workflow_state']=ws; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
   elif x.get('status')=='ready' and x.get('release_requested') is True and not reasons and not a.normalize_only:
    x['status']='published'; x['published_at']=stamp; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; x.pop('workflow_state',None); path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); add_to_frontpage(x); released+=1
   rows.append({'slug':x.get('slug'),'title':x.get('title'),'status':x.get('status'),'release_requested':x.get('release_requested'),'resume_from':resume if reasons else None,'reasons':reasons})
