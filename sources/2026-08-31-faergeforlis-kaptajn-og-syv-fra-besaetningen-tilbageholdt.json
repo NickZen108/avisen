@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "story_id": "2026-08-31-faergeforlis-efterforskning",
+  "article_slug": "2026-08-31-faergeforlis-kaptajn-og-syv-fra-besaetningen-tilbageholdt",
+  "assignment": {"category":"Udland","weight":"B","core_question":"Hvad er nyt i efterforskningen og redningsarbejdet?","manual_review":false},
+  "sources": [
+    {"id":"S1","name":"Reuters","url":"https://www.reuters.com/world/europe/boat-with-around-270-people-capsizes-off-north-cyprus-media-says-2026-08-30/","published_at":"2026-08-31T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"news","source_group":"reuters-reporting","authoritative_for":"Latest rescue totals, missing, crew detention, survivor accounts and vessel status"},
+    {"id":"S2","name":"Associated Press","url":"https://apnews.com/article/e7753be49f345d1b1f1579013b241e9e","published_at":"2026-08-31T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"news","source_group":"ap-reporting","authoritative_for":"Deaths, rescue operation, detention and timing after departure"},
+    {"id":"S3","name":"The Guardian","url":"https://www.theguardian.com/world/live/2026/aug/30/northern-cyprus-ferry-capsizes-latest-news-updates","published_at":"2026-08-31T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"news","source_group":"guardian-reporting","authoritative_for":"Crew detention, missing people, rescue and survivor reports"},
+    {"id":"S4","name":"Al Jazeera","url":"https://www.aljazeera.com/news/2026/8/30/ferry-carrying-260-people-capsizes-off-northern-cyprus-coast","published_at":"2026-08-30T00:00:00Z","accessed_at":"2026-08-31T05:52:00Z","type":"news","source_group":"aljazeera-reporting","authoritative_for":"Crew detention, search and allegations under investigation"}
+  ],
+  "coverage_sweep":{"status":"pass","editorial_source_ids":["S1","S2","S3","S4"],"independent_source_groups":["reuters-reporting","ap-reporting","guardian-reporting","aljazeera-reporting"],"limitations":null,"notes":["Opfølgende lead-research: kilder sammenholdt efter publiceringen af hovedhistorien."]},
+  "claims":[
+    {"id":"F01","claim":"Kaptajnen og syv andre besætningsmedlemmer er tilbageholdt som led i efterforskningen.","status":"verified","source_ids":["S1","S2","S3","S4"],"independent_groups":["reuters-reporting","ap-reporting","guardian-reporting","aljazeera-reporting"],"checked_at":"2026-08-31T05:52:00Z","notes":""},
+    {"id":"F02","claim":"Mindst otte mennesker er meldt omkommet, og eftersøgningen efter savnede fortsætter.","status":"verified","source_ids":["S1","S2","S3"],"independent_groups":["reuters-reporting","ap-reporting","guardian-reporting"],"checked_at":"2026-08-31T05:52:00Z","notes":"Antallet af savnede har varieret mellem løbende opdateringer; artiklen attribuerer Reuters' seneste tal."},
+    {"id":"F03","claim":"Færgen havde 267 personer om bord og begyndte at tage vand ind kort efter afgang fra Kyrenia mod Taşucu.","status":"verified","source_ids":["S1","S2","S4"],"independent_groups":["reuters-reporting","ap-reporting","aljazeera-reporting"],"checked_at":"2026-08-31T05:52:00Z","notes":""}
+  ],
+  "numbers":[],"quotes":[],
+  "right_of_reply":{"required":false,"party":null,"contacted_at":null,"deadline":null,"response":null,"exception":null},
+  "fact_check":{"status":"pass","checked_at":"2026-08-31T05:52:00Z","notes":["Bærende faktuelle claims er støttet af mindst to uafhængige redaktionelle kilder; uafklarede årsagsforklaringer er tydeligt attribueret eller udeladt."]},
+  "desk_recheck":{"status":"publish","checked_at":"2026-08-31T05:52:00Z","rationale":"Selvstændig opfølger til aktiv B-lead med ny vinkel og dokumenterbar offentlig interesse."}
+}
