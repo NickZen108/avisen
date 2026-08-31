@@ -121,10 +121,20 @@ const articleSchema = {
 const finalSchema = {
   type: "object",
   properties: {
-    decision: { type: "string", enum: ["pass", "hold"] },
-    language: { type: "string", enum: ["pass", "hold"] }, ethics: { type: "string", enum: ["pass", "hold"] }, image: { type: "string", enum: ["pass", "hold"] }, seo: { type: "string", enum: ["pass", "hold"] }, final_editor: { type: "string", enum: ["pass", "hold"] }, notes: { type: "array", items: { type: "string" } },
+    blocking_issues: {
+      type: "array",
+      maxItems: 10,
+      items: {
+        type: "object",
+        properties: {
+          gate: { type: "string", enum: ["language", "ethics", "image", "seo", "final_editor"] },
+          issue: { type: "string" },
+        },
+        required: ["gate", "issue"],
+      },
+    },
   },
-  required: ["decision", "language", "ethics", "image", "seo", "final_editor", "notes"],
+  required: ["blocking_issues"],
 };
 
 function signalSummary(scan) {
@@ -181,11 +191,19 @@ async function writeArticle(env, assignment, dossier) {
 }
 
 async function finalReview(env, assignment, dossier, article) {
-  const system = `Du er uafhængig slutredaktør på Morgentidende. Kontrollér artikel mod verificerede claims. PASS kun hvis: dansk sprog er klart og korrekt; ingen påstand går videre end dokumentationen; pluralisme/attribution er rimelig; etik er forsvarlig; SEO er nøgtern; hero-prompten er relevant og ikke udformet som falsk dokumentarfoto. Hvis noget materielt mangler eller er usikkert: hold. Returnér kun struktureret output.`;
-  const review = await aiJson(env, system, JSON.stringify({ assignment, claims: dossier.claims, contradictions: dossier.contradictions, article }), finalSchema, 1400);
-  const componentGates = [review.language, review.ethics, review.image, review.seo, review.final_editor];
-  review.decision = componentGates.every((gate) => gate === "pass") ? "pass" : "hold";
-  return review;
+  const system = `Du er uafhængig slutredaktør på Morgentidende. Kontrollér artikel mod de verificerede claims. Returnér KUN konkrete publiceringsblokerende problemer. Et problem er blokerende hvis sproget er materielt uklart eller forkert, en påstand går videre end dokumentationen, attribution/pluralisme er utilstrækkelig, etik er uforsvarlig, SEO er misvisende, eller hero-prompten ligner falsk dokumentarfoto. Hvis kontrollen er tilfredsstillende, skal blocking_issues være en tom liste. Skriv ikke positive observationer som problemer.`;
+  const raw = await aiJson(env, system, JSON.stringify({ assignment, claims: dossier.claims, contradictions: dossier.contradictions, article }), finalSchema, 1400);
+  const issues = Array.isArray(raw.blocking_issues) ? raw.blocking_issues.filter((x) => x?.gate && x?.issue) : [];
+  const failed = new Set(issues.map((x) => x.gate));
+  return {
+    decision: issues.length === 0 ? "pass" : "hold",
+    language: failed.has("language") ? "hold" : "pass",
+    ethics: failed.has("ethics") ? "hold" : "pass",
+    image: failed.has("image") ? "hold" : "pass",
+    seo: failed.has("seo") ? "hold" : "pass",
+    final_editor: failed.has("final_editor") ? "hold" : "pass",
+    notes: issues.map((x) => `${x.gate}: ${x.issue}`),
+  };
 }
 
 async function generateHero(env, article) {
