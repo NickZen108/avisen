@@ -1,6 +1,6 @@
 # Design — Morgentidende
 
-Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Brugeren har samme dag godkendt dark mode med en diskret skydeknap øverst. Den 31. august 2026 godkendte brugeren en skarpere ikke-kursiv wordmark samt en mindre sticky masthead på artikelsider. Samme dag godkendte brugeren en lysere varm papirbaggrund samt kontrolleret variation i forsidens rubriktypografi. Det visuelle design er fortsat låst bortset fra disse udtrykkeligt godkendte ændringer.
+Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Brugeren har samme dag godkendt dark mode med en diskret skydeknap øverst. Den 31. august 2026 godkendte brugeren en skarpere ikke-kursiv wordmark samt en mindre sticky masthead på artikelsider. Samme dag godkendte brugeren en lysere varm papirbaggrund, kontrolleret variation i forsidens rubriktypografi og en oprydning af undersider/navigation. Det visuelle design er fortsat låst bortset fra disse udtrykkeligt godkendte ændringer.
 
 ## Farver
 
@@ -17,7 +17,7 @@ Den varme papirfarve skal give Morgentidende en egen identitet uden at gøre sid
 
 ## Typografi
 
-Wordmark: **Roboto Slab 700**, ikke kursiv, med let negativ bogstavafstand for et mere kantet og autoritativt avisudtryk. På forsiden bruges fortsat stor wordmark `clamp(2.35rem, 5.6vw, 3.85rem)`.
+Wordmark: **Roboto Slab 700**, ikke kursiv, med let negativ bogstavafstand for et mere kantet og autoritativt avisudtryk. Samme wordmark-font skal bruges på forside, artikler og alle undersider.
 
 På artikelsider er mastheaden sticky og kompakt: wordmark omkring `1.55–2rem` på desktop og cirka `1.45rem` på mobil. Den forbliver synlig ved scroll uden at optage unødigt meget læseareal.
 
@@ -36,7 +36,15 @@ Forsiden skal have kontrolleret variation, ikke én mekanisk rubrikstil. Canonic
 
 Blandet fed/normal skrift og to farver bruges kun på udvalgte historier, især lead, stærke kort eller verificeret video. De må ikke dominere hele forsiden. Smalle lister og højre rail skal som udgangspunkt være roligere.
 
-Builderen må vælge en sikker visuel stil ud fra en allerede godkendt canonical rubrik — fx `Video:` eller en naturlig kolon-opdeling — men må aldrig ændre ordlyden eller opfinde et citat. En eksplicit redaktionel `headline_style` kan overstyre den sikre standard, når den er en del af den godkendte artikelversion.
+## Navigation og undersider
+
+Forsidens primære menu skal være enkel: nyheder og nyhedsbrev. `Om` og `Rettelser` er utility-links og ligger i footeren frem for at optage plads i hovedmenuen.
+
+`Om`, `Rettelser` og `Nyhedsbrev` skal visuelt føles som samme produkt som forsiden: samme Roboto Slab-wordmark, varm papirbaggrund, serif-brødtekst og dark-mode-kontrol. Undersider må gerne bruge et roligt kort/panel med mere luft end almindelige artikler.
+
+Nyhedsbrevsiden skal have en tydelig, indbydende CTA med stort skrivefelt, enkel knap og kort forklaring af værdien før formularen.
+
+På mobil skal dark-mode-knappen ligge tydeligt til højre for wordmarken med reserveret plads omkring logoet; den må aldrig overlappe logoet. På den store forsideheader placeres den i den øverste højre del af mastheaden frem for at forsøge at centrere sig mod hele headerens højde.
 
 ## Sideskabelon
 
@@ -44,17 +52,12 @@ Forside: lead + rail + tre kort + fire smalle.
 Artikelside: `article-grid` + sidespalte + `.below` fire spalter med foto.
 Nyhed/kommentar om samme sag: `.related-teaser` begge veje.
 Flere stykker om samme tema: `.theme-box`.
-Dark mode-kontrollen ligger diskret øverst til højre i masthead på forside og artikelsider. Første besøg følger systemets tema; et manuelt valg huskes lokalt i browseren.
-
-På artikelsider skal mastheaden være sticky. Den sticky artikelmasthead viser den kompakte Morgentidende-wordmark og dark-mode-kontrollen; den skal ikke vokse til forsidens fulde højde ved scroll. På mobil skal knappen være lodret centreret i mastheaden og må aldrig overlappe wordmarken.
 
 ## Genereret HTML
 
-Nye og substantielt opdaterede artikler skrives som struktureret indhold i `content/articles/`. `scripts/build_all.py` genererer HTML under `docs/artikler/` fra den centrale skabelon. Forsiden styres af `content/frontpage.json` og genereres centralt.
+Nye og substantielt opdaterede artikler skrives som struktureret indhold i `content/articles/`. `scripts/build_all.py` genererer HTML under `docs/artikler/` fra den centrale skabelon. Forsiden styres af `content/frontpage.json` og genereres centralt. Rettelsessiden genereres centralt af buildet, så dens masthead og footer ikke glider væk fra resten af designet.
 
 Journalist-, SEO-, sprog-, billed- og redaktøragenter må ikke skrive layout-HTML eller CSS. De ændrer kun felter, som deres prompt giver adgang til.
-
-Legacy-HTML må vises uændret, men skal migreres til generatoren ved større opdatering.
 
 ## Maskinel lås
 
