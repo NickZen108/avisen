@@ -20,7 +20,7 @@ jobs:
       - name: Prebuild gates
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Deterministic build
-        run: python scripts/build_all_v2.py
+        run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/build_control_room.py && python scripts/seo_surface_fix.py
       - name: Postbuild gates
         run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Show generated drift
