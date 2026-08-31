@@ -9,14 +9,32 @@ function missingConfig(env) {
   return required.filter((k) => !env[k]);
 }
 
-async function supabaseUser(req, env) {
+function bearerToken(req) {
   const auth = req.headers.get('authorization') || '';
-  if (!auth.startsWith('Bearer ')) return null;
+  return auth.startsWith('Bearer ') ? auth.slice(7).trim() : null;
+}
+
+function jwtClaims(token) {
+  try {
+    const part = token.split('.')[1];
+    if (!part) return {};
+    const normalized = part.replace(/-/g, '+').replace(/_/g, '/');
+    const padded = normalized + '='.repeat((4 - normalized.length % 4) % 4);
+    return JSON.parse(atob(padded));
+  } catch (_) {
+    return {};
+  }
+}
+
+async function supabaseUser(req, env) {
+  const token = bearerToken(req);
+  if (!token) return null;
   const res = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
-    headers: { authorization: auth, apikey: env.SUPABASE_PUBLISHABLE_KEY },
+    headers: { authorization: `Bearer ${token}`, apikey: env.SUPABASE_PUBLISHABLE_KEY },
   });
   if (!res.ok) return null;
-  return res.json();
+  const user = await res.json();
+  return { user, claims: jwtClaims(token) };
 }
 
 async function serviceQuery(env, path, init = {}) {
@@ -34,14 +52,17 @@ async function rolesFor(userId, env) {
   return (await r.json()).map((x) => x.role);
 }
 
-async function requireUser(req, env, accepted = []) {
-  const user = await supabaseUser(req, env);
-  if (!user) return { error: json({ error: 'unauthorized' }, 401) };
-  const roles = await rolesFor(user.id, env);
+async function requireUser(req, env, accepted = [], options = {}) {
+  const session = await supabaseUser(req, env);
+  if (!session) return { error: json({ error: 'unauthorized' }, 401) };
+  const roles = await rolesFor(session.user.id, env);
   if (accepted.length && !accepted.some((r) => roles.includes(r))) {
     return { error: json({ error: 'forbidden' }, 403) };
   }
-  return { user, roles };
+  if (options.requireAal2 && session.claims?.aal !== 'aal2') {
+    return { error: json({ error: 'mfa_required', required_aal: 'aal2' }, 403) };
+  }
+  return { user: session.user, roles, claims: session.claims };
 }
 
 async function audit(env, actorId, action, objectType, objectId = null, metadata = {}) {
@@ -123,7 +144,7 @@ export default {
       if (url.pathname === '/api/me' && req.method === 'GET') {
         const auth = await requireUser(req, env);
         if (auth.error) return auth.error;
-        return json({ user: { id: auth.user.id, email: auth.user.email }, roles: auth.roles });
+        return json({ user: { id: auth.user.id, email: auth.user.email }, roles: auth.roles, aal: auth.claims?.aal || 'aal1' });
       }
       if (url.pathname === '/api/kronik/check' && req.method === 'POST') {
         const auth = await requireUser(req, env, ['chronicler', 'editor', 'admin']);
@@ -141,9 +162,9 @@ export default {
         return uploadHero(req, env, auth.user);
       }
       if (url.pathname.startsWith('/api/admin/')) {
-        const auth = await requireUser(req, env, ['admin']);
+        const auth = await requireUser(req, env, ['admin'], { requireAal2: true });
         if (auth.error) return auth.error;
-        return json({ ok: true, note: 'Admin route protected by app role; Cloudflare Access must also protect the control-room hostname.' });
+        return json({ ok: true, aal: auth.claims?.aal, note: 'Admin route requires app admin role + MFA (AAL2); Cloudflare Access must also protect the control-room hostname.' });
       }
       return json({ error: 'not_found' }, 404);
     } catch (error) {
