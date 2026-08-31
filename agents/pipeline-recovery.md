@@ -11,10 +11,12 @@ Læs `reports/editorial/pipeline-health.json` og artiklens `workflow_state`. For
 - `ethics` → Etik/fairness løser den konkrete mangel.
 - `image` → Billedredaktør løser billed-/rettighedsgaten.
 - `seo` → SEO/discovery færdiggør metadata uden at ændre journalistikken.
-- `final_editor` → Slutredaktør kører hele final approval igen på den aktuelle redaktionelle snapshot-version.
+- `final_editor` → Slutredaktør kører final approval igen på den aktuelle redaktionelle snapshot-version.
 - `manual_review` → må ikke automatiseres videre.
 
-Når et trin er repareret, fortsættes pipeline normalt fremad; der må ikke springes over efterfølgende gates. Først Slutredaktøren må efter samlet PASS sætte `status: ready` og `release_requested: true`.
+Når et trin er repareret, fortsættes pipeline normalt fremad; der må ikke springes over efterfølgende relevante gates. Hvis rettelsen kun ændrer et teknisk recovery-felt som `workflow_state`, skal allerede beståede redaktionelle gates ikke køres om igen.
+
+Slutredaktøren opretter kun den redaktionelle final approval. **Udgiver** er den rolle, der efter samlet PASS sætter `status: ready` og `release_requested: true`. Recovery Desk må ikke blande de to ansvar sammen.
 
 En blokeret artikel må aldrig blokere udgivelsen af andre godkendte artikler. Hvis én artikel ikke kan repareres sikkert, skal den blive parkeret med konkret årsag, mens resten af køen fortsætter.
 
