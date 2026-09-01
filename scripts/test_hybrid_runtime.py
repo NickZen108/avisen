@@ -26,9 +26,6 @@ def main() -> int:
     assert sync.authoritative_editorial({"name": "Reuters", "source_group": "wire-reuters"})
     assert sync.authoritative_editorial({"name": "Associated Press", "source_group": "wire-ap"})
     assert not sync.authoritative_editorial({"name": "Example Blog", "source_group": "host-example.test"})
-    assert sync.is_hard_news({"category": "Udland", "weight": "C", "title": "Iran indgår ny aftale", "standfirst": ""})
-    assert sync.is_hard_news({"category": "Liv", "weight": "C", "title": "Flodbølge efterlader døde", "standfirst": ""})
-    assert not sync.is_hard_news({"category": "Liv", "weight": "C", "title": "Fem råd til bedre søvn", "standfirst": ""})
     assert sync.valid_documentary_image({
         "src": "https://example.test/photo.jpg",
         "source_url": "https://example.test/license",
@@ -62,16 +59,20 @@ def main() -> int:
         'host === "reuters.com"',
         'source === "ap"',
         'én stærk original bureau-/redaktionel kilde som Reuters, AP, AFP eller Ritzau',
-        'function hardNewsRequiresDocumentary(assignment, article)',
+        'function newsRequiresDocumentaryHero()',
         'function validDocumentaryHero(media)',
         'function documentaryHeroFromSignals(selected = [])',
+        'async function findCommonsDocumentaryHero(assignment, article)',
+        'commonsLicenseAllowed',
+        'image/jpeg',
         'if (requiresDocumentary && !documentaryHero)',
-        'Hard news kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede',
+        'Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede',
         'ai_hero_allowed: false',
-        'const imageBase64 = await generateHero(env, article);',
     ]
     missing = [item for item in required if item not in js]
     assert not missing, f"Hybrid runtime regression: missing {missing}"
+    assert "await generateHero(" not in js, "AI hero generation must not exist in the autonomous news runtime"
+    assert "flux-1-schnell" not in js, "News runtime must not reference a generative image model"
 
     index_js = (ROOT / "cloudflare" / "newsdesk" / "src" / "index.js").read_text(encoding="utf-8")
     for item in (
