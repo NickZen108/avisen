@@ -1,0 +1,65 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-01-health-crisis-looming-as-gaza-heads-towards-rainy-season-warns-who",
+  "slug": "2026-09-01-sundhedskrise-i-gaza-who-advarerer-om-foresta-ende-katastrofe",
+  "category": "Politik",
+  "weight": "B",
+  "title": "Sundhedskrise i Gaza: WHO advarerer om forestående katastrofe",
+  "standfirst": "WHO advarerer om en forestående sundhedskrise i Gaza, da regntiden nærmer sig. Situationen er ekstremt alvorlig, og der er behov for øjeblikkelig hjælp.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-01-sundhedskrise-i-gaza-who-advarerer-om-foresta-ende-katastrofe.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06"
+  ],
+  "seo": {
+    "title": "Sundhedskrise i Gaza: WHO advarerer om forestående katastrofe",
+    "description": "WHO advarerer om en forestående sundhedskrise i Gaza, da regntiden nærmer sig. Læs mere om situationen og de forskellige synspunkter på krisen.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-sundhedskrise-i-gaza-who-advarerer-om-foresta-ende-katastrofe.jpg",
+    "alt": "Panorama of Gaza City",
+    "credit": "OneArmedMan",
+    "license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Gaza_City.JPG",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Verdenssundhedsorganisationen, WHO, advarerer om en forestående sundhedskrise i Gaza, da regntiden nærmer sig. Ifølge WHO er vandkvaliteten i den palæstinensiske enclave allerede dårlig, og oversvømmelser vil forværre sygdomme og truslen mod sundheden.",
+      "type": "p"
+    },
+    {
+      "text": "Diarrétilfælde er steget, og situationen er yderligere forværret af, at store dele af Gaza er blevet ødelagt under Israels krig. En talsperson for en international organisation udtaler, at \"så længe vi ikke leverer folk med det minimale vandmængde, er vandets kvalitet og vandforurening en stor problem\".",
+      "type": "p"
+    },
+    {
+      "text": "Krisen i Gaza er en kompleks og kontroversiel sag, hvor både Israel og palæstinensiske grupper har fremført forskellige synspunkter. Ifølge Al Jazeera, der har rapporteret om krisen, er situationen i Gaza ekstremt alvorlig, og der er behov for øjeblikkelig hjælp til at afhjælpe sundhedskrisen.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

@@ -1,0 +1,139 @@
+{
+  "schema_version": 2,
+  "story_id": "2026-09-01-health-crisis-looming-as-gaza-heads-towards-rainy-season-warns-who",
+  "article_slug": "2026-09-01-sundhedskrise-i-gaza-who-advarerer-om-foresta-ende-katastrofe",
+  "assignment": {
+    "category": "Politik",
+    "weight": "B",
+    "core_question": "Gaza",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/9/1/health-crisis-looming-as-gaza-heads-towards-rainy-season-warns-who?traffic_source=rss",
+      "published_at": "2026-09-01T18:22:17.000Z",
+      "accessed_at": "2026-09-01T18:57:08.612Z",
+      "type": "news",
+      "source_group": "wire-afp",
+      "authoritative_for": "Health crisis looming as Gaza heads towards rainy season, warns WHO",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "wire-afp"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. For lavrisiko-fakta kan en autoritativ primærkilde, original bureaukilde eller stærk original redaktionel kilde være nok; ellers bruges to uafhængige kilder. Højrisiko/fairness behandles strengere."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Health crisis looming as Gaza heads towards rainy season, warns WHO",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-afp"
+      ],
+      "checked_at": "2026-09-01T18:57:08.612Z",
+      "notes": "WHO varner om en sundhedskrise i Gaza"
+    },
+    {
+      "id": "F02",
+      "claim": "Water quality in embattled Palestinian enclave already poor",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-afp"
+      ],
+      "checked_at": "2026-09-01T18:57:08.612Z",
+      "notes": "Vandets kvalitet i Gaza er allerede dårlig"
+    },
+    {
+      "id": "F03",
+      "claim": "Flooding will exacerbate disease, threat to health, says UN agency",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-afp"
+      ],
+      "checked_at": "2026-09-01T18:57:08.612Z",
+      "notes": "Flodning vil forværre sygdomme og truslen mod sundheden"
+    },
+    {
+      "id": "F04",
+      "claim": "Diarrhea cases have surged",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-afp"
+      ],
+      "checked_at": "2026-09-01T18:57:08.612Z",
+      "notes": "Diarréekasus er steget"
+    },
+    {
+      "id": "F05",
+      "claim": "Much of Gaza has been destroyed during Israel’s genocidal war",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-afp"
+      ],
+      "checked_at": "2026-09-01T18:57:08.612Z",
+      "notes": "Store dele af Gaza er blevet ødelagt under Israels krig"
+    },
+    {
+      "id": "F06",
+      "claim": "Whilst we fail to provide people with the minimum quantities of water, water quality and water contamination remains a major issue",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-afp"
+      ],
+      "checked_at": "2026-09-01T18:57:08.612Z",
+      "notes": "Så længe vi ikke leverer folk med det minimale vandmængde, er vandets kvalitet og vandforurening en stor problem"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-01T18:57:08.612Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-01T18:57:08.612Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}
