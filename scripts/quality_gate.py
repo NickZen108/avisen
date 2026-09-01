@@ -9,6 +9,7 @@ import subprocess
 import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from evidence_policy import claim_has_required_support as evidence_claim_has_required_support
 
 ROOT = Path(__file__).resolve().parents[1]
 ERRORS: list[str] = []
@@ -64,22 +65,8 @@ def check_design_lock() -> None:
             err(f"DESIGN LOCK FAIL {rel}: {actual} != {expected}")
 
 
-def claim_has_required_support(claim: dict, sources: dict[str, dict]) -> bool:
-    groups: set[str] = set()
-    for sid in claim.get("source_ids", []):
-        src = sources.get(sid)
-        if not src:
-            continue
-        group = str(src.get("source_group", "")).strip()
-        if group:
-            groups.add(group)
-    if len(groups) >= 2:
-        return True
-    for sid in claim.get("source_ids", []):
-        src = sources.get(sid)
-        if src and src.get("type") in {"primary", "paper", "interview"} and str(src.get("authoritative_for", "")).strip():
-            return True
-    return False
+def claim_has_required_support(article: dict, ledger: dict, claim: dict, sources: dict[str, dict]) -> bool:
+    return evidence_claim_has_required_support(article, ledger, claim, sources)
 
 
 def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
@@ -158,13 +145,13 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
     for claim_id in article.get("claim_ids", []):
         claim=claims.get(claim_id)
         if not claim: err(f"{path.name}: claim {claim_id} findes ikke i ledger"); continue
-        if article.get("status") in {"scheduled","published"} and claim.get("status")!="verified": err(f"{path.name}: klar/publiceret claim {claim_id} er ikke verified")
-        if article.get("status") in {"scheduled","published"}:
+        if article.get("status") in {"ready","scheduled","published"} and claim.get("status")!="verified": err(f"{path.name}: klar/publiceret claim {claim_id} er ikke verified")
+        if article.get("status") in {"ready","scheduled","published"}:
             for sid in claim.get("source_ids",[]):
                 src=sources.get(sid)
                 if not src: err(f"{path.name}: claim {claim_id} peger på ukendt source_id {sid}")
                 elif not str(src.get("source_group","")).strip(): err(f"{path.name}: source {sid} mangler source_group")
-        if article.get("status") in {"scheduled","published"} and not claim_has_required_support(claim,sources): err(f"{path.name}: claim {claim_id} mangler uafhængig eller autoritativ støtte")
+        if article.get("status") in {"ready","scheduled","published"} and not claim_has_required_support(article,ledger,claim,sources): err(f"{path.name}: claim {claim_id} mangler uafhængig eller autoritativ støtte")
     if article.get("category")=="Kommentar" and not article.get("related_news_slug"): err(f"{path.name}: Kommentar mangler related_news_slug")
     if article.get("status")=="scheduled":
         scheduled_for=article.get("scheduled_for")

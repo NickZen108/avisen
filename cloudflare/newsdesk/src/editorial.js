@@ -38,15 +38,33 @@ function sourceGroup(name, url = null) {
 function wireOrigin(item) {
   const host = hostOf(item?.final_url || item?.url || "");
   const source = String(item?.source || "").toLowerCase().trim();
-  const text = `${source} ${item?.headline || ""} ${item?.description || ""} ${item?.excerpt || ""}`.toLowerCase().slice(0, 7000);
-  if (host === "reuters.com" || host.endsWith(".reuters.com") || /\b(reuters|thomson reuters)\b/.test(text)) return "wire-reuters";
-  if (host === "apnews.com" || host.endsWith(".apnews.com") || source === "ap" || /\b(associated press|ap news|the ap)\b/.test(text)) return "wire-ap";
-  if (source === "afp" || /\b(agence france-presse|afp)\b/.test(text)) return "wire-afp";
-  if (source === "ritzau" || /\b(ritzau|ritzau bureau)\b/.test(text)) return "wire-ritzau";
+  if (host === "reuters.com" || host.endsWith(".reuters.com") || source === "reuters" || source === "thomson reuters") return "reuters";
+  if (host === "apnews.com" || host.endsWith(".apnews.com") || ["ap", "associated press", "ap news"].includes(source)) return "ap";
+  if (["afp", "agence france-presse"].includes(source)) return "afp";
+  if (["ritzau", "ritzau bureau"].includes(source)) return "ritzau";
   return null;
 }
 function evidenceSourceGroup(item) {
-  return wireOrigin(item) || sourceGroup(item?.source, item?.final_url || item?.url);
+  return sourceGroup(item?.source, item?.final_url || item?.url);
+}
+function provenanceClusters(items) {
+  const clusters = [];
+  for (let i = 0; i < items.length; i++) {
+    let cluster = null;
+    for (let j = 0; j < i; j++) {
+      const a = `${items[i]?.headline || ""} ${items[i]?.excerpt || items[i]?.description || ""}`;
+      const b = `${items[j]?.headline || ""} ${items[j]?.excerpt || items[j]?.description || ""}`;
+      if (lexicalSimilarity(a, b) >= 0.90) { cluster = clusters[j]; break; }
+    }
+    clusters[i] = cluster || `pc-${i + 1}`;
+  }
+  return clusters;
+}
+function evidenceAtom(item) {
+  if (authoritativePrimary(item)) return `primary:${item?.final_url || item?.url || evidenceSourceGroup(item)}`;
+  const wire = wireOrigin(item); if (wire) return `wire:${wire}`;
+  if (item?.provenance_cluster) return `cluster:${item.provenance_cluster}`;
+  return `publisher:${evidenceSourceGroup(item)}`;
 }
 const STOPWORDS = new Set("the and for with from that this have are was were will into over after before says said der die das den dem des ein eine und mit von auf für til med fra som det den der en et af og i på at de la le les des une un du et pour avec dans sur est sont que qui de l en au aux".split(/\s+/));
 function words(value) {
@@ -354,12 +372,9 @@ function evidenceRulePass(assignment, research, claim, evidence) {
   const primaryOk = evidence.some(authoritativePrimary);
   if (namedAccusedCrimeClaim(assignment, claim)) return primaryOk;
   const wireOk = evidence.some(authoritativeEditorial);
-  const independent = new Set(evidence.map(evidenceSourceGroup));
-  // Keep runtime approval aligned with repository quality gates: one ordinary
-  // editorial publication is not independent corroboration. A competent primary
-  // source or original wire may stand alone; otherwise require two publisher groups.
-  if (primaryOk || wireOk || independent.size >= 2) return true;
-  return false;
+  const atoms = new Set(evidence.map(evidenceAtom).filter(Boolean));
+  if (highRiskFactClaim(assignment, research, claim)) return primaryOk || atoms.size >= 2;
+  return primaryOk || wireOk || atoms.size >= 2;
 }
 
 async function runResearch(env, assignment, selected) {
@@ -473,7 +488,7 @@ function focusedExcerpt(text, claims, maxChars = 1800) {
 
 async function runFactCheck(env, assignment, research) {
   if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
-  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. For almindelige lavrisiko-fakta kan Verified bæres af én autoritativ primærkilde inden for dens kompetenceområde, én original bureaukilde (Reuters/AP/AFP/Ritzau), én stærk original redaktionel kilde som BBC, DR, TV 2, SVT, NRK, Financial Times eller Politico ved tydelig attribution, eller to uafhængige troværdige kilder. Samme bureau/pressemeddelelse tæller kun én gang. Ved højrisiko/fairness-påstande skal du være mere forsigtig og ikke lade én almindelig redaktionel kilde stå alene. Ved navngivne sigtede/tiltalte/mistænkte i kriminalstof kræves en relevant primærkilde fra politi/ret/myndighed. For alle materielle tal (døde, penge, procent, antal osv.) skal du aktivt sammenligne/falsificere tallet mod alle vedlagte relevante kilder; ved mismatch skal claimet være uncertain eller formuleres forsigtigt/attribueret, aldrig vælg automatisk det højeste tal. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder eller fakta. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;
+  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. For almindelige lavrisiko-fakta kan Verified bæres af én autoritativ primærkilde inden for dens kompetenceområde, én dokumenteret original bureaukilde (Reuters/AP/AFP/Ritzau), eller to provenance-uafhængige troværdige evidenskilder. Ét almindeligt redaktionelt medie kan ikke stå alene. Ved højrisiko kræves primærkilde eller mindst to provenance-uafhængige evidenskilder. Samme bureau/pressemeddelelse tæller kun én gang. Ved højrisiko/fairness-påstande skal du være mere forsigtig og ikke lade én almindelig redaktionel kilde stå alene. Ved navngivne sigtede/tiltalte/mistænkte i kriminalstof kræves en relevant primærkilde fra politi/ret/myndighed. For alle materielle tal (døde, penge, procent, antal osv.) skal du aktivt sammenligne/falsificere tallet mod alle vedlagte relevante kilder; ved mismatch skal claimet være uncertain eller formuleres forsigtigt/attribueret, aldrig vælg automatisk det højeste tal. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder eller fakta. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;
   const fact = await aiJson(env, system, JSON.stringify({
     assignment,
     research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
@@ -829,10 +844,14 @@ async function findCommonsDocumentaryHero(assignment, article, research = null) 
 
 function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the publication ledger boundary");
-  const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => {
+  const evidenceRows = dossier.researched.filter(isEvidenceSource);
+  const clusters = provenanceClusters(evidenceRows);
+  const sources = evidenceRows.map((s, i) => {
     const url = s.final_url || s.url;
     const primary = s.source_kind === "primary" && !s.discovery_only;
-    return { id: `S${i + 1}`, name: s.source, url, published_at: s.published_at || null, accessed_at: accessedAt, type: primary ? "primary" : "news", source_group: evidenceSourceGroup(s), authoritative_for: primary ? (s.headline || "Primary record") : (s.headline || "Independent coverage"), discovery_only: Boolean(s.discovery_only) };
+    const publisher = evidenceSourceGroup(s);
+    const wire = wireOrigin(s);
+    return { id: `S${i + 1}`, name: s.source, url, published_at: s.published_at || null, accessed_at: accessedAt, type: primary ? "primary" : "news", source_group: publisher, publisher_root: publisher.replace(/^host-/, ""), wire_origin: wire, provenance_type: primary ? "primary_record" : wire ? "wire_original" : "reporting", provenance_cluster: clusters[i], primary_record: primary ? url : null, authoritative_for: primary ? (s.headline || "Primary record") : (s.headline || "Independent coverage"), discovery_only: Boolean(s.discovery_only) };
   });
   const verificationSources = sources.filter((s) => !s.discovery_only);
   const groups = [...new Set(verificationSources.map((s) => s.source_group))];
@@ -844,7 +863,7 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
     schema_version: 2, story_id: storyId, article_slug: slug,
     assignment: { category: assignment.category, weight: assignment.weight, core_question: dossier.core_question || assignment.core_question, manual_review: false },
     sources,
-    coverage_sweep: { status: groups.length >= 1 ? "pass" : "limited", editorial_source_ids: verificationSources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 1 ? null : "Ingen brugbar dokumentationskilde registreret", notes: ["Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. For lavrisiko-fakta kan en autoritativ primærkilde, original bureaukilde eller stærk original redaktionel kilde være nok; ellers bruges to uafhængige kilder. Højrisiko/fairness behandles strengere."] },
+    coverage_sweep: { status: groups.length >= 1 ? "pass" : "limited", editorial_source_ids: verificationSources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 1 ? null : "Ingen brugbar dokumentationskilde registreret", notes: ["Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Lavrisiko kræver autoritativ primærkilde, dokumenteret original bureaukilde eller to provenance-uafhængige evidenskilder. Højrisiko kræver primærkilde eller to provenance-uafhængige evidenskilder."] },
     claims, numbers: [], quotes: [], right_of_reply: { required: Boolean(dossier.right_of_reply_required), party: null, contacted_at: null, deadline: null, response: null, exception: dossier.right_of_reply_required ? "Flagged by Research; details must be supplied before any required forelæggelse can be considered complete" : null },
     fact_check: { status: "pass", checked_at: accessedAt, notes: ["Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."] },
     desk_recheck: { status: desk.decision, checked_at: accessedAt, rationale: desk.rationale },
