@@ -24,6 +24,7 @@ async function controlRoomResponse() {
 
   let body = await upstream.text();
   body = body
+    .replace('<head>', '<head><meta http-equiv="refresh" content="30">')
     .replaceAll('href="../"', `href="${PUBLIC_SITE}/"`)
     .replaceAll("href='../'", `href='${PUBLIC_SITE}/'`);
 
