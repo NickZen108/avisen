@@ -13,6 +13,46 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ARTICLES = ROOT / "content" / "articles"
 
+ALLOWED_AI_PEOPLE_STYLES = {
+    "editorial_illustration",
+    "pencil_sketch",
+    "line_art",
+    "collage",
+    "silhouette",
+    "flat_vector",
+    "watercolor",
+    "woodcut",
+    "ink_drawing",
+}
+PHOTOREAL_STYLE_TERMS = {
+    "photorealistic",
+    "photo_realistic",
+    "realistic_photo",
+    "documentary_photo",
+    "cinematic_photo",
+}
+
+
+def check_ai_people_style(label: str, image: dict, faults: list[str]) -> None:
+    if not image.get("ai_generated"):
+        return
+    if image.get("image_type") != "illustration":
+        faults.append(f"{label}: AI-genereret grafik skal være mærket illustration")
+    contains_people = image.get("contains_people")
+    if not isinstance(contains_people, bool):
+        faults.append(f"{label}: AI-grafik skal deklarere contains_people true|false")
+        return
+    if not contains_people:
+        return
+    style = str(image.get("people_style") or "").strip().lower()
+    if not style:
+        faults.append(f"{label}: AI-grafik med mennesker mangler people_style")
+        return
+    if style in PHOTOREAL_STYLE_TERMS or image.get("photorealistic") is True:
+        faults.append(f"{label}: fotorealistiske AI-personer er ikke tilladt")
+    elif style not in ALLOWED_AI_PEOPLE_STYLES:
+        faults.append(f"{label}: ikke-godkendt AI-personstil {style!r}")
+
 
 def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
@@ -58,8 +98,8 @@ def main() -> int:
                 continue
             if image.get("placement", "lead") != "lead":
                 faults.append(f"{path.name}: autonom artikel har ikke lead-hero")
-            if image.get("image_type") not in {"photo", "illustration"}:
-                faults.append(f"{path.name}: ugyldig hero-type {image.get('image_type')!r}")
+            if image.get("image_type") not in {"photo", "video_still", "document"}:
+                faults.append(f"{path.name}: autonome nyheder kræver dokumentarisk hero; illustration er ikke tilladt")
             if image.get("image_type") == "graphic":
                 faults.append(f"{path.name}: teknisk grafik må ikke være autonom hero")
             for key in ("src", "alt", "credit", "license"):
@@ -72,6 +112,9 @@ def main() -> int:
                 local = ROOT / "docs" / src.lstrip("/")
                 if not local.exists():
                     faults.append(f"{path.name}: lokal hero findes ikke: {src}")
+
+        if isinstance(image, dict):
+            check_ai_people_style(path.name, image, faults)
 
         # Every declared lead image, including older articles, needs basic truthful metadata.
         if isinstance(image, dict) and image.get("src") and image.get("placement", "lead") == "lead":
@@ -89,6 +132,7 @@ def main() -> int:
                 faults.append(f"{path.name}: figur {i} mangler src")
             if not str(block.get("alt") or "").strip():
                 faults.append(f"{path.name}: figur {i} mangler alt-tekst")
+            check_ai_people_style(f"{path.name}: figur {i}", block, faults)
 
     # Generated hero CSS must have a crop-safe default; diagrams are inline/contain.
     style = (ROOT / "docs" / "style.css").read_text(encoding="utf-8")
