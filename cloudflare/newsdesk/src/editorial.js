@@ -343,8 +343,7 @@ function strongEditorialSource(item) {
   return ["reuters", "ap", "associated press", "afp", "ritzau", "bbc", "dr", "tv 2", "tv2", "svt", "nrk", "financial times", "politico"].includes(source);
 }
 function authoritativeEditorial(item) {
-  const group = evidenceSourceGroup(item);
-  return ["wire-reuters", "wire-ap", "wire-afp", "wire-ritzau"].includes(group);
+  return Boolean(wireOrigin(item));
 }
 function normalizedSourceKind(item) {
   if (authoritativePrimary(item)) return "primary";
@@ -453,6 +452,8 @@ async function runResearch(env, assignment, selected) {
     if (unique.length >= 4) break;
   }
 
+  const researchClusters = provenanceClusters(unique);
+  unique.forEach((item, i) => { item.provenance_cluster = researchClusters[i]; });
   const sources = unique.map((item, i) => ({
     source_index: i,
     name: item.source,
