@@ -197,6 +197,33 @@ async function persistEditorial(env, result) {
   await stateStub(env).fetch("https://state/editorial/store", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(clone) });
   return clone;
 }
+function mergeGitHubPrefetch(scan, prefetch) {
+  if (!prefetch || prefetch.scan_fingerprint !== scan?.fingerprint || !Array.isArray(prefetch.items)) {
+    return { scan, used: 0, reason: "missing-or-stale" };
+  }
+  const byUrl = new Map();
+  for (const item of prefetch.items.slice(0, 20)) {
+    const url = String(item?.url || "");
+    const excerpt = String(item?.excerpt || "");
+    if (!item?.ok || !/^https?:\/\//i.test(url) || excerpt.length < 160) continue;
+    byUrl.set(url, item);
+  }
+  let used = 0;
+  const signals = (scan.signals || []).map((signal) => {
+    const item = byUrl.get(String(signal?.url || ""));
+    if (!item) return signal;
+    used += 1;
+    return {
+      ...signal,
+      prefetched_excerpt: String(item.excerpt).slice(0, 12000),
+      prefetched_final_url: item.final_url || signal.url,
+      prefetched_status: item.status || 200,
+      prefetched_outbound_links: Array.isArray(item.outbound_links) ? item.outbound_links.slice(0, 24) : [],
+    };
+  });
+  return { scan: { ...scan, signals }, used, reason: used ? "matched" : "no-url-match" };
+}
+
 async function maybeRunEditorial(env, scan, force = false) {
   const status = await (await getState(env, "/editorial")).json();
   if (!force && !editorialDue(status.last_editorial_at)) return status.latest || { status: "idle", reason: "Editorial cadence not due" };
@@ -234,8 +261,17 @@ export default {
     if (url.pathname === "/editorial/latest") { const state = await (await getState(env, "/editorial")).json(); return Response.json(state.latest || { status: "none" }, { headers: jsonHeaders }); }
     if (url.pathname === "/editorial/history") return getState(env, "/editorial/history");
     if (url.pathname === "/run-editorial" && request.method === "POST") {
-      const state = await (await getState(env)).json(); const scan = state.latest || await buildScan(); if (!state.latest) await storeScan(env, scan);
-      return Response.json(await maybeRunEditorial(env, scan, true), { headers: jsonHeaders });
+      const state = await (await getState(env)).json(); let scan = state.latest || await buildScan(); if (!state.latest) await storeScan(env, scan);
+      let prefetch = null;
+      try {
+        const type = request.headers.get("content-type") || "";
+        if (type.includes("application/json")) prefetch = await request.json();
+      } catch (_) {}
+      const merged = mergeGitHubPrefetch(scan, prefetch);
+      scan = merged.scan;
+      const result = await maybeRunEditorial(env, scan, true);
+      result.github_prefetch = { used: merged.used, reason: merged.reason };
+      return Response.json(result, { headers: jsonHeaders });
     }
     if (url.pathname.startsWith("/media/")) {
       const key = decodeURIComponent(url.pathname.slice("/media/".length)); return stateStub(env).fetch(`https://state/media/get?key=${encodeURIComponent(key)}`);
