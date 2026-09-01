@@ -75,6 +75,48 @@ async function controlTraffic(env) {
   const days30rows = rows.filter(r => Date.parse(r.occurred_at) >= Date.now() - 30 * 86400000);
   return json({ today: topStories(rows, 0), days7: topStories(rows, 7), days30: topStories(rows, 30), total_views_30d: days30rows.length, recommendations: trafficRecommendations(days30rows), measurement_started: rows.length > 0 });
 }
+async function controlFunnel() {
+  const endpoint = 'https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/editorial/history';
+  const response = await fetch(endpoint, { headers: { 'user-agent': 'MorgentidendeControlRoom/1.0' }, cf: { cacheTtl: 0 } });
+  if (!response.ok) return json({ error: 'funnel_source_unavailable', status: response.status }, 503);
+  const rows = await response.json();
+  const downstream = (Array.isArray(rows) ? rows : []).filter(r => (r.stage || 'approved') !== 'newsdesk');
+  const approved = downstream.filter(r => r.status === 'approved');
+  const parked = downstream.filter(r => r.status === 'watch');
+  const rejected = downstream.filter(r => !['approved', 'watch'].includes(r.status));
+  const stageCounts = {};
+  const reasonCounts = new Map();
+  let metered = 0, calls = 0, tokens = 0, neurons = 0;
+  for (const r of downstream) {
+    const stage = r.stage || 'approved'; stageCounts[stage] = (stageCounts[stage] || 0) + 1;
+    if (r.status !== 'approved') {
+      const key = `${stage}|||${r.reason || ''}`; reasonCounts.set(key, (reasonCounts.get(key) || 0) + 1);
+    }
+    const u = r.ai_usage || null;
+    if (u) { metered++; calls += Number(u.calls || 0); tokens += Number(u.total_tokens || 0); neurons += Number(u.estimated_neurons || 0); }
+  }
+  const denominator = downstream.length;
+  const rate = denominator ? rejected.length * 100 / denominator : null;
+  const topStopReasons = [...reasonCounts.entries()].sort((a,b) => b[1]-a[1]).slice(0,12).map(([key,count]) => { const [stage, reason] = key.split('|||'); return { stage, reason, count }; });
+  return json({
+    history_rows: Array.isArray(rows) ? rows.length : 0,
+    post_newsdesk_attempts: denominator,
+    approved: approved.length,
+    parked_watch: parked.length,
+    rejected_or_held: rejected.length,
+    post_newsdesk_rejection_rate_pct: rate == null ? null : Math.round(rate * 100) / 100,
+    long_term_target_pct: 10,
+    stage_counts: stageCounts,
+    top_stop_reasons: topStopReasons,
+    metered_attempts: metered,
+    total_ai_calls: Math.round(calls),
+    total_tokens: Math.round(tokens),
+    estimated_neurons: Math.round(neurons * 1000) / 1000,
+    avg_tokens_per_metered_attempt: metered ? Math.round(tokens / metered * 10) / 10 : null,
+    avg_neurons_per_metered_attempt: metered ? Math.round(neurons / metered * 1000) / 1000 : null,
+    note: 'Forsøg tælles, så retries af samme historie kan optræde flere gange.'
+  });
+}
 async function fireChronicler(req, env, actor) {
   const data = await req.json().catch(() => ({})); const userId = String(data.user_id || '').trim();
   if (!/^[0-9a-f-]{36}$/i.test(userId)) return json({ error: 'invalid_user_id' }, 400);
@@ -134,6 +176,7 @@ export default {
       if (url.pathname === '/kontrolrum/data/chroniclers' && req.method === 'GET') return controlChroniclers(env);
       if (url.pathname === '/kontrolrum/data/revenue' && req.method === 'GET') return controlRevenue(env);
       if (url.pathname === '/kontrolrum/data/traffic' && req.method === 'GET') return controlTraffic(env);
+      if (url.pathname === '/kontrolrum/data/funnel' && req.method === 'GET') return controlFunnel();
       if (url.pathname === '/api/me' && req.method === 'GET') { const auth = await requireUser(req, env); if (auth.error) return auth.error; return withCookies(json({ user: { id: auth.user.id, email: auth.user.email }, roles: auth.roles, aal: auth.claims?.aal || 'aal1' }), auth.cookies); }
       if (url.pathname === '/api/kronik/check' && req.method === 'POST') { const auth = await requireUser(req, env, ['chronicler', 'editor', 'admin']); if (auth.error) return auth.error; return withCookies(await kronikCheck(req, env, auth.user), auth.cookies); }
       if (url.pathname === '/api/kronik/publish-request' && req.method === 'POST') { const auth = await requireUser(req, env, ['chronicler', 'editor', 'admin']); if (auth.error) return auth.error; return withCookies(await createPublishRequest(req, env, auth.user), auth.cookies); }
