@@ -82,7 +82,8 @@ def commons_photo(article: dict) -> dict | None:
             title = str(page.get("title") or "").removeprefix("File:")
             bag = set(x.lower() for x in words(title + " " + desc))
             overlap = len(query_terms & bag)
-            if overlap < 1:
+            min_overlap = 1 if len(query_terms) <= 1 else 2
+            if overlap < min_overlap:
                 continue
             artist = clean((meta.get("Artist") or {}).get("value") or (meta.get("Credit") or {}).get("value") or "Wikimedia Commons")
             ranked.append((overlap, {

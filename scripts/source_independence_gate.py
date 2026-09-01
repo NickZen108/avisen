@@ -28,11 +28,10 @@ def strong_editorial(source):
  return name in {'bbc','dr','tv 2','tv2','svt','nrk','financial times','politico','reuters','ap','associated press','afp','ritzau'}
 def high_risk(article,ledger,claim):
  if (ledger.get('right_of_reply') or {}).get('required'):return True
- if article.get('category') in {'Krimi','Sundhed'}:return True
  return bool(HIGH_RISK.search(' '.join(str(x or '') for x in (article.get('title'),article.get('standfirst'),claim.get('claim')))))
 def named_accused(article,claim):
  text=str(claim.get('claim') or '')
- return article.get('category')=='Krimi' and bool(ACCUSED.search(text) and NAMED.search(text))
+ return bool(ACCUSED.search(text) and NAMED.search(text))
 def main():
  for p in sorted(ART.glob('*.json')):
   if p.name.startswith('_'):continue

@@ -128,6 +128,7 @@ async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRON
   } catch (error) {
     if (!fallbackModel || fallbackModel === model) throw error;
     console.warn("Workers AI structured-call fallback", model, "->", fallbackModel, String(error));
+    try { env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1; } catch (_) {}
     const raw = await env.AI.run(fallbackModel, request);
     return responseObject(raw);
   }
@@ -173,8 +174,8 @@ const articleSchema = { type: "object", properties: {
   body: { type: "array", minItems: 3, maxItems: 14, items: { type: "object", properties: {
     type: { type: "string", enum: ["p", "h2", "h3"] }, text: { type: "string" },
   }, required: ["type", "text"] } },
-  seo_title: { type: "string" }, seo_description: { type: "string" }, hero_prompt: { type: "string" }, hero_alt: { type: "string" },
-}, required: ["title", "standfirst", "body", "seo_title", "seo_description", "hero_prompt", "hero_alt"] };
+  seo_title: { type: "string" }, seo_description: { type: "string" },
+}, required: ["title", "standfirst", "body", "seo_title", "seo_description"] };
 
 const finalSchema = { type: "object", properties: {
   blocking_issues: { type: "array", maxItems: 10, items: { type: "object", properties: {
@@ -315,11 +316,9 @@ function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSourc
 const HIGH_RISK_FACT_TERMS = /\b(sigtet|tiltalt|anklag|mistænkt|voldtægt|seksual|misbrug|selvmord|mindreår|barn|børn|privat helbred|diagnose|terror|drab|korruption|svindel|hvidvask|overgreb|racist|ekstremist)\b/iu;
 function highRiskFactClaim(assignment, research, claim) {
   if (research?.right_of_reply_required) return true;
-  if (["Krimi", "Sundhed"].includes(assignment?.category)) return true;
   return HIGH_RISK_FACT_TERMS.test(`${assignment?.title_hint || ""} ${assignment?.core_question || ""} ${claim?.claim || ""}`);
 }
 function namedAccusedCrimeClaim(assignment, claim) {
-  if (assignment?.category !== "Krimi") return false;
   const text = String(claim?.claim || "");
   if (!/\b(sigtet|tiltalt|mistænkt|anklaget)\b/iu.test(text)) return false;
   return /\b[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\s+[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\b/u.test(text);
@@ -418,7 +417,7 @@ async function runResearch(env, assignment, selected) {
     name: item.source,
     headline: item.headline,
     url: item.final_url || item.url,
-    excerpt: item.excerpt.slice(0, 3500),
+    excerpt: item.excerpt.slice(0, 1800),
     discovery_only: false,
     source_kind: normalizedSourceKind(item),
     source_strength: authoritativePrimary(item) ? "primary" : authoritativeEditorial(item) ? "wire" : strongEditorialSource(item) ? "strong_editorial" : "standard",
@@ -431,13 +430,31 @@ async function runResearch(env, assignment, selected) {
   return research;
 }
 
+function focusedExcerpt(text, claims, maxChars = 1800) {
+  const raw = String(text || "");
+  if (raw.length <= maxChars) return raw;
+  const terms = [...new Set((claims || []).flatMap((x) => words(x?.claim || "")).filter((x) => x.length >= 5))];
+  const lower = raw.toLocaleLowerCase("da-DK");
+  let hit = -1;
+  for (const term of terms) {
+    const pos = lower.indexOf(term.toLocaleLowerCase("da-DK"));
+    if (pos >= 0 && (hit < 0 || pos < hit)) hit = pos;
+  }
+  if (hit < 0) return raw.slice(0, maxChars);
+  const start = Math.max(0, Math.min(raw.length - maxChars, hit - Math.floor(maxChars * 0.3)));
+  return raw.slice(start, start + maxChars);
+}
+
 async function runFactCheck(env, assignment, research) {
   if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
   const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. For almindelige lavrisiko-fakta kan Verified bæres af én autoritativ primærkilde inden for dens kompetenceområde, én original bureaukilde (Reuters/AP/AFP/Ritzau), én stærk original redaktionel kilde som BBC, DR, TV 2, SVT, NRK, Financial Times eller Politico ved tydelig attribution, eller to uafhængige troværdige kilder. Samme bureau/pressemeddelelse tæller kun én gang. Ved højrisiko/fairness-påstande skal du være mere forsigtig og ikke lade én almindelig redaktionel kilde stå alene. Ved navngivne sigtede/tiltalte/mistænkte i kriminalstof kræves en relevant primærkilde fra politi/ret/myndighed. For alle materielle tal (døde, penge, procent, antal osv.) skal du aktivt sammenligne/falsificere tallet mod alle vedlagte relevante kilder; ved mismatch skal claimet være uncertain eller formuleres forsigtigt/attribueret, aldrig vælg automatisk det højeste tal. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder eller fakta. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;
   const fact = await aiJson(env, system, JSON.stringify({
     assignment,
     research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
-    sources: research.source_payload,
+    sources: (research.source_payload || []).map((source, i) => ({
+      ...source,
+      excerpt: focusedExcerpt(research.researched?.[i]?.excerpt || source.excerpt, research.candidate_claims, 1800),
+    })),
   }), factCheckSchema, 850, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
   fact.researched = research.researched;
   fact.core_question = research.core_question || assignment.core_question;
@@ -477,7 +494,7 @@ async function deskRecheck(env, assignment, dossier) {
 async function writeArticle(env, assignment, dossier) {
   if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Journalist boundary");
   const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));
-  const system = `Du er journalist på Morgentidende. Skriv præcist og levende dansk, men brug KUN verificerede claims. Gør attribution tydelig og brug gerne korte, præcise citater når de faktisk findes i det verificerede materiale; opfind aldrig citater. Hvis research har conflict_present=true, tilstræb relevant pluralisme mellem reelle parter/synsvinkler ud fra verificeret materiale. Hvis conflict_present=false, må du ikke konstruere kunstig pluralisme. Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. En kort one-claim-nyhed med tre meningsfulde tekstblokke er fuldt acceptabel; fyld aldrig ud. hero_prompt er kun et kort internt dokumentarisk søgebrief og må ikke bede om AI-generering eller foregive et foto fra selve hændelsen.`;
+  const system = `Du er journalist på Morgentidende. Skriv præcist og levende dansk, men brug KUN verificerede claims. Gør attribution tydelig og brug gerne korte, præcise citater når de faktisk findes i det verificerede materiale; opfind aldrig citater. Hvis research har conflict_present=true, tilstræb relevant pluralisme mellem reelle parter/synsvinkler ud fra verificeret materiale. Hvis conflict_present=false, må du ikke konstruere kunstig pluralisme. Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. En kort one-claim-nyhed med tre meningsfulde tekstblokke er fuldt acceptabel; fyld aldrig ud. Media ejer heroen; skriv ingen billedprompt eller billedmetadata.`;
   return aiJson(env, system, JSON.stringify({ assignment, conflict_present: Boolean(dossier.conflict_present), verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? null : STRONG_TEXT_MODEL);
 }
 
@@ -510,7 +527,6 @@ function deterministicFinalReview(assignment, dossier, article) {
 }
 function requiresAiFinalReview(assignment, dossier, article) {
   if (["A", "B"].includes(assignment?.weight)) return true;
-  if (["Krimi", "Sundhed"].includes(assignment?.category)) return true;
   if (dossier?.right_of_reply_required) return true;
   if ((dossier?.contradictions || []).length) return true;
   const text = [
@@ -528,18 +544,12 @@ async function finalReview(env, assignment, dossier, article) {
   return { decision: issues.length ? "hold" : "pass", language: failed.has("language") ? "hold" : "pass", ethics: failed.has("ethics") ? "hold" : "pass", image: failed.has("image") ? "hold" : "pass", seo: failed.has("seo") ? "hold" : "pass", final_editor: failed.has("final_editor") ? "hold" : "pass", issues, notes: issues.map((x) => `${x.gate}: ${x.issue}`) };
 }
 async function reviseFixableIssues(env, assignment, dossier, article, review) {
-  const fixable = (review.issues || []).filter((x) => ["language", "seo", "image"].includes(x.gate));
-  const hard = (review.issues || []).filter((x) => !["language", "seo", "image"].includes(x.gate));
+  const fixable = (review.issues || []).filter((x) => ["language", "seo"].includes(x.gate));
+  const hard = (review.issues || []).filter((x) => !["language", "seo"].includes(x.gate));
   if (!fixable.length || hard.length) return article;
-  const system = `Ret KUN de konkrete language/seo/image-prompt-problemer. Bevar verificerede fakta, vinkel og betydning. Tilføj ingen nye claims. Lægmandssprog og metriske enheder er obligatoriske.`;
+  const system = `Ret KUN de konkrete language/seo-problemer. Bevar verificerede fakta, vinkel og betydning. Tilføj ingen nye claims. Lægmandssprog og metriske enheder er obligatoriske.`;
   return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), article, issues: fixable }), articleSchema, 2400, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
-function newsRequiresDocumentaryHero() {
-  // Documentary media remains first choice, but lack of a lawful photo is not
-  // a publication veto after a story has passed evidence/editorial gates.
-  return true;
-}
-
 const DOCUMENTARY_CONTEXTS = new Set(["event", "place", "person", "object", "archive"]);
 function validDocumentaryHero(media) {
   if (!media || typeof media !== "object") return false;
@@ -598,24 +608,61 @@ function temporarySketchPrompt(assignment, article) {
   return `Black-and-white editorial pencil hatching illustration, newspaper sketch, wide 16:9. Subject context: ${subject}. Clearly hand-drawn graphite/pencil cross-hatching, restrained, symbolic and non-literal. NO photorealism, NO realistic photography, NO documentary-photo aesthetic, NO camera realism, NO text, NO logos, NO watermarks. NO people, NO faces, NO human figures. Do not recreate a concrete accident/crime scene as if witnessed. Do not depict a named accused person, a child, victims, injured or dead people. Use only place/object/geographic/symbolic motifs.`;
 }
 
-async function generateTemporarySketch(env, assignment, article) {
-  const raw = await env.AI.run(IMAGE_MODEL, { prompt: temporarySketchPrompt(assignment, article) });
-  if (!raw?.image || typeof raw.image !== "string") throw new Error("Temporary sketch model returned no base64 image");
-  return raw.image;
+function staticPencilFallbackBase64() {
+  // Deterministic 1024x576 1-bit PBM: abstract hatch/place motif, no people,
+  // no text and no attempt to depict the event. Kept tiny and independent of AI quota.
+  const width = 1024, height = 576, rowBytes = width >> 3;
+  const header = `P4\n${width} ${height}\n`;
+  const bytes = new Uint8Array(header.length + rowBytes * height);
+  for (let i = 0; i < header.length; i++) bytes[i] = header.charCodeAt(i);
+  const offset = header.length;
+  const setPixel = (x, y) => {
+    if (x < 0 || y < 0 || x >= width || y >= height) return;
+    bytes[offset + y * rowBytes + (x >> 3)] |= (1 << (7 - (x & 7)));
+  };
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const hatch = ((x + y) % 31 === 0) || ((x - y + 4096) % 47 === 0);
+      const ground = y > 470 && y % 11 === 0;
+      const frame = (y === 354 || y === 470) && x > 70 && x < 954;
+      if (hatch || ground || frame) setPixel(x, y);
+    }
+  }
+  for (let bx = 105, n = 0; bx < 900; bx += 105, n++) {
+    const top = 300 - (n % 3) * 22;
+    for (let x = bx; x <= bx + 58; x++) { setPixel(x, top); setPixel(x, 470); }
+    for (let y = top; y <= 470; y++) { setPixel(bx, y); setPixel(bx + 58, y); }
+  }
+  let binary = "";
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
+  return btoa(binary);
 }
 
-function pendingSketchHero(imageKey, article) {
+async function generateTemporarySketch(env, assignment, article) {
+  try {
+    const raw = await env.AI.run(IMAGE_MODEL, { prompt: temporarySketchPrompt(assignment, article) });
+    if (!raw?.image || typeof raw.image !== "string") throw new Error("Temporary sketch model returned no base64 image");
+    return { base64: raw.image, content_type: "image/jpeg", ai_generated: true, generator: "workers_ai_flux" };
+  } catch (error) {
+    console.warn("Temporary sketch AI unavailable; using static pencil fallback", String(error));
+    return { base64: staticPencilFallbackBase64(), content_type: "image/x-portable-bitmap", ai_generated: false, generator: "static_pencil_fallback" };
+  }
+}
+
+function pendingSketchHero(imageKey, article, sketch) {
   return {
     src: `/img/auto/${imageKey}`,
     alt: `Illustration til: ${article.title}`,
     credit: "Illustration: Morgentidende",
-    license: "Morgentidende – AI-genereret illustration",
+    license: sketch?.ai_generated ? "Morgentidende – AI-genereret illustration" : "Morgentidende – statisk illustration",
     source_url: publicMediaUrl(imageKey),
     image_type: "illustration",
     context_type: "illustration",
     caption: "Illustration",
     pending_image: true,
-    ai_generated: true,
+    ai_generated: Boolean(sketch?.ai_generated),
+    generator: sketch?.generator || "workers_ai_flux",
     contains_people: false,
     people_style: "pencil_hatching",
     photorealistic: false,
@@ -648,6 +695,23 @@ function contextualHeroFromSignals(selected = []) {
     };
   }
   return null;
+}
+
+async function resolveDocumentaryHero(selected, assignment, research) {
+  // Single deterministic scout per cycle, after Fact check and before Journalist:
+  // event/official signal media -> Commons -> lawful contextual signal media.
+  let hero = documentaryHeroFromSignals(selected);
+  if (hero) return hero;
+  hero = await findCommonsDocumentaryHero(
+    assignment,
+    {
+      title: assignment?.title_hint || "",
+      standfirst: (research?.candidate_claims || []).map((x) => x.claim).join(" "),
+    },
+    research
+  );
+  if (hero) return hero;
+  return contextualHeroFromSignals(selected);
 }
 
 function commonsSearchQueries(assignment, article, research = null) {
@@ -693,7 +757,7 @@ async function findCommonsDocumentaryHero(assignment, article, research = null) 
       headers: { "user-agent": "MorgentidendeMediaDesk/1.0" },
       cf: { cacheTtl: 300, cacheEverything: true },
     });
-    if (!res.ok) return null;
+    if (!res.ok) continue;
     const payload = await res.json();
     const pages = Object.values(payload?.query?.pages || {});
     const queryTerms = new Set(words(q));
@@ -709,7 +773,8 @@ async function findCommonsDocumentaryHero(assignment, article, research = null) 
       const candidateWords = new Set(words(`${title} ${desc}`));
       let overlap = 0;
       for (const term of queryTerms) if (candidateWords.has(term)) overlap += 1;
-      if (overlap < 1) continue;
+      const minOverlap = queryTerms.size <= 1 ? 1 : 2;
+      if (overlap < minOverlap) continue;
       const credit = stripCommonsHtml(meta.Artist?.value || meta.Credit?.value || "Wikimedia Commons");
       ranked.push({
         score: overlap,
@@ -754,7 +819,7 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
     assignment: { category: assignment.category, weight: assignment.weight, core_question: dossier.core_question || assignment.core_question, manual_review: false },
     sources,
     coverage_sweep: { status: groups.length >= 1 ? "pass" : "limited", editorial_source_ids: verificationSources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 1 ? null : "Ingen brugbar dokumentationskilde registreret", notes: ["Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. For lavrisiko-fakta kan en autoritativ primærkilde, original bureaukilde eller stærk original redaktionel kilde være nok; ellers bruges to uafhængige kilder. Højrisiko/fairness behandles strengere."] },
-    claims, numbers: [], quotes: [], right_of_reply: { required: false, party: null, contacted_at: null, deadline: null, response: null, exception: null },
+    claims, numbers: [], quotes: [], right_of_reply: { required: Boolean(dossier.right_of_reply_required), party: null, contacted_at: null, deadline: null, response: null, exception: dossier.right_of_reply_required ? "Flagged by Research; details must be supplied before any required forelæggelse can be considered complete" : null },
     fact_check: { status: "pass", checked_at: accessedAt, notes: ["Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."] },
     desk_recheck: { status: desk.decision, checked_at: accessedAt, rationale: desk.rationale },
   };
@@ -832,33 +897,26 @@ export async function runEditorialCycle(env, scan, options = {}) {
   }
 
   const research = await runResearch(env, assignment, check.selected);
-  let mediaScout = documentaryHeroFromSignals(check.selected);
-  if (!mediaScout && research.decision === "continue") {
-    mediaScout = await findCommonsDocumentaryHero(assignment, { title: assignment.title_hint, standfirst: research.core_question || assignment.core_question }, research);
-  }
-  if (!mediaScout && research.decision === "continue") mediaScout = contextualHeroFromSignals(check.selected);
-  research.media_strategy = mediaScout ? "have" : "pending";
+  let mediaScout = null;
   if (research.decision !== "continue") return { status: research.decision === "watch" ? "watch" : "hold", stage: research.right_of_reply_required ? "ethics" : "research", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: research.rationale || "Research hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, selected_signals: check.selected || [], research: { rationale: research.rationale, candidate_claims: research.candidate_claims || [], contradictions: research.contradictions || [], researched: (research.researched || []).map((x) => ({ source: x.source, headline: x.headline, url: x.final_url || x.url, fetched: x.fetched, fetch_status: x.fetch_status, fetch_error: x.fetch_error, source_kind: x.source_kind, feed_summary_only: Boolean(x.feed_summary_only) })) } } };
 
   const dossier = await runFactCheck(env, assignment, research);
   if (dossier.decision !== "publish") return { status: "hold", stage: "fact-check", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: dossier.rationale || "Fact check hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, sources: (dossier.researched || []).map((x) => ({ source: x.source, headline: x.headline, url: x.final_url || x.url, source_kind: x.source_kind })) } };
 
+  mediaScout = await resolveDocumentaryHero(check.selected, assignment, {
+    ...research,
+    candidate_claims: dossier.claims.filter((c) => c.status === "verified"),
+  });
+  research.media_strategy = mediaScout ? "have" : "pending_illustration";
+
   const desk = await deskRecheck(env, assignment, dossier);
-  if (!mediaScout) {
-    mediaScout = await findCommonsDocumentaryHero(
-      assignment,
-      { title: assignment.title_hint, standfirst: dossier.claims.filter((c) => c.status === "verified").map((c) => c.claim).join(" ") },
-      { candidate_claims: dossier.claims.filter((c) => c.status === "verified") }
-    );
-  }
-  if (!mediaScout) research.media_strategy = "pending_illustration";
   if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, fact_check: { claims: dossier.claims, rationale: dossier.rationale }, desk_recheck: desk } };
 
   let article = await writeArticle(env, assignment, dossier);
   const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);
   let review = aiFinalRequired ? await finalReview(env, assignment, dossier, article) : deterministicFinalReview(assignment, dossier, article);
   if (review.decision !== "pass") {
-    const hardIssues = (review.issues || []).filter((x) => !["language", "seo", "image"].includes(x.gate));
+    const hardIssues = (review.issues || []).filter((x) => !["language", "seo"].includes(x.gate));
     const revised = await reviseFixableIssues(env, assignment, dossier, article, review);
     if (!hardIssues.length && JSON.stringify(revised) !== JSON.stringify(article)) {
       article = revised;
@@ -875,10 +933,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const date = startedAt.slice(0, 10);
   const slug = `${date}-${slugify(article.title)}`.slice(0, 96).replace(/-+$/g, "");
   const storyId = `${date}-${slugify(assignment.title_hint || article.title)}`.slice(0, 96).replace(/-+$/g, "");
-  const requiresDocumentary = newsRequiresDocumentaryHero();
-  let documentaryHero = requiresDocumentary ? (mediaScout || documentaryHeroFromSignals(check.selected)) : null;
-  if (requiresDocumentary && !documentaryHero) documentaryHero = await findCommonsDocumentaryHero(assignment, article, research);
-  if (requiresDocumentary && !documentaryHero) documentaryHero = contextualHeroFromSignals(check.selected);
+  const documentaryHero = mediaScout;
 
   const imageKey = `${slug}.jpg`;
   let hero;
@@ -896,13 +951,13 @@ export async function runEditorialCycle(env, scan, options = {}) {
       image_type: documentaryHero.image_type,
     };
   } else {
-    const imageBase64 = await generateTemporarySketch(env, assignment, article);
-    hero = pendingSketchHero(imageKey, article);
+    const sketch = await generateTemporarySketch(env, assignment, article);
+    hero = pendingSketchHero(imageKey, article, sketch);
     media = {
       kind: "generated",
       key: imageKey,
-      content_type: "image/jpeg",
-      base64: imageBase64,
+      content_type: sketch.content_type,
+      base64: sketch.base64,
       pending_image: true,
       image_type: "illustration",
     };
@@ -926,14 +981,14 @@ export async function runEditorialCycle(env, scan, options = {}) {
     status: "approved", schema_version: 1, generated_at: startedAt, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys,
     runtime: "cloudflare-workers-ai", model: STRONG_TEXT_MODEL, models: { fast: FAST_TEXT_MODEL, strong: STRONG_TEXT_MODEL, image: IMAGE_MODEL }, story_id: storyId, slug, article: canonical, ledger, approval,
     media,
-    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review, media_policy: { documentary_first: true, pending_image: Boolean(hero.pending_image), temporary_ai_sketch_allowed_after_scout: true, late_hold_for_no_photo: false }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
+    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review, media_policy: { documentary_first: true, pending_image: Boolean(hero.pending_image), temporary_sketch_allowed_after_scout: true, static_sketch_fallback: true, late_hold_for_no_photo: false }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
   };
     })();
   } catch (error) {
-    error.ai_usage = summarizeAiUsage(aiUsageEvents);
+    error.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0) };
     throw error;
   }
-  result.ai_usage = summarizeAiUsage(aiUsageEvents);
+  result.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0) };
   return result;
 }
 

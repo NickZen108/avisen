@@ -56,7 +56,11 @@ def valid_documentary_image(image: dict) -> bool:
 
 
 def valid_pending_illustration(image: dict) -> bool:
-    if image.get("pending_image") is not True or image.get("ai_generated") is not True:
+    if image.get("pending_image") is not True:
+        return False
+    ai_generated = image.get("ai_generated") is True
+    static_fallback = image.get("generator") == "static_pencil_fallback"
+    if not ai_generated and not static_fallback:
         return False
     if image.get("image_type") != "illustration" or image.get("context_type") != "illustration":
         return False
@@ -157,8 +161,6 @@ def strong_editorial(source: dict | None) -> bool:
 def high_risk_claim(article: dict, ledger: dict, claim: dict) -> bool:
     if (ledger.get("right_of_reply") or {}).get("required"):
         return True
-    if article.get("category") in {"Krimi", "Sundhed"}:
-        return True
     text = " ".join(str(x or "") for x in (article.get("title"), article.get("standfirst"), claim.get("claim")))
     return bool(HIGH_RISK_FACT_TERMS.search(text))
 
@@ -168,8 +170,6 @@ ACCUSED_RE = re.compile(r"\b(sigtet|tiltalt|mistænkt|anklaget)\b", re.I)
 
 
 def named_accused_crime_claim(article: dict, claim: dict) -> bool:
-    if article.get("category") != "Krimi":
-        return False
     text = str(claim.get("claim") or "")
     return bool(ACCUSED_RE.search(text) and NAMED_PERSON_RE.search(text))
 

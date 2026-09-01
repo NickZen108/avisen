@@ -23,6 +23,8 @@ def main() -> int:
     assert thresholds["evidence_policy"]["min_verified_material_claims"] == 1
     assert thresholds["evidence_policy"]["named_accused_crime_requires_primary"] is True
     assert thresholds["evidence_policy"]["discovery_only_never_evidence"] is True
+    assert thresholds["evidence_policy"]["high_risk_scope"] == "content_flags_and_right_of_reply_not_category"
+    assert thresholds["evidence_policy"]["named_accused_primary_scope"] == "all_categories"
     fact_stage = next(x for x in thresholds["stages"] if x["id"] == "fact_check")
     assert next(x for x in fact_stage["requirements"] if x["key"] == "min_verified_material_claims")["value"] == 1
     research_stage = next(x for x in thresholds["stages"] if x["id"] == "research")
@@ -47,6 +49,8 @@ def main() -> int:
     assert not sync.strong_editorial({"name": "Example Blog", "url": "https://example.test/post"})
     assert not sync.high_risk_claim({"category": "Udland", "title": "Minister deltager i EU-møde", "standfirst": ""}, {"right_of_reply": {"required": False}}, {"claim": "Minister deltager i mødet"})
     assert sync.high_risk_claim({"category": "Krimi", "title": "Fem dømt", "standfirst": ""}, {"right_of_reply": {"required": False}}, {"claim": "Fem dømt for hvidvask"})
+    assert not sync.high_risk_claim({"category": "Sundhed", "title": "Ny statistik om medicin", "standfirst": ""}, {"right_of_reply": {"required": False}}, {"claim": "Rapporten blev offentliggjort tirsdag"})
+    assert sync.named_accused_crime_claim({"category": "Politik"}, {"claim": "Jens Jensen er sigtet i sagen"})
     assert sync.valid_documentary_image({
         "src": "https://example.test/photo.jpg",
         "source_url": "https://example.test/license",
@@ -112,6 +116,14 @@ def main() -> int:
     assert not sync.valid_pending_illustration({**pending, "image_type": "photo"})
     assert not sync.valid_pending_illustration({**pending, "context_type": "event"})
     assert not sync.valid_pending_illustration({**pending, "photorealistic": True})
+    static_pending = {
+        **pending,
+        "ai_generated": False,
+        "generator": "static_pencil_fallback",
+        "license": "Morgentidende – statisk illustration",
+    }
+    assert sync.valid_pending_illustration(static_pending)
+    assert not sync.valid_pending_illustration({**static_pending, "generator": "unknown"})
 
     js = (ROOT / "cloudflare" / "newsdesk" / "src" / "editorial.js").read_text(encoding="utf-8")
     required = [
@@ -124,7 +136,6 @@ def main() -> int:
         'function deterministicFinalReview(assignment, dossier, article)',
         'function requiresAiFinalReview(assignment, dossier, article)',
         '["A", "B"].includes(assignment?.weight)',
-        '["Krimi", "Sundhed"].includes(assignment?.category)',
         'dossier?.right_of_reply_required',
         'const aiFinalRequired = requiresAiFinalReview',
         'final_editor_mode: review.mode || "ai"',
@@ -138,19 +149,23 @@ def main() -> int:
         'feed_summary_only',
         'source_strength',
         'fact.decision = verified.length >= 1 ? "publish" : "hold"',
-        'function newsRequiresDocumentaryHero()',
         'function validDocumentaryHero(media)',
         'function documentaryHeroFromSignals(selected = [])',
         'function contextualHeroFromSignals(selected = [])',
+        'async function resolveDocumentaryHero(selected, assignment, research)',
         'async function findCommonsDocumentaryHero(assignment, article',
         'commonsLicenseAllowed',
         'image/jpeg',
         'async function generateTemporarySketch(env, assignment, article)',
-        'function pendingSketchHero(imageKey, article)',
+        'function pendingSketchHero(imageKey, article, sketch)',
+        'function staticPencilFallbackBase64()',
+        'static_pencil_fallback',
+        'structured_fallback_calls',
         'pending_image: true',
         'people_style: "pencil_hatching"',
         'NO photorealism',
-        'temporary_ai_sketch_allowed_after_scout: true',
+        'temporary_sketch_allowed_after_scout: true',
+        'static_sketch_fallback: true',
         'late_hold_for_no_photo: false',
         'function namedAccusedCrimeClaim(assignment, claim)',
         'function numericMaterialClaim(claim)',
@@ -160,6 +175,13 @@ def main() -> int:
     ]
     missing = [item for item in required if item not in js]
     assert not missing, f"Hybrid runtime regression: missing {missing}"
+    assert 'hero_prompt' not in js.split('const articleSchema', 1)[1].split('const finalSchema', 1)[0], "Journalist schema must not spend output tokens on hero_prompt"
+    assert 'hero_alt' not in js.split('const articleSchema', 1)[1].split('const finalSchema', 1)[0], "Journalist schema must not spend output tokens on hero_alt"
+    assert 'if (!res.ok) return null' not in js, "Commons HTTP failure must continue to later queries"
+    assert '["Krimi", "Sundhed"].includes(assignment?.category)' not in js, "Risk must be content-based, not category-based"
+    assert js.count('await findCommonsDocumentaryHero(') <= 2, "One runtime scout plus helper definition only; no repeated post-Journalist Commons calls"
+    assert 'required: Boolean(dossier.right_of_reply_required)' in js, "Ledger must preserve Research right-of-reply flag"
+
     assert 'flux-1-schnell' in js, "Temporary pending sketch requires the constrained image model"
     assert 'image_type: "illustration"' in js
     assert 'context_type: "illustration"' in js
