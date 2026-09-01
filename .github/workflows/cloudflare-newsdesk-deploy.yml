@@ -1,7 +1,7 @@
 name: Deploy Cloudflare Newsdesk Runtime
 
 # Deploy canonical source as committed; do not mutate editorial code during deploy.
-# deployment trigger: canonical evidence policy
+# deployment trigger: final canonical evidence verification
 on:
   push:
     branches: [main]
