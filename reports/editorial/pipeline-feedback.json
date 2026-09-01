@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-01T06:35:04.661992Z",
+  "date_dk": "2026-09-01",
+  "policy": {
+    "review_every_rejection": true,
+    "automatic_threshold_changes": false,
+    "hard_gates_not_relaxed_automatically": [
+      "fact_check",
+      "ethics",
+      "right_of_reply",
+      "final_editor"
+    ],
+    "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
+  },
+  "today": {
+    "rejections": 1,
+    "reviews": [
+      {
+        "at": "2026-09-01T05:02:31.850Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "infrastructure",
+        "reason": "AiError: 4006: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage.",
+        "class": "infrastructure",
+        "assessment": "Ingen redaktionel tærskel bør ændres. Løs kapacitet/drift eller genkør forsøget.",
+        "pipeline_change_considered": true
+      }
+    ]
+  },
+  "last7_stage_counts": {
+    "infrastructure": 1
+  },
+  "suggested_adjustments": [
+    {
+      "stage": "infrastructure",
+      "parameter": "capacity",
+      "current": "observeret driftsstop",
+      "proposed": "genkør/kapacitetsstyring",
+      "status": "fix-system",
+      "why": "1 driftsstop på 7 dage er ikke et argument for at svække redaktionelle gates."
+    }
+  ],
+  "current_blockers": [
+    {
+      "slug": "2026-08-31-grand-canyon-flash-flood-en-doed-og-cirka-15-savnet",
+      "title": "Flash flood i Grand Canyon: En død og omkring 15 savnet",
+      "resume_from": "research",
+      "reasons": [
+        "coverage sweep mangler/er ugyldigt",
+        "fact-check PASS mangler",
+        "newsdesk recheck PUBLISH/UPDATE mangler",
+        "approval gate language er ikke PASS",
+        "approval gate ethics er ikke PASS",
+        "approval gate image er ikke PASS",
+        "approval gate seo er ikke PASS",
+        "approval gate final_editor er ikke PASS",
+        "artiklen er ændret efter final approval"
+      ]
+    },
+    {
+      "slug": "2026-08-31-koraller-bleger-for-hyppigt-til-at-komme-sig",
+      "title": "Koraller bleger for hyppigt til at komme sig, advarer global rapport",
+      "resume_from": "research",
+      "reasons": [
+        "ledger mangler"
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "id": "newsdesk",
+      "label": "Newsdesk",
+      "kind": "selection",
+      "hard_gate": false,
+      "requirements": [
+        {
+          "key": "max_story_candidates",
+          "label": "Historier valgt pr. cycle",
+          "value": 1,
+          "unit": "artikel",
+          "adjustable": true
+        },
+        {
+          "key": "min_start_sources",
+          "label": "Troværdige startkilder",
+          "value": 1,
+          "unit": "kilde",
+          "adjustable": true
+        }
+      ]
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "kind": "evidence",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "min_readable_source_chars",
+          "label": "Læsbar tekst pr. kilde",
+          "value": 160,
+          "unit": "tegn",
+          "adjustable": true
+        },
+        {
+          "key": "min_distinct_sources",
+          "label": "Forskellige kilder",
+          "value": 2,
+          "unit": "kilder",
+          "adjustable": true
+        },
+        {
+          "key": "target_source_groups",
+          "label": "Mål for dækningsbredde",
+          "value": 3,
+          "unit": "kildegrupper",
+          "adjustable": true
+        }
+      ]
+    },
+    {
+      "id": "fact_check",
+      "label": "Fact check",
+      "kind": "evidence",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "min_sources_per_material_claim",
+          "label": "Uafhængige kilder pr. bærende claim",
+          "value": 2,
+          "unit": "kilder",
+          "adjustable": true
+        },
+        {
+          "key": "min_verified_material_claims",
+          "label": "Verificerede bærende claims",
+          "value": 2,
+          "unit": "claims",
+          "adjustable": true
+        }
+      ]
+    },
+    {
+      "id": "desk_recheck",
+      "label": "Newsdesk recheck",
+      "kind": "editorial",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "accepted_decisions",
+          "label": "Godkendte udfald",
+          "value": 2,
+          "unit": "PUBLISH/UPDATE",
+          "adjustable": false
+        }
+      ]
+    },
+    {
+      "id": "journalist",
+      "label": "Journalist",
+      "kind": "production",
+      "hard_gate": false,
+      "requirements": [
+        {
+          "key": "min_body_blocks",
+          "label": "Minimum tekstblokke",
+          "value": 3,
+          "unit": "blokke",
+          "adjustable": true
+        },
+        {
+          "key": "max_body_blocks",
+          "label": "Maksimum tekstblokke",
+          "value": 14,
+          "unit": "blokke",
+          "adjustable": true
+        }
+      ]
+    },
+    {
+      "id": "language",
+      "label": "Sprog",
+      "kind": "quality",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "max_auto_repair_cycles",
+          "label": "Automatiske reparationsforsøg",
+          "value": 1,
+          "unit": "forsøg",
+          "adjustable": true
+        }
+      ]
+    },
+    {
+      "id": "ethics",
+      "label": "Etik & fairness",
+      "kind": "safety",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "blocking_ethics_issues",
+          "label": "Tilladte blokerende etikfejl",
+          "value": 0,
+          "unit": "fejl",
+          "adjustable": false
+        },
+        {
+          "key": "right_of_reply_unresolved",
+          "label": "Uafklaret forelæggelse",
+          "value": 0,
+          "unit": "sager",
+          "adjustable": false
+        }
+      ]
+    },
+    {
+      "id": "image",
+      "label": "Billede",
+      "kind": "quality",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "blocking_image_issues",
+          "label": "Tilladte blokerende billedfejl",
+          "value": 0,
+          "unit": "fejl",
+          "adjustable": false
+        }
+      ]
+    },
+    {
+      "id": "seo",
+      "label": "SEO",
+      "kind": "quality",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "blocking_seo_issues",
+          "label": "Tilladte blokerende SEO-fejl efter auto-repair",
+          "value": 0,
+          "unit": "fejl",
+          "adjustable": false
+        }
+      ]
+    },
+    {
+      "id": "final_editor",
+      "label": "Final editor",
+      "kind": "editorial",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "blocking_final_issues",
+          "label": "Tilladte blokerende slutfejl",
+          "value": 0,
+          "unit": "fejl",
+          "adjustable": false
+        }
+      ]
+    },
+    {
+      "id": "publisher",
+      "label": "Publisher",
+      "kind": "release",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "required_pass_gates",
+          "label": "PASS på language/ethics/image/seo/final editor",
+          "value": 5,
+          "unit": "gates",
+          "adjustable": false
+        }
+      ]
+    },
+    {
+      "id": "live_qa",
+      "label": "Live QA",
+      "kind": "release",
+      "hard_gate": true,
+      "requirements": [
+        {
+          "key": "critical_live_errors",
+          "label": "Tilladte kritiske live-fejl",
+          "value": 0,
+          "unit": "fejl",
+          "adjustable": false
+        }
+      ]
+    }
+  ]
+}
