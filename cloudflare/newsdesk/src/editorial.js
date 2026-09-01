@@ -24,11 +24,13 @@ function sourceGroup(name, url = null) {
   return slugify(name || "source") + "-reporting";
 }
 function wireOrigin(item) {
-  const text = `${item?.headline || ""} ${item?.description || ""} ${item?.excerpt || ""}`.toLowerCase().slice(0, 7000);
-  if (/\b(reuters|thomson reuters)\b/.test(text)) return "wire-reuters";
-  if (/\b(associated press|ap news|the ap)\b/.test(text)) return "wire-ap";
-  if (/\b(agence france-presse|afp)\b/.test(text)) return "wire-afp";
-  if (/\b(ritzau|ritzau bureau)\b/.test(text)) return "wire-ritzau";
+  const host = hostOf(item?.final_url || item?.url || "");
+  const source = String(item?.source || "").toLowerCase().trim();
+  const text = `${source} ${item?.headline || ""} ${item?.description || ""} ${item?.excerpt || ""}`.toLowerCase().slice(0, 7000);
+  if (host === "reuters.com" || host.endsWith(".reuters.com") || /\b(reuters|thomson reuters)\b/.test(text)) return "wire-reuters";
+  if (host === "apnews.com" || host.endsWith(".apnews.com") || source === "ap" || /\b(associated press|ap news|the ap)\b/.test(text)) return "wire-ap";
+  if (source === "afp" || /\b(agence france-presse|afp)\b/.test(text)) return "wire-afp";
+  if (source === "ritzau" || /\b(ritzau|ritzau bureau)\b/.test(text)) return "wire-ritzau";
   return null;
 }
 function evidenceSourceGroup(item) {
@@ -359,7 +361,7 @@ async function runResearch(env, assignment, selected) {
 
 async function runFactCheck(env, assignment, research) {
   if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
-  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Verified kræver normalt enten én autoritativ primærkilde inden for dens eget kompetenceområde eller to reelt uafhængige troværdige kilder, fx to store redaktioner eller en stor redaktion plus en myndighed/virksomhed/organisation om egne handlinger eller data. Samme bureau/pressemeddelelse tæller kun én gang. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim kan være nok til en kort artikel; højrisiko-påstande kræver stærkere målrettet kontrol. Opfind ingen nye kilder eller fakta.`;
+  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Verified kræver normalt enten én autoritativ primærkilde inden for dens eget kompetenceområde, én stærk original bureau-/redaktionel kilde som Reuters, AP, AFP eller Ritzau når claimet tydeligt attribueres til den, eller to reelt uafhængige troværdige kilder. Samme bureau/pressemeddelelse tæller kun én gang. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim kan være nok til en kort artikel; højrisiko-påstande kræver stærkere målrettet kontrol. Opfind ingen nye kilder eller fakta.`;
   const fact = await aiJson(env, system, JSON.stringify({
     assignment,
     research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
