@@ -190,6 +190,28 @@ def main() -> int:
 
     index_js = (ROOT / "cloudflare" / "newsdesk" / "src" / "index.js").read_text(encoding="utf-8")
     for item in (
+        'const INTERNAL_PATHS = new Set([',
+        '"/run-editorial"',
+        '"/candidates"',
+        '"/editorial/latest"',
+        '"/editorial/history"',
+        '"/history"',
+        'async function constantTimeTokenEqual(expected, supplied)',
+        'env.EDITORIAL_RUN_TOKEN',
+        'request.headers.get("authorization")',
+        'request.headers.get("x-editorial-token")',
+        'const authFailure = await authorizeInternal(request, env, url.pathname)',
+        'status: 503',
+        'status: 401',
+    ):
+        assert item in index_js, f"Newsdesk auth regression: {item}"
+    health_block = index_js.split('if (url.pathname === "/health")', 1)[1].split('const authFailure', 1)[0]
+    for forbidden in ("fingerprint", "slug", "ai_usage", "latest_editorial", "signal_count", "editorial_status"):
+        assert forbidden not in health_block, f"Public health leaks internal field: {forbidden}"
+    assert 'url.pathname.startsWith("/media/")' in index_js, "Known public media retrieval must remain available"
+    assert index_js.index('const authFailure = await authorizeInternal') < index_js.index('if (url.pathname === "/candidates")'), "Internal routes must be guarded before routing"
+
+    for item in (
         'function mergeGitHubPrefetch(scan, prefetch)',
         'prefetch.scan_fingerprint !== scan?.fingerprint',
         'github_prefetch: incoming.github_prefetch || null',
@@ -199,6 +221,27 @@ def main() -> int:
         'usable:',
     ):
         assert item in index_js, f"GitHub prefetch boundary regression: {item}"
+
+    editorial_sync = (ROOT / ".github" / "workflows" / "cloudflare-editorial-sync.yml").read_text(encoding="utf-8")
+    deploy_workflow = (ROOT / ".github" / "workflows" / "cloudflare-newsdesk-deploy.yml").read_text(encoding="utf-8")
+    breaking_scan = (ROOT / ".github" / "workflows" / "breaking-scan.yml").read_text(encoding="utf-8")
+    publication_sprint = (ROOT / ".github" / "workflows" / "publication-sprint-2026-09-01.yml").read_text(encoding="utf-8")
+    scan_sync = (ROOT / "scripts" / "sync_cloudflare_scan.py").read_text(encoding="utf-8")
+    editorial_importer = (ROOT / "scripts" / "sync_cloudflare_editorial.py").read_text(encoding="utf-8")
+    for label, text in (
+        ("editorial sync", editorial_sync),
+        ("deploy smoke", deploy_workflow),
+        ("breaking scan", breaking_scan),
+        ("publication sprint", publication_sprint),
+    ):
+        assert "secrets.EDITORIAL_RUN_TOKEN" in text, f"{label} must source EDITORIAL_RUN_TOKEN from GitHub secrets"
+    assert 'Authorization: Bearer $EDITORIAL_RUN_TOKEN' in editorial_sync
+    assert 'Authorization: Bearer $EDITORIAL_RUN_TOKEN' in publication_sprint
+    assert 'Missing required GitHub secret EDITORIAL_RUN_TOKEN' in editorial_sync
+    assert 'Missing required GitHub secret EDITORIAL_RUN_TOKEN' in deploy_workflow
+    assert 'Authorization": f"Bearer {token}"' in scan_sync
+    assert 'EDITORIAL_RUN_TOKEN is required to fetch internal Newsdesk endpoints' in editorial_importer
+    assert (ROOT / "cloudflare" / "newsdesk" / "AUTH.md").exists()
 
     print("hybrid_runtime self-test: PASS")
     return 0
