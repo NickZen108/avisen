@@ -1,35 +1,46 @@
 # Agenter — Morgentidende
 
-Alle agenter læser først `HUSREGLER.md` og følger prioriteten dér. En agent må markere sin egen opgave som færdig, men må ikke alene gøre sit eget arbejde publiceringsklart eller ophæve et FAIL.
+Alle agenter følger `HUSREGLER.md`. Hver redaktionel beslutning skal have én tydelig ejer; senere agenter må ikke rutinemæssigt gentage tidligere agenters arbejde.
 
 ## Pipeline
 
-1. **Scan** — finder signaler og kandidater. Skriver ikke artikler.
-2. **Nyhedsdesk / assignment** — deduplikerer, tildeler `story_id`, kategori, vægt og researchopgave. Kan KILL/HOLD.
-3. **Research** — udfører coverage sweep og bygger faktaledger/kildememo. Ingen artikelprosa.
-4. **Fact checker** — falsificerer researchen, åbner originalkilder, kontrollerer claims, uafhængighed, citater, tal og målrettet mod-evidens. PASS/FAIL.
-5. **Nyhedsdesk / recheck** — ser på det faktiske dokumenterede resultat og vælger `PUBLISH`, `UPDATE`, `HOLD` eller `KILL`. Historien er ikke automatisk værd at skrive, bare fordi den var værd at researche.
-6. **Journalist** — skriver kun ud fra PASS-ledger og recheck.
-7. **Sprogredaktør** — dansk, klarhed og overskrift. Må ikke ændre fakta.
+1. **Scan** — billig bred radar: finder, normaliserer og grupperer signaler. Skriver ikke artikler og vurderer ikke endelig nyhedsværdi.
+2. **Nyhedsdesk / assignment** — vælger research-frø, tildeler `story_id`, kategori og foreløbig vægt. Er bevidst relativt åben ved indgangen; tynd dokumentation er Researchs problem.
+3. **Research** — finder og strukturerer den nødvendige evidens til historiens bærende claims. Ingen artikelprosa og ingen endelig sandhedsdom. Der er intet globalt krav om tre medier eller tre source-groups.
+4. **Fact checker** — forsøger uafhængigt at falsificere researchen og afgør, hvilke claims der er dokumenterede. PASS/FAIL-regler afhænger af claimets og historiens risiko; dette er den primære faktuelle gate.
+5. **Nyhedsdesk / recheck** — B-D går normalt deterministisk videre efter Fact checker PASS. Kun A/breaking får et kort recheck for materiel forældelse eller ændret nyhedskerne.
+6. **Journalist** — skriver kun ud fra godkendte claims.
+7. **Sprogredaktør** — dansk og klarhed. Må ikke ændre fakta.
 8. **Etik/fairness** — forelæggelse, identifikation, børn, skade, fairness og nyhed/kommentar. Kan kræve manual review.
-9. **Billedredaktør** — match, ophav, licens, autenticitet, grafik og alt-tekst; driver permanent lead photo watch.
-10. **Videoredaktør** — finder/verificerer embeds, prioriterer autentisk hændelsesvideo og afgør sammen med Billedredaktør om video er stærkere end stillfoto.
-11. **SEO/discovery** — metadata, schema, delingsmetadata og intern linking efter billed-/videovalget. Må ikke styre fakta/vinkel.
-12. **Slutredaktør** — uafhængigt anden-tjek af hele den færdige redaktionelle version mod ledger og tidligere gates. Retter ikke ved PASS; opretter final approval snapshot.
-13. **Forsideredaktør** — vælger lead og placering, inkl. om en verificeret video skal være levende hero. Pipeline-v2-artikler refereres normalt kun med `slug`.
-14. **Teknisk QA** — schema, links, canonical frontpage refs, generated-only HTML, design lock, build, tider og sitemaps.
-15. **Udgiver** — ændrer kun publiceringsmetadata og afleverer newsroom-PR. Sætter ikke selv en opdigtet live-tid.
-16. **Live technical QA** — GitHub-kontrol af live forside, netop ændrede/recent artikler, links/assets, embeds og template-markers.
-17. **Live proofreader** — læser renderet artikel/forside for sproglige eller visuelle fejl og sammenholder med canonical indhold.
-18. **Redaktionel update-monitor** — leder efter nye oplysninger, der kan ændre claims, artikel eller forsidevægt.
+9. **Billedredaktør** — match, ophav, licens, autenticitet, grafik og alt-tekst.
+10. **Videoredaktør** — finder/verificerer embeds og autentisk hændelsesvideo.
+11. **SEO/discovery** — metadata, schema, delingsmetadata og intern linking. Må ikke styre fakta/vinkel.
+12. **Slutredaktør** — kontrollerer den færdige version mod de tidligere godkendelser. Skal ikke genresearche eller gentage Fact checker.
+13. **Forsideredaktør** — vælger lead og placering.
+14. **Teknisk QA** — schema, links, canonical refs, generated-only HTML, build, tider og sitemaps.
+15. **Udgiver** — ændrer publiceringsmetadata og afleverer newsroom-PR.
+16. **Live technical QA** — kontrollerer live output, links/assets, embeds og template-markers.
+17. **Live proofreader** — læser renderet artikel/forside for konkrete sproglige eller visuelle fejl.
+18. **Redaktionel update-monitor** — leder efter nye oplysninger, der materielt kan ændre en allerede publiceret historie.
 
-Ved materiel fejl: Post-publication incident → Fact checker genåbner claims → Correction editor → relevante fag-gates → Slutredaktør → Udgiver → offentlig rettelseslog.
+Ved materiel fejl: Post-publication incident → Fact checker genåbner relevante claims → Correction editor → kun relevante fag-gates → Slutredaktør → Udgiver → offentlig rettelseslog.
+
+## Grundprincipper for effektivitet
+
+- **Én ejer pr. beslutning:** nyhedsværdi = Nyhedsdesk; evidensindsamling = Research; faktuel verifikation = Fact checker; fairness/forelæggelse = Etik; sprog = Sprogredaktør; placering = Forsideredaktør; teknik = QA.
+- **Billigt først:** deterministisk kode, metadata og simple regler før AI-kald.
+- **Progressiv strenghed:** Scan og Nyhedsdesk skal være åbne; kravene bliver strengere tættere på publicering og ved højere risiko.
+- **Risiko frem for universelle minimumskrav:** simple officielle fakta kan kræve én stærk primærkilde; alvorlige, omstridte eller højrisiko-påstande kræver mere uafhængig dokumentation.
+- **Ingen kildekvoter for deres egen skyld:** stop research, når bærende claims er tilstrækkeligt belyst. Flere medier med samme bureau/pressemeddelelse tæller som samme ophav.
+- **Soft flags er ikke hard gates:** tvivl, forelæggelsesbehov og manglende sekundær dækning skal routes til den relevante senere gate frem for automatisk at dræbe historien.
+- **Genbrug kompakte strukturer:** send claims, kildeindeks og nødvendige uddrag videre; undgå at sende samme fulde kontekst til flere modeller uden grund.
+- **Stærk model er undtagelsen:** brug billig model normalt; eskalér kun ved reel kompleksitet, høj risiko eller teknisk fallback.
 
 ## Pipeline v2
 
 Alle nye autopublicerbare artikler skal have `pipeline_version: 2`.
 
-Research udfylder `coverage_sweep` i ledgeren. Fact checker udfylder `fact_check`. Nyhedsdesk udfylder `desk_recheck`. Før publicering opretter Slutredaktør `reports/editorial/approvals/<slug>.json`.
+Research udfylder et kompakt evidens-/coverage-overblik i ledgeren. Coverage beskriver dokumentationen; et bestemt antal source-groups er ikke i sig selv et PASS-krav. Fact checker udfylder `fact_check`. Nyhedsdesk udfylder `desk_recheck`, som for B-D kan være deterministisk efter Fact checker PASS. Før publicering opretter Slutredaktør `reports/editorial/approvals/<slug>.json`.
 
 Approval-filen indeholder:
 - `status: pass`
@@ -45,7 +56,7 @@ Quality gate sammenholder snapshot og nuværende artikel efter at rent tekniske/
 Et nyt autopublicerbart stykke afleveres sådan:
 
 1. Arbejd på `edition/*` eller `newsroom/*` fra seneste `main`.
-2. Research/Fact check/Nyhedsdesk recheck færdiggøres.
+2. Research og Fact check færdiggøres; kun A/breaking behøver normalt et aktivt Nyhedsdesk-recheck.
 3. Journalist → Sprog → Etik → Billede/Video → SEO.
 4. Slutredaktør opretter final approval snapshot.
 5. Forsideredaktør opdaterer eventuelt `content/frontpage.json` med canonical slug-reference.
@@ -61,12 +72,11 @@ Højrisiko, `manual_review: true`, regelændringer, designændringer, workflows,
 
 ## Stopregler
 
-Fejl omfatter blandt andet:
+Hard stops skal være få og konkrete. De omfatter blandt andet:
 
-- artikel uden godkendt ledger
-- coverage sweep markeret PASS med færre end tre reelt uafhængige source-groups
-- samme bureau/pressemeddelelse talt flere gange
-- Fact check PASS uden desk recheck `publish|update`
+- artikel uden godkendte bærende claims
+- samme bureau/pressemeddelelse fejlagtigt talt som flere uafhængige kilder, når uafhængighed er nødvendig
+- A/breaking der kræver recheck, men mangler `publish|update`
 - pipeline-v2-artikel uden matching final approval
 - påkrævet forelæggelse uden kontakt/fristsvar eller dokumenteret undtagelse
 - v2-forsidepost der kopierer titel/teaser/billede i stedet for canonical slug-reference
@@ -74,7 +84,9 @@ Fejl omfatter blandt andet:
 - fremtidigt/opdigtet publiceringstidspunkt
 - auto-publish-PR der ændrer scripts, workflows, templates eller design
 
+Et universelt minimum på to claims, tre kilder eller tre source-groups er ikke en hard stop. Dokumentationskravet skal passe til den konkrete påstand og risiko.
+
 ## Prompts
 
 Operative prompts ligger i `agents/`, herunder:
-`newsdesk.md`, `research.md`, `fact-check.md`, `journalist.md`, `language.md`, `ethics.md`, `image.md`, `video.md`, `seo.md`, `final-editor.md`, `frontpage.md`, `technical-qa.md`, `publisher.md`, `live-proofreader.md`, `post-publication.md` og `correction-editor.md`.
+`scan.md`, `newsdesk.md`, `research.md`, `fact-check.md`, `journalist.md`, `language.md`, `ethics.md`, `image.md`, `video.md`, `seo.md`, `final-editor.md`, `frontpage.md`, `technical-qa.md`, `publisher.md`, `live-proofreader.md`, `post-publication.md` og `correction-editor.md`.
