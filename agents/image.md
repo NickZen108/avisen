@@ -17,3 +17,21 @@ Foretræk officiel/primær embed, derefter verificeret upload fra troværdig red
 Dokumentarisk hero er en publiceringsgate for alle nyhedsartikler. Søg først efter materiale fra selve hændelsen og derefter efter den nærmeste relevante dokumentariske erstatning. Et bedre foto eller video-still kan senere tilføjes via det målrettede post-publication media-reapproval-flow.
 
 Output: verificeret mediemetadata eller `MEDIA_COMPLETE`. Ved rettigheds-/etikrisiko routes kun den konkrete risiko til Etik.
+
+
+## AI-grafik til ikke-nyheder
+
+AI-genereret grafik er tilladt til ikke-nyhedsindhold som features, forklaringer, videnskab, livsstil og magasinindhold, når en illustration er redaktionelt passende.
+
+Hvis AI-grafikken indeholder mennesker, må personerne aldrig gengives fotorealistisk eller på en måde, der kan forveksles med et dokumentarisk fotografi. Brug i stedet en tydeligt illustrativ stil, fx:
+- redaktionel illustration med forenklede former,
+- sort/hvid blyantsskravering,
+- stregtegning,
+- collage,
+- silhuet,
+- flad/vector-lignende grafik,
+- akvarel eller anden tydeligt kunstnerisk gengivelse.
+
+Prompts med mennesker skal eksplicit indeholde en negativ instruktion mod fotorealisme, fx: "clearly illustrated, not photorealistic, not a documentary photograph". Et AI-billede med personer må ikke mærkes som `photo` eller `video_still`.
+
+AI-genererede illustrationer skal registrere `ai_generated: true` og `contains_people: true|false`. Hvis `contains_people` er true, skal `people_style` være en af de godkendte tydeligt illustrative stilarter. Prepublish-QA afviser manglende eller fotorealistisk personstil.
