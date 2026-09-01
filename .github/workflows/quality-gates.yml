@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
       - name: Script syntax
-        run: python -m compileall -q scripts && bash -n scripts/scan-feeds.sh && node --check cloudflare/app/src/index.js && node --check cloudflare/site-worker.js && node --check cloudflare/newsdesk/src/index.js && node --check cloudflare/newsdesk/src/editorial.js
+        run: python -m compileall -q scripts && bash -n scripts/scan-feeds.sh && node --check cloudflare/app/src/index.js && node --check cloudflare/site-worker.js && node --check cloudflare/newsdesk/src/index.js && node --check cloudflare/newsdesk/src/editorial.js && node --check docs/kontrolrum/control-room-tabs.js
       - name: Secret leak gate
         run: python scripts/secret_scan.py
       - name: Normalize prematurely-ready articles
@@ -24,7 +24,7 @@ jobs:
       - name: Prebuild gates
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Deterministic build
-        run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/article_history.py && python scripts/editorial_analytics.py && python scripts/production_readiness.py && python scripts/queue_recovery.py && python scripts/build_control_room.py && python scripts/seo_surface_fix.py
+        run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/article_history.py && python scripts/editorial_analytics.py && python scripts/production_readiness.py && python scripts/queue_recovery.py && python scripts/build_control_room.py && python scripts/apply_control_room_extras.py && python scripts/seo_surface_fix.py
       - name: Postbuild gates
         run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py && python scripts/golden_path_gate.py && python scripts/production_readiness.py
       - name: Show generated drift
