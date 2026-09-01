@@ -44,13 +44,21 @@ jobs:
         run: |
           python scripts/editorial_dispatch_gate.py --self-test
           python scripts/github_source_prefetch.py --self-test
-      - name: Fetch scan and editorial history for cheap dispatch
+      - name: Require Newsdesk editorial token
+        env:
+          EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
         run: |
-          set +e
+          set -euo pipefail
+          [ -n "$EDITORIAL_RUN_TOKEN" ] || { echo "Missing required GitHub secret EDITORIAL_RUN_TOKEN" >&2; exit 1; }
+
+      - name: Fetch scan and editorial history for cheap dispatch
+        env:
+          EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
+        run: |
+          set -euo pipefail
           BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
-          curl --fail --silent --show-error --max-time 30 "$BASE/candidates" -o /tmp/candidates.json
-          curl --fail --silent --show-error --max-time 30 "$BASE/editorial/history" -o /tmp/editorial-history.json
-          exit 0
+          curl --fail --silent --show-error --retry 3 --retry-delay 2 --max-time 30             -H "Authorization: Bearer $EDITORIAL_RUN_TOKEN"             "$BASE/candidates" -o /tmp/candidates.json
+          curl --fail --silent --show-error --retry 3 --retry-delay 2 --max-time 30             -H "Authorization: Bearer $EDITORIAL_RUN_TOKEN"             "$BASE/editorial/history" -o /tmp/editorial-history.json
       - name: Decide how many AI editorial cycles are actually needed
         id: dispatch
         env:
@@ -79,6 +87,7 @@ jobs:
         if: ${{ steps.dispatch.outputs.cycles != '0' }}
         env:
           INPUT_CYCLES: ${{ steps.dispatch.outputs.cycles }}
+          EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
         run: |
           set -euo pipefail
           BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
@@ -92,7 +101,7 @@ jobs:
                 --data-binary @/tmp/github-prefetch.json \
                 "$BASE/run-editorial" -o "$OUT"
             else
-              curl --fail --silent --show-error --max-time 240 -X POST "$BASE/run-editorial" -o "$OUT"
+              curl --fail --silent --show-error --max-time 240 -X POST                 -H "Authorization: Bearer $EDITORIAL_RUN_TOKEN"                 "$BASE/run-editorial" -o "$OUT"
             fi
             python -m json.tool "$OUT" >/dev/null
             jq '{status,stage,generated_at,slug,reason,runtime,handled_signal_keys}' "$OUT"
