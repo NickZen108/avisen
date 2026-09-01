@@ -1,61 +1,49 @@
 # Kilder og faktaledger
 
-Morgentidende skriver ikke direkte fra en løs bunke links. Research omsætter kilder til en struktureret faktaledger; Journalisten må kun bruge godkendte claims.
+Morgentidende skriver fra en struktureret faktaledger. Research finder og ordner dokumentationen; Fact checker afgør hvilke bærende claims der kan bruges.
 
 ## Kildehierarki
 
-1. primærdokument: lov, dom, myndighedsafgørelse, officiel statistik, regnskab, paper, original tale/interview, direkte partsvar
-2. troværdig nyhedsorganisation med egen reporting
-3. fagmedie/sekundær analyse med tydelig kilde
-4. blog, social post, YouTube, anonym kanal eller aggregator
+1. Autoritativ primærkilde: lov, dom, myndighedsafgørelse, officiel statistik, regnskab, paper, original tale/interview eller direkte partsoplysning om egne handlinger/data.
+2. Troværdig nyhedsorganisation med egen redaktionel reporting.
+3. Fagmedie/sekundær analyse med tydeligt kildegrundlag.
+4. Blog, social post, YouTube, anonym kanal eller aggregator: normalt discovery, ikke alene verifikation.
 
 ## Discovery-/perspektivkilder
 
-Ideologiske, aktivistiske eller stærkt kommenterende medier kan være fremragende til at opdage oversete sager. De kan derfor stå i scannerens feednet som `discovery_only`. Det betyder:
-
-- de kan udløse `RESEARCH` eller `WATCH`
-- de kan pege på primærdokumenter og andre kilder
-- deres politiske retning er ikke i sig selv et argument for eller imod historien
-- de tæller ikke alene som uafhængig verifikation af et bærende claim
-- hvis de linker til en autoritativ primærkilde, skal Research åbne og kontrollere primærkilden direkte
-
-En autoritativ primærkilde kan fortsat bære et faktum efter reglerne nedenfor; ellers kræves reelt uafhængig dokumentation.
+`discovery_only` må udløse Research og pege på primærkilder, men tæller ikke alene som verifikation. Hvis en discovery-kilde linker til original dokumentation, åbnes originalkilden direkte.
 
 ## Uafhængighed
 
-To URLs er ikke nødvendigvis to kilder. `source_group` registrerer det oprindelige ophav.
+To URLs er ikke automatisk to kilder. Samme bureauhistorie, pressemeddelelse eller fælles oprindelige ophav tæller kun én gang, selv om mange medier gengiver den.
 
-## Coverage sweep før skrivning
+## Coverage
 
-Når Nyhedsdesk har valgt en nyhed til research med henblik på publicering, skal Research:
+Research søger kun så bredt som historien kræver. Der er ingen generel kvote på tre medier eller tre source-groups. Coverage stopper, når ekstra kilder ikke længere tilfører væsentlig dokumentation, mod-evidens eller nødvendig kontekst.
 
-- finde relevant primærkilde, når den findes
-- normalt gennemgå mindst **3 reelt uafhængige redaktionelle kilder** om samme historie, når sådanne findes
-- søge på tværs af relevante internationale/nationale medier, fagmedier og lokale/specialiserede kilder
-- sammenligne centrale fakta, konsekvenser, citater, forbehold, modpositioner og kontekst
-- registrere hvilke væsentlige pointer kun enkelte dækninger havde
-- undgå at bruge én artikel som skjult skabelon
+Ledgerens `coverage_sweep` beskriver kilder, source-groups, begrænsninger og eventuelle modsigelser. `pass` betyder, at der findes et tilstrækkeligt researchgrundlag til de konkrete claims; det er ikke et bestemt antal links.
 
-Ledgeren har et maskinlæsbart `coverage_sweep` med `status`, `editorial_source_ids`, `independent_source_groups`, `limitations` og `notes`.
+## Minimum for et almindeligt bærende faktum
 
-`pass` kræver normalt mindst tre reelt uafhængige coverage-source-groups. `limited` bruges fx tidligt i breaking og kræver en konkret begrundelse. `not_required` er kun til genrer, hvor et nyheds-coverage sweep reelt ikke giver mening, og kræver begrundelse.
+Et almindeligt faktum kan normalt verificeres ved enten:
 
-Coverage-bredde er ikke kunstig 50/50. Evidens og relevans afgør vægten.
+- én autoritativ primærkilde inden for dens eget kompetenceområde, eller
+- to reelt uafhængige troværdige kilder.
 
-## Minimum for bærende faktum
+To store seriøse nyhedsmedier kan derfor være nok. Det samme kan et stort seriøst medie plus fx en myndighed, virksomhed eller organisation, når primærkilden udtaler sig om egne beslutninger, handlinger eller data.
 
-Et bærende faktum kan godkendes ved én autoritativ primærkilde eller to reelt uafhængige navngivne kilder. Coverage sweep erstatter ikke dette krav og omvendt.
+En parts egen udtalelse dokumenterer sikkert, **at parten siger eller har besluttet noget**; den beviser ikke automatisk en omstridt påstand om andre. Ved alvorlige anklager, høj juridisk risiko, sundhed/sikkerhed eller stærkt omstridte fakta kræves målrettet stærkere kontrol efter risikoen frem for en mekanisk kildekvote.
 
-## Fact check og desk recheck
+Ét verificeret bærende claim kan være nok til en kort artikel. Artiklen må aldrig fyldes med svagere claims blot for at nå et minimumsantal.
 
-Fact checker udfylder `fact_check.status = pass|fail`, tidspunkt og noter. Efter Fact checker ser Nyhedsdesk det dokumenterede resultat igen og udfylder `desk_recheck.status = publish|update|hold|kill` med tidspunkt og begrundelse.
+## Fact check
 
-Fact check PASS betyder “dokumenteret”, ikke automatisk “værd at publicere”.
+Fact checker forsøger at falsificere Researchs kandidat-claims. `PASS` betyder, at de claims artiklen faktisk bruger er tilstrækkeligt dokumenterede. Usikre eller afviste claims fjernes; de behøver ikke dræbe resten af historien, hvis den verificerede kerne stadig har selvstændig nyhedsværdi.
 
-## Forelæggelse/modpart
+## Forelæggelse og etik
 
-`right_of_reply.required: true` er en hard gate. Uden dokumenteret undtagelse kræves `party`, `contacted_at`, `deadline` og enten et registreret svar eller en udløbet svarfrist.
+Fact checker kan markere et faktuelt risikosignal, men Etik/fairness ejer beslutningen om forelæggelse/right-of-reply, identifikation, børn, privatliv og anden skade. Et sådant soft flag må ikke blive en skjult automatisk stopregel før Etik har vurderet det.
 
 ## AI
 
-AI-genereret tekst, opsummeringer eller søgesvar er aldrig source-id. Oprindelige kilder skal åbnes og kontrolleres.
+AI-genereret tekst, opsummeringer eller søgesvar er aldrig en kilde. Oprindelige kilder skal åbnes og kontrolleres.

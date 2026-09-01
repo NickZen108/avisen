@@ -312,7 +312,7 @@ async function runResearch(env, assignment, selected) {
     if (!url || seenUrls.has(url)) continue;
     seenUrls.add(url);
     unique.push(item);
-    if (unique.length >= 5) break;
+    if (unique.length >= 4) break;
   }
 
   const sources = unique.map((item, i) => ({
@@ -320,12 +320,12 @@ async function runResearch(env, assignment, selected) {
     name: item.source,
     headline: item.headline,
     url: item.final_url || item.url,
-    excerpt: item.excerpt.slice(0, 5000),
+    excerpt: item.excerpt.slice(0, 3500),
     discovery_only: false,
     source_kind: item.source_kind || "news",
   }));
   const system = `Du er Research på Morgentidende. Lav et kompakt evidens-kort til Fact checker; vurder ikke nyhedsværdi igen og fæld ikke den endelige sandhedsdom. Kortlæg 1-6 bærende kandidat-claims med præcise source_indexes. Notér kun reelle modsigelser, væsentlige forbehold og nødvendig kontekst. En primærkilde er værdifuld, men du skal ikke kræve et bestemt antal medier. Hvis mindst ét brugbart claim kan kildebelægges, vælg continue; watch kun hvis materialet reelt ikke giver noget kontrollerbart. Flag alvorlige belastende påstande via right_of_reply_required, men brug ikke flaget som stopregel. Opfind intet.`;
-  const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 850, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 650, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
   research.researched = unique;
   research.source_payload = sources;
   return research;
@@ -333,12 +333,12 @@ async function runResearch(env, assignment, selected) {
 
 async function runFactCheck(env, assignment, research) {
   if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
-  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Verified kræver enten én autoritativ primærkilde eller mindst to reelt uafhængige redaktionelle kilder. Rejected når evidensen modsiger claimet; ellers uncertain. To solide verificerede bærende claims er nok til en kort artikel. Opfind ingen nye kilder eller fakta.`;
+  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Verified kræver normalt enten én autoritativ primærkilde inden for dens eget kompetenceområde eller to reelt uafhængige troværdige kilder, fx to store redaktioner eller en stor redaktion plus en myndighed/virksomhed/organisation om egne handlinger eller data. Samme bureau/pressemeddelelse tæller kun én gang. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim kan være nok til en kort artikel; højrisiko-påstande kræver stærkere målrettet kontrol. Opfind ingen nye kilder eller fakta.`;
   const fact = await aiJson(env, system, JSON.stringify({
     assignment,
     research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
     sources: research.source_payload,
-  }), factCheckSchema, 2200);
+  }), factCheckSchema, 850, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
   fact.researched = research.researched;
   fact.core_question = research.core_question || assignment.core_question;
   fact.right_of_reply_required = research.right_of_reply_required;
@@ -354,9 +354,9 @@ async function runFactCheck(env, assignment, research) {
     }
   }
   const verified = fact.claims.filter((c) => c.status === "verified");
-  if (verified.length < 2) {
+  if (verified.length < 1) {
     fact.decision = "hold";
-    fact.rationale = `${fact.rationale || ""} Deterministisk gate: færre end to bærende claims er verificeret.`.trim();
+    fact.rationale = `${fact.rationale || ""} Ingen bærende claims er verificeret.`.trim();
   }
   return fact;
 }
@@ -375,12 +375,12 @@ async function writeArticle(env, assignment, dossier) {
   if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Journalist boundary");
   const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));
   const system = `Du er journalist på Morgentidende. Skriv præcist og levende dansk, men brug KUN verificerede claims. Gør attribution tydelig. Ingen opdigtede citater. Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. En kort nyhed må gerne nøjes med tre meningsfulde tekstblokke; fyld aldrig teksten ud bare for at nå en længde. Hero-prompten skal beskrive en bred redaktionel illustration og må ikke foregive at være dokumentarfoto. Ingen tekst i billedet.`;
-  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, 3000);
+  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? null : STRONG_TEXT_MODEL);
 }
 
 async function finalReview(env, assignment, dossier, article) {
   const system = `Du er uafhængig slutredaktør. Kontrollér den færdige artikel mod de verificerede claims uden at genresearche. Returnér kun konkrete publiceringsblokerende problemer: materielt forkert/uklart sprog, uforklaret nødvendigt fagsprog, påstande ud over dokumentationen, utilstrækkelig attribution/pluralisme, etisk problem, misvisende SEO eller falsk-dokumentarisk hero-prompt. Små stilpræferencer er ikke blockers.`;
-  const raw = await aiJson(env, system, JSON.stringify({ assignment, claims: dossier.claims, contradictions: dossier.contradictions, article }), finalSchema, 900);
+  const raw = await aiJson(env, system, JSON.stringify({ assignment, claims: dossier.claims, contradictions: dossier.contradictions, article }), finalSchema, 450, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
   const issues = Array.isArray(raw.blocking_issues) ? raw.blocking_issues.filter((x) => x?.gate && x?.issue) : [];
   const failed = new Set(issues.map((x) => x.gate));
   return { decision: issues.length ? "hold" : "pass", language: failed.has("language") ? "hold" : "pass", ethics: failed.has("ethics") ? "hold" : "pass", image: failed.has("image") ? "hold" : "pass", seo: failed.has("seo") ? "hold" : "pass", final_editor: failed.has("final_editor") ? "hold" : "pass", issues, notes: issues.map((x) => `${x.gate}: ${x.issue}`) };
@@ -416,7 +416,7 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
     schema_version: 2, story_id: storyId, article_slug: slug,
     assignment: { category: assignment.category, weight: assignment.weight, core_question: dossier.core_question || assignment.core_question, manual_review: false },
     sources,
-    coverage_sweep: { status: groups.length >= 3 ? "pass" : "limited", editorial_source_ids: verificationSources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 3 ? null : "Færre end tre uafhængige verifikationskilder; discovery-only-kilder tæller ikke med", notes: ["Research kan begynde fra perspektivkilder, men Fact checker kræver autoritativ primærkilde eller uafhængig ikke-discovery-verifikation."] },
+    coverage_sweep: { status: groups.length >= 1 ? "pass" : "limited", editorial_source_ids: verificationSources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 1 ? null : "Ingen brugbar dokumentationskilde registreret", notes: ["Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. En autoritativ primærkilde eller to uafhængige troværdige kilder er normalt nok for et almindeligt bærende faktum."] },
     claims, numbers: [], quotes: [], right_of_reply: { required: false, party: null, contacted_at: null, deadline: null, response: null, exception: null },
     fact_check: { status: "pass", checked_at: accessedAt, notes: ["Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."] },
     desk_recheck: { status: desk.decision, checked_at: accessedAt, rationale: desk.rationale },

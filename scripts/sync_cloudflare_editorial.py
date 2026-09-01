@@ -47,8 +47,8 @@ def normalize_coverage(ledger: dict) -> None:
             groups.append(group)
     coverage["editorial_source_ids"] = ids
     coverage["independent_source_groups"] = groups
-    coverage["status"] = "pass" if len(groups) >= 3 else "limited"
-    coverage["limitations"] = None if len(groups) >= 3 else "Færre end tre uafhængige kildegrupper efter import; bærende claims skal stadig være dokumenteret"
+    coverage["status"] = "pass" if len(groups) >= 1 else "limited"
+    coverage["limitations"] = None if len(groups) >= 1 else "Ingen reel dokumentationskilde efter import"
     ledger["coverage_sweep"] = coverage
 
 
@@ -96,8 +96,8 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     source_map = {s.get("id"): s for s in ledger.get("sources", []) if s.get("id")}
     source_ids = set(source_map)
     claims = ledger.get("claims") or []
-    if len(claims) < 2:
-        fail("for få verificerede bærende claims")
+    if len(claims) < 1:
+        fail("ingen verificerede bærende claims")
     for claim in claims:
         ids = [x for x in claim.get("source_ids", []) if x in source_ids]
         source_groups = {

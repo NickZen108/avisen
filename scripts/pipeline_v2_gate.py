@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Additional machine-enforced gates for Morgentidende pipeline v2."""
+"""Machine-enforced gates for Morgentidende pipeline v2."""
 from __future__ import annotations
 import argparse,copy,json,sys
 from datetime import datetime,timezone
@@ -32,7 +32,7 @@ def coverage(name,a,l,s):
   else:groups.add(g)
  declared={str(x).strip() for x in c.get("independent_source_groups",[]) if str(x).strip()}
  if declared and declared!=groups:err(f"{name}: coverage source-groups matcher ikke sources")
- if st=="pass" and len(groups)<3:err(f"{name}: coverage PASS kræver mindst 3 uafhængige source-groups")
+ if st=="pass" and not groups:err(f"{name}: coverage PASS kræver mindst én reel dokumentationskilde")
  if st=="limited" and not str(c.get("limitations") or "").strip():err(f"{name}: limited coverage kræver begrundelse")
  if st=="not_required":
   article_type=str(a.get("format") or a.get("genre") or a.get("category") or "")
@@ -64,7 +64,7 @@ def article(path):
  a=load(path)
  if not a or path.name.startswith("_") or a.get("pipeline_version")!=2 or a.get("status") not in {"ready","scheduled","published"}:return
  if a.get("manual_review") and not a.get("manual_review_completed"):err(f"{path.name}: manual_review er ikke afsluttet")
- lp=ROOT/str(a.get("ledger",""))
+ lp=ROOT/str(a.get("ledger",''))
  if not lp.exists():err(f"{path.name}: ledger mangler");return
  l=load(lp)
  if not l:return
