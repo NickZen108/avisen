@@ -75,6 +75,37 @@ async function controlTraffic(env) {
   const days30rows = rows.filter(r => Date.parse(r.occurred_at) >= Date.now() - 30 * 86400000);
   return json({ today: topStories(rows, 0), days7: topStories(rows, 7), days30: topStories(rows, 30), total_views_30d: days30rows.length, recommendations: trafficRecommendations(days30rows), measurement_started: rows.length > 0 });
 }
+async function controlAiStatus() {
+  const endpoint = 'https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/editorial/history';
+  const response = await fetch(endpoint, { headers: { 'user-agent': 'MorgentidendeControlRoom/1.0' }, cf: { cacheTtl: 0 } });
+  if (!response.ok) return json({ status: 'unknown', error: 'ai_status_source_unavailable', source_status: response.status }, 503);
+  const rows = await response.json();
+  const events = Array.isArray(rows) ? rows : [];
+  const eventAt = (r) => r?.at || r?.created_at || r?.timestamp || r?.occurred_at || r?.updated_at || null;
+  const toMs = (r) => { const t = Date.parse(eventAt(r) || ''); return Number.isFinite(t) ? t : -1; };
+  const isQuotaError = (r) => {
+    const text = String(r?.reason || r?.error || '');
+    return /(?:AiError:\s*)?4006\b|used up your daily free allocation|quota(?:_| )?(?:exhausted|exceeded)/i.test(text);
+  };
+  const quota = events.filter(isQuotaError).sort((a,b) => toMs(b) - toMs(a))[0] || null;
+  const successes = events.filter(r => !isQuotaError(r) && Number(r?.ai_usage?.calls || 0) > 0).sort((a,b) => toMs(b) - toMs(a));
+  const success = successes[0] || null;
+  const quotaMs = quota ? toMs(quota) : -1;
+  const successMs = success ? toMs(success) : -1;
+  let status = 'unknown';
+  if (success && successMs > quotaMs) status = 'available';
+  else if (quota) status = 'quota_exhausted';
+  return json({
+    status,
+    available: status === 'available',
+    last_successful_ai_call: success ? eventAt(success) : null,
+    last_successful_stage: success?.stage || (success?.status === 'approved' ? 'release' : null),
+    last_quota_error: quota ? { at: eventAt(quota), stage: quota?.stage || null, reason: String(quota?.reason || quota?.error || '') } : null,
+    quota_error_count: events.filter(isQuotaError).length,
+    source: 'editorial/history',
+    note: status === 'available' ? 'Der er registreret et succesfuldt AI-kald efter den seneste quota-fejl.' : status === 'quota_exhausted' ? 'Den seneste relevante kapacitetshændelse er en quota-fejl.' : 'Der er endnu ikke nok historik til at afgøre AI-status sikkert.'
+  });
+}
 async function controlFunnel() {
   const endpoint = 'https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/editorial/history';
   const response = await fetch(endpoint, { headers: { 'user-agent': 'MorgentidendeControlRoom/1.0' }, cf: { cacheTtl: 0 } });
@@ -177,6 +208,7 @@ export default {
       if (url.pathname === '/kontrolrum/data/revenue' && req.method === 'GET') return controlRevenue(env);
       if (url.pathname === '/kontrolrum/data/traffic' && req.method === 'GET') return controlTraffic(env);
       if (url.pathname === '/kontrolrum/data/funnel' && req.method === 'GET') return controlFunnel();
+      if (url.pathname === '/kontrolrum/data/ai-status' && req.method === 'GET') return controlAiStatus();
       if (url.pathname === '/api/me' && req.method === 'GET') { const auth = await requireUser(req, env); if (auth.error) return auth.error; return withCookies(json({ user: { id: auth.user.id, email: auth.user.email }, roles: auth.roles, aal: auth.claims?.aal || 'aal1' }), auth.cookies); }
       if (url.pathname === '/api/kronik/check' && req.method === 'POST') { const auth = await requireUser(req, env, ['chronicler', 'editor', 'admin']); if (auth.error) return auth.error; return withCookies(await kronikCheck(req, env, auth.user), auth.cookies); }
       if (url.pathname === '/api/kronik/publish-request' && req.method === 'POST') { const auth = await requireUser(req, env, ['chronicler', 'editor', 'admin']); if (auth.error) return auth.error; return withCookies(await createPublishRequest(req, env, auth.user), auth.cookies); }
