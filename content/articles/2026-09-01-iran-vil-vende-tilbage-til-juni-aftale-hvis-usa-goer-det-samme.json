@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
   "status": "ready",
-  "release_requested": true,
+  "release_requested": false,
   "story_id": "2026-09-01-iran-siger-det-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme",
   "slug": "2026-09-01-iran-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme",
   "category": "Politik",
@@ -58,5 +58,6 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "workflow_state": "parked_for_documentary_hero"
 }
