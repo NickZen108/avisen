@@ -20,8 +20,14 @@ DEFAULT_URL = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/edi
 PUBLIC_SITE = "https://morgentidende.nicolaipetersen108.workers.dev"
 
 
+DOCUMENTARY_CONTEXTS = {"event", "place", "person", "object", "archive"}
+ALLOWED_AI_PEOPLE_STYLES = {"pencil_hatching", "pencil_sketch", "line_art", "silhouette", "ink_drawing"}
+
+
 def valid_documentary_image(image: dict) -> bool:
-    if image.get("image_type") not in {"photo", "video_still", "document"}:
+    if image.get("image_type") not in {"photo", "video_still"}:
+        return False
+    if str(image.get("context_type") or "") not in DOCUMENTARY_CONTEXTS:
         return False
     if not str(image.get("src") or "").startswith("https://"):
         return False
@@ -32,8 +38,40 @@ def valid_documentary_image(image: dict) -> bool:
     license_name = str(image.get("license") or "").strip()
     if not license_name or license_name.lower() in {"unknown", "ukendt", "tbd", "n/a"}:
         return False
-    context_type = str(image.get("context_type") or "context").strip().lower()
+    if image.get("pending_image") is True or image.get("ai_generated") is True:
+        return False
+    context_type = str(image.get("context_type") or "").strip().lower()
     if context_type != "event" and not str(image.get("caption") or "").strip():
+        return False
+    try:
+        host = (urlparse(str(image.get("source_url") or "")).hostname or "").removeprefix("www.").lower()
+    except Exception:
+        host = ""
+    if image.get("image_type") == "video_still" and (host == "youtube.com" or host.endswith(".youtube.com") or host == "youtu.be"):
+        if not str(image.get("rights_basis") or "").strip():
+            return False
+    return True
+
+
+def valid_pending_illustration(image: dict) -> bool:
+    if image.get("pending_image") is not True or image.get("ai_generated") is not True:
+        return False
+    if image.get("image_type") != "illustration" or image.get("context_type") != "illustration":
+        return False
+    if image.get("photorealistic") is True:
+        return False
+    if not str(image.get("src") or "").strip():
+        return False
+    if not str(image.get("source_url") or "").startswith("https://"):
+        return False
+    if str(image.get("caption") or "").strip().lower() != "illustration":
+        return False
+    if not str(image.get("credit") or "").strip() or not str(image.get("license") or "").strip() or not str(image.get("alt") or "").strip():
+        return False
+    contains_people = image.get("contains_people")
+    if not isinstance(contains_people, bool):
+        return False
+    if contains_people and str(image.get("people_style") or "").strip().lower() not in ALLOWED_AI_PEOPLE_STYLES:
         return False
     return True
 
@@ -153,8 +191,10 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     image = article.get("image") or {}
     if image.get("placement") != "lead":
         fail("automatisk artikel mangler godkendt lead-hero")
-    if not valid_documentary_image(image):
-        fail("nyhedsartikler kræver dokumentarisk hero med gyldig kilde-, kredit- og licensmetadata; AI-illustration afvises")
+    documentary_ok = valid_documentary_image(image)
+    pending_ok = valid_pending_illustration(image)
+    if not documentary_ok and not pending_ok:
+        fail("hero skal være enten gyldigt dokumentarisk media eller en tydeligt mærket pending blyantsskitse")
     if not str(image.get("alt") or "").strip() or not str(image.get("credit") or "").strip():
         fail("hero mangler alt/kredit")
     if approval.get("status") != "pass" or approval.get("story_id") != article.get("story_id"):
@@ -195,8 +235,14 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     if (ledger.get("desk_recheck") or {}).get("status") not in {"publish", "update"}:
         fail("desk recheck er ikke publish/update")
     media_url = str(media.get("url") or "")
-    if media.get("kind") != "documentary" or media_url != str(image.get("src") or "") or not media_url.startswith("https://"):
-        fail("dokumentarisk hero-pakke matcher ikke artikelbilledet")
+    if documentary_ok:
+        if media.get("kind") != "documentary" or media_url != str(image.get("src") or "") or not media_url.startswith("https://"):
+            fail("dokumentarisk hero-pakke matcher ikke artikelbilledet")
+    else:
+        if media.get("kind") != "generated" or not media_url.startswith("https://"):
+            fail("pending illustration mangler genereret media-pakke")
+        if media.get("image_type") != "illustration":
+            fail("pending illustration er fejlmærket i media-pakken")
     return article, ledger, approval, media
 
 
@@ -256,7 +302,7 @@ def main() -> int:
     hero_path = save_hero(media)
     original_source_url = article["image"].get("source_url")
     article["image"]["src"] = f"{PUBLIC_SITE}/img/auto/{hero_path.name}"
-    article["image"]["source_url"] = original_source_url
+    article["image"]["source_url"] = media.get("url") if media.get("kind") == "generated" else original_source_url
     article["automation_origin"] = "cloudflare-workers-ai"
 
     snapshot = json.loads(json.dumps(article))
