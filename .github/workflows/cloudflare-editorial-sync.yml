@@ -1,5 +1,6 @@
 name: Cloudflare editorial sync
 
+# Pushes to this workflow run a fresh live editorial cycle through the hardened source boundary.
 on:
   push:
     branches: [main]
