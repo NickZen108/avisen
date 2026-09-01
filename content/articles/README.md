@@ -4,7 +4,7 @@ Nye artikler oprettes her som JSON. `docs/artikler/*.html` er genereret output o
 
 ## Minimumfelter
 
-- `status`: `draft`, `ready`, `scheduled` eller `published`
+- `status`: `draft`, `researching`, `checking`, `editing`, `ready`, `scheduled` eller `published`
 - `story_id`
 - `slug` uden `.html`
 - `category`
@@ -21,7 +21,9 @@ Nye artikler oprettes her som JSON. `docs/artikler/*.html` er genereret output o
 
 `published_at` sættes først ved faktisk publicering. `updated_at` bruges ved substantiel opdatering.
 
-## Body blocks
+## Længde og body blocks
+
+En autonom nyhedsartikel skal have mindst **3 meningsfulde tekstblokke**. Det er et teknisk minimum, ikke et mål: artiklen må gerne være længere, når historien kræver det, men må aldrig fyldes ud med gentagelser eller pynt for at nå en bestemt længde. Rubrik og manchet tæller ikke som body blocks.
 
 Tilladte typer: `p`, `h2`, `h3`, `ul`, `ol`, `blockquote` og `figure`. Tekst escapes af generatoren; journalisten leverer ikke vilkårlig HTML.
 
