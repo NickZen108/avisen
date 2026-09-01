@@ -58,7 +58,16 @@ def named_accused(claim: dict) -> bool:
 
 
 def claim_has_required_support(article: dict, ledger: dict, claim: dict, sources: dict[str, dict]) -> bool:
-    rows = [sources.get(sid) for sid in claim.get("source_ids", [])]
+    source_ids = list(claim.get("source_ids", []))
+    if int(ledger.get("schema_version") or 0) >= 3:
+        verified_passages = {
+            str(x.get("source_id")) for x in claim.get("support_passages", [])
+            if x.get("match_verified") is True and str(x.get("quote") or "").strip()
+        }
+        source_ids = [sid for sid in source_ids if sid in verified_passages]
+        if not source_ids:
+            return False
+    rows = [sources.get(sid) for sid in source_ids]
     rows = [s for s in rows if s]
     primary_ok = any(authoritative_primary(s) for s in rows)
     if named_accused(claim):

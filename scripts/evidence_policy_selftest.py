@@ -14,6 +14,9 @@ check('two publishers pass',True,a,l,{'claim':'En almindelig oplysning','source_
 check('same provenance cluster fails',False,a,l,{'claim':'En almindelig oplysning','source_ids':['S1','S2']},[src('S1','host-theguardian-com',provenance_cluster='pc-x'),src('S2','host-bbc-com',provenance_cluster='pc-x')])
 check('same upstream origin fails',False,a,l,{'claim':'En almindelig oplysning','source_ids':['S1','S2']},[src('S1','host-site-a-com',upstream_origin='wire:reuters'),src('S2','host-site-b-com',upstream_origin='wire:reuters')])
 check('wire low risk passes',True,a,l,{'claim':'En almindelig oplysning','source_ids':['S1']},[src('S1','host-reuters-com',wire_origin='reuters')])
+l3={'schema_version':3,'right_of_reply':{'required':False}}
+check('v3 missing support passage fails',False,a,l3,{'claim':'En almindelig oplysning','source_ids':['S1'],'support_passages':[]},[src('S1','host-reuters-com',wire_origin='reuters')])
+check('v3 verified support passage passes',True,a,l3,{'claim':'En almindelig oplysning','source_ids':['S1'],'support_passages':[{'source_id':'S1','quote':'En almindelig oplysning fremgår her.','match_verified':True}]},[src('S1','host-reuters-com',wire_origin='reuters')])
 h={'title':'Mistænkt for drab','standfirst':''}
 check('wire high risk alone fails',False,h,l,{'claim':'En person er mistænkt for drab','source_ids':['S1']},[src('S1','host-reuters-com',wire_origin='reuters')])
 check('primary high risk passes',True,h,l,{'claim':'En person er mistænkt for drab','source_ids':['S1']},[src('S1','host-politi-dk',type='primary',primary_record='https://politi.dk/x')])
