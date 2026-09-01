@@ -1,4 +1,4 @@
-# Scan 2026-09-01T20:55:38.365Z (Cloudflare runtime)
+# Scan 2026-09-01T23:10:35.342Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -17,24 +17,24 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Woher kommt der Strom? 34. Analysewoche 2026
 
 ## Al Jazeera
-- Belgian mayor blocks club from hosting Israeli opponent in Europa League
 - Canada’s Carney says US must ‘start being serious’ to resolve trade dispute
-- China’s Xi makes first visit to Egypt in a decade, amid regional turmoil
 - China’s Xi makes his first visit to Egypt in a decade
-- Deep-sea search begins for 20 people missing in Cyprus ferry disaster
+- Cisco accused of fostering a hostile workplace for Muslim and Arab employees
+- Deadly car bomb attack at Colombia police station
+- Fernandez transfers to Man City from Chelsea in joint British record fee
 - Guinea-Bissau referendum nods to expansion of presidential powers
-- Hakainde Hichilema returns as Zambia’s president following disputed vote
-- Health crisis looming as Gaza heads towards rainy season, warns WHO
+- Iranian state media announces numerous US strikes on the country
 - Israel’s multiple wars see finance, defence ministries clash over spending
-- John Ternus succeeds Tim Cook as Apple CEO after 15 years
 - Munitions vehicle explodes killing five in Idlib
-- Nepal rescuers race to reach 900 missing hydropower workers
-- Ousted UK Prime Minister Keir Starmer to quit domestic politics
-- Pitso Mosimane appointed by South Africa ahead of AFCON qualifiers
-- The US military began striking targets in Iran, CENTCOM says
-- UN food agency cuts aid in West Bank amid funding crisis
-- US health authorities contradict state officials on measles-related deaths
-- Vanuatu pushes France to accept ICJ jurisdiction in Pacific islands dispute
+- Palestinians mourn children killed in Israeli airstrikes on Gaza City
+- Police arrest 34 after deadly gang shootout in eastern Netherlands
+- UN slashes food aid for occupied West Bank and Gaza amid funding shortfall
+- Urgent need for access to Iranian sites, cautions UN nuclear watchdog
+- US energy secretary will travel to Venezuela to unveil oil arrangement
+- US House passes funding bill to avert government shutdown ahead of midterms
+- US urges G20 to cut trade imbalances, focus on China
+- What’s driven the defence deal between Israel and Greece?
+- Zelenskyy warns airlines as Ukrainian drones target Russian airspace
 
 ## BBC Europe
 - Allan Little: I met dangerously fanatical Mladić early in Bosnian war
@@ -62,6 +62,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## BBC World
 - Amazon rigged $20bn worth of ad prices, US lawsuit alleges
+- Ariana Grande completes tour and steps back from public life
 - As Michigan Senate race heats up, Vance calls El-Sayed 'evil'
 - Ex-gang boss guilty of orchestrating 1996 murder of rapper Tupac Shakur
 - France targets Shein and Temu with fast fashion fees
@@ -78,9 +79,8 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - South Korean police officer admits to closing missing person cases to avoid work
 - Teen girl charged with murder over recording of San Diego mosque attack
 - Trump says US position on Falklands 'one of many' under review
-- US army secretary resigns after months of tension
-- US launches more strikes on Iran as state media reports explosions
 - US singer D4vd's celebrity lawyers withdraw from murder case
+- US strikes Iran as state media reports four killed at wedding party
 - Woman killed in Times Square stabbing, suspect shot dead by police
 - Zambia's president sworn in for second term while opponent detained
 
@@ -88,7 +88,16 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - (feed ikke nået; status=200)
 
 ## Causeur
-- (feed ikke nået; status=520)
+- Causeur #148: La dette publique, c’est moi!
+- Ce que la «romance halal» fait à Maupassant
+- Edouard Balladur, un gentilhomme en politique
+- Hollande &#8211; Philippe: duel au sommet
+- Influenceurs, abstenez-vous !
+- Liberté, liberté cherra
+- Mini-jupe, moquerie et liberté: mon programme pour la rue
+- Pourquoi « l’Ancien Régime » craint le peuple trahi
+- Rock en Seine 2026: une cuvée d’exception
+- Voiles et vapeurs de la République
 
 ## City Journal
 - (feed ikke nået; status=404)
@@ -137,27 +146,27 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Germany terminates lease for Berlin's Russian House
 - Iran says it will return to ceasefire if US does
 - Iran: US launches fresh strikes as hostilities flare again
+- Iran war: US, Tehran trade fire in new flare-up
 - Mladic's death, Bosnia and Serbia's unfinished reckoning
 - Nepal flood: Death toll tops 1,000 as rescue continues
 - Norway's new King Haakon VIII takes oath in parliament
 - Times Square stabbing in NYC leaves 1 dead, assailant killed
 - Ukraine: Russia threatens 'devastating' Baltic response
-- Ulrich Siegmund wants to make Saxony-Anhalt a model for AfD rule
 - US irks Germany, Europe with Russian G20 invite, press bans
 - War and sanctions deepen Iran's fuel crisis
 - Will Bangladesh join the Mecca defense alliance?
 
 ## Document.no
-- 44 prosent ikke-vestlige blant drapsdømte i Danmark
-- Aktor om terrorsaken mot Arfan Bhatti: – En diger sak
 - Brussel, snart like ille som Chicago
-- Interlude: Argerich og Angelich spiller Brahms
 - Kjenninger av politiet fikk gå etter å ha lagd kvalm på et tog i Larvik
 - Mor og barn ved havet (1830).
 - Ny serie: Konspitimen &#8211; et møte på Stavanger-toget
+- Politiet kritiserer Oslo-pressens oppførsel ved Rikshospitalet
 - Skogpod 1. september 2026
+- Sosialistene vil overta Amerika
 - Truet politiet med våpen – stor væpnet aksjon på Dyrøya
-- Tysklands innenriksminister: – Russland var involvert i droneangrep på flyplass
+- Trump hamrer Iran som ikke har stort mer enn store ord å svare med
+- V-politiker truet med å drepe 16 år gammel jente: «Jeg vil drepe alle rasister»
 
 ## Euronews
 - Death toll passes 1,000 from catastrophic flooding in Nepal and China, officials say
@@ -174,27 +183,27 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Times Square stabbing: Bank of America vice president named as killed victim
 - Two dead and one still unaccounted for in Grand Canyon flash floods, officials say
 - Ultra-Orthodox Jews celebrate Yeshiva student’s release in Elad amid draft dispute
-- US military says it struck IRGC targets in Iran after attacks on shipping in Strait of Hormuz
+- US launches new strikes in southern Iran, Tehran responds with attacks on Jordan and Bahrain
 - US-North Korea summit appears to be 'possible at any time,' Seoul spy agency says
 - US teen charged with aiding San Diego mosque shooters share livestream and manifesto
 - World Nomad Games open in Bishkek before an audience of world leaders
 
 ## France 24
-- After 'unprecedented honeymoon', UK PM faces lawmakers for first time
 - AI data centers become surprise issue in US midterm elections
-- Alejandro Betancourt, the controversial Venezuelan oil tycoon Trump is banking on
-- At least 12 killed and over a dozen injured in Russian strikes on Kyiv
-- Child sex abuse scandals loom over France as pupils head back to school
-- Controversial designer John Galliano cancels Met exhibition after backlash
+- Burnham pledges to restore hope as he makes his House of Commons debut as UK leader
+- Football: Europe's top clubs scramble for last-minute signings
 - From North Korea to ICE: Photojournalist David Guttenfelder on the front lines in Minneapolis
+- Germany blames Russia for airport drone incident, hits back with sanctions
 - Germany blames Russia for Leipzig airport drone attack, orders Russian consulate closed
 - Germany set to blame Russia for airport explosive-laden drone incident
-- Google Maps renames Lake Ontario to ‘Lake America’ as MapQuest downloads surge
+- Global bond selloff deepens as US launches fresh attacks on Iran
+- Google Maps changes Lake Ontario to ‘Lake America’ as MapQuest downloads surge
 - Lindsay Clancy: The trial putting postpartum mental illness in the spotlight
 - Mass burials held in Nepal as bodies wash up after catastrophic flooding
 - Niger's thwarted mutiny highlights junta's dependence on Russia
 - Replay: UK PM Andy Burnham faces lawmakers for first time since taking office
 - School without screens: Will France's high school phone ban fly?
+- South Africans missing in Nepal's glacial flood
 - US and Iran trade fire as hostilities flare again
 - US firm to take over some Venezuela oilfields previously run by Chinese, Russian firms
 - What to know about the new UK PM's agenda as he faces lawmakers
@@ -209,13 +218,13 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Echoes of cold war as US accused of meddling in another Brazilian election
 - Egyptian queen’s 673-diamond necklace stolen in Vienna smash-and-grab raid
 - Kākāpō rising: 90 chicks swell population of the world’s heaviest parrot
-- Macquarie University swaps in-person psychology classes with AI chatbot for two subjects
 - MapQuest app reaches No 1 on US Apple list after defying Trump’s Lake Ontario order
 - Mark Carney tells US to ‘start being serious’ amid escalating trade war
 - Morocco not to blame for Ceuta border breach, says Spanish PM
 - Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels
-- NSW government to resume pill testing at music festivals but rejects calls for wider community rollout
+- News live: Five Australians confirmed safe after Nepal-Tibet flooding; Spender backs Contos’s call for opt-in algorithms
 - People fleeing Sudan civil war face ‘dire and deteriorating’ conditions in refuge city
+- Relief as Australians missing in Nepal-Tibet flood disaster found alive
 - Shein shares slide on fast-fashion retailer’s stock market debut
 - South African airline defends dramatic low-level flyby before rugby union clash
 - Sydney’s beaches enter the drone age to get swimmers back in the water after spate of shark attacks
@@ -241,6 +250,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Da kongen «reddet» OL-stemningen
 - Debatten raste på 60-tallet: Ville ikke ha Sonja som dronning
 - Equinor erkjenner ulovlege utslepp – nektar å betale 720 millionar kroner
+- Fare for togstreik onsdag morgen –mekler på overtid
 - Her sparer du ti kroner literen – nå vil svensker fjerne avgiftene for godt
 - Hevdar Russland sto bak droneangrep i Tyskland
 - Hevder Russland var involvert i angrepsforsøk i Tyskland
@@ -250,7 +260,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Mann omkom i MC-ulykke i Larvik
 - Marerittkveld i Wien: Raudt kort, sjølvmål og fire baklengsmål
 - Millioninnbrudd hos Urmaker Bjerke: Saken er henlagt
-- No startar ryddinga av blomane til kongen: Dette skal dei brukast til
 - Ny rapport: Kystverket vil dekkje til nazi-ubåt
 - Nye bilete frå Nepal: Dette veit vi om det som skjedde
 - Rapport om nytt vinterbeite for Fosenrein: Kan ha konsekvenser for villreinen
@@ -291,8 +300,8 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Is This the Supreme Court's Next Sports Betting Case?
 - Kalshi Says It's a Prediction Market. The 9th Circuit Says It's Gambling.
 - New in Civitas Outlook: "The End Is Near for the American Bar Association"
-- School Can Control What Flags Schoolteachers Hang on Classroom Walls
 - The Biggest Revelation In Recent NYT Expose Is Justice Scalia Wasn't Planning on Dying
+- The Iran War's Defenders Are Losing the Plot
 - Trouble at the Pentagon
 - Trump Loves Data Centers: 'Let Data Reign'
 - What About a "'Let's Go Brandon' Was a Hallucination in the First Place" Defense?
@@ -305,10 +314,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Man allvarligt skadad – fastnade i skogsmaskin
 - Man till sjukhus efter olycka på badanläggning i Nyköping
 - Nora kommunhus utrymdes efter hot – nu har facket krävt att det stängs
+- Officiellt: Hugo Larsson klar för Fulham
 - S vill inte höja bränslepriset – trots risk för missat klimatmål
 - S vill ta bort nätläkartaxan: ”Tar betalt för vård som de inte utför”
 - Socialdemokraterna går till val på ”århundradets tandvårdsreform”
-- Starmer lämnar även parlamentet
 - Störtfloden i Nepal – tio timmar av skräck
 - Sänkta straff efter mordförsök på Manillagatan i Kalmar
 - Traktor och personbil kolliderade – två personer till sjukhus
@@ -329,9 +338,9 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Spiked
 - Birmingham’s fatwa on the England flag
-- Grand Theft Auto VI: why gamers are in revolt
 - How Milo owned himself
 - Iceland’s No vote is a humiliation for the EU
+- Inside the Iranian clampdown
 - Middlesbrough is paying the price for decades of coddling criminals
 - Net Zero is leaving Britain defenceless
 - Students aren’t being told the truth about the British Empire
@@ -396,15 +405,15 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Ledare: Rikslarm från näringslivet
 
 ## UnHerd
+- AI is Trump’s Manhattan Project
 - America’s brain-rotting socialism debate
+- Andy Burnham meets reality
 - Britain has a leadership fetish
-- Britain’s common-sense crisis
 - Could the Middlesbrough crime spree spread?
-- Have you corrected your racist robot?
 - Hell is other Leftists
-- How Tarot re-enchanted my life
+- How Domesday made modern England
 - How the Euro elite helps Trump
-- Inside the new Afghanistan
 - Milo Yiannopoulos’ horrible homecoming
 - The case for de-escalation with Russia
+- The man who made bin Laden
 - The summer of Idiossey
