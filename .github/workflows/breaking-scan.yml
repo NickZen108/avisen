@@ -30,9 +30,18 @@ jobs:
         with:
           python-version: '3.12'
       - name: Sync Cloudflare Newsdesk runtime
+        env:
+          EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
         run: |
-          if python scripts/sync_cloudflare_scan.py; then
+          set +e
+          python scripts/sync_cloudflare_scan.py
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
             echo "Cloudflare Newsdesk synced"
+          elif [ "$rc" -eq 3 ]; then
+            echo "Cloudflare Newsdesk auth failed or required secret is unavailable; refusing unauthenticated fallback." >&2
+            exit 1
           else
             echo "Cloudflare Newsdesk unavailable; using temporary GitHub fallback"
             bash scripts/scan-feeds.sh
