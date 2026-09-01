@@ -10,7 +10,7 @@
   "standfirst": "Flodbølgen i Nepal og Tibet har kostet over 1.000 mennesker livet. Redningsarbejdet er i fuld gang for at nå frem til samfund, der er blevet afskåret af katastrofen.",
   "byline": "Morgentidende Redaktion",
   "published_at": "2026-09-01T09:03:14Z",
-  "updated_at": null,
+  "updated_at": "2026-09-01T12:46:00Z",
   "manual_review": false,
   "ledger": "sources/2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000.json",
   "claim_ids": [
@@ -33,12 +33,12 @@
     "canonical": null
   },
   "image": {
-    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000.jpg",
-    "alt": "En bred redaktionel illustration af en flodbølge i Nepal og Tibet",
-    "credit": "Morgentidende",
-    "license": "Morgentidende",
-    "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000.jpg",
-    "image_type": "illustration",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Mudslide_at_Gyirong_Port_2_%28screenshot%29.png",
+    "alt": "CCTV-stillbillede af flodbølgen ved Gyirong-grænseovergangen mellem Tibet og Nepal den 26. august 2026",
+    "credit": "CCTV / Wikimedia Commons",
+    "license": "Public domain (PD automated)",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Mudslide_at_Gyirong_Port_2_(screenshot).png",
+    "image_type": "photo",
     "placement": "lead"
   },
   "body": [
