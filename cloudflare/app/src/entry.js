@@ -40,7 +40,7 @@ async function controlRoomResponse() {
       'x-robots-tag': 'noindex, nofollow, noarchive',
       'referrer-policy': 'no-referrer',
       'x-content-type-options': 'nosniff',
-      'content-security-policy': "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'; form-action 'none'",
+      'content-security-policy': "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'; form-action 'none'",
     },
   });
 }
@@ -48,6 +48,7 @@ async function controlRoomResponse() {
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.pathname.startsWith('/kontrolrum/data/')) return app.fetch(request, env, ctx);
     if (request.method === 'GET' && (url.pathname === '/kontrolrum' || url.pathname.startsWith('/kontrolrum/'))) {
       return controlRoomResponse();
     }
