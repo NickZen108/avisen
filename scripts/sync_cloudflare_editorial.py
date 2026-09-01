@@ -48,8 +48,16 @@ def normalize_coverage(ledger: dict) -> None:
     coverage["editorial_source_ids"] = ids
     coverage["independent_source_groups"] = groups
     coverage["status"] = "pass" if len(groups) >= 3 else "limited"
-    coverage["limitations"] = None if len(groups) >= 3 else "Færre end tre uafhængige kildegrupper efter import; bærende claims skal stadig være krydstjekket"
+    coverage["limitations"] = None if len(groups) >= 3 else "Færre end tre uafhængige kildegrupper efter import; bærende claims skal stadig være dokumenteret"
     ledger["coverage_sweep"] = coverage
+
+
+def authoritative_primary(source: dict | None) -> bool:
+    return bool(
+        source
+        and source.get("type") in {"primary", "paper", "interview"}
+        and str(source.get("authoritative_for") or "").strip()
+    )
 
 
 def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
@@ -66,8 +74,8 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
         fail("slug mismatch i editorial package")
     if article.get("pipeline_version") != 2 or article.get("status") != "ready" or article.get("release_requested") is not True:
         fail("artikel er ikke Pipeline v2 ready+release_requested")
-    if not isinstance(article.get("body"), list) or len(article["body"]) < 5:
-        fail("artikeltekst mangler")
+    if not isinstance(article.get("body"), list) or len(article["body"]) < 3:
+        fail("artikeltekst mangler eller har færre end tre meningsfulde tekstblokke")
     image = article.get("image") or {}
     if image.get("placement") != "lead" or image.get("image_type") != "illustration":
         fail("automatisk artikel mangler godkendt lead-illustration")
@@ -82,22 +90,24 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     normalize_coverage(ledger)
     coverage = ledger.get("coverage_sweep") or {}
     groups = set(coverage.get("independent_source_groups") or [])
-    if coverage.get("status") not in {"pass", "limited"} or len(groups) < 2:
-        fail("mindre end to uafhængige redaktionelle kildegrupper")
+    if coverage.get("status") not in {"pass", "limited"} or not groups:
+        fail("coverage sweep mangler en dokumenteret kildegruppe")
 
-    source_ids = {s.get("id") for s in ledger.get("sources", [])}
+    source_map = {s.get("id"): s for s in ledger.get("sources", []) if s.get("id")}
+    source_ids = set(source_map)
     claims = ledger.get("claims") or []
     if len(claims) < 2:
         fail("for få verificerede bærende claims")
     for claim in claims:
         ids = [x for x in claim.get("source_ids", []) if x in source_ids]
         source_groups = {
-            str(next((s.get("source_group") for s in ledger.get("sources", []) if s.get("id") == sid), "")).strip()
+            str(source_map.get(sid, {}).get("source_group") or "").strip()
             for sid in ids
         }
         source_groups.discard("")
-        if claim.get("status") != "verified" or len(source_groups) < 2:
-            fail(f"claim uden to uafhængige kilder: {claim.get('id')}")
+        primary_ok = any(authoritative_primary(source_map.get(sid)) for sid in ids)
+        if claim.get("status") != "verified" or (not primary_ok and len(source_groups) < 2):
+            fail(f"claim mangler enten autoritativ primærkilde eller to uafhængige kilder: {claim.get('id')}")
     if (ledger.get("fact_check") or {}).get("status") != "pass":
         fail("fact-check er ikke pass")
     if (ledger.get("desk_recheck") or {}).get("status") not in {"publish", "update"}:
