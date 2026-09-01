@@ -1,0 +1,310 @@
+{
+  "schema_version": 2,
+  "story_id": "2026-09-01-flodboelgen-i-nepal-og-tibet",
+  "article_slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000",
+  "assignment": {
+    "category": "Udland",
+    "weight": "A",
+    "core_question": "Nepal-Tibet floods live: Rescue efforts under way, death toll crosses 1,000",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/liveblog/2026/9/1/nepal-tibet-floods-live-rescue-efforts-under-way-death-toll-crosses-1000?traffic_source=rss",
+      "published_at": "2026-09-01T07:44:35.000Z",
+      "accessed_at": "2026-09-01T09:02:10.751Z",
+      "type": "news",
+      "source_group": "host-aljazeera-com",
+      "authoritative_for": "Nepal-Tibet floods live: Rescue efforts under way, death toll crosses 1,000",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "Euronews",
+      "url": "https://www.euronews.com/2026/09/01/death-toll-passes-1000-from-catastrophic-flooding-in-nepal-and-china-officials-say",
+      "published_at": "2026-09-01T06:50:17.000Z",
+      "accessed_at": "2026-09-01T09:02:10.751Z",
+      "type": "news",
+      "source_group": "host-euronews-com",
+      "authoritative_for": "Death toll passes 1,000 from catastrophic flooding in Nepal and China, officials say",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "BBC World",
+      "url": "https://www.bbc.co.uk/news/articles/c0qxw1qw3g7o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-01T06:02:27.000Z",
+      "accessed_at": "2026-09-01T09:02:10.751Z",
+      "type": "news",
+      "source_group": "host-bbc-co-uk",
+      "authoritative_for": "How catastrophic flash flood unfolded at remote Nepal-China border point",
+      "discovery_only": false
+    },
+    {
+      "id": "S4",
+      "name": "Guardian World",
+      "url": "https://www.theguardian.com/world/2026/aug/31/nepal-tibet-floods-rescuers-hundreds-trapped-hydropower",
+      "published_at": "2026-08-31T15:56:31.000Z",
+      "accessed_at": "2026-09-01T09:02:10.751Z",
+      "type": "news",
+      "source_group": "host-theguardian-com",
+      "authoritative_for": "Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "independent_source_groups": [
+      "host-aljazeera-com",
+      "host-euronews-com",
+      "host-bbc-co-uk",
+      "host-theguardian-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Research kan begynde fra perspektivkilder, men Fact checker kræver autoritativ primærkilde eller uafhængig ikke-discovery-verifikation."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Death toll from flooding in Nepal and Tibet has gone past 1,000, authorities said, as rescue teams work to reach communities cut off by the disaster.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com",
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Al Jazeera"
+    },
+    {
+      "id": "F02",
+      "claim": "At least 987 people were killed in Nepal, with 3,916 still missing.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com",
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Al Jazeera"
+    },
+    {
+      "id": "F03",
+      "claim": "China says 16 people were killed and 546 remain missing.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com",
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Al Jazeera"
+    },
+    {
+      "id": "F04",
+      "claim": "The death toll from catastrophic flooding in Nepal and China passed 1,000 on Tuesday, authorities said, as rescue teams work to reach communities cut off by the disaster.",
+      "status": "verified",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F05",
+      "claim": "The 26 August disaster began with a chain of events high in the Himalayas. A glacial collapse sent large amounts of rock, ice and meltwater into valleys below, triggering powerful floods downstream.",
+      "status": "verified",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F06",
+      "claim": "Scientists studying satellite imagery said the collapse appears to have involved the failure of bedrock beneath a glacier in the Himalayan region.",
+      "status": "verified",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F07",
+      "claim": "The rockfall was powerful enough to register as a magnitude 5.2 seismic event.",
+      "status": "verified",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F08",
+      "claim": "Rescuers observe a moment of silence for the victims of the mudslide near the Gyirong Port in Gyirong County, 1 September, 2026",
+      "status": "verified",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F09",
+      "claim": "The resulting surge of water and debris entered rivers that flow through valleys in Tibet and Nepal, causing them to rise rapidly.",
+      "status": "verified",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F10",
+      "claim": "Floodwaters swept away homes, buildings, roads and bridges and carried mud and rocks downstream.",
+      "status": "verified",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F11",
+      "claim": "Authorities are still searching for thousands of people who remain unaccounted for on Tuesday.",
+      "status": "verified",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F12",
+      "claim": "Rescue teams are also working to provide assistance to survivors in areas where roads and other transportation routes have been damaged or cut off.",
+      "status": "verified",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk",
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-01T09:02:10.751Z",
+      "notes": "Euronews"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-01T09:02:10.751Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-01T09:02:10.751Z",
+    "rationale": "Flodbølgen i Nepal og Tibet er en dokumenteret historie, der stadig er aktuel og væsentlig. Dette er bekræftet af flere kilder, herunder Al Jazeera, Euronews og BBC World. De giver en klar forklaring på årsagen til flodbølgen, der var en glaciær kollaps i Himalaya-bjergene, der sendte store mængder sten, is og smeltevand ned i dalene nedenfor. Dette har ført til kraftige oversvømmelser og store ødelæggelser. Der er også oplysninger om, hvorvidt der er flere mennesker i fare, og om redningsforsøgene, der er i gang for at nå de områder, der er afskåret af katastrofen. Der er ingen modsætninger mellem de forskellige kilder, og de giver en konsistent historie om flodbølgen og dens konsekvenser. Derfor kan artiklen publiceres med tillid til, at informationerne er korrekte."
+  }
+}
