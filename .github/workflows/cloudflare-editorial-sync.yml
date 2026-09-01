@@ -1,6 +1,11 @@
 name: Cloudflare editorial sync
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync_cloudflare_editorial.py'
+      - '.github/workflows/cloudflare-editorial-sync.yml'
   schedule:
     - cron: '4,19,34,49 * * * *'
   workflow_dispatch:
