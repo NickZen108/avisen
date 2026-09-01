@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T14:33:50.762128Z",
+  "generated_at": "2026-09-01T14:43:17.435531Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,38 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 9,
+    "rejections": 12,
     "reviews": [
+      {
+        "at": "2026-09-01T14:42:52.518Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "fact_check",
+        "reason": "Kildebelægget materiale giver kontrollerbart information Ingen bærende claims er verificeret.",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T14:42:31.172Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "fact_check",
+        "reason": "Kilderne giver kontrollerbart materiale til at støtte de foreslåede påstande. Ingen bærende claims er verificeret.",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T14:42:21.439Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "fact_check",
+        "reason": "nyhedskrog Ingen bærende claims er verificeret.",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-01T14:32:09.054Z",
         "slug": null,
@@ -110,7 +140,7 @@
   },
   "last7_stage_counts": {
     "ethics": 1,
-    "fact_check": 2,
+    "fact_check": 5,
     "infrastructure": 1,
     "language": 1,
     "research": 4
@@ -122,7 +152,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "6 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "9 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",
