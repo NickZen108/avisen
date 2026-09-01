@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import io
 import json
-import re
 import sys
 import urllib.request
 from pathlib import Path
@@ -18,7 +17,10 @@ APPROVALS = ROOT / "reports" / "editorial" / "approvals"
 AUTO_IMG = ROOT / "docs" / "img" / "auto"
 DEFAULT_URL = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/editorial/latest"
 PUBLIC_SITE = "https://morgentidende.nicolaipetersen108.workers.dev"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
+from scripts.evidence_policy import claim_has_required_support
 
 DOCUMENTARY_CONTEXTS = {"event", "place", "person", "object", "archive"}
 ALLOWED_AI_PEOPLE_STYLES = {"pencil_hatching", "pencil_sketch", "line_art", "silhouette", "ink_drawing"}
@@ -116,64 +118,6 @@ def normalize_coverage(ledger: dict) -> None:
     ledger["coverage_sweep"] = coverage
 
 
-def authoritative_primary(source: dict | None) -> bool:
-    return bool(
-        source
-        and source.get("type") in {"primary", "paper", "interview"}
-        and str(source.get("authoritative_for") or "").strip()
-    )
-
-
-STRONG_EDITORIAL_HOSTS = {
-    "reuters.com", "apnews.com", "bbc.com", "bbc.co.uk", "dr.dk", "tv2.dk", "svt.se", "nrk.no",
-    "ft.com", "politico.eu", "bloomberg.com", "theguardian.com", "nytimes.com", "wsj.com",
-    "france24.com", "tagesschau.de", "rbb24.de", "itv.com",
-}
-HIGH_RISK_FACT_TERMS = re.compile(
-    r"\b(sigtet|tiltalt|anklag|mistænkt|voldtægt|seksual|misbrug|selvmord|mindreår|barn|børn|privat helbred|diagnose|terror|drab|korruption|svindel|hvidvask|overgreb|racist|ekstremist)\b",
-    re.I,
-)
-
-
-def authoritative_editorial(source: dict | None) -> bool:
-    """Existing single-source exception for original wire reporting."""
-    if not source:
-        return False
-    text = " ".join(str(source.get(k) or "") for k in ("name", "source_group", "title", "publisher")).lower()
-    return any(token in text for token in ("reuters", "wire-reuters", "associated press", "wire-ap", "ritzau", "wire-ritzau", "agence france-presse", "afp", "wire-afp"))
-
-
-def strong_editorial(source: dict | None) -> bool:
-    if not source or source.get("discovery_only"):
-        return False
-    if authoritative_editorial(source):
-        return True
-    try:
-        host = (urlparse(str(source.get("url") or "")).hostname or "").removeprefix("www.").lower()
-    except Exception:
-        host = ""
-    if any(host == base or host.endswith("." + base) for base in STRONG_EDITORIAL_HOSTS):
-        return True
-    name = str(source.get("name") or "").strip().lower()
-    return name in {"reuters", "ap", "associated press", "afp", "ritzau", "bbc", "dr", "tv 2", "tv2", "svt", "nrk", "financial times", "politico"}
-
-
-def high_risk_claim(article: dict, ledger: dict, claim: dict) -> bool:
-    if (ledger.get("right_of_reply") or {}).get("required"):
-        return True
-    text = " ".join(str(x or "") for x in (article.get("title"), article.get("standfirst"), claim.get("claim")))
-    return bool(HIGH_RISK_FACT_TERMS.search(text))
-
-
-NAMED_PERSON_RE = re.compile(r"\b[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\s+[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\b")
-ACCUSED_RE = re.compile(r"\b(sigtet|tiltalt|mistænkt|anklaget)\b", re.I)
-
-
-def named_accused_crime_claim(article: dict, claim: dict) -> bool:
-    text = str(claim.get("claim") or "")
-    return bool(ACCUSED_RE.search(text) and NAMED_PERSON_RE.search(text))
-
-
 def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     if payload.get("status") != "approved":
         fail(f"pakken er ikke approved (status={payload.get('status')!r})")
@@ -218,20 +162,10 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
         fail("ingen verificerede bærende claims")
     for claim in claims:
         ids = [x for x in claim.get("source_ids", []) if x in source_ids]
-        source_groups = {
-            str(source_map.get(sid, {}).get("source_group") or "").strip()
-            for sid in ids
-            if not source_map.get(sid, {}).get("discovery_only")
-        }
-        source_groups.discard("")
-        primary_ok = any(authoritative_primary(source_map.get(sid)) for sid in ids)
-        wire_ok = any(authoritative_editorial(source_map.get(sid)) for sid in ids)
-        strong_ok = any(strong_editorial(source_map.get(sid)) for sid in ids)
-        low_risk_strong_ok = strong_ok and not high_risk_claim(article, ledger, claim)
-        if named_accused_crime_claim(article, claim) and not primary_ok:
-            fail(f"navngiven sigtet/tiltalt/mistænkt i krimistof kræver relevant primærkilde: {claim.get('id')}")
-        if claim.get("status") != "verified" or (not primary_ok and not wire_ok and not low_risk_strong_ok and len(source_groups) < 2):
-            fail(f"claim mangler tilstrækkelig dokumentation for sit risikoniveau: {claim.get('id')}")
+        if claim.get("status") != "verified" or not ids:
+            fail(f"claim mangler verificeret dokumentation: {claim.get('id')}")
+        if not claim_has_required_support(article, ledger, claim, source_map):
+            fail(f"claim mangler tilstrækkelig dokumentation efter canonical evidence policy: {claim.get('id')}")
     if (ledger.get("fact_check") or {}).get("status") != "pass":
         fail("fact-check er ikke pass")
     if (ledger.get("desk_recheck") or {}).get("status") not in {"publish", "update"}:
@@ -284,45 +218,48 @@ def save_hero(media: dict) -> Path:
     return target
 
 
+def write_json(path: Path, data: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def update_frontpage(article: dict) -> None:
+    path = ROOT / "content" / "frontpage.json"
+    try:
+        frontpage = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return
+    slug = article.get("slug")
+    for key in ("articles", "slugs", "items"):
+        value = frontpage.get(key)
+        if isinstance(value, list) and all(isinstance(x, str) for x in value):
+            frontpage[key] = [slug] + [x for x in value if x != slug]
+            write_json(path, frontpage)
+            return
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", help="JSON package already fetched from Cloudflare")
+    parser.add_argument("--input")
     parser.add_argument("--url", default=DEFAULT_URL)
     args = parser.parse_args()
     payload = load_payload(args.input, args.url)
     if payload.get("status") != "approved":
-        print(f"Cloudflare editorial: {payload.get('status', 'none')} – {payload.get('reason', 'ingen godkendt artikel')}")
+        print(f"EDITORIAL SYNC: HOLD - {payload.get('reason') or payload.get('stage') or payload.get('status')}")
         return 0
-
     article, ledger, approval, media = validate(payload)
-    slug = article["slug"]
-    article_path = ARTICLES / f"{slug}.json"
-    if article_path.exists():
-        print(f"Allerede importeret: {slug}")
-        return 0
-
     hero_path = save_hero(media)
-    original_source_url = article["image"].get("source_url")
-    article["image"]["src"] = f"{PUBLIC_SITE}/img/auto/{hero_path.name}"
-    article["image"]["source_url"] = media.get("url") if media.get("kind") == "generated" else original_source_url
-    article["automation_origin"] = "cloudflare-workers-ai"
-
-    snapshot = json.loads(json.dumps(article))
-    for key in ("status", "published_at", "updated_at", "scheduled_for", "released_from_schedule_at", "release_requested", "publication", "manual_review_completed", "workflow_state"):
-        snapshot.pop(key, None)
-    approval["editorial_snapshot"] = snapshot
-
-    ARTICLES.mkdir(parents=True, exist_ok=True); SOURCES.mkdir(parents=True, exist_ok=True); APPROVALS.mkdir(parents=True, exist_ok=True)
-    article_path.write_text(json.dumps(article, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (SOURCES / f"{slug}.json").write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (APPROVALS / f"{slug}.json").write_text(json.dumps(approval, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Imported Cloudflare editorial package: {slug}; hero={hero_path.relative_to(ROOT)}")
+    article["image"]["src"] = "/" + str(hero_path.relative_to(ROOT / "docs")).replace("\\", "/")
+    article["image"]["source_url"] = str(article["image"].get("source_url") or media.get("source_url") or media.get("url") or "")
+    if media.get("kind") == "generated":
+        article["image"]["pending_image"] = True
+    write_json(ARTICLES / f"{article['slug']}.json", article)
+    write_json(ROOT / str(article["ledger"]), ledger)
+    write_json(APPROVALS / f"{article['slug']}.json", approval)
+    update_frontpage(article)
+    print(f"EDITORIAL SYNC: PASS - {article['slug']}")
     return 0
 
 
 if __name__ == "__main__":
-    try:
-        raise SystemExit(main())
-    except Exception as exc:
-        print(f"EDITORIAL SYNC FAIL: {exc}", file=sys.stderr)
-        raise
+    raise SystemExit(main())
