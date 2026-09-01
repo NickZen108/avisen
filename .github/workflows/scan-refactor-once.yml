@@ -50,9 +50,11 @@ jobs:
           node --check cloudflare/newsdesk/src/index.js
           node --check cloudflare/newsdesk/src/editorial.js
           python -m py_compile scripts/sync_cloudflare_editorial.py
-      - name: Commit refactor
+      - name: Commit non-workflow refactor
         run: |
           set -euo pipefail
+          git checkout HEAD -- .github/workflows/cloudflare-editorial-sync.yml .github/workflows/cloudflare-newsdesk-deploy.yml .github/workflows/scan-refactor-once.yml
+          rm -rf scripts/__pycache__
           git config user.name 'morgentidende-refactor'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
