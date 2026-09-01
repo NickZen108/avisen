@@ -158,7 +158,7 @@ export class NewsroomState extends DurableObject {
       await this.ctx.storage.put("handled_signals", handled.slice(0, 180));
 
       const history = (await this.ctx.storage.get("editorial_history")) || [];
-      history.unshift({ generated_at: stampedAt, status: incoming.status, stage: incoming.stage || "approved", slug: incoming.slug || null, reason: incoming.reason || null, scan_fingerprint: incoming.scan_fingerprint || null, handled_signal_keys: incoming.handled_signal_keys || [], category: incoming.audit?.assignment?.category || null, weight: incoming.audit?.assignment?.weight || null, ai_usage: incoming.ai_usage || null });
+      history.unshift({ generated_at: stampedAt, status: incoming.status, stage: incoming.stage || "approved", slug: incoming.slug || null, reason: incoming.reason || null, scan_fingerprint: incoming.scan_fingerprint || null, handled_signal_keys: incoming.handled_signal_keys || [], category: incoming.audit?.assignment?.category || null, weight: incoming.audit?.assignment?.weight || null, ai_usage: incoming.ai_usage || null, github_prefetch: incoming.github_prefetch || null });
       await this.ctx.storage.put("editorial_history", history.slice(0, 144));
       return Response.json({ ok: true }, { headers: jsonHeaders });
     }
@@ -224,7 +224,7 @@ function mergeGitHubPrefetch(scan, prefetch) {
   return { scan: { ...scan, signals }, used, reason: used ? "matched" : "no-url-match" };
 }
 
-async function maybeRunEditorial(env, scan, force = false) {
+async function maybeRunEditorial(env, scan, force = false, runtimeMeta = null) {
   const status = await (await getState(env, "/editorial")).json();
   if (!force && !editorialDue(status.last_editorial_at)) return status.latest || { status: "idle", reason: "Editorial cadence not due" };
   const now = Date.now();
@@ -232,9 +232,13 @@ async function maybeRunEditorial(env, scan, force = false) {
     .filter((x) => Date.parse(x.expires_at || "") > now)
     .map((x) => x.key)
     .filter(Boolean);
-  try { return persistEditorial(env, await runEditorialCycle(env, scan, { excludedSignalKeys })); }
-  catch (error) {
+  try {
+    const result = await runEditorialCycle(env, scan, { excludedSignalKeys });
+    if (runtimeMeta) result.github_prefetch = runtimeMeta;
+    return persistEditorial(env, result);
+  } catch (error) {
     const failed = { status: "hold", stage: "runtime-error", checked_at: new Date().toISOString(), generated_at: new Date().toISOString(), scan_fingerprint: scan.fingerprint, reason: String(error), handled_signal_keys: [], ai_usage: error?.ai_usage || null };
+    if (runtimeMeta) failed.github_prefetch = runtimeMeta;
     return persistEditorial(env, failed);
   }
 }
@@ -269,9 +273,13 @@ export default {
       } catch (_) {}
       const merged = mergeGitHubPrefetch(scan, prefetch);
       scan = merged.scan;
-      const result = await maybeRunEditorial(env, scan, true);
-      result.github_prefetch = { used: merged.used, reason: merged.reason };
-      return Response.json(result, { headers: jsonHeaders });
+      const prefetchMeta = {
+        used: merged.used,
+        reason: merged.reason,
+        attempted: Array.isArray(prefetch?.items) ? prefetch.items.length : 0,
+        usable: Array.isArray(prefetch?.items) ? prefetch.items.filter((x) => x?.ok && String(x?.excerpt || "").length >= 160).length : 0,
+      };
+      return Response.json(await maybeRunEditorial(env, scan, true, prefetchMeta), { headers: jsonHeaders });
     }
     if (url.pathname.startsWith("/media/")) {
       const key = decodeURIComponent(url.pathname.slice("/media/".length)); return stateStub(env).fetch(`https://state/media/get?key=${encodeURIComponent(key)}`);
