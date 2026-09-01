@@ -19,8 +19,20 @@ function stripHtml(html) {
     .replace(/&#0*39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ").trim();
 }
 function signalKey(signal) { return `${signal?.normalized || slugify(signal?.headline || "")}|${signal?.url || ""}`; }
+const PUBLISHER_ROOT_HOSTS = [
+  "theguardian.com", "bbc.co.uk", "bbc.com", "politico.eu", "reuters.com", "apnews.com",
+  "ft.com", "bloomberg.com", "nytimes.com", "wsj.com", "france24.com", "dw.com", "euronews.com",
+  "dr.dk", "tv2.dk", "svt.se", "nrk.no", "aljazeera.com", "sky.com", "skynews.com",
+];
+function publisherRootHost(value) {
+  const host = String(value || "").replace(/^www\./, "").toLowerCase();
+  for (const root of PUBLISHER_ROOT_HOSTS) {
+    if (host === root || host.endsWith(`.${root}`)) return root;
+  }
+  return host;
+}
 function sourceGroup(name, url = null) {
-  try { if (url) return `host-${slugify(new URL(url).hostname.replace(/^www\./, ""))}`; } catch (_) {}
+  try { if (url) return `host-${slugify(publisherRootHost(new URL(url).hostname))}`; } catch (_) {}
   return slugify(name || "source") + "-reporting";
 }
 function wireOrigin(item) {
@@ -283,7 +295,19 @@ function isDiscoveryOnly(item) {
   if (item.discovery_only || /discovery/i.test(item.source_class || "") || item.source_role === "discovery") return true;
   return DISCOVERY_ONLY_HOSTS.has(hostOf(item.final_url || item.url || ""));
 }
-function isEvidenceSource(item) { return item && !isDiscoveryOnly(item); }
+function isUtilityOrAccountUrl(value) {
+  try {
+    const u = new URL(value);
+    const host = u.hostname.replace(/^www\./, "").toLowerCase();
+    const first = host.split(".")[0];
+    if (["support", "profile", "account", "accounts", "auth", "login", "subscribe", "subscriptions", "shop", "store", "help"].includes(first)) return true;
+    return /\/(?:signin|login|subscribe|subscription|support|account|accounts|register|newsletter|privacy|terms)(?:\/|$)/i.test(u.pathname);
+  } catch (_) { return false; }
+}
+function isEvidenceSource(item) {
+  if (!item || isDiscoveryOnly(item)) return false;
+  return !isUtilityOrAccountUrl(item.final_url || item.url || "");
+}
 function authoritativePrimary(item) { return isEvidenceSource(item) && item.source_kind === "primary"; }
 
 const STRONG_EDITORIAL_HOSTS = [
@@ -330,10 +354,12 @@ function evidenceRulePass(assignment, research, claim, evidence) {
   const primaryOk = evidence.some(authoritativePrimary);
   if (namedAccusedCrimeClaim(assignment, claim)) return primaryOk;
   const wireOk = evidence.some(authoritativeEditorial);
-  const strongEditorialOk = evidence.some(strongEditorialSource);
   const independent = new Set(evidence.map(evidenceSourceGroup));
+  // Keep runtime approval aligned with repository quality gates: one ordinary
+  // editorial publication is not independent corroboration. A competent primary
+  // source or original wire may stand alone; otherwise require two publisher groups.
   if (primaryOk || wireOk || independent.size >= 2) return true;
-  return !highRiskFactClaim(assignment, research, claim) && strongEditorialOk;
+  return false;
 }
 
 async function runResearch(env, assignment, selected) {
