@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T15:04:55.800890Z",
+  "generated_at": "2026-09-01T15:24:12.765263Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,38 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 18,
+    "rejections": 21,
     "reviews": [
+      {
+        "at": "2026-09-01T15:23:15.685Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "media",
+        "reason": "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
+        "class": "repairable",
+        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T15:22:44.962Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "seo",
+        "reason": "final_editor: materielt_forkert_sprog; final_editor: uforklaret_nødvendigt_fagsprog; final_editor: påstande_ud_over_dokumentationen; final_editor: utilstrækkelig_attribution/pluralisme; final_editor: etisk_problem; final_editor: misvisende_SEO; final_editor: falsk-dokumentarisk_hero-prompt",
+        "class": "repairable",
+        "assessment": "Sprog bør normalt auto-repareres. Hvis samme fejl gentages, test flere auto-repair-cycles før blokering.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T15:22:36.185Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "fact_check",
+        "reason": "Kilden er troværdig, men påstanden er ikke korrekt ifølge DR's artikel. DR's artikel nævner ikke, at Putin har lovet Iran støtte til krigen mod USA eller at Iran modtager støtte fra Rusland til krigen mod USA. DR's artikel er en overskrift, der ikke indeholder nogen informationer om, at Rusland støtter Iran i krigen mod USA eller at Iran modtager militær støtte fra Rusland til krigen mod USA. Derfor er påstanden ikke korrekt ifølge DR's artikel. Der er ikke nok informationer til at fastslå, om påstanden er korrekt. Derfor er påstanden  Ingen bærende claims er verificeret.",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-01T15:04:33.481Z",
         "slug": null,
@@ -200,11 +230,12 @@
   },
   "last7_stage_counts": {
     "ethics": 1,
-    "fact_check": 8,
+    "fact_check": 9,
     "infrastructure": 1,
     "language": 1,
-    "media": 2,
-    "research": 5
+    "media": 3,
+    "research": 5,
+    "seo": 1
   },
   "suggested_adjustments": [
     {
@@ -213,7 +244,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "13 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "14 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",
