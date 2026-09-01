@@ -1,0 +1,85 @@
+name: Hybrid postfix live QA
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/hybrid-postfix-live-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  postfix-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Hybrid regression tests
+        run: |
+          set -euo pipefail
+          python scripts/test_hybrid_runtime.py
+          node --check cloudflare/newsdesk/src/index.js
+          node --check cloudflare/newsdesk/src/editorial.js
+
+      - name: Verify fix commit deployed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_SHA: '798f2bce9017f3dec75850ff67a18bfbc3f878c6'
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 12); do
+            gh run list --workflow "Deploy Cloudflare Newsdesk Runtime" --branch main --limit 3 \
+              --json databaseId,status,conclusion,headSha,createdAt,updatedAt,url > /tmp/deploy.json
+            cat /tmp/deploy.json
+            if jq -e --arg sha "$EXPECTED_SHA" '.[0].headSha == $sha and .[0].status == "completed" and .[0].conclusion == "success"' /tmp/deploy.json >/dev/null; then
+              echo "Expected hybrid fix is deployed"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Expected deploy did not become green in time"
+          exit 1
+
+      - name: Inspect recent live editorial history
+        run: |
+          set -euo pipefail
+          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          curl --fail --silent --show-error --max-time 30 "$BASE/health" -o /tmp/health.json
+          curl --fail --silent --show-error --max-time 30 "$BASE/editorial/latest" -o /tmp/latest.json
+          curl --fail --silent --show-error --max-time 30 "$BASE/editorial/history" -o /tmp/history.json
+          python - <<'PY'
+          import json
+          h=json.load(open('/tmp/health.json'))
+          latest=json.load(open('/tmp/latest.json'))
+          rows=json.load(open('/tmp/history.json'))[:15]
+          print('HEALTH', {k:h.get(k) for k in ('ok','runtime','last_attempt_at','last_editorial_at','editorial_status','signal_count')})
+          print('LATEST', {
+            'generated_at': latest.get('generated_at'),
+            'status': latest.get('status'),
+            'stage': latest.get('stage'),
+            'github_prefetch': latest.get('github_prefetch'),
+            'ai_usage': latest.get('ai_usage'),
+            'reason': latest.get('reason'),
+          })
+          print('RECENT_HISTORY')
+          for r in rows:
+            print({
+              'generated_at': r.get('generated_at'),
+              'status': r.get('status'),
+              'stage': r.get('stage'),
+              'category': r.get('category'),
+              'weight': r.get('weight'),
+              'github_prefetch': r.get('github_prefetch'),
+              'ai_calls': (r.get('ai_usage') or {}).get('calls'),
+              'neurons': (r.get('ai_usage') or {}).get('estimated_neurons'),
+              'reason': r.get('reason'),
+            })
+          recent_errors=[r for r in rows if r.get('stage')=='runtime-error']
+          print('RUNTIME_ERRORS_IN_LAST_15', len(recent_errors))
+          PY
