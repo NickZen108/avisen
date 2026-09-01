@@ -25,7 +25,12 @@ def main() -> int:
     sync = load_module("sync", ROOT / "scripts" / "sync_cloudflare_editorial.py")
     assert sync.authoritative_editorial({"name": "Reuters", "source_group": "wire-reuters"})
     assert sync.authoritative_editorial({"name": "Associated Press", "source_group": "wire-ap"})
-    assert not sync.authoritative_editorial({"name": "Example Blog", "source_group": "host-example.test"})
+    assert not sync.authoritative_editorial({"name": "NRK", "url": "https://www.nrk.no/sak"})
+    assert sync.strong_editorial({"name": "NRK", "url": "https://www.nrk.no/sak"})
+    assert sync.strong_editorial({"name": "Financial Times", "url": "https://www.ft.com/content/example"})
+    assert not sync.strong_editorial({"name": "Example Blog", "url": "https://example.test/post"})
+    assert not sync.high_risk_claim({"category": "Udland", "title": "Minister deltager i EU-møde", "standfirst": ""}, {"right_of_reply": {"required": False}}, {"claim": "Minister deltager i mødet"})
+    assert sync.high_risk_claim({"category": "Krimi", "title": "Fem dømt", "standfirst": ""}, {"right_of_reply": {"required": False}}, {"claim": "Fem dømt for hvidvask"})
     assert sync.valid_documentary_image({
         "src": "https://example.test/photo.jpg",
         "source_url": "https://example.test/license",
@@ -46,6 +51,10 @@ def main() -> int:
     js = (ROOT / "cloudflare" / "newsdesk" / "src" / "editorial.js").read_text(encoding="utf-8")
     required = [
         'function authoritativeEditorial(item)',
+        'function strongEditorialSource(item)',
+        'function normalizedSourceKind(item)',
+        'function highRiskFactClaim(assignment, research, claim)',
+        'function evidenceRulePass(assignment, research, claim, evidence)',
         '"wire-reuters", "wire-ap", "wire-afp", "wire-ritzau"',
         'function deterministicFinalReview(assignment, dossier, article)',
         'function requiresAiFinalReview(assignment, dossier, article)',
@@ -58,7 +67,12 @@ def main() -> int:
         'fetch_origin: "github-actions-prefetch"',
         'host === "reuters.com"',
         'source === "ap"',
-        'én stærk original bureau-/redaktionel kilde som Reuters, AP, AFP eller Ritzau',
+        'For almindelige lavrisiko-fakta kan Verified bæres',
+        'Ét verificeret bærende claim er nok til en kort one-claim-artikel',
+        'Din overordnede publish/hold-vurdering er rådgivende',
+        'feed_summary_only',
+        'source_strength',
+        'fact.decision = verified.length >= 1 ? "publish" : "hold"',
         'function newsRequiresDocumentaryHero()',
         'function validDocumentaryHero(media)',
         'function documentaryHeroFromSignals(selected = [])',

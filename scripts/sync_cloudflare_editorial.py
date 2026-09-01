@@ -9,6 +9,7 @@ import re
 import sys
 import urllib.request
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTICLES = ROOT / "content" / "articles"
@@ -76,11 +77,47 @@ def authoritative_primary(source: dict | None) -> bool:
     )
 
 
+STRONG_EDITORIAL_HOSTS = {
+    "reuters.com", "apnews.com", "bbc.com", "bbc.co.uk", "dr.dk", "tv2.dk", "svt.se", "nrk.no",
+    "ft.com", "politico.eu", "bloomberg.com", "theguardian.com", "nytimes.com", "wsj.com",
+    "france24.com", "tagesschau.de", "rbb24.de", "itv.com",
+}
+HIGH_RISK_FACT_TERMS = re.compile(
+    r"\b(sigtet|tiltalt|anklag|mistænkt|voldtægt|seksual|misbrug|selvmord|mindreår|barn|børn|privat helbred|diagnose|terror|drab|korruption|svindel|hvidvask|overgreb|racist|ekstremist)\b",
+    re.I,
+)
+
+
 def authoritative_editorial(source: dict | None) -> bool:
+    """Existing single-source exception for original wire reporting."""
     if not source:
         return False
     text = " ".join(str(source.get(k) or "") for k in ("name", "source_group", "title", "publisher")).lower()
     return any(token in text for token in ("reuters", "wire-reuters", "associated press", "wire-ap", "ritzau", "wire-ritzau", "agence france-presse", "afp", "wire-afp"))
+
+
+def strong_editorial(source: dict | None) -> bool:
+    if not source or source.get("discovery_only"):
+        return False
+    if authoritative_editorial(source):
+        return True
+    try:
+        host = (urlparse(str(source.get("url") or "")).hostname or "").removeprefix("www.").lower()
+    except Exception:
+        host = ""
+    if any(host == base or host.endswith("." + base) for base in STRONG_EDITORIAL_HOSTS):
+        return True
+    name = str(source.get("name") or "").strip().lower()
+    return name in {"reuters", "ap", "associated press", "afp", "ritzau", "bbc", "dr", "tv 2", "tv2", "svt", "nrk", "financial times", "politico"}
+
+
+def high_risk_claim(article: dict, ledger: dict, claim: dict) -> bool:
+    if (ledger.get("right_of_reply") or {}).get("required"):
+        return True
+    if article.get("category") in {"Krimi", "Sundhed"}:
+        return True
+    text = " ".join(str(x or "") for x in (article.get("title"), article.get("standfirst"), claim.get("claim")))
+    return bool(HIGH_RISK_FACT_TERMS.search(text))
 
 
 def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
@@ -132,9 +169,11 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
         }
         source_groups.discard("")
         primary_ok = any(authoritative_primary(source_map.get(sid)) for sid in ids)
-        editorial_ok = any(authoritative_editorial(source_map.get(sid)) for sid in ids)
-        if claim.get("status") != "verified" or (not primary_ok and not editorial_ok and len(source_groups) < 2):
-            fail(f"claim mangler tilstrækkelig dokumentation: primærkilde, anerkendt original bureaukilde eller to uafhængige kilder: {claim.get('id')}")
+        wire_ok = any(authoritative_editorial(source_map.get(sid)) for sid in ids)
+        strong_ok = any(strong_editorial(source_map.get(sid)) for sid in ids)
+        low_risk_strong_ok = strong_ok and not high_risk_claim(article, ledger, claim)
+        if claim.get("status") != "verified" or (not primary_ok and not wire_ok and not low_risk_strong_ok and len(source_groups) < 2):
+            fail(f"claim mangler tilstrækkelig dokumentation for sit risikoniveau: {claim.get('id')}")
     if (ledger.get("fact_check") or {}).get("status") != "pass":
         fail("fact-check er ikke pass")
     if (ledger.get("desk_recheck") or {}).get("status") not in {"publish", "update"}:
