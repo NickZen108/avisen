@@ -4,8 +4,8 @@
 The gate deliberately uses production-shaped repository artifacts rather than a toy
 fixture: canonical article -> ledger -> research coverage -> claim verification -> desk
 recheck -> final approval -> generated article -> front-page/live-proof readiness.
-Coverage quality is claim/risk dependent; this repository-level proof must not impose
-a universal source-count quota that is stricter than the editorial pipeline itself.
+Coverage quality is claim/risk dependent and uses the same canonical evidence policy
+as import and publication gates.
 """
 from __future__ import annotations
 
@@ -15,6 +15,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ART = ROOT / "content" / "articles"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.evidence_policy import claim_has_required_support
 
 
 def load(path: Path):
@@ -50,20 +54,14 @@ def problems_for(path, a):
         problems.append("coverage_sweep er ikke pass")
 
     sources = {s.get("id"): s for s in ledger.get("sources") or [] if s.get("id")}
+    claims_by_id = {c.get("id"): c for c in ledger.get("claims") or [] if c.get("id")}
     for cid in a.get("claim_ids") or []:
-        claim = next((c for c in ledger.get("claims") or [] if c.get("id") == cid), None)
+        claim = claims_by_id.get(cid)
         if not claim or claim.get("status") != "verified":
             problems.append(f"claim {cid} er ikke verified")
             continue
-        groups = {str(sources.get(sid, {}).get("source_group") or "") for sid in claim.get("source_ids") or []}
-        groups.discard("")
-        primary_ok = any(
-            sources.get(sid, {}).get("type") in {"primary", "paper", "interview"}
-            and str(sources.get(sid, {}).get("authoritative_for") or "").strip()
-            for sid in claim.get("source_ids") or []
-        )
-        if not primary_ok and len(groups) < 2:
-            problems.append(f"claim {cid} har hverken autoritativ primærkilde eller to source-groups")
+        if not claim_has_required_support(a, ledger, claim, sources):
+            problems.append(f"claim {cid} mangler dokumentation efter canonical evidence policy")
 
     if (ledger.get("fact_check") or {}).get("status") != "pass":
         problems.append("fact_check er ikke pass")
