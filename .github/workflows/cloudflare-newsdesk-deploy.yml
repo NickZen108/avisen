@@ -1,5 +1,6 @@
 name: Deploy Cloudflare Newsdesk Runtime
 
+# Deploy canonical source as committed; do not mutate editorial code during deploy.
 on:
   push:
     branches: [main]
