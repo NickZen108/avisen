@@ -113,6 +113,12 @@ def main() -> int:
                     faults.append(f"{path.name}: ugyldig context_type for dokumentarisk hero")
                 if context_type != "event" and not str(image.get("caption") or "").strip():
                     faults.append(f"{path.name}: ikke-hændelsesfoto kræver synlig arkiv-/kontekst-caption")
+                source_url = str(image.get("source_url") or "").lower()
+                if image_type == "video_still" and ("youtube.com" in source_url or "youtu.be" in source_url):
+                    if not str(image.get("rights_basis") or "").strip():
+                        faults.append(f"{path.name}: YouTube-video-still kræver dokumenteret rights_basis")
+                if image.get("discovery_only_source") is True and image.get("independent_license") is not True:
+                    faults.append(f"{path.name}: discovery_only må ikke være billedkilde uden selvstændig licens")
             elif image_type == "illustration":
                 if not pending or not ai_generated:
                     faults.append(f"{path.name}: nyhedsillustration er kun tilladt som AI-genereret pending_image")
