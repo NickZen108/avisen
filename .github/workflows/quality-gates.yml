@@ -20,7 +20,9 @@ jobs:
       - name: Secret leak gate
         run: python scripts/secret_scan.py
       - name: Hybrid runtime regression tests
-        run: python scripts/test_hybrid_runtime.py
+        run: |
+          python scripts/test_hybrid_runtime.py
+          python scripts/reapprove_media_change.py --self-test
       - name: Normalize prematurely-ready articles
         run: python scripts/release_ready.py --normalize-only
       - name: Prebuild gates
