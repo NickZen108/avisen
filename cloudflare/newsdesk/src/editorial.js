@@ -547,11 +547,18 @@ function documentaryHeroFromSignals(selected = []) {
   return null;
 }
 
-function commonsSearchTerms(assignment, article) {
-  const raw = `${assignment?.title_hint || ""} ${article?.title || ""}`;
+function commonsSearchQueries(assignment, article, research = null) {
   const stop = new Set(["mener","siger","efter","over","under","vil","kan","skal","med","fra","til","for","the","and","with","from","says","after","over"]);
-  const terms = words(raw).filter((x) => x.length >= 4 && !stop.has(x)).slice(0, 7);
-  return terms.join(" ");
+  const clean = (value, limit = 7) => words(value).filter((x) => x.length >= 4 && !stop.has(x)).slice(0, limit).join(" ");
+  const claims = (research?.candidate_claims || []).map((x) => x.claim).join(" ");
+  const raw = [
+    clean(`${assignment?.title_hint || ""} ${article?.title || ""}`, 7),
+    clean(assignment?.title_hint || article?.title || "", 5),
+    clean(assignment?.core_question || "", 5),
+    clean(claims, 5),
+    clean(article?.standfirst || "", 5),
+  ].filter((x) => x && x.length >= 4);
+  return [...new Set(raw)].slice(0, 5);
 }
 
 function stripCommonsHtml(value) {
@@ -563,9 +570,10 @@ function commonsLicenseAllowed(value) {
   return /\b(cc0|cc by|cc-by|cc by-sa|cc-by-sa|public domain|pd-)\b/.test(v);
 }
 
-async function findCommonsDocumentaryHero(assignment, article) {
-  const q = commonsSearchTerms(assignment, article);
-  if (!q) return null;
+async function findCommonsDocumentaryHero(assignment, article, research = null) {
+  const queries = commonsSearchQueries(assignment, article, research);
+  if (!queries.length) return null;
+  for (const q of queries) {
   const params = new URLSearchParams({
     action: "query",
     format: "json",
@@ -614,10 +622,10 @@ async function findCommonsDocumentaryHero(assignment, article) {
       });
     }
     ranked.sort((a, b) => b.score - a.score);
-    return ranked[0]?.hero || null;
-  } catch (_) {
-    return null;
+    if (ranked[0]?.hero) return ranked[0].hero;
+  } catch (_) {}
   }
+  return null;
 }
 
 
@@ -710,17 +718,17 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const handledSignalKeys = check.handled_signal_keys || [];
   if (!check.ok) {
     const state = check.state === "watch" ? "watch" : check.state === "drop" ? "drop" : "hold";
-    return { status: state, stage: "newsdesk", checked_at: startedAt, generated_at: startedAt, reason: check.reason, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment } };
+    return { status: state, stage: "newsdesk", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: check.reason, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, selected_signals: check.selected || [] } };
   }
 
   const research = await runResearch(env, assignment, check.selected);
-  if (research.decision !== "continue") return { status: research.decision === "watch" ? "watch" : "hold", stage: research.right_of_reply_required ? "ethics" : "research", checked_at: startedAt, generated_at: startedAt, reason: research.rationale || "Research hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment } };
+  if (research.decision !== "continue") return { status: research.decision === "watch" ? "watch" : "hold", stage: research.right_of_reply_required ? "ethics" : "research", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: research.rationale || "Research hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, selected_signals: check.selected || [], research: { rationale: research.rationale, candidate_claims: research.candidate_claims || [], contradictions: research.contradictions || [], researched: (research.researched || []).map((x) => ({ source: x.source, headline: x.headline, url: x.final_url || x.url, fetched: x.fetched, fetch_status: x.fetch_status, fetch_error: x.fetch_error, source_kind: x.source_kind, feed_summary_only: Boolean(x.feed_summary_only) })) } } };
 
   const dossier = await runFactCheck(env, assignment, research);
-  if (dossier.decision !== "publish") return { status: "hold", stage: "fact-check", checked_at: startedAt, generated_at: startedAt, reason: dossier.rationale || "Fact check hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment } };
+  if (dossier.decision !== "publish") return { status: "hold", stage: "fact-check", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: dossier.rationale || "Fact check hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, sources: (dossier.researched || []).map((x) => ({ source: x.source, headline: x.headline, url: x.final_url || x.url, source_kind: x.source_kind })) } };
 
   const desk = await deskRecheck(env, assignment, dossier);
-  if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, generated_at: startedAt, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment } };
+  if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, fact_check: { claims: dossier.claims, rationale: dossier.rationale }, desk_recheck: desk } };
 
   let article = await writeArticle(env, assignment, dossier);
   const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);
@@ -733,7 +741,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
     }
   }
   if (review.decision !== "pass" || [review.language, review.ethics, review.image, review.seo, review.final_editor].some((x) => x !== "pass")) {
-    return { status: "hold", stage: "final-editor", checked_at: startedAt, generated_at: startedAt, reason: (review.notes || []).join("; ") || "Final editor hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment } };
+    return { status: "hold", stage: "final-editor", checked_at: startedAt, generated_at: startedAt, title: article.title || assignment.title_hint, reason: (review.notes || []).join("; ") || "Final editor hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, article_title: article.title, fact_check: { claims: dossier.claims, rationale: dossier.rationale }, final_review: review } };
   }
 
   const date = startedAt.slice(0, 10);
@@ -741,17 +749,18 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const storyId = `${date}-${slugify(assignment.title_hint || article.title)}`.slice(0, 96).replace(/-+$/g, "");
   const requiresDocumentary = newsRequiresDocumentaryHero();
   let documentaryHero = requiresDocumentary ? documentaryHeroFromSignals(check.selected) : null;
-  if (requiresDocumentary && !documentaryHero) documentaryHero = await findCommonsDocumentaryHero(assignment, article);
+  if (requiresDocumentary && !documentaryHero) documentaryHero = await findCommonsDocumentaryHero(assignment, article, research);
   if (requiresDocumentary && !documentaryHero) {
     return {
       status: "hold",
       stage: "media",
       checked_at: startedAt,
       generated_at: startedAt,
-      reason: "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
+      title: article.title || assignment.title_hint,
+      reason: "Media fandt ikke automatisk et juridisk anvendeligt dokumentarisk hero-billede efter signalmedier og den udvidede Commons-fallback. AI-illustration er ikke tilladt til nyheder.",
       scan_fingerprint: scan.fingerprint,
       handled_signal_keys: handledSignalKeys,
-      audit: { assignment, media_policy: { requires_documentary: true, ai_hero_allowed: false } },
+      audit: { assignment, article_title: article.title, selected_signals: check.selected || [], research: { candidate_claims: research.candidate_claims || [] }, fact_check: { claims: dossier.claims || [], rationale: dossier.rationale }, media_policy: { requires_documentary: true, ai_hero_allowed: false, search_queries: commonsSearchQueries(assignment, article, research) } },
     };
   }
 
