@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,6 +18,16 @@ def load_module(name: str, path: Path):
 
 
 def main() -> int:
+    thresholds = json.loads((ROOT / "config" / "pipeline-thresholds.json").read_text(encoding="utf-8"))
+    assert thresholds["schema_version"] >= 2
+    assert thresholds["evidence_policy"]["min_verified_material_claims"] == 1
+    assert thresholds["evidence_policy"]["named_accused_crime_requires_primary"] is True
+    assert thresholds["evidence_policy"]["discovery_only_never_evidence"] is True
+    fact_stage = next(x for x in thresholds["stages"] if x["id"] == "fact_check")
+    assert next(x for x in fact_stage["requirements"] if x["key"] == "min_verified_material_claims")["value"] == 1
+    research_stage = next(x for x in thresholds["stages"] if x["id"] == "research")
+    assert next(x for x in research_stage["requirements"] if x["key"] == "min_distinct_sources")["value"] == 1
+
     dispatch = load_module("dispatch", ROOT / "scripts" / "editorial_dispatch_gate.py")
     dispatch.self_test()
     prefetch = load_module("prefetch", ROOT / "scripts" / "github_source_prefetch.py")
@@ -76,12 +87,18 @@ def main() -> int:
         'function newsRequiresDocumentaryHero()',
         'function validDocumentaryHero(media)',
         'function documentaryHeroFromSignals(selected = [])',
-        'async function findCommonsDocumentaryHero(assignment, article)',
+        'async function findCommonsDocumentaryHero(assignment, article',
         'commonsLicenseAllowed',
         'image/jpeg',
         'if (requiresDocumentary && !documentaryHero)',
         'Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede',
         'ai_hero_allowed: false',
+        'function namedAccusedCrimeClaim(assignment, claim)',
+        'function numericMaterialClaim(claim)',
+        'media_strategy',
+        'stage: "media-scout"',
+        'context_type: "context"',
+        'Arkiv-/kontekstfoto',
     ]
     missing = [item for item in required if item not in js]
     assert not missing, f"Hybrid runtime regression: missing {missing}"
