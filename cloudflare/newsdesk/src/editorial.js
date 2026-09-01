@@ -655,7 +655,7 @@ function pendingSketchHero(imageKey, article, sketch) {
     src: `/img/auto/${imageKey}`,
     alt: `Illustration til: ${article.title}`,
     credit: "Illustration: Morgentidende",
-    license: "Morgentidende – AI-genereret illustration",
+    license: sketch?.ai_generated ? "Morgentidende – AI-genereret illustration" : "Morgentidende – statisk illustration",
     source_url: publicMediaUrl(imageKey),
     image_type: "illustration",
     context_type: "illustration",
