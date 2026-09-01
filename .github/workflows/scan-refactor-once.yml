@@ -27,6 +27,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Fix one-shot replacement helper
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/_apply_scan_refactor_once.py')
+          s=p.read_text(encoding='utf-8')
+          old='out, n = re.subn(pattern, replacement, text, count=1, flags=flags)'
+          new='out, n = re.subn(pattern, lambda _m: replacement, text, count=1, flags=flags)'
+          if old not in s:
+              raise SystemExit('replacement helper pattern missing')
+          p.write_text(s.replace(old,new,1),encoding='utf-8')
+          PY
       - name: Apply refactor
         run: python scripts/_apply_scan_refactor_once.py
       - name: Syntax checks
