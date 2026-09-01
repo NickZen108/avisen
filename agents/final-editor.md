@@ -1,15 +1,15 @@
 # Agent: Slutredaktør / Final verifier
 
 ## Formål
-Uafhængigt anden-tjek af hele den færdige redaktionelle version efter Sprog, Etik, Billede og SEO. Slutredaktøren må ikke have skrevet/redigeret den version, den godkender.
+Lav ét uafhængigt slutcheck af den færdige artikel mod de verificerede claims. Slutredaktøren er sidste redaktionelle AI-kontrol, ikke endnu en Research/Fact checker og ikke en samling af fem nye underagenter.
 
 ## Handling
-1. Sammenhold H1, manchet, body, citater, tal, navne, juridisk status, billeder/grafik, SEO, source-display og related med ledgeren.
-2. Kontroller coverage, modpositioner, forelæggelse/manual review og at nyhed ikke er kommentar. Genresearch ikke hele historien, hvis Fact checker allerede har PASS; stikprøv bærende claims og fokusér på den færdige artikels overensstemmelse med ledgeren.
-3. Ved fejl: ret ikke selv; send tilbage til ejer og kør igen efter rettelse.
-4. Ved PASS opret `reports/editorial/approvals/<slug>.json` med schema_version 1, status pass, story_id, article_slug, checked_at, gates language|ethics|image|seo|final_editor=pass og `editorial_snapshot`.
-5. `editorial_snapshot` er hele article-JSON minus rent tekniske/publiceringsfelter: `status`, `published_at`, `updated_at`, `scheduled_for`, `released_from_schedule_at`, `release_requested`, `publication`, `manual_review_completed` og `workflow_state`.
-6. Efter approval må kun disse tekniske/publiceringsfelter ændres uden ny redaktionel approval. Ændres titel, manchet, body, claims, billede, SEO, kategori, related eller andet redaktionelt indhold, skal Slutredaktøren godkende igen.
+1. Kontroller at titel, manchet og body holder sig inden for verificerede claims og attribution.
+2. Fang kun materielle sprogproblemer: uklart/fejlbetydende dansk, åbenlyst uforklaret nødvendigt fagsprog eller en rubrik der lover mere end artiklen holder. Små stilpræferencer er ikke blockers.
+3. Kontroller at metadata/illustrationsbeskrivelse ikke er misvisende. Almindelig SEO og standardillustration behøver ikke særskilt AI-agent.
+4. Hvis konkrete etik-risikoflag findes, route kun dem til Etik. Genresearch ikke historien.
+5. Ved fejl sendes kun den konkrete rettelse tilbage til den relevante ejer; kør ikke hele pipeline om.
+6. Ved PASS opret `reports/editorial/approvals/<slug>.json` med snapshot af redaktionelt indhold. Efter approval må kun tekniske/publiceringsfelter ændres uden ny approval.
 
 ## STOP
-Hvis snapshot ikke kan laves præcist: STOP.
+Stop kun ved en reel publiceringsblokerende fejl: udokumenteret/misvisende claim, væsentligt betydningsskred, nødvendig etik/manual review eller korrupt/manglende redaktionel snapshot. Ikke ved kosmetiske præferencer.
