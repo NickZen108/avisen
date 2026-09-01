@@ -33,16 +33,14 @@ jobs:
           from pathlib import Path
           p=Path('scripts/_apply_scan_refactor_once.py')
           s=p.read_text(encoding='utf-8')
-          old='out, n = re.subn(pattern, replacement, text, count=1, flags=flags)'
-          new='out, n = re.subn(pattern, lambda _m: replacement, text, count=1, flags=flags)'
-          if old not in s:
-              raise SystemExit('replacement helper pattern missing')
-          s=s.replace(old,new,1)
-          old_pat=r'''r"function signalSummary\\(scan\\) \\{[\\s\\S]*?\\n\\}\\nasync function chooseAssignment\\(env, scan\\) \\{[\\s\\S]*?\\n\\}\\nfunction distinctSources\\(items\\) \\{[\\s\\S]*?\\n\\}\\nfunction validateAssignment\\(assignment, scan\\) \\{[\\s\\S]*?\\n\\}\\n\\nasync function runResearch"'''
-          new_pat=r'''r"function signalSummary\\(scan\\) \\{[\\s\\S]*?\\n\\}\\nasync function chooseAssignment\\(env, scan\\) \\{[\\s\\S]*?\\n\\}\\nfunction distinctSources\\(items\\) \\{[^\\n]*\\}\\nfunction validateAssignment\\(assignment, scan\\) \\{[\\s\\S]*?\\n\\}\\n\\nasync function runResearch"'''
-          if old_pat not in s:
-              raise SystemExit('shortlist regex pattern missing')
-          s=s.replace(old_pat,new_pat,1)
+          s=s.replace(
+              'out, n = re.subn(pattern, replacement, text, count=1, flags=flags)',
+              'out, n = re.subn(pattern, lambda _m: replacement, text, count=1, flags=flags)',
+          )
+          s=s.replace(
+              r'function distinctSources\\(items\\) \\{[\\s\\S]*?\\n\\}',
+              r'function distinctSources\\(items\\) \\{[^\\n]*\\}',
+          )
           p.write_text(s,encoding='utf-8')
           PY
       - name: Apply refactor
