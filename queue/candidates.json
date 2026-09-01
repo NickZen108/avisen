@@ -1,8 +1,8 @@
 {
   "schema_version": 3,
   "runtime": "cloudflare-workers",
-  "generated_at": "2026-08-31T23:55:20.479Z",
-  "fingerprint": "97583be06d4120716e5c6078dfb7921272bcc75975540b11f4eee45d75dfae20",
+  "generated_at": "2026-09-01T04:55:31.553Z",
+  "fingerprint": "916e26656b64c6fa1cdb622c44472ab17a9bc3f6a1af9dbc909f43634212f7ec",
   "signal_count": 176,
   "feeds": [
     {
@@ -98,11 +98,18 @@
       "url": "https://www.bbc.co.uk/news/videos/c158z7g23zqo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "BBC World",
-      "headline": "Algeria president seeks death penalty for arsonists after deadly forest fires",
-      "normalized": "algeria president seeks death penalty for arsonists after deadly forest fires",
-      "description": "President Abdelmadjid Tebboune says he is not ruling out foul play after 100 wildfires were recorded.",
-      "url": "https://www.bbc.co.uk/news/articles/cvgy41lwe0jo?at_medium=RSS&at_campaign=rss"
+      "source": "Al Jazeera",
+      "headline": "African NGOs demand probe into six bodies found in Guinea mass grave",
+      "normalized": "african ngos demand probe into six bodies found in guinea mass grave",
+      "description": "The bodies were found bound and blindfolded in the Forecariah administrative prefecture on August 24.",
+      "url": "https://www.aljazeera.com/news/2026/9/1/african-ngos-demand-probe-into-six-bodies-found-in-guinea-mass-grave?traffic_source=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Algeria’s president seeks death penalty for those who start forest fires",
+      "normalized": "algeria s president seeks death penalty for those who start forest fires",
+      "description": "Abdelmadjid Tebboune&#039;s call comes after wildfires killed at least 12 people and injured 54 in northeastern Algeria.",
+      "url": "https://www.aljazeera.com/news/2026/9/1/algerias-president-seeks-death-penalty-for-those-who-start-forest-fires?traffic_source=rss"
     },
     {
       "source": "Euronews",
@@ -147,16 +154,16 @@
       "url": "https://www.bbc.co.uk/news/articles/c86xwqez4npo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "Guardian World",
-      "headline": "At least 93,000 ‘in great need’ after Nepal-Tibet flash floods, says Red Cross",
-      "normalized": "at least 93 000 in great need after nepal tibet flash floods says red cross",
-      "description": "<p>Federation says it fears death toll of nearly 600 will continue to rise as rescuers reach cut-off areas</p><ul><li><p><a href=\"https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates\">Nepal-Tibet flash flood – latest updates</a></p></li><li><p><a href=\"https://www.theguardian.com/world/2026/aug/27/nepal-tibet-flash-flood-visual-guide-why-how-flooding-happened-floods-cause-reason-explained\">Visual guide: how the deadly flooding unfolded</a></p></li><li><p><a href=\"https://www.theguardian.com/world/2026/aug/26/tell-us-have-you-been-affected-by-the-flash-floods-on-the-nepal-tibet-border\">Tell us: have you been affected by the flash floods?</a></p></li></ul><p>The Red Cross has said at least 93,000 people may have been affected by Wednesday’s flash floods on the Nepal-Tibet border, which have killed nearly 600 people, left another 1,900 missing, and triggered a huge rescue operation that is being hampered by fears of new flooding.</p><p>The International Federation of Red Cross and Red Crescent Societies (IFRC), the world’s largest humanitarian network, said it feared the death toll would continue to rise as some of th",
-      "url": "https://www.theguardian.com/world/2026/aug/28/nepal-tibet-flash-floods-red-cross-rescuers-death-toll"
+      "source": "Euronews",
+      "headline": "At least four people killed as Russia launches nighttime ballistic missile attacks targeting Ukraine's capital",
+      "normalized": "at least four people killed as russia launches nighttime ballistic missile attacks targeting ukraine s capital",
+      "description": "The barrage is the latest in a series of a daily attacks targeting multiple Ukrainian regions as Kyiv continues to struggle with thwarting certain aerial attacks due to shortages in interceptor missiles.",
+      "url": "http://www.euronews.com/2026/09/01/at-least-four-people-killed-as-russia-launches-nighttime-ballistic-missile-attacks-targeti"
     },
     {
       "source": "Guardian World",
-      "headline": "Australia news live: NSW confirms new HSC assessment rules to crack down on AI use; Sydney man killed in home invasion",
-      "normalized": "australia news live nsw confirms new hsc assessment rules to crack down on ai use sydney man killed in home invasion",
+      "headline": "Australia news live: PM shuts down questions of China ‘bullying’ on eve of Pacific forum; Victorian police officer charged after allegedly hitting teen with baton",
+      "normalized": "australia news live pm shuts down questions of china bullying on eve of pacific forum victorian police officer charged after allegedly hitting teen with baton",
       "description": "<p>Follow updates live</p><ul><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p><strong>43 Australians still missing, with concerns growing ‘every day, every hour’ that goes by, Wong says</strong></p><p>The foreign affairs minister, <strong>Penny Wong, </strong>says there are still 43 Australian missing after the flooding in Nepal, saying the government holds grave concerns for their safety that only gets worse as the days go by.</p><p>This is such a distressing time and I know this is so difficult for the family and friends of those 43 Australians.</p><p>Every day, every hour, only increases our concern for those who have not been found and remain missing, and that is many Australians. … You can imagine how many families and friends are traumatised as a consequence.</p> <a href=\"https://www.theguardian.com/australia-news/live/2026/sep/01/nepal-tibet-flooding-missing-australians-penny-wong-anthony-albanese-pacific-islands-forum-liberal-national-co",
       "url": "https://www.theguardian.com/australia-news/live/2026/sep/01/nepal-tibet-flooding-missing-australians-penny-wong-anthony-albanese-pacific-islands-forum-liberal-national-coalition-one-nation-politics-reactions-ntwnfb"
     },
@@ -210,13 +217,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/brand-i-polsk-dronefabrik-efterforskes-som-terror"
     },
     {
-      "source": "Guardian World",
-      "headline": "British family pleads with French authorities to release body of relative who died in Channel",
-      "normalized": "british family pleads with french authorities to release body of relative who died in channel",
-      "description": "<p>Jasmeet Wadhwa, who fled Taliban persecution in Afghanistan, lost his life while trying to reach UK in April</p><p>A British family is pleading with French authorities to release the body of a relative that officials have held for five months after he died in the Channel in April.</p><p>Jasmeet Wadhwa, 32, died while <a href=\"https://www.infomigrants.net/en/post/70720/two-migrants-die-in-channel-crossing-attempt-off-gravelines\">attempting to reach the UK</a> on a dinghy on 1 April with his mother, Harbans Kaur Wadhwa, after they fled Taliban persecution in Afghanistan in January.</p> <a href=\"https://www.theguardian.com/uk-news/2026/aug/31/british-family-plead-with-french-authorities-to-release-body-of-relative-who-died-in-the-channel\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/uk-news/2026/aug/31/british-family-plead-with-french-authorities-to-release-body-of-relative-who-died-in-the-channel"
-    },
-    {
       "source": "BBC Europe",
       "headline": "British woman killed in stabbing at German railway station",
       "normalized": "british woman killed in stabbing at german railway station",
@@ -238,13 +238,6 @@
       "url": "https://www.theguardian.com/us-news/2026/aug/30/canada-trump-lake-ontario-name"
     },
     {
-      "source": "Euronews",
-      "headline": "Captain arrested after eight people die in ferry capsize off northern Cyprus",
-      "normalized": "captain arrested after eight people die in ferry capsize off northern cyprus",
-      "description": "Eight other crew members who were on board when the boat set sail from Kyreneia have also been arrested. Investigations into the accident are still underway.",
-      "url": "http://www.euronews.com/2026/08/30/passenger-ship-carrying-270-people-sinks-off-coast-of-northern-cyprus"
-    },
-    {
       "source": "Guardian World",
       "headline": "China is concealing scale of flood disaster, say Tibet campaigners",
       "normalized": "china is concealing scale of flood disaster say tibet campaigners",
@@ -257,13 +250,6 @@
       "normalized": "clara tauson ude af us open",
       "description": "",
       "url": "https://www.dr.dk/sporten/tennis/clara-tauson-ude-af-us-open"
-    },
-    {
-      "source": "BBC World",
-      "headline": "Company offering reward for safe return of truckload of beer",
-      "normalized": "company offering reward for safe return of truckload of beer",
-      "description": "Police say a thief presented false documentation at a California distribution centre before driving off with the shipment.",
-      "url": "https://www.bbc.co.uk/news/articles/c780wzj86pno?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "BBC Europe",
@@ -285,13 +271,6 @@
       "normalized": "dagens første skybrud registreret",
       "description": "",
       "url": "https://www.dr.dk/nyheder/seneste/dagens-foerste-skybrud-registreret"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Damaged Gaza ambulance becomes ‘dream bus’ for children",
-      "normalized": "damaged gaza ambulance becomes dream bus for children",
-      "description": "A damaged ambulance in Gaza has been converted by the Palestinian Red Crescent Society into the ‘Dream Bus’.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/damaged-gaza-ambulance-becomes-dream-bus-for-children?traffic_source=rss"
     },
     {
       "source": "The Local Denmark",
@@ -350,18 +329,18 @@
       "url": "https://www.thelocal.dk/20260831/denmark-set-to-host-annual-citizenship-day-for-thousands-of-new-danes"
     },
     {
+      "source": "DR",
+      "headline": "Der er ikke længere en trussel mod Letlands luftrum",
+      "normalized": "der er ikke længere en trussel mod letlands luftrum",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/mulig-lufttrussel-i-letland-er-afblaest"
+    },
+    {
       "source": "BBC Europe",
       "headline": "Djokovic in tears during US Open first-round exit",
       "normalized": "djokovic in tears during us open first round exit",
       "description": "An emotional Novak Djokovic suffers a US Open first-round defeat which provides further evidence that age is catching up with the 39-year-old great.",
       "url": "https://www.bbc.co.uk/sport/tennis/articles/c39m1le9gjeo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "BBC World",
-      "headline": "Dolly Parton's dad couldn't read - it inspired her to send books to millions of children",
-      "normalized": "dolly parton s dad couldn t read it inspired her to send books to millions of children",
-      "description": "Families across the globe share how free books from Parton's Imagination Library helped their children.",
-      "url": "https://www.bbc.co.uk/news/articles/cpwlrrzp8eeo?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "Guardian World",
@@ -427,18 +406,18 @@
       "url": "https://www.bbc.co.uk/news/articles/c5ywd9q3ywvo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Firecracker factory blast in India kills 8 children",
-      "normalized": "firecracker factory blast in india kills 8 children",
-      "description": "Videos reveal demolished houses and desperate rescue efforts after third such blast at a firecracker factory this year.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/firecracker-factory-blast-in-india-kills-8-children?traffic_source=rss"
-    },
-    {
       "source": "DR",
       "headline": "Fiskeri efter blåmuslinger i Limfjorden begrænses",
       "normalized": "fiskeri efter blåmuslinger i limfjorden begrænses",
       "description": "",
       "url": "https://www.dr.dk/nyheder/seneste/fiskeri-efter-blaamuslinger-i-limfjorden-begraenses"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Five years after Saied’s power grab, Tunisia’s old grievances resurface",
+      "normalized": "five years after saied s power grab tunisia s old grievances resurface",
+      "description": "Economic grievances persist while space for dissent has narrowed under President Kais Saied.",
+      "url": "https://www.aljazeera.com/news/2026/9/1/five-years-after-saieds-power-grab-tunisias-old-grievances-resurface?traffic_source=rss"
     },
     {
       "source": "Euronews",
@@ -448,18 +427,18 @@
       "url": "http://www.euronews.com/video/2026/08/31/flash-flood-hits-grand-canyons-phantom-ranch-more-than-20-people-missing"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "Former gang leader found guilty of Tupac Shakur’s 1996 murder",
+      "normalized": "former gang leader found guilty of tupac shakur s 1996 murder",
+      "description": "A Las Vegas jury has found former gang leader Duane ‘Keffe D’ Davis guilty of Tupac Shakur’s 1996 murder.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/9/1/09-01-26-tupac-murder-verdict-sv?traffic_source=rss"
+    },
+    {
       "source": "DR",
       "headline": "Frankrig og Sverige underskriver forsvarsaftale",
       "normalized": "frankrig og sverige underskriver forsvarsaftale",
       "description": "",
       "url": "https://www.dr.dk/nyheder/seneste/frankrig-og-sverige-underskriver-forsvarsaftale"
-    },
-    {
-      "source": "Guardian World",
-      "headline": "French high schools rush to put Macron’s phone ban into force",
-      "normalized": "french high schools rush to put macron s phone ban into force",
-      "description": "<p>Unions say ban will take time to enact, while president also wants under-15s social media ban as key legacy</p><p>French high schools are rushing to put in place a ban on mobile phones this week as Emmanuel Macron pushes for children to spend less time in front of screens.</p><p>Education unions warned that banning mobile phone use in <em>lycées</em> – where children are aged 15 to 18 – would be hard to implement quickly.</p> <a href=\"https://www.theguardian.com/world/2026/aug/31/french-high-schools-phone-ban-macron\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/world/2026/aug/31/french-high-schools-phone-ban-macron"
     },
     {
       "source": "BBC World",
@@ -539,6 +518,13 @@
       "url": "https://www.bbc.co.uk/news/videos/c4g79v842xjo?at_medium=RSS&at_campaign=rss"
     },
     {
+      "source": "Guardian World",
+      "headline": "Iceland’s close ties with EU mean no vote is not a Brexit-style rejection",
+      "normalized": "iceland s close ties with eu mean no vote is not a brexit style rejection",
+      "description": "<p>A yes to membership would have given Brussels a boost but Icelanders have not voted to isolate themselves </p><p>Iceland’s 52.8% to 47.2% <a href=\"https://www.theguardian.com/world/2026/aug/30/iceland-eu-accession-talks-referendum-result\">vote against reopening EU accession talks</a> is, undeniably, a blow for Brussels. But claiming it as a Brexit-style victory for “national sovereignty” or evidence of broad rejection of the EU misrepresents the reality of the island’s relationship with the bloc.</p><p>For the EU, Iceland was a dream candidate: small, stable, prosperous and strategically located in an increasingly contested Arctic. Eager as it is to wield more geopolitical clout and revive flagging momentum around enlargement, a vote in favour would have given Brussels a very welcome boost.</p> <a href=\"https://www.theguardian.com/world/2026/sep/01/iceland-ties-eu-no-vote-not-brexit-style-rejection\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/world/2026/sep/01/iceland-ties-eu-no-vote-not-brexit-style-rejection"
+    },
+    {
       "source": "The Local Denmark",
       "headline": "Iceland votes &#039;No&#039; to resuming EU talks",
       "normalized": "iceland votes 039 no 039 to resuming eu talks",
@@ -554,24 +540,10 @@
     },
     {
       "source": "Euronews",
-      "headline": "Icelanders react as the EU referendum results come in",
-      "normalized": "icelanders react as the eu referendum results come in",
-      "description": "Icelanders react as voters reject a proposal to restart European Union accession talks in a closely contested referendum.",
-      "url": "http://www.euronews.com/video/2026/08/30/icelanders-react-as-the-eu-referendum-results-come-in"
-    },
-    {
-      "source": "Euronews",
       "headline": "India and Uzbekistan deepen ties, eye $5bn trade and long-term uranium supplies",
       "normalized": "india and uzbekistan deepen ties eye 5bn trade and long term uranium supplies",
       "description": "The two governments also broadened cooperation on critical minerals, defence, digital payments and transport. A new foreign minister-level mechanism will oversee implementation, alongside expanded education and regional links.",
       "url": "http://www.euronews.com/2026/08/30/india-and-uzbekistan-deepen-ties-eye-5bn-trade-and-long-term-uranium-supplies"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "India’s PM Modi urges end to Ukraine war in talks with Russia’s Putin",
-      "normalized": "india s pm modi urges end to ukraine war in talks with russia s putin",
-      "description": "India’s PM Narendra Modi told Russian President Putin that India supports every effort to end the war in Ukraine.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/indias-pm-modi-urges-end-to-ukraine-war-in-talks-with-russias-putin?traffic_source=rss"
     },
     {
       "source": "DR",
@@ -602,6 +574,13 @@
       "url": "https://www.theguardian.com/world/2026/aug/31/iran-economy-crisis-usa-launches-sanctions-inflation-trump"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "Iran war live: Trump vows to strike Iran ‘hard’ after first clash in month",
+      "normalized": "iran war live trump vows to strike iran hard after first clash in month",
+      "description": "President Donald Trump says the US will respond to Iranian strikes on its personnel in Jordan.",
+      "url": "https://www.aljazeera.com/news/liveblog/2026/9/1/iran-war-live-trump-vows-to-hit-iran-following-first-clash-in-a-month?traffic_source=rss"
+    },
+    {
       "source": "BBC Europe",
       "headline": "Is UK's Storm Shadow missile a game changer for Ukraine?",
       "normalized": "is uk s storm shadow missile a game changer for ukraine",
@@ -610,17 +589,17 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Israel’s Ben-Gvir storms Al-Aqsa mosque in occupied East Jerusalem",
-      "normalized": "israel s ben gvir storms al aqsa mosque in occupied east jerusalem",
-      "description": "Far-right minister entered Islam’s third-holiest site alongside settlers under protection of Israeli occupation forces.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/israeli-hardliner-storms-al-aqsa-mosque-in-occupied-east-jerusalem?traffic_source=rss"
-    },
-    {
-      "source": "Al Jazeera",
       "headline": "Israeli outposts expand as Palestinian homes are demolished",
       "normalized": "israeli outposts expand as palestinian homes are demolished",
       "description": "Israeli forces demolish Palestinian homes in Nablus, while in Hebron settlers cleared land for a new outpost.",
       "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/israeli-outposts-expand-as-palestinian-homes-are-demolished?traffic_source=rss"
+    },
+    {
+      "source": "BBC World",
+      "headline": "Japan Inc is betting big on India as China risks deepen",
+      "normalized": "japan inc is betting big on india as china risks deepen",
+      "description": "Japanese companies are doubling down on India amid a shrinking domestic market and rising risks in China.",
+      "url": "https://www.bbc.co.uk/news/articles/cz64955d56po?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "Al Jazeera",
@@ -635,6 +614,20 @@
       "normalized": "john galliano exhibition at new york met cancelled after backlash",
       "description": "The exhibition faced criticism over the British fashion designer's conviction for making antisemitic remarks in 2011.",
       "url": "https://www.bbc.co.uk/news/articles/c4gkp6pgy03o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "John Ternus to lead Apple into the age of AI",
+      "normalized": "john ternus to lead apple into the age of ai",
+      "description": "Incoming CEO inherits company that leads the smartphone market but trails rivals in AI.",
+      "url": "https://www.aljazeera.com/economy/2026/9/1/john-ternus-to-lead-apple-into-the-age-of-ai?traffic_source=rss"
+    },
+    {
+      "source": "Guardian World",
+      "headline": "Kākāpō rising: 90 chicks swell population of the world’s heaviest parrot",
+      "normalized": "k k p rising 90 chicks swell population of the world s heaviest parrot",
+      "description": "<p>Critically endangered New Zealand bird enjoys record breeding season triggered by mass fruiting of native tree, pushing its numbers to 325</p><p>The population of the world’s heaviest parrot, <a href=\"https://www.theguardian.com/world/2020/nov/16/kakapo-the-worlds-fattest-parrot-named-new-zealands-bird-of-the-year-for-2020\">the kākāpō</a>, has surpassed 300 birds for the first time in 75 years, after a record breeding season triggered by the mass fruiting of a native New Zealand tree.</p><p>Ninety chicks were officially added to the population of the critically endangered birds on 1 September, pushing the total to 325 – a record high since recovery efforts began.</p> <a href=\"https://www.theguardian.com/world/2026/sep/01/record-breeding-worlds-heaviest-parrot-nz-endangered-kakapo\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/world/2026/sep/01/record-breeding-worlds-heaviest-parrot-nz-endangered-kakapo"
     },
     {
       "source": "DR",
@@ -679,11 +672,18 @@
       "url": "https://www.aljazeera.com/news/2026/8/31/lebanon-asks-greece-to-help-enforce-agreement-with-israel?traffic_source=rss"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "‘Let Data Reign’: Trump decries opposition to data centres in US",
-      "normalized": "let data reign trump decries opposition to data centres in us",
-      "description": "Despite concerns over electricity and water consumption, US president calls on communities to embrace data centres.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/let-data-reign-trump-decries-opposition-to-data-centres-in-us?traffic_source=rss"
+      "source": "DR",
+      "headline": "Letbanestrækning i Aarhus indstillet efter uheld",
+      "normalized": "letbanestrækning i aarhus indstillet efter uheld",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/letbanestraekning-i-aarhus-indstillet-efter-uheld"
+    },
+    {
+      "source": "Guardian World",
+      "headline": "Madrid residents brace for noise and disruption from new F1 circuit",
+      "normalized": "madrid residents brace for noise and disruption from new f1 circuit",
+      "description": "<p>City council emphasises economic case for Madring amid local outrage over disruption and environmental impact</p><p>Opponents of Madrid’s newly constructed Formula One circuit have accused the regional authorities of putting profit before people’s wellbeing after tests for <a href=\"https://www.theguardian.com/sport/2025/jun/10/madrid-arrives-24-race-formula-one-2026-cadillac-new-on-grid-motor-sport\">the inaugural Spanish Grand Prix at the track</a> later this month yielded noise levels that were almost twice the legal decibel limit.</p><p>The regional government of Madrid and the city council are hoping that the 5.4km-long (3.3 miles) Madring circuit – which has been built in the north-east of the Spanish capital at a cost of €83m (£71m) – will attract visitors, boost the local economy and put the city firmly on the motor racing map. The Madring bills itself as “a perfectly connected circuit: just 20 minutes from the city centre”.</p> <a href=\"https://www.theguardian.com/world/2026/sep/01/madrid-f1-circuit-noise-levels-madring\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/world/2026/sep/01/madrid-f1-circuit-noise-levels-madring"
     },
     {
       "source": "BBC Europe",
@@ -749,13 +749,6 @@
       "url": "https://www.bbc.co.uk/sport/formula1/articles/ckg8w8qj5z9o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "BBC World",
-      "headline": "'Moonies' church leader jailed for two years over bribery offences",
-      "normalized": "moonies church leader jailed for two years over bribery offences",
-      "description": "Han Hak-ja, 83, gave South Korea's former first lady two Chanel bags and a diamond necklace, a court found.",
-      "url": "https://www.bbc.co.uk/news/articles/c8xkqjdk142o?at_medium=RSS&at_campaign=rss"
-    },
-    {
       "source": "DR",
       "headline": "Mor og datter får tilsammen 23 års fængsel",
       "normalized": "mor og datter får tilsammen 23 års fængsel",
@@ -798,11 +791,11 @@
       "url": "https://www.theguardian.com/world/2026/aug/31/nepal-tibet-floods-rescuers-hundreds-trapped-hydropower"
     },
     {
-      "source": "Guardian World",
-      "headline": "Newborn baby’s body found in Sydney rubbish bin as police hold ‘serious concerns’ for mother",
-      "normalized": "newborn baby s body found in sydney rubbish bin as police hold serious concerns for mother",
-      "description": "<p>Police urge mother to attend hospital after baby’s body discovered in Harrow Road in Auburn</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p></p><p>New South Wales police have appealed for information to find the mother of a newborn baby boy, whose body was discovered in a rubbish bin in Auburn in Sydney’s west on Monday morning.</p><p>Police said emergency services responded to reports of the body of a baby located in a rubbish bin at a unit block along Harrow Road in Auburn at 11.20am, with officers from the Auburn police area command finding the body of a newborn boy.</p> <a href=\"https://www.theguardian.com/australia-news/2026/aug/31/baby-body-found-garbage-rubbish-bin-harrow-road-aubur",
-      "url": "https://www.theguardian.com/australia-news/2026/aug/31/baby-body-found-garbage-rubbish-bin-harrow-road-auburn-sydney-ntwnfb"
+      "source": "Al Jazeera",
+      "headline": "New York police kill knife-wielding woman in Times Square",
+      "normalized": "new york police kill knife wielding woman in times square",
+      "description": "A woman has been shot dead by police in New York’s Times Square. Police say she was armed with knives.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/9/1/09-01-26-times-square-stabbing-minisv?traffic_source=rss"
     },
     {
       "source": "BBC Europe",
@@ -826,6 +819,13 @@
       "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/nothing-is-usable-nepal-residents-return-to-flood-ravaged-homes?traffic_source=rss"
     },
     {
+      "source": "Guardian World",
+      "headline": "NSW top prosecutor Sally Dowling and state attorney general discussed which barristers could review her office, estimates hears",
+      "normalized": "nsw top prosecutor sally dowling and state attorney general discussed which barristers could review her office estimates hears",
+      "description": "<p>Sally Dowling tells budget estimates that Michael Daley called to tell her he was appointing a senior counsel and ‘raised quite a number of names’</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/sep/01/nepal-tibet-flooding-missing-australians-penny-wong-anthony-albanese-pacific-islands-forum-liberal-national-coalition-one-nation-politics-reactions-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>The top prosecutor in NSW says she discussed a list of barristers to lead an independent review into controversial findings against her office with the state’s attorney general, before he appointed someone she had known “professionally and socially” for nearly 30 years.</p><p>Last month, a state parliamentary committee voted 4-3 to find that the New South Wales director of public prosecutions (DPP), Sally Dowling SC, <a href=\"https://www.theguardian.c",
+      "url": "https://www.theguardian.com/australia-news/2026/sep/01/nsw-prosecutor-sally-dowling-discussed-barristers-attorney-general-dpp-ntwnfb"
+    },
+    {
       "source": "DR",
       "headline": "Ny type kaninpest fundet i danske harer",
       "normalized": "ny type kaninpest fundet i danske harer",
@@ -847,6 +847,13 @@
       "url": "https://www.thelocal.dk/20260829/on-the-agenda-whats-happening-in-denmark-this-week-6"
     },
     {
+      "source": "Euronews",
+      "headline": "One person killed as woman randomly stabs two people in Times Square before being fatally shot by police",
+      "normalized": "one person killed as woman randomly stabs two people in times square before being fatally shot by police",
+      "description": "The woman behind the attack has reportedly had a history of mental health issues with New York police but no arrest record prior to her stabbing attacks on Tuesday.",
+      "url": "http://www.euronews.com/2026/09/01/one-person-killed-as-woman-randomly-stabs-two-people-in-times-square-before-being-fatally-"
+    },
+    {
       "source": "The Local Denmark",
       "headline": "OPINION: The Danish flag-obsession is more &#039;hyggelig&#039; than threatening",
       "normalized": "opinion the danish flag obsession is more 039 hyggelig 039 than threatening",
@@ -862,31 +869,10 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Palestinian farmers rebuild what Israeli settlers destroy in West Bank",
-      "normalized": "palestinian farmers rebuild what israeli settlers destroy in west bank",
-      "description": "Israeli settler pogroms destroy greenhouses and crops, but Burin&#039;s farmers insist on rebuilding.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/palestinian-farmers-rebuild-what-israeli-settlers-destroy-in-west-bank?traffic_source=rss"
-    },
-    {
-      "source": "Al Jazeera",
       "headline": "Pan Am 103: What to know as alleged Lockerbie bombmaker faces US trial",
       "normalized": "pan am 103 what to know as alleged lockerbie bombmaker faces us trial",
       "description": "Abu Agila Mohammad Mas’ud Kheir Al-Marimi is the third person charged in the downing of Pan Am Flight 103.",
       "url": "https://www.aljazeera.com/news/2026/8/31/what-to-know-us-court-hearing-held-for-alleged-lockerbie-bombmaker?traffic_source=rss"
-    },
-    {
-      "source": "BBC World",
-      "headline": "Passengers stranded as strike disrupts flights at Kenya's main airport",
-      "normalized": "passengers stranded as strike disrupts flights at kenya s main airport",
-      "description": "Kenya Airways says the strike has caused delays of more than six hours, with some flights cancelled.",
-      "url": "https://www.bbc.co.uk/news/articles/c783x05nnlko?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "DR",
-      "headline": "Pedro Sánchez: Israel og Rusland udnyttede Ceuta-krisen",
-      "normalized": "pedro sánchez israel og rusland udnyttede ceuta krisen",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/pedro-sanchez-israel-og-rusland-udnyttede-ceuta-krisen"
     },
     {
       "source": "Guardian World",
@@ -917,13 +903,6 @@
       "url": "https://www.aljazeera.com/news/2026/8/31/putin-and-xi-affirm-strategic-alliance-amid-unpredictable-world?traffic_source=rss"
     },
     {
-      "source": "Guardian World",
-      "headline": "Qantas ground crews vote for right to strike amid pay dispute – as it happened",
-      "normalized": "qantas ground crews vote for right to strike amid pay dispute as it happened",
-      "description": "<p>This blog is now closed</p><ul><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>The Australian government is working with Russian officials in a bid to secure the release of Australian <strong>Oscar Jenkins</strong>, <strong>Matt Thistlethwaite</strong> says.<br><br> Speaking to ABC news breakfast, the assistant minister for foreign affairs declined to answer whether a prisoner swap was on the table.</p><p>Obviously, we try and negotiate as best we can on behalf of all Australians who find themselves in difficulties such as this. We obviously have to abide by international laws and we always uphold them. But the Australian officials on the ground will work with their counterparts to ensure that, hopefully he’s returned to Australia safely.</p> <a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb"
-    },
-    {
       "source": "BBC Europe",
       "headline": "Russian strikes destroy 12 million books ahead of Ukraine's first week back at school",
       "normalized": "russian strikes destroy 12 million books ahead of ukraine s first week back at school",
@@ -952,6 +931,13 @@
       "url": "https://www.bbc.co.uk/news/articles/c1mv5ggg1l8o?at_medium=RSS&at_campaign=rss"
     },
     {
+      "source": "BBC World",
+      "headline": "Shein shares fall in long-awaited stock market debut",
+      "normalized": "shein shares fall in long awaited stock market debut",
+      "description": "The firm's Hong Kong listing on Tuesday comes after a years-long quest to sell shares in New York and London.",
+      "url": "https://www.bbc.co.uk/news/articles/c3v0qrz7z25o?at_medium=RSS&at_campaign=rss"
+    },
+    {
       "source": "DR",
       "headline": "Sigtelse mod lastbilschauffør efter dødsulykke med politielev droppet",
       "normalized": "sigtelse mod lastbilschauffør efter dødsulykke med politielev droppet",
@@ -973,13 +959,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/skib-mistaenkt-vaere-del-af-skyggeflaaden-bordet-af-eu-mission"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Sony, Warner Music sue Anthropic, saying it pirated songs to train its AI",
-      "normalized": "sony warner music sue anthropic saying it pirated songs to train its ai",
-      "description": "Anthropic pirated hundreds of lyrics from The Beatles, Taylor Swift, Michael Jackson and other artists, lawsuit says.",
-      "url": "https://www.aljazeera.com/economy/2026/8/31/sony-warner-music-sue-anthropic-saying-it-pirated-songs-to-train-its-ai?traffic_source=rss"
-    },
-    {
       "source": "Euronews",
       "headline": "South African airline Airlink defends dramatic stadium flyover",
       "normalized": "south african airline airlink defends dramatic stadium flyover",
@@ -999,6 +978,13 @@
       "normalized": "south african airline defends low altitude aerial stunt over packed stadium",
       "description": "Airlink says the manoeuvre with two planes in close formation involved careful and precise planning.",
       "url": "https://www.bbc.co.uk/news/articles/c3rew8jqny5o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Guardian World",
+      "headline": "Sydney home invasion during which man shot and killed a ‘targeted attack’, police believe",
+      "normalized": "sydney home invasion during which man shot and killed a targeted attack police believe",
+      "description": "<p>Alleged offenders at large after man in his early 20s fatally shot in early hours of Tuesday</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/sep/01/nepal-tibet-flooding-missing-australians-penny-wong-anthony-albanese-pacific-islands-forum-liberal-national-coalition-one-nation-politics-reactions-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>A man in his early 20s has been fatally shot in an alleged home invasion in Sydney’s south-west that police believe was a “targeted attack”. A homicide investigation is under way, with the alleged offenders still at large.</p><p>Acting Supt Gretchin Atkins said the man, who was yet to be formally identified, was at his Glen Alpine home with his family in the early hours of Tuesday morning when multiple individuals allegedly broke in.</p> <a href=\"https://www.theguardian.com/australia-news/2026/sep/01/man",
+      "url": "https://www.theguardian.com/australia-news/2026/sep/01/man-shot-killed-glen-alpine-sydney-home-invasion-nsw-police-ntwnfb"
     },
     {
       "source": "BBC World",
@@ -1065,10 +1051,10 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Top US general says no plans to deploy troops for 2026 midterm elections",
-      "normalized": "top us general says no plans to deploy troops for 2026 midterm elections",
-      "description": "Remarks come in response to concerns from Democrats that military could be used to interfere in elections.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/top-us-general-says-no-plans-to-send-troops-to-polls-for-november-elections?traffic_source=rss"
+      "headline": "Toxic haze from Indonesian fires chokes Malaysia’s Sarawak",
+      "normalized": "toxic haze from indonesian fires chokes malaysia s sarawak",
+      "description": "Respiratory illnesses surge as smoke settles over Malaysia&#039;s Sarawak in the region&#039;s worst haze crisis in a decade.",
+      "url": "https://www.aljazeera.com/news/2026/9/1/toxic-haze-from-indonesian-fires-chokes-malaysian-borneo?traffic_source=rss"
     },
     {
       "source": "Guardian World",
@@ -1144,8 +1130,22 @@
       "source": "Al Jazeera",
       "headline": "US Army Secretary Daniel Driscoll submits resignation, media reports say",
       "normalized": "us army secretary daniel driscoll submits resignation media reports say",
-      "description": "Army secretary&#039;s resignation follows months of tensions with US Defense Secretary Pete Hegseth, US media reports say.",
+      "description": "Driscoll&#039;s resignation follows months of tensions with Defense Secretary Pete Hegseth, US media reports say.",
       "url": "https://www.aljazeera.com/news/2026/8/31/us-army-secretary-daniel-driscoll-submits-resignation-media-reports-say?traffic_source=rss"
+    },
+    {
+      "source": "BBC World",
+      "headline": "US army secretary resigns after months of tension",
+      "normalized": "us army secretary resigns after months of tension",
+      "description": "Dan Driscoll, the youngest-ever army secretary, was about 18 months into his post.",
+      "url": "https://www.bbc.co.uk/news/articles/czjz31dk1xmo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "US brings back Russia’s Siluanov to G20 finance talks, angering Europe",
+      "normalized": "us brings back russia s siluanov to g20 finance talks angering europe",
+      "description": "Anton Siluanov holds talks with US counterpart as European officials object to Russia&#039;s return to G20 talks.",
+      "url": "https://www.aljazeera.com/news/2026/9/1/us-brings-back-russias-siluanov-to-g20-finance-talks-angering-europe?traffic_source=rss"
     },
     {
       "source": "Euronews",
@@ -1197,18 +1197,18 @@
       "url": "https://www.bbc.co.uk/news/articles/cy9zj11gwzxo?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "DR",
-      "headline": "VVS'er får ti års fængsel for at overvåge kokain-transport",
-      "normalized": "vvs er får ti års fængsel for at overvåge kokain transport",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/vvs-er-faar-ti-aars-faengsel-overvaage-kokain-transport"
-    },
-    {
       "source": "Guardian World",
       "headline": "Was it a mistake for 99 Colombian guerrillas to lay down their arms?",
       "normalized": "was it a mistake for 99 colombian guerrillas to lay down their arms",
       "description": "<p>Fighters in legal limbo after accepting ‘total peace’ plan of Petro government just days before hardliner Abelardo De la Espriella took over</p><p>In mid-June, 99 guerrilla fighters were flown by helicopter to a small settlement in a rural area of southern Colombia where they lined up and, one by one, handed their weapons to government officials: rifles, pistols, machine guns and grenade launchers.</p><p>They also stripped off their heavy tactical vests, field packs and camouflage uniforms, which were each piled into a bonfire to mark the beginning of a new life away from an armed conflict that has claimed nearly half a million lives in the last six decades.</p> <a href=\"https://www.theguardian.com/world/2026/aug/29/former-guerrillas-colombia-fate-new-president\">Continue reading...</a>",
       "url": "https://www.theguardian.com/world/2026/aug/29/former-guerrillas-colombia-fate-new-president"
+    },
+    {
+      "source": "BBC World",
+      "headline": "Watch: Moment Duane 'Keffe D' Davis is found guilty of Tupac Shakur's murder",
+      "normalized": "watch moment duane keffe d davis is found guilty of tupac shakur s murder",
+      "description": "The rapper's killing became one of popular culture's great mysteries, with countless theories but no arrests until 2023.",
+      "url": "https://www.bbc.co.uk/news/videos/ckg7yrwp70qo?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "Guardian World",
@@ -1218,18 +1218,18 @@
       "url": "https://www.theguardian.com/environment/2026/aug/31/weather-tracker-warm-yellow-sea-storms-south-korea"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Western Balkans truck drivers threaten EU border blockade",
-      "normalized": "western balkans truck drivers threaten eu border blockade",
-      "description": "Drivers demand an exemption to 90-day limit to stay in Schengen area, saying current rules stop them from working.",
-      "url": "https://www.aljazeera.com/economy/2026/8/31/western-balkans-truck-drivers-threaten-eu-border-blockade?traffic_source=rss"
-    },
-    {
       "source": "The Local Denmark",
       "headline": "What&#039;s the difference between Schengen and EU free movement rules?",
       "normalized": "what 039 s the difference between schengen and eu free movement rules",
       "description": "With countries across Europe reintroducing police checks at internal borders with neighbouring states there has been renewed attention on how the borderless Schengen area works and how it&#039;s linked to the EU\"s free movement principle.",
       "url": "https://www.thelocal.dk/20260828/whats-the-difference-between-schengen-and-eu-free-movement-rules"
+    },
+    {
+      "source": "BBC World",
+      "headline": "What it was like inside court for Tupac Shakur’s murder trial verdict",
+      "normalized": "what it was like inside court for tupac shakur s murder trial verdict",
+      "description": "BBC presenter Anoushka Mutanda-Dougherty describes what it was like when Duane \"Keffe D\" Davis was found guilty of murdering the famous rapper.",
+      "url": "https://www.bbc.co.uk/news/videos/cz6zp2pwzx5o?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "Euronews",

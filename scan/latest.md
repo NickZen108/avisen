@@ -1,32 +1,32 @@
-# Scan 2026-08-31T23:55:20.479Z (Cloudflare runtime)
+# Scan 2026-09-01T04:55:31.553Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
 ## Al Jazeera
+- African NGOs demand probe into six bodies found in Guinea mass grave
+- Algeria’s president seeks death penalty for those who start forest fires
 - Argentinian footballer Lionel Messi announces his retirement
 - Arsenal edge past troubled Aston Villa 1-0 as Saka scores only goal
-- Damaged Gaza ambulance becomes ‘dream bus’ for children
 - Far-right Israeli Minister Ben-Gvir and settlers storm Al-Aqsa Mosque
-- Firecracker factory blast in India kills 8 children
+- Five years after Saied’s power grab, Tunisia’s old grievances resurface
+- Former gang leader found guilty of Tupac Shakur’s 1996 murder
 - GTA 6: Why is the world’s most anticipated game facing backlash?
 - How will the Mecca agreement become an operational framework?
-- India’s PM Modi urges end to Ukraine war in talks with Russia’s Putin
-- Israel’s Ben-Gvir storms Al-Aqsa mosque in occupied East Jerusalem
+- Iran war live: Trump vows to strike Iran ‘hard’ after first clash in month
 - Israeli outposts expand as Palestinian homes are demolished
 - JERUSALEM DAILY: JOURNALISTS ATTACKED
+- John Ternus to lead Apple into the age of AI
 - Lebanon asks Greece to help enforce agreement with Israel
-- ‘Let Data Reign’: Trump decries opposition to data centres in US
+- New York police kill knife-wielding woman in Times Square
 - ‘Nothing is usable’: Nepal residents return to flood-ravaged homes
-- Palestinian farmers rebuild what Israeli settlers destroy in West Bank
 - Pan Am 103: What to know as alleged Lockerbie bombmaker faces US trial
 - Poland opens terror probe into fire at factory supplying Ukraine drones
 - Putin, Xi reaffirm Russia-China ties amid ‘unpredictable’ world
-- Sony, Warner Music sue Anthropic, saying it pirated songs to train its AI
 - Three minors killed in Colombia armed group crackdown
-- Top US general says no plans to deploy troops for 2026 midterm elections
+- Toxic haze from Indonesian fires chokes Malaysia’s Sarawak
 - Ukrainians mourn community leader killed in Russian strike on Myla
 - US Army Secretary Daniel Driscoll submits resignation, media reports say
-- Western Balkans truck drivers threaten EU border blockade
+- US brings back Russia’s Siluanov to G20 finance talks, angering Europe
 - White House construction on $400m ballroom can go on, says US Supreme Court
 
 ## BBC Europe
@@ -60,32 +60,32 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## BBC World
 - Across Latin America, 'aura battles' burst onto the scene
-- Algeria president seeks death penalty for arsonists after deadly forest fires
-- Company offering reward for safe return of truckload of beer
 - Deadly strike on Kyiv warehouse prompts evacuations
-- Dolly Parton's dad couldn't read - it inspired her to send books to millions of children
 - Ex-congressman George Santos banned from betting platform for life
 - Festival honouring Dolly Parton set for Nashville and London
 - From playing Serena Williams on screen to following in her footsteps
 - How the US-Canada trade war is being felt on both sides of the border
 - 'I haven't lost my hope' - the search for missing loved ones
+- Japan Inc is betting big on India as China risks deepen
 - John Galliano exhibition at New York Met cancelled after backlash
 - Man arrested after Swiss rave shooting that killed woman
 - Messi retires from international football with 'nothing left to give'
 - Monza memories - Italian GP in pictures through the years
-- 'Moonies' church leader jailed for two years over bribery offences
 - Nepal flood relief vehicles trapped as heavy rain turns roads to mud
 - Nepal rescuers blast hillside in search of hydropower workers as families wait anxiously
 - Orangutans in danger as wildfires blaze through Borneo
-- Passengers stranded as strike disrupts flights at Kenya's main airport
 - 'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus
+- Shein shares fall in long-awaited stock market debut
 - South African airline defends low-altitude aerial stunt over packed stadium
 - The jury's options in Lindsay Clancy's murder trial
 - Trump pushes Apple to change 'Lake Ontario' to 'Lake America' on its maps
 - Two dead and more than a dozen missing after 'terrifying' flash flood hits Grand Canyon
 - US and Iran trade strikes for first time in weeks
+- US army secretary resigns after months of tension
 - US singer D4vd's celebrity lawyers withdraw from murder case
 - US Supreme Court clears way for Trump to keep building White House ballroom
+- Watch: Moment Duane 'Keffe D' Davis is found guilty of Tupac Shakur's murder
+- What it was like inside court for Tupac Shakur’s murder trial verdict
 - WhatsApp chat used to launder cash for crime and extremism
 
 ## DR
@@ -95,33 +95,32 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Clara Tauson ude af US Open
 - Dagens første skybrud registreret
 - Danmark genåbner ambassade i Syrien efter 14 år
+- Der er ikke længere en trussel mod Letlands luftrum
 - Far idømmes seks års fængsel for dødsvold mod spædbarn
 - Fiskeri efter blåmuslinger i Limfjorden begrænses
 - Frankrig og Sverige underskriver forsvarsaftale
 - Indiens premierminister opfordrer til at standse krigen i Ukraine
 - Knivstikkeri spærrer Times Square i New York
+- Letbanestrækning i Aarhus indstillet efter uheld
 - Mor og datter får tilsammen 23 års fængsel
 - Ny type kaninpest fundet i danske harer
-- Pedro Sánchez: Israel og Rusland udnyttede Ceuta-krisen
 - Politiet advarer om kø inden traktordemonstration
 - Sigtelse mod lastbilschauffør efter dødsulykke med politielev droppet
 - Skib mistænkt for at være del af skyggeflåden bordet af EU-mission
 - To anholdt efter knivstikkeri ved værtshus i Aalborg
 - To personer døde under oversvømmelser i Grand Canyon
-- VVS'er får ti års fængsel for at overvåge kokain-transport
 
 ## Euronews
 - 200 bikers gather at Italy's Castel Gandolfo for motorcycle blessing
 - Algerian president seeks to impose death penalty on arsonists
+- At least four people killed as Russia launches nighttime ballistic missile attacks targeting Ukraine's capital
 - Authorities in Nepal carry out temporary burials of unidentified flood victims causing public outrage
 - Body of 46-year-old man recovered after Grand Canyon flash flood, park service says
 - Buenos Aires welcomes 800 couples for Tango BA World Championship
-- Captain arrested after eight people die in ferry capsize off northern Cyprus
 - Eurasian nations gather in Bishkek to forge stronger ties, new alliances
 - Exclusive: US naval blockade is paralysing daily life, Iranians tell Euronews
 - Flash flood hits Grand Canyon’s Phantom Ranch, more than 20 people missing
 - Guinea-Bissau votes in referendum to rewrite constitution and boost presidential powers
-- Icelanders react as the EU referendum results come in
 - India and Uzbekistan deepen ties, eye $5bn trade and long-term uranium supplies
 - Iran launches strikes on Jordan after US attacks an island in Hormuz
 - Latest news bulletin | August 30th, 2026 – Evening
@@ -131,6 +130,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Michael Jackson fans dance to Thriller to mark King of Pop's 68th birthday
 - Nepal flood death toll passes 900 as search for survivors continues
 - Oil prices higher as US-Iran tensions flare and Warsh fans rate hikes
+- One person killed as woman randomly stabs two people in Times Square before being fatally shot by police
 - Six wounded after car bomb explodes in front of Mexico police station, officials say
 - South African airline Airlink defends dramatic stadium flyover
 - 'They wrote little letters': How kids in Portugal are making money off their neighbours' plastic waste
@@ -141,26 +141,26 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - What we know about Trump’s deal giving the US access to Venezuela’s oil
 
 ## Guardian World
-- At least 93,000 ‘in great need’ after Nepal-Tibet flash floods, says Red Cross
-- Australia news live: NSW confirms new HSC assessment rules to crack down on AI use; Sydney man killed in home invasion
+- Australia news live: PM shuts down questions of China ‘bullying’ on eve of Pacific forum; Victorian police officer charged after allegedly hitting teen with baton
 - Border area between Nepal and China where 33 Australians are missing still almost entirely cut off
-- British family pleads with French authorities to release body of relative who died in Channel
 - Canada erects giant ‘Lake Ontario’ sign as spat with Trump over name escalates
 - China is concealing scale of flood disaster, say Tibet campaigners
 - Countries legally obliged to consider slavery reparations, says UN committee
 - Egyptian queen’s 673-diamond necklace stolen in Vienna smash-and-grab raid
-- French high schools rush to put Macron’s phone ban into force
 - Germany poised to identify suspect in Leipzig drone attack on Ukrainian plane
 - Head of Viktor Orbán’s favourite thinktank quits over unpaid wages
+- Iceland’s close ties with EU mean no vote is not a Brexit-style rejection
 - Investigation into Powerhouse Parramatta museum under way as stop-gap leader steps in
 - Iran’s economy in crisis as US launches new sanctions campaign
+- Kākāpō rising: 90 chicks swell population of the world’s heaviest parrot
+- Madrid residents brace for noise and disruption from new F1 circuit
 - Morocco not to blame for Ceuta border breach, says Spanish PM
 - Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels
-- Newborn baby’s body found in Sydney rubbish bin as police hold ‘serious concerns’ for mother
+- NSW top prosecutor Sally Dowling and state attorney general discussed which barristers could review her office, estimates hears
 - People fleeing Sudan civil war face ‘dire and deteriorating’ conditions in refuge city
-- Qantas ground crews vote for right to strike amid pay dispute – as it happened
 - Search continues as number missing in Nepal-Tibet floods rises to 2,478 – as it happened
 - South African airline defends dramatic low-level flyby before rugby union clash
+- Sydney home invasion during which man shot and killed a ‘targeted attack’, police believe
 - Trump announces new US oil agreement with Venezuela
 - Trump says US will ‘hit Iran hard’ as hostilities resume – as it happened
 - Trump threatens further action as US and Iran exchange fire in new flare-up
