@@ -1,5 +1,5 @@
 name: Evidence architecture migration
-# trigger: structured provenance metadata
+# trigger: structured provenance metadata v2
 on:
   push:
     branches: [main]
@@ -21,7 +21,9 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - name: Apply structured provenance
-        run: python scripts/apply_structured_provenance.py
+        run: |
+          python scripts/apply_structured_provenance.py
+          python scripts/fix_structured_provenance_helpers.py
       - name: Validate architecture
         run: |
           node --check cloudflare/newsdesk/src/editorial.js
