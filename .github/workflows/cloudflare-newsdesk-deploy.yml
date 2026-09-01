@@ -6,6 +6,7 @@ on:
     paths:
       - 'cloudflare/newsdesk/**'
       - 'scripts/apply_newsdesk_neuron_optimization.py'
+      - 'scripts/add_ai_usage_telemetry.py'
       - '.github/workflows/cloudflare-newsdesk-deploy.yml'
   workflow_dispatch:
 
@@ -26,14 +27,15 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Apply deterministic neuron optimization
+      - name: Apply deterministic neuron optimization and usage telemetry
         run: |
           python scripts/apply_newsdesk_neuron_optimization.py
+          python scripts/add_ai_usage_telemetry.py
           if ! git diff --quiet -- cloudflare/newsdesk/src/editorial.js cloudflare/newsdesk/src/index.js; then
             git config user.name 'morgentidende-runtime-optimizer'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git add cloudflare/newsdesk/src/editorial.js cloudflare/newsdesk/src/index.js
-            git commit -m 'perf: reduce Workers AI neurons without weakening hard gates'
+            git commit -m 'feat: meter Workers AI usage per editorial cycle'
             git pull --rebase origin main
             git push origin main
           fi
@@ -66,4 +68,4 @@ jobs:
           echo "Candidates:"
           jq '{schema_version,runtime,generated_at,signal_count,feeds,fingerprint}' /tmp/candidates.json
           echo "Editorial:"
-          jq '{status,stage,generated_at,slug,reason,runtime,models}' /tmp/editorial.json
+          jq '{status,stage,generated_at,slug,reason,runtime,models,ai_usage}' /tmp/editorial.json
