@@ -1,4 +1,4 @@
-# Scan 2026-09-01T17:55:35.637Z (Cloudflare runtime)
+# Scan 2026-09-01T20:55:38.365Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -17,24 +17,24 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Woher kommt der Strom? 34. Analysewoche 2026
 
 ## Al Jazeera
-- Bank of America VP identified as victim in Times Square stabbing
+- Belgian mayor blocks club from hosting Israeli opponent in Europa League
+- Canada’s Carney says US must ‘start being serious’ to resolve trade dispute
 - China’s Xi makes first visit to Egypt in a decade, amid regional turmoil
-- Destroyed desalination plant worsens Gaza’s drinking water crisis
-- Germany accuses Russia of drone attack on Leipzig airport
-- Iran and Russia vow to stand against US ‘unilateralism’
-- Jerusalem schools strike after Israel enforces curriculum and bans teachers
+- China’s Xi makes his first visit to Egypt in a decade
+- Deep-sea search begins for 20 people missing in Cyprus ferry disaster
+- Guinea-Bissau referendum nods to expansion of presidential powers
+- Hakainde Hichilema returns as Zambia’s president following disputed vote
+- Health crisis looming as Gaza heads towards rainy season, warns WHO
+- Israel’s multiple wars see finance, defence ministries clash over spending
 - John Ternus succeeds Tim Cook as Apple CEO after 15 years
-- Mansouri rocked by Israeli strikes as residents flee again
-- ‘No one else like him’: Argentinians rally for Lionel Messi
+- Munitions vehicle explodes killing five in Idlib
+- Nepal rescuers race to reach 900 missing hydropower workers
 - Ousted UK Prime Minister Keir Starmer to quit domestic politics
-- Palestinian farmers inspect olive trees bulldozed by Israeli forces
-- Photos: Nepal begins burying flood victims in mass graves
 - Pitso Mosimane appointed by South Africa ahead of AFCON qualifiers
-- Qatar says efforts under way to end Iran-US war and reopen Strait of Hormuz
-- Six days of Russian strikes push Kyiv residents to consider leaving
 - The US military began striking targets in Iran, CENTCOM says
-- UK Foreign Secretary condemns Israeli settlements in the occupied West Bank
-- US launches new strikes against Iran as war escalates
+- UN food agency cuts aid in West Bank amid funding crisis
+- US health authorities contradict state officials on measles-related deaths
+- Vanuatu pushes France to accept ICJ jurisdiction in Pacific islands dispute
 
 ## BBC Europe
 - Allan Little: I met dangerously fanatical Mladić early in Bosnian war
@@ -62,25 +62,25 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## BBC World
 - Amazon rigged $20bn worth of ad prices, US lawsuit alleges
+- As Michigan Senate race heats up, Vance calls El-Sayed 'evil'
 - Ex-gang boss guilty of orchestrating 1996 murder of rapper Tupac Shakur
 - France targets Shein and Temu with fast fashion fees
 - Germany says Russia behind Leipzig airport drone attack
 - 'I have fired 40 of my agents for being corrupt', says Nigeria's anti-corruption chief
 - 'I've never been to Afghanistan': Six million deportees forced to start over under the Taliban
-- Israel says senior Hamas member seized as strikes kill three during Gaza raid
+- Israel says Hamas security chief captured as strikes kill four during Gaza raid
+- Jurors in Lindsay Clancy trial deadlocked but judge asks them to keep trying
 - Pistol in a lake gives hope for French cold case
 - River water smashed into tunnel and chased me for 20 minutes, Nepal worker tells BBC
 - Russian attack hits rail workers in new deadly strikes on Kyiv
 - Sexual assaults happening almost every day in Ceuta, prosecutors say
-- 'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus
 - Shein valued at $26bn after long-awaited stock market debut
 - South Korean police officer admits to closing missing person cases to avoid work
 - Teen girl charged with murder over recording of San Diego mosque attack
 - Trump says US position on Falklands 'one of many' under review
 - US army secretary resigns after months of tension
+- US launches more strikes on Iran as state media reports explosions
 - US singer D4vd's celebrity lawyers withdraw from murder case
-- US Supreme Court clears way for Trump to keep building White House ballroom
-- Vance calls Michigan Senate candidate El-Sayed 'evil' at campaign rally
 - Woman killed in Times Square stabbing, suspect shot dead by police
 - Zambia's president sworn in for second term while opponent detained
 
@@ -88,36 +88,26 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - (feed ikke nået; status=200)
 
 ## Causeur
-- Causeur #148: La dette publique, c’est moi!
-- Ce que la «romance halal» fait à Maupassant
-- Edouard Balladur, un gentilhomme en politique
-- Hollande &#8211; Philippe: duel au sommet
-- Influenceurs, abstenez-vous !
-- Liberté, liberté cherra
-- Mini-jupe, moquerie et liberté: mon programme pour la rue
-- Pourquoi « l’Ancien Régime » craint le peuple trahi
-- Rock en Seine 2026: une cuvée d’exception
-- Voiles et vapeurs de la République
+- (feed ikke nået; status=520)
 
 ## City Journal
 - (feed ikke nået; status=404)
 
 ## Contrepoints
 - Bruxelles veut « réveiller » l’épargne des Européens
-- Crédit d’impôt recherche (CIR) : pourquoi il faut baisser les charges avant de baisser les aides
+- Contrairement à ce que soutient Manon Aubry, les effectifs salariés des grandes entreprises ont augmenté ces dernières années
 - Devrons-nous interdire d’« interdire d’interdire » ?
-- Fonction publique d’État : plus de 540 primes et indemnités différentes pour un coût de 19 Md€
-- Impôt sur les successions : Bruno Retailleau relève le niveau
+- En France, le contribuable est impuissant mais présumé coupable
+- L’Islande dit non à l’UE
 - Le pouvoir d’achat s’invite dans la campagne présidentielle
-- Les enseignants français ne sont pas aussi mal payés que les syndicats le prétendent
+- Le RN veut interdire le port du voile islamique
 - Les retraites du privé confiées à un énarque, inspecteur des finances
 - Libéralisme, liberté et sécurité
-- Pourquoi les électeurs voteraient-ils LR plutôt que socialiste ou LFI ?
+- Protectionnisme : arrêt des importations de bœuf et de volaille brésiliens
 
 ## DR
 - 16.000 børn skal på 'dannelsesrejse' i Odense
 - Arkæologer finder 20 skeletter fra middelalderen midt på Frederiksberg
-- Der er ikke længere en trussel mod Letlands luftrum
 - Dødstal i Nepal opjusteret til 1.000
 - Europæisk inflation stiger markant
 - Fem dømt for grov hvidvask
@@ -125,7 +115,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - For første gang lancerer Novo Nordisk sin Wegovy-pille i et EU-land
 - Keir Starmer trækker sig fra det britiske parlament
 - Konservative forlader budgetforhandlingerne på Københavns Rådhus
-- Letbanestrækning i Aarhus indstillet efter uheld
 - Ni ud af ti nye biler kører på el
 - Ny Storstrømsbro ventes at åbne for togtrafik tidligere end regnet
 - Otte kvinder udsat for menneskehandel ved neglesaloner
@@ -134,25 +123,27 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - To dømt for usømmelig omgang med lig
 - Tre personer idømt sammenlagt mere end ti års fængsel for vidnetrusler og grov vold
 - Tysk politi har fundet sprængstof ved transformerstation i delstaten Brandenburg
+- Ung mand påkørt og stukket i armen ved større slagsmål i Glostrup
+- USA undgår nedlukning af statsapparatet
 - Vildledende markedsføring: Smykkevirksomhed politianmeldt
 
 ## DW
 - As glaciers melt, can communities be protected?
 - Can new Apple CEO John Ternus fix the tech giant's AI woes?
+- Congo's Ebola caseload tops 6,000 as concerns grow
 - Germany news: Explosive devices found near power plant
 - Germany's center-left SPD is fighting for survival
 - Germany says Russia behind attempted drone attack at Leipzig airport
 - Germany terminates lease for Berlin's Russian House
 - Iran says it will return to ceasefire if US does
+- Iran: US launches fresh strikes as hostilities flare again
 - Mladic's death, Bosnia and Serbia's unfinished reckoning
 - Nepal flood: Death toll tops 1,000 as rescue continues
 - Norway's new King Haakon VIII takes oath in parliament
 - Times Square stabbing in NYC leaves 1 dead, assailant killed
-- Tupac Shakur murder trial: Duane 'Keffe D' Davis guilty
 - Ukraine: Russia threatens 'devastating' Baltic response
 - Ulrich Siegmund wants to make Saxony-Anhalt a model for AfD rule
 - US irks Germany, Europe with Russian G20 invite, press bans
-- US Supreme Court allows Trump ballroom project to proceed
 - War and sanctions deepen Iran's fuel crisis
 - Will Bangladesh join the Mecca defense alliance?
 
@@ -160,11 +151,11 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - 44 prosent ikke-vestlige blant drapsdømte i Danmark
 - Aktor om terrorsaken mot Arfan Bhatti: – En diger sak
 - Brussel, snart like ille som Chicago
-- Fritt Ord: En hederspris til besvær?
 - Interlude: Argerich og Angelich spiller Brahms
-- Irans president møtte Xi og Putin på toppmøte
+- Kjenninger av politiet fikk gå etter å ha lagd kvalm på et tog i Larvik
+- Mor og barn ved havet (1830).
 - Ny serie: Konspitimen &#8211; et møte på Stavanger-toget
-- Sverige: Mann slått i hjel utenfor en restaurant
+- Skogpod 1. september 2026
 - Truet politiet med våpen – stor væpnet aksjon på Dyrøya
 - Tysklands innenriksminister: – Russland var involvert i droneangrep på flyplass
 
@@ -189,23 +180,23 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - World Nomad Games open in Bishkek before an audience of world leaders
 
 ## France 24
-- After the floods, Nepal works to bury hundreds of washed-up unidentified bodies
 - After 'unprecedented honeymoon', UK PM faces lawmakers for first time
+- AI data centers become surprise issue in US midterm elections
 - Alejandro Betancourt, the controversial Venezuelan oil tycoon Trump is banking on
 - At least 12 killed and over a dozen injured in Russian strikes on Kyiv
 - Child sex abuse scandals loom over France as pupils head back to school
 - Controversial designer John Galliano cancels Met exhibition after backlash
-- French astronaut takes third spacewalk outside ISS in all-female mission
 - From North Korea to ICE: Photojournalist David Guttenfelder on the front lines in Minneapolis
-- From sexual violence to mobile phones, what's changing for French pupils?
 - Germany blames Russia for Leipzig airport drone attack, orders Russian consulate closed
 - Germany set to blame Russia for airport explosive-laden drone incident
-- Ghana cocoa farmers reject new 'punitive' land conversion law
-- Jury convicts former gang member of rapper Tupac Shakur's murder
-- Nepal's rescuers navigate mud-swamped tunnels for hundreds of missing workers
+- Google Maps renames Lake Ontario to ‘Lake America’ as MapQuest downloads surge
+- Lindsay Clancy: The trial putting postpartum mental illness in the spotlight
+- Mass burials held in Nepal as bodies wash up after catastrophic flooding
 - Niger's thwarted mutiny highlights junta's dependence on Russia
 - Replay: UK PM Andy Burnham faces lawmakers for first time since taking office
-- Russia's G20 US invitation severely criticised by European countries
+- School without screens: Will France's high school phone ban fly?
+- US and Iran trade fire as hostilities flare again
+- US firm to take over some Venezuela oilfields previously run by Chinese, Russian firms
 - What to know about the new UK PM's agenda as he faces lawmakers
 
 ## FrontPageMag
@@ -247,24 +238,24 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - (feed ikke nået; status=403)
 
 ## NRK
-- Betalte med 13 bløtkaker for Haaland-kunstverk
+- Da kongen «reddet» OL-stemningen
+- Debatten raste på 60-tallet: Ville ikke ha Sonja som dronning
 - Equinor erkjenner ulovlege utslepp – nektar å betale 720 millionar kroner
-- Her signerer kronprinsesse Ingrid Alexandra sin ed
+- Her sparer du ti kroner literen – nå vil svensker fjerne avgiftene for godt
 - Hevdar Russland sto bak droneangrep i Tyskland
 - Hevder Russland var involvert i angrepsforsøk i Tyskland
-- Kilder til NRK: Nye runder om politisk borgfred
-- Kong Haakon avla eid – så bukka han for Stortinget
+- Høiby i båreseremoni skaper debatt i utlandet
+- Kong Haakon er tilbake på Rikshospitalet
 - Kritisk til politisk sorgpause under prisopprør: – Vil innhente Høyre
-- Markens Grøde blir Norges Oscar-håp
-- «Markens grøde» blir Norges Oscar-kandidat
-- Nederlands kongepar kommer til kong Haralds gravferd
+- Mann omkom i MC-ulykke i Larvik
+- Marerittkveld i Wien: Raudt kort, sjølvmål og fire baklengsmål
+- Millioninnbrudd hos Urmaker Bjerke: Saken er henlagt
 - No startar ryddinga av blomane til kongen: Dette skal dei brukast til
 - Ny rapport: Kystverket vil dekkje til nazi-ubåt
-- Nær halvparten måtte kaste inn handkleet: – Viktig å bryte når ein kjenner at det ikkje går
+- Nye bilete frå Nepal: Dette veit vi om det som skjedde
 - Rapport om nytt vinterbeite for Fosenrein: Kan ha konsekvenser for villreinen
-- Skal ha misbrukt stillingen i møte med tenåringsjente: – Veldig alvorlig
 - USA angriper flere iranske mål i Hormuz-stredet
-- Ville se båren: – Fin mulighet til å vise respekt
+- VG: Kongeparet har dratt fra Rikshospitalet
 
 ## National Review
 - Anti-Trumpism Is Driving the Media to Cheer Hostile Powers
@@ -275,78 +266,77 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - It’s Not Just the Economics, Stupid
 - It’s the Debt, Stupid
 - Jeanne Allen’s Important New Book Profiles Everyday Heroes of Education
-- Khalid Sheikh Mohammed Faces Trial . . . Soon . . . Probably
 - Surrendering to the Machines
 - The Ballroom Dance Doesn’t Belong in Court
 - The Illusion of One Voice in Wartime
+- Trump’s Big Bet on Data Centers
 
 ## Politico Europe
-- Andy Burnham will attend COP31
-- Ed Miliband to attend EU foreign ministers meeting in Ireland
+- Burnham promised hope. Reality is already getting in the way
 - Germany blames Russia for drone incursion, announces retaliatory measures
 - Les datacenters énergivores se développent en Europe, la résistance aussi
 - Leuven mayor bans Europa League match against Israeli team
 - Marine Le Pen a-t-elle déjà un pied à l’Elysée ?
 - Pressure mounts on Europe as Trump deals push pharma to the US
-- Team up with EU on energy to combat China, Andy Burnham told
-- What Iceland&#8217;s snub means for the EU&#8217;s place in the world
+- Security-Update: Wie hart treffen Deutschlands Konsequenzen Russland? – mit Peter Neumann
+- Think tank Beijing hates is getting a Labor reset
+- US launches ‘large and powerful’ new strikes at Iran
 - Why Trump&#8217;s trade war with Canada is poised to drag past the midterms
 
 ## Reason
 - 2,400 Baseball Games for the Price of 1
+- Federalism Will Save the Data Centers
+- Foreign Regulators Are Trying To Censor Americans Online. A Bill Would Ensure Those Demands Are Unenforceable.
 - Free Speech Unmuted: The Process Is The Punishment: ABC v. FCC with Stuart Benjamin
 - Is This the Supreme Court's Next Sports Betting Case?
+- Kalshi Says It's a Prediction Market. The 9th Circuit Says It's Gambling.
 - New in Civitas Outlook: "The End Is Near for the American Bar Association"
-- No Second Amendment Right to Carry Gun on Your Government Job
 - School Can Control What Flags Schoolteachers Hang on Classroom Walls
 - The Biggest Revelation In Recent NYT Expose Is Justice Scalia Wasn't Planning on Dying
-- The Reason Prison Essay Experiment
-- Today in Supreme Court History: September 1, 1823
-- Traditional Medical Licensing Requirements Don't Generally Violate First Amendment Rights of Doctors Providing Advice
 - Trouble at the Pentagon
+- Trump Loves Data Centers: 'Let Data Reign'
 - What About a "'Let's Go Brandon' Was a Hallucination in the First Place" Defense?
 
 ## SVT
 - Claes Nordmark i hovrätten – ny bevisning från försvaret
-- Hundratals elever blev inrymda på skolor i Lycksele – efter larm till polisen
 - Hör eleverna om inrymningen på Chapmangymnasiet: ”Aldrig varit med om detta”
 - Kastade molotovcocktail in i frisörsalong – två tonåringar döms
-- Kinabron vid Nydalasjön i Umeå stängs av – efter skadegörelse
 - Malmödebattör utreds för olaga hot mot Simona Mohamsson – Säpo inkopplat
 - Man allvarligt skadad – fastnade i skogsmaskin
 - Man till sjukhus efter olycka på badanläggning i Nyköping
-- Mässling på förskola i Umeå – personal smittad
 - Nora kommunhus utrymdes efter hot – nu har facket krävt att det stängs
+- S vill inte höja bränslepriset – trots risk för missat klimatmål
 - S vill ta bort nätläkartaxan: ”Tar betalt för vård som de inte utför”
 - Socialdemokraterna går till val på ”århundradets tandvårdsreform”
 - Starmer lämnar även parlamentet
 - Störtfloden i Nepal – tio timmar av skräck
 - Sänkta straff efter mordförsök på Manillagatan i Kalmar
+- Traktor och personbil kolliderade – två personer till sjukhus
+- Två barn vårdas på sjukhus med frätskador
 - Tåg rullar igen efter stopp på Västkustbanan
 - Ungdomsdebatt i Örebro – applåder när MUF föreslog sänkt åldersgräns på Systembolaget
 - Överlämnandet av vägar i Härjedalen har mött hård kritik – så tänker politikerna framåt
 
 ## Sky World
-- Attempted drone attack at Leipzig airport blamed on Russia
+- Attempted drone attack at German airport blamed on Russia
+- Bank of America vice president killed in Times Square stabbing
 - Capsized ferry disaster kills at least eight, as search for survivors continues
-- Grand Canyon flash floods leave one dead and 15 missing
 - Italy and Spain extend tit-for-tat border controls after Ceuta migrant surge
 - Jared Kushner's brother breaks silence on World Cup sell-off plans
 - Lionel Messi retires from international football
 - Met investigating death of British man in Caribbean
-- Suspect arrested after deadly shooting at rave in Switzerland
-- Why Germany's far right is on the verge of its biggest win since WW2
+- Why Germany's far right is on verge of biggest win since before WWII
 
 ## Spiked
+- Birmingham’s fatwa on the England flag
 - Grand Theft Auto VI: why gamers are in revolt
 - How Milo owned himself
 - Iceland’s No vote is a humiliation for the EU
-- It’s time Andy Burnham smartened up
 - Middlesbrough is paying the price for decades of coddling criminals
+- Net Zero is leaving Britain defenceless
 - Students aren’t being told the truth about the British Empire
 - The Ali G haters are the dumbest people alive
-- The era of mythical misogyny
-- There’s nothing real about ‘race realism’
+- There’s still no evidence to justify a social-media ban
 - This isn’t criticism – it’s sneering
 
 ## TV2
