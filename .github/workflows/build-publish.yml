@@ -21,9 +21,11 @@ jobs:
         run: git fetch origin main && git reset --hard origin/main
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
+      - name: Gates before release
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Release approved ready articles; park incomplete ones
         run: python scripts/release_ready.py
-      - name: Gates before build
+      - name: Gates after release before build
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Build
         run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/article_history.py && python scripts/editorial_analytics.py && python scripts/production_readiness.py && python scripts/queue_recovery.py && python scripts/pipeline_feedback.py && python scripts/build_control_room.py && python scripts/apply_control_room_extras.py && python scripts/seo_surface_fix.py
