@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T15:24:12.765263Z",
+  "generated_at": "2026-09-01T15:48:35.816056Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,38 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 21,
+    "rejections": 24,
     "reviews": [
+      {
+        "at": "2026-09-01T15:46:22.951Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "media",
+        "reason": "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
+        "class": "repairable",
+        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T15:45:32.262Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "media",
+        "reason": "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
+        "class": "repairable",
+        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T15:45:29.320Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "research",
+        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
+        "class": "evidence",
+        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-01T15:23:15.685Z",
         "slug": null,
@@ -233,8 +263,8 @@
     "fact_check": 9,
     "infrastructure": 1,
     "language": 1,
-    "media": 3,
-    "research": 5,
+    "media": 5,
+    "research": 6,
     "seo": 1
   },
   "suggested_adjustments": [
@@ -244,7 +274,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "14 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "15 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",
