@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import json
 import os
+import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -17,12 +19,24 @@ QUEUE = ROOT / "queue" / "candidates.json"
 DEFAULT_URL = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/candidates"
 
 
-def fetch_json(url: str) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "MorgentidendeGitHubSync/1.0"})
-    with urllib.request.urlopen(req, timeout=25) as response:
-        if response.status != 200:
-            raise RuntimeError(f"Cloudflare Newsdesk returned HTTP {response.status}")
-        return json.loads(response.read().decode("utf-8"))
+def fetch_json(url: str, token: str) -> dict:
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "MorgentidendeGitHubSync/1.0",
+            "Authorization": f"Bearer {token}",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=25) as response:
+            if response.status != 200:
+                raise RuntimeError(f"Cloudflare Newsdesk returned HTTP {response.status}")
+            return json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        if exc.code in {401, 503}:
+            print(f"Cloudflare Newsdesk authentication unavailable (HTTP {exc.code})", file=sys.stderr)
+            raise SystemExit(3)
+        raise
 
 
 def validate(payload: dict) -> None:
@@ -63,7 +77,11 @@ def render_scan(payload: dict) -> str:
 
 def main() -> int:
     url = os.environ.get("CLOUDFLARE_NEWSDESK_URL", DEFAULT_URL)
-    payload = fetch_json(url)
+    token = os.environ.get("EDITORIAL_RUN_TOKEN", "").strip()
+    if not token:
+        print("Missing EDITORIAL_RUN_TOKEN", file=sys.stderr)
+        return 3
+    payload = fetch_json(url, token)
     validate(payload)
 
     QUEUE.parent.mkdir(parents=True, exist_ok=True)
