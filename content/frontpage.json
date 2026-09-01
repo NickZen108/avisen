@@ -1,14 +1,17 @@
 {
-  "date": "2026-08-31",
+  "date": "2026-09-01",
   "edition_label": "Danmarks nye avis",
-  "lead_rationale": "Ny international B-historie med dødsfald og igangværende rednings-/eftersøgningsforløb; nyere og væsentligere end gårsdagens legacy lead.",
+  "lead_rationale": "Ny A-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker": {
-    "slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet"
+    "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
   },
   "lead": {
-    "slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet"
+    "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
   },
   "rail": [
+    {
+      "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
+    },
     {
       "slug": "2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion"
     },
@@ -46,6 +49,9 @@
     }
   ],
   "narrow": [
+    {
+      "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
+    },
     {
       "slug": "2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion"
     },

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T07:49:14.052407Z",
+  "generated_at": "2026-09-01T09:03:15.105400Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,28 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 1,
+    "rejections": 3,
     "reviews": [
+      {
+        "at": "2026-09-01T09:02:04.747Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "ethics",
+        "reason": "Der er flere artikler om forskellige emner, men ingen af dem ser ud til at have reel nyhedsværdi. Der er dog flere artikler om naturkatastrofer, herunder oversvømmelser i Nepal og Kina, og om konflikter i Midtøsten. Disse emner ser ud til at have reel nyhedsværdi og bør derfor undersøges nærmere.",
+        "class": "review",
+        "assessment": "Manuel pipeline-vurdering: afgør om blokeringen beskyttede kvalitet eller var unødig friktion.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T09:01:28.339Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "fact_check",
+        "reason": "The claims are verified by the provided sources, and there are no contradictions between them. The sources are reputable news outlets, and the information is consistent across the different claims. Therefore, it is reasonable to publish the article based on these claims. Deterministisk gate: færre end to bærende claims er verificeret.",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-01T05:02:31.850Z",
         "slug": null,
@@ -29,6 +49,8 @@
     ]
   },
   "last7_stage_counts": {
+    "ethics": 1,
+    "fact_check": 1,
     "infrastructure": 1
   },
   "suggested_adjustments": [

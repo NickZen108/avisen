@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-01T07:49:13Z",
+  "generated_at": "2026-09-01T09:03:14Z",
   "counts": {
-    "published": 5,
+    "published": 6,
     "checking": 2
   },
   "blocked_count": 2,
@@ -69,6 +69,14 @@
     {
       "slug": "2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion",
       "title": "Video: Passagerer klamrer sig til kæntret færge under redningsaktionen",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000",
+      "title": "Flodbølgen i Nepal og Tibet: Dødstallet stiger til over 1.000",
       "status": "published",
       "release_requested": false,
       "resume_from": null,
