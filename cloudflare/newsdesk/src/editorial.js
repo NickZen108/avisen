@@ -247,7 +247,18 @@ function validateAssignment(assignment, scan) {
   if (!selected.some((x) => x.url)) return { ok: false, state: "watch", reason: "Ingen kilde-URL til research", handled_signal_keys };
   return { ok: true, selected, handled_signal_keys };
 }
-function isEvidenceSource(item) { return item && !item.discovery_only; }
+const DISCOVERY_ONLY_HOSTS = new Set([
+  "indblik.dk", "document.no", "timbro.se", "achgut.com", "tichyseinblick.de", "causeur.fr", "contrepoints.org",
+  "spiked-online.com", "capx.co", "unherd.com", "reason.com", "nationalreview.com", "city-journal.org",
+  "thefederalist.com", "frontpagemag.com", "jihadwatch.org",
+]);
+function hostOf(value) { try { return new URL(value).hostname.replace(/^www\./, "").toLowerCase(); } catch (_) { return ""; } }
+function isDiscoveryOnly(item) {
+  if (!item) return false;
+  if (item.discovery_only || /discovery/i.test(item.source_class || "") || item.source_role === "discovery") return true;
+  return DISCOVERY_ONLY_HOSTS.has(hostOf(item.final_url || item.url || ""));
+}
+function isEvidenceSource(item) { return item && !isDiscoveryOnly(item); }
 function authoritativePrimary(item) { return isEvidenceSource(item) && item.source_kind === "primary"; }
 function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSource).map((x) => sourceGroup(x.source, x.final_url || x.url)))]; }
 
@@ -257,47 +268,27 @@ async function runResearch(env, assignment, selected) {
 
   // Perspective/advocacy sources can trigger research. If the ordinary feed set does not
   // yet corroborate the tip, follow only clearly trusted primary/public-media links from it.
-  if (!usable.some(authoritativePrimary) && evidenceGroups(usable).length < 2) {
-    const target = `${assignment.title_hint || ""} ${assignment.core_question || ""}`;
-    const links = [];
-    for (const item of usable) {
-      for (const link of item.outbound_links || []) {
-        const kind = trustedExpansionKind(link.url); if (!kind) continue;
-        links.push({ ...link, kind, score: lexicalSimilarity(target, `${link.text} ${link.url}`) });
-      }
-    }
-    links.sort((a, b) => b.score - a.score);
-    const seen = new Set(); const extraSignals = [];
-    for (const link of links) {
-      if (extraSignals.length >= 4 || seen.has(link.url)) continue;
-      seen.add(link.url);
-      let host = "linked-source"; try { host = new URL(link.url).hostname.replace(/^www\./, ""); } catch (_) {}
-      extraSignals.push({ source: host, headline: link.text || assignment.title_hint || "Linked source", url: link.url, description: "", discovery_only: false, source_kind: link.kind, source_class: link.kind });
-    }
-    if (extraSignals.length) {
-      const extra = await Promise.all(extraSignals.map(fetchExcerpt));
-      researched = researched.concat(extra);
-      usable = researched.filter((x) => (x.excerpt || "").length >= 160);
-    }
+  const evidenceUsable = usable.filter(isEvidenceSource);
+  if (!evidenceUsable.some(authoritativePrimary) && evidenceGroups(evidenceUsable).length < 2) {
+    return { decision: "watch", rationale: "Lovende discovery-tip, men endnu ikke en autoritativ primærkilde eller to uafhængige redaktionelle kilder", researched: evidenceUsable };
   }
-
-  if (!usable.some(authoritativePrimary) && evidenceGroups(usable).length < 2) {
-    return { decision: "watch", rationale: "Lovende tip, men endnu ikke en autoritativ primærkilde eller to uafhængige ikke-discovery-kilder", researched: usable };
-  }
-  const sources = usable.map((s, i) => ({
+  // Hard boundary: blogs/perspective/advocacy feeds are discovery leads only. They are removed
+  // before Research creates claims and can never reach Fact checker, Journalist or source ledger.
+  const sources = evidenceUsable.map((s, i) => ({
     source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url,
-    excerpt: s.excerpt.slice(0, 10000), discovery_only: Boolean(s.discovery_only), source_kind: s.source_kind || (s.discovery_only ? "discovery" : "news"),
+    excerpt: s.excerpt.slice(0, 10000), discovery_only: false, source_kind: s.source_kind || "news",
   }));
-  const system = `Du er Research på Morgentidende. Kortlæg historien, men fæld ikke fact-check-slutdom. discovery_only-kilder er tips/perspektiv og må ikke være bærende verifikation. En autoritativ primærkilde kan bære et faktum; ellers kræves normalt to reelt uafhængige ikke-discovery-kilder. Find bærende faktapåstande, modpositioner, konsekvenser, uenigheder og usikkerhed. Peg på præcise source_indexes. Forelæggelse markeres ved alvorlige belastende påstande. Opfind ikke claims.`;
+  const system = `Du er Research på Morgentidende. Kortlæg historien, men fæld ikke fact-check-slutdom. De vedlagte kilder er allerede filtreret, så discovery-blogs og perspektiv/advocacy-feeds ikke indgår. En autoritativ primærkilde kan bære et faktum; ellers kræves normalt to reelt uafhængige redaktionelle kilder. Find bærende faktapåstande, modpositioner, konsekvenser, uenigheder og usikkerhed. Peg på præcise source_indexes. Forelæggelse markeres ved alvorlige belastende påstande. Opfind ikke claims.`;
   const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 1800, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
-  research.researched = usable;
+  research.researched = evidenceUsable;
   research.source_payload = sources;
   if (research.right_of_reply_required) research.decision = "hold";
   return research;
 }
 
 async function runFactCheck(env, assignment, research) {
-  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. discovery_only-kilder kan pege på et emne eller perspektiv, men må aldrig alene verificere et claim. Verified kræver enten én autoritativ primærkilde eller mindst to reelt uafhængige ikke-discovery-kilder. Rejected når evidensen modsiger claimet; ellers uncertain. To solide verificerede bærende claims er nok til en kort artikel. Opfind ingen nye kilder eller fakta.`;
+  if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
+  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Verified kræver enten én autoritativ primærkilde eller mindst to reelt uafhængige redaktionelle kilder. Rejected når evidensen modsiger claimet; ellers uncertain. To solide verificerede bærende claims er nok til en kort artikel. Opfind ingen nye kilder eller fakta.`;
   const fact = await aiJson(env, system, JSON.stringify({
     assignment,
     research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
@@ -331,7 +322,8 @@ async function deskRecheck(env, assignment, dossier) {
 }
 
 async function writeArticle(env, assignment, dossier) {
-  const sources = dossier.researched.map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));
+  if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Journalist boundary");
+  const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));
   const system = `Du er journalist på Morgentidende. Skriv præcist og levende dansk, men brug KUN verificerede claims. Gør attribution tydelig. Ingen opdigtede citater. Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. En kort nyhed må gerne nøjes med tre meningsfulde tekstblokke; fyld aldrig teksten ud bare for at nå en længde. Hero-prompten skal beskrive en bred redaktionel illustration og må ikke foregive at være dokumentarfoto. Ingen tekst i billedet.`;
   return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, 3000);
 }
@@ -358,7 +350,8 @@ async function generateHero(env, article) {
 }
 
 function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
-  const sources = dossier.researched.map((s, i) => {
+  if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the publication ledger boundary");
+  const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => {
     const url = s.final_url || s.url;
     const primary = s.source_kind === "primary" && !s.discovery_only;
     return { id: `S${i + 1}`, name: s.source, url, published_at: s.published_at || null, accessed_at: accessedAt, type: primary ? "primary" : "news", source_group: sourceGroup(s.source, url), authoritative_for: primary ? (s.headline || "Primary record") : (s.headline || "Independent coverage"), discovery_only: Boolean(s.discovery_only) };
