@@ -1,5 +1,5 @@
 name: Evidence architecture migration
-# trigger: canonical evidence rollout
+# trigger: provenance follow-up
 on:
   push:
     branches: [main]
@@ -20,8 +20,8 @@ jobs:
         run: git fetch origin main && git reset --hard origin/main
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: Apply canonical evidence architecture
-        run: python scripts/apply_evidence_architecture.py
+      - name: Apply provenance follow-up
+        run: python scripts/fix_evidence_provenance_followup.py
       - name: Validate architecture
         run: |
           node --check cloudflare/newsdesk/src/editorial.js
@@ -35,8 +35,8 @@ jobs:
           set -euo pipefail
           git config user.name 'morgentidende-evidence-migration'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add cloudflare/newsdesk/src/editorial.js scripts/quality_gate.py scripts/source_independence_gate.py scripts/evidence_policy.py scripts/evidence_policy_selftest.py
-          git commit -m 'refactor: canonicalize editorial evidence policy'
+          git add cloudflare/newsdesk/src/editorial.js
+          git commit -m 'fix: apply provenance policy during fact check'
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git rebase origin/main
