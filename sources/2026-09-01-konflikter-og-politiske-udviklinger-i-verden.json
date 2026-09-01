@@ -1,0 +1,112 @@
+{
+  "schema_version": 2,
+  "story_id": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
+  "article_slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
+  "assignment": {
+    "category": "Politik",
+    "weight": "B",
+    "core_question": "Hvad sker der i verden?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "BBC World",
+      "url": "https://www.bbc.co.uk/news/articles/cj06q4ynpmjo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-01T17:54:01.000Z",
+      "accessed_at": "2026-09-01T19:00:52.231Z",
+      "type": "news",
+      "source_group": "wire-reuters",
+      "authoritative_for": "US launches more strikes on Iran as state media reports explosions",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "France 24",
+      "url": "https://www.france24.com/en/tv-shows/the-debate/20260901-school-wihout-screens-will-france-s-high-school-phone-ban-fly",
+      "published_at": "2026-09-01T18:23:47.000Z",
+      "accessed_at": "2026-09-01T19:00:52.231Z",
+      "type": "news",
+      "source_group": "wire-reuters",
+      "authoritative_for": "School without screens: Will France's high school phone ban fly?",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "SVT",
+      "url": "https://www.svt.se/nyheter/lokalt/helsingborg/tva-barn-till-sjukhus-fick-kontakt-med-fratande-amne",
+      "published_at": "2026-09-01T18:18:05.000Z",
+      "accessed_at": "2026-09-01T19:00:52.231Z",
+      "type": "news",
+      "source_group": "host-svt-se",
+      "authoritative_for": "Två barn vårdas på sjukhus med frätskador",
+      "discovery_only": false
+    },
+    {
+      "id": "S4",
+      "name": "bbc.com",
+      "url": "https://www.bbc.com/",
+      "published_at": null,
+      "accessed_at": "2026-09-01T19:00:52.231Z",
+      "type": "news",
+      "source_group": "host-bbc-com",
+      "authoritative_for": "BBC Homepage",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "independent_source_groups": [
+      "wire-reuters",
+      "host-svt-se",
+      "host-bbc-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. For lavrisiko-fakta kan en autoritativ primærkilde, original bureaukilde eller stærk original redaktionel kilde være nok; ellers bruges to uafhængige kilder. Højrisiko/fairness behandles strengere."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "USA har lanceret flere angreb på Iran efter, at landet har forsøgt at angribe kommersielt skibsfart i Hormuz-strædet og amerikanske soldater i området.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T19:00:52.231Z",
+      "notes": "Kilde: BBC World"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-01T19:00:52.231Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-01T19:00:52.231Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}
