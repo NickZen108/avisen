@@ -11,7 +11,9 @@
     "min_verified_material_claims": 1,
     "high_risk_requires_stronger_evidence": true,
     "named_accused_crime_requires_primary": true,
-    "discovery_only_never_evidence": true
+    "discovery_only_never_evidence": true,
+    "high_risk_scope": "content_flags_and_right_of_reply_not_category",
+    "named_accused_primary_scope": "all_categories"
   },
   "stages": [
     {
@@ -248,7 +250,7 @@
       "requirements": [
         {
           "key": "ai_scope",
-          "label": "AI-final kun high-risk/A-B/kontradiktion; lavrisiko deterministisk",
+          "label": "AI-final ved A/B, indholdsbaseret high-risk, ROR eller kontradiktion; ikke pga. kategori alene",
           "value": 1,
           "unit": "regel",
           "adjustable": false
