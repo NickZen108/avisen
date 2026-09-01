@@ -79,6 +79,7 @@ jobs:
         if: ${{ steps.dispatch.outputs.cycles != '0' }}
         env:
           INPUT_CYCLES: ${{ steps.dispatch.outputs.cycles }}
+          EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
         run: |
           set -euo pipefail
           BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
@@ -89,10 +90,11 @@ jobs:
             if [ -s /tmp/github-prefetch.json ]; then
               curl --fail --silent --show-error --max-time 240 -X POST \
                 -H 'content-type: application/json' \
+                -H "authorization: Bearer $EDITORIAL_RUN_TOKEN" \
                 --data-binary @/tmp/github-prefetch.json \
                 "$BASE/run-editorial" -o "$OUT"
             else
-              curl --fail --silent --show-error --max-time 240 -X POST "$BASE/run-editorial" -o "$OUT"
+              curl --fail --silent --show-error --max-time 240 -X POST -H "authorization: Bearer $EDITORIAL_RUN_TOKEN" "$BASE/run-editorial" -o "$OUT"
             fi
             python -m json.tool "$OUT" >/dev/null
             jq '{status,stage,generated_at,slug,reason,runtime,handled_signal_keys}' "$OUT"

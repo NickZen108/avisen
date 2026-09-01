@@ -265,6 +265,14 @@ export default {
     if (url.pathname === "/editorial/latest") { const state = await (await getState(env, "/editorial")).json(); return Response.json(state.latest || { status: "none" }, { headers: jsonHeaders }); }
     if (url.pathname === "/editorial/history") return getState(env, "/editorial/history");
     if (url.pathname === "/run-editorial" && request.method === "POST") {
+      const authorization = request.headers.get("authorization") || "";
+      const expectedToken = env.EDITORIAL_RUN_TOKEN || "";
+      if (!expectedToken || authorization !== `Bearer ${expectedToken}`) {
+        return Response.json(
+          { ok: false, error: "unauthorized" },
+          { status: 401, headers: jsonHeaders },
+        );
+      }
       const state = await (await getState(env)).json(); let scan = state.latest || await buildScan(); if (!state.latest) await storeScan(env, scan);
       let prefetch = null;
       try {

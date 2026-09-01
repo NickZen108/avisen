@@ -24,12 +24,14 @@ jobs:
       - name: Install image normalizer
         run: python -m pip install --disable-pip-version-check pillow
       - name: Run fresh editorial cycles
+        env:
+          EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
         run: |
           mkdir -p /tmp/editorial-batch
           count=1
           if [ "$GITHUB_EVENT_NAME" = "push" ]; then count=3; fi
           for i in $(seq 1 "$count"); do
-            curl --fail --silent --show-error --max-time 240 -X POST 'https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/run-editorial' -o "/tmp/editorial-batch/$i.json"
+            curl --fail --silent --show-error --max-time 240 -X POST -H "authorization: Bearer $EDITORIAL_RUN_TOKEN" 'https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/run-editorial' -o "/tmp/editorial-batch/$i.json"
             python -m json.tool "/tmp/editorial-batch/$i.json" >/dev/null
             jq '{status,stage,generated_at,slug,reason,runtime}' "/tmp/editorial-batch/$i.json"
           done
