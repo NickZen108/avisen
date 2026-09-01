@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T14:08:06.772949Z",
+  "generated_at": "2026-09-01T14:33:50.762128Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,18 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 8,
+    "rejections": 9,
     "reviews": [
+      {
+        "at": "2026-09-01T14:32:09.054Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "language",
+        "reason": "final_editor: material_facts_incorrect_or_unclear_language; final_editor: missing_necessary_technical_terms; final_editor: claims_exceeding_documentation; final_editor: missing_attribution_and_pluralism; final_editor: ethical_issue; final_editor: misleading_SEO_or_faux_documentary_hero_prompt",
+        "class": "repairable",
+        "assessment": "Sprog bør normalt auto-repareres. Hvis samme fejl gentages, test flere auto-repair-cycles før blokering.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-01T09:51:32.916Z",
         "slug": null,
@@ -102,6 +112,7 @@
     "ethics": 1,
     "fact_check": 2,
     "infrastructure": 1,
+    "language": 1,
     "research": 4
   },
   "suggested_adjustments": [

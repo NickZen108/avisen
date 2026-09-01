@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-09-01T14:08:06Z",
+  "generated_at": "2026-09-01T14:33:50Z",
   "counts": {
     "published": 6,
-    "checking": 2
+    "checking": 2,
+    "ready": 2
   },
   "blocked_count": 2,
   "articles": [
@@ -78,6 +79,22 @@
       "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000",
       "title": "Flodbølgen i Nepal og Tibet: Dødstallet stiger til over 1.000",
       "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-01-iran-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme",
+      "title": "Iran vil vende tilbage til juni-aftale, hvis USA gør det samme",
+      "status": "ready",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-01-nepal-efter-flodboelgerne-over-1-000-doede-og-4-000-savnet",
+      "title": "Nepal efter flodbølgerne: Over 1.000 døde og 4.000 savnet",
+      "status": "ready",
       "release_requested": false,
       "resume_from": null,
       "reasons": []
