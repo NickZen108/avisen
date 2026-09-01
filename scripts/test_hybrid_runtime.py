@@ -27,6 +27,9 @@ def main() -> int:
     assert next(x for x in fact_stage["requirements"] if x["key"] == "min_verified_material_claims")["value"] == 1
     research_stage = next(x for x in thresholds["stages"] if x["id"] == "research")
     assert next(x for x in research_stage["requirements"] if x["key"] == "min_distinct_sources")["value"] == 1
+    image_stage = next(x for x in thresholds["stages"] if x["id"] == "image")
+    assert next(x for x in image_stage["requirements"] if x["key"] == "no_photo_is_soft")["value"] == 1
+    assert next(x for x in image_stage["requirements"] if x["key"] == "documentary_first")["value"] == 1
 
     dispatch = load_module("dispatch", ROOT / "scripts" / "editorial_dispatch_gate.py")
     dispatch.self_test()
@@ -53,6 +56,35 @@ def main() -> int:
         "license": "CC BY 4.0",
         "context_type": "event",
     })
+    assert sync.valid_documentary_image({
+        "src": "https://example.test/station.jpg",
+        "source_url": "https://example.test/license",
+        "image_type": "photo",
+        "alt": "Stationen",
+        "credit": "Example",
+        "license": "CC BY 4.0",
+        "context_type": "archive",
+        "caption": "Arkivfoto",
+    })
+    assert not sync.valid_documentary_image({
+        "src": "https://example.test/station.jpg",
+        "source_url": "https://example.test/license",
+        "image_type": "photo",
+        "alt": "Stationen",
+        "credit": "Example",
+        "license": "CC BY 4.0",
+        "context_type": "archive",
+    }), "Archive/context photo without caption must fail"
+    assert not sync.valid_documentary_image({
+        "src": "https://img.youtube.com/example.jpg",
+        "source_url": "https://www.youtube.com/watch?v=example",
+        "image_type": "video_still",
+        "alt": "Video-still",
+        "credit": "Video source",
+        "license": "Citation basis",
+        "context_type": "event",
+        "caption": "Still fra video",
+    }), "YouTube still without documented rights_basis must fail"
     assert not sync.valid_documentary_image({
         "src": "https://example.test/ai.jpg",
         "source_url": "https://example.test/source",
@@ -109,6 +141,7 @@ def main() -> int:
         'function newsRequiresDocumentaryHero()',
         'function validDocumentaryHero(media)',
         'function documentaryHeroFromSignals(selected = [])',
+        'function contextualHeroFromSignals(selected = [])',
         'async function findCommonsDocumentaryHero(assignment, article',
         'commonsLicenseAllowed',
         'image/jpeg',
