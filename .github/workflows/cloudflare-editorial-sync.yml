@@ -137,8 +137,7 @@ jobs:
           git add docs/kontrolrum 2>/dev/null || true
 
           if ! git diff --cached --quiet; then
-            if git log -1 --pretty=%B | grep -q '^editorial: import cycle results
-; then
+            if git log -1 --pretty=%B | grep -Fq 'editorial: import cycle results'; then
               git commit --amend --no-edit
             else
               git commit -m 'control-room: refresh after editorial sync'
@@ -160,8 +159,7 @@ jobs:
           python scripts/build_control_room.py
           git add docs/kontrolrum 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            if git log -1 --pretty=%B | grep -Eq '^(editorial: import cycle results|control-room: refresh after editorial sync)
-; then
+            if git log -1 --pretty=%B | grep -Eq 'editorial: import cycle results|control-room: refresh after editorial sync'; then
               git commit --amend --no-edit
             else
               git commit -m 'control-room: refresh after editorial sync'
