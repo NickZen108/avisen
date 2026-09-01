@@ -67,8 +67,7 @@ function trustedExpansionKind(value) {
     const host = new URL(value).hostname.replace(/^www\./, "").toLowerCase();
     const primary = ["gov.uk", "police.uk", "polizei.berlin.de", "berlin.de", "bund.de", "europa.eu", "ec.europa.eu", "who.int", "un.org"];
     if (primary.some((x) => host === x || host.endsWith(`.${x}`))) return "primary";
-    const reporting = ["rbb24.de", "tagesschau.de", "itv.com", "bbc.co.uk", "bbc.com", "reuters.com", "apnews.com", "dr.dk", "tv2.dk", "svt.se", "nrk.no", "france24.com"];
-    if (reporting.some((x) => host === x || host.endsWith(`.${x}`))) return "public_media";
+    if (STRONG_EDITORIAL_HOSTS.some((x) => host === x || host.endsWith(`.${x}`))) return "public_media";
   } catch (_) {}
   return null;
 }
@@ -283,15 +282,64 @@ function isDiscoveryOnly(item) {
 }
 function isEvidenceSource(item) { return item && !isDiscoveryOnly(item); }
 function authoritativePrimary(item) { return isEvidenceSource(item) && item.source_kind === "primary"; }
+
+const STRONG_EDITORIAL_HOSTS = [
+  "reuters.com", "apnews.com", "bbc.com", "bbc.co.uk", "dr.dk", "tv2.dk", "svt.se", "nrk.no",
+  "ft.com", "politico.eu", "bloomberg.com", "theguardian.com", "nytimes.com", "wsj.com",
+  "france24.com", "tagesschau.de", "rbb24.de", "itv.com",
+];
+function strongEditorialSource(item) {
+  if (!isEvidenceSource(item)) return false;
+  const group = evidenceSourceGroup(item);
+  if (["wire-reuters", "wire-ap", "wire-afp", "wire-ritzau"].includes(group)) return true;
+  const host = hostOf(item?.final_url || item?.url || "");
+  if (STRONG_EDITORIAL_HOSTS.some((x) => host === x || host.endsWith(`.${x}`))) return true;
+  const source = String(item?.source || "").toLowerCase().trim();
+  return ["reuters", "ap", "associated press", "afp", "ritzau", "bbc", "dr", "tv 2", "tv2", "svt", "nrk", "financial times", "politico"].includes(source);
+}
 function authoritativeEditorial(item) {
   const group = evidenceSourceGroup(item);
   return ["wire-reuters", "wire-ap", "wire-afp", "wire-ritzau"].includes(group);
 }
+function normalizedSourceKind(item) {
+  if (authoritativePrimary(item)) return "primary";
+  const kind = trustedExpansionKind(item?.final_url || item?.url || "");
+  if (kind === "primary") return "primary";
+  if (kind === "public_media" || strongEditorialSource(item)) return "strong_editorial";
+  return item?.source_kind || "news";
+}
 function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSource).map(evidenceSourceGroup))]; }
+
+const HIGH_RISK_FACT_TERMS = /\b(sigtet|tiltalt|anklag|mistænkt|voldtægt|seksual|misbrug|selvmord|mindreår|barn|børn|privat helbred|diagnose|terror|drab|korruption|svindel|hvidvask|overgreb|racist|ekstremist)\b/iu;
+function highRiskFactClaim(assignment, research, claim) {
+  if (research?.right_of_reply_required) return true;
+  if (["Krimi", "Sundhed"].includes(assignment?.category)) return true;
+  return HIGH_RISK_FACT_TERMS.test(`${assignment?.title_hint || ""} ${assignment?.core_question || ""} ${claim?.claim || ""}`);
+}
+function evidenceRulePass(assignment, research, claim, evidence) {
+  const primaryOk = evidence.some(authoritativePrimary);
+  const wireOk = evidence.some(authoritativeEditorial);
+  const strongEditorialOk = evidence.some(strongEditorialSource);
+  const independent = new Set(evidence.map(evidenceSourceGroup));
+  if (primaryOk || wireOk || independent.size >= 2) return true;
+  return !highRiskFactClaim(assignment, research, claim) && strongEditorialOk;
+}
 
 async function runResearch(env, assignment, selected) {
   let researched = await Promise.all(selected.map(fetchExcerpt));
-  let usable = researched.filter((x) => (x.excerpt || "").length >= 160);
+  researched = researched.map((item) => ({ ...item, source_kind: normalizedSourceKind(item) }));
+
+  // If a strong original newsroom blocks full-page fetching, its own RSS/feed summary can
+  // still support a short, explicitly attributed low-risk claim. Generic/unknown feeds do not get this fallback.
+  researched = researched.map((item) => {
+    if ((item.excerpt || "").length >= 120) return item;
+    const summary = `${item.headline || ""}. ${item.description || ""}`.trim();
+    if (strongEditorialSource(item) && summary.length >= 80) {
+      return { ...item, excerpt: summary.slice(0, 1200), feed_summary_only: true };
+    }
+    return item;
+  });
+  let usable = researched.filter((x) => (x.excerpt || "").length >= 120);
 
   // Cheap deterministic expansion before spending AI: when the seed set lacks strong
   // corroboration, follow a few clearly trusted primary/public-media links already found
@@ -310,7 +358,7 @@ async function runResearch(env, assignment, selected) {
           headline: link.text || item.headline || "Original source",
           description: "",
           source: hostOf(link.url) || "linked-source",
-          source_kind: kind === "primary" ? "primary" : "news",
+          source_kind: kind === "primary" ? "primary" : "strong_editorial",
           source_class: kind,
           discovery_only: false,
         });
@@ -319,7 +367,7 @@ async function runResearch(env, assignment, selected) {
     links.sort((a, b) => Number(b.source_kind === "primary") - Number(a.source_kind === "primary"));
     if (links.length) {
       const expanded = await Promise.all(links.slice(0, 4).map(fetchExcerpt));
-      usable = usable.concat(expanded.filter((x) => (x.excerpt || "").length >= 160));
+      usable = usable.concat(expanded.map((x) => ({ ...x, source_kind: normalizedSourceKind(x) })).filter((x) => (x.excerpt || "").length >= 120));
       evidenceUsable = usable.filter(isEvidenceSource);
     }
   }
@@ -333,7 +381,10 @@ async function runResearch(env, assignment, selected) {
 
   const unique = [];
   const seenUrls = new Set();
-  const prioritized = [...evidenceUsable].sort((a, b) => Number(authoritativePrimary(b)) - Number(authoritativePrimary(a)));
+  const prioritized = [...evidenceUsable].sort((a, b) =>
+    Number(authoritativePrimary(b)) - Number(authoritativePrimary(a)) ||
+    Number(strongEditorialSource(b)) - Number(strongEditorialSource(a))
+  );
   for (const item of prioritized) {
     const url = item.final_url || item.url;
     if (!url || seenUrls.has(url)) continue;
@@ -349,7 +400,9 @@ async function runResearch(env, assignment, selected) {
     url: item.final_url || item.url,
     excerpt: item.excerpt.slice(0, 3500),
     discovery_only: false,
-    source_kind: item.source_kind || "news",
+    source_kind: normalizedSourceKind(item),
+    source_strength: authoritativePrimary(item) ? "primary" : authoritativeEditorial(item) ? "wire" : strongEditorialSource(item) ? "strong_editorial" : "standard",
+    feed_summary_only: Boolean(item.feed_summary_only),
   }));
   const system = `Du er Research på Morgentidende. Lav et kompakt evidens-kort til Fact checker; vurder ikke nyhedsværdi igen og fæld ikke den endelige sandhedsdom. Kortlæg 1-6 bærende kandidat-claims med præcise source_indexes. Notér kun reelle modsigelser, væsentlige forbehold og nødvendig kontekst. En primærkilde er værdifuld, men du skal ikke kræve et bestemt antal medier. Hvis mindst ét brugbart claim kan kildebelægges, vælg continue; watch kun hvis materialet reelt ikke giver noget kontrollerbart. Flag alvorlige belastende påstande via right_of_reply_required, men brug ikke flaget som stopregel. Opfind intet.`;
   const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 650, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
@@ -360,7 +413,7 @@ async function runResearch(env, assignment, selected) {
 
 async function runFactCheck(env, assignment, research) {
   if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
-  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Verified kræver normalt enten én autoritativ primærkilde inden for dens eget kompetenceområde, én stærk original bureau-/redaktionel kilde som Reuters, AP, AFP eller Ritzau når claimet tydeligt attribueres til den, eller to reelt uafhængige troværdige kilder. Samme bureau/pressemeddelelse tæller kun én gang. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim kan være nok til en kort artikel; højrisiko-påstande kræver stærkere målrettet kontrol. Opfind ingen nye kilder eller fakta.`;
+  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. For almindelige lavrisiko-fakta kan Verified bæres af én autoritativ primærkilde inden for dens kompetenceområde, én original bureaukilde (Reuters/AP/AFP/Ritzau), én stærk original redaktionel kilde som BBC, DR, TV 2, SVT, NRK, Financial Times eller Politico ved tydelig attribution, eller to uafhængige troværdige kilder. Samme bureau/pressemeddelelse tæller kun én gang. Ved højrisiko/fairness-påstande skal du være mere forsigtig og ikke lade én almindelig redaktionel kilde stå alene. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder eller fakta. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;
   const fact = await aiJson(env, system, JSON.stringify({
     assignment,
     research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
@@ -373,19 +426,18 @@ async function runFactCheck(env, assignment, research) {
     const indexes = [...new Set((claim.source_indexes || []).filter((i) => Number.isInteger(i) && i >= 0 && i < fact.researched.length))];
     claim.source_indexes = indexes;
     const evidence = indexes.map((i) => fact.researched[i]).filter(isEvidenceSource);
-    const primaryOk = evidence.some(authoritativePrimary);
-    const editorialOk = evidence.some(authoritativeEditorial);
-    const independent = new Set(evidence.map(evidenceSourceGroup));
-    if (claim.status === "verified" && !primaryOk && !editorialOk && independent.size < 2) {
+    if (claim.status === "verified" && !evidenceRulePass(assignment, research, claim, evidence)) {
       claim.status = "uncertain";
-      claim.notes = `${claim.notes || ""} Nedgraderet af deterministisk gate: ingen autoritativ primærkilde, anerkendt original bureaukilde eller to uafhængige ikke-discovery-kilder.`.trim();
+      claim.notes = `${claim.notes || ""} Nedgraderet af deterministisk gate: dokumentationen opfylder ikke kildekravet for claimets risikoniveau.`.trim();
     }
   }
   const verified = fact.claims.filter((c) => c.status === "verified");
-  if (verified.length < 1) {
-    fact.decision = "hold";
-    fact.rationale = `${fact.rationale || ""} Ingen bærende claims er verificeret.`.trim();
-  }
+  const modelRationale = fact.rationale || "";
+  fact.model_rationale = modelRationale;
+  fact.decision = verified.length >= 1 ? "publish" : "hold";
+  fact.rationale = verified.length >= 1
+    ? `Deterministisk Fact checker: ${verified.length} bærende claim(s) verificeret; usikre eller afviste detaljer udelades fra artiklen.`
+    : "Deterministisk Fact checker: ingen bærende claims opfylder dokumentationskravet.";
   return fact;
 }
 
@@ -586,7 +638,7 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
     schema_version: 2, story_id: storyId, article_slug: slug,
     assignment: { category: assignment.category, weight: assignment.weight, core_question: dossier.core_question || assignment.core_question, manual_review: false },
     sources,
-    coverage_sweep: { status: groups.length >= 1 ? "pass" : "limited", editorial_source_ids: verificationSources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 1 ? null : "Ingen brugbar dokumentationskilde registreret", notes: ["Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. En autoritativ primærkilde eller to uafhængige troværdige kilder er normalt nok for et almindeligt bærende faktum."] },
+    coverage_sweep: { status: groups.length >= 1 ? "pass" : "limited", editorial_source_ids: verificationSources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 1 ? null : "Ingen brugbar dokumentationskilde registreret", notes: ["Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. For lavrisiko-fakta kan en autoritativ primærkilde, original bureaukilde eller stærk original redaktionel kilde være nok; ellers bruges to uafhængige kilder. Højrisiko/fairness behandles strengere."] },
     claims, numbers: [], quotes: [], right_of_reply: { required: false, party: null, contacted_at: null, deadline: null, response: null, exception: null },
     fact_check: { status: "pass", checked_at: accessedAt, notes: ["Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."] },
     desk_recheck: { status: desk.decision, checked_at: accessedAt, rationale: desk.rationale },
