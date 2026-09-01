@@ -1,0 +1,30 @@
+name: Refactor pipeline runtime branch
+on:
+  push:
+    branches: [pipeline-optimization-2026-09-01]
+    paths:
+      - 'scripts/refactor_pipeline_runtime.py'
+      - '.github/workflows/refactor-pipeline-runtime-branch.yml'
+permissions:
+  contents: write
+jobs:
+  refactor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: pipeline-optimization-2026-09-01
+          fetch-depth: 0
+      - run: git pull --ff-only origin pipeline-optimization-2026-09-01
+      - run: python scripts/refactor_pipeline_runtime.py
+      - run: node --check cloudflare/newsdesk/src/editorial.js
+      - name: Commit patched runtime
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- cloudflare/newsdesk/src/editorial.js; then exit 0; fi
+          git config user.name 'morgentidende-pipeline-refactor'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add cloudflare/newsdesk/src/editorial.js
+          git commit -m 'refactor: cheaper more permissive editorial runtime'
+          git pull --rebase origin pipeline-optimization-2026-09-01
+          git push origin pipeline-optimization-2026-09-01
