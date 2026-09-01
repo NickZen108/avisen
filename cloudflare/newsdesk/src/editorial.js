@@ -271,6 +271,10 @@ function isDiscoveryOnly(item) {
 }
 function isEvidenceSource(item) { return item && !isDiscoveryOnly(item); }
 function authoritativePrimary(item) { return isEvidenceSource(item) && item.source_kind === "primary"; }
+function authoritativeEditorial(item) {
+  const group = evidenceSourceGroup(item);
+  return ["wire-reuters", "wire-ap", "wire-afp", "wire-ritzau"].includes(group);
+}
 function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSource).map(evidenceSourceGroup))]; }
 
 async function runResearch(env, assignment, selected) {
@@ -358,10 +362,11 @@ async function runFactCheck(env, assignment, research) {
     claim.source_indexes = indexes;
     const evidence = indexes.map((i) => fact.researched[i]).filter(isEvidenceSource);
     const primaryOk = evidence.some(authoritativePrimary);
+    const editorialOk = evidence.some(authoritativeEditorial);
     const independent = new Set(evidence.map(evidenceSourceGroup));
-    if (claim.status === "verified" && !primaryOk && independent.size < 2) {
+    if (claim.status === "verified" && !primaryOk && !editorialOk && independent.size < 2) {
       claim.status = "uncertain";
-      claim.notes = `${claim.notes || ""} Nedgraderet af deterministisk gate: ingen autoritativ primærkilde og færre end to uafhængige ikke-discovery-kilder.`.trim();
+      claim.notes = `${claim.notes || ""} Nedgraderet af deterministisk gate: ingen autoritativ primærkilde, anerkendt original bureaukilde eller to uafhængige ikke-discovery-kilder.`.trim();
     }
   }
   const verified = fact.claims.filter((c) => c.status === "verified");
@@ -387,6 +392,46 @@ async function writeArticle(env, assignment, dossier) {
   const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));
   const system = `Du er journalist på Morgentidende. Skriv præcist og levende dansk, men brug KUN verificerede claims. Gør attribution tydelig. Ingen opdigtede citater. Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. En kort nyhed må gerne nøjes med tre meningsfulde tekstblokke; fyld aldrig teksten ud bare for at nå en længde. Hero-prompten skal beskrive en bred redaktionel illustration og må ikke foregive at være dokumentarfoto. Ingen tekst i billedet.`;
   return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? null : STRONG_TEXT_MODEL);
+}
+
+function deterministicFinalReview(assignment, dossier, article) {
+  const issues = [];
+  const add = (gate, issue) => issues.push({ gate, issue });
+  if (!String(article?.title || "").trim()) add("language", "Titel mangler");
+  if (!String(article?.standfirst || "").trim()) add("language", "Standfirst mangler");
+  const body = Array.isArray(article?.body) ? article.body : [];
+  if (body.length < 3) add("final_editor", "Færre end tre meningsfulde tekstblokke");
+  for (const block of body) {
+    if (!["p", "h2", "h3"].includes(block?.type) || !String(block?.text || "").trim()) {
+      add("final_editor", "Ugyldig eller tom tekstblok");
+      break;
+    }
+  }
+  if (!String(article?.seo_title || "").trim() || !String(article?.seo_description || "").trim()) add("seo", "SEO-felter mangler");
+  if (!String(article?.hero_alt || "").trim() || !String(article?.hero_prompt || "").trim()) add("image", "Hero-metadata mangler");
+  const failed = new Set(issues.map((x) => x.gate));
+  return {
+    decision: issues.length ? "hold" : "pass",
+    language: failed.has("language") ? "hold" : "pass",
+    ethics: "pass",
+    image: failed.has("image") ? "hold" : "pass",
+    seo: failed.has("seo") ? "hold" : "pass",
+    final_editor: failed.has("final_editor") ? "hold" : "pass",
+    issues,
+    notes: issues.map((x) => `${x.gate}: ${x.issue}`),
+    mode: "deterministic-low-risk",
+  };
+}
+function requiresAiFinalReview(assignment, dossier, article) {
+  if (["A", "B"].includes(assignment?.weight)) return true;
+  if (["Krimi", "Sundhed"].includes(assignment?.category)) return true;
+  if (dossier?.right_of_reply_required) return true;
+  if ((dossier?.contradictions || []).length) return true;
+  const text = [
+    assignment?.title_hint, assignment?.core_question, article?.title, article?.standfirst,
+    ...(article?.body || []).map((b) => b?.text || ""),
+  ].join(" ").toLocaleLowerCase("da-DK");
+  return /\b(sigtet|tiltalt|anklag|voldtægt|seksual|selvmord|mindreår|barnet|børn|privat helbred|diagnose|terror|drab|korruption)\b/u.test(text);
 }
 
 async function finalReview(env, assignment, dossier, article) {
@@ -518,10 +563,14 @@ export async function runEditorialCycle(env, scan, options = {}) {
   if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, generated_at: startedAt, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment } };
 
   let article = await writeArticle(env, assignment, dossier);
-  let review = await finalReview(env, assignment, dossier, article);
+  const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);
+  let review = aiFinalRequired ? await finalReview(env, assignment, dossier, article) : deterministicFinalReview(assignment, dossier, article);
   if (review.decision !== "pass") {
     const revised = await reviseFixableIssues(env, assignment, dossier, article, review);
-    if (JSON.stringify(revised) !== JSON.stringify(article)) { article = revised; review = await finalReview(env, assignment, dossier, article); }
+    if (JSON.stringify(revised) !== JSON.stringify(article)) {
+      article = revised;
+      review = aiFinalRequired ? await finalReview(env, assignment, dossier, article) : deterministicFinalReview(assignment, dossier, article);
+    }
   }
   if (review.decision !== "pass" || [review.language, review.ethics, review.image, review.seo, review.final_editor].some((x) => x !== "pass")) {
     return { status: "hold", stage: "final-editor", checked_at: startedAt, generated_at: startedAt, reason: (review.notes || []).join("; ") || "Final editor hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment } };
@@ -544,7 +593,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
   };
   const approvalSnapshot = JSON.parse(JSON.stringify(canonical));
   for (const key of ["status", "published_at", "updated_at", "scheduled_for", "released_from_schedule_at", "release_requested", "publication", "manual_review_completed", "workflow_state"]) delete approvalSnapshot[key];
-  const approval = { schema_version: 1, status: "pass", story_id: storyId, article_slug: slug, checked_at: startedAt, gates: { language: "pass", ethics: "pass", image: "pass", seo: "pass", final_editor: "pass" }, editorial_snapshot: approvalSnapshot };
+  const approval = { schema_version: 1, status: "pass", story_id: storyId, article_slug: slug, checked_at: startedAt, gates: { language: "pass", ethics: "pass", image: "pass", seo: "pass", final_editor: "pass" }, final_editor_mode: review.mode || "ai", editorial_snapshot: approvalSnapshot };
 
   return {
     status: "approved", schema_version: 1, generated_at: startedAt, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys,
