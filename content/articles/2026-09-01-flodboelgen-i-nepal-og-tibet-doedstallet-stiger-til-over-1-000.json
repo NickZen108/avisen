@@ -39,7 +39,9 @@
     "license": "Public domain (PD automated)",
     "source_url": "https://commons.wikimedia.org/wiki/File:Mudslide_at_Gyirong_Port_2_(screenshot).png",
     "image_type": "photo",
-    "placement": "lead"
+    "placement": "lead",
+    "context_type": "event",
+    "caption": "CCTV-stillbillede fra flodbølgen ved Gyirong-grænseovergangen den 26. august 2026."
   },
   "body": [
     {
