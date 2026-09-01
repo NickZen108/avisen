@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "story_id": "2026-09-01-trump-s-nye-aftaler-med-farmaceutiske-selskaber",
+  "article_slug": "2026-09-01-trumps-nye-aftaler-med-farmaceutiske-selskaber",
+  "checked_at": "2026-09-01T18:44:56.038Z",
+  "gates": {
+    "language": "pass",
+    "ethics": "pass",
+    "image": "pass",
+    "seo": "pass",
+    "final_editor": "pass"
+  },
+  "final_editor_mode": "ai",
+  "editorial_snapshot": {
+    "pipeline_version": 2,
+    "story_id": "2026-09-01-trump-s-nye-aftaler-med-farmaceutiske-selskaber",
+    "slug": "2026-09-01-trumps-nye-aftaler-med-farmaceutiske-selskaber",
+    "category": "Politik",
+    "weight": "B",
+    "title": "Trumps nye aftaler med farmaceutiske selskaber",
+    "standfirst": "Trump har annonceret nye aftaler med farmaceutiske selskaber, hvilket kan have store konsekvenser for Europa.",
+    "byline": "Morgentidende Redaktion",
+    "manual_review": false,
+    "ledger": "sources/2026-09-01-trumps-nye-aftaler-med-farmaceutiske-selskaber.json",
+    "claim_ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06"
+    ],
+    "seo": {
+      "title": "Trumps nye aftaler med farmaceutiske selskaber: Europa risikerer at miste investeringer",
+      "description": "Trump har annonceret nye aftaler med farmaceutiske selskaber, hvilket kan føre til en udvandring af selskaber fra Europa til USA.",
+      "canonical": null
+    },
+    "image": {
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-trumps-nye-aftaler-med-farmaceutiske-selskaber.jpg",
+      "alt": "Illustration til: Trumps nye aftaler med farmaceutiske selskaber",
+      "credit": "Illustration: Morgentidende",
+      "license": "Morgentidende – AI-genereret illustration",
+      "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-01-trumps-nye-aftaler-med-farmaceutiske-selskaber.jpg",
+      "image_type": "illustration",
+      "context_type": "illustration",
+      "caption": "Illustration",
+      "pending_image": true,
+      "ai_generated": true,
+      "generator": "workers_ai_flux",
+      "contains_people": false,
+      "people_style": "pencil_hatching",
+      "photorealistic": false,
+      "placement": "lead"
+    },
+    "body": [
+      {
+        "text": "Ifølge Politico Europe har Trump annonceret en række nye aftaler med farmaceutiske selskaber, hvilket kan have store konsekvenser for Europa.",
+        "type": "p"
+      },
+      {
+        "text": "Pharmaceutical companies advarer om, at Europa risikerer at miste investeringer til USA, da landet bliver en mere attraktiv destination for farmaceutiske selskaber.",
+        "type": "p"
+      },
+      {
+        "text": "Dette kan føre til en udvandring af farmaceutiske selskaber fra Europa til USA, og Europa risikerer at miste sin position som en ledende spiller på farmaceutisk marked.",
+        "type": "p"
+      }
+    ],
+    "source_ids_to_display": [
+      "S1"
+    ],
+    "related_news_slug": null,
+    "related": [],
+    "correction_note": null,
+    "automation_origin": "cloudflare-workers-ai"
+  }
+}

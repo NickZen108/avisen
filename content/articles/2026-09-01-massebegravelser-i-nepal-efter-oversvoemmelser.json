@@ -1,0 +1,72 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-01-mass-burials-held-in-nepal",
+  "slug": "2026-09-01-massebegravelser-i-nepal-efter-oversvoemmelser",
+  "category": "Udland",
+  "weight": "B",
+  "title": "Massebegravelser i Nepal efter oversvømmelser",
+  "standfirst": "I Nepal er der blevet afholdt massebegravelser efter de katastrofale oversvømmelser",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-01-massebegravelser-i-nepal-efter-oversvoemmelser.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "F07"
+  ],
+  "seo": {
+    "title": "Massebegravelser i Nepal efter katastrofale oversvømmelser",
+    "description": "Massebegravelser i Nepal efter oversvømmelser",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-massebegravelser-i-nepal-efter-oversvoemmelser.jpg",
+    "alt": "Illustration til: Massebegravelser i Nepal efter oversvømmelser",
+    "credit": "Illustration: Morgentidende",
+    "license": "Morgentidende – AI-genereret illustration",
+    "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-01-massebegravelser-i-nepal-efter-oversvoemmelser.jpg",
+    "image_type": "illustration",
+    "context_type": "illustration",
+    "caption": "Illustration",
+    "pending_image": true,
+    "ai_generated": true,
+    "generator": "workers_ai_flux",
+    "contains_people": false,
+    "people_style": "pencil_hatching",
+    "photorealistic": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "I Nepal er der blevet afholdt massebegravelser, efter at kroppene af ofre for de katastrofale oversvømmelser er begyndt at dukke op.",
+      "type": "p"
+    },
+    {
+      "text": "Ifølge nyhedsmediet France 24 er der hver dag blevet fundet nye lig i Nepal, men mange af dem er ikke identificerbare. Nogle af ligene er allerede i en fremskreden tilstand af opløsning, flere dage efter katastrofen.",
+      "type": "p"
+    },
+    {
+      "text": "Myndighederne har påbegyndt begravelsen af lig uden formel identifikation på grund af det store antal lig, der er blevet fundet. Ligeledes er redningsarbejdere i Nepal i gang med at gennemsøge muddersatte tunneller for at finde hundredvis af savnede arbejdere.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

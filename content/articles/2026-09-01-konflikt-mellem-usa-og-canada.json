@@ -1,0 +1,68 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-01-trump-s-trade-war-with-canada",
+  "slug": "2026-09-01-konflikt-mellem-usa-og-canada",
+  "category": "Politik",
+  "weight": "B",
+  "title": "Konflikt mellem USA og Canada",
+  "standfirst": "Der er en konflikt mellem Washington og Ottawa, og ifølge Politico Europe er der ikke tegn på en afkøling af spændingerne.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-01-konflikt-mellem-usa-og-canada.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06"
+  ],
+  "seo": {
+    "title": "Konflikt mellem USA og Canada",
+    "description": "Konflikt mellem Washington og Ottawa",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-konflikt-mellem-usa-og-canada.jpg",
+    "alt": "President Donald J. Trump, joined by Vice President Mike Pence, listens as U.S. Trade Representative Ambassador Robert Lighthizer addresses an expanded bilateral working luncheon with Canadian Prime Minister Justin Trudeau Thursday, June 20, 2019, in the Cabinet Room of the White House. (Official White House Photo by Shealah Craighead)",
+    "credit": "The White House from Washington, DC",
+    "license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:President_Trump_Meets_with_the_Prime_Minister_of_Canada_(48099905347).jpg",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Der er en konflikt mellem Washington og Ottawa, og ifølge Politico Europe er der ikke tegn på en afkøling af spændingerne.",
+      "type": "p"
+    },
+    {
+      "text": "Mark Carney, chef for Bank of England, har fordømt Donald Trumps administration og opfordret til at 'starte at være alvorlige' i forhold til den eskalende handelskrig mellem USA og Canada, ifølge The Guardian.",
+      "type": "p"
+    },
+    {
+      "text": "Canada er på vej til at gengælde Trumps omfattende tariffer med egne afgifter på amerikanske varer, og USAs seniorhandelsforhandler har nedtonet den potentielt katastrofale effekt af en handelskrig mellem USA og Canada.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

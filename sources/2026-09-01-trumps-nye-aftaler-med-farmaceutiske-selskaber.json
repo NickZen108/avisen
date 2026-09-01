@@ -1,0 +1,139 @@
+{
+  "schema_version": 2,
+  "story_id": "2026-09-01-trump-s-nye-aftaler-med-farmaceutiske-selskaber",
+  "article_slug": "2026-09-01-trumps-nye-aftaler-med-farmaceutiske-selskaber",
+  "assignment": {
+    "category": "Politik",
+    "weight": "B",
+    "core_question": "Hvad er konsekvenserne af Trumps nye aftaler med farmaceutiske selskaber?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Politico Europe",
+      "url": "https://www.politico.eu/article/pressure-mounts-on-europe-as-donald-trump-deals-push-pharma-to-the-us/?utm_source=RSS_Feed&#038;utm_medium=RSS&#038;utm_campaign=RSS_Syndication",
+      "published_at": "2026-09-01T17:12:25.000Z",
+      "accessed_at": "2026-09-01T18:44:56.038Z",
+      "type": "news",
+      "source_group": "host-politico-eu",
+      "authoritative_for": "Pressure mounts on Europe as Trump deals push pharma to the US",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-politico-eu"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. For lavrisiko-fakta kan en autoritativ primærkilde, original bureaukilde eller stærk original redaktionel kilde være nok; ellers bruges to uafhængige kilder. Højrisiko/fairness behandles strengere."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Pharmaceutical companies varner for at Europa risikerer at miste investeringer til USA",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-01T18:44:56.038Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F02",
+      "claim": "Trump har annonceret en række nye aftaler med farmaceutiske selskaber",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-01T18:44:56.038Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F03",
+      "claim": "Pharmaceutical companies er bekymrede for at Europa ikke vil være attraktivt for investeringer",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-01T18:44:56.038Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F04",
+      "claim": "USA vil være en attraktivere destination for farmaceutiske selskaber",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-01T18:44:56.038Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F05",
+      "claim": "Aftalerne kan føre til en udvandring af farmaceutiske selskaber fra Europa til USA",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-01T18:44:56.038Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F06",
+      "claim": "Europa risikerer at miste sin position som en ledende spiller på farmaceutisk marked",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-01T18:44:56.038Z",
+      "notes": "Politico Europe"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-01T18:44:56.038Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-01T18:44:56.038Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}
