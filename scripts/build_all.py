@@ -210,7 +210,7 @@ def build_article(path: Path) -> None:
     if article.get("followup_type") == "video" and video.get("provider") == "youtube" and video.get("id"):
         article_image_html = youtube_embed(video, autoplay=False, css_class="article-video article-video--hero")
     elif image and image.get("src") and image.get("placement", "lead") == "lead":
-        image_type_labels = {"photo": "Foto", "graphic": "Grafik", "illustration": "Illustration"}
+        image_type_labels = {"photo": "Foto", "video_still": "Video-still", "graphic": "Grafik", "illustration": "Illustration"}
         image_label = image_type_labels.get(image.get("image_type"), "Billede")
         credit = esc(image.get("credit", ""))
         license_label = esc(image.get("license", ""))
