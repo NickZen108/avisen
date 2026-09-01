@@ -571,7 +571,8 @@ function documentaryHeroFromSignals(selected = []) {
     candidates.push({ score, candidate });
   }
   candidates.sort((a, b) => b.score - a.score);
-  const candidate = candidates[0]?.candidate;
+  const chosen = candidates.find((x) => x.score >= 20);
+  const candidate = chosen?.candidate;
   if (!candidate) return null;
   return {
     src: candidate.src,
@@ -583,6 +584,8 @@ function documentaryHeroFromSignals(selected = []) {
     context_type: candidate.context_type,
     caption: candidate.caption || (candidate.context_type === "event" ? "" : "Kontekstfoto – billedet viser ikke nødvendigvis selve hændelsen."),
     rights_basis: candidate.rights_basis || null,
+    discovery_only_source: Boolean(isDiscoveryOnly((selected || []).find((s) => (s?.documentary_hero || s?.documentary_media) === candidate))),
+    independent_license: candidate.independent_license === true,
     pending_image: false,
     ai_generated: false,
     contains_people: Boolean(candidate.contains_people),
@@ -618,6 +621,33 @@ function pendingSketchHero(imageKey, article) {
     photorealistic: false,
     placement: "lead",
   };
+}
+
+function contextualHeroFromSignals(selected = []) {
+  for (const signal of selected || []) {
+    const candidate = signal?.documentary_hero || signal?.documentary_media || null;
+    if (!validDocumentaryHero(candidate) || candidate.context_type === "event") continue;
+    if (isDiscoveryOnly(signal) && candidate.independent_license !== true) continue;
+    if (trustedExpansionKind(signal?.final_url || signal?.url || "") === "primary") continue;
+    return {
+      src: candidate.src,
+      alt: candidate.alt,
+      credit: candidate.credit,
+      license: candidate.license,
+      source_url: candidate.source_url,
+      image_type: candidate.image_type,
+      context_type: candidate.context_type,
+      caption: candidate.caption || "Kontekstfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      rights_basis: candidate.rights_basis || null,
+      discovery_only_source: Boolean(isDiscoveryOnly(signal)),
+      independent_license: candidate.independent_license === true,
+      pending_image: false,
+      ai_generated: false,
+      contains_people: Boolean(candidate.contains_people),
+      placement: "lead",
+    };
+  }
+  return null;
 }
 
 function commonsSearchQueries(assignment, article, research = null) {
@@ -806,6 +836,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
   if (!mediaScout && research.decision === "continue") {
     mediaScout = await findCommonsDocumentaryHero(assignment, { title: assignment.title_hint, standfirst: research.core_question || assignment.core_question }, research);
   }
+  if (!mediaScout && research.decision === "continue") mediaScout = contextualHeroFromSignals(check.selected);
   research.media_strategy = mediaScout ? "have" : "pending";
   if (research.decision !== "continue") return { status: research.decision === "watch" ? "watch" : "hold", stage: research.right_of_reply_required ? "ethics" : "research", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: research.rationale || "Research hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, selected_signals: check.selected || [], research: { rationale: research.rationale, candidate_claims: research.candidate_claims || [], contradictions: research.contradictions || [], researched: (research.researched || []).map((x) => ({ source: x.source, headline: x.headline, url: x.final_url || x.url, fetched: x.fetched, fetch_status: x.fetch_status, fetch_error: x.fetch_error, source_kind: x.source_kind, feed_summary_only: Boolean(x.feed_summary_only) })) } } };
 
@@ -847,6 +878,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const requiresDocumentary = newsRequiresDocumentaryHero();
   let documentaryHero = requiresDocumentary ? (mediaScout || documentaryHeroFromSignals(check.selected)) : null;
   if (requiresDocumentary && !documentaryHero) documentaryHero = await findCommonsDocumentaryHero(assignment, article, research);
+  if (requiresDocumentary && !documentaryHero) documentaryHero = contextualHeroFromSignals(check.selected);
 
   const imageKey = `${slug}.jpg`;
   let hero;
