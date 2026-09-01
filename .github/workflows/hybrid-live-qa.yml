@@ -1,0 +1,140 @@
+name: Hybrid live QA
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/hybrid-live-qa.yml'
+      - 'scripts/github_source_prefetch.py'
+      - 'scripts/editorial_dispatch_gate.py'
+      - 'scripts/test_hybrid_runtime.py'
+      - 'cloudflare/newsdesk/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  hybrid-live-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Local hybrid regression tests
+        run: |
+          set -euo pipefail
+          python scripts/editorial_dispatch_gate.py --self-test
+          python scripts/github_source_prefetch.py --self-test
+          python scripts/test_hybrid_runtime.py
+          node --check cloudflare/newsdesk/src/index.js
+          node --check cloudflare/newsdesk/src/editorial.js
+
+      - name: Verify latest Newsdesk deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run list --workflow "Deploy Cloudflare Newsdesk Runtime" --branch main --limit 5 \
+            --json databaseId,status,conclusion,headSha,createdAt,updatedAt,url > /tmp/deploy-runs.json
+          cat /tmp/deploy-runs.json
+          python - <<'PY'
+          import json,sys
+          runs=json.load(open('/tmp/deploy-runs.json'))
+          if not runs:
+              raise SystemExit('No Newsdesk deploy runs found')
+          latest=runs[0]
+          print('LATEST_DEPLOY', latest)
+          if latest.get('status')!='completed' or latest.get('conclusion')!='success':
+              raise SystemExit('Latest Newsdesk deploy is not green')
+          PY
+
+      - name: Read live hybrid state
+        run: |
+          set -euo pipefail
+          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          curl --fail --silent --show-error --max-time 30 "$BASE/health" -o /tmp/health-1.json
+          curl --fail --silent --show-error --max-time 30 "$BASE/candidates" -o /tmp/candidates.json
+          curl --fail --silent --show-error --max-time 30 "$BASE/editorial/latest" -o /tmp/editorial-latest.json
+          curl --fail --silent --show-error --max-time 30 "$BASE/editorial/history" -o /tmp/editorial-history.json
+          jq '{ok,service,runtime,ai_runtime,latest_generated_at,last_attempt_at,signal_count,last_editorial_at,editorial_status}' /tmp/health-1.json
+          jq '{schema_version,runtime,generated_at,signal_count,fingerprint}' /tmp/candidates.json
+          jq '{status,stage,generated_at,slug,reason,runtime,github_prefetch,ai_usage,audit}' /tmp/editorial-latest.json
+
+      - name: Build GitHub source prefetch from live scan
+        run: |
+          set -euo pipefail
+          python scripts/github_source_prefetch.py --scan /tmp/candidates.json --output /tmp/github-prefetch.json --limit 12
+          python - <<'PY'
+          import json
+          scan=json.load(open('/tmp/candidates.json'))
+          p=json.load(open('/tmp/github-prefetch.json'))
+          assert p['scan_fingerprint']==scan['fingerprint'], (p.get('scan_fingerprint'), scan.get('fingerprint'))
+          assert 0 <= p['usable'] <= p['attempted'] <= 12
+          print('PREFETCH', {k:p[k] for k in ('scan_fingerprint','attempted','usable')})
+          PY
+
+      - name: Analyze editorial telemetry
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, statistics
+          h=json.load(open('/tmp/editorial-history.json'))
+          if not isinstance(h,list):
+              raise SystemExit('Editorial history is not a list')
+          rows=h[:50]
+          calls=[]; neurons=[]; statuses={}; stages={}; with_usage=0
+          for r in rows:
+              statuses[r.get('status','?')]=statuses.get(r.get('status','?'),0)+1
+              stages[r.get('stage','approved')]=stages.get(r.get('stage','approved'),0)+1
+              u=r.get('ai_usage') or {}
+              if u:
+                  with_usage+=1
+                  if isinstance(u.get('calls'),(int,float)): calls.append(u['calls'])
+                  if isinstance(u.get('estimated_neurons'),(int,float)): neurons.append(u['estimated_neurons'])
+          print('EDITORIAL_HISTORY_ROWS',len(rows))
+          print('STATUS_COUNTS',statuses)
+          print('STAGE_COUNTS',stages)
+          print('ROWS_WITH_AI_USAGE',with_usage)
+          if calls:
+              print('AI_CALLS_MEAN',round(statistics.mean(calls),2),'MIN',min(calls),'MAX',max(calls))
+          if neurons:
+              print('NEURONS_MEAN',round(statistics.mean(neurons),2),'TOTAL',round(sum(neurons),2))
+          latest=json.load(open('/tmp/editorial-latest.json'))
+          print('LATEST_GITHUB_PREFETCH',latest.get('github_prefetch'))
+          print('LATEST_FINAL_REVIEW_MODE',(((latest.get('audit') or {}).get('final_review') or {}).get('mode')))
+          PY
+
+      - name: Verify five-minute scanner remains alive
+        run: |
+          set -euo pipefail
+          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          echo 'Waiting 6 minutes to span at least one scheduled five-minute scan...'
+          sleep 360
+          curl --fail --silent --show-error --max-time 30 "$BASE/health" -o /tmp/health-2.json
+          python - <<'PY'
+          import json
+          from datetime import datetime,timezone
+          a=json.load(open('/tmp/health-1.json'))
+          b=json.load(open('/tmp/health-2.json'))
+          print('SCAN_CHECK_BEFORE',a.get('last_attempt_at'))
+          print('SCAN_CHECK_AFTER ',b.get('last_attempt_at'))
+          if not b.get('ok') or b.get('runtime')!='cloudflare-workers':
+              raise SystemExit('Health/runtime failed after wait')
+          if a.get('last_attempt_at')==b.get('last_attempt_at'):
+              raise SystemExit('Scanner last_attempt_at did not advance across 6 minutes')
+          def dt(s): return datetime.fromisoformat(s.replace('Z','+00:00'))
+          age=(datetime.now(timezone.utc)-dt(b['last_attempt_at'])).total_seconds()
+          print('LATEST_SCAN_AGE_SECONDS',round(age,1))
+          if age > 480:
+              raise SystemExit(f'Latest scan is too old: {age:.0f}s')
+          PY
+
+      - name: QA summary
+        if: always()
+        run: |
+          echo "Hybrid live QA complete."
+          test -f /tmp/health-2.json && jq '{last_attempt_at,signal_count,last_editorial_at,editorial_status}' /tmp/health-2.json || true
