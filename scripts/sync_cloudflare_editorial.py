@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import io
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -87,7 +88,16 @@ def fail(message: str) -> None:
 
 
 def fetch_json(url: str) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "MorgentidendeEditorialSync/1.1"})
+    token = os.environ.get("EDITORIAL_RUN_TOKEN", "").strip()
+    if not token:
+        fail("EDITORIAL_RUN_TOKEN is required to fetch internal Newsdesk endpoints")
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "MorgentidendeEditorialSync/1.1",
+            "Authorization": f"Bearer {token}",
+        },
+    )
     with urllib.request.urlopen(req, timeout=60) as response:
         if response.status != 200:
             fail(f"Cloudflare editorial endpoint HTTP {response.status}")
