@@ -40,6 +40,8 @@ def valid_documentary_image(image: dict) -> bool:
         return False
     if image.get("pending_image") is True or image.get("ai_generated") is True:
         return False
+    if image.get("discovery_only_source") is True and image.get("independent_license") is not True:
+        return False
     context_type = str(image.get("context_type") or "").strip().lower()
     if context_type != "event" and not str(image.get("caption") or "").strip():
         return False
