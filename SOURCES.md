@@ -27,7 +27,8 @@ Ledgerens `coverage_sweep` beskriver kilder, source-groups, begrænsninger og ev
 
 Et almindeligt faktum kan normalt verificeres ved enten:
 
-- én autoritativ primærkilde inden for dens eget kompetenceområde, eller
+- én autoritativ primærkilde inden for dens eget kompetenceområde,
+- én stærk redaktionel originalkilde/bureaukilde, fx Reuters, AP, AFP eller Ritzau, når claimet tydeligt attribueres til kilden, eller
 - to reelt uafhængige troværdige kilder.
 
 To store seriøse nyhedsmedier kan derfor være nok. Det samme kan et stort seriøst medie plus fx en myndighed, virksomhed eller organisation, når primærkilden udtaler sig om egne beslutninger, handlinger eller data.
