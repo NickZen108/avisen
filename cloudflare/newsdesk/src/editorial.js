@@ -39,7 +39,7 @@ function wireOrigin(item) {
   const host = hostOf(item?.final_url || item?.url || "");
   const source = String(item?.source || "").toLowerCase().trim();
   if (host === "reuters.com" || host.endsWith(".reuters.com") || source === "reuters" || source === "thomson reuters") return "reuters";
-  if (host === "apnews.com" || host.endsWith(".apnews.com") || ["ap", "associated press", "ap news"].includes(source)) return "ap";
+  if (host === "apnews.com" || host.endsWith(".apnews.com") || source === "ap" || source === "associated press" || source === "ap news") return "ap";
   if (["afp", "agence france-presse"].includes(source)) return "afp";
   if (["ritzau", "ritzau bureau"].includes(source)) return "ritzau";
   return null;
