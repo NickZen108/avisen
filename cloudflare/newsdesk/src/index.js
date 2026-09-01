@@ -44,6 +44,44 @@ const jsonHeaders = {
   "x-robots-tag": "noindex, nofollow",
 };
 
+const INTERNAL_PATHS = new Set([
+  "/candidates",
+  "/editorial/latest",
+  "/editorial/history",
+  "/history",
+  "/run-editorial",
+]);
+
+async function sha256Bytes(value) {
+  return new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(String(value || ""))));
+}
+
+async function constantTimeTokenEqual(expected, supplied) {
+  const [a, b] = await Promise.all([sha256Bytes(expected), sha256Bytes(supplied)]);
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a[i] ^ b[i];
+  return diff === 0;
+}
+
+function suppliedEditorialToken(request) {
+  const auth = String(request.headers.get("authorization") || "");
+  if (/^Bearer\s+/i.test(auth)) return auth.replace(/^Bearer\s+/i, "").trim();
+  return String(request.headers.get("x-editorial-token") || "").trim();
+}
+
+async function authorizeInternal(request, env, pathname) {
+  if (!INTERNAL_PATHS.has(pathname)) return null;
+  const expected = String(env.EDITORIAL_RUN_TOKEN || "");
+  if (!expected) {
+    return Response.json({ error: "editorial auth unavailable" }, { status: 503, headers: jsonHeaders });
+  }
+  const supplied = suppliedEditorialToken(request);
+  if (!supplied || !(await constantTimeTokenEqual(expected, supplied))) {
+    return Response.json({ error: "unauthorized" }, { status: 401, headers: jsonHeaders });
+  }
+  return null;
+}
+
 function normalizeTitle(value) {
   return value.toLocaleLowerCase("da-DK").normalize("NFKC")
     .replace(/[^a-z0-9æøåäöüéèáàíìóòúùß ]+/giu, " ").replace(/\s+/g, " ").trim();
@@ -254,9 +292,10 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === "/health") {
-      const state = await (await getState(env)).json(); const editorial = await (await getState(env, "/editorial")).json();
-      return Response.json({ ok: true, service: "morgentidende-newsdesk", runtime: "cloudflare-workers", ai_runtime: Boolean(env.AI), latest_generated_at: state.latest?.generated_at || null, last_attempt_at: state.last_attempt_at || null, signal_count: state.latest?.signal_count || 0, last_editorial_at: editorial.last_editorial_at || null, editorial_status: editorial.latest?.status || null }, { headers: jsonHeaders });
+      return Response.json({ ok: true, service: "morgentidende-newsdesk" }, { headers: jsonHeaders });
     }
+    const authFailure = await authorizeInternal(request, env, url.pathname);
+    if (authFailure) return authFailure;
     if (url.pathname === "/candidates") {
       const state = await (await getState(env)).json();
       if (!state.latest) { const scan = await buildScan(); await storeScan(env, scan); return Response.json(scan, { headers: jsonHeaders }); }
