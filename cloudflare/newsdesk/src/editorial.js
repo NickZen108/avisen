@@ -495,6 +495,79 @@ function documentaryHeroFromSignals(selected = []) {
   return null;
 }
 
+function commonsSearchTerms(assignment, article) {
+  const raw = `${assignment?.title_hint || ""} ${article?.title || ""}`;
+  const stop = new Set(["mener","siger","efter","over","under","vil","kan","skal","med","fra","til","for","the","and","with","from","says","after","over"]);
+  const terms = words(raw).filter((x) => x.length >= 4 && !stop.has(x)).slice(0, 7);
+  return terms.join(" ");
+}
+
+function stripCommonsHtml(value) {
+  return stripHtml(String(value || "")).slice(0, 500);
+}
+
+function commonsLicenseAllowed(value) {
+  const v = String(value || "").toLowerCase();
+  return /\b(cc0|cc by|cc-by|cc by-sa|cc-by-sa|public domain|pd-)\b/.test(v);
+}
+
+async function findCommonsDocumentaryHero(assignment, article) {
+  const q = commonsSearchTerms(assignment, article);
+  if (!q) return null;
+  const params = new URLSearchParams({
+    action: "query",
+    format: "json",
+    origin: "*",
+    generator: "search",
+    gsrnamespace: "6",
+    gsrsearch: q,
+    gsrlimit: "8",
+    prop: "imageinfo",
+    iiprop: "url|mime|size|extmetadata",
+  });
+  try {
+    const res = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
+      headers: { "user-agent": "MorgentidendeMediaDesk/1.0" },
+      cf: { cacheTtl: 300, cacheEverything: true },
+    });
+    if (!res.ok) return null;
+    const payload = await res.json();
+    const pages = Object.values(payload?.query?.pages || {});
+    const queryTerms = new Set(words(q));
+    const ranked = [];
+    for (const page of pages) {
+      const info = page?.imageinfo?.[0];
+      const meta = info?.extmetadata || {};
+      const license = meta.LicenseShortName?.value || meta.UsageTerms?.value || "";
+      if (!info?.url || info?.mime !== "image/jpeg" || !commonsLicenseAllowed(license)) continue;
+      if ((info.width || 0) < 800 || (info.height || 0) < 450) continue;
+      const desc = stripCommonsHtml(meta.ImageDescription?.value || "");
+      const title = String(page?.title || "").replace(/^File:/i, "");
+      const candidateWords = new Set(words(`${title} ${desc}`));
+      let overlap = 0;
+      for (const term of queryTerms) if (candidateWords.has(term)) overlap += 1;
+      if (overlap < 1) continue;
+      const credit = stripCommonsHtml(meta.Artist?.value || meta.Credit?.value || "Wikimedia Commons");
+      ranked.push({
+        score: overlap,
+        hero: {
+          src: info.thumburl || info.url,
+          alt: desc || title,
+          credit: credit || "Wikimedia Commons",
+          license: stripCommonsHtml(license),
+          source_url: info.descriptionurl || `https://commons.wikimedia.org/wiki/${encodeURIComponent(page.title)}`,
+          image_type: "photo",
+          placement: "lead",
+        },
+      });
+    }
+    ranked.sort((a, b) => b.score - a.score);
+    return ranked[0]?.hero || null;
+  } catch (_) {
+    return null;
+  }
+}
+
 
 function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the publication ledger boundary");
@@ -615,7 +688,8 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const slug = `${date}-${slugify(article.title)}`.slice(0, 96).replace(/-+$/g, "");
   const storyId = `${date}-${slugify(assignment.title_hint || article.title)}`.slice(0, 96).replace(/-+$/g, "");
   const requiresDocumentary = newsRequiresDocumentaryHero();
-  const documentaryHero = requiresDocumentary ? documentaryHeroFromSignals(check.selected) : null;
+  let documentaryHero = requiresDocumentary ? documentaryHeroFromSignals(check.selected) : null;
+  if (requiresDocumentary && !documentaryHero) documentaryHero = await findCommonsDocumentaryHero(assignment, article);
   if (requiresDocumentary && !documentaryHero) {
     return {
       status: "hold",
