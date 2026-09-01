@@ -135,7 +135,16 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
     if image is not None:
         for field in ["src", "alt", "credit", "license", "source_url", "image_type"]:
             if not str(image.get(field, "")).strip(): err(f"{path.name}: image mangler udfyldt {field}")
-        if image.get("image_type") not in {"photo", "illustration", "graphic"}: err(f"{path.name}: ugyldig image_type")
+        if image.get("image_type") not in {"photo", "video_still", "illustration", "graphic"}: err(f"{path.name}: ugyldig image_type")
+        if image.get("image_type") == "illustration" and article.get("automation_origin") == "cloudflare-workers-ai":
+            if image.get("pending_image") is not True or image.get("ai_generated") is not True:
+                err(f"{path.name}: autonom nyhedsillustration skal være pending_image=true og ai_generated=true")
+            if image.get("context_type") != "illustration":
+                err(f"{path.name}: autonom nyhedsillustration skal have context_type=illustration")
+            if str(image.get("caption") or "").strip().lower() != "illustration":
+                err(f"{path.name}: autonom nyhedsillustration skal have synlig caption Illustration")
+        if image.get("image_type") in {"photo", "video_still"} and image.get("pending_image") is True:
+            err(f"{path.name}: dokumentarisk hero må ikke have pending_image=true")
         if image.get("placement", "lead") not in {"lead", "inline", "none"}: err(f"{path.name}: image placement skal være lead, inline eller none")
         for field in ["src", "source_url"]:
             value=str(image.get(field, "")).strip()

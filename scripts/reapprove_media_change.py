@@ -54,15 +54,48 @@ def validate_image(image: dict):
     missing = [key for key in required if not str(image.get(key) or "").strip()]
     if missing:
         raise SystemExit("Media re-approval blocked: image metadata missing: " + ", ".join(missing))
-    if image.get("image_type") not in {"photo", "video_still", "document", "graphic", "illustration"}:
-        raise SystemExit(f"Media re-approval blocked: unsupported image_type {image.get('image_type')!r}")
+    image_type = image.get("image_type")
+    if image_type not in {"photo", "video_still", "illustration", "graphic"}:
+        raise SystemExit(f"Media re-approval blocked: unsupported image_type {image_type!r}")
     if not str(image.get("src")).startswith(("https://", "/")):
         raise SystemExit("Media re-approval blocked: image src must be https:// or site-relative")
     if not str(image.get("source_url")).startswith("https://"):
         raise SystemExit("Media re-approval blocked: source_url must be https://")
-    context_type = str(image.get("context_type") or "context").strip().lower()
-    if context_type != "event" and not str(image.get("caption") or "").strip():
-        raise SystemExit("Media re-approval blocked: non-event photo requires visible archive/context caption")
+
+    pending = image.get("pending_image") is True
+    ai_generated = image.get("ai_generated") is True
+    context_type = str(image.get("context_type") or "").strip().lower()
+
+    if image_type in {"photo", "video_still"}:
+        if pending or ai_generated:
+            raise SystemExit("Media re-approval blocked: documentary photo/still cannot be pending or AI-generated")
+        if context_type not in {"event", "place", "person", "object", "archive"}:
+            raise SystemExit("Media re-approval blocked: documentary image has invalid context_type")
+        if context_type != "event" and not str(image.get("caption") or "").strip():
+            raise SystemExit("Media re-approval blocked: non-event photo requires visible archive/context caption")
+    elif pending or ai_generated:
+        if image_type != "illustration" or context_type != "illustration":
+            raise SystemExit("Media re-approval blocked: pending AI hero must be image_type=illustration and context_type=illustration")
+        if not pending or not ai_generated:
+            raise SystemExit("Media re-approval blocked: AI news illustration must remain explicitly pending")
+        if str(image.get("caption") or "").strip().lower() != "illustration":
+            raise SystemExit("Media re-approval blocked: pending illustration requires visible caption Illustration")
+        if image.get("photorealistic") is True:
+            raise SystemExit("Media re-approval blocked: photorealistic AI people/images are not allowed")
+
+
+def validate_replacement_transition(previous_image: dict, current_image: dict):
+    """A pending sketch may be cleared only by a truthful documentary replacement."""
+    if previous_image.get("pending_image") is True:
+        if current_image.get("pending_image") is True:
+            raise SystemExit("Media re-approval blocked: replacement still marked pending_image")
+        if current_image.get("ai_generated") is True:
+            raise SystemExit("Media re-approval blocked: replacement for pending sketch must not be AI-generated")
+        if current_image.get("image_type") not in {"photo", "video_still"}:
+            raise SystemExit("Media re-approval blocked: pending sketch must be replaced by photo/video_still")
+        if str(current_image.get("context_type") or "") not in {"event", "place", "person", "object", "archive"}:
+            raise SystemExit("Media re-approval blocked: replacement documentary context_type invalid")
+
 
 
 def reapprove(slug: str, checked_at: str | None = None, dry_run: bool = False):
@@ -93,6 +126,7 @@ def reapprove(slug: str, checked_at: str | None = None, dry_run: bool = False):
         raise SystemExit("Media re-approval blocked: image has not changed")
 
     validate_image(current.get("image") or {})
+    validate_replacement_transition(previous.get("image") or {}, current.get("image") or {})
     old_hash = digest(previous)
     new_hash = digest(current)
     when = checked_at or datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
@@ -143,6 +177,30 @@ def self_test():
         "context_type": "event",
     }
     validate_image(good)
+    pending = {
+        "src": "/img/auto/pending.jpg",
+        "alt": "Illustration",
+        "credit": "Illustration: Morgentidende",
+        "license": "Morgentidende – AI-genereret illustration",
+        "source_url": "https://example.test/generated",
+        "image_type": "illustration",
+        "placement": "lead",
+        "context_type": "illustration",
+        "caption": "Illustration",
+        "pending_image": True,
+        "ai_generated": True,
+        "contains_people": False,
+        "people_style": "pencil_hatching",
+        "photorealistic": False,
+    }
+    validate_image(pending)
+    validate_replacement_transition(pending, good)
+    try:
+        validate_replacement_transition(pending, {**pending, "pending_image": True})
+    except SystemExit:
+        pass
+    else:
+        raise AssertionError("pending replacement must clear pending_image")
     try:
         validate_image({**good, "source_url": None})
     except SystemExit:

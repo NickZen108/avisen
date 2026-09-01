@@ -206,22 +206,36 @@
     },
     {
       "id": "image",
-      "label": "Dokumentarisk hero",
+      "label": "Hero-integritet",
       "kind": "safety",
       "hard_gate": true,
       "requirements": [
         {
-          "key": "real_documentary_media",
-          "label": "Nyheder kræver ægte dokumentarisk media",
+          "key": "documentary_first",
+          "label": "Media-scout skal forsøge lovligt dokumentarisk media før illustration",
           "value": 1,
-          "unit": "hero",
+          "unit": "regel",
           "adjustable": false
         },
         {
-          "key": "non_event_caption",
-          "label": "Ikke-hændelsesfoto kræver synlig kontekst/arkiv-caption",
+          "key": "no_photo_is_soft",
+          "label": "Intet foto fundet giver pending illustration – ikke hold",
           "value": 1,
-          "unit": "caption",
+          "unit": "regel",
+          "adjustable": false
+        },
+        {
+          "key": "truthful_context",
+          "label": "Foto/still skal have sand context_type og caption ved ikke-event",
+          "value": 1,
+          "unit": "regel",
+          "adjustable": false
+        },
+        {
+          "key": "ai_integrity",
+          "label": "Pending AI-hero skal være tydelig ikke-fotorealistisk illustration",
+          "value": 1,
+          "unit": "regel",
           "adjustable": false
         }
       ]

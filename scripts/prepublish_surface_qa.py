@@ -16,6 +16,7 @@ ARTICLES = ROOT / "content" / "articles"
 ALLOWED_AI_PEOPLE_STYLES = {
     "editorial_illustration",
     "pencil_sketch",
+    "pencil_hatching",
     "line_art",
     "collage",
     "silhouette",
@@ -91,23 +92,49 @@ def main() -> int:
         image = article.get("image")
         origin = article.get("automation_origin")
 
-        # New autonomous Cloudflare articles are held to the full hero standard.
+        # Autonomous news may publish with a temporary, unmistakably illustrative
+        # pencil hero after deterministic media scouting. Image integrity remains hard.
         if origin == "cloudflare-workers-ai":
             if not isinstance(image, dict):
                 faults.append(f"{path.name}: autonom artikel mangler hero")
                 continue
             if image.get("placement", "lead") != "lead":
                 faults.append(f"{path.name}: autonom artikel har ikke lead-hero")
-            if image.get("image_type") not in {"photo", "video_still", "document"}:
-                faults.append(f"{path.name}: autonome nyheder kræver dokumentarisk hero; illustration er ikke tilladt")
-            if image.get("image_type") == "graphic":
-                faults.append(f"{path.name}: teknisk grafik må ikke være autonom hero")
-            for key in ("src", "alt", "credit", "license"):
+
+            image_type = image.get("image_type")
+            context_type = str(image.get("context_type") or "").strip().lower()
+            pending = image.get("pending_image") is True
+            ai_generated = image.get("ai_generated") is True
+
+            if image_type in {"photo", "video_still"}:
+                if pending or ai_generated:
+                    faults.append(f"{path.name}: dokumentarisk foto/still må ikke være pending eller AI-genereret")
+                if context_type not in {"event", "place", "person", "object", "archive"}:
+                    faults.append(f"{path.name}: ugyldig context_type for dokumentarisk hero")
+                if context_type != "event" and not str(image.get("caption") or "").strip():
+                    faults.append(f"{path.name}: ikke-hændelsesfoto kræver synlig arkiv-/kontekst-caption")
+                source_url = str(image.get("source_url") or "").lower()
+                if image_type == "video_still" and ("youtube.com" in source_url or "youtu.be" in source_url):
+                    if not str(image.get("rights_basis") or "").strip():
+                        faults.append(f"{path.name}: YouTube-video-still kræver dokumenteret rights_basis")
+                if image.get("discovery_only_source") is True and image.get("independent_license") is not True:
+                    faults.append(f"{path.name}: discovery_only må ikke være billedkilde uden selvstændig licens")
+            elif image_type == "illustration":
+                if not pending or not ai_generated:
+                    faults.append(f"{path.name}: nyhedsillustration er kun tilladt som AI-genereret pending_image")
+                if context_type != "illustration":
+                    faults.append(f"{path.name}: pending illustration skal have context_type=illustration")
+                if str(image.get("caption") or "").strip().lower() != "illustration":
+                    faults.append(f"{path.name}: pending illustration skal have synlig caption 'Illustration'")
+                if image.get("photorealistic") is True:
+                    faults.append(f"{path.name}: pending illustration må ikke være fotorealistisk")
+            else:
+                faults.append(f"{path.name}: ugyldig autonom hero-type {image_type!r}")
+
+            for key in ("src", "alt", "credit", "license", "source_url"):
                 if not str(image.get(key) or "").strip():
                     faults.append(f"{path.name}: hero mangler {key}")
-            context_type = str(image.get("context_type") or "context").strip().lower()
-            if context_type != "event" and not str(image.get("caption") or "").strip():
-                faults.append(f"{path.name}: ikke-hændelsesfoto kræver synlig arkiv-/kontekst-caption")
+
             src = str(image.get("src") or "")
             if src.lower().endswith(".svg"):
                 faults.append(f"{path.name}: autonom hero må ikke være SVG/diagram")

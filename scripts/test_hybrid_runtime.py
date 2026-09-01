@@ -27,11 +27,16 @@ def main() -> int:
     assert next(x for x in fact_stage["requirements"] if x["key"] == "min_verified_material_claims")["value"] == 1
     research_stage = next(x for x in thresholds["stages"] if x["id"] == "research")
     assert next(x for x in research_stage["requirements"] if x["key"] == "min_distinct_sources")["value"] == 1
+    image_stage = next(x for x in thresholds["stages"] if x["id"] == "image")
+    assert next(x for x in image_stage["requirements"] if x["key"] == "no_photo_is_soft")["value"] == 1
+    assert next(x for x in image_stage["requirements"] if x["key"] == "documentary_first")["value"] == 1
 
     dispatch = load_module("dispatch", ROOT / "scripts" / "editorial_dispatch_gate.py")
     dispatch.self_test()
     prefetch = load_module("prefetch", ROOT / "scripts" / "github_source_prefetch.py")
     prefetch.self_test()
+    pending_refresh = load_module("pending_refresh", ROOT / "scripts" / "refresh_pending_images.py")
+    pending_refresh.self_test()
 
     sync = load_module("sync", ROOT / "scripts" / "sync_cloudflare_editorial.py")
     assert sync.authoritative_editorial({"name": "Reuters", "source_group": "wire-reuters"})
@@ -51,6 +56,35 @@ def main() -> int:
         "license": "CC BY 4.0",
         "context_type": "event",
     })
+    assert sync.valid_documentary_image({
+        "src": "https://example.test/station.jpg",
+        "source_url": "https://example.test/license",
+        "image_type": "photo",
+        "alt": "Stationen",
+        "credit": "Example",
+        "license": "CC BY 4.0",
+        "context_type": "archive",
+        "caption": "Arkivfoto",
+    })
+    assert not sync.valid_documentary_image({
+        "src": "https://example.test/station.jpg",
+        "source_url": "https://example.test/license",
+        "image_type": "photo",
+        "alt": "Stationen",
+        "credit": "Example",
+        "license": "CC BY 4.0",
+        "context_type": "archive",
+    }), "Archive/context photo without caption must fail"
+    assert not sync.valid_documentary_image({
+        "src": "https://img.youtube.com/example.jpg",
+        "source_url": "https://www.youtube.com/watch?v=example",
+        "image_type": "video_still",
+        "alt": "Video-still",
+        "credit": "Video source",
+        "license": "Citation basis",
+        "context_type": "event",
+        "caption": "Still fra video",
+    }), "YouTube still without documented rights_basis must fail"
     assert not sync.valid_documentary_image({
         "src": "https://example.test/ai.jpg",
         "source_url": "https://example.test/source",
@@ -59,6 +93,25 @@ def main() -> int:
         "credit": "Morgentidende",
         "license": "Morgentidende",
     })
+    pending = {
+        "src": "/img/auto/pending.jpg",
+        "source_url": "https://example.test/generated",
+        "image_type": "illustration",
+        "context_type": "illustration",
+        "alt": "Illustration",
+        "credit": "Illustration: Morgentidende",
+        "license": "Morgentidende – AI-genereret illustration",
+        "caption": "Illustration",
+        "pending_image": True,
+        "ai_generated": True,
+        "contains_people": False,
+        "people_style": "pencil_hatching",
+        "photorealistic": False,
+    }
+    assert sync.valid_pending_illustration(pending)
+    assert not sync.valid_pending_illustration({**pending, "image_type": "photo"})
+    assert not sync.valid_pending_illustration({**pending, "context_type": "event"})
+    assert not sync.valid_pending_illustration({**pending, "photorealistic": True})
 
     js = (ROOT / "cloudflare" / "newsdesk" / "src" / "editorial.js").read_text(encoding="utf-8")
     required = [
@@ -88,23 +141,30 @@ def main() -> int:
         'function newsRequiresDocumentaryHero()',
         'function validDocumentaryHero(media)',
         'function documentaryHeroFromSignals(selected = [])',
+        'function contextualHeroFromSignals(selected = [])',
         'async function findCommonsDocumentaryHero(assignment, article',
         'commonsLicenseAllowed',
         'image/jpeg',
-        'if (requiresDocumentary && !documentaryHero)',
-        'Ingen juridisk anvendelig dokumentarisk hero fundet',
-        'ai_hero_allowed: false',
+        'async function generateTemporarySketch(env, assignment, article)',
+        'function pendingSketchHero(imageKey, article)',
+        'pending_image: true',
+        'people_style: "pencil_hatching"',
+        'NO photorealism',
+        'temporary_ai_sketch_allowed_after_scout: true',
+        'late_hold_for_no_photo: false',
         'function namedAccusedCrimeClaim(assignment, claim)',
         'function numericMaterialClaim(claim)',
         'media_strategy',
-        'stage: "media-scout"',
-        'context_type: "context"',
-        'Arkiv-/kontekstfoto',
+        'context_type: "archive"',
+        'Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.',
     ]
     missing = [item for item in required if item not in js]
     assert not missing, f"Hybrid runtime regression: missing {missing}"
-    assert "await generateHero(" not in js, "AI hero generation must not exist in the autonomous news runtime"
-    assert "flux-1-schnell" not in js, "News runtime must not reference a generative image model"
+    assert 'flux-1-schnell' in js, "Temporary pending sketch requires the constrained image model"
+    assert 'image_type: "illustration"' in js
+    assert 'context_type: "illustration"' in js
+    assert 'caption: "Illustration"' in js
+    assert 'return { status: "hold", stage: "media"' not in js, "No-photo must not late-hold a verified article"
 
     index_js = (ROOT / "cloudflare" / "newsdesk" / "src" / "index.js").read_text(encoding="utf-8")
     for item in (

@@ -3,7 +3,7 @@
   "status": "pass",
   "story_id": "2026-08-31-faergekatastrofe-ud-for-nordcypern",
   "article_slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
-  "checked_at": "2026-09-01T16:22:00Z",
+  "checked_at": "2026-09-01T17:10:00Z",
   "gates": {
     "language": "pass",
     "ethics": "pass",
@@ -40,8 +40,10 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Kyrenia_Harbour_5.JPG",
       "image_type": "photo",
       "placement": "lead",
-      "context_type": "context",
-      "caption": "Arkivfoto: Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken."
+      "context_type": "archive",
+      "caption": "Arkivfoto: Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken.",
+      "pending_image": false,
+      "ai_generated": false
     },
     "body": [
       {
@@ -77,15 +79,16 @@
   },
   "media_reapproval": {
     "mode": "targeted-image-metadata-only",
-    "checked_at": "2026-09-01T16:22:00Z",
+    "checked_at": "2026-09-01T17:10:00Z",
     "changed_fields": [
       "image.context_type",
-      "image.caption"
+      "image.pending_image",
+      "image.ai_generated"
     ],
     "checks": [
       "article text and claims unchanged",
-      "context/event status explicitly classified",
-      "non-event caption is visible and truthful"
+      "archive context explicitly classified",
+      "visible archive caption retained"
     ]
   }
 }

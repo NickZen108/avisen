@@ -3,18 +3,20 @@
 ## Formål
 Håndter eksternt dokumentarisk foto/video, når det faktisk tilfører historien værdi. Dette er ikke et obligatorisk AI-trin for alle artikler.
 
-Alle nyhedsartikler skal have et ægte dokumentarisk hero-billede. AI-genererede illustrationer er ikke tilladt som hero i nyhedspipelinen. Medieredaktøren skal levere et foto, et verificeret video-still/screengrab eller et relevant dokument med udfyldt kilde-, kredit- og licensmetadata, før artiklen kan godkendes. Hvis intet juridisk anvendeligt dokumentarisk hero-billede findes, parkeres historien ved Media i stedet for at få en genereret illustration.
+Nyheder følger en dokumentarisk-først hero-politik. Medieredaktøren skal først forsøge at finde et lovligt foto eller video-still med kilde-, kredit- og licensmetadata. Hvis intet lovligt foto findes efter den deterministiske scout, må en færdig verificeret artikel IKKE parkeres alene af den grund: den publiceres med en midlertidig sort/hvid blyantsskravering som `pending_image=true`, mens Media fortsætter fotosøgningen efter publicering.
 
 ## Foto
-Prioritér juridisk brugbart materiale i denne rækkefølge: (1) dramatisk og verificeret foto fra selve hændelsen, (2) verificeret video-still/screengrab fra selve hændelsen, når brugen har et dokumenteret juridisk grundlag, (3) foto af den præcise lokalitet, person, bygning, køretøj eller genstand, historien handler om, (4) det nærmeste relevante dokumentariske miljøfoto. Illustration er ikke fallback i nyhedspipelinen. Et billede fra en anden hændelse må aldrig fremstilles som dokumentation fra den aktuelle. Et billede fra en anden hændelse må aldrig fremstilles som dokumentation fra den aktuelle.
+Prioritér juridisk brugbart materiale i denne rækkefølge: (1) foto fra selve hændelsen, `context_type=event`; (2) foto af præcis person/sted/bygning/køretøj/genstand eller nærmeste relevante geografiske miljø, `context_type=person|place|object|archive`; (3) først hvis scouten ikke finder 1 eller 2: midlertidig AI-genereret sort/hvid blyantsskravering med `context_type=illustration` og `pending_image=true`. Et billede fra en anden hændelse må aldrig fremstilles som dokumentation fra den aktuelle.
 
-Registrér `src`, alt, credit, license, source_url, image_type, context_type, caption og placement. `context_type=event` må kun bruges, når billedet faktisk dokumenterer den aktuelle hændelse. Alle andre nyhedsfotos skal have en synlig, sandfærdig caption som fx “Arkivfoto” eller “Kontekstfoto – billedet viser ikke nødvendigvis selve hændelsen”. Manglende caption på ikke-hændelsesfoto er hard stop. Ingen generativt dokumentarfoto af virkelige hændelser/personer.
+Registrér `src`, alt, credit, license, source_url, image_type, context_type, caption, pending_image, ai_generated, contains_people, people_style og placement. `context_type=event` må kun bruges, når billedet faktisk dokumenterer den aktuelle hændelse. Alle andre rigtige nyhedsfotos skal have en synlig, sandfærdig caption som fx “Arkivfoto” eller “Kontekstfoto – billedet viser ikke nødvendigvis selve hændelsen”. Manglende caption på ikke-hændelsesfoto er hard stop.
+
+En pending AI-skitse er IKKE et foto: `image_type=illustration`, `context_type=illustration`, `ai_generated=true`, `pending_image=true`, synlig caption “Illustration”, credit “Illustration: Morgentidende”. Stilen er sort/hvid blyantsskravering/`pencil_hatching`, aldrig fotorealistisk. Mennesker må kun være anonyme silhuetter/skitser uden genkendelige ansigter. Skitsen må aldrig genskabe en konkret ulykke, et barn eller en navngiven sigtet “som om vi var der”.
 
 ## Video
-Foretræk officiel/primær embed, derefter verificeret upload fra troværdig redaktion eller dokumenteret øjenvidne. Kontroller uploader, dato, sted og om videoen faktisk viser det påståede. Brug officiel player/embed; kopier ikke videofiler. Screengrab kræver selvstændigt juridisk grundlag.
+Foretræk officiel/primær embed, derefter verificeret upload fra troværdig redaktion eller dokumenteret øjenvidne. Kontroller uploader, dato, sted og om videoen faktisk viser det påståede. Brug officiel player/embed; kopier ikke videofiler. YouTube-screengrab er ikke standard-fallback og kræver dokumenteret juridisk grundlag (`rights_basis`), fx udtrykkelig tilladelse eller klar citat-/licenshjemmel. Caption skal identificere video/still korrekt. Foretræk Commons/officielt stedfoto frem for dramatisk YouTube-still uden hjemmel.
 
 ## Effektivitet
-Media-scout starter allerede i Triage/Research, så billedmangel opdages før dyre skrive-/slutredaktørtrin. Søg først efter materiale fra selve hændelsen og derefter efter den nærmeste relevante dokumentariske erstatning. For A/B-historier uden et lovligt billede efter to scouts sættes historien på watch før Journalist i stedet for at bruge et dyrt skrivekald og dø sent. Dokumentarisk hero forbliver en publiceringsgate. Et bedre foto eller video-still kan senere tilføjes via det målrettede post-publication media-reapproval-flow.
+Media-scout starter i Triage/Research og følger rækkefølgen: hændelsesfoto fra scanner/signaler → officiel kilde → Wikimedia Commons med flere queries → sted/bygning/køretøj/geografi. Manglende foto er ikke længere et sent publiceringsveto. Når en fact-checket og skrevet artikel mangler foto, genereres pending blyantsskitse og artiklen publiceres. Media fortsætter efter publicering; når et lovligt foto findes, erstattes skitsen via det målrettede media-reapproval-flow uden ny Research.
 
 Output: verificeret mediemetadata eller `MEDIA_COMPLETE`. Ved rettigheds-/etikrisiko routes kun den konkrete risiko til Etik.
 
@@ -35,3 +37,12 @@ Hvis AI-grafikken indeholder mennesker, må personerne aldrig gengives fotoreali
 Prompts med mennesker skal eksplicit indeholde en negativ instruktion mod fotorealisme, fx: "clearly illustrated, not photorealistic, not a documentary photograph". Et AI-billede med personer må ikke mærkes som `photo` eller `video_still`.
 
 AI-genererede illustrationer skal registrere `ai_generated: true` og `contains_people: true|false`. Hvis `contains_people` er true, skal `people_style` være en af de godkendte tydeligt illustrative stilarter. Prepublish-QA afviser manglende eller fotorealistisk personstil.
+
+
+## Hard stops for hero-integritet
+- AI-billede mærket som foto/video-still eller som hændelsesdokumentation.
+- Arkiv-/kontekstfoto fremstillet som foto fra selve hændelsen.
+- Manglende synlig caption på ikke-hændelsesfoto.
+- Manglende kredit/licens/source_url på dokumentarisk foto.
+- Fotorealistiske personer i AI-grafik.
+- Discovery-only brugt som billedkilde uden selvstændig, dokumenteret licens.
