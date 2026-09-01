@@ -92,7 +92,7 @@ def main() -> int:
         'commonsLicenseAllowed',
         'image/jpeg',
         'if (requiresDocumentary && !documentaryHero)',
-        'Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede',
+        'Ingen juridisk anvendelig dokumentarisk hero fundet',
         'ai_hero_allowed: false',
         'function namedAccusedCrimeClaim(assignment, claim)',
         'function numericMaterialClaim(claim)',
