@@ -1,8 +1,8 @@
 {
   "schema_version": 3,
   "runtime": "cloudflare-workers",
-  "generated_at": "2026-08-31T20:45:19.553Z",
-  "fingerprint": "26d62fb4693c9135a76b4759ddfd79b0692d3b2370475f0c30125a4b5c29a1f2",
+  "generated_at": "2026-08-31T23:55:20.479Z",
+  "fingerprint": "97583be06d4120716e5c6078dfb7921272bcc75975540b11f4eee45d75dfae20",
   "signal_count": 176,
   "feeds": [
     {
@@ -92,13 +92,6 @@
     },
     {
       "source": "BBC World",
-      "headline": "97-year-old woman rescued after Nepali floods looked like 'a warrior'",
-      "normalized": "97 year old woman rescued after nepali floods looked like a warrior",
-      "description": "A 97-year-old woman, Guna Maya Bohara, survived the flash floods and was rescued using an excavator.",
-      "url": "https://www.bbc.co.uk/news/videos/cj64kgrpgjdo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "BBC World",
       "headline": "Across Latin America, 'aura battles' burst onto the scene",
       "normalized": "across latin america aura battles burst onto the scene",
       "description": "Young people across Latin America are taking part in the contests where participants compete to prove who has the most charisma.",
@@ -134,10 +127,17 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Aston Villa vs Arsenal LIVE: Premier League",
-      "normalized": "aston villa vs arsenal live premier league",
-      "description": "Follow updates as Villa host Arsenal, including the build-up, analysis, and live text commentary of the game.",
-      "url": "https://www.aljazeera.com/sports/liveblog/2026/8/31/live-aston-villa-vs-arsenal-premier-league?traffic_source=rss"
+      "headline": "Argentinian footballer Lionel Messi announces his retirement",
+      "normalized": "argentinian footballer lionel messi announces his retirement",
+      "description": "Argentinian footballer Lionel Messi announces his retirement",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/argentinian-footballer-lionel-messi-announces-his-retirement?traffic_source=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Arsenal edge past troubled Aston Villa 1-0 as Saka scores only goal",
+      "normalized": "arsenal edge past troubled aston villa 1 0 as saka scores only goal",
+      "description": "Victory ​lifts Arsenal to six points ⁠along with Man ⁠City, Hull City and Chelsea, while Villa remain without a point.",
+      "url": "https://www.aljazeera.com/sports/2026/8/31/arsenal-edge-past-troubled-aston-villa-1-0-as-saka-scores-only-goal?traffic_source=rss"
     },
     {
       "source": "BBC Europe",
@@ -155,10 +155,10 @@
     },
     {
       "source": "Guardian World",
-      "headline": "Australians missing in Nepal targeted by ‘heartbreaking’ and ‘abhorrent’ racist slurs",
-      "normalized": "australians missing in nepal targeted by heartbreaking and abhorrent racist slurs",
-      "description": "<p>As families await news after the catastrophe, community members appeal for compassion in the face of hateful rhetoric</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>A slew of racist social media comments have been made towards Australians missing in the <a href=\"https://www.theguardian.com/world/nepal-tibet-flood-disaster\">catastrophic Nepal-Tibet floods</a>, prompting calls for greater accountability of major platforms to remove hateful rhetoric.</p><p>On Monday, the total number of Australians missing after flash floods triggered by a massive glacier collapse in the Himalayas rose to 43, and the overall death toll was at least 810 people.</p> <a href=\"https://www.theguardian.com/austral",
-      "url": "https://www.theguardian.com/australia-news/2026/aug/31/australians-missing-in-nepal-targeted-by-heartbreaking-and-abhorrent-racist-slurs"
+      "headline": "Australia news live: NSW confirms new HSC assessment rules to crack down on AI use; Sydney man killed in home invasion",
+      "normalized": "australia news live nsw confirms new hsc assessment rules to crack down on ai use sydney man killed in home invasion",
+      "description": "<p>Follow updates live</p><ul><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p><strong>43 Australians still missing, with concerns growing ‘every day, every hour’ that goes by, Wong says</strong></p><p>The foreign affairs minister, <strong>Penny Wong, </strong>says there are still 43 Australian missing after the flooding in Nepal, saying the government holds grave concerns for their safety that only gets worse as the days go by.</p><p>This is such a distressing time and I know this is so difficult for the family and friends of those 43 Australians.</p><p>Every day, every hour, only increases our concern for those who have not been found and remain missing, and that is many Australians. … You can imagine how many families and friends are traumatised as a consequence.</p> <a href=\"https://www.theguardian.com/australia-news/live/2026/sep/01/nepal-tibet-flooding-missing-australians-penny-wong-anthony-albanese-pacific-islands-forum-liberal-national-co",
+      "url": "https://www.theguardian.com/australia-news/live/2026/sep/01/nepal-tibet-flooding-missing-australians-penny-wong-anthony-albanese-pacific-islands-forum-liberal-national-coalition-one-nation-politics-reactions-ntwnfb"
     },
     {
       "source": "Euronews",
@@ -199,7 +199,7 @@
       "source": "Guardian World",
       "headline": "Border area between Nepal and China where 33 Australians are missing still almost entirely cut off",
       "normalized": "border area between nepal and china where 33 australians are missing still almost entirely cut off",
-      "description": "<p>Majority of missing Australians were near Gyirong Port minutes before impact. Rescuers say the area is now destroyed, covered in metres of silt and debris</p><ul><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>It has been almost a week since the <a href=\"https://www.theguardian.com/world/nepal-tibet-flood-disaster\">catastrophic floods in Nepal</a> and not even a vehicle can get into the area where the majority of missing Australians were last heard from.</p><p>Gyirong Port, the border area between Nepal and China, was the first to be hit. Images from Chinese rescue teams who have managed to get in by helicopter or hiking show the area has been completely flattened. The immigration building, the power lines, everything, just wiped away.</p> <a href=\"https://www.theguardian.com/world/2026/sep/01/nepal-china-border-area-gyirong-port-almost-entirely-cut-off-missing-australians-ntwnfb\">Continue reading...</a>",
+      "description": "<p>Majority of missing Australians were near Gyirong Port minutes before impact. Rescuers say the area is now destroyed, covered in metres of silt and debris</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/sep/01/nepal-tibet-flooding-missing-australians-penny-wong-anthony-albanese-pacific-islands-forum-liberal-national-coalition-one-nation-politics-reactions-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>It has been almost a week since the <a href=\"https://www.theguardian.com/world/nepal-tibet-flood-disaster\">catastrophic floods in Nepal</a> and not even a vehicle can get into the area where the majority of missing Australians were last heard from.</p><p>Gyirong Port, the border area between Nepal and China, was the first to be hit. Images from Chinese rescue teams who have managed to get in by helicopter or hiking show the area has been compl",
       "url": "https://www.theguardian.com/world/2026/sep/01/nepal-china-border-area-gyirong-port-almost-entirely-cut-off-missing-australians-ntwnfb"
     },
     {
@@ -250,6 +250,13 @@
       "normalized": "china is concealing scale of flood disaster say tibet campaigners",
       "description": "<p>Rights group claims 300 homes were destroyed in Tibet and number of missing people is ‘far higher’ than Beijing admits</p><p>A Tibetan advocacy group says hundreds of homes were destroyed on the Tibetan side of the border in last week’s deadly floods, raising questions about <a href=\"https://www.theguardian.com/world/2026/aug/28/chinese-controls-information-hamper-assessment-tibet-flood-damage\">Beijing’s official account</a> of the scale of the disaster.</p><p>Public discussion about the flash floods has been restricted, with security officials in Tibet announcing on Sunday that it had penalised at least 10 people for sharing “false disaster information”. There was no further information on the nature of the penalties.</p> <a href=\"https://www.theguardian.com/world/2026/aug/31/china-concealing-scale-nepal-flood-disaster-say-tibet-campaigners\">Continue reading...</a>",
       "url": "https://www.theguardian.com/world/2026/aug/31/china-concealing-scale-nepal-flood-disaster-say-tibet-campaigners"
+    },
+    {
+      "source": "DR",
+      "headline": "Clara Tauson ude af US Open",
+      "normalized": "clara tauson ude af us open",
+      "description": "",
+      "url": "https://www.dr.dk/sporten/tennis/clara-tauson-ude-af-us-open"
     },
     {
       "source": "BBC World",
@@ -351,13 +358,6 @@
     },
     {
       "source": "BBC World",
-      "headline": "Dolly Parton laid to rest alongside husband in Nashville",
-      "normalized": "dolly parton laid to rest alongside husband in nashville",
-      "description": "A private family funeral is held for the singer who died on Tuesday at the age of 80.",
-      "url": "https://www.bbc.co.uk/news/articles/cew95ke74l7o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "BBC World",
       "headline": "Dolly Parton's dad couldn't read - it inspired her to send books to millions of children",
       "normalized": "dolly parton s dad couldn t read it inspired her to send books to millions of children",
       "description": "Families across the globe share how free books from Parton's Imagination Library helped their children.",
@@ -418,6 +418,13 @@
       "normalized": "far right israeli minister ben gvir and settlers storm al aqsa mosque",
       "description": "Israeli Minister Ben-Gvir storms Al-Aqsa Mosque compound with settlers, violating decades-old status quo arrangement.",
       "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/far-right-israeli-minister-ben-gvir-and-settlers-storm-al-aqsa-mosque?traffic_source=rss"
+    },
+    {
+      "source": "BBC World",
+      "headline": "Festival honouring Dolly Parton set for Nashville and London",
+      "normalized": "festival honouring dolly parton set for nashville and london",
+      "description": "Dolly Parton's estate says DollyFest will take the place of a traditional public memorial for the artist, just as she wanted.",
+      "url": "https://www.bbc.co.uk/news/articles/c5ywd9q3ywvo?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "Al Jazeera",
@@ -525,13 +532,6 @@
       "url": "https://www.aljazeera.com/video/inside-story/2026/8/31/how-will-the-mecca-agreement-become-an-operational-framework?traffic_source=rss"
     },
     {
-      "source": "DR",
-      "headline": "Hver fjerde ung er på skærmen over seks timer dagligt",
-      "normalized": "hver fjerde ung er på skærmen over seks timer dagligt",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/hver-fjerde-ung-er-paa-skaermen-over-seks-timer-dagligt"
-    },
-    {
       "source": "BBC World",
       "headline": "'I haven't lost my hope' - the search for missing loved ones",
       "normalized": "i haven t lost my hope the search for missing loved ones",
@@ -560,25 +560,11 @@
       "url": "http://www.euronews.com/video/2026/08/30/icelanders-react-as-the-eu-referendum-results-come-in"
     },
     {
-      "source": "DR",
-      "headline": "Ida Auken rejser til Grønland",
-      "normalized": "ida auken rejser til grønland",
-      "description": "",
-      "url": "https://www.dr.dk/nyheder/seneste/ida-auken-rejser-til-groenland"
-    },
-    {
       "source": "Euronews",
       "headline": "India and Uzbekistan deepen ties, eye $5bn trade and long-term uranium supplies",
       "normalized": "india and uzbekistan deepen ties eye 5bn trade and long term uranium supplies",
       "description": "The two governments also broadened cooperation on critical minerals, defence, digital payments and transport. A new foreign minister-level mechanism will oversee implementation, alongside expanded education and regional links.",
       "url": "http://www.euronews.com/2026/08/30/india-and-uzbekistan-deepen-ties-eye-5bn-trade-and-long-term-uranium-supplies"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "India rejects Hague court order to restore Indus waters pact with Pakistan",
-      "normalized": "india rejects hague court order to restore indus waters pact with pakistan",
-      "description": "New Delhi says the Permanent Court of Arbitration has no jurisdiction over its sovereign choice.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/india-rejects-hague-court-order-to-restore-indus-waters-pact-with-pakistan?traffic_source=rss"
     },
     {
       "source": "Al Jazeera",
@@ -595,11 +581,11 @@
       "url": "https://www.dr.dk/nyheder/seneste/indiens-premierminister-opfordrer-til-standse-krigen-i-ukraine"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Iran could face economic collapse in months, US Treasury’s Bessent warns",
-      "normalized": "iran could face economic collapse in months us treasury s bessent warns",
-      "description": "Treasury Secretary Scott Bessent weighs in on the US&#039;s economic pressure campaign at a meeting of G20 finance ministers.",
-      "url": "https://www.aljazeera.com/economy/2026/8/31/iran-could-face-economic-collapse-in-months-us-treasurys-bessent-warns?traffic_source=rss"
+      "source": "Guardian World",
+      "headline": "Investigation into Powerhouse Parramatta museum under way as stop-gap leader steps in",
+      "normalized": "investigation into powerhouse parramatta museum under way as stop gap leader steps in",
+      "description": "<p>‘Opera House of the west’ still slated to open to the public as scheduled on 7 November, NSW arts minister says</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/sep/01/nepal-tibet-flooding-missing-australians-penny-wong-anthony-albanese-pacific-islands-forum-liberal-national-coalition-one-nation-politics-reactions-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>An investigation is under way into allegations of misconduct involving senior executives at the soon-to-be-opened Powerhouse Parramatta.</p><p>The $915m museum in western Sydney, billed as one of the world’s most significant new museum projects, is set to open in November.</p> <a href=\"https://www.theguardian.com/australia-news/2026/sep/01/powerhouse-parramatta-western-sydney-investigation-ntwnfb\">Continue reading...</a>",
+      "url": "https://www.theguardian.com/australia-news/2026/sep/01/powerhouse-parramatta-western-sydney-investigation-ntwnfb"
     },
     {
       "source": "Euronews",
@@ -630,11 +616,32 @@
       "url": "https://www.aljazeera.com/news/2026/8/31/israeli-hardliner-storms-al-aqsa-mosque-in-occupied-east-jerusalem?traffic_source=rss"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "Israeli outposts expand as Palestinian homes are demolished",
+      "normalized": "israeli outposts expand as palestinian homes are demolished",
+      "description": "Israeli forces demolish Palestinian homes in Nablus, while in Hebron settlers cleared land for a new outpost.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/israeli-outposts-expand-as-palestinian-homes-are-demolished?traffic_source=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "JERUSALEM DAILY: JOURNALISTS ATTACKED",
+      "normalized": "jerusalem daily journalists attacked",
+      "description": "Israeli pogroms target Palestinians and an NBC crew in the occupied West Bank.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/jerusalem-daily-journalists-attacked?traffic_source=rss"
+    },
+    {
       "source": "BBC World",
       "headline": "John Galliano exhibition at New York Met cancelled after backlash",
       "normalized": "john galliano exhibition at new york met cancelled after backlash",
       "description": "The exhibition faced criticism over the British fashion designer's conviction for making antisemitic remarks in 2011.",
       "url": "https://www.bbc.co.uk/news/articles/c4gkp6pgy03o?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "DR",
+      "headline": "Knivstikkeri spærrer Times Square i New York",
+      "normalized": "knivstikkeri spærrer times square i new york",
+      "description": "",
+      "url": "https://www.dr.dk/nyheder/seneste/knivstikkeri-spaerrer-times-square-i-new-york"
     },
     {
       "source": "Euronews",
@@ -666,6 +673,13 @@
     },
     {
       "source": "Al Jazeera",
+      "headline": "Lebanon asks Greece to help enforce agreement with Israel",
+      "normalized": "lebanon asks greece to help enforce agreement with israel",
+      "description": "After Greece agrees to Israeli weapons deal, Joseph Aoun asks Athens to help advance US-brokered framework agreement.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/lebanon-asks-greece-to-help-enforce-agreement-with-israel?traffic_source=rss"
+    },
+    {
+      "source": "Al Jazeera",
       "headline": "‘Let Data Reign’: Trump decries opposition to data centres in US",
       "normalized": "let data reign trump decries opposition to data centres in us",
       "description": "Despite concerns over electricity and water consumption, US president calls on communities to embrace data centres.",
@@ -684,13 +698,6 @@
       "normalized": "man arrested after swiss rave shooting that killed woman",
       "description": "A 22-year-old Italian woman was killed and several injured at a techno rave in Aarau.",
       "url": "https://www.bbc.co.uk/news/articles/cddv92n194vo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "Guardian World",
-      "headline": "Man who murdered Molly Ticehurst unlikely to face life in jail, court hears",
-      "normalized": "man who murdered molly ticehurst unlikely to face life in jail court hears",
-      "description": "<p>Justice Natalie Adams says she is troubled by expert evidence about rape allegations in slain woman’s police statement</p><ul><li><p><a href=\"https://www.theguardian.com/australia-news/live/2026/aug/31/nepal-floods-penny-wong-labor-anthony-albanese-one-nation-pauline-hanson-angus-taylor-liberal-party-ntwnfb\">Follow our Australia news live blog for latest updates</a></p></li><li><p>Get our <a href=\"https://www.theguardian.com/email-newsletters?CMP=cvau_sfl\">breaking news email</a>, <a href=\"https://app.adjust.com/w4u7jx3\">free app</a> or <a href=\"https://www.theguardian.com/australia-news/series/full-story?CMP=cvau_sfl\">daily news podcast</a></p></li></ul><p>Molly Ticehurst’s ex-boyfriend is unlikely to face a life sentence for her domestic violence murder, a crime which galvanised a national movement against gendered abuse.</p><p>Ticehurst, a 28-year-old childcare educator, was found dead in her home at Forbes, in the New South Wales central-west, in the early hours of 22 April 2024.</p> <a href=\"https://www.theguardian.com/australia-news/2026/aug/31/molly-ticehurst-domestic-violence-murder-daniel-billings-sentence-ntwnfb\">Continue reading...</a>",
-      "url": "https://www.theguardian.com/australia-news/2026/aug/31/molly-ticehurst-domestic-violence-murder-daniel-billings-sentence-ntwnfb"
     },
     {
       "source": "BBC Europe",
@@ -777,13 +784,6 @@
       "url": "https://www.bbc.co.uk/news/videos/c5ydwy004v0o?at_medium=RSS&at_campaign=rss"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Nepal FM speaks to Al Jazeera on devastating floods",
-      "normalized": "nepal fm speaks to al jazeera on devastating floods",
-      "description": "Nepal FM speaks to Al Jazeera on devastating floods",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/nepal-fm-speaks-to-al-jazeera-on-devastating-floods?traffic_source=rss"
-    },
-    {
       "source": "BBC World",
       "headline": "Nepal rescuers blast hillside in search of hydropower workers as families wait anxiously",
       "normalized": "nepal rescuers blast hillside in search of hydropower workers as families wait anxiously",
@@ -819,6 +819,13 @@
       "url": "https://www.bbc.co.uk/news/articles/cvgy79wmv4jo?at_medium=RSS&at_campaign=rss"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "‘Nothing is usable’: Nepal residents return to flood-ravaged homes",
+      "normalized": "nothing is usable nepal residents return to flood ravaged homes",
+      "description": "Residents in Nepal are returning to flood-ravaged homes, sifting through mud and debris to salvage whatever they can.",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/nothing-is-usable-nepal-residents-return-to-flood-ravaged-homes?traffic_source=rss"
+    },
+    {
       "source": "DR",
       "headline": "Ny type kaninpest fundet i danske harer",
       "normalized": "ny type kaninpest fundet i danske harer",
@@ -847,11 +854,11 @@
       "url": "https://www.thelocal.dk/20260831/opinion-the-danish-flag-obsession-is-hyggelig-not-threatening"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Over 6,000 Ebola cases confirmed in DRC as death toll nears 3,000",
-      "normalized": "over 6 000 ebola cases confirmed in drc as death toll nears 3 000",
-      "description": "Outbreak in the DRC &#039;the fastest-spreading Ebola epidemic ever recorded,&#039; as country struggles to contain infections.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/over-6000-ebola-cases-confirmed-in-drc-as-death-toll-nears-3000?traffic_source=rss"
+      "source": "BBC World",
+      "headline": "Orangutans in danger as wildfires blaze through Borneo",
+      "normalized": "orangutans in danger as wildfires blaze through borneo",
+      "description": "Wildfires in Indonesia have destroyed part of the natural habitat of hundreds of orangutans, risking the survival of the species.",
+      "url": "https://www.bbc.co.uk/news/videos/c74emdn49kdo?at_medium=RSS&at_campaign=rss"
     },
     {
       "source": "Al Jazeera",
@@ -859,6 +866,13 @@
       "normalized": "palestinian farmers rebuild what israeli settlers destroy in west bank",
       "description": "Israeli settler pogroms destroy greenhouses and crops, but Burin&#039;s farmers insist on rebuilding.",
       "url": "https://www.aljazeera.com/news/2026/8/31/palestinian-farmers-rebuild-what-israeli-settlers-destroy-in-west-bank?traffic_source=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "Pan Am 103: What to know as alleged Lockerbie bombmaker faces US trial",
+      "normalized": "pan am 103 what to know as alleged lockerbie bombmaker faces us trial",
+      "description": "Abu Agila Mohammad Mas’ud Kheir Al-Marimi is the third person charged in the downing of Pan Am Flight 103.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/what-to-know-us-court-hearing-held-for-alleged-lockerbie-bombmaker?traffic_source=rss"
     },
     {
       "source": "BBC World",
@@ -883,10 +897,10 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Photos: Nearly 1,000 dead, thousands missing in Nepal–China border floods",
-      "normalized": "photos nearly 1 000 dead thousands missing in nepal china border floods",
-      "description": "Over 4,000 people remain missing after deadly floods swept through Nepal and Tibet, leaving families in despair.",
-      "url": "https://www.aljazeera.com/gallery/2026/8/31/photos-nearly-1000-dead-thousands-missing-in-nepal-china-border?traffic_source=rss"
+      "headline": "Poland opens terror probe into fire at factory supplying Ukraine drones",
+      "normalized": "poland opens terror probe into fire at factory supplying ukraine drones",
+      "description": "Amid suspicion of Russian sabotage, Warsaw eyes link to foreign intelligence services.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/poland-opens-terror-probe-into-fire-at-drone-factory?traffic_source=rss"
     },
     {
       "source": "DR",
@@ -897,10 +911,10 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Principal who saved 900 students recalls Nepal’s devastating flood",
-      "normalized": "principal who saved 900 students recalls nepal s devastating flood",
-      "description": "Nepal school principal Rajendra Dawadi recalls the devastating floods that forced him to evacuate over 900 students.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/principal-who-saved-900-students-recalls-nepals-devastating-flood?traffic_source=rss"
+      "headline": "Putin, Xi reaffirm Russia-China ties amid ‘unpredictable’ world",
+      "normalized": "putin xi reaffirm russia china ties amid unpredictable world",
+      "description": "The Russian and Chinese leaders met on the sidelines of the SCO summit.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/putin-and-xi-affirm-strategic-alliance-amid-unpredictable-world?traffic_source=rss"
     },
     {
       "source": "Guardian World",
@@ -922,13 +936,6 @@
       "normalized": "search continues as number missing in nepal tibet floods rises to 2 478 as it happened",
       "description": "<p>This live blog is now closed</p><ul><li><p><a href=\"https://www.theguardian.com/world/ng-interactive/2026/aug/28/the-flood-took-everything-i-have-survivors-grieve-for-relatives-and-homes-swept-away-in-nepal\">‘The flood took everything I have’: survivors grieve for relatives and homes swept away in Nepal</a></p></li><li><p><a href=\"https://www.theguardian.com/world/2026/aug/27/nepal-tibet-flash-flood-visual-guide-why-how-flooding-happened-floods-cause-reason-explained\">Visual guide: how the deadly flooding unfolded</a></p></li><li><p><a href=\"https://www.theguardian.com/world/2026/aug/26/tell-us-have-you-been-affected-by-the-flash-floods-on-the-nepal-tibet-border\">Tell us: have you been affected by the flash floods?</a></p></li></ul><p><strong>More now on the Nepali army’s <a href=\"https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates?CMP=share_btn_url&amp;page=with%3Ablock-6a9107bf8f089f2cda798d55#block-6a9107bf8f089f2cda798d55\">rescue operation</a> to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding</strong>.</p><p>“Two helicopters have been dispatched but it is c",
       "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "She is still in the sea, mother describes losing daughter in ferry disaster",
-      "normalized": "she is still in the sea mother describes losing daughter in ferry disaster",
-      "description": "Parents recount desperate attempts to save their children after a ferry capsized off Northern Cyprus on 30 August.",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/she-is-still-in-the-sea-mother-describes-losing-daughter-in-ferry-disaster?traffic_source=rss"
     },
     {
       "source": "BBC Europe",
@@ -1029,6 +1036,13 @@
       "url": "http://www.euronews.com/2026/08/31/i-dont-mind-begging-volta-offers-an-opportunity-to-many"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "Three minors killed in Colombia armed group crackdown",
+      "normalized": "three minors killed in colombia armed group crackdown",
+      "description": "Rights groups warn that armed groups are increasingly recruiting children to their ranks through social media.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/three-minors-killed-in-colombia-armed-group-crackdown?traffic_source=rss"
+    },
+    {
       "source": "DR",
       "headline": "To anholdt efter knivstikkeri ved værtshus i Aalborg",
       "normalized": "to anholdt efter knivstikkeri ved værtshus i aalborg",
@@ -1051,8 +1065,8 @@
     },
     {
       "source": "Al Jazeera",
-      "headline": "Top US general says no plans to send troops to polls for November elections",
-      "normalized": "top us general says no plans to send troops to polls for november elections",
+      "headline": "Top US general says no plans to deploy troops for 2026 midterm elections",
+      "normalized": "top us general says no plans to deploy troops for 2026 midterm elections",
       "description": "Remarks come in response to concerns from Democrats that military could be used to interfere in elections.",
       "url": "https://www.aljazeera.com/news/2026/8/31/top-us-general-says-no-plans-to-send-troops-to-polls-for-november-elections?traffic_source=rss"
     },
@@ -1092,13 +1106,6 @@
       "url": "https://www.theguardian.com/world/2026/aug/31/trump-threatens-further-action-us-iran-exchange-fire"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "Tunisia protests: Water, power cuts and rising anger",
-      "normalized": "tunisia protests water power cuts and rising anger",
-      "description": "Tunisia protests: Water, power cuts and rising anger",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/tunisia-protests-water-power-cuts-and-rising-anger?traffic_source=rss"
-    },
-    {
       "source": "Guardian World",
       "headline": "Turkish deep-sea search vessel joins efforts to retrieve 20 still missing after Cyprus ferry disaster",
       "normalized": "turkish deep sea search vessel joins efforts to retrieve 20 still missing after cyprus ferry disaster",
@@ -1134,6 +1141,13 @@
       "url": "https://www.bbc.co.uk/news/articles/cx2z72x5z1po?at_medium=RSS&at_campaign=rss"
     },
     {
+      "source": "Al Jazeera",
+      "headline": "US Army Secretary Daniel Driscoll submits resignation, media reports say",
+      "normalized": "us army secretary daniel driscoll submits resignation media reports say",
+      "description": "Army secretary&#039;s resignation follows months of tensions with US Defense Secretary Pete Hegseth, US media reports say.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/us-army-secretary-daniel-driscoll-submits-resignation-media-reports-say?traffic_source=rss"
+    },
+    {
       "source": "Euronews",
       "headline": "US forces strike Iranian rocket launchers in Strait of Hormuz as IRGC warns of 'retaliatory response'",
       "normalized": "us forces strike iranian rocket launchers in strait of hormuz as irgc warns of retaliatory response",
@@ -1151,15 +1165,8 @@
       "source": "BBC World",
       "headline": "US Supreme Court clears way for Trump to keep building White House ballroom",
       "normalized": "us supreme court clears way for trump to keep building white house ballroom",
-      "description": "The National Trust for Historic Preservation argued the president did not have authority to proceed with construction.",
+      "description": "But Chief Justice John Roberts dissents, writing that \"construction is likely unlawful\".",
       "url": "https://www.bbc.co.uk/news/articles/c9w457e7ydlo?at_medium=RSS&at_campaign=rss"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "Vance says Trump ‘sending a message’ to Iran with AI-generated video",
-      "normalized": "vance says trump sending a message to iran with ai generated video",
-      "description": "Video depicting Kharg Island being attacked is later followed by more warnings from President Trump.",
-      "url": "https://www.aljazeera.com/economy/2026/8/31/vance-says-trump-sending-a-message-to-iran-with-ai-generated-video?traffic_source=rss"
     },
     {
       "source": "Guardian World",
@@ -1197,13 +1204,6 @@
       "url": "https://www.dr.dk/nyheder/seneste/vvs-er-faar-ti-aars-faengsel-overvaage-kokain-transport"
     },
     {
-      "source": "Al Jazeera",
-      "headline": "War on Iran: US bombs Iran",
-      "normalized": "war on iran us bombs iran",
-      "description": "War on Iran: US bombs Iran",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/31/war-on-iran-us-bombs-iran?traffic_source=rss"
-    },
-    {
       "source": "Guardian World",
       "headline": "Was it a mistake for 99 Colombian guerrillas to lay down their arms?",
       "normalized": "was it a mistake for 99 colombian guerrillas to lay down their arms",
@@ -1230,13 +1230,6 @@
       "normalized": "what 039 s the difference between schengen and eu free movement rules",
       "description": "With countries across Europe reintroducing police checks at internal borders with neighbouring states there has been renewed attention on how the borderless Schengen area works and how it&#039;s linked to the EU\"s free movement principle.",
       "url": "https://www.thelocal.dk/20260828/whats-the-difference-between-schengen-and-eu-free-movement-rules"
-    },
-    {
-      "source": "Al Jazeera",
-      "headline": "What to know: US court hearing held for alleged Lockerbie bombmaker",
-      "normalized": "what to know us court hearing held for alleged lockerbie bombmaker",
-      "description": "Abu Agila Mohammad Mas’ud Kheir Al-Marimi is the third person charged in the downing of Pan Am Flight 103.",
-      "url": "https://www.aljazeera.com/news/2026/8/31/what-to-know-us-court-hearing-held-for-alleged-lockerbie-bombmaker?traffic_source=rss"
     },
     {
       "source": "Euronews",
@@ -1272,6 +1265,13 @@
       "normalized": "when is the champions league draw and who is in each pot",
       "description": "BBC Sport's Ask Me Anything team explains when the league phase draw for the 2026-27 Champions League is, as well as looking at who is in each pot",
       "url": "https://www.bbc.co.uk/sport/football/articles/c3v0q3r554xo?at_medium=RSS&at_campaign=rss"
+    },
+    {
+      "source": "Al Jazeera",
+      "headline": "White House construction on $400m ballroom can go on, says US Supreme Court",
+      "normalized": "white house construction on 400m ballroom can go on says us supreme court",
+      "description": "The decision replaces a temporary order issued earlier this month.",
+      "url": "https://www.aljazeera.com/news/2026/8/31/white-house-construction-on-400m-ballroom-can-go-on-says-us-supreme-court?traffic_source=rss"
     },
     {
       "source": "BBC Europe",

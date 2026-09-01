@@ -1,33 +1,33 @@
-# Scan 2026-08-31T20:45:19.553Z (Cloudflare runtime)
+# Scan 2026-08-31T23:55:20.479Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
 ## Al Jazeera
-- Aston Villa vs Arsenal LIVE: Premier League
+- Argentinian footballer Lionel Messi announces his retirement
+- Arsenal edge past troubled Aston Villa 1-0 as Saka scores only goal
 - Damaged Gaza ambulance becomes ‘dream bus’ for children
 - Far-right Israeli Minister Ben-Gvir and settlers storm Al-Aqsa Mosque
 - Firecracker factory blast in India kills 8 children
 - GTA 6: Why is the world’s most anticipated game facing backlash?
 - How will the Mecca agreement become an operational framework?
-- India rejects Hague court order to restore Indus waters pact with Pakistan
 - India’s PM Modi urges end to Ukraine war in talks with Russia’s Putin
-- Iran could face economic collapse in months, US Treasury’s Bessent warns
 - Israel’s Ben-Gvir storms Al-Aqsa mosque in occupied East Jerusalem
+- Israeli outposts expand as Palestinian homes are demolished
+- JERUSALEM DAILY: JOURNALISTS ATTACKED
+- Lebanon asks Greece to help enforce agreement with Israel
 - ‘Let Data Reign’: Trump decries opposition to data centres in US
-- Nepal FM speaks to Al Jazeera on devastating floods
-- Over 6,000 Ebola cases confirmed in DRC as death toll nears 3,000
+- ‘Nothing is usable’: Nepal residents return to flood-ravaged homes
 - Palestinian farmers rebuild what Israeli settlers destroy in West Bank
-- Photos: Nearly 1,000 dead, thousands missing in Nepal–China border floods
-- Principal who saved 900 students recalls Nepal’s devastating flood
-- She is still in the sea, mother describes losing daughter in ferry disaster
+- Pan Am 103: What to know as alleged Lockerbie bombmaker faces US trial
+- Poland opens terror probe into fire at factory supplying Ukraine drones
+- Putin, Xi reaffirm Russia-China ties amid ‘unpredictable’ world
 - Sony, Warner Music sue Anthropic, saying it pirated songs to train its AI
-- Top US general says no plans to send troops to polls for November elections
-- Tunisia protests: Water, power cuts and rising anger
+- Three minors killed in Colombia armed group crackdown
+- Top US general says no plans to deploy troops for 2026 midterm elections
 - Ukrainians mourn community leader killed in Russian strike on Myla
-- Vance says Trump ‘sending a message’ to Iran with AI-generated video
-- War on Iran: US bombs Iran
+- US Army Secretary Daniel Driscoll submits resignation, media reports say
 - Western Balkans truck drivers threaten EU border blockade
-- What to know: US court hearing held for alleged Lockerbie bombmaker
+- White House construction on $400m ballroom can go on, says US Supreme Court
 
 ## BBC Europe
 - Allan Little: I met dangerously fanatical Mladić early in Bosnian war
@@ -59,14 +59,13 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Why is Ukraine's ex-defence minister calling for wartime elections?
 
 ## BBC World
-- 97-year-old woman rescued after Nepali floods looked like 'a warrior'
 - Across Latin America, 'aura battles' burst onto the scene
 - Algeria president seeks death penalty for arsonists after deadly forest fires
 - Company offering reward for safe return of truckload of beer
 - Deadly strike on Kyiv warehouse prompts evacuations
-- Dolly Parton laid to rest alongside husband in Nashville
 - Dolly Parton's dad couldn't read - it inspired her to send books to millions of children
 - Ex-congressman George Santos banned from betting platform for life
+- Festival honouring Dolly Parton set for Nashville and London
 - From playing Serena Williams on screen to following in her footsteps
 - How the US-Canada trade war is being felt on both sides of the border
 - 'I haven't lost my hope' - the search for missing loved ones
@@ -77,6 +76,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - 'Moonies' church leader jailed for two years over bribery offences
 - Nepal flood relief vehicles trapped as heavy rain turns roads to mud
 - Nepal rescuers blast hillside in search of hydropower workers as families wait anxiously
+- Orangutans in danger as wildfires blaze through Borneo
 - Passengers stranded as strike disrupts flights at Kenya's main airport
 - 'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus
 - South African airline defends low-altitude aerial stunt over packed stadium
@@ -92,14 +92,14 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - 2.000 elkunder var uden strøm på Sydsjælland
 - Antallet af bekræftede ebola-tilfælde når 6.000 i DR Congo
 - Brand i polsk dronefabrik efterforskes som terror
+- Clara Tauson ude af US Open
 - Dagens første skybrud registreret
 - Danmark genåbner ambassade i Syrien efter 14 år
 - Far idømmes seks års fængsel for dødsvold mod spædbarn
 - Fiskeri efter blåmuslinger i Limfjorden begrænses
 - Frankrig og Sverige underskriver forsvarsaftale
-- Hver fjerde ung er på skærmen over seks timer dagligt
-- Ida Auken rejser til Grønland
 - Indiens premierminister opfordrer til at standse krigen i Ukraine
+- Knivstikkeri spærrer Times Square i New York
 - Mor og datter får tilsammen 23 års fængsel
 - Ny type kaninpest fundet i danske harer
 - Pedro Sánchez: Israel og Rusland udnyttede Ceuta-krisen
@@ -142,7 +142,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Guardian World
 - At least 93,000 ‘in great need’ after Nepal-Tibet flash floods, says Red Cross
-- Australians missing in Nepal targeted by ‘heartbreaking’ and ‘abhorrent’ racist slurs
+- Australia news live: NSW confirms new HSC assessment rules to crack down on AI use; Sydney man killed in home invasion
 - Border area between Nepal and China where 33 Australians are missing still almost entirely cut off
 - British family pleads with French authorities to release body of relative who died in Channel
 - Canada erects giant ‘Lake Ontario’ sign as spat with Trump over name escalates
@@ -152,8 +152,8 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - French high schools rush to put Macron’s phone ban into force
 - Germany poised to identify suspect in Leipzig drone attack on Ukrainian plane
 - Head of Viktor Orbán’s favourite thinktank quits over unpaid wages
+- Investigation into Powerhouse Parramatta museum under way as stop-gap leader steps in
 - Iran’s economy in crisis as US launches new sanctions campaign
-- Man who murdered Molly Ticehurst unlikely to face life in jail, court hears
 - Morocco not to blame for Ceuta border breach, says Spanish PM
 - Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels
 - Newborn baby’s body found in Sydney rubbish bin as police hold ‘serious concerns’ for mother
