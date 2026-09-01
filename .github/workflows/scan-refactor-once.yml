@@ -38,8 +38,8 @@ jobs:
               'out, n = re.subn(pattern, lambda _m: replacement, text, count=1, flags=flags)',
           )
           s=s.replace(
-              r'function distinctSources\\(items\\) \\{[\\s\\S]*?\\n\\}',
-              r'function distinctSources\\(items\\) \\{[^\\n]*\\}',
+              r'function distinctSources\(items\) \{[\s\S]*?\n\}',
+              r'function distinctSources\(items\) \{[^\n]*\}',
           )
           p.write_text(s,encoding='utf-8')
           PY
