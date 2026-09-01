@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T09:03:15.105400Z",
+  "generated_at": "2026-09-01T09:14:31.551975Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,38 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 3,
+    "rejections": 6,
     "reviews": [
+      {
+        "at": "2026-09-01T09:14:14.405Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "research",
+        "reason": "Lovende discovery-tip, men endnu ikke en autoritativ primærkilde eller to uafhængige redaktionelle kilder",
+        "class": "evidence",
+        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T09:14:10.953Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "research",
+        "reason": "Lovende discovery-tip, men endnu ikke en autoritativ primærkilde eller to uafhængige redaktionelle kilder",
+        "class": "evidence",
+        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T09:13:47.003Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "fact_check",
+        "reason": "Der er flere interessante nyheder på dagens nyhedsdesk, men den største nyhed er sandsynligvis den om den russiske angreb på jernbanearbejdere i Ukraine, der 20 mennesker, herunder to børn, blev såret. Dette er en alvorlig udvikling, der kan have store konsekvenser for den politiske situation i regionen. Derfor er det værd at undersøge denne nyhed yderligere for at få en bedre forståelse af situationen. Deterministisk gate: færre end to bærende claims er verificeret.",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-01T09:02:04.747Z",
         "slug": null,
@@ -50,10 +80,19 @@
   },
   "last7_stage_counts": {
     "ethics": 1,
-    "fact_check": 1,
-    "infrastructure": 1
+    "fact_check": 2,
+    "infrastructure": 1,
+    "research": 2
   },
   "suggested_adjustments": [
+    {
+      "stage": "research",
+      "parameter": "source_retrieval",
+      "current": "2 kilder / 3 gruppe-mål",
+      "proposed": "bevar tærskel; forbedr retrieval",
+      "status": "investigate",
+      "why": "4 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+    },
     {
       "stage": "infrastructure",
       "parameter": "capacity",
