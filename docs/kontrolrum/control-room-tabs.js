@@ -13,7 +13,8 @@
     .metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}.metric{padding:16px;border:1px solid var(--rule);border-radius:9px;background:var(--surface)}.metric b{display:block;font-size:26px}.metric small{margin-top:4px}
     .danger-btn{border:1px solid #9a5d63;background:var(--rose);color:var(--ink);padding:8px 11px;border-radius:7px;font-weight:700;cursor:pointer}.danger-btn:disabled{opacity:.5;cursor:wait}
     .kronik-row{display:flex;gap:12px;justify-content:space-between;align-items:flex-start}.kronik-meta{color:var(--muted);font-size:13px}.chronicle-list{margin:8px 0 0;padding-left:20px}.chronicle-list li{margin:7px 0}.recommendations{background:var(--surface);border:1px solid var(--rule);border-radius:9px;padding:16px 20px}.recommendations li{margin:9px 0}
-    @media(max-width:800px){.metric-grid{grid-template-columns:1fr 1fr}.kronik-row{flex-direction:column}}
+    .flow{display:flex;align-items:stretch;gap:10px;overflow-x:auto;padding:8px 2px 18px;scroll-snap-type:x proximity}.flow-step{min-width:220px;max-width:260px;scroll-snap-align:start;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px;box-shadow:var(--shadow);position:relative}.flow-step:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:50%;transform:translate(50%,-50%);font-size:23px;font-weight:800;color:var(--muted);z-index:2}.flow-step h3{margin:0 0 8px;font:700 19px Georgia,serif}.flow-step .hard{display:inline-block;font-size:11px;font-weight:800;padding:3px 7px;border-radius:999px;background:var(--rose);margin-bottom:7px}.flow-step .soft{display:inline-block;font-size:11px;font-weight:800;padding:3px 7px;border-radius:999px;background:var(--blue);margin-bottom:7px}.req{border-top:1px solid var(--rule);padding:8px 0 0;margin-top:8px}.req b{font-size:20px}.req .tunable{font-size:11px;color:var(--muted);font-weight:700}.adjustment{border-left:5px solid #7892ab;padding:12px 14px;background:var(--surface);border-top:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);border-radius:8px;margin:10px 0}.adjustment.experiment{border-left-color:#b99032}.adjustment.fix-system{border-left-color:#8c5960}.adjustment .change{font-weight:800}.review-card{background:var(--surface);border:1px solid var(--rule);border-radius:9px;padding:13px;margin:10px 0}.review-card .reason{color:var(--muted);font-size:13px;margin-top:5px}.policy-lock{background:var(--green);border:1px solid var(--rule);padding:13px 15px;border-radius:9px;margin:12px 0}
+    @media(max-width:800px){.metric-grid{grid-template-columns:1fr 1fr}.kronik-row{flex-direction:column}.flow-step{min-width:82vw}}
   `;
   document.head.appendChild(style);
 
@@ -25,7 +26,7 @@
 
   const panels = {};
   const specs = [
-    ['production','Produktion'],['chroniclers','Kronikører'],['revenue','Indtægter'],['traffic','Mest læste']
+    ['production','Produktion'],['pipeline','Pipeline'],['chroniclers','Kronikører'],['revenue','Indtægter'],['traffic','Mest læste']
   ];
   for (const [id,label] of specs) {
     const btn = document.createElement('button'); btn.type='button'; btn.className='control-tab'; btn.dataset.tab=id; btn.textContent=label; btn.setAttribute('aria-selected','false'); nav.appendChild(btn);
@@ -37,6 +38,15 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   const fetchJson = async (url, init) => { const r=await fetch(url,{credentials:'include',cache:'no-store',...init}); const d=await r.json().catch(()=>({})); if(!r.ok){const e=new Error(d.error||`HTTP ${r.status}`);e.status=r.status;e.data=d;throw e;} return d; };
   const errorHtml = e => e.status===401 ? '<div class="tab-note">Administrativ handling kræver, at du også er logget ind på Morgentidendes app-konto.</div>' : e.status===403 ? '<div class="tab-note">Denne handling kræver admin-login med 2-faktor (AAL2). Åbn <a href="/security/mfa">2-faktor-sikkerhed</a> og prøv igen.</div>' : `<div class="tab-note">Kunne ikke hente data: ${esc(e.message)}</div>`;
+
+  function loadPipeline(){
+    const p=panels.pipeline; const d=window.__MT_PIPELINE_FEEDBACK__||{};
+    const flow=d.flow||[]; const reviews=d.today?.reviews||[]; const suggestions=d.suggested_adjustments||[];
+    const flowHtml=flow.map(s=>`<div class="flow-step"><h3>${esc(s.label)}</h3><span class="${s.hard_gate?'hard':'soft'}">${s.hard_gate?'HARD GATE':'JUSTERBAR/PRODUKTION'}</span>${(s.requirements||[]).map(r=>`<div class="req"><span>${esc(r.label)}</span><br><b>${esc(r.value)} ${esc(r.unit||'')}</b>${r.adjustable?'<div class="tunable">Kan skrues op/ned i eksperiment</div>':'<div class="tunable">Låst sikkerhedskrav</div>'}</div>`).join('')}</div>`).join('');
+    const sugHtml=suggestions.length?suggestions.map(x=>`<div class="adjustment ${esc(x.status)}"><strong>${esc(x.stage)}</strong> · ${esc(x.parameter)}<div class="change">${esc(x.current)} → ${esc(x.proposed)}</div><div>${esc(x.why)}</div><small>Status: ${esc(x.status)}</small></div>`).join(''):'<div class="policy-lock"><strong>Ingen pipeline-justering anbefalet i dag.</strong><br>Det betyder ikke, at der ikke var afvisninger; det betyder, at de registrerede afvisninger ikke giver tilstrækkeligt signal til at ændre tærsklerne.</div>';
+    const revHtml=reviews.length?reviews.map(x=>`<div class="review-card"><strong>${esc(x.title||x.slug||'Ikke navngivet kandidat')}</strong> · ${esc(x.stage)} · ${esc(x.class)}<div>${esc(x.assessment)}</div><div class="reason">Afvist fordi: ${esc(x.reason)}</div></div>`).join(''):'<div class="tab-note">Ingen afviste publiceringsforsøg registreret i dag.</div>';
+    p.innerHTML=`<h1>Pipeline</h1><p class="intro">Her kan kravene ses som målbare parametre. Hver afvisning udløser en vurdering af, om stoppet var legitimt, reparerbart eller tegn på unødig friktion.</p><div class="policy-lock"><strong>Fast regel:</strong> fact check, etik, forelæggelse og final editor lempes ikke automatisk. Målbare ændringer foreslås som eksperimenter og kan derefter skrues op eller ned.</div><h2>Flow og aktuelle krav</h2><div class="flow">${flowHtml}</div><h2>Dagens pipeline-vurdering</h2><div class="metric-grid"><div class="metric"><b>${d.today?.rejections||0}</b><span>afvisninger vurderet i dag</span></div><div class="metric"><b>${suggestions.length}</b><span>foreslåede justeringer</span></div><div class="metric"><b>${Object.values(d.last7_stage_counts||{}).reduce((a,b)=>a+Number(b||0),0)}</b><span>afvisninger seneste 7 dage</span></div><div class="metric"><b>${(d.current_blockers||[]).length}</b><span>nuværende blokerede artikler</span></div></div>${sugHtml}<h2>Hver afvisning i dag</h2>${revHtml}`;
+  }
 
   async function loadChroniclers(){
     const p=panels.chroniclers; p.innerHTML='<h1>Kronikører</h1><p class="intro">Alle aktive kronikører og deres indsendte kronikker. En fyring fjerner roller/adgang og spærrer login, men sletter ikke allerede publicerede kronikker.</p><div class="tab-note">Henter kronikører…</div>';
@@ -77,7 +87,7 @@
     catch(e){p.innerHTML='<h1>Mest læste</h1>'+errorHtml(e);}
   }
 
-  const loaders={chroniclers:loadChroniclers,revenue:loadRevenue,traffic:loadTraffic}; const loaded=new Set();
+  const loaders={pipeline:loadPipeline,chroniclers:loadChroniclers,revenue:loadRevenue,traffic:loadTraffic}; const loaded=new Set();
   function activate(id){ if(!panels[id]) id='production'; document.querySelectorAll('.control-tab').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===id))); Object.entries(panels).forEach(([k,p])=>p.hidden=k!==id); try{localStorage.setItem('mt-control-tab',id)}catch(_){} if(loaders[id]&&!loaded.has(id)){loaded.add(id);loaders[id]();} }
   nav.addEventListener('click',e=>{const b=e.target.closest('.control-tab');if(b)activate(b.dataset.tab)});
   let start='production';try{start=localStorage.getItem('mt-control-tab')||start}catch(_){}activate(start);
