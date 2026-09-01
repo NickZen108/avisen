@@ -29,6 +29,13 @@ jobs:
       - name: Validate Newsdesk source
         run: node --check cloudflare/newsdesk/src/index.js && node --check cloudflare/newsdesk/src/editorial.js
 
+      - name: Require Newsdesk editorial token for smoke tests
+        env:
+          EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
+        run: |
+          set -euo pipefail
+          [ -n "$EDITORIAL_RUN_TOKEN" ] || { echo "Missing required GitHub secret EDITORIAL_RUN_TOKEN" >&2; exit 1; }
+
       - name: Deploy Newsdesk Worker
         uses: cloudflare/wrangler-action@v3
         with:
