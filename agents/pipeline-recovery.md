@@ -20,6 +20,18 @@ Slutredaktøren opretter kun den redaktionelle final approval. **Udgiver** er de
 
 En blokeret artikel må aldrig blokere udgivelsen af andre godkendte artikler. Hvis én artikel ikke kan repareres sikkert, skal den blive parkeret med konkret årsag, mens resten af køen fortsætter.
 
-Ved gentagen identisk fejl tre gange skal artiklen markeres `workflow_state.state: needs_attention` med en kort teknisk diagnose frem for at loope.
+## Retry-regel — kun virkelige forsøg tæller
+
+Et almindeligt health-check, build eller regenerering af `queue/recovery.json` er **ikke** et recovery-forsøg og må aldrig øge retry-tælleren.
+
+Når Recovery Desk faktisk forsøger at reparere den aktuelle `reason_signature`, skal den registrere dette i artiklens `workflow_state`:
+
+- `recovery_reason_signature`: den sorterede aktuelle stopårsag-signatur.
+- `recovery_attempts`: antal faktiske mislykkede recovery-forsøg med netop denne uændrede signatur.
+- `last_recovery_attempt_at`: tidspunktet for det seneste faktiske forsøg.
+
+Hvis `resume_from` eller stopårsagerne ændrer sig efter et forsøg, er artiklen kommet videre: nulstil `recovery_attempts` for den nye signatur. Et forsøg tælles først som mislykket, når den relevante agent reelt er blevet kørt, men den samme blocker stadig står tilbage bagefter.
+
+Ved **tre faktiske mislykkede forsøg med identisk signatur** markeres `workflow_state.state: needs_attention` med en kort teknisk diagnose frem for at loope. Passive QA-kørsler må aldrig sende en artikel i dead-letter.
 
 Output ved hver recovery: opdateret artikel/ledger/approval efter de normale rollegrænser, `resume_from` rykket frem eller fjernet, og en kort diagnose i pipeline-health. Ingen publicering uden alle normale gates.
