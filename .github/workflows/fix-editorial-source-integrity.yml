@@ -1,0 +1,141 @@
+name: One-shot editorial source integrity repair
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: morgentidende-main-writes
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Sync latest main
+        run: git fetch origin main && git reset --hard origin/main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Patch editorial source integrity
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('cloudflare/newsdesk/src/editorial.js')
+          s = p.read_text(encoding='utf-8')
+
+          old = '''function sourceGroup(name, url = null) {
+            try { if (url) return `host-${slugify(new URL(url).hostname.replace(/^www\\./, ""))}`; } catch (_) {}
+            return slugify(name || "source") + "-reporting";
+          }'''
+          new = '''const PUBLISHER_ROOT_HOSTS = [
+            "theguardian.com", "bbc.co.uk", "bbc.com", "politico.eu", "reuters.com", "apnews.com",
+            "ft.com", "bloomberg.com", "nytimes.com", "wsj.com", "france24.com", "dw.com", "euronews.com",
+            "dr.dk", "tv2.dk", "svt.se", "nrk.no", "aljazeera.com", "sky.com", "skynews.com",
+          ];
+          function publisherRootHost(value) {
+            const host = String(value || "").replace(/^www\\./, "").toLowerCase();
+            for (const root of PUBLISHER_ROOT_HOSTS) {
+              if (host === root || host.endsWith(`.${root}`)) return root;
+            }
+            return host;
+          }
+          function sourceGroup(name, url = null) {
+            try { if (url) return `host-${slugify(publisherRootHost(new URL(url).hostname))}`; } catch (_) {}
+            return slugify(name || "source") + "-reporting";
+          }'''
+          if old not in s:
+            raise SystemExit('sourceGroup anchor not found')
+          s = s.replace(old, new, 1)
+
+          old = '''function isEvidenceSource(item) { return item && !isDiscoveryOnly(item); }'''
+          new = '''function isUtilityOrAccountUrl(value) {
+            try {
+              const u = new URL(value);
+              const host = u.hostname.replace(/^www\\./, "").toLowerCase();
+              const first = host.split(".")[0];
+              if (["support", "profile", "account", "accounts", "auth", "login", "subscribe", "subscriptions", "shop", "store", "help"].includes(first)) return true;
+              return /\\/(?:signin|login|subscribe|subscription|support|account|accounts|register|newsletter|privacy|terms)(?:\\/|$)/i.test(u.pathname);
+            } catch (_) { return false; }
+          }
+          function isEvidenceSource(item) {
+            if (!item || isDiscoveryOnly(item)) return false;
+            return !isUtilityOrAccountUrl(item.final_url || item.url || "");
+          }'''
+          if old not in s:
+            raise SystemExit('isEvidenceSource anchor not found')
+          s = s.replace(old, new, 1)
+
+          old = '''  const strongEditorialOk = evidence.some(strongEditorialSource);
+            const independent = new Set(evidence.map(evidenceSourceGroup));
+            if (primaryOk || wireOk || independent.size >= 2) return true;
+            return !highRiskFactClaim(assignment, research, claim) && strongEditorialOk;'''
+          new = '''  const independent = new Set(evidence.map(evidenceSourceGroup));
+            // Keep runtime approval aligned with repository quality gates: one ordinary
+            // editorial publication is not independent corroboration. A competent primary
+            // source or original wire may stand alone; otherwise require two publisher groups.
+            if (primaryOk || wireOk || independent.size >= 2) return true;
+            return false;'''
+          if old not in s:
+            raise SystemExit('evidenceRulePass anchor not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+
+          wf = Path('.github/workflows/cloudflare-editorial-sync.yml')
+          w = wf.read_text(encoding='utf-8')
+          count = w.count("MAX='${INPUT_CYCLES:-3}'")
+          if count < 1:
+            raise SystemExit('cycles anchor not found')
+          w = w.replace("MAX='${INPUT_CYCLES:-3}'", 'MAX="${INPUT_CYCLES:-3}"')
+          wf.write_text(w, encoding='utf-8')
+
+          invalid = [
+            '2026-09-01-konflikt-mellem-usa-og-canada',
+            '2026-09-01-massebegravelser-i-nepal-efter-oversvoemmelser',
+            '2026-09-01-trumps-nye-aftaler-med-farmaceutiske-selskaber',
+          ]
+          for slug in invalid:
+            for path in [
+              Path('content/articles') / f'{slug}.json',
+              Path('sources') / f'{slug}.json',
+              Path('reports/editorial/approvals') / f'{slug}.json',
+              Path('docs/img/auto') / f'{slug}.jpg',
+            ]:
+              if path.exists():
+                path.unlink()
+
+          # This workflow is intentionally one-shot.
+          Path('.github/workflows/fix-editorial-source-integrity.yml').unlink()
+          PY
+
+      - name: Validate patch
+        run: |
+          node --check cloudflare/newsdesk/src/editorial.js
+          python scripts/quality_gate.py --prebuild
+          python scripts/pipeline_v2_gate.py
+          git diff --check
+
+      - name: Commit repair
+        run: |
+          git config user.name 'morgentidende-repair'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'fix: align editorial source integrity gates'
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Deploy repaired Newsdesk Worker
+        run: npx --yes wrangler@4.127.1 deploy --config cloudflare/newsdesk/wrangler.jsonc
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
