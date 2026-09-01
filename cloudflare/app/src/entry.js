@@ -36,7 +36,7 @@ async function controlRoomResponse() {
       'x-robots-tag': 'noindex, nofollow, noarchive',
       'referrer-policy': 'no-referrer',
       'x-content-type-options': 'nosniff',
-      'content-security-policy': "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'; form-action 'none'",
+      'content-security-policy': "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'; form-action 'none'",
     },
   });
 }
