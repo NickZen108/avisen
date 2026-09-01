@@ -47,11 +47,107 @@ function wireOrigin(item) {
 function evidenceSourceGroup(item) {
   return sourceGroup(item?.source, item?.final_url || item?.url);
 }
+function metaContent(html, key) {
+  const wanted = String(key || "").toLowerCase();
+  const tags = String(html || "").match(/<meta[^>]*>/gi) || [];
+  for (const tag of tags) {
+    const lower = tag.toLowerCase();
+    const names = [`name="${wanted}"`, `name='${wanted}'`, `property="${wanted}"`, `property='${wanted}'`];
+    if (!names.some((x) => lower.includes(x))) continue;
+    const m = tag.match(/content=["']([^"']+)["']/i);
+    if (m?.[1]) return stripHtml(m[1]).trim();
+  }
+  return null;
+}
+function canonicalUrl(html, baseUrl) {
+  const tags = String(html || "").match(/<link[^>]*>/gi) || [];
+  for (const tag of tags) {
+    if (!tag.toLowerCase().includes("canonical")) continue;
+    const m = tag.match(/href=["']([^"']+)["']/i);
+    if (!m?.[1]) continue;
+    try { return new URL(m[1], baseUrl).href; } catch (_) {}
+  }
+  return null;
+}
+function jsonLdField(html, field) {
+  const rawHtml = String(html || "");
+  const lower = rawHtml.toLowerCase();
+  let cursor = 0;
+  for (let count = 0; count < 8; count++) {
+    const open = lower.indexOf("<script", cursor); if (open < 0) break;
+    const tagEnd = lower.indexOf(">", open); if (tagEnd < 0) break;
+    const close = lower.indexOf("</script>", tagEnd + 1); if (close < 0) break;
+    const tag = lower.slice(open, tagEnd + 1);
+    cursor = close + 9;
+    if (!tag.includes("application/ld+json")) continue;
+    try {
+      const raw = JSON.parse(rawHtml.slice(tagEnd + 1, close));
+      const nodes = Array.isArray(raw) ? raw : (raw?.['@graph'] || [raw]);
+      for (const node of nodes) {
+        const value = node?.[field];
+        if (typeof value === "string" && value.trim()) return value.trim();
+        if (Array.isArray(value)) {
+          for (const x of value) if (typeof x?.name === "string" && x.name.trim()) return x.name.trim();
+        }
+        if (value && typeof value === "object" && typeof value.name === "string" && value.name.trim()) return value.name.trim();
+      }
+    } catch (_) {}
+  }
+  return null;
+}
+function provenanceMetadata(html, pageUrl) {
+  const byline = metaContent(html, "author") || metaContent(html, "article:author") || metaContent(html, "parsely-author") || metaContent(html, "dc.creator") || jsonLdField(html, "author");
+  const publisher = metaContent(html, "publisher") || metaContent(html, "article:publisher") || jsonLdField(html, "publisher");
+  const canonical_url = canonicalUrl(html, pageUrl);
+  return { byline: byline || null, publisher: publisher || null, canonical_url };
+}
+function normalizedOriginName(value) {
+  return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+function containsOriginToken(value, token) {
+  return ` ${normalizedOriginName(value)} `.includes(` ${token} `);
+}
+function metadataWireOrigin(item) {
+  const text = `${item?.provenance_meta?.byline || ""} ${item?.provenance_meta?.publisher || ""}`;
+  const n = normalizedOriginName(text);
+  if (containsOriginToken(n, "reuters") || n.includes("thomson reuters")) return "reuters";
+  if (n.includes("associated press") || n.includes("ap news")) return "ap";
+  if (n.includes("agence france presse") || containsOriginToken(n, "afp")) return "afp";
+  if (containsOriginToken(n, "ritzau") || n.includes("ritzau bureau")) return "ritzau";
+  return null;
+}
+function pressReleaseService(item) {
+  const host = hostOf(item?.final_url || item?.url || "");
+  const n = normalizedOriginName(`${item?.provenance_meta?.publisher || ""} ${item?.provenance_meta?.byline || ""}`);
+  if (host.endsWith("prnewswire.com") || n.includes("pr newswire")) return "prnewswire";
+  if (host.endsWith("businesswire.com") || n.includes("business wire")) return "businesswire";
+  if (host.endsWith("globenewswire.com") || n.includes("globe newswire")) return "globenewswire";
+  if (host.endsWith("cision.com") || containsOriginToken(n, "cision")) return "cision";
+  return null;
+}
+function headlineFingerprint(item) {
+  return [...new Set(words(item?.headline || ""))].slice(0, 10).sort().join("-") || slugify(item?.headline || "release");
+}
+function structuredUpstreamOrigin(item) {
+  const directWire = wireOrigin(item) || metadataWireOrigin(item);
+  if (directWire) return `wire:${directWire}`;
+  const release = pressReleaseService(item);
+  if (release) return `press-release:${release}:${headlineFingerprint(item)}`;
+  const canonical = item?.provenance_meta?.canonical_url;
+  if (canonical) {
+    const pageHost = hostOf(item?.final_url || item?.url || "");
+    const canonicalHost = hostOf(canonical);
+    if (canonicalHost && pageHost && canonicalHost !== pageHost) return `canonical:${canonical.replace(/[?#].*$/, "")}`;
+  }
+  return null;
+}
 function provenanceClusters(items) {
   const clusters = [];
+  const origins = items.map(structuredUpstreamOrigin);
   for (let i = 0; i < items.length; i++) {
     let cluster = null;
     for (let j = 0; j < i; j++) {
+      if (origins[i] && origins[i] === origins[j]) { cluster = clusters[j]; break; }
       const a = `${items[i]?.headline || ""} ${items[i]?.excerpt || items[i]?.description || ""}`;
       const b = `${items[j]?.headline || ""} ${items[j]?.excerpt || items[j]?.description || ""}`;
       if (lexicalSimilarity(a, b) >= 0.90) { cluster = clusters[j]; break; }
@@ -62,6 +158,7 @@ function provenanceClusters(items) {
 }
 function evidenceAtom(item) {
   if (authoritativePrimary(item)) return `primary:${item?.final_url || item?.url || evidenceSourceGroup(item)}`;
+  const upstream = item?.upstream_origin || structuredUpstreamOrigin(item); if (upstream) return `upstream:${upstream}`;
   const wire = wireOrigin(item); if (wire) return `wire:${wire}`;
   if (item?.provenance_cluster) return `cluster:${item.provenance_cluster}`;
   return `publisher:${evidenceSourceGroup(item)}`;
@@ -129,7 +226,8 @@ async function fetchExcerpt(signal) {
     if (!type.includes("html") && !type.includes("text")) return { ...signal, excerpt: signal.description || "", fetched: false, fetch_status: response.status, outbound_links: [] };
     const html = await response.text();
     const text = stripHtml(html).slice(0, 12000);
-    return { ...signal, excerpt: text || signal.description || "", fetched: Boolean(text), fetch_status: response.status, final_url: response.url, outbound_links: type.includes("html") ? extractOutboundLinks(html, response.url) : [] };
+    const provenance_meta = type.includes("html") ? provenanceMetadata(html, response.url) : null;
+    return { ...signal, excerpt: text || signal.description || "", fetched: Boolean(text), fetch_status: response.status, final_url: response.url, outbound_links: type.includes("html") ? extractOutboundLinks(html, response.url) : [], provenance_meta };
   } catch (error) {
     return { ...signal, excerpt: signal.description || "", fetched: false, fetch_error: String(error), outbound_links: [] };
   } finally { clearTimeout(timer); }
@@ -453,7 +551,10 @@ async function runResearch(env, assignment, selected) {
   }
 
   const researchClusters = provenanceClusters(unique);
-  unique.forEach((item, i) => { item.provenance_cluster = researchClusters[i]; });
+  unique.forEach((item, i) => {
+    item.provenance_cluster = researchClusters[i];
+    item.upstream_origin = structuredUpstreamOrigin(item);
+  });
   const sources = unique.map((item, i) => ({
     source_index: i,
     name: item.source,
@@ -463,6 +564,10 @@ async function runResearch(env, assignment, selected) {
     discovery_only: false,
     source_kind: normalizedSourceKind(item),
     source_strength: authoritativePrimary(item) ? "primary" : authoritativeEditorial(item) ? "wire" : strongEditorialSource(item) ? "strong_editorial" : "standard",
+    upstream_origin: item.upstream_origin || null,
+    byline: item.provenance_meta?.byline || null,
+    publisher: item.provenance_meta?.publisher || null,
+    canonical_url: item.provenance_meta?.canonical_url || null,
     feed_summary_only: Boolean(item.feed_summary_only),
   }));
   const system = `Du er Research på Morgentidende. Lav et kompakt evidens-kort til Fact checker; vurder ikke nyhedsværdi igen og fæld ikke den endelige sandhedsdom. Kortlæg 1-6 bærende kandidat-claims med præcise source_indexes. Notér kun reelle modsigelser, væsentlige forbehold og nødvendig kontekst. En primærkilde er værdifuld, men du skal ikke kræve et bestemt antal medier. Hvis mindst ét brugbart claim kan kildebelægges, vælg continue; watch kun hvis materialet reelt ikke giver noget kontrollerbart. Flag alvorlige belastende påstande via right_of_reply_required, men brug ikke flaget som stopregel. Sæt conflict_present=true kun når historien faktisk rummer en relevant politisk, juridisk, faglig eller parts-konflikt; almindelige hændelsesfakta/statistik kræver ikke kunstig pluralisme. Opfind intet.`;
@@ -851,8 +956,9 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
     const url = s.final_url || s.url;
     const primary = s.source_kind === "primary" && !s.discovery_only;
     const publisher = evidenceSourceGroup(s);
-    const wire = wireOrigin(s);
-    return { id: `S${i + 1}`, name: s.source, url, published_at: s.published_at || null, accessed_at: accessedAt, type: primary ? "primary" : "news", source_group: publisher, publisher_root: publisher.replace(/^host-/, ""), wire_origin: wire, provenance_type: primary ? "primary_record" : wire ? "wire_original" : "reporting", provenance_cluster: clusters[i], primary_record: primary ? url : null, authoritative_for: primary ? (s.headline || "Primary record") : (s.headline || "Independent coverage"), discovery_only: Boolean(s.discovery_only) };
+    const wire = wireOrigin(s) || metadataWireOrigin(s);
+    const upstream = s.upstream_origin || structuredUpstreamOrigin(s);
+    return { id: `S${i + 1}`, name: s.source, url, published_at: s.published_at || null, accessed_at: accessedAt, type: primary ? "primary" : "news", source_group: publisher, publisher_root: publisher.replace(/^host-/, ""), wire_origin: wire, upstream_origin: upstream, provenance_type: primary ? "primary_record" : wire ? "wire_original" : upstream?.startsWith("press-release:") ? "press_release" : upstream?.startsWith("canonical:") ? "syndicated" : "reporting", provenance_cluster: clusters[i], provenance_basis: upstream ? "structured_metadata" : "publisher_or_similarity", byline: s.provenance_meta?.byline || null, publisher_name: s.provenance_meta?.publisher || null, canonical_url: s.provenance_meta?.canonical_url || null, primary_record: primary ? url : null, authoritative_for: primary ? (s.headline || "Primary record") : (s.headline || "Independent coverage"), discovery_only: Boolean(s.discovery_only) };
   });
   const verificationSources = sources.filter((s) => !s.discovery_only);
   const groups = [...new Set(verificationSources.map((s) => s.source_group))];

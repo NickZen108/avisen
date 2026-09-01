@@ -32,6 +32,9 @@ def evidence_atom(source: dict | None) -> str:
     if authoritative_primary(source):
         record = str(source.get("primary_record") or source.get("url") or source.get("source_group") or "primary").strip()
         return "primary:" + record
+    upstream = str(source.get("upstream_origin") or "").strip().lower()
+    if upstream:
+        return "upstream:" + upstream
     wire = str(source.get("wire_origin") or "").strip().lower()
     if wire:
         return "wire:" + wire
