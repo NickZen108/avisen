@@ -31,8 +31,10 @@
     "source_url": "https://commons.wikimedia.org/wiki/File:Kyrenia_Harbour_5.JPG",
     "image_type": "photo",
     "placement": "lead",
-    "context_type": "context",
-    "caption": "Arkivfoto: Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken."
+    "context_type": "archive",
+    "caption": "Arkivfoto: Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken.",
+    "pending_image": false,
+    "ai_generated": false
   },
   "body": [
     {
