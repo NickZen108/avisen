@@ -6,6 +6,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1];ART=ROOT/'content'/'articles';ERR=[]
 def load(p):return json.loads(p.read_text(encoding='utf-8'))
+def authoritative_primary(source):
+ return bool(source and source.get('type') in {'primary','paper','interview'} and str(source.get('authoritative_for') or '').strip())
 def main():
  for p in sorted(ART.glob('*.json')):
   if p.name.startswith('_'):continue
@@ -25,7 +27,8 @@ def main():
    c=next((x for x in l.get('claims') or [] if x.get('id')==cid),None)
    if not c:continue
    cids=c.get('source_ids') or [];cu={str(sources.get(i,{}).get('url') or '') for i in cids};cu.discard('');cg={str(sources.get(i,{}).get('source_group') or '') for i in cids};cg.discard('')
-   if len(cu)<2 or len(cg)<2:ERR.append(f'{p.name}: claim {cid} mangler mindst 2 reelt forskellige URLer/source-groups')
+   primary_ok=any(authoritative_primary(sources.get(i)) for i in cids)
+   if not primary_ok and (len(cu)<2 or len(cg)<2):ERR.append(f'{p.name}: claim {cid} mangler enten én autoritativ primærkilde eller mindst 2 reelt forskellige URLer/source-groups')
  if ERR:
   print('SOURCE INDEPENDENCE: FAIL');[print('-',x) for x in ERR];return 1
  print('SOURCE INDEPENDENCE: PASS');return 0
