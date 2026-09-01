@@ -105,6 +105,9 @@ def main() -> int:
             for key in ("src", "alt", "credit", "license"):
                 if not str(image.get(key) or "").strip():
                     faults.append(f"{path.name}: hero mangler {key}")
+            context_type = str(image.get("context_type") or "context").strip().lower()
+            if context_type != "event" and not str(image.get("caption") or "").strip():
+                faults.append(f"{path.name}: ikke-hændelsesfoto kræver synlig arkiv-/kontekst-caption")
             src = str(image.get("src") or "")
             if src.lower().endswith(".svg"):
                 faults.append(f"{path.name}: autonom hero må ikke være SVG/diagram")
