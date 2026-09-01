@@ -23,6 +23,17 @@ function sourceGroup(name, url = null) {
   try { if (url) return `host-${slugify(new URL(url).hostname.replace(/^www\./, ""))}`; } catch (_) {}
   return slugify(name || "source") + "-reporting";
 }
+function wireOrigin(item) {
+  const text = `${item?.headline || ""} ${item?.description || ""} ${item?.excerpt || ""}`.toLowerCase().slice(0, 7000);
+  if (/\b(reuters|thomson reuters)\b/.test(text)) return "wire-reuters";
+  if (/\b(associated press|ap news|the ap)\b/.test(text)) return "wire-ap";
+  if (/\b(agence france-presse|afp)\b/.test(text)) return "wire-afp";
+  if (/\b(ritzau|ritzau bureau)\b/.test(text)) return "wire-ritzau";
+  return null;
+}
+function evidenceSourceGroup(item) {
+  return wireOrigin(item) || sourceGroup(item?.source, item?.final_url || item?.url);
+}
 const STOPWORDS = new Set("the and for with from that this have are was were will into over after before says said der die das den dem des ein eine und mit von auf für til med fra som det den der en et af og i på at de la le les des une un du et pour avec dans sur est sont que qui de l en au aux".split(/\s+/));
 function words(value) {
   return String(value || "").toLocaleLowerCase("da-DK").normalize("NFKD")
@@ -260,7 +271,7 @@ function isDiscoveryOnly(item) {
 }
 function isEvidenceSource(item) { return item && !isDiscoveryOnly(item); }
 function authoritativePrimary(item) { return isEvidenceSource(item) && item.source_kind === "primary"; }
-function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSource).map((x) => sourceGroup(x.source, x.final_url || x.url)))]; }
+function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSource).map(evidenceSourceGroup))]; }
 
 async function runResearch(env, assignment, selected) {
   let researched = await Promise.all(selected.map(fetchExcerpt));
@@ -347,7 +358,7 @@ async function runFactCheck(env, assignment, research) {
     claim.source_indexes = indexes;
     const evidence = indexes.map((i) => fact.researched[i]).filter(isEvidenceSource);
     const primaryOk = evidence.some(authoritativePrimary);
-    const independent = new Set(evidence.map((s) => sourceGroup(s.source, s.final_url || s.url)));
+    const independent = new Set(evidence.map(evidenceSourceGroup));
     if (claim.status === "verified" && !primaryOk && independent.size < 2) {
       claim.status = "uncertain";
       claim.notes = `${claim.notes || ""} Nedgraderet af deterministisk gate: ingen autoritativ primærkilde og færre end to uafhængige ikke-discovery-kilder.`.trim();
@@ -404,7 +415,7 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => {
     const url = s.final_url || s.url;
     const primary = s.source_kind === "primary" && !s.discovery_only;
-    return { id: `S${i + 1}`, name: s.source, url, published_at: s.published_at || null, accessed_at: accessedAt, type: primary ? "primary" : "news", source_group: sourceGroup(s.source, url), authoritative_for: primary ? (s.headline || "Primary record") : (s.headline || "Independent coverage"), discovery_only: Boolean(s.discovery_only) };
+    return { id: `S${i + 1}`, name: s.source, url, published_at: s.published_at || null, accessed_at: accessedAt, type: primary ? "primary" : "news", source_group: evidenceSourceGroup(s), authoritative_for: primary ? (s.headline || "Primary record") : (s.headline || "Independent coverage"), discovery_only: Boolean(s.discovery_only) };
   });
   const verificationSources = sources.filter((s) => !s.discovery_only);
   const groups = [...new Set(verificationSources.map((s) => s.source_group))];

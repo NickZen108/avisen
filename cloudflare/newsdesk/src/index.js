@@ -146,7 +146,10 @@ export class NewsroomState extends DurableObject {
       const now = Date.now();
       let handled = (await this.ctx.storage.get("handled_signals")) || [];
       handled = handled.filter((x) => Date.parse(x.expires_at || "") > now);
-      const ttlHours = incoming.status === "approved" ? 36 : incoming.status === "watch" ? 2 : incoming.status === "drop" ? 12 : 6;
+      const ttlHours = incoming.status === "approved" ? 36
+        : incoming.status === "watch" && incoming.stage === "research" ? 18
+        : incoming.status === "watch" ? 4
+        : incoming.status === "drop" ? 12 : 6;
       for (const key of incoming.handled_signal_keys || []) {
         if (!key) continue;
         handled = handled.filter((x) => x.key !== key);
@@ -155,7 +158,7 @@ export class NewsroomState extends DurableObject {
       await this.ctx.storage.put("handled_signals", handled.slice(0, 180));
 
       const history = (await this.ctx.storage.get("editorial_history")) || [];
-      history.unshift({ generated_at: stampedAt, status: incoming.status, stage: incoming.stage || "approved", slug: incoming.slug || null, reason: incoming.reason || null, scan_fingerprint: incoming.scan_fingerprint || null, handled_signal_keys: incoming.handled_signal_keys || [] });
+      history.unshift({ generated_at: stampedAt, status: incoming.status, stage: incoming.stage || "approved", slug: incoming.slug || null, reason: incoming.reason || null, scan_fingerprint: incoming.scan_fingerprint || null, handled_signal_keys: incoming.handled_signal_keys || [], category: incoming.audit?.assignment?.category || null, weight: incoming.audit?.assignment?.weight || null, ai_usage: incoming.ai_usage || null });
       await this.ctx.storage.put("editorial_history", history.slice(0, 144));
       return Response.json({ ok: true }, { headers: jsonHeaders });
     }
