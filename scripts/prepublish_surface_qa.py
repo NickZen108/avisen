@@ -120,8 +120,9 @@ def main() -> int:
                 if image.get("discovery_only_source") is True and image.get("independent_license") is not True:
                     faults.append(f"{path.name}: discovery_only må ikke være billedkilde uden selvstændig licens")
             elif image_type == "illustration":
-                if not pending or not ai_generated:
-                    faults.append(f"{path.name}: nyhedsillustration er kun tilladt som AI-genereret pending_image")
+                static_fallback = image.get("generator") == "static_pencil_fallback"
+                if not pending or (not ai_generated and not static_fallback):
+                    faults.append(f"{path.name}: nyhedsillustration skal være pending og enten AI-genereret eller godkendt statisk blyantfallback")
                 if context_type != "illustration":
                     faults.append(f"{path.name}: pending illustration skal have context_type=illustration")
                 if str(image.get("caption") or "").strip().lower() != "illustration":
