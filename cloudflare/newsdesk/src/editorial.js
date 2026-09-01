@@ -1,5 +1,6 @@
 const FAST_TEXT_MODEL = "@cf/meta/llama-3.1-8b-instruct-fast";
 const STRONG_TEXT_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+const IMAGE_MODEL = "@cf/black-forest-labs/flux-1-schnell";
 const PUBLIC_BASE = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev";
 
 const CATEGORIES = ["Danmark", "Udland", "Politik", "Penge", "Krimi", "Videnskab & teknologi", "Sundhed", "Kultur & medier", "Sport", "Liv"];
@@ -534,40 +535,89 @@ async function reviseFixableIssues(env, assignment, dossier, article, review) {
   return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), article, issues: fixable }), articleSchema, 2400, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
 function newsRequiresDocumentaryHero() {
-  // This runtime is the autonomous NEWS pipeline. Every article it produces
-  // must use real documentary media; generative illustrations are not a fallback.
+  // Documentary media remains first choice, but lack of a lawful photo is not
+  // a publication veto after a story has passed evidence/editorial gates.
   return true;
 }
 
+const DOCUMENTARY_CONTEXTS = new Set(["event", "place", "person", "object", "archive"]);
 function validDocumentaryHero(media) {
   if (!media || typeof media !== "object") return false;
-  if (!["photo", "video_still", "document"].includes(media.image_type)) return false;
+  if (!["photo", "video_still"].includes(media.image_type)) return false;
+  if (!DOCUMENTARY_CONTEXTS.has(String(media.context_type || ""))) return false;
   if (!/^https:\/\//i.test(String(media.src || ""))) return false;
   if (!/^https:\/\//i.test(String(media.source_url || ""))) return false;
   if (!String(media.alt || "").trim() || !String(media.credit || "").trim() || !String(media.license || "").trim()) return false;
   const license = String(media.license || "").toLowerCase();
   if (["unknown", "ukendt", "tbd", "n/a"].includes(license)) return false;
+  if (media.context_type !== "event" && !String(media.caption || "").trim()) return false;
+  const host = hostOf(media.source_url);
+  if (media.image_type === "video_still" && (host === "youtube.com" || host.endsWith(".youtube.com") || host === "youtu.be")) {
+    if (!String(media.rights_basis || "").trim()) return false;
+  }
   return true;
 }
 
 function documentaryHeroFromSignals(selected = []) {
+  const candidates = [];
   for (const signal of selected || []) {
     const candidate = signal?.documentary_hero || signal?.documentary_media || null;
-    if (validDocumentaryHero(candidate)) {
-      return {
-        src: candidate.src,
-        alt: candidate.alt,
-        credit: candidate.credit,
-        license: candidate.license,
-        source_url: candidate.source_url,
-        image_type: candidate.image_type,
-        context_type: candidate.context_type || "context",
-        caption: candidate.caption || (candidate.context_type === "event" ? "" : "Kontekstfoto – billedet viser ikke nødvendigvis selve hændelsen."),
-        placement: "lead",
-      };
-    }
+    if (!validDocumentaryHero(candidate)) continue;
+    // A discovery-only feed may point us toward media, but it is not itself a
+    // usable image source unless the candidate carries an independent licence.
+    if (isDiscoveryOnly(signal) && candidate.independent_license !== true) continue;
+    const signalIsPrimary = trustedExpansionKind(signal?.final_url || signal?.url || "") === "primary";
+    const score = candidate.context_type === "event" ? 30 : signalIsPrimary ? 20 : 10;
+    candidates.push({ score, candidate });
   }
-  return null;
+  candidates.sort((a, b) => b.score - a.score);
+  const candidate = candidates[0]?.candidate;
+  if (!candidate) return null;
+  return {
+    src: candidate.src,
+    alt: candidate.alt,
+    credit: candidate.credit,
+    license: candidate.license,
+    source_url: candidate.source_url,
+    image_type: candidate.image_type,
+    context_type: candidate.context_type,
+    caption: candidate.caption || (candidate.context_type === "event" ? "" : "Kontekstfoto – billedet viser ikke nødvendigvis selve hændelsen."),
+    rights_basis: candidate.rights_basis || null,
+    pending_image: false,
+    ai_generated: false,
+    contains_people: Boolean(candidate.contains_people),
+    placement: "lead",
+  };
+}
+
+function temporarySketchPrompt(assignment, article) {
+  const subject = [assignment?.core_question, assignment?.title_hint, article?.title, article?.standfirst].filter(Boolean).join(". ").slice(0, 1200);
+  return `Black-and-white editorial pencil hatching illustration, newspaper sketch, wide 16:9. Subject context: ${subject}. Clearly hand-drawn graphite/pencil cross-hatching, restrained, symbolic and non-literal. NO photorealism, NO realistic photography, NO documentary-photo aesthetic, NO camera realism, NO text, NO logos, NO watermarks. Do not recreate a concrete accident/crime scene as if witnessed. Do not depict a named accused person, a child, victims, injured or dead people. Prefer place/object/geographic/symbolic motifs. If any human figure is unavoidable, use only anonymous distant silhouette/sketch figures with no recognizable face or identity.`;
+}
+
+async function generateTemporarySketch(env, assignment, article) {
+  const raw = await env.AI.run(IMAGE_MODEL, { prompt: temporarySketchPrompt(assignment, article) });
+  if (!raw?.image || typeof raw.image !== "string") throw new Error("Temporary sketch model returned no base64 image");
+  return raw.image;
+}
+
+function pendingSketchHero(imageKey, article) {
+  return {
+    src: `/img/auto/${imageKey}`,
+    alt: `Illustration til: ${article.title}`,
+    credit: "Illustration: Morgentidende",
+    license: "Morgentidende – AI-genereret illustration",
+    source_url: publicMediaUrl(imageKey),
+    image_type: "illustration",
+    context_type: "illustration",
+    caption: "Illustration",
+    pending_image: true,
+    ai_generated: true,
+    contains_people: false,
+    people_style: "pencil_hatching",
+    photorealistic: false,
+    placement: "lead",
+  };
 }
 
 function commonsSearchQueries(assignment, article, research = null) {
@@ -640,8 +690,10 @@ async function findCommonsDocumentaryHero(assignment, article, research = null) 
           license: stripCommonsHtml(license),
           source_url: info.descriptionurl || `https://commons.wikimedia.org/wiki/${encodeURIComponent(page.title)}`,
           image_type: "photo",
-          context_type: "context",
-          caption: "Arkiv-/kontekstfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+          context_type: "archive",
+          caption: "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+          pending_image: false,
+          ai_generated: false,
           placement: "lead",
         },
       });
@@ -685,6 +737,9 @@ const TEXT_NEURON_RATES = {
   "@cf/meta/llama-3.3-70b-instruct-fp8-fast": { input: 26668, output: 204805, basis: "published Cloudflare rate" },
 };
 function usageRecord(model, raw) {
+  if (model === IMAGE_MODEL) {
+    return { model, kind: "image", prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, estimated_neurons: 43.2, estimate_only: true, basis: "Flux Schnell minimum estimate: 1 tile + 4 default steps" };
+  }
   const u = raw?.usage || raw?.response?.usage || raw?.result?.usage || null;
   if (!u) return { model, kind: "text", metered: false, estimated_neurons: null };
   const prompt = Number(u.prompt_tokens ?? u.input_tokens ?? 0) || 0;
@@ -765,12 +820,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
       { candidate_claims: dossier.claims.filter((c) => c.status === "verified") }
     );
   }
-  if (!mediaScout && ["A", "B"].includes(assignment.weight)) {
-    return { status: "watch", stage: "media-scout", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint,
-      reason: "Ingen juridisk anvendelig dokumentarisk hero fundet før dyr Journalist/Final; historien sættes på watch til ny media-scout.",
-      scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys,
-      audit: { assignment, research: { candidate_claims: research.candidate_claims, media_strategy: "pending" }, fact_check: { claims: dossier.claims, rationale: dossier.rationale } } };
-  }
+  if (!mediaScout) research.media_strategy = "pending_illustration";
   if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, fact_check: { claims: dossier.claims, rationale: dossier.rationale }, desk_recheck: desk } };
 
   let article = await writeArticle(env, assignment, dossier);
@@ -797,32 +847,34 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const requiresDocumentary = newsRequiresDocumentaryHero();
   let documentaryHero = requiresDocumentary ? (mediaScout || documentaryHeroFromSignals(check.selected)) : null;
   if (requiresDocumentary && !documentaryHero) documentaryHero = await findCommonsDocumentaryHero(assignment, article, research);
-  if (requiresDocumentary && !documentaryHero) {
-    return {
-      status: "hold",
-      stage: "media",
-      checked_at: startedAt,
-      generated_at: startedAt,
-      title: article.title || assignment.title_hint,
-      reason: "Media fandt ikke automatisk et juridisk anvendeligt dokumentarisk hero-billede efter signalmedier og den udvidede Commons-fallback. AI-illustration er ikke tilladt til nyheder.",
-      scan_fingerprint: scan.fingerprint,
-      handled_signal_keys: handledSignalKeys,
-      audit: { assignment, article_title: article.title, selected_signals: check.selected || [], research: { candidate_claims: research.candidate_claims || [] }, fact_check: { claims: dossier.claims || [], rationale: dossier.rationale }, media_policy: { requires_documentary: true, ai_hero_allowed: false, search_queries: commonsSearchQueries(assignment, article, research) } },
-    };
-  }
 
   const imageKey = `${slug}.jpg`;
-  const hero = documentaryHero;
-  const media = {
-    kind: "documentary",
-    key: imageKey,
-    content_type: "image/external",
-    url: documentaryHero.src,
-    source_url: documentaryHero.source_url,
-    credit: documentaryHero.credit,
-    license: documentaryHero.license,
-    image_type: documentaryHero.image_type,
-  };
+  let hero;
+  let media;
+  if (documentaryHero) {
+    hero = { ...documentaryHero, pending_image: false, ai_generated: false };
+    media = {
+      kind: "documentary",
+      key: imageKey,
+      content_type: "image/external",
+      url: documentaryHero.src,
+      source_url: documentaryHero.source_url,
+      credit: documentaryHero.credit,
+      license: documentaryHero.license,
+      image_type: documentaryHero.image_type,
+    };
+  } else {
+    const imageBase64 = await generateTemporarySketch(env, assignment, article);
+    hero = pendingSketchHero(imageKey, article);
+    media = {
+      kind: "generated",
+      key: imageKey,
+      content_type: "image/jpeg",
+      base64: imageBase64,
+      pending_image: true,
+      image_type: "illustration",
+    };
+  }
 
   const ledger = makeLedger(storyId, slug, assignment, dossier, desk, startedAt);
   const canonical = {
@@ -840,9 +892,9 @@ export async function runEditorialCycle(env, scan, options = {}) {
 
   return {
     status: "approved", schema_version: 1, generated_at: startedAt, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys,
-    runtime: "cloudflare-workers-ai", model: STRONG_TEXT_MODEL, models: { fast: FAST_TEXT_MODEL, strong: STRONG_TEXT_MODEL }, story_id: storyId, slug, article: canonical, ledger, approval,
+    runtime: "cloudflare-workers-ai", model: STRONG_TEXT_MODEL, models: { fast: FAST_TEXT_MODEL, strong: STRONG_TEXT_MODEL, image: IMAGE_MODEL }, story_id: storyId, slug, article: canonical, ledger, approval,
     media,
-    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review, media_policy: { requires_documentary: requiresDocumentary, ai_hero_allowed: !requiresDocumentary }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
+    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review, media_policy: { documentary_first: true, pending_image: Boolean(hero.pending_image), temporary_ai_sketch_allowed_after_scout: true, late_hold_for_no_photo: false }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
   };
     })();
   } catch (error) {
