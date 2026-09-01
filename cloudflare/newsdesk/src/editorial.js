@@ -461,6 +461,50 @@ async function reviseFixableIssues(env, assignment, dossier, article, review) {
   const system = `Ret KUN de konkrete language/seo/image-prompt-problemer. Bevar verificerede fakta, vinkel og betydning. Tilføj ingen nye claims. Lægmandssprog og metriske enheder er obligatoriske.`;
   return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), article, issues: fixable }), articleSchema, 2400, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
+const HARD_NEWS_CATEGORIES = new Set(["Danmark", "Udland", "Politik", "Penge", "Krimi", "Sundhed", "Sport"]);
+const HARD_NEWS_TERMS = /\b(krig|angreb|drab|dræbt|døde|savnet|ulykke|brand|oversvømm|jordskælv|terror|sigtet|tiltalt|dom|valg|regering|minister|rente|inflation|epidemi|pandemi|strejke|evakuer|ceasefire|war|attack|killed|dead|missing|flood|earthquake|election)\b/iu;
+
+function hardNewsRequiresDocumentary(assignment, article) {
+  if (["A", "B"].includes(assignment?.weight)) return true;
+  if (HARD_NEWS_CATEGORIES.has(assignment?.category)) return true;
+  const text = [
+    assignment?.title_hint,
+    assignment?.core_question,
+    article?.title,
+    article?.standfirst,
+  ].join(" ");
+  return HARD_NEWS_TERMS.test(text);
+}
+
+function validDocumentaryHero(media) {
+  if (!media || typeof media !== "object") return false;
+  if (!["photo", "video_still", "document"].includes(media.image_type)) return false;
+  if (!/^https:\/\//i.test(String(media.src || ""))) return false;
+  if (!/^https:\/\//i.test(String(media.source_url || ""))) return false;
+  if (!String(media.alt || "").trim() || !String(media.credit || "").trim() || !String(media.license || "").trim()) return false;
+  const license = String(media.license || "").toLowerCase();
+  if (["unknown", "ukendt", "tbd", "n/a"].includes(license)) return false;
+  return true;
+}
+
+function documentaryHeroFromSignals(selected = []) {
+  for (const signal of selected || []) {
+    const candidate = signal?.documentary_hero || signal?.documentary_media || null;
+    if (validDocumentaryHero(candidate)) {
+      return {
+        src: candidate.src,
+        alt: candidate.alt,
+        credit: candidate.credit,
+        license: candidate.license,
+        source_url: candidate.source_url,
+        image_type: candidate.image_type,
+        placement: "lead",
+      };
+    }
+  }
+  return null;
+}
+
 async function generateHero(env, article) {
   const prompt = `${article.hero_prompt}. Wide 16:9 editorial illustration for a serious Danish newspaper, visually strong, elegant, realistic lighting but clearly illustrative rather than documentary evidence, no words, no logos, no watermarks.`;
   const raw = await env.AI.run(IMAGE_MODEL, { prompt });
@@ -592,8 +636,42 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const date = startedAt.slice(0, 10);
   const slug = `${date}-${slugify(article.title)}`.slice(0, 96).replace(/-+$/g, "");
   const storyId = `${date}-${slugify(assignment.title_hint || article.title)}`.slice(0, 96).replace(/-+$/g, "");
+  const requiresDocumentary = hardNewsRequiresDocumentary(assignment, article);
+  const documentaryHero = requiresDocumentary ? documentaryHeroFromSignals(check.selected) : null;
+  if (requiresDocumentary && !documentaryHero) {
+    return {
+      status: "hold",
+      stage: "media",
+      checked_at: startedAt,
+      generated_at: startedAt,
+      reason: "Hard news kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
+      scan_fingerprint: scan.fingerprint,
+      handled_signal_keys: handledSignalKeys,
+      audit: { assignment, media_policy: { requires_documentary: true, ai_hero_allowed: false } },
+    };
+  }
+
   const imageKey = `${slug}.jpg`;
-  const imageBase64 = await generateHero(env, article);
+  let media = null;
+  let hero;
+  if (requiresDocumentary) {
+    hero = documentaryHero;
+    media = {
+      kind: "documentary",
+      key: imageKey,
+      content_type: "image/external",
+      url: documentaryHero.src,
+      source_url: documentaryHero.source_url,
+      credit: documentaryHero.credit,
+      license: documentaryHero.license,
+      image_type: documentaryHero.image_type,
+    };
+  } else {
+    const imageBase64 = await generateHero(env, article);
+    hero = { src: `/img/auto/${imageKey}`, alt: article.hero_alt, credit: "Morgentidende", license: "Morgentidende", source_url: null, image_type: "illustration", placement: "lead" };
+    media = { kind: "generated", key: imageKey, content_type: "image/jpeg", base64: imageBase64 };
+  }
+
   const ledger = makeLedger(storyId, slug, assignment, dossier, desk, startedAt);
   const canonical = {
     pipeline_version: 2, status: "ready", release_requested: true, story_id: storyId, slug,
@@ -601,7 +679,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
     byline: "Morgentidende Redaktion", published_at: null, updated_at: null, manual_review: false,
     ledger: `sources/${slug}.json`, claim_ids: ledger.claims.map((c) => c.id),
     seo: { title: article.seo_title, description: article.seo_description, canonical: null },
-    image: { src: `/img/auto/${imageKey}`, alt: article.hero_alt, credit: "Morgentidende", license: "Morgentidende", source_url: null, image_type: "illustration", placement: "lead" },
+    image: hero,
     body: article.body, source_ids_to_display: ledger.sources.filter((s) => !s.discovery_only).slice(0, 6).map((s) => s.id), related_news_slug: null, related: [], correction_note: null, scheduled_for: null, released_from_schedule_at: null,
   };
   const approvalSnapshot = JSON.parse(JSON.stringify(canonical));
@@ -611,8 +689,8 @@ export async function runEditorialCycle(env, scan, options = {}) {
   return {
     status: "approved", schema_version: 1, generated_at: startedAt, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys,
     runtime: "cloudflare-workers-ai", model: STRONG_TEXT_MODEL, models: { fast: FAST_TEXT_MODEL, strong: STRONG_TEXT_MODEL, image: IMAGE_MODEL }, story_id: storyId, slug, article: canonical, ledger, approval,
-    media: { key: imageKey, content_type: "image/jpeg", base64: imageBase64 },
-    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
+    media,
+    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review, media_policy: { requires_documentary: requiresDocumentary, ai_hero_allowed: !requiresDocumentary }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
   };
     })();
   } catch (error) {
