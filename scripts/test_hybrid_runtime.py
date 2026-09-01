@@ -26,6 +26,25 @@ def main() -> int:
     assert sync.authoritative_editorial({"name": "Reuters", "source_group": "wire-reuters"})
     assert sync.authoritative_editorial({"name": "Associated Press", "source_group": "wire-ap"})
     assert not sync.authoritative_editorial({"name": "Example Blog", "source_group": "host-example.test"})
+    assert sync.is_hard_news({"category": "Udland", "weight": "C", "title": "Iran indgår ny aftale", "standfirst": ""})
+    assert sync.is_hard_news({"category": "Liv", "weight": "C", "title": "Flodbølge efterlader døde", "standfirst": ""})
+    assert not sync.is_hard_news({"category": "Liv", "weight": "C", "title": "Fem råd til bedre søvn", "standfirst": ""})
+    assert sync.valid_documentary_image({
+        "src": "https://example.test/photo.jpg",
+        "source_url": "https://example.test/license",
+        "image_type": "photo",
+        "alt": "Dokumentarisk foto",
+        "credit": "Example",
+        "license": "CC BY 4.0",
+    })
+    assert not sync.valid_documentary_image({
+        "src": "https://example.test/ai.jpg",
+        "source_url": "https://example.test/source",
+        "image_type": "illustration",
+        "alt": "AI",
+        "credit": "Morgentidende",
+        "license": "Morgentidende",
+    })
 
     js = (ROOT / "cloudflare" / "newsdesk" / "src" / "editorial.js").read_text(encoding="utf-8")
     required = [
@@ -43,6 +62,13 @@ def main() -> int:
         'host === "reuters.com"',
         'source === "ap"',
         'én stærk original bureau-/redaktionel kilde som Reuters, AP, AFP eller Ritzau',
+        'function hardNewsRequiresDocumentary(assignment, article)',
+        'function validDocumentaryHero(media)',
+        'function documentaryHeroFromSignals(selected = [])',
+        'if (requiresDocumentary && !documentaryHero)',
+        'Hard news kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede',
+        'ai_hero_allowed: false',
+        'const imageBase64 = await generateHero(env, article);',
     ]
     missing = [item for item in required if item not in js]
     assert not missing, f"Hybrid runtime regression: missing {missing}"
