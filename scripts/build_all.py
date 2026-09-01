@@ -219,7 +219,9 @@ def build_article(path: Path) -> None:
             credit_html = f'<a href="{esc(source_url)}" rel="nofollow noopener">{credit}</a>'
         else:
             credit_html = credit
-        caption_bits = [f"{image_label}: {credit_html}"] if credit_html else [image_label]
+        editorial_caption = str(image.get("caption") or "").strip()
+        caption_bits = [esc(editorial_caption)] if editorial_caption else []
+        caption_bits.append(f"{image_label}: {credit_html}" if credit_html else image_label)
         if license_label:
             caption_bits.append(license_label)
         caption = " · ".join(caption_bits)
