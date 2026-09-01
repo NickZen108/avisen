@@ -1,4 +1,5 @@
 name: Evidence architecture migration
+# trigger: canonical evidence rollout
 on:
   push:
     branches: [main]
