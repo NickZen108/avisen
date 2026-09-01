@@ -75,9 +75,10 @@ def validate_image(image: dict):
             raise SystemExit("Media re-approval blocked: non-event photo requires visible archive/context caption")
     elif pending or ai_generated:
         if image_type != "illustration" or context_type != "illustration":
-            raise SystemExit("Media re-approval blocked: pending AI hero must be image_type=illustration and context_type=illustration")
-        if not pending or not ai_generated:
-            raise SystemExit("Media re-approval blocked: AI news illustration must remain explicitly pending")
+            raise SystemExit("Media re-approval blocked: pending hero must be image_type=illustration and context_type=illustration")
+        static_fallback = image.get("generator") == "static_pencil_fallback"
+        if not pending or (not ai_generated and not static_fallback):
+            raise SystemExit("Media re-approval blocked: pending illustration must be AI-generated or the approved static pencil fallback")
         if str(image.get("caption") or "").strip().lower() != "illustration":
             raise SystemExit("Media re-approval blocked: pending illustration requires visible caption Illustration")
         if image.get("photorealistic") is True:
