@@ -13,7 +13,7 @@ Gør et godkendt research-frø til et kompakt, kildebelagt faktagrundlag for Fac
 
 ## Kilder
 - `discovery_only` må starte research, men må ikke bruges som dokumentation.
-- En stærk primærkilde kan være vigtigere end flere medier, der blot kopierer samme ophav.
+- En stærk primærkilde kan være vigtigere end flere medier, der blot kopierer samme ophav. En stærk original bureau-/redaktionel kilde som Reuters, AP, AFP eller Ritzau kan alene bære et almindeligt claim, når attributionen er tydelig; søg ikke mekanisk efter kopier af samme historie.
 - Fælles bureau/pressemeddelelse tæller som samme kildeophav.
 - Hvis en discovery-kilde linker til en troværdig primærkilde eller stærk redaktionel kilde, følg linket i stedet for at afvise historien.
 
