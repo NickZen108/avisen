@@ -1,5 +1,8 @@
 name: Publication sprint 2026-09-01
 on:
+  push:
+    branches: [main]
+    paths: ['ops/run-three-news-20260901.trigger']
   schedule:
     - cron: '30,45 4 1 9 *'
     - cron: '0,15,30,45 5-7 1 9 *'
@@ -20,15 +23,22 @@ jobs:
         with: {python-version: '3.12'}
       - name: Install image normalizer
         run: python -m pip install --disable-pip-version-check pillow
-      - name: Run fresh editorial cycle
+      - name: Run fresh editorial cycles
         run: |
-          curl --fail --silent --show-error --max-time 240 -X POST 'https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/run-editorial' -o /tmp/editorial.json
-          python -m json.tool /tmp/editorial.json >/dev/null
-          jq '{status,stage,generated_at,slug,reason,runtime}' /tmp/editorial.json
-      - name: Log attempt and independent block assessment
-        run: python scripts/log_publication_attempt.py --input /tmp/editorial.json
-      - name: Import if approved
-        run: python scripts/sync_cloudflare_editorial.py --input /tmp/editorial.json
+          mkdir -p /tmp/editorial-batch
+          count=1
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then count=3; fi
+          for i in $(seq 1 "$count"); do
+            curl --fail --silent --show-error --max-time 240 -X POST 'https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/run-editorial' -o "/tmp/editorial-batch/$i.json"
+            python -m json.tool "/tmp/editorial-batch/$i.json" >/dev/null
+            jq '{status,stage,generated_at,slug,reason,runtime}' "/tmp/editorial-batch/$i.json"
+          done
+      - name: Log attempts and import approved packages
+        run: |
+          for f in /tmp/editorial-batch/*.json; do
+            python scripts/log_publication_attempt.py --input "$f"
+            python scripts/sync_cloudflare_editorial.py --input "$f"
+          done
       - name: Canonical gates
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Refresh control room report
