@@ -38,9 +38,34 @@ jobs:
           python-version: '3.12'
       - name: Install image normalizer
         run: python -m pip install --disable-pip-version-check pillow
-      - name: Run and import distinct editorial candidates
+      - name: Self-test cheap dispatch gate
+        run: python scripts/editorial_dispatch_gate.py --self-test
+      - name: Fetch scan and editorial history for cheap dispatch
+        run: |
+          set +e
+          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          curl --fail --silent --show-error --max-time 30 "$BASE/candidates" -o /tmp/candidates.json
+          curl --fail --silent --show-error --max-time 30 "$BASE/editorial/history" -o /tmp/editorial-history.json
+          exit 0
+      - name: Decide how many AI editorial cycles are actually needed
+        id: dispatch
         env:
           INPUT_CYCLES: ${{ github.event.inputs.cycles }}
+        run: |
+          MAX='${INPUT_CYCLES:-3}'
+          case "$MAX" in 1|2|3) ;; *) MAX=3 ;; esac
+          python scripts/editorial_dispatch_gate.py \
+            --scan /tmp/candidates.json \
+            --history /tmp/editorial-history.json \
+            --max-cycles "$MAX" \
+            --github-output "$GITHUB_OUTPUT"
+      - name: Skip unnecessary Workers AI calls
+        if: ${{ steps.dispatch.outputs.cycles == '0' }}
+        run: echo "Ingen friske ubehandlede kandidater; GitHub dispatch-gate sparer denne AI-runde."
+      - name: Run and import distinct editorial candidates
+        if: ${{ steps.dispatch.outputs.cycles != '0' }}
+        env:
+          INPUT_CYCLES: ${{ steps.dispatch.outputs.cycles }}
         run: |
           set -euo pipefail
           BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
