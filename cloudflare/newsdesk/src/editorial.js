@@ -493,8 +493,10 @@ function supportPassageValid(claim, support, source) {
     if (overlap < Math.min(2, claimWords.length)) return false;
   }
   if (numericMaterialClaim(claim)) {
-    const nums = String(claim?.claim || "").match(/\d+(?:[.,]\d+)?/g) || [];
-    if (nums.length && !nums.some((n) => quote.includes(normalizedPassageText(n)))) return false;
+    const normalizeNumber = (value) => String(value || "").replace(/(?<=\d)[.\s](?=\d{3}(?:\D|$))/g, "").replace(",", ".");
+    const claimNums = (String(claim?.claim || "").match(/\d+(?:[.,\s]\d+)*/g) || []).map(normalizeNumber).filter(Boolean);
+    const quoteNums = new Set((String(support?.quote || "").match(/\d+(?:[.,\s]\d+)*/g) || []).map(normalizeNumber).filter(Boolean));
+    if (claimNums.length && !claimNums.every((n) => quoteNums.has(n))) return false;
   }
   return true;
 }
