@@ -19,22 +19,6 @@ DEFAULT_URL = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/edi
 PUBLIC_SITE = "https://morgentidende.nicolaipetersen108.workers.dev"
 
 
-HARD_NEWS_CATEGORIES = {"Danmark", "Udland", "Politik", "Penge", "Krimi", "Sundhed", "Sport"}
-HARD_NEWS_TERMS = re.compile(
-    r"\b(krig|angreb|drab|dræbt|døde|savnet|ulykke|brand|oversvømm|jordskælv|terror|sigtet|tiltalt|dom|valg|regering|minister|rente|inflation|epidemi|pandemi|strejke|evakuer|ceasefire|war|attack|killed|dead|missing|flood|earthquake|election)\b",
-    re.I,
-)
-
-
-def is_hard_news(article: dict) -> bool:
-    if article.get("weight") in {"A", "B"}:
-        return True
-    if article.get("category") in HARD_NEWS_CATEGORIES:
-        return True
-    text = " ".join(str(article.get(k) or "") for k in ("title", "standfirst"))
-    return bool(HARD_NEWS_TERMS.search(text))
-
-
 def valid_documentary_image(image: dict) -> bool:
     if image.get("image_type") not in {"photo", "video_still", "document"}:
         return False
@@ -118,12 +102,8 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     image = article.get("image") or {}
     if image.get("placement") != "lead":
         fail("automatisk artikel mangler godkendt lead-hero")
-    hard_news = is_hard_news(article)
-    if hard_news:
-        if not valid_documentary_image(image):
-            fail("hard news kræver dokumentarisk hero med gyldig kilde-, kredit- og licensmetadata; AI-illustration afvises")
-    elif image.get("image_type") not in {"illustration", "photo", "video_still", "document"}:
-        fail("ukendt hero-type")
+    if not valid_documentary_image(image):
+        fail("nyhedsartikler kræver dokumentarisk hero med gyldig kilde-, kredit- og licensmetadata; AI-illustration afvises")
     if not str(image.get("alt") or "").strip() or not str(image.get("credit") or "").strip():
         fail("hero mangler alt/kredit")
     if approval.get("status") != "pass" or approval.get("story_id") != article.get("story_id"):
@@ -160,18 +140,8 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     if (ledger.get("desk_recheck") or {}).get("status") not in {"publish", "update"}:
         fail("desk recheck er ikke publish/update")
     media_url = str(media.get("url") or "")
-    if hard_news:
-        if media.get("kind") != "documentary" or media_url != str(image.get("src") or "") or not media_url.startswith("https://"):
-            fail("dokumentarisk hero-pakke matcher ikke artikelbilledet")
-    else:
-        if media.get("kind") == "generated":
-            if not media_url.startswith("https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/"):
-                fail("generated hero media URL mangler")
-        elif media.get("kind") == "documentary":
-            if not media_url.startswith("https://"):
-                fail("dokumentarisk hero URL mangler")
-        else:
-            fail("ukendt media-kind")
+    if media.get("kind") != "documentary" or media_url != str(image.get("src") or "") or not media_url.startswith("https://"):
+        fail("dokumentarisk hero-pakke matcher ikke artikelbilledet")
     return article, ledger, approval, media
 
 
@@ -231,10 +201,7 @@ def main() -> int:
     hero_path = save_hero(media)
     original_source_url = article["image"].get("source_url")
     article["image"]["src"] = f"{PUBLIC_SITE}/img/auto/{hero_path.name}"
-    if media.get("kind") == "generated":
-        article["image"]["source_url"] = media["url"]
-    else:
-        article["image"]["source_url"] = original_source_url
+    article["image"]["source_url"] = original_source_url
     article["automation_origin"] = "cloudflare-workers-ai"
 
     snapshot = json.loads(json.dumps(article))

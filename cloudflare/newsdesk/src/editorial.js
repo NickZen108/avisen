@@ -1,6 +1,5 @@
 const FAST_TEXT_MODEL = "@cf/meta/llama-3.1-8b-instruct-fast";
 const STRONG_TEXT_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
-const IMAGE_MODEL = "@cf/black-forest-labs/flux-1-schnell";
 const PUBLIC_BASE = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev";
 
 const CATEGORIES = ["Danmark", "Udland", "Politik", "Penge", "Krimi", "Videnskab & teknologi", "Sundhed", "Kultur & medier", "Sport", "Liv"];
@@ -461,19 +460,10 @@ async function reviseFixableIssues(env, assignment, dossier, article, review) {
   const system = `Ret KUN de konkrete language/seo/image-prompt-problemer. Bevar verificerede fakta, vinkel og betydning. Tilføj ingen nye claims. Lægmandssprog og metriske enheder er obligatoriske.`;
   return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), article, issues: fixable }), articleSchema, 2400, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
-const HARD_NEWS_CATEGORIES = new Set(["Danmark", "Udland", "Politik", "Penge", "Krimi", "Sundhed", "Sport"]);
-const HARD_NEWS_TERMS = /\b(krig|angreb|drab|dræbt|døde|savnet|ulykke|brand|oversvømm|jordskælv|terror|sigtet|tiltalt|dom|valg|regering|minister|rente|inflation|epidemi|pandemi|strejke|evakuer|ceasefire|war|attack|killed|dead|missing|flood|earthquake|election)\b/iu;
-
-function hardNewsRequiresDocumentary(assignment, article) {
-  if (["A", "B"].includes(assignment?.weight)) return true;
-  if (HARD_NEWS_CATEGORIES.has(assignment?.category)) return true;
-  const text = [
-    assignment?.title_hint,
-    assignment?.core_question,
-    article?.title,
-    article?.standfirst,
-  ].join(" ");
-  return HARD_NEWS_TERMS.test(text);
+function newsRequiresDocumentaryHero() {
+  // This runtime is the autonomous NEWS pipeline. Every article it produces
+  // must use real documentary media; generative illustrations are not a fallback.
+  return true;
 }
 
 function validDocumentaryHero(media) {
@@ -505,12 +495,79 @@ function documentaryHeroFromSignals(selected = []) {
   return null;
 }
 
-async function generateHero(env, article) {
-  const prompt = `${article.hero_prompt}. Wide 16:9 editorial illustration for a serious Danish newspaper, visually strong, elegant, realistic lighting but clearly illustrative rather than documentary evidence, no words, no logos, no watermarks.`;
-  const raw = await env.AI.run(IMAGE_MODEL, { prompt });
-  if (!raw?.image || typeof raw.image !== "string") throw new Error("Image model returned no base64 image");
-  return raw.image;
+function commonsSearchTerms(assignment, article) {
+  const raw = `${assignment?.title_hint || ""} ${article?.title || ""}`;
+  const stop = new Set(["mener","siger","efter","over","under","vil","kan","skal","med","fra","til","for","the","and","with","from","says","after","over"]);
+  const terms = words(raw).filter((x) => x.length >= 4 && !stop.has(x)).slice(0, 7);
+  return terms.join(" ");
 }
+
+function stripCommonsHtml(value) {
+  return stripHtml(String(value || "")).slice(0, 500);
+}
+
+function commonsLicenseAllowed(value) {
+  const v = String(value || "").toLowerCase();
+  return /\b(cc0|cc by|cc-by|cc by-sa|cc-by-sa|public domain|pd-)\b/.test(v);
+}
+
+async function findCommonsDocumentaryHero(assignment, article) {
+  const q = commonsSearchTerms(assignment, article);
+  if (!q) return null;
+  const params = new URLSearchParams({
+    action: "query",
+    format: "json",
+    origin: "*",
+    generator: "search",
+    gsrnamespace: "6",
+    gsrsearch: q,
+    gsrlimit: "8",
+    prop: "imageinfo",
+    iiprop: "url|mime|size|extmetadata",
+  });
+  try {
+    const res = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
+      headers: { "user-agent": "MorgentidendeMediaDesk/1.0" },
+      cf: { cacheTtl: 300, cacheEverything: true },
+    });
+    if (!res.ok) return null;
+    const payload = await res.json();
+    const pages = Object.values(payload?.query?.pages || {});
+    const queryTerms = new Set(words(q));
+    const ranked = [];
+    for (const page of pages) {
+      const info = page?.imageinfo?.[0];
+      const meta = info?.extmetadata || {};
+      const license = meta.LicenseShortName?.value || meta.UsageTerms?.value || "";
+      if (!info?.url || info?.mime !== "image/jpeg" || !commonsLicenseAllowed(license)) continue;
+      if ((info.width || 0) < 800 || (info.height || 0) < 450) continue;
+      const desc = stripCommonsHtml(meta.ImageDescription?.value || "");
+      const title = String(page?.title || "").replace(/^File:/i, "");
+      const candidateWords = new Set(words(`${title} ${desc}`));
+      let overlap = 0;
+      for (const term of queryTerms) if (candidateWords.has(term)) overlap += 1;
+      if (overlap < 1) continue;
+      const credit = stripCommonsHtml(meta.Artist?.value || meta.Credit?.value || "Wikimedia Commons");
+      ranked.push({
+        score: overlap,
+        hero: {
+          src: info.thumburl || info.url,
+          alt: desc || title,
+          credit: credit || "Wikimedia Commons",
+          license: stripCommonsHtml(license),
+          source_url: info.descriptionurl || `https://commons.wikimedia.org/wiki/${encodeURIComponent(page.title)}`,
+          image_type: "photo",
+          placement: "lead",
+        },
+      });
+    }
+    ranked.sort((a, b) => b.score - a.score);
+    return ranked[0]?.hero || null;
+  } catch (_) {
+    return null;
+  }
+}
+
 
 function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the publication ledger boundary");
@@ -544,12 +601,6 @@ const TEXT_NEURON_RATES = {
 };
 function usageRecord(model, raw) {
   const u = raw?.usage || raw?.response?.usage || raw?.result?.usage || null;
-  if (model === IMAGE_MODEL) {
-    // Flux Schnell defaults to four steps. Cloudflare bills 9.6 neurons/step plus
-    // 4.8 neurons per 512x512 tile. Tile count is not surfaced by this binding,
-    // so 43.2 is a transparent minimum estimate (one tile + four steps).
-    return { model, kind: "image", prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, estimated_neurons: 43.2, estimate_only: true, basis: "minimum: 1 tile + 4 default steps" };
-  }
   if (!u) return { model, kind: "text", metered: false, estimated_neurons: null };
   const prompt = Number(u.prompt_tokens ?? u.input_tokens ?? 0) || 0;
   const completion = Number(u.completion_tokens ?? u.output_tokens ?? 0) || 0;
@@ -636,15 +687,16 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const date = startedAt.slice(0, 10);
   const slug = `${date}-${slugify(article.title)}`.slice(0, 96).replace(/-+$/g, "");
   const storyId = `${date}-${slugify(assignment.title_hint || article.title)}`.slice(0, 96).replace(/-+$/g, "");
-  const requiresDocumentary = hardNewsRequiresDocumentary(assignment, article);
-  const documentaryHero = requiresDocumentary ? documentaryHeroFromSignals(check.selected) : null;
+  const requiresDocumentary = newsRequiresDocumentaryHero();
+  let documentaryHero = requiresDocumentary ? documentaryHeroFromSignals(check.selected) : null;
+  if (requiresDocumentary && !documentaryHero) documentaryHero = await findCommonsDocumentaryHero(assignment, article);
   if (requiresDocumentary && !documentaryHero) {
     return {
       status: "hold",
       stage: "media",
       checked_at: startedAt,
       generated_at: startedAt,
-      reason: "Hard news kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
+      reason: "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
       scan_fingerprint: scan.fingerprint,
       handled_signal_keys: handledSignalKeys,
       audit: { assignment, media_policy: { requires_documentary: true, ai_hero_allowed: false } },
@@ -652,25 +704,17 @@ export async function runEditorialCycle(env, scan, options = {}) {
   }
 
   const imageKey = `${slug}.jpg`;
-  let media = null;
-  let hero;
-  if (requiresDocumentary) {
-    hero = documentaryHero;
-    media = {
-      kind: "documentary",
-      key: imageKey,
-      content_type: "image/external",
-      url: documentaryHero.src,
-      source_url: documentaryHero.source_url,
-      credit: documentaryHero.credit,
-      license: documentaryHero.license,
-      image_type: documentaryHero.image_type,
-    };
-  } else {
-    const imageBase64 = await generateHero(env, article);
-    hero = { src: `/img/auto/${imageKey}`, alt: article.hero_alt, credit: "Morgentidende", license: "Morgentidende", source_url: null, image_type: "illustration", placement: "lead" };
-    media = { kind: "generated", key: imageKey, content_type: "image/jpeg", base64: imageBase64 };
-  }
+  const hero = documentaryHero;
+  const media = {
+    kind: "documentary",
+    key: imageKey,
+    content_type: "image/external",
+    url: documentaryHero.src,
+    source_url: documentaryHero.source_url,
+    credit: documentaryHero.credit,
+    license: documentaryHero.license,
+    image_type: documentaryHero.image_type,
+  };
 
   const ledger = makeLedger(storyId, slug, assignment, dossier, desk, startedAt);
   const canonical = {
@@ -688,7 +732,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
 
   return {
     status: "approved", schema_version: 1, generated_at: startedAt, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys,
-    runtime: "cloudflare-workers-ai", model: STRONG_TEXT_MODEL, models: { fast: FAST_TEXT_MODEL, strong: STRONG_TEXT_MODEL, image: IMAGE_MODEL }, story_id: storyId, slug, article: canonical, ledger, approval,
+    runtime: "cloudflare-workers-ai", model: STRONG_TEXT_MODEL, models: { fast: FAST_TEXT_MODEL, strong: STRONG_TEXT_MODEL }, story_id: storyId, slug, article: canonical, ledger, approval,
     media,
     audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review, media_policy: { requires_documentary: requiresDocumentary, ai_hero_allowed: !requiresDocumentary }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
   };
