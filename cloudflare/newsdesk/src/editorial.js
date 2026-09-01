@@ -395,7 +395,7 @@ async function runResearch(env, assignment, selected) {
   // already present. Fact checker owns the evidence verdict. We stop only if there is
   // literally no usable evidence source after the cheap expansion attempt.
   if (!evidenceUsable.length) {
-    return { decision: "watch", rationale: "Ingen brugbar dokumentationskilde kunne hentes endnu", researched: [] };
+    return { decision: "watch", rationale: "Ingen brugbar dokumentationskilde kunne hentes endnu", researched, candidate_claims: [], contradictions: [], right_of_reply_required: false, conflict_present: false };
   }
 
   const unique = [];
