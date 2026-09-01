@@ -73,6 +73,17 @@ function trustedExpansionKind(value) {
 }
 
 async function fetchExcerpt(signal) {
+  if (signal?.prefetched_excerpt && String(signal.prefetched_excerpt).length >= 160) {
+    return {
+      ...signal,
+      excerpt: String(signal.prefetched_excerpt).slice(0, 12000),
+      fetched: true,
+      fetch_status: signal.prefetched_status || 200,
+      final_url: signal.prefetched_final_url || signal.url,
+      outbound_links: Array.isArray(signal.prefetched_outbound_links) ? signal.prefetched_outbound_links.slice(0, 24) : [],
+      fetch_origin: "github-actions-prefetch",
+    };
+  }
   if (!signal?.url) return { ...signal, excerpt: signal?.description || "", fetched: false, outbound_links: [] };
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 18000);
