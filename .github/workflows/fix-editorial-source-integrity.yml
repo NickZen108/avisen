@@ -91,14 +91,6 @@ jobs:
           s = s.replace(old, new, 1)
           p.write_text(s, encoding='utf-8')
 
-          wf = Path('.github/workflows/cloudflare-editorial-sync.yml')
-          w = wf.read_text(encoding='utf-8')
-          count = w.count("MAX='${INPUT_CYCLES:-3}'")
-          if count < 1:
-            raise SystemExit('cycles anchor not found')
-          w = w.replace("MAX='${INPUT_CYCLES:-3}'", 'MAX="${INPUT_CYCLES:-3}"')
-          wf.write_text(w, encoding='utf-8')
-
           invalid = [
             '2026-09-01-konflikt-mellem-usa-og-canada',
             '2026-09-01-massebegravelser-i-nepal-efter-oversvoemmelser',
@@ -113,9 +105,6 @@ jobs:
             ]:
               if path.exists():
                 path.unlink()
-
-          # This workflow is intentionally one-shot.
-          Path('.github/workflows/fix-editorial-source-integrity.yml').unlink()
           PY
 
       - name: Validate patch
@@ -129,7 +118,7 @@ jobs:
         run: |
           git config user.name 'morgentidende-repair'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
+          git add cloudflare/newsdesk/src/editorial.js content/articles sources reports/editorial/approvals docs/img/auto
           git commit -m 'fix: align editorial source integrity gates'
           git pull --rebase origin main
           git push origin main
