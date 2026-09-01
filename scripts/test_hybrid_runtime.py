@@ -49,6 +49,7 @@ def main() -> int:
         "alt": "Dokumentarisk foto",
         "credit": "Example",
         "license": "CC BY 4.0",
+        "context_type": "event",
     })
     assert not sync.valid_documentary_image({
         "src": "https://example.test/ai.jpg",
