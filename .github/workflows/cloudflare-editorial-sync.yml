@@ -38,8 +38,10 @@ jobs:
           python-version: '3.12'
       - name: Install image normalizer
         run: python -m pip install --disable-pip-version-check pillow
-      - name: Self-test cheap dispatch gate
-        run: python scripts/editorial_dispatch_gate.py --self-test
+      - name: Self-test cheap hybrid helpers
+        run: |
+          python scripts/editorial_dispatch_gate.py --self-test
+          python scripts/github_source_prefetch.py --self-test
       - name: Fetch scan and editorial history for cheap dispatch
         run: |
           set +e
@@ -62,6 +64,15 @@ jobs:
       - name: Skip unnecessary Workers AI calls
         if: ${{ steps.dispatch.outputs.cycles == '0' }}
         run: echo "Ingen friske ubehandlede kandidater; GitHub dispatch-gate sparer denne AI-runde."
+      - name: Prefetch likely source pages on GitHub
+        if: ${{ steps.dispatch.outputs.cycles != '0' }}
+        run: |
+          set +e
+          python scripts/github_source_prefetch.py --scan /tmp/candidates.json --output /tmp/github-prefetch.json --limit 12
+          if ! python -m json.tool /tmp/github-prefetch.json >/dev/null 2>&1; then
+            echo '{}' > /tmp/github-prefetch.json
+          fi
+          exit 0
       - name: Run and import distinct editorial candidates
         if: ${{ steps.dispatch.outputs.cycles != '0' }}
         env:
@@ -73,7 +84,14 @@ jobs:
           case "$MAX" in 1|2|3) ;; *) MAX=3 ;; esac
           for i in $(seq 1 "$MAX"); do
             OUT="/tmp/editorial-$i.json"
-            curl --fail --silent --show-error --max-time 240 -X POST "$BASE/run-editorial" -o "$OUT"
+            if [ -s /tmp/github-prefetch.json ]; then
+              curl --fail --silent --show-error --max-time 240 -X POST \
+                -H 'content-type: application/json' \
+                --data-binary @/tmp/github-prefetch.json \
+                "$BASE/run-editorial" -o "$OUT"
+            else
+              curl --fail --silent --show-error --max-time 240 -X POST "$BASE/run-editorial" -o "$OUT"
+            fi
             python -m json.tool "$OUT" >/dev/null
             jq '{status,stage,generated_at,slug,reason,runtime,handled_signal_keys}' "$OUT"
             python scripts/log_publication_attempt.py --input "$OUT"

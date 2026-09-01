@@ -19,6 +19,8 @@ def load_module(name: str, path: Path):
 def main() -> int:
     dispatch = load_module("dispatch", ROOT / "scripts" / "editorial_dispatch_gate.py")
     dispatch.self_test()
+    prefetch = load_module("prefetch", ROOT / "scripts" / "github_source_prefetch.py")
+    prefetch.self_test()
 
     sync = load_module("sync", ROOT / "scripts" / "sync_cloudflare_editorial.py")
     assert sync.authoritative_editorial({"name": "Reuters", "source_group": "wire-reuters"})
@@ -37,9 +39,15 @@ def main() -> int:
         'const aiFinalRequired = requiresAiFinalReview',
         'final_editor_mode: review.mode || "ai"',
         'Discovery-only source crossed the Research/Fact-check boundary',
+        'fetch_origin: "github-actions-prefetch"',
     ]
     missing = [item for item in required if item not in js]
     assert not missing, f"Hybrid runtime regression: missing {missing}"
+
+    index_js = (ROOT / "cloudflare" / "newsdesk" / "src" / "index.js").read_text(encoding="utf-8")
+    for item in ('function mergeGitHubPrefetch(scan, prefetch)', 'prefetch.scan_fingerprint !== scan?.fingerprint', 'result.github_prefetch'):
+        assert item in index_js, f"GitHub prefetch boundary regression: {item}"
+
     print("hybrid_runtime self-test: PASS")
     return 0
 
