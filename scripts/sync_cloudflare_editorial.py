@@ -218,48 +218,45 @@ def save_hero(media: dict) -> Path:
     return target
 
 
-def write_json(path: Path, data: dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
-def update_frontpage(article: dict) -> None:
-    path = ROOT / "content" / "frontpage.json"
-    try:
-        frontpage = json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return
-    slug = article.get("slug")
-    for key in ("articles", "slugs", "items"):
-        value = frontpage.get(key)
-        if isinstance(value, list) and all(isinstance(x, str) for x in value):
-            frontpage[key] = [slug] + [x for x in value if x != slug]
-            write_json(path, frontpage)
-            return
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input")
+    parser.add_argument("--input", help="JSON package already fetched from Cloudflare")
     parser.add_argument("--url", default=DEFAULT_URL)
     args = parser.parse_args()
     payload = load_payload(args.input, args.url)
     if payload.get("status") != "approved":
-        print(f"EDITORIAL SYNC: HOLD - {payload.get('reason') or payload.get('stage') or payload.get('status')}")
+        print(f"Cloudflare editorial: {payload.get('status', 'none')} – {payload.get('reason', 'ingen godkendt artikel')}")
         return 0
+
     article, ledger, approval, media = validate(payload)
+    slug = article["slug"]
+    article_path = ARTICLES / f"{slug}.json"
+    if article_path.exists():
+        print(f"Allerede importeret: {slug}")
+        return 0
+
     hero_path = save_hero(media)
-    article["image"]["src"] = "/" + str(hero_path.relative_to(ROOT / "docs")).replace("\\", "/")
-    article["image"]["source_url"] = str(article["image"].get("source_url") or media.get("source_url") or media.get("url") or "")
-    if media.get("kind") == "generated":
-        article["image"]["pending_image"] = True
-    write_json(ARTICLES / f"{article['slug']}.json", article)
-    write_json(ROOT / str(article["ledger"]), ledger)
-    write_json(APPROVALS / f"{article['slug']}.json", approval)
-    update_frontpage(article)
-    print(f"EDITORIAL SYNC: PASS - {article['slug']}")
+    original_source_url = article["image"].get("source_url")
+    article["image"]["src"] = f"{PUBLIC_SITE}/img/auto/{hero_path.name}"
+    article["image"]["source_url"] = media.get("url") if media.get("kind") == "generated" else original_source_url
+    article["automation_origin"] = "cloudflare-workers-ai"
+
+    snapshot = json.loads(json.dumps(article))
+    for key in ("status", "published_at", "updated_at", "scheduled_for", "released_from_schedule_at", "release_requested", "publication", "manual_review_completed", "workflow_state"):
+        snapshot.pop(key, None)
+    approval["editorial_snapshot"] = snapshot
+
+    ARTICLES.mkdir(parents=True, exist_ok=True); SOURCES.mkdir(parents=True, exist_ok=True); APPROVALS.mkdir(parents=True, exist_ok=True)
+    article_path.write_text(json.dumps(article, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (SOURCES / f"{slug}.json").write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (APPROVALS / f"{slug}.json").write_text(json.dumps(approval, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Imported Cloudflare editorial package: {slug}; hero={hero_path.relative_to(ROOT)}")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except Exception as exc:
+        print(f"EDITORIAL SYNC FAIL: {exc}", file=sys.stderr)
+        raise
