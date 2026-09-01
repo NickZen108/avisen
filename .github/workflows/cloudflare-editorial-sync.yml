@@ -108,18 +108,61 @@ jobs:
           done
       - name: Canonical gates before commit
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
-      - name: Refresh control room report
-        run: python scripts/build_control_room.py
-      - name: Commit imported packages and attempt log
+      - name: Commit source-of-truth editorial changes
         run: |
           set -euo pipefail
           git config user.name 'morgentidende-cloudflare-editorial'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add content/articles sources reports/editorial/approvals content/frontpage.json docs/img/auto reports/editorial/publication-attempts.jsonl docs/kontrolrum 2>/dev/null || true
+
+          # Commit only source-of-truth data before rebasing. Generated Control Room
+          # HTML is deliberately excluded here to avoid rebase conflicts with other
+          # workflows that rebuild the same file.
+          git add content/articles sources reports/editorial/approvals content/frontpage.json docs/img/auto reports/editorial/publication-attempts.jsonl 2>/dev/null || true
+
           if git diff --cached --quiet; then
-            echo 'Ingen ny godkendt artikel eller rapport at importere'
+            echo 'Ingen nye redaktionelle source-of-truth ændringer at committe'
           else
             git commit -m 'editorial: import cycle results'
-            git pull --rebase origin main
-            git push origin main
           fi
+
+          # Rebase the compact source-of-truth commit first. If main moved because
+          # another workflow rebuilt generated pages, those generated files are not
+          # part of our commit and therefore cannot conflict here.
+          git pull --rebase origin main
+
+      - name: Rebuild Control Room after rebase
+        run: |
+          set -euo pipefail
+          python scripts/build_control_room.py
+          git add docs/kontrolrum 2>/dev/null || true
+
+          if ! git diff --cached --quiet; then
+            if git log -1 --pretty=%B | grep -Fq 'editorial: import cycle results'; then
+              git commit --amend --no-edit
+            else
+              git commit -m 'control-room: refresh after editorial sync'
+            fi
+          fi
+
+      - name: Push editorial sync atomically
+        run: |
+          set -euo pipefail
+          # A second lightweight fetch protects against a tiny race between the rebase
+          # and push. Retry once by rebasing source truth, rebuilding generated UI, and
+          # pushing again.
+          if git push origin main; then
+            exit 0
+          fi
+
+          echo 'Main flyttede sig mellem rebase og push; prøver én sikker retry.'
+          git pull --rebase origin main
+          python scripts/build_control_room.py
+          git add docs/kontrolrum 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            if git log -1 --pretty=%B | grep -Eq 'editorial: import cycle results|control-room: refresh after editorial sync'; then
+              git commit --amend --no-edit
+            else
+              git commit -m 'control-room: refresh after editorial sync'
+            fi
+          fi
+          git push origin main
