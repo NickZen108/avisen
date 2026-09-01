@@ -582,7 +582,7 @@ function documentaryHeroFromSignals(selected = []) {
     source_url: candidate.source_url,
     image_type: candidate.image_type,
     context_type: candidate.context_type,
-    caption: candidate.caption || (candidate.context_type === "event" ? "" : "Kontekstfoto – billedet viser ikke nødvendigvis selve hændelsen."),
+    caption: candidate.caption || (candidate.image_type === "video_still" ? "Video-still fra den angivne kilde." : candidate.context_type === "event" ? "Foto fra hændelsen." : "Kontekstfoto – billedet viser ikke nødvendigvis selve hændelsen."),
     rights_basis: candidate.rights_basis || null,
     discovery_only_source: Boolean(isDiscoveryOnly((selected || []).find((s) => (s?.documentary_hero || s?.documentary_media) === candidate))),
     independent_license: candidate.independent_license === true,
@@ -595,7 +595,7 @@ function documentaryHeroFromSignals(selected = []) {
 
 function temporarySketchPrompt(assignment, article) {
   const subject = [assignment?.core_question, assignment?.title_hint, article?.title, article?.standfirst].filter(Boolean).join(". ").slice(0, 1200);
-  return `Black-and-white editorial pencil hatching illustration, newspaper sketch, wide 16:9. Subject context: ${subject}. Clearly hand-drawn graphite/pencil cross-hatching, restrained, symbolic and non-literal. NO photorealism, NO realistic photography, NO documentary-photo aesthetic, NO camera realism, NO text, NO logos, NO watermarks. Do not recreate a concrete accident/crime scene as if witnessed. Do not depict a named accused person, a child, victims, injured or dead people. Prefer place/object/geographic/symbolic motifs. If any human figure is unavoidable, use only anonymous distant silhouette/sketch figures with no recognizable face or identity.`;
+  return `Black-and-white editorial pencil hatching illustration, newspaper sketch, wide 16:9. Subject context: ${subject}. Clearly hand-drawn graphite/pencil cross-hatching, restrained, symbolic and non-literal. NO photorealism, NO realistic photography, NO documentary-photo aesthetic, NO camera realism, NO text, NO logos, NO watermarks. NO people, NO faces, NO human figures. Do not recreate a concrete accident/crime scene as if witnessed. Do not depict a named accused person, a child, victims, injured or dead people. Use only place/object/geographic/symbolic motifs.`;
 }
 
 async function generateTemporarySketch(env, assignment, article) {
