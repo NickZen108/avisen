@@ -30,7 +30,7 @@ function decodeXml(value) {
 function extractItems(xml, source) {
   const blocks = xml.match(/<(?:item|entry)\b[\s\S]*?<\/(?:item|entry)>/gi) || [];
   const out = [];
-  for (const block of blocks.slice(0, 28)) {
+  for (const [feedRank, block] of blocks.slice(0, 28).entries()) {
     const titleMatch = block.match(/<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i);
     if (!titleMatch) continue;
     const headline = decodeXml(titleMatch[1]);
@@ -42,7 +42,10 @@ function extractItems(xml, source) {
     if (linkHref) url = decodeXml(linkHref[1]); else if (linkText) url = decodeXml(linkText[1]); else if (guid) url = decodeXml(guid[1]);
     if (url && !/^https?:\/\//i.test(url)) url = null;
     const desc = block.match(/<(?:description|summary|content:encoded)(?:\s[^>]*)?>([\s\S]*?)<\/(?:description|summary|content:encoded)>/i);
-    out.push({ source, headline, normalized: normalizeTitle(headline), description: desc ? decodeXml(desc[1]).slice(0, 1200) : "", url });
+    const dateMatch = block.match(/<(?:pubDate|published|updated|dc:date)(?:\s[^>]*)?>([\s\S]*?)<\/(?:pubDate|published|updated|dc:date)>/i);
+    const parsedDate = dateMatch ? Date.parse(decodeXml(dateMatch[1])) : NaN;
+    const published_at = Number.isFinite(parsedDate) ? new Date(parsedDate).toISOString() : null;
+    out.push({ source, headline, normalized: normalizeTitle(headline), description: desc ? decodeXml(desc[1]).slice(0, 1200) : "", url, feed_rank: feedRank, published_at });
   }
   return out;
 }
@@ -74,7 +77,7 @@ async function buildScan() {
     if (sources.length >= 2) exactClusters.push({ normalized, sources, headlines: items.map((x) => x.headline), note: "Exact normalized headline match only; not proof of independent sourcing." });
   }
   return {
-    schema_version: 3, runtime: "cloudflare-workers", generated_at: new Date().toISOString(), fingerprint,
+    schema_version: 4, runtime: "cloudflare-workers", generated_at: new Date().toISOString(), fingerprint,
     signal_count: signals.length, feeds: fetched.map(({ source, ok, status, error }) => ({ source, ok, status, error: error || null })),
     signals, exact_clusters: exactClusters, editorial_status: "UNRANKED", warning: "Inventory only until the independent editorial pipeline passes.",
   };
