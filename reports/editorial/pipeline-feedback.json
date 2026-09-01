@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T14:43:17.435531Z",
+  "generated_at": "2026-09-01T14:48:54.397994Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,38 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 12,
+    "rejections": 15,
     "reviews": [
+      {
+        "at": "2026-09-01T14:48:09.726Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "fact_check",
+        "reason": "Der er ingen information om næste sports-betting case i Supreme Court i de vedlagte kilder. Alle claims handler om en anden sag, nemlig en sag om en ballroom på Det Hvide Hus. Ingen bærende claims er verificeret.",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T14:47:35.190Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "media",
+        "reason": "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
+        "class": "repairable",
+        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T14:46:53.372Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "media",
+        "reason": "Hard news kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
+        "class": "repairable",
+        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-01T14:42:52.518Z",
         "slug": null,
@@ -140,9 +170,10 @@
   },
   "last7_stage_counts": {
     "ethics": 1,
-    "fact_check": 5,
+    "fact_check": 6,
     "infrastructure": 1,
     "language": 1,
+    "media": 2,
     "research": 4
   },
   "suggested_adjustments": [
@@ -152,7 +183,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "9 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "10 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",
