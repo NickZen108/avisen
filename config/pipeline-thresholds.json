@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "principle": "Maalbare krav maa justeres eksperimentelt, men fakta, etik, forelaeggelse og final editor forbliver haarde sikkerhedsgates.",
+  "stages": [
+    {
+      "id": "newsdesk",
+      "label": "Newsdesk",
+      "kind": "selection",
+      "hard_gate": false,
+      "requirements": [
+        {"key": "max_story_candidates", "label": "Historier valgt pr. cycle", "value": 1, "unit": "artikel", "adjustable": true},
+        {"key": "min_start_sources", "label": "Troværdige startkilder", "value": 1, "unit": "kilde", "adjustable": true}
+      ]
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "kind": "evidence",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "min_readable_source_chars", "label": "Læsbar tekst pr. kilde", "value": 160, "unit": "tegn", "adjustable": true},
+        {"key": "min_distinct_sources", "label": "Forskellige kilder", "value": 2, "unit": "kilder", "adjustable": true},
+        {"key": "target_source_groups", "label": "Mål for dækningsbredde", "value": 3, "unit": "kildegrupper", "adjustable": true}
+      ]
+    },
+    {
+      "id": "fact_check",
+      "label": "Fact check",
+      "kind": "evidence",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "min_sources_per_material_claim", "label": "Uafhængige kilder pr. bærende claim", "value": 2, "unit": "kilder", "adjustable": true},
+        {"key": "min_verified_material_claims", "label": "Verificerede bærende claims", "value": 2, "unit": "claims", "adjustable": true}
+      ]
+    },
+    {
+      "id": "desk_recheck",
+      "label": "Newsdesk recheck",
+      "kind": "editorial",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "accepted_decisions", "label": "Godkendte udfald", "value": 2, "unit": "PUBLISH/UPDATE", "adjustable": false}
+      ]
+    },
+    {
+      "id": "journalist",
+      "label": "Journalist",
+      "kind": "production",
+      "hard_gate": false,
+      "requirements": [
+        {"key": "min_body_blocks", "label": "Minimum tekstblokke", "value": 3, "unit": "blokke", "adjustable": true},
+        {"key": "max_body_blocks", "label": "Maksimum tekstblokke", "value": 14, "unit": "blokke", "adjustable": true}
+      ]
+    },
+    {
+      "id": "language",
+      "label": "Sprog",
+      "kind": "quality",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "max_auto_repair_cycles", "label": "Automatiske reparationsforsøg", "value": 1, "unit": "forsøg", "adjustable": true}
+      ]
+    },
+    {
+      "id": "ethics",
+      "label": "Etik & fairness",
+      "kind": "safety",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "blocking_ethics_issues", "label": "Tilladte blokerende etikfejl", "value": 0, "unit": "fejl", "adjustable": false},
+        {"key": "right_of_reply_unresolved", "label": "Uafklaret forelæggelse", "value": 0, "unit": "sager", "adjustable": false}
+      ]
+    },
+    {
+      "id": "image",
+      "label": "Billede",
+      "kind": "quality",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "blocking_image_issues", "label": "Tilladte blokerende billedfejl", "value": 0, "unit": "fejl", "adjustable": false}
+      ]
+    },
+    {
+      "id": "seo",
+      "label": "SEO",
+      "kind": "quality",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "blocking_seo_issues", "label": "Tilladte blokerende SEO-fejl efter auto-repair", "value": 0, "unit": "fejl", "adjustable": false}
+      ]
+    },
+    {
+      "id": "final_editor",
+      "label": "Final editor",
+      "kind": "editorial",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "blocking_final_issues", "label": "Tilladte blokerende slutfejl", "value": 0, "unit": "fejl", "adjustable": false}
+      ]
+    },
+    {
+      "id": "publisher",
+      "label": "Publisher",
+      "kind": "release",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "required_pass_gates", "label": "PASS på language/ethics/image/seo/final editor", "value": 5, "unit": "gates", "adjustable": false}
+      ]
+    },
+    {
+      "id": "live_qa",
+      "label": "Live QA",
+      "kind": "release",
+      "hard_gate": true,
+      "requirements": [
+        {"key": "critical_live_errors", "label": "Tilladte kritiske live-fejl", "value": 0, "unit": "fejl", "adjustable": false}
+      ]
+    }
+  ]
+}
