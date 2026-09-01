@@ -60,6 +60,13 @@ def authoritative_primary(source: dict | None) -> bool:
     )
 
 
+def authoritative_editorial(source: dict | None) -> bool:
+    if not source:
+        return False
+    text = " ".join(str(source.get(k) or "") for k in ("name", "source_group", "title", "publisher")).lower()
+    return any(token in text for token in ("reuters", "wire-reuters", "associated press", "wire-ap", "ritzau", "wire-ritzau", "agence france-presse", "afp", "wire-afp"))
+
+
 def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     if payload.get("status") != "approved":
         fail(f"pakken er ikke approved (status={payload.get('status')!r})")
@@ -107,8 +114,9 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
         }
         source_groups.discard("")
         primary_ok = any(authoritative_primary(source_map.get(sid)) for sid in ids)
-        if claim.get("status") != "verified" or (not primary_ok and len(source_groups) < 2):
-            fail(f"claim mangler enten autoritativ primærkilde eller to uafhængige kilder: {claim.get('id')}")
+        editorial_ok = any(authoritative_editorial(source_map.get(sid)) for sid in ids)
+        if claim.get("status") != "verified" or (not primary_ok and not editorial_ok and len(source_groups) < 2):
+            fail(f"claim mangler tilstrækkelig dokumentation: primærkilde, anerkendt original bureaukilde eller to uafhængige kilder: {claim.get('id')}")
     if (ledger.get("fact_check") or {}).get("status") != "pass":
         fail("fact-check er ikke pass")
     if (ledger.get("desk_recheck") or {}).get("status") not in {"publish", "update"}:
