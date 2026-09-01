@@ -777,10 +777,14 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);
   let review = aiFinalRequired ? await finalReview(env, assignment, dossier, article) : deterministicFinalReview(assignment, dossier, article);
   if (review.decision !== "pass") {
+    const hardIssues = (review.issues || []).filter((x) => !["language", "seo", "image"].includes(x.gate));
     const revised = await reviseFixableIssues(env, assignment, dossier, article, review);
-    if (JSON.stringify(revised) !== JSON.stringify(article)) {
+    if (!hardIssues.length && JSON.stringify(revised) !== JSON.stringify(article)) {
       article = revised;
-      review = aiFinalRequired ? await finalReview(env, assignment, dossier, article) : deterministicFinalReview(assignment, dossier, article);
+      // The AI final already found no safety/fact blocker; do not pay for a second
+      // final-editor call merely to re-check polish. Deterministic structure checks suffice.
+      review = deterministicFinalReview(assignment, dossier, article);
+      review.mode = "post-polish-deterministic";
     }
   }
   if (review.decision !== "pass" || [review.language, review.ethics, review.image, review.seo, review.final_editor].some((x) => x !== "pass")) {
