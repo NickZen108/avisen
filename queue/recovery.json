@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-31T22:52:44+00:00",
+  "generated_at": "2026-09-01T01:49:52+00:00",
   "retry_count": 0,
   "dead_letter_count": 2,
   "items": {
     "2026-08-31-grand-canyon-flash-flood-en-doed-og-cirka-15-savnet": {
       "status": "dead-letter",
-      "attempts": 5,
+      "attempts": 6,
       "resume_from": "research",
       "reasons": [
         "coverage sweep mangler/er ugyldigt",
@@ -20,18 +20,18 @@
         "artiklen er ændret efter final approval"
       ],
       "reason_signature": "approval gate ethics er ikke PASS | approval gate final_editor er ikke PASS | approval gate image er ikke PASS | approval gate language er ikke PASS | approval gate seo er ikke PASS | artiklen er ændret efter final approval | coverage sweep mangler/er ugyldigt | fact-check PASS mangler | newsdesk recheck PUBLISH/UPDATE mangler",
-      "last_seen_at": "2026-08-31T22:52:44+00:00",
+      "last_seen_at": "2026-09-01T01:49:52+00:00",
       "next_retry_at": null
     },
     "2026-08-31-koraller-bleger-for-hyppigt-til-at-komme-sig": {
       "status": "dead-letter",
-      "attempts": 5,
+      "attempts": 6,
       "resume_from": "research",
       "reasons": [
         "ledger mangler"
       ],
       "reason_signature": "ledger mangler",
-      "last_seen_at": "2026-08-31T22:52:44+00:00",
+      "last_seen_at": "2026-09-01T01:49:52+00:00",
       "next_retry_at": null
     }
   }
