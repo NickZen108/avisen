@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T17:12:02.342048Z",
+  "generated_at": "2026-09-01T17:34:22.431389Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -566,7 +566,7 @@
       "requirements": [
         {
           "key": "ai_scope",
-          "label": "AI-final kun high-risk/A-B/kontradiktion; lavrisiko deterministisk",
+          "label": "AI-final ved A/B, indholdsbaseret high-risk, ROR eller kontradiktion; ikke pga. kategori alene",
           "value": 1,
           "unit": "regel",
           "adjustable": false
