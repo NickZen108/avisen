@@ -1,4 +1,4 @@
-name: Scan refactor once
+name: Finalize scan refactor
 
 on:
   push:
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  apply:
+  finalize:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,40 +24,17 @@ jobs:
           fetch-depth: 0
       - name: Sync main
         run: git pull --ff-only origin main
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Fix one-shot patch helpers
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('scripts/_apply_scan_refactor_once.py')
-          s=p.read_text(encoding='utf-8')
-          s=s.replace(
-              'out, n = re.subn(pattern, replacement, text, count=1, flags=flags)',
-              'out, n = re.subn(pattern, lambda _m: replacement, text, count=1, flags=flags)',
-          )
-          s=s.replace(
-              r'function distinctSources\(items\) \{[\s\S]*?\n\}',
-              r'function distinctSources\(items\) \{[^\n]*\}',
-          )
-          p.write_text(s,encoding='utf-8')
-          PY
-      - name: Apply refactor
-        run: python scripts/_apply_scan_refactor_once.py
-      - name: Syntax checks
+      - name: Remove obsolete duplicate declaration
+        run: sed -i '14d' cloudflare/newsdesk/src/editorial.js
+      - name: Validate JavaScript
         run: |
           node --check cloudflare/newsdesk/src/index.js
           node --check cloudflare/newsdesk/src/editorial.js
-          python -m py_compile scripts/sync_cloudflare_editorial.py
-      - name: Commit non-workflow refactor
+      - name: Commit source correction
         run: |
-          set -euo pipefail
-          git checkout HEAD -- .github/workflows/cloudflare-editorial-sync.yml .github/workflows/cloudflare-newsdesk-deploy.yml .github/workflows/scan-refactor-once.yml
-          rm -rf scripts/__pycache__
           git config user.name 'morgentidende-refactor'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
-          git commit -m 'refactor: broaden and simplify scan discovery'
+          git add cloudflare/newsdesk/src/editorial.js
+          git commit -m 'fix: finalize refactored newsdesk source'
           git pull --rebase origin main
           git push origin main
