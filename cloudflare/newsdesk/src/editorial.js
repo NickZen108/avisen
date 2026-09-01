@@ -1,6 +1,5 @@
 const FAST_TEXT_MODEL = "@cf/meta/llama-3.1-8b-instruct-fast";
 const STRONG_TEXT_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
-const IMAGE_MODEL = "@cf/black-forest-labs/flux-1-schnell";
 const PUBLIC_BASE = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev";
 
 const CATEGORIES = ["Danmark", "Udland", "Politik", "Penge", "Krimi", "Videnskab & teknologi", "Sundhed", "Kultur & medier", "Sport", "Liv"];
@@ -496,12 +495,6 @@ function documentaryHeroFromSignals(selected = []) {
   return null;
 }
 
-async function generateHero(env, article) {
-  const prompt = `${article.hero_prompt}. Wide 16:9 editorial illustration for a serious Danish newspaper, visually strong, elegant, realistic lighting but clearly illustrative rather than documentary evidence, no words, no logos, no watermarks.`;
-  const raw = await env.AI.run(IMAGE_MODEL, { prompt });
-  if (!raw?.image || typeof raw.image !== "string") throw new Error("Image model returned no base64 image");
-  return raw.image;
-}
 
 function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the publication ledger boundary");
@@ -535,12 +528,6 @@ const TEXT_NEURON_RATES = {
 };
 function usageRecord(model, raw) {
   const u = raw?.usage || raw?.response?.usage || raw?.result?.usage || null;
-  if (model === IMAGE_MODEL) {
-    // Flux Schnell defaults to four steps. Cloudflare bills 9.6 neurons/step plus
-    // 4.8 neurons per 512x512 tile. Tile count is not surfaced by this binding,
-    // so 43.2 is a transparent minimum estimate (one tile + four steps).
-    return { model, kind: "image", prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, estimated_neurons: 43.2, estimate_only: true, basis: "minimum: 1 tile + 4 default steps" };
-  }
   if (!u) return { model, kind: "text", metered: false, estimated_neurons: null };
   const prompt = Number(u.prompt_tokens ?? u.input_tokens ?? 0) || 0;
   const completion = Number(u.completion_tokens ?? u.output_tokens ?? 0) || 0;
