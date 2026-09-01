@@ -56,7 +56,7 @@ jobs:
         env:
           INPUT_CYCLES: ${{ github.event.inputs.cycles }}
         run: |
-          MAX='${INPUT_CYCLES:-3}'
+          MAX="${INPUT_CYCLES:-3}"
           case "$MAX" in 1|2|3) ;; *) MAX=3 ;; esac
           python scripts/editorial_dispatch_gate.py \
             --scan /tmp/candidates.json \
@@ -83,7 +83,7 @@ jobs:
         run: |
           set -euo pipefail
           BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
-          MAX='${INPUT_CYCLES:-3}'
+          MAX="${INPUT_CYCLES:-3}"
           case "$MAX" in 1|2|3) ;; *) MAX=3 ;; esac
           for i in $(seq 1 "$MAX"); do
             OUT="/tmp/editorial-$i.json"
