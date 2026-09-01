@@ -1,5 +1,5 @@
 name: Evidence architecture migration
-# trigger: AP regression compatibility
+# trigger: structured provenance metadata
 on:
   push:
     branches: [main]
@@ -20,8 +20,8 @@ jobs:
         run: git fetch origin main && git reset --hard origin/main
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: Apply AP regression compatibility
-        run: python scripts/fix_ap_regression.py
+      - name: Apply structured provenance
+        run: python scripts/apply_structured_provenance.py
       - name: Validate architecture
         run: |
           node --check cloudflare/newsdesk/src/editorial.js
@@ -36,8 +36,8 @@ jobs:
           set -euo pipefail
           git config user.name 'morgentidende-evidence-migration'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add cloudflare/newsdesk/src/editorial.js
-          git commit -m 'fix: preserve AP wire regression contract'
+          git add cloudflare/newsdesk/src/editorial.js scripts/evidence_policy.py scripts/evidence_policy_selftest.py
+          git commit -m 'refactor: add structured source provenance'
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git rebase origin/main
