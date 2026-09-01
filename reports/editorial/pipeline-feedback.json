@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T17:34:22.431389Z",
+  "generated_at": "2026-09-01T17:35:45.827148Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,18 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 26,
+    "rejections": 27,
     "reviews": [
+      {
+        "at": "2026-09-01T17:34:28.284Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "infrastructure",
+        "reason": "AiError: 4006: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage.",
+        "class": "infrastructure",
+        "assessment": "Ingen redaktionel tærskel bør ændres. Løs kapacitet/drift eller genkør forsøget.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-01T17:10:43.438Z",
         "slug": null,
@@ -281,7 +291,7 @@
   "last7_stage_counts": {
     "ethics": 1,
     "fact_check": 9,
-    "infrastructure": 3,
+    "infrastructure": 4,
     "language": 1,
     "media": 5,
     "research": 6,
@@ -302,7 +312,7 @@
       "current": "observeret driftsstop",
       "proposed": "genkør/kapacitetsstyring",
       "status": "fix-system",
-      "why": "3 driftsstop på 7 dage er ikke et argument for at svække redaktionelle gates."
+      "why": "4 driftsstop på 7 dage er ikke et argument for at svække redaktionelle gates."
     }
   ],
   "current_blockers": [
