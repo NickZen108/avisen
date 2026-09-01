@@ -1,0 +1,44 @@
+name: Publication sprint 2026-09-01
+on:
+  schedule:
+    - cron: '30,45 4 1 9 *'
+    - cron: '0,15,30,45 5-7 1 9 *'
+    - cron: '0 8 1 9 *'
+permissions: {contents: write}
+concurrency: {group: morgentidende-editorial-import, cancel-in-progress: false}
+jobs:
+  publish-quarter-hour:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main, fetch-depth: 0}
+      - name: Guard exact experiment date
+        run: test "$(date -u +%F)" = '2026-09-01'
+      - name: Sync latest main
+        run: git fetch origin main && git reset --hard origin/main
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install image normalizer
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Run fresh editorial cycle
+        run: |
+          curl --fail --silent --show-error --max-time 240 -X POST 'https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/run-editorial' -o /tmp/editorial.json
+          python -m json.tool /tmp/editorial.json >/dev/null
+          jq '{status,stage,generated_at,slug,reason,runtime}' /tmp/editorial.json
+      - name: Log attempt and independent block assessment
+        run: python scripts/log_publication_attempt.py --input /tmp/editorial.json
+      - name: Import if approved
+        run: python scripts/sync_cloudflare_editorial.py --input /tmp/editorial.json
+      - name: Canonical gates
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
+      - name: Refresh control room report
+        run: python scripts/build_control_room.py
+      - name: Commit attempt, article package and report
+        run: |
+          git config user.name 'morgentidende-publication-sprint'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/editorial/publication-attempts.jsonl content/articles sources reports/editorial/approvals docs/img/auto docs/kontrolrum 2>/dev/null || true
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'experiment: quarter-hour publication attempt'
+          git pull --rebase origin main
+          git push origin main
