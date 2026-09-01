@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T09:14:31.551975Z",
+  "generated_at": "2026-09-01T10:09:57.413535Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,28 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 6,
+    "rejections": 8,
     "reviews": [
+      {
+        "at": "2026-09-01T09:51:32.916Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "research",
+        "reason": "Lovende discovery-tip, men endnu ikke en autoritativ primærkilde eller to uafhængige redaktionelle kilder",
+        "class": "evidence",
+        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-01T09:29:44.655Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "research",
+        "reason": "Der er to forskellige påstande om årsagen til oversvømmelserne i Islamabad og Rawalpandi. Al Jazeera hævder at oversvømmelserne skyldes monsunregn, mens France 24 hævder at oversvømmelserne skyldes en kombination af iskalde kollaps og en stor jordskælv. Der er ingen påstande om at oversvømmelserne skyldes en kombination af monsunregn og en stor jordskælv. Derfor kan vi ikke fastslå en årsag til oversvømmelserne i Islamabad og Rawalpandi.",
+        "class": "evidence",
+        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-01T09:14:14.405Z",
         "slug": null,
@@ -82,7 +102,7 @@
     "ethics": 1,
     "fact_check": 2,
     "infrastructure": 1,
-    "research": 2
+    "research": 4
   },
   "suggested_adjustments": [
     {
@@ -91,7 +111,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "4 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "6 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",
