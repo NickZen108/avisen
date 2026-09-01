@@ -1,0 +1,62 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-01-iran-siger-det-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme",
+  "slug": "2026-09-01-iran-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme",
+  "category": "Politik",
+  "weight": "B",
+  "title": "Iran vil vende tilbage til juni-aftale, hvis USA gør det samme",
+  "standfirst": "Iran har udtalt, at de vil vende tilbage til juni-aftalen, hvis USA også gør det. Konflikten mellem USA og Iran er fortsat ikke løst.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-01-iran-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06"
+  ],
+  "seo": {
+    "title": "Iran vil vende tilbage til juni-aftale, hvis USA gør det samme",
+    "description": "Iran siger, at de vil vende tilbage til juni-aftalen, hvis USA gør det samme. Læs mere om konflikten mellem USA og Iran.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-iran-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme.jpg",
+    "alt": "En bred redaktionel illustration af en krigsskib i Hormuzstrædet",
+    "credit": "Morgentidende",
+    "license": "Morgentidende",
+    "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-01-iran-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme.jpg",
+    "image_type": "illustration",
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Iran har udtalt, at de vil vende tilbage til juni-aftalen, hvis USA også gør det. Dette kommer efter, at Iran har anklaget USA for at have brudt aftalen ved at udføre angreb på iranske mål.",
+      "type": "p"
+    },
+    {
+      "text": "Ifølge iranske kilder vil landet tillade fri navigation gennem Hormuzstrædet, men på deres egne betingelser. USA har udført angreb på iranske mål efter, hvad de kalder \"fortsat aggression\" mod kommerciel skibsfart i Hormuzstrædet.",
+      "type": "p"
+    },
+    {
+      "text": "Både USA og Iran har udvekslet beskyldninger om overtrædelse af aftalens betingelser. En diplomatisk løsning på konflikten er endnu ikke fundet.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

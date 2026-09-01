@@ -1,0 +1,177 @@
+{
+  "schema_version": 2,
+  "story_id": "2026-09-01-nepal-efter-flodboelgerne",
+  "article_slug": "2026-09-01-nepal-efter-flodboelgerne-over-1-000-doede-og-4-000-savnet",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "core_question": "Nepal efter flodbølgerne",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "France 24",
+      "url": "https://www.france24.com/en/after-the-floods-nepal-works-to-bury-hundreds-of-washed-up-unidentified-bodies",
+      "published_at": "2026-09-01T14:08:18.000Z",
+      "accessed_at": "2026-09-01T14:31:36.287Z",
+      "type": "news",
+      "source_group": "wire-reuters",
+      "authoritative_for": "After the floods, Nepal works to bury hundreds of washed-up unidentified bodies",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "SVT",
+      "url": "https://www.svt.se/nyheter/lokalt/ost/kastade-molotovcocktail-in-i-frisorsalong-tva-tonaringar-doms",
+      "published_at": "2026-09-01T14:06:41.000Z",
+      "accessed_at": "2026-09-01T14:31:36.287Z",
+      "type": "news",
+      "source_group": "host-svt-se",
+      "authoritative_for": "Kastade molotovcocktail in i frisörsalong – två tonåringar döms",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "Euronews",
+      "url": "https://www.euronews.com/video/2026/09/01/nepal-families-post-photos-of-missing-relatives-on-kathmandu-hospital-wall",
+      "published_at": "2026-09-01T14:06:09.000Z",
+      "accessed_at": "2026-09-01T14:31:36.287Z",
+      "type": "news",
+      "source_group": "host-euronews-com",
+      "authoritative_for": "Nepal families post photos of missing relatives on Kathmandu hospital wall",
+      "discovery_only": false
+    },
+    {
+      "id": "S4",
+      "name": "Guardian World",
+      "url": "https://www.theguardian.com/world/2026/aug/31/nepal-tibet-floods-rescuers-hundreds-trapped-hydropower",
+      "published_at": "2026-08-31T15:56:31.000Z",
+      "accessed_at": "2026-09-01T14:31:36.287Z",
+      "type": "news",
+      "source_group": "wire-reuters",
+      "authoritative_for": "Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "independent_source_groups": [
+      "wire-reuters",
+      "host-svt-se",
+      "host-euronews-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. En autoritativ primærkilde eller to uafhængige troværdige kilder er normalt nok for et almindeligt bærende faktum."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Over 1.000 mennesker er døde og 4.000 er savnet efter flodbølgerne i Nepal.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:31:36.287Z",
+      "notes": "Kilde: France 24"
+    },
+    {
+      "id": "F02",
+      "claim": "Der er 939 døde og 4.400 savnet efter flodbølgerne i Nepal og Tibet.",
+      "status": "verified",
+      "source_ids": [
+        "S4"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:31:36.287Z",
+      "notes": "Kilde: The Guardian"
+    },
+    {
+      "id": "F03",
+      "claim": "Nepal er i krise efter flodbølgerne, hvor over 1.000 mennesker er døde og 4.000 er savnet.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:31:36.287Z",
+      "notes": "Kilde: France 24"
+    },
+    {
+      "id": "F04",
+      "claim": "Der er flere hundrede mennesker, der er blevet fanget i hydropower-tunnelene efter flodbølgerne i Nepal.",
+      "status": "verified",
+      "source_ids": [
+        "S4"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:31:36.287Z",
+      "notes": "Kilde: The Guardian"
+    },
+    {
+      "id": "F05",
+      "claim": "Nepal er i krise efter flodbølgerne, hvor over 1.000 mennesker er døde og 4.000 er savnet, inklusive 583 udenlandske statsborgere.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:31:36.287Z",
+      "notes": "Kilde: France 24"
+    },
+    {
+      "id": "F06",
+      "claim": "Der er flere hundrede mennesker, der er blevet fanget i hydropower-tunnelene efter flodbølgerne i Nepal, hvor over 900 hydropower-arbejdere er savnet.",
+      "status": "verified",
+      "source_ids": [
+        "S4"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:31:36.287Z",
+      "notes": "Kilde: The Guardian"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-01T14:31:36.287Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-01T14:31:36.287Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}

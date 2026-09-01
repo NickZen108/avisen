@@ -1,0 +1,64 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-01-nepal-efter-flodboelgerne",
+  "slug": "2026-09-01-nepal-efter-flodboelgerne-over-1-000-doede-og-4-000-savnet",
+  "category": "Udland",
+  "weight": "B",
+  "title": "Nepal efter flodbølgerne: Over 1.000 døde og 4.000 savnet",
+  "standfirst": "Nepal er ramt af en katastrofe efter flodbølgerne, hvor over 1.000 mennesker er døde og 4.000 er savnet. Redningsarbejdet er i gang for at nå de mennesker, der er fanget i tunnelene.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-01-nepal-efter-flodboelgerne-over-1-000-doede-og-4-000-savnet.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06"
+  ],
+  "seo": {
+    "title": "Nepal efter flodbølgerne: Over 1.000 døde og 4.000 savnet",
+    "description": "Nepal er ramt af en katastrofe efter flodbølgerne, hvor over 1.000 mennesker er døde og 4.000 er savnet. Læs mere om situationen her.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-nepal-efter-flodboelgerne-over-1-000-doede-og-4-000-savnet.jpg",
+    "alt": "En illustration af en oversvømmet by i Nepal med mennesker, der søger hjælp.",
+    "credit": "Morgentidende",
+    "license": "Morgentidende",
+    "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-01-nepal-efter-flodboelgerne-over-1-000-doede-og-4-000-savnet.jpg",
+    "image_type": "illustration",
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Nepal er ramt af en katastrofe efter flodbølgerne, hvor over 1.000 mennesker er døde og 4.000 er savnet. Ifølge France 24 er der blevet fundet hundredvis af ukendte lig efter oversvømmelserne.",
+      "type": "p"
+    },
+    {
+      "text": "Der er også flere hundrede mennesker, der er blevet fanget i hydropower-tunnelene efter flodbølgerne i Nepal, hvor over 900 hydropower-arbejdere er savnet, ifølge The Guardian.",
+      "type": "p"
+    },
+    {
+      "text": "Redningsarbejdet er i gang for at nå de mennesker, der er fanget i tunnelene. Situationen er kritisk, og der er stor bekymring for de savnede menneskers skæbne.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

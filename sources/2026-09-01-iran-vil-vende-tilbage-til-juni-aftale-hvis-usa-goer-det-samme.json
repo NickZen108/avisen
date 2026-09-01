@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "story_id": "2026-09-01-iran-siger-det-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme",
+  "article_slug": "2026-09-01-iran-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme",
+  "assignment": {
+    "category": "Politik",
+    "weight": "B",
+    "core_question": "Iran siger, det vil vende tilbage til juni-aftale, hvis USA gør det samme",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Euronews",
+      "url": "https://www.euronews.com/2026/09/01/iran-says-it-will-return-to-june-ceasefire-deal-if-us-does-the-same",
+      "published_at": "2026-09-01T14:15:55.000Z",
+      "accessed_at": "2026-09-01T14:30:31.797Z",
+      "type": "news",
+      "source_group": "host-euronews-com",
+      "authoritative_for": "Iran says it will return to June ceasefire deal if US does the same",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "DW",
+      "url": "https://www.dw.com/en/iran-says-it-will-return-to-ceasefire-if-us-does/a-78586314?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-01T10:00:00.000Z",
+      "accessed_at": "2026-09-01T14:30:31.797Z",
+      "type": "news",
+      "source_group": "wire-reuters",
+      "authoritative_for": "Iran says it will return to ceasefire if US does",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2"
+    ],
+    "independent_source_groups": [
+      "host-euronews-com",
+      "wire-reuters"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. En autoritativ primærkilde eller to uafhængige troværdige kilder er normalt nok for et almindeligt bærende faktum."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Iran vil vende tilbage til juni-aftale, hvis USA gør det samme",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:30:31.797Z",
+      "notes": "Iran har udtalt, at de vil vende tilbage til aftalen, hvis USA også gør det."
+    },
+    {
+      "id": "F02",
+      "claim": "Iran anklager USA for at have brudt aftalen",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:30:31.797Z",
+      "notes": "Iran mener, at USA har brudt aftalen ved at udføre angreb på iranske mål."
+    },
+    {
+      "id": "F03",
+      "claim": "USA har udført angreb på iranske mål",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:30:31.797Z",
+      "notes": "USA har udført angreb på iranske mål efter, hvad de kalder \"fortsat aggression\" mod kommerciel skibsfart i Hormuzstrædet."
+    },
+    {
+      "id": "F04",
+      "claim": "Iran vil tillade fri navigation gennem Hormuzstrædet på deres egne betingelser",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:30:31.797Z",
+      "notes": "Iran har udtalt, at de vil tillade fri navigation gennem Hormuzstrædet, men på deres egne betingelser."
+    },
+    {
+      "id": "F05",
+      "claim": "USA og Iran har udvekslet beskyldninger om overtrædelse af aftalens betingelser",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:30:31.797Z",
+      "notes": "Både USA og Iran har beskyldt hinanden for at have overtrådt aftalens betingelser."
+    },
+    {
+      "id": "F06",
+      "claim": "En diplomatisk løsning på konflikten er endnu ikke fundet",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "wire-reuters"
+      ],
+      "checked_at": "2026-09-01T14:30:31.797Z",
+      "notes": "En diplomatisk løsning på konflikten mellem USA og Iran er endnu ikke fundet."
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-01T14:30:31.797Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; discovery-only-kilder kan ikke alene verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-01T14:30:31.797Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}
