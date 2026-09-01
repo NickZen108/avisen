@@ -120,9 +120,9 @@ const assignmentSchema = {
 
 const researchSchema = {
   type: "object", properties: {
-    decision: { type: "string", enum: ["continue", "watch", "hold"] }, rationale: { type: "string" }, core_question: { type: "string" },
+    decision: { type: "string", enum: ["continue", "watch"] }, rationale: { type: "string" }, core_question: { type: "string" },
     right_of_reply_required: { type: "boolean" }, contradictions: { type: "array", items: { type: "string" } },
-    candidate_claims: { type: "array", minItems: 2, maxItems: 12, items: { type: "object", properties: {
+    candidate_claims: { type: "array", minItems: 1, maxItems: 8, items: { type: "object", properties: {
       id: { type: "string" }, claim: { type: "string" }, source_indexes: { type: "array", items: { type: "integer" }, minItems: 1 },
       notes: { type: "string" },
     }, required: ["id", "claim", "source_indexes", "notes"] } },
@@ -133,7 +133,7 @@ const factCheckSchema = {
   type: "object", properties: {
     decision: { type: "string", enum: ["publish", "hold"] }, rationale: { type: "string" },
     contradictions: { type: "array", items: { type: "string" } },
-    claims: { type: "array", minItems: 2, maxItems: 12, items: { type: "object", properties: {
+    claims: { type: "array", minItems: 1, maxItems: 12, items: { type: "object", properties: {
       id: { type: "string" }, claim: { type: "string" }, source_indexes: { type: "array", items: { type: "integer" }, minItems: 1 },
       status: { type: "string", enum: ["verified", "uncertain", "rejected"] }, notes: { type: "string" },
     }, required: ["id", "claim", "source_indexes", "status", "notes"] } },
@@ -232,7 +232,7 @@ function expandRelatedSignals(seedIndexes, scan) {
   candidates.sort((a, b) => b.best - a.best || b.published - a.published || a.i - b.i);
   const perSource = new Map(selected.map((s) => [s.source, 1]));
   for (const item of candidates) {
-    if (selected.length >= 6) break;
+    if (selected.length >= 5) break;
     if ((perSource.get(item.s.source) || 0) >= 1) continue;
     selected.push({ ...item.s, signal_index: item.i }); perSource.set(item.s.source, 1);
   }
@@ -266,23 +266,68 @@ async function runResearch(env, assignment, selected) {
   let researched = await Promise.all(selected.map(fetchExcerpt));
   let usable = researched.filter((x) => (x.excerpt || "").length >= 160);
 
-  // Perspective/advocacy sources can trigger research. If the ordinary feed set does not
-  // yet corroborate the tip, follow only clearly trusted primary/public-media links from it.
-  const evidenceUsable = usable.filter(isEvidenceSource);
-  if (!evidenceUsable.some(authoritativePrimary) && evidenceGroups(evidenceUsable).length < 2) {
-    return { decision: "watch", rationale: "Lovende discovery-tip, men endnu ikke en autoritativ primærkilde eller to uafhængige redaktionelle kilder", researched: evidenceUsable };
+  // Cheap deterministic expansion before spending AI: when the seed set lacks strong
+  // corroboration, follow a few clearly trusted primary/public-media links already found
+  // on the fetched pages. Discovery sources remain leads only, never evidence.
+  let evidenceUsable = usable.filter(isEvidenceSource);
+  if (!evidenceUsable.some(authoritativePrimary) || evidenceGroups(evidenceUsable).length < 2) {
+    const seen = new Set(usable.map((x) => x.final_url || x.url).filter(Boolean));
+    const links = [];
+    for (const item of usable) {
+      for (const link of item.outbound_links || []) {
+        const kind = trustedExpansionKind(link.url);
+        if (!kind || seen.has(link.url)) continue;
+        seen.add(link.url);
+        links.push({
+          url: link.url,
+          headline: link.text || item.headline || "Original source",
+          description: "",
+          source: hostOf(link.url) || "linked-source",
+          source_kind: kind === "primary" ? "primary" : "news",
+          source_class: kind,
+          discovery_only: false,
+        });
+      }
+    }
+    links.sort((a, b) => Number(b.source_kind === "primary") - Number(a.source_kind === "primary"));
+    if (links.length) {
+      const expanded = await Promise.all(links.slice(0, 4).map(fetchExcerpt));
+      usable = usable.concat(expanded.filter((x) => (x.excerpt || "").length >= 160));
+      evidenceUsable = usable.filter(isEvidenceSource);
+    }
   }
-  // Hard boundary: blogs/perspective/advocacy feeds are discovery leads only. They are removed
-  // before Research creates claims and can never reach Fact checker, Journalist or source ledger.
-  const sources = evidenceUsable.map((s, i) => ({
-    source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url,
-    excerpt: s.excerpt.slice(0, 10000), discovery_only: false, source_kind: s.source_kind || "news",
+
+  // Research no longer rejects a promising story merely because corroboration is not
+  // already present. Fact checker owns the evidence verdict. We stop only if there is
+  // literally no usable evidence source after the cheap expansion attempt.
+  if (!evidenceUsable.length) {
+    return { decision: "watch", rationale: "Ingen brugbar dokumentationskilde kunne hentes endnu", researched: [] };
+  }
+
+  const unique = [];
+  const seenUrls = new Set();
+  const prioritized = [...evidenceUsable].sort((a, b) => Number(authoritativePrimary(b)) - Number(authoritativePrimary(a)));
+  for (const item of prioritized) {
+    const url = item.final_url || item.url;
+    if (!url || seenUrls.has(url)) continue;
+    seenUrls.add(url);
+    unique.push(item);
+    if (unique.length >= 5) break;
+  }
+
+  const sources = unique.map((item, i) => ({
+    source_index: i,
+    name: item.source,
+    headline: item.headline,
+    url: item.final_url || item.url,
+    excerpt: item.excerpt.slice(0, 5000),
+    discovery_only: false,
+    source_kind: item.source_kind || "news",
   }));
-  const system = `Du er Research på Morgentidende. Kortlæg historien, men fæld ikke fact-check-slutdom. De vedlagte kilder er allerede filtreret, så discovery-blogs og perspektiv/advocacy-feeds ikke indgår. En autoritativ primærkilde kan bære et faktum; ellers kræves normalt to reelt uafhængige redaktionelle kilder. Find bærende faktapåstande, modpositioner, konsekvenser, uenigheder og usikkerhed. Peg på præcise source_indexes. Forelæggelse markeres ved alvorlige belastende påstande. Opfind ikke claims.`;
-  const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 1800, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
-  research.researched = evidenceUsable;
+  const system = `Du er Research på Morgentidende. Lav et kompakt evidens-kort til Fact checker; vurder ikke nyhedsværdi igen og fæld ikke den endelige sandhedsdom. Kortlæg 1-6 bærende kandidat-claims med præcise source_indexes. Notér kun reelle modsigelser, væsentlige forbehold og nødvendig kontekst. En primærkilde er værdifuld, men du skal ikke kræve et bestemt antal medier. Hvis mindst ét brugbart claim kan kildebelægges, vælg continue; watch kun hvis materialet reelt ikke giver noget kontrollerbart. Flag alvorlige belastende påstande via right_of_reply_required, men brug ikke flaget som stopregel. Opfind intet.`;
+  const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 850, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  research.researched = unique;
   research.source_payload = sources;
-  if (research.right_of_reply_required) research.decision = "hold";
   return research;
 }
 
@@ -317,8 +362,13 @@ async function runFactCheck(env, assignment, research) {
 }
 
 async function deskRecheck(env, assignment, dossier) {
-  const system = `Du er Nyhedsdesk ved et ultrakort recheck efter bestået Fact check. Genresearch ikke. Udgangspunktet er publish/update. Hold/kill kun ved en ny konkret redaktionel grund: historien er ikke længere aktuel/væsentlig eller dokumentationen ændrer selve nyhedskernen. Svar kort.`;
-  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions }), deskRecheckSchema, 180, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  // B-D stories were just accepted by Newsdesk and Fact checker; repeating that judgement
+  // costs an extra model call without new information. Keep only a tiny A/breaking staleness check.
+  if (assignment.weight !== "A") {
+    return { decision: "publish", rationale: "Fact check bestået; intet særskilt A-recheck nødvendigt" };
+  }
+  const system = `Du er Nyhedsdesk ved et ultrakort A/breaking-recheck efter bestået Fact check. Genresearch ikke. Hold/kill kun hvis materialet viser, at nyhedskernen siden assignment er blevet materielt forældet eller har skiftet karakter. Ellers publish. Svar kort.`;
+  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions }), deskRecheckSchema, 140, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
 
 async function writeArticle(env, assignment, dossier) {
