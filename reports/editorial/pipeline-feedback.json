@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T15:48:35.816056Z",
+  "generated_at": "2026-09-01T16:22:45.196769Z",
   "date_dk": "2026-09-01",
   "policy": {
     "review_every_rejection": true,
@@ -335,28 +335,64 @@
       ]
     },
     {
+      "id": "triage",
+      "label": "Triage",
+      "kind": "deterministic",
+      "hard_gate": false,
+      "requirements": [
+        {
+          "key": "fetch_probe",
+          "label": "Fetch/source probe før dyre trin",
+          "value": 1,
+          "unit": "probe",
+          "adjustable": false
+        },
+        {
+          "key": "risk_flag",
+          "label": "High-risk/right-of-reply klassificeret",
+          "value": 1,
+          "unit": "flag",
+          "adjustable": false
+        },
+        {
+          "key": "media_scout",
+          "label": "Tidlig documentary media-scout",
+          "value": 1,
+          "unit": "scout",
+          "adjustable": false
+        }
+      ]
+    },
+    {
       "id": "research",
       "label": "Research",
       "kind": "evidence",
       "hard_gate": true,
       "requirements": [
         {
-          "key": "min_readable_source_chars",
-          "label": "Læsbar tekst pr. kilde",
-          "value": 160,
+          "key": "min_readable_strong_source_chars",
+          "label": "Minimum læsbart uddrag fra stærk/primær kilde",
+          "value": 80,
+          "unit": "tegn",
+          "adjustable": true
+        },
+        {
+          "key": "min_readable_standard_source_chars",
+          "label": "Minimum læsbart uddrag fra standardkilde",
+          "value": 120,
           "unit": "tegn",
           "adjustable": true
         },
         {
           "key": "min_distinct_sources",
-          "label": "Forskellige kilder",
-          "value": 2,
-          "unit": "kilder",
+          "label": "Minimum dokumentationskilder",
+          "value": 1,
+          "unit": "kilde",
           "adjustable": true
         },
         {
           "key": "target_source_groups",
-          "label": "Mål for dækningsbredde",
+          "label": "Mål for bredde når relevant",
           "value": 3,
           "unit": "kildegrupper",
           "adjustable": true
@@ -370,18 +406,25 @@
       "hard_gate": true,
       "requirements": [
         {
-          "key": "min_sources_per_material_claim",
-          "label": "Uafhængige kilder pr. bærende claim",
-          "value": 2,
-          "unit": "kilder",
+          "key": "min_verified_material_claims",
+          "label": "Verificerede bærende claims",
+          "value": 1,
+          "unit": "claim",
           "adjustable": true
         },
         {
-          "key": "min_verified_material_claims",
-          "label": "Verificerede bærende claims",
-          "value": 2,
-          "unit": "claims",
-          "adjustable": true
+          "key": "evidence_class_rule",
+          "label": "Lavrisiko evidensklasse A-D",
+          "value": 1,
+          "unit": "gyldig klasse",
+          "adjustable": false
+        },
+        {
+          "key": "numeric_conflict_check",
+          "label": "Tal skal aktivt falsificeres og mismatch håndteres",
+          "value": 1,
+          "unit": "check",
+          "adjustable": false
         }
       ]
     },
@@ -389,13 +432,13 @@
       "id": "desk_recheck",
       "label": "Newsdesk recheck",
       "kind": "editorial",
-      "hard_gate": true,
+      "hard_gate": false,
       "requirements": [
         {
-          "key": "accepted_decisions",
-          "label": "Godkendte udfald",
-          "value": 2,
-          "unit": "PUBLISH/UPDATE",
+          "key": "mode",
+          "label": "Kun A/breaking AI-recheck; ellers deterministisk",
+          "value": 1,
+          "unit": "regel",
           "adjustable": false
         }
       ]
@@ -423,10 +466,10 @@
       ]
     },
     {
-      "id": "language",
-      "label": "Sprog",
+      "id": "polish",
+      "label": "Sprog & SEO",
       "kind": "quality",
-      "hard_gate": true,
+      "hard_gate": false,
       "requirements": [
         {
           "key": "max_auto_repair_cycles",
@@ -461,45 +504,37 @@
     },
     {
       "id": "image",
-      "label": "Billede",
-      "kind": "quality",
+      "label": "Dokumentarisk hero",
+      "kind": "safety",
       "hard_gate": true,
       "requirements": [
         {
-          "key": "blocking_image_issues",
-          "label": "Tilladte blokerende billedfejl",
-          "value": 0,
-          "unit": "fejl",
+          "key": "real_documentary_media",
+          "label": "Nyheder kræver ægte dokumentarisk media",
+          "value": 1,
+          "unit": "hero",
           "adjustable": false
-        }
-      ]
-    },
-    {
-      "id": "seo",
-      "label": "SEO",
-      "kind": "quality",
-      "hard_gate": true,
-      "requirements": [
+        },
         {
-          "key": "blocking_seo_issues",
-          "label": "Tilladte blokerende SEO-fejl efter auto-repair",
-          "value": 0,
-          "unit": "fejl",
+          "key": "non_event_caption",
+          "label": "Ikke-hændelsesfoto kræver synlig kontekst/arkiv-caption",
+          "value": 1,
+          "unit": "caption",
           "adjustable": false
         }
       ]
     },
     {
       "id": "final_editor",
-      "label": "Final editor",
+      "label": "Slutredaktør",
       "kind": "editorial",
       "hard_gate": true,
       "requirements": [
         {
-          "key": "blocking_final_issues",
-          "label": "Tilladte blokerende slutfejl",
-          "value": 0,
-          "unit": "fejl",
+          "key": "ai_scope",
+          "label": "AI-final kun high-risk/A-B/kontradiktion; lavrisiko deterministisk",
+          "value": 1,
+          "unit": "regel",
           "adjustable": false
         }
       ]
@@ -511,9 +546,9 @@
       "hard_gate": true,
       "requirements": [
         {
-          "key": "required_pass_gates",
-          "label": "PASS på language/ethics/image/seo/final editor",
-          "value": 5,
+          "key": "required_safety_pass",
+          "label": "PASS på fact/ethics/image/final safety",
+          "value": 4,
           "unit": "gates",
           "adjustable": false
         }

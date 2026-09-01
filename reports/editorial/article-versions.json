@@ -1099,6 +1099,79 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "30bbb1da38324b4b15810036445bb4af94e6e8ab07bc729d30ff20ebe2e46c94",
+        "recorded_at": "2026-09-01T16:22:44+00:00",
+        "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
+        "story_id": "2026-08-31-faergekatastrofe-ud-for-nordcypern",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-08-31-faergekatastrofe-ud-for-nordcypern",
+          "slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
+          "standfirst": "Mindst otte mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern. Færgen var på vej fra Kyrenia i Nordcypern til Tyrkiet, da den kapsejlede.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
+            "description": "Færgekatastrofe ud for Nordcypern: Mindst otte mennesker omkommet og 18 savnet.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kyrenia_Harbour_5.JPG",
+            "alt": "Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken",
+            "credit": "Julian Nyča / Wikimedia Commons",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Kyrenia_Harbour_5.JPG",
+            "image_type": "photo",
+            "placement": "lead",
+            "context_type": "context",
+            "caption": "Arkivfoto: Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken."
+          },
+          "body": [
+            {
+              "text": "Mindst otte mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern, ifølge dækning fra BBC, The Guardian og Euronews.",
+              "type": "p"
+            },
+            {
+              "text": "Færgen var på vej fra Kyrenia i Nordcypern til Tyrkiet, da den kapsejlede cirka 7,4 kilometer ud for kysten.",
+              "type": "p"
+            },
+            {
+              "text": "Kaptajnen og besætningen er arresteret efter ulykken, oplyser The Guardian.",
+              "type": "p"
+            },
+            {
+              "text": "Færgekatastrofen ud for Nordcypern er bekræftet i tre forskellige underliggende dækninger fra BBC, The Guardian og Euronews.",
+              "type": "p"
+            },
+            {
+              "text": "Der er ikke offentliggjort flere oplysninger om årsagen til ulykken endnu.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S3",
+            "S5",
+            "S6"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ],
     "2026-08-31-oejenvidner-fortaeller-om-brag-og-kaos-foer-faergen-kaentrede": [
@@ -1403,8 +1476,83 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "f5ad3ba44f609d990906a9711b0dff8feeef2fc7832914937c8214e8678bd437",
+        "recorded_at": "2026-09-01T16:22:44+00:00",
+        "title": "Flodbølgen i Nepal og Tibet: Dødstallet stiger til over 1.000",
+        "story_id": "2026-09-01-flodboelgen-i-nepal-og-tibet",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-01-flodboelgen-i-nepal-og-tibet",
+          "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000",
+          "category": "Udland",
+          "weight": "A",
+          "title": "Flodbølgen i Nepal og Tibet: Dødstallet stiger til over 1.000",
+          "standfirst": "Flodbølgen i Nepal og Tibet har kostet over 1.000 mennesker livet. Redningsarbejdet er i fuld gang for at nå frem til samfund, der er blevet afskåret af katastrofen.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12"
+          ],
+          "seo": {
+            "title": "Flodbølgen i Nepal og Tibet: Dødstallet stiger til over 1.000",
+            "description": "Flodbølgen i Nepal og Tibet har kostet over 1.000 mennesker livet. Redningsarbejdet er i fuld gang.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Mudslide_at_Gyirong_Port_2_%28screenshot%29.png",
+            "alt": "CCTV-stillbillede af flodbølgen ved Gyirong-grænseovergangen mellem Tibet og Nepal den 26. august 2026",
+            "credit": "CCTV / Wikimedia Commons",
+            "license": "Public domain (PD automated)",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Mudslide_at_Gyirong_Port_2_(screenshot).png",
+            "image_type": "photo",
+            "placement": "lead",
+            "context_type": "event",
+            "caption": "CCTV-stillbillede fra flodbølgen ved Gyirong-grænseovergangen den 26. august 2026."
+          },
+          "body": [
+            {
+              "text": "En kraftig flodbølge har ramt Nepal og Tibet, og ifølge myndighederne er dødstallet nu steget til over 1.000 mennesker. Redningsarbejdet er i fuld gang for at nå frem til samfund, der er blevet afskåret af katastrofen.",
+              "type": "p"
+            },
+            {
+              "text": "Ifølge Al Jazeera er mindst 987 mennesker blevet dræbt i Nepal, og 3.916 mennesker er stadig savnet. I Kina er 16 mennesker blevet dræbt, og 546 mennesker er savnet.",
+              "type": "p"
+            },
+            {
+              "text": "Katastrofen begyndte den 26. august, da en gletsjer kollapsede i Himalaya-bjergene og sendte store mængder sten, is og smeltevand ned i dalene nedenfor, hvilket udløste kraftige oversvømmelser nedstrøms.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ]
   },
-  "generated_at": "2026-09-01T15:48:35+00:00"
+  "generated_at": "2026-09-01T16:22:44+00:00"
 }
