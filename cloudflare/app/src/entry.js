@@ -4,10 +4,13 @@ const PUBLIC_SITE = 'https://morgentidende.nicolaipetersen108.workers.dev';
 const CONTROL_ROOM_SOURCE = 'https://raw.githubusercontent.com/NickZen108/avisen/main/docs/kontrolrum/index.html';
 
 async function controlRoomResponse() {
-  const upstream = await fetch(CONTROL_ROOM_SOURCE, {
+  const sourceUrl = `${CONTROL_ROOM_SOURCE}?v=${Date.now()}`;
+  const upstream = await fetch(sourceUrl, {
     headers: {
       'accept': 'text/html',
-      'user-agent': 'Morgentidende-Control-Room-Proxy/1.1',
+      'cache-control': 'no-cache',
+      'pragma': 'no-cache',
+      'user-agent': 'Morgentidende-Control-Room-Proxy/1.2',
     },
     cf: { cacheTtl: 0, cacheEverything: false },
   });
@@ -24,7 +27,6 @@ async function controlRoomResponse() {
 
   let body = await upstream.text();
   body = body
-    .replace('<head>', '<head><meta http-equiv="refresh" content="30">')
     .replaceAll('href="../"', `href="${PUBLIC_SITE}/"`)
     .replaceAll("href='../'", `href='${PUBLIC_SITE}/'`);
 
@@ -32,7 +34,9 @@ async function controlRoomResponse() {
     status: 200,
     headers: {
       'content-type': 'text/html; charset=utf-8',
-      'cache-control': 'no-store, private',
+      'cache-control': 'no-store, no-cache, must-revalidate, private, max-age=0',
+      'pragma': 'no-cache',
+      'expires': '0',
       'x-robots-tag': 'noindex, nofollow, noarchive',
       'referrer-policy': 'no-referrer',
       'x-content-type-options': 'nosniff',
