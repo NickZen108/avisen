@@ -1,5 +1,5 @@
 name: Evidence architecture migration
-# trigger: provenance follow-up
+# trigger: AP regression compatibility
 on:
   push:
     branches: [main]
@@ -20,12 +20,13 @@ jobs:
         run: git fetch origin main && git reset --hard origin/main
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: Apply provenance follow-up
-        run: python scripts/fix_evidence_provenance_followup.py
+      - name: Apply AP regression compatibility
+        run: python scripts/fix_ap_regression.py
       - name: Validate architecture
         run: |
           node --check cloudflare/newsdesk/src/editorial.js
           python scripts/evidence_policy_selftest.py
+          python scripts/test_hybrid_runtime.py
           python scripts/quality_gate.py --prebuild
           python scripts/source_independence_gate.py
           python scripts/pipeline_v2_gate.py
@@ -36,7 +37,7 @@ jobs:
           git config user.name 'morgentidende-evidence-migration'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add cloudflare/newsdesk/src/editorial.js
-          git commit -m 'fix: apply provenance policy during fact check'
+          git commit -m 'fix: preserve AP wire regression contract'
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git rebase origin/main
