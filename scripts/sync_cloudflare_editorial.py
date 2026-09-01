@@ -32,6 +32,9 @@ def valid_documentary_image(image: dict) -> bool:
     license_name = str(image.get("license") or "").strip()
     if not license_name or license_name.lower() in {"unknown", "ukendt", "tbd", "n/a"}:
         return False
+    context_type = str(image.get("context_type") or "context").strip().lower()
+    if context_type != "event" and not str(image.get("caption") or "").strip():
+        return False
     return True
 
 
@@ -120,6 +123,17 @@ def high_risk_claim(article: dict, ledger: dict, claim: dict) -> bool:
     return bool(HIGH_RISK_FACT_TERMS.search(text))
 
 
+NAMED_PERSON_RE = re.compile(r"\b[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\s+[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\b")
+ACCUSED_RE = re.compile(r"\b(sigtet|tiltalt|mistænkt|anklaget)\b", re.I)
+
+
+def named_accused_crime_claim(article: dict, claim: dict) -> bool:
+    if article.get("category") != "Krimi":
+        return False
+    text = str(claim.get("claim") or "")
+    return bool(ACCUSED_RE.search(text) and NAMED_PERSON_RE.search(text))
+
+
 def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     if payload.get("status") != "approved":
         fail(f"pakken er ikke approved (status={payload.get('status')!r})")
@@ -172,6 +186,8 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
         wire_ok = any(authoritative_editorial(source_map.get(sid)) for sid in ids)
         strong_ok = any(strong_editorial(source_map.get(sid)) for sid in ids)
         low_risk_strong_ok = strong_ok and not high_risk_claim(article, ledger, claim)
+        if named_accused_crime_claim(article, claim) and not primary_ok:
+            fail(f"navngiven sigtet/tiltalt/mistænkt i krimistof kræver relevant primærkilde: {claim.get('id')}")
         if claim.get("status") != "verified" or (not primary_ok and not wire_ok and not low_risk_strong_ok and len(source_groups) < 2):
             fail(f"claim mangler tilstrækkelig dokumentation for sit risikoniveau: {claim.get('id')}")
     if (ledger.get("fact_check") or {}).get("status") != "pass":
