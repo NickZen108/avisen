@@ -156,7 +156,7 @@ async function maybeRunEditorial(env, scan, force = false) {
   }
   try { return persistEditorial(env, await runEditorialCycle(env, scan)); }
   catch (error) {
-    const failed = { status: "hold", stage: "runtime-error", checked_at: new Date().toISOString(), generated_at: new Date().toISOString(), scan_fingerprint: scan.fingerprint, reason: String(error) };
+    const failed = { status: "hold", stage: "runtime-error", checked_at: new Date().toISOString(), generated_at: new Date().toISOString(), scan_fingerprint: scan.fingerprint, reason: String(error), ai_usage: error?.ai_usage || null };
     return persistEditorial(env, failed);
   }
 }

@@ -242,7 +242,71 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   };
 }
 
+
+const TEXT_NEURON_RATES = {
+  "@cf/meta/llama-3.1-8b-instruct-fast": { input: 4119, output: 34868, basis: "8B fast pricing-equivalent estimate" },
+  "@cf/meta/llama-3.1-8b-instruct-fp8-fast": { input: 4119, output: 34868, basis: "published Cloudflare rate" },
+  "@cf/meta/llama-3.3-70b-instruct-fp8-fast": { input: 26668, output: 204805, basis: "published Cloudflare rate" },
+};
+function usageRecord(model, raw) {
+  const u = raw?.usage || raw?.response?.usage || raw?.result?.usage || null;
+  if (model === IMAGE_MODEL) {
+    // Flux Schnell defaults to four steps. Cloudflare bills 9.6 neurons/step plus
+    // 4.8 neurons per 512x512 tile. Tile count is not surfaced by this binding,
+    // so 43.2 is a transparent minimum estimate (one tile + four steps).
+    return { model, kind: "image", prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, estimated_neurons: 43.2, estimate_only: true, basis: "minimum: 1 tile + 4 default steps" };
+  }
+  if (!u) return { model, kind: "text", metered: false, estimated_neurons: null };
+  const prompt = Number(u.prompt_tokens ?? u.input_tokens ?? 0) || 0;
+  const completion = Number(u.completion_tokens ?? u.output_tokens ?? 0) || 0;
+  const total = Number(u.total_tokens ?? (prompt + completion)) || (prompt + completion);
+  const rates = TEXT_NEURON_RATES[model];
+  const neurons = rates ? (prompt * rates.input + completion * rates.output) / 1_000_000 : null;
+  return { model, kind: "text", prompt_tokens: prompt, completion_tokens: completion, total_tokens: total, estimated_neurons: neurons, estimate_only: true, basis: rates?.basis || "rate unavailable" };
+}
+function trackedAiEnv(env, events) {
+  const trackedAI = {
+    run: async (model, input, options) => {
+      const raw = await env.AI.run(model, input, options);
+      events.push(usageRecord(model, raw));
+      return raw;
+    },
+  };
+  return new Proxy(env, { get(target, prop, receiver) { return prop === "AI" ? trackedAI : Reflect.get(target, prop, receiver); } });
+}
+function summarizeAiUsage(events) {
+  const text = events.filter((x) => x.kind === "text");
+  const knownNeurons = events.filter((x) => Number.isFinite(x.estimated_neurons));
+  const byModel = {};
+  for (const item of events) {
+    const row = byModel[item.model] || { calls: 0, prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, estimated_neurons: 0 };
+    row.calls += 1;
+    row.prompt_tokens += item.prompt_tokens || 0;
+    row.completion_tokens += item.completion_tokens || 0;
+    row.total_tokens += item.total_tokens || 0;
+    if (Number.isFinite(item.estimated_neurons)) row.estimated_neurons += item.estimated_neurons;
+    byModel[item.model] = row;
+  }
+  return {
+    calls: events.length,
+    text_calls: text.length,
+    image_calls: events.filter((x) => x.kind === "image").length,
+    prompt_tokens: text.reduce((n, x) => n + (x.prompt_tokens || 0), 0),
+    completion_tokens: text.reduce((n, x) => n + (x.completion_tokens || 0), 0),
+    total_tokens: text.reduce((n, x) => n + (x.total_tokens || 0), 0),
+    estimated_neurons: knownNeurons.reduce((n, x) => n + x.estimated_neurons, 0),
+    complete_token_telemetry: text.every((x) => x.metered !== false),
+    neuron_values_are_estimates: true,
+    by_model: byModel,
+  };
+}
+
 export async function runEditorialCycle(env, scan) {
+  const aiUsageEvents = [];
+  env = trackedAiEnv(env, aiUsageEvents);
+  let result;
+  try {
+    result = await (async () => {
   const startedAt = nowIso();
   const assignment = await chooseAssignment(env, scan);
   const check = validateAssignment(assignment, scan);
@@ -292,6 +356,13 @@ export async function runEditorialCycle(env, scan) {
     media: { key: imageKey, content_type: "image/jpeg", base64: imageBase64 },
     audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
   };
+    })();
+  } catch (error) {
+    error.ai_usage = summarizeAiUsage(aiUsageEvents);
+    throw error;
+  }
+  result.ai_usage = summarizeAiUsage(aiUsageEvents);
+  return result;
 }
 
 export function editorialDue(lastRunAt) {
