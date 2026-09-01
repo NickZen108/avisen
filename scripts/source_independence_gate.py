@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Hard gate against fake source plurality without imposing arbitrary source quotas."""
 from __future__ import annotations
-import json,sys
+import json,re,sys
 from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1];ART=ROOT/'content'/'articles';ERR=[]
@@ -9,12 +9,30 @@ def load(p):return json.loads(p.read_text(encoding='utf-8'))
 def authoritative_primary(source):
  return bool(source and source.get('type') in {'primary','paper','interview'} and str(source.get('authoritative_for') or '').strip())
 def authoritative_editorial(source):
- # A named, accountable wire/news organisation may carry an ordinary claim alone
- # when the article attributes the claim to that organisation. This is not a
- # substitute for stronger checks on disputed/high-risk claims.
+ # Original wire sources may carry an ordinary claim alone.
  if not source:return False
  org=' '.join(str(source.get(k) or '') for k in ('publisher','name','source_group','title')).lower()
  return any(x in org for x in ('reuters','associated press',' ap ','ritzau','agence france-presse','afp'))
+
+STRONG_HOSTS={'reuters.com','apnews.com','bbc.com','bbc.co.uk','dr.dk','tv2.dk','svt.se','nrk.no','ft.com','politico.eu','bloomberg.com','theguardian.com','nytimes.com','wsj.com','france24.com','tagesschau.de','rbb24.de','itv.com'}
+HIGH_RISK=re.compile(r'\b(sigtet|tiltalt|anklag|mistænkt|voldtægt|seksual|misbrug|selvmord|mindreår|barn|børn|privat helbred|diagnose|terror|drab|korruption|svindel|hvidvask|overgreb|racist|ekstremist)\b',re.I)
+ACCUSED=re.compile(r'\b(sigtet|tiltalt|mistænkt|anklaget)\b',re.I)
+NAMED=re.compile(r'\b[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\s+[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\b')
+def strong_editorial(source):
+ if not source or source.get('discovery_only'):return False
+ if authoritative_editorial(source):return True
+ try:host=(urlparse(str(source.get('url') or '')).hostname or '').removeprefix('www.').lower()
+ except Exception:host=''
+ if any(host==x or host.endswith('.'+x) for x in STRONG_HOSTS):return True
+ name=str(source.get('name') or '').strip().lower()
+ return name in {'bbc','dr','tv 2','tv2','svt','nrk','financial times','politico','reuters','ap','associated press','afp','ritzau'}
+def high_risk(article,ledger,claim):
+ if (ledger.get('right_of_reply') or {}).get('required'):return True
+ if article.get('category') in {'Krimi','Sundhed'}:return True
+ return bool(HIGH_RISK.search(' '.join(str(x or '') for x in (article.get('title'),article.get('standfirst'),claim.get('claim')))))
+def named_accused(article,claim):
+ text=str(claim.get('claim') or '')
+ return article.get('category')=='Krimi' and bool(ACCUSED.search(text) and NAMED.search(text))
 def main():
  for p in sorted(ART.glob('*.json')):
   if p.name.startswith('_'):continue
@@ -34,7 +52,9 @@ def main():
    cids=c.get('source_ids') or [];cu={str(sources.get(i,{}).get('url') or '') for i in cids};cu.discard('');cg={str(sources.get(i,{}).get('source_group') or '') for i in cids};cg.discard('')
    primary_ok=any(authoritative_primary(sources.get(i)) for i in cids)
    editorial_ok=any(authoritative_editorial(sources.get(i)) for i in cids)
-   if not primary_ok and not editorial_ok and (len(cu)<2 or len(cg)<2):ERR.append(f'{p.name}: claim {cid} mangler tilstrækkelig dokumentation: autoritativ primærkilde, anerkendt original bureau/redaktionel kilde eller to reelt uafhængige troværdige kilder')
+   strong_ok=any(strong_editorial(sources.get(i)) for i in cids)
+   if named_accused(a,c) and not primary_ok:ERR.append(f'{p.name}: claim {cid} om navngiven sigtet/tiltalt/mistænkt kræver primærkilde')
+   elif not primary_ok and not editorial_ok and not (strong_ok and not high_risk(a,l,c)) and (len(cu)<2 or len(cg)<2):ERR.append(f'{p.name}: claim {cid} mangler gyldig evidensklasse: primærkilde, original bureaukilde, stærk original redaktionel kilde for lavrisiko eller to uafhængige kilder')
  if ERR:
   print('SOURCE INDEPENDENCE: FAIL');[print('-',x) for x in ERR];return 1
  print('SOURCE INDEPENDENCE: PASS');return 0

@@ -3,7 +3,7 @@
   "status": "pass",
   "story_id": "2026-09-01-flodboelgen-i-nepal-og-tibet",
   "article_slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000",
-  "checked_at": "2026-09-01T14:03:00Z",
+  "checked_at": "2026-09-01T16:22:00Z",
   "gates": {
     "language": "pass",
     "ethics": "pass",
@@ -48,7 +48,9 @@
       "license": "Public domain (PD automated)",
       "source_url": "https://commons.wikimedia.org/wiki/File:Mudslide_at_Gyirong_Port_2_(screenshot).png",
       "image_type": "photo",
-      "placement": "lead"
+      "placement": "lead",
+      "context_type": "event",
+      "caption": "CCTV-stillbillede fra flodbølgen ved Gyirong-grænseovergangen den 26. august 2026."
     },
     "body": [
       {
@@ -76,34 +78,16 @@
     "automation_origin": "cloudflare-workers-ai"
   },
   "media_reapproval": {
-    "mode": "targeted-image-only",
-    "checked_at": "2026-09-01T14:03:00Z",
+    "mode": "targeted-image-metadata-only",
+    "checked_at": "2026-09-01T16:22:00Z",
     "changed_fields": [
-      "image"
+      "image.context_type",
+      "image.caption"
     ],
-    "previous_image": {
-      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000.jpg",
-      "alt": "En bred redaktionel illustration af en flodbølge i Nepal og Tibet",
-      "credit": "Morgentidende",
-      "license": "Morgentidende",
-      "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000.jpg",
-      "image_type": "illustration",
-      "placement": "lead"
-    },
-    "replacement_image": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Mudslide_at_Gyirong_Port_2_%28screenshot%29.png",
-      "alt": "CCTV-stillbillede af flodbølgen ved Gyirong-grænseovergangen mellem Tibet og Nepal den 26. august 2026",
-      "credit": "CCTV / Wikimedia Commons",
-      "license": "Public domain (PD automated)",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Mudslide_at_Gyirong_Port_2_(screenshot).png",
-      "image_type": "photo",
-      "placement": "lead"
-    },
     "checks": [
-      "only image differs from previous final approval",
-      "replacement image provenance metadata complete",
-      "article text, claims, SEO, category and byline unchanged"
-    ],
-    "note": "Initial targeted media re-approval; subsequent replacements use scripts/reapprove_media_change.py with snapshot hashes."
+      "article text and claims unchanged",
+      "context/event status explicitly classified",
+      "non-event caption is visible and truthful"
+    ]
   }
 }

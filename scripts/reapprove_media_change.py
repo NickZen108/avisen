@@ -60,6 +60,9 @@ def validate_image(image: dict):
         raise SystemExit("Media re-approval blocked: image src must be https:// or site-relative")
     if not str(image.get("source_url")).startswith("https://"):
         raise SystemExit("Media re-approval blocked: source_url must be https://")
+    context_type = str(image.get("context_type") or "context").strip().lower()
+    if context_type != "event" and not str(image.get("caption") or "").strip():
+        raise SystemExit("Media re-approval blocked: non-event photo requires visible archive/context caption")
 
 
 def reapprove(slug: str, checked_at: str | None = None, dry_run: bool = False):
@@ -137,6 +140,7 @@ def self_test():
         "source_url": "https://example.test/source",
         "image_type": "photo",
         "placement": "lead",
+        "context_type": "event",
     }
     validate_image(good)
     try:

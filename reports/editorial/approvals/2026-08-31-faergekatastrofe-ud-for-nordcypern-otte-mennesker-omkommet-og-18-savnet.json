@@ -3,7 +3,7 @@
   "status": "pass",
   "story_id": "2026-08-31-faergekatastrofe-ud-for-nordcypern",
   "article_slug": "2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet",
-  "checked_at": "2026-08-31T16:45:30Z",
+  "checked_at": "2026-09-01T16:22:00Z",
   "gates": {
     "language": "pass",
     "ethics": "pass",
@@ -22,7 +22,11 @@
     "byline": "Morgentidende Redaktion",
     "manual_review": false,
     "ledger": "sources/2026-08-31-faergekatastrofe-ud-for-nordcypern-otte-mennesker-omkommet-og-18-savnet.json",
-    "claim_ids": ["F01", "F02", "F03"],
+    "claim_ids": [
+      "F01",
+      "F02",
+      "F03"
+    ],
     "seo": {
       "title": "Færgekatastrofe ud for Nordcypern: Otte mennesker omkommet og 18 savnet",
       "description": "Færgekatastrofe ud for Nordcypern: Mindst otte mennesker omkommet og 18 savnet.",
@@ -35,19 +39,53 @@
       "license": "CC BY-SA 3.0",
       "source_url": "https://commons.wikimedia.org/wiki/File:Kyrenia_Harbour_5.JPG",
       "image_type": "photo",
-      "placement": "lead"
+      "placement": "lead",
+      "context_type": "context",
+      "caption": "Arkivfoto: Kyrenias gamle havn i Nordcypern, hvor færgen afgik fra før ulykken."
     },
     "body": [
-      {"text": "Mindst otte mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern, ifølge dækning fra BBC, The Guardian og Euronews.", "type": "p"},
-      {"text": "Færgen var på vej fra Kyrenia i Nordcypern til Tyrkiet, da den kapsejlede cirka 7,4 kilometer ud for kysten.", "type": "p"},
-      {"text": "Kaptajnen og besætningen er arresteret efter ulykken, oplyser The Guardian.", "type": "p"},
-      {"text": "Færgekatastrofen ud for Nordcypern er bekræftet i tre forskellige underliggende dækninger fra BBC, The Guardian og Euronews.", "type": "p"},
-      {"text": "Der er ikke offentliggjort flere oplysninger om årsagen til ulykken endnu.", "type": "p"}
+      {
+        "text": "Mindst otte mennesker er omkommet og 18 er savnet efter en færgekatastrofe ud for Nordcypern, ifølge dækning fra BBC, The Guardian og Euronews.",
+        "type": "p"
+      },
+      {
+        "text": "Færgen var på vej fra Kyrenia i Nordcypern til Tyrkiet, da den kapsejlede cirka 7,4 kilometer ud for kysten.",
+        "type": "p"
+      },
+      {
+        "text": "Kaptajnen og besætningen er arresteret efter ulykken, oplyser The Guardian.",
+        "type": "p"
+      },
+      {
+        "text": "Færgekatastrofen ud for Nordcypern er bekræftet i tre forskellige underliggende dækninger fra BBC, The Guardian og Euronews.",
+        "type": "p"
+      },
+      {
+        "text": "Der er ikke offentliggjort flere oplysninger om årsagen til ulykken endnu.",
+        "type": "p"
+      }
     ],
-    "source_ids_to_display": ["S3", "S5", "S6"],
+    "source_ids_to_display": [
+      "S3",
+      "S5",
+      "S6"
+    ],
     "related_news_slug": null,
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
+  },
+  "media_reapproval": {
+    "mode": "targeted-image-metadata-only",
+    "checked_at": "2026-09-01T16:22:00Z",
+    "changed_fields": [
+      "image.context_type",
+      "image.caption"
+    ],
+    "checks": [
+      "article text and claims unchanged",
+      "context/event status explicitly classified",
+      "non-event caption is visible and truthful"
+    ]
   }
 }
