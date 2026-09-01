@@ -190,20 +190,20 @@ function signalSummary(scan, excludedSignalKeys = []) {
   const chosen = []; const usedIndexes = new Set(); const perSource = new Map();
   // Reserve a few places for perspective sources so original/niche tips are not buried by mainstream volume.
   for (const item of ranked.filter((x) => x.s.discovery_only)) {
-    if (chosen.length >= 5) break;
+    if (chosen.length >= 4) break;
     if ((perSource.get(item.s.source) || 0) >= 1) continue;
     chosen.push(item); usedIndexes.add(item.i); perSource.set(item.s.source, 1);
   }
   for (const item of ranked) {
-    if (chosen.length >= 28) break;
+    if (chosen.length >= 20) break;
     if (usedIndexes.has(item.i)) continue;
     const used = perSource.get(item.s.source) || 0;
-    if (used >= 4) continue;
+    if (used >= 3) continue;
     chosen.push(item); usedIndexes.add(item.i); perSource.set(item.s.source, used + 1);
   }
   chosen.sort((a, b) => b.score - a.score || b.published - a.published || a.i - b.i);
   return chosen.map(({ s, i, score }) => ({
-    i, source: s.source, headline: s.headline, description: (s.description || "").slice(0, 220),
+    i, source: s.source, headline: s.headline, description: (s.description || "").slice(0, 160),
     published_at: s.published_at || null, source_class: s.source_class || "news", region: s.region || null,
     discovery_only: Boolean(s.discovery_only), score,
   }));
@@ -211,8 +211,8 @@ function signalSummary(scan, excludedSignalKeys = []) {
 async function chooseAssignment(env, scan, excludedSignalKeys = []) {
   const signals = signalSummary(scan, excludedSignalKeys);
   if (!signals.length) return { decision: "drop", title_hint: "", category: "Danmark", weight: "D", signal_indexes: [], rationale: "Ingen ubehandlede kandidater med tilstrækkelig aktualitet/grundscore", core_question: "" };
-  const system = `Du er første Nyhedsdesk på Morgentidende. Vælg ét research-frø, ikke en færdig artikel. RESEARCH når emnet har reel nyhedsværdi og bør undersøges; WATCH når et potentielt vigtigt tip endnu er for tyndt; DROP kun ved klar dublet, gammel/triviel sag eller åbenlys utroværdighed. discovery_only/perspective-kilder er værdifulde tips, men må aldrig i sig selv tælle som verifikation eller få dig til at antage konklusionen. Kategori og A-D-vægt er dit ansvar, ikke Scan. Returnér kort struktureret output.`;
-  return aiJson(env, system, JSON.stringify({ generated_at: scan.generated_at, signals }), assignmentSchema, 550, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  const system = `Du er Morgentidendes første Nyhedsdesk. Vælg ét konkret research-frø. RESEARCH er standard ved reel nyhedsværdi, originalitet, offentlig betydning eller tydelig redaktionel relevans; tynd dokumentation er Researchs problem, ikke en afvisningsgrund. WATCH kun hvis nyhedskrogen/aktualiteten endnu er uklar. DROP kun ved klar dublet, gammel/triviel sag, rent holdningsstof uden nyhedskrog eller åbenlys spam. discovery_only må udløse Research, men er aldrig dokumentation. Sæt kategori og A-D-vægt. Svar ultrakort.`;
+  return aiJson(env, system, JSON.stringify({ generated_at: scan.generated_at, signals }), assignmentSchema, 260, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
 function validIndexes(indexes, scan) { return [...new Set((indexes || []).filter((i) => Number.isInteger(i) && i >= 0 && i < scan.signals.length))]; }
 function expandRelatedSignals(seedIndexes, scan) {
@@ -317,8 +317,8 @@ async function runFactCheck(env, assignment, research) {
 }
 
 async function deskRecheck(env, assignment, dossier) {
-  const system = `Du er Newsdesk ved et kort recheck EFTER uafhængig Fact checker. Du må ikke genresearche eller gentage fact check. Vurder kun om den dokumenterede historie stadig er aktuel og væsentlig nok, og om kernen stadig svarer til assignment. Hold/kill kræver en konkret redaktionel grund.`;
-  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions, rationale: dossier.rationale }), deskRecheckSchema, 450, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  const system = `Du er Nyhedsdesk ved et ultrakort recheck efter bestået Fact check. Genresearch ikke. Udgangspunktet er publish/update. Hold/kill kun ved en ny konkret redaktionel grund: historien er ikke længere aktuel/væsentlig eller dokumentationen ændrer selve nyhedskernen. Svar kort.`;
+  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions }), deskRecheckSchema, 180, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
 
 async function writeArticle(env, assignment, dossier) {
