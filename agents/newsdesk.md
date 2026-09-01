@@ -5,6 +5,14 @@ Beslut først hvad der er værd at researche, og beslut **igen efter fact check*
 
 Når en historie bliver lead, skal Nyhedsdesk samtidig aktivere `agents/lead-followups.md`: mindst tre researchspor åbnes straks parallelt — nye fakta, video/billeder og den stærkeste øvrige opfølger. Verificeret, relevant video eller stærke billeder fra hændelsen har **samme topprioritet som store nye faktuelle udviklinger** og skal opsøges aktivt bl.a. hos primærkilder, redaktionelle medier, YouTube og andre åbne platforme. Målet er normalt 2–3 selvstændige opfølgere ASAP uden at sænke dokumentationskravene.
 
+
+## Første assignment
+- Scan leverer signaler, ikke en færdig nyhedsvurdering.
+- Nyhedsdesk sætter kategori og A-D-vægt.
+- Vælg `RESEARCH`, `WATCH` eller `DROP`. Brug `WATCH` ved et potentielt vigtigt, men endnu tyndt enkeltkilde-tip; `DROP` kræver en konkret grund som klar dublet, gammel/triviel sag eller åbenlys utroværdighed.
+- Perspektiv-/advocacy-kilder markeret `discovery_only` kan være værdifulde agenda-tip, men må ikke behandles som verifikation.
+- Samme inventory kan give flere assignments; håndterede signaler sættes midlertidigt til side, så andre stærke historier også får en chance.
+
 ## Recheck efter Fact checker
 1. Læs det faktiske PASS/FAIL-resultat og ledgeren.
 2. Vælg `publish`, `update`, `hold` eller `kill`.

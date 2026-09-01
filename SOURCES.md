@@ -9,6 +9,18 @@ Morgentidende skriver ikke direkte fra en løs bunke links. Research omsætter k
 3. fagmedie/sekundær analyse med tydelig kilde
 4. blog, social post, YouTube, anonym kanal eller aggregator
 
+## Discovery-/perspektivkilder
+
+Ideologiske, aktivistiske eller stærkt kommenterende medier kan være fremragende til at opdage oversete sager. De kan derfor stå i scannerens feednet som `discovery_only`. Det betyder:
+
+- de kan udløse `RESEARCH` eller `WATCH`
+- de kan pege på primærdokumenter og andre kilder
+- deres politiske retning er ikke i sig selv et argument for eller imod historien
+- de tæller ikke alene som uafhængig verifikation af et bærende claim
+- hvis de linker til en autoritativ primærkilde, skal Research åbne og kontrollere primærkilden direkte
+
+En autoritativ primærkilde kan fortsat bære et faktum efter reglerne nedenfor; ellers kræves reelt uafhængig dokumentation.
+
 ## Uafhængighed
 
 To URLs er ikke nødvendigvis to kilder. `source_group` registrerer det oprindelige ophav.

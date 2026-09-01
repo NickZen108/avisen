@@ -39,7 +39,7 @@ def load_payload(path: str | None, url: str) -> dict:
 def normalize_coverage(ledger: dict) -> None:
     source_map = {s.get("id"): s for s in ledger.get("sources", []) if s.get("id")}
     coverage = ledger.get("coverage_sweep") or {}
-    ids = [sid for sid in coverage.get("editorial_source_ids", []) if sid in source_map][:6]
+    ids = [sid for sid in coverage.get("editorial_source_ids", []) if sid in source_map and not source_map[sid].get("discovery_only")][:6]
     groups: list[str] = []
     for sid in ids:
         group = str(source_map[sid].get("source_group") or "").strip()
@@ -103,6 +103,7 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
         source_groups = {
             str(source_map.get(sid, {}).get("source_group") or "").strip()
             for sid in ids
+            if not source_map.get(sid, {}).get("discovery_only")
         }
         source_groups.discard("")
         primary_ok = any(authoritative_primary(source_map.get(sid)) for sid in ids)
