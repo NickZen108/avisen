@@ -11,7 +11,6 @@ function slugify(value) {
     .replace(/[æ]/g, "ae").replace(/[ø]/g, "oe").replace(/[å]/g, "aa")
     .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 72);
 }
-function sourceGroup(name) { return slugify(name || "source") + "-reporting"; }
 function stripHtml(html) {
   return String(html || "")
     .replace(/<script\b[\s\S]*?<\/script>/gi, " ").replace(/<style\b[\s\S]*?<\/style>/gi, " ")
