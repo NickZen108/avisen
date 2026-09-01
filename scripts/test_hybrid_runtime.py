@@ -40,12 +40,23 @@ def main() -> int:
         'final_editor_mode: review.mode || "ai"',
         'Discovery-only source crossed the Research/Fact-check boundary',
         'fetch_origin: "github-actions-prefetch"',
+        'host === "reuters.com"',
+        'source === "ap"',
+        'én stærk original bureau-/redaktionel kilde som Reuters, AP, AFP eller Ritzau',
     ]
     missing = [item for item in required if item not in js]
     assert not missing, f"Hybrid runtime regression: missing {missing}"
 
     index_js = (ROOT / "cloudflare" / "newsdesk" / "src" / "index.js").read_text(encoding="utf-8")
-    for item in ('function mergeGitHubPrefetch(scan, prefetch)', 'prefetch.scan_fingerprint !== scan?.fingerprint', 'result.github_prefetch'):
+    for item in (
+        'function mergeGitHubPrefetch(scan, prefetch)',
+        'prefetch.scan_fingerprint !== scan?.fingerprint',
+        'github_prefetch: incoming.github_prefetch || null',
+        'if (runtimeMeta) result.github_prefetch = runtimeMeta',
+        'prefetchMeta',
+        'attempted:',
+        'usable:',
+    ):
         assert item in index_js, f"GitHub prefetch boundary regression: {item}"
 
     print("hybrid_runtime self-test: PASS")
