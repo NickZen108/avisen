@@ -1,0 +1,125 @@
+name: Enforce discovery-only sources
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/enforce-discovery-only-sources.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: morgentidende-main-writes
+  cancel-in-progress: false
+
+jobs:
+  enforce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Sync main
+        run: git pull --ff-only origin main
+      - name: Enforce discovery-only separation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('cloudflare/newsdesk/src/editorial.js')
+          s = p.read_text(encoding='utf-8')
+
+          old = '''function isEvidenceSource(item) { return item && !item.discovery_only; }
+          function authoritativePrimary(item) { return isEvidenceSource(item) && item.source_kind === "primary"; }
+          function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSource).map((x) => sourceGroup(x.source, x.final_url || x.url)))]; }'''
+          new = '''const DISCOVERY_ONLY_HOSTS = new Set([
+            "indblik.dk", "document.no", "timbro.se", "achgut.com", "tichyseinblick.de", "causeur.fr", "contrepoints.org",
+            "spiked-online.com", "capx.co", "unherd.com", "reason.com", "nationalreview.com", "city-journal.org",
+            "thefederalist.com", "frontpagemag.com", "jihadwatch.org",
+          ]);
+          function hostOf(value) { try { return new URL(value).hostname.replace(/^www\\./, "").toLowerCase(); } catch (_) { return ""; } }
+          function isDiscoveryOnly(item) {
+            if (!item) return false;
+            if (item.discovery_only || /discovery/i.test(item.source_class || "") || item.source_role === "discovery") return true;
+            const host = hostOf(item.final_url || item.url || "");
+            return DISCOVERY_ONLY_HOSTS.has(host);
+          }
+          function isEvidenceSource(item) { return item && !isDiscoveryOnly(item); }
+          function authoritativePrimary(item) { return isEvidenceSource(item) && item.source_kind === "primary"; }
+          function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSource).map((x) => sourceGroup(x.source, x.final_url || x.url)))]; }'''
+          if old not in s:
+            raise SystemExit('evidence helper block not found')
+          s = s.replace(old, new, 1)
+
+          old = '''  if (!usable.some(authoritativePrimary) && evidenceGroups(usable).length < 2) {
+            return { decision: "watch", rationale: "Lovende tip, men endnu ikke en autoritativ primærkilde eller to uafhængige ikke-discovery-kilder", researched: usable };
+          }
+          const sources = usable.map((s, i) => ({
+            source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url,
+            excerpt: s.excerpt.slice(0, 10000), discovery_only: Boolean(s.discovery_only), source_kind: s.source_kind || (s.discovery_only ? "discovery" : "news"),
+          }));
+          const system = `Du er Research på Morgentidende. Kortlæg historien, men fæld ikke fact-check-slutdom. discovery_only-kilder er tips/perspektiv og må ikke være bærende verifikation. En autoritativ primærkilde kan bære et faktum; ellers kræves normalt to reelt uafhængige ikke-discovery-kilder. Find bærende faktapåstande, modpositioner, konsekvenser, uenigheder og usikkerhed. Peg på præcise source_indexes. Forelæggelse markeres ved alvorlige belastende påstande. Opfind ikke claims.`;
+          const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 1800, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+          research.researched = usable;
+          research.source_payload = sources;'''
+          new = '''  const evidenceUsable = usable.filter(isEvidenceSource);
+          if (!evidenceUsable.some(authoritativePrimary) && evidenceGroups(evidenceUsable).length < 2) {
+            return { decision: "watch", rationale: "Lovende discovery-tip, men endnu ikke en autoritativ primærkilde eller to uafhængige redaktionelle kilder", researched: evidenceUsable };
+          }
+          // Hard boundary: blogs/perspective/advocacy feeds are discovery leads only. They are removed
+          // before Research creates claims and can never reach Fact checker, Journalist or the source ledger.
+          const sources = evidenceUsable.map((s, i) => ({
+            source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url,
+            excerpt: s.excerpt.slice(0, 10000), discovery_only: false, source_kind: s.source_kind || "news",
+          }));
+          const system = `Du er Research på Morgentidende. Kortlæg historien, men fæld ikke fact-check-slutdom. De vedlagte kilder er allerede filtreret, så discovery-blogs og perspektiv/advocacy-feeds ikke indgår. En autoritativ primærkilde kan bære et faktum; ellers kræves normalt to reelt uafhængige redaktionelle kilder. Find bærende faktapåstande, modpositioner, konsekvenser, uenigheder og usikkerhed. Peg på præcise source_indexes. Forelæggelse markeres ved alvorlige belastende påstande. Opfind ikke claims.`;
+          const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 1800, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+          research.researched = evidenceUsable;
+          research.source_payload = sources;'''
+          if old not in s:
+            raise SystemExit('research evidence block not found')
+          s = s.replace(old, new, 1)
+
+          old = '''  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. discovery_only-kilder kan pege på et emne eller perspektiv, men må aldrig alene verificere et claim. Verified kræver enten én autoritativ primærkilde eller mindst to reelt uafhængige ikke-discovery-kilder. Rejected når evidensen modsiger claimet; ellers uncertain. To solide verificerede bærende claims er nok til en kort artikel. Opfind ingen nye kilder eller fakta.`;'''
+          new = '''  if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
+          const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Verified kræver enten én autoritativ primærkilde eller mindst to reelt uafhængige redaktionelle kilder. Rejected når evidensen modsiger claimet; ellers uncertain. To solide verificerede bærende claims er nok til en kort artikel. Opfind ingen nye kilder eller fakta.`;'''
+          if old not in s:
+            raise SystemExit('fact check system block not found')
+          s = s.replace(old, new, 1)
+
+          old = '''async function writeArticle(env, assignment, dossier) {
+            const sources = dossier.researched.map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));'''
+          new = '''async function writeArticle(env, assignment, dossier) {
+            if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Journalist boundary");
+            const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));'''
+          if old not in s:
+            raise SystemExit('writer boundary not found')
+          s = s.replace(old, new, 1)
+
+          old = '''function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
+            const sources = dossier.researched.map((s, i) => {'''
+          new = '''function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
+            if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the publication ledger boundary");
+            const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => {'''
+          if old not in s:
+            raise SystemExit('ledger boundary not found')
+          s = s.replace(old, new, 1)
+
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Validate JavaScript and invariant
+        run: |
+          node --check cloudflare/newsdesk/src/editorial.js
+          grep -q 'Discovery-only source crossed the Journalist boundary' cloudflare/newsdesk/src/editorial.js
+          grep -q 'const evidenceUsable = usable.filter(isEvidenceSource)' cloudflare/newsdesk/src/editorial.js
+      - name: Commit source hardening
+        run: |
+          set -euo pipefail
+          git config user.name 'morgentidende-source-policy'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add cloudflare/newsdesk/src/editorial.js
+          git commit -m 'policy: make discovery blogs impossible as sources'
+          git pull --rebase origin main
+          git push origin main
