@@ -559,6 +559,10 @@ function numericMaterialClaim(claim) {
 }
 function evidenceRulePass(assignment, research, claim, evidence) {
   // House rule: one relevant authoritative source is sufficient for a claim.
+  // Named accused claims are the narrow exception: they require a primary source or an original wire.
+  if (namedAccusedCrimeClaim(assignment, claim)) {
+    return evidence.some((item) => authoritativePrimary(item) || authoritativeEditorial(item));
+  }
   // Risk/fairness may still trigger Ethics or final review, but does not impose a hidden two-source quota.
   return evidence.some(authoritativeClaimSource);
 }
@@ -604,8 +608,6 @@ async function runResearch(env, assignment, selected) {
   let researched = await Promise.all(selected.map(fetchExcerpt));
   researched = researched.map((item) => ({ ...item, source_kind: normalizedSourceKind(item) }));
 
-  // If a strong original newsroom blocks full-page fetching, its own RSS/feed summary can
-  // still support a short, explicitly attributed low-risk claim. Generic/unknown feeds do not get this fallback.
   researched = researched.map((item) => {
     const strong = authoritativePrimary(item) || strongEditorialSource(item);
     const minChars = strong ? 80 : 120;
@@ -621,9 +623,6 @@ async function runResearch(env, assignment, selected) {
     return (x.excerpt || "").length >= minChars;
   });
 
-  // Cheap deterministic expansion before spending AI: when the seed set lacks strong
-  // corroboration, follow a few clearly trusted primary/public-media links already found
-  // on the fetched pages. Discovery sources remain leads only, never evidence.
   let evidenceUsable = usable.filter(isEvidenceSource);
   if (!evidenceUsable.some(authoritativeClaimSource)) {
     const seen = new Set(usable.map((x) => x.final_url || x.url).filter(Boolean));
@@ -655,9 +654,6 @@ async function runResearch(env, assignment, selected) {
     }
   }
 
-  // Research no longer rejects a promising story merely because corroboration is not
-  // already present. Fact checker owns the evidence verdict. We stop only if there is
-  // literally no usable evidence source after the cheap expansion attempt.
   if (!evidenceUsable.length) {
     return { decision: "watch", rationale: "Ingen brugbar dokumentationskilde kunne hentes endnu", researched, candidate_claims: [], contradictions: [], right_of_reply_required: false, conflict_present: false };
   }
@@ -703,7 +699,7 @@ async function runResearch(env, assignment, selected) {
   return research;
 }
 
-function focusedExcerpt(text, claims, maxChars = 1800) {
+function focusedExcerpt(text, claims, maxChars = 500) {
   const raw = String(text || "");
   if (raw.length <= maxChars) return raw;
   const terms = [...new Set((claims || []).flatMap((x) => words(x?.claim || "")).filter((x) => x.length >= 5))];
@@ -726,7 +722,7 @@ async function runFactCheck(env, assignment, research) {
     research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
     sources: (research.source_payload || []).map((source, i) => ({
       ...source,
-      excerpt: focusedExcerpt(research.researched?.[i]?.excerpt || source.excerpt, research.candidate_claims, 1800),
+      excerpt: focusedExcerpt(research.researched?.[i]?.excerpt || source.excerpt, research.candidate_claims, 500),
     })),
   }), factCheckSchema, 850, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
   fact.researched = research.researched;
@@ -758,8 +754,6 @@ async function runFactCheck(env, assignment, research) {
 }
 
 async function deskRecheck(env, assignment, dossier) {
-  // B-D stories were just accepted by Newsdesk and Fact checker; repeating that judgement
-  // costs an extra model call without new information. Keep only a tiny A/breaking staleness check.
   if (assignment.weight !== "A") {
     return { decision: "publish", rationale: "Fact check bestået; intet særskilt A-recheck nødvendigt" };
   }
@@ -771,7 +765,7 @@ async function writeArticle(env, assignment, dossier) {
   if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Journalist boundary");
   const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));
   const system = `Du er journalist på Morgentidende. Skriv præcist og levende dansk, men brug KUN verificerede claims. Gør attribution tydelig og brug gerne korte, præcise citater når de faktisk findes i det verificerede materiale; opfind aldrig citater. Hvis research har conflict_present=true, tilstræb relevant pluralisme mellem reelle parter/synsvinkler ud fra verificeret materiale. Hvis conflict_present=false, må du ikke konstruere kunstig pluralisme. Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. En kort one-claim-nyhed med tre meningsfulde tekstblokke er fuldt acceptabel; fyld aldrig ud. Media ejer heroen; skriv ingen billedprompt eller billedmetadata.`;
-  return aiJson(env, system, JSON.stringify({ assignment, conflict_present: Boolean(dossier.conflict_present), verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? null : STRONG_TEXT_MODEL);
+  return aiJson(env, system, JSON.stringify({ assignment, conflict_present: Boolean(dossier.conflict_present), verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null);
 }
 
 function deterministicFinalReview(assignment, dossier, article) {
@@ -787,7 +781,6 @@ function deterministicFinalReview(assignment, dossier, article) {
       break;
     }
   }
-  // SEO og hero-polish repareres/valideres af deres egne deterministiske trin og er ikke redaktionelle hard stops her.
   const failed = new Set(issues.map((x) => x.gate));
   return {
     decision: issues.length ? "hold" : "pass",
@@ -849,8 +842,6 @@ function documentaryHeroFromSignals(selected = []) {
   for (const signal of selected || []) {
     const candidate = signal?.documentary_hero || signal?.documentary_media || null;
     if (!validDocumentaryHero(candidate)) continue;
-    // A discovery-only feed may point us toward media, but it is not itself a
-    // usable image source unless the candidate carries an independent licence.
     if (isDiscoveryOnly(signal) && candidate.independent_license !== true) continue;
     const signalIsPrimary = trustedExpansionKind(signal?.final_url || signal?.url || "") === "primary";
     const score = candidate.context_type === "event" ? 30 : signalIsPrimary ? 20 : 10;
@@ -885,8 +876,6 @@ function temporarySketchPrompt(assignment, article) {
 }
 
 function staticPencilFallbackBase64() {
-  // Deterministic 1024x576 1-bit PBM: abstract hatch/place motif, no people,
-  // no text and no attempt to depict the event. Kept tiny and independent of AI quota.
   const width = 1024, height = 576, rowBytes = width >> 3;
   const header = `P4\n${width} ${height}\n`;
   const bytes = new Uint8Array(header.length + rowBytes * height);
@@ -916,6 +905,9 @@ function staticPencilFallbackBase64() {
 }
 
 async function generateTemporarySketch(env, assignment, article) {
+  if (assignment?.weight !== "A") {
+    return { base64: staticPencilFallbackBase64(), content_type: "image/x-portable-bitmap", ai_generated: false, generator: "static_pencil_fallback" };
+  }
   try {
     const raw = await env.AI.run(IMAGE_MODEL, { prompt: temporarySketchPrompt(assignment, article) });
     if (!raw?.image || typeof raw.image !== "string") throw new Error("Temporary sketch model returned no base64 image");
@@ -974,8 +966,6 @@ function contextualHeroFromSignals(selected = []) {
 }
 
 async function resolveDocumentaryHero(selected, assignment, research) {
-  // Single deterministic scout per cycle, after Fact check and before Journalist:
-  // event/official signal media -> Commons -> lawful contextual signal media.
   let hero = documentaryHeroFromSignals(selected);
   if (hero) return hero;
   hero = await findCommonsDocumentaryHero(
@@ -1076,7 +1066,6 @@ async function findCommonsDocumentaryHero(assignment, article, research = null) 
   return null;
 }
 
-
 function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the publication ledger boundary");
   const evidenceRows = dossier.researched.filter(isEvidenceSource);
@@ -1106,7 +1095,6 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
     desk_recheck: { status: desk.decision, checked_at: accessedAt, rationale: desk.rationale },
   };
 }
-
 
 const TEXT_NEURON_RATES = {
   "@cf/meta/llama-3.1-8b-instruct-fast": { input: 4119, output: 34868, basis: "8B fast pricing-equivalent estimate" },
@@ -1202,8 +1190,6 @@ export async function runEditorialCycle(env, scan, options = {}) {
     const revised = await reviseFixableIssues(env, assignment, dossier, article, review);
     if (!hardIssues.length && JSON.stringify(revised) !== JSON.stringify(article)) {
       article = revised;
-      // The AI final already found no safety/fact blocker; do not pay for a second
-      // final-editor call merely to re-check polish. Deterministic structure checks suffice.
       review = deterministicFinalReview(assignment, dossier, article);
       review.mode = "post-polish-deterministic";
     }
