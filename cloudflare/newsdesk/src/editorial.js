@@ -308,15 +308,36 @@ async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRON
     max_tokens: maxTokens, temperature: 0.15,
     response_format: { type: "json_schema", json_schema: schema },
   };
+  let firstError = null;
   try {
     const raw = await env.AI.run(model, request);
     return structuredResponse(raw, schema);
   } catch (error) {
+    firstError = error;
     if (!fallbackModel || fallbackModel === model) throw error;
     console.warn("Workers AI structured-call fallback", model, "->", fallbackModel, String(error));
     try { env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1; } catch (_) {}
+  }
+  try {
     const raw = await env.AI.run(fallbackModel, request);
     return structuredResponse(raw, schema);
+  } catch (error) {
+    console.warn("Workers AI schema fallback still malformed; trying JSON-object repair", String(error));
+    try { env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1; } catch (_) {}
+    const repairRequest = {
+      messages: [
+        { role: "system", content: `${system}\nReturn ONLY one JSON object that satisfies every required field and type in the supplied JSON Schema. Do not omit required arrays; use empty arrays only when the schema permits them.` },
+        { role: "user", content: `${user}\n\nRequired JSON Schema:\n${JSON.stringify(schema)}` },
+      ],
+      max_tokens: maxTokens, temperature: 0,
+      response_format: { type: "json_object" },
+    };
+    const repairedRaw = await env.AI.run(fallbackModel, repairRequest);
+    try { return structuredResponse(repairedRaw, schema); }
+    catch (repairError) {
+      repairError.cause = error || firstError;
+      throw repairError;
+    }
   }
 }
 
