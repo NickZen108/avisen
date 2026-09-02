@@ -74,6 +74,35 @@ def words(value: str) -> list[str]:
     return [x for x in tokens if x.casefold() not in stop]
 
 
+def named_entity_queries(article: dict) -> list[str]:
+    """Extract useful multi-word proper names, especially people, before broad story queries.
+
+    The original scout often searched a whole headline (for example a person + an
+    event/place) and Commons returned nothing, even when a free portrait of the
+    named person existed. This adds narrower documentary queries; it does not
+    change publication blocking or licensing rules.
+    """
+    body = article.get("body") or []
+    body_text = " ".join(
+        str(block.get("text") or "")
+        for block in body[:2]
+        if isinstance(block, dict)
+    )
+    text = f"{article.get('title') or ''} {body_text}"
+    pattern = re.compile(r"\b([A-ZÆØÅ][\w.'’\-]+(?:\s+[A-ZÆØÅ][\w.'’\-]+){1,3})\b", re.UNICODE)
+    out: list[str] = []
+    for match in pattern.finditer(text):
+        q = clean(match.group(1))
+        toks = words(q)
+        if not (2 <= len(toks) <= 4):
+            continue
+        if all(token.isupper() for token in toks):
+            continue
+        if q not in out:
+            out.append(q)
+    return out[:4]
+
+
 def location_queries(article: dict) -> list[str]:
     loc = article.get("story_location") or {}
     if not isinstance(loc, dict):
@@ -129,7 +158,7 @@ def fallback_queries(article: dict) -> list[str]:
 
 
 def queries(article: dict) -> list[str]:
-    raw = location_queries(article) + fallback_queries(article)[:2]
+    raw = named_entity_queries(article) + location_queries(article) + fallback_queries(article)[:2]
     return list(dict.fromkeys(x for x in raw if x))[:8]
 
 
@@ -151,7 +180,7 @@ def commons_photo(article: dict) -> dict | None:
             "gsrnamespace": 6, "gsrsearch": q, "gsrlimit": 10,
             "prop": "imageinfo", "iiprop": "url|mime|size|extmetadata", "iiurlwidth": 1600,
         })
-        req = urllib.request.Request(COMMONS_API + "?" + params, headers={"User-Agent": "MorgentidendePendingMedia/3.1"})
+        req = urllib.request.Request(COMMONS_API + "?" + params, headers={"User-Agent": "MorgentidendePendingMedia/3.2"})
         try:
             with urllib.request.urlopen(req, timeout=30) as response:
                 payload = json.loads(response.read().decode("utf-8"))
@@ -284,9 +313,16 @@ def self_test() -> None:
         },
     }
     qs = queries(article)
-    assert qs[0].startswith("नेपाल")
+    assert any(q.startswith("नेपाल") for q in qs)
     assert any("Nepal flood" in q for q in qs)
     assert words("नेपाल बाढी") == ["नेपाल", "बाढी"]
+    person_article = {
+        "title": "Trump foreslår ændring",
+        "standfirst": "DR",
+        "body": [{"type": "p", "text": "USA's præsident Donald Trump har fremsat forslaget."}],
+        "story_location": {"hero_queries_english": ["Trump proposal"]},
+    }
+    assert queries(person_article)[0] == "Donald Trump"
     old = {
         "pending_image": True, "ai_generated": True, "image_type": "illustration",
         "context_type": "illustration", "caption": "Illustration",
