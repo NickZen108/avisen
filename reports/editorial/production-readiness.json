@@ -1,15 +1,23 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T06:39:49+00:00",
+  "generated_at": "2026-09-02T09:36:08+00:00",
   "status": "yellow",
-  "published_count": 19,
+  "published_count": 20,
   "hard_failures": [],
   "warnings": [
-    "2 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
+    "3 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
   ],
   "metrics": {
     "possible_duplicate_pairs": [],
     "source_independence_flags": [
+      {
+        "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 1,
+        "duplicate_urls": {}
+      },
       {
         "slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn",
         "unique_urls": 1,

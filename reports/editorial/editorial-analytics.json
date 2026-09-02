@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "published_count": 19,
+  "published_count": 20,
   "category_mix": {
     "Udland": 9,
-    "Politik": 5,
+    "Politik": 6,
     "Videnskab": 3,
     "Guide": 1,
     "Historie": 1
@@ -52,10 +52,10 @@
     "ap-own-reporting": 1,
     "ft-own-reporting": 1
   },
-  "unique_source_hosts": 34,
-  "unique_source_groups": 45,
-  "followup_share": 0.158,
+  "unique_source_hosts": 35,
+  "unique_source_groups": 46,
+  "followup_share": 0.15,
   "correction_rate": 0.0,
-  "median_body_characters": 1039,
+  "median_body_characters": 1016,
   "principle": "These metrics are diagnostic. Clicks alone must not determine editorial priority."
 }

@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder",
   "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk",
   "category": "Politik",
@@ -9,7 +9,7 @@
   "title": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
   "standfirst": "Rema 1000",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T09:36:07Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk.json",
@@ -62,5 +62,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T09:36:07Z"
+  }
 }
