@@ -1,0 +1,84 @@
+{
+  "story_id": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+  "article_slug": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+  "assignment": {
+    "category": "Sundhed",
+    "weight": "D",
+    "core_question": "Hvilke almindelige symptomer kan optræde i perimenopause og overgangsalder, og hvornår bør man søge hjælp?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "NHS: What are menopause and perimenopause?",
+      "url": "https://www.nhs.uk/conditions/menopause-and-perimenopause/what-are-menopause-and-perimenopause/",
+      "published_at": null,
+      "accessed_at": "2026-09-02T10:17:00Z",
+      "type": "primary",
+      "source_group": "nhs-menopause-overview",
+      "authoritative_for": "Definition af perimenopause og menopause samt typiske symptomer"
+    },
+    {
+      "id": "S2",
+      "name": "NHS: Symptoms of menopause and perimenopause",
+      "url": "https://www.nhs.uk/conditions/menopause-and-perimenopause/symptoms/",
+      "published_at": null,
+      "accessed_at": "2026-09-02T10:17:00Z",
+      "type": "primary",
+      "source_group": "nhs-menopause-symptoms",
+      "authoritative_for": "Symptomer, varighed og faresignaler ved blødning efter menopause"
+    },
+    {
+      "id": "S3",
+      "name": "NHS: Treatment for menopause and perimenopause",
+      "url": "https://www.nhs.uk/conditions/menopause-and-perimenopause/treatment/",
+      "published_at": null,
+      "accessed_at": "2026-09-02T10:17:00Z",
+      "type": "primary",
+      "source_group": "nhs-menopause-treatment",
+      "authoritative_for": "Overordnet information om hormonel og ikke-hormonel behandling"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Menopause defineres typisk som 12 måneder uden menstruation, når fraværet ikke skyldes hormonel prævention.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["nhs-menopause-overview"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "NHS-definition."
+    },
+    {
+      "id": "F02",
+      "claim": "Perimenopause og menopause kan blandt andet give hedeture, søvnproblemer, humørændringer, koncentrationsbesvær, vaginal tørhed og ændret sexlyst.",
+      "status": "verified",
+      "source_ids": ["S1", "S2"],
+      "independent_groups": ["nhs-menopause-overview", "nhs-menopause-symptoms"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "Listen er ikke udtømmende."
+    },
+    {
+      "id": "F03",
+      "claim": "Blødning efter 12 måneder uden menstruation bør vurderes af en læge.",
+      "status": "verified",
+      "source_ids": ["S2"],
+      "independent_groups": ["nhs-menopause-symptoms"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "NHS anbefaler lægevurdering ved postmenopausal blødning."
+    },
+    {
+      "id": "F04",
+      "claim": "Der findes både hormonelle og ikke-hormonelle behandlingsmuligheder mod generende symptomer.",
+      "status": "verified",
+      "source_ids": ["S3"],
+      "independent_groups": ["nhs-menopause-treatment"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "Behandlingsvalg afhænger af den enkelte og bør vurderes sammen med sundhedspersonale."
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {"required": false, "party": null, "contacted_at": null, "deadline": null, "response": null, "exception": null},
+  "fact_check": {"status": "pass", "checked_at": "2026-09-02T10:17:00Z", "notes": ["Artiklen er generel sundhedsoplysning og giver ikke individuel behandlingsanvisning."]}
+}
