@@ -1,7 +1,7 @@
 name: Deploy Cloudflare Newsdesk Runtime
 
 # Deploy canonical source as committed; do not mutate editorial code during deploy.
-# deployment trigger: numeric claim passage verification
+# deployment trigger: robust Workers JSON parser 2026-09-02
 on:
   push:
     branches: [main]
