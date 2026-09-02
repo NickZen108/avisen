@@ -14,6 +14,16 @@ def snap(a):
  x=copy.deepcopy(a)
  for k in PUB:x.pop(k,None)
  return x
+def article_for_slug(slug):
+ p=ARTICLE_DIR/f'{slug}.json'
+ if not p.exists(): return None
+ try:return load(p)
+ except Exception:return None
+def ticker_copy(article):
+ if not article:return ''
+ standfirst=str(article.get('standfirst') or '').strip(); title=str(article.get('title') or '').strip()
+ if standfirst and standfirst.casefold()!=title.casefold(): return standfirst
+ return f'Ny udvikling: {title}' if title else ''
 def published_slugs():
  out=[]
  for p in sorted(ARTICLE_DIR.glob('*.json'),reverse=True):
@@ -40,10 +50,14 @@ def repair_frontpage(blocked_slug):
   if (state.get(key) or {}).get('slug')==blocked_slug:
    if fallback: state[key]={'slug':fallback}
    else: state[key]={}
+   if key=='ticker':
+    copy_text=ticker_copy(article_for_slug(fallback)) if fallback else ''
+    if copy_text: state['ticker_text']=copy_text
+    else: state.pop('ticker_text',None)
    changed=True
  if changed: FRONTPAGE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def add_to_frontpage(article):
- slug=article['slug']; state=load(FRONTPAGE); state['date']=slug[:10]; state['ticker']={'slug':slug}
+ slug=article['slug']; state=load(FRONTPAGE); state['date']=slug[:10]; state['ticker']={'slug':slug}; state['ticker_text']=ticker_copy(article)
  if article.get('weight') in {'A','B'} and not article.get('related_news_slug'):
   state['lead']={'slug':slug}; state['lead_rationale']=f"Ny {article.get('weight')}-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead."
  for key,limit in (('rail',5),('narrow',8)):
