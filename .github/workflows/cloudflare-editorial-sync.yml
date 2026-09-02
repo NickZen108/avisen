@@ -103,6 +103,10 @@ jobs:
             HANDLED=$(jq '(.handled_signal_keys // []) | length' "$OUT")
             STATUS=$(jq -r '.status // "hold"' "$OUT")
             STAGE=$(jq -r '.stage // ""' "$OUT")
+            if [ "$STATUS" = 'approved' ]; then
+              echo 'Godkendt artikel fundet; stopper denne kvartér-runde efter første publicerbare artikel.'
+              break
+            fi
             if [ "$STAGE" = 'runtime-error' ] || { [ "$HANDLED" -eq 0 ] && [ "$STATUS" != 'approved' ]; }; then
               echo 'Ingen yderligere distinkt kandidat i denne runde'
               break
