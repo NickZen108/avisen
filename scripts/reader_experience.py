@@ -8,6 +8,13 @@ ROOT=Path(__file__).resolve().parents[1]; ART=ROOT/'content'/'articles'; DOCS=RO
 
 STOPWORDS={'og','i','på','af','for','med','til','om','en','et','den','det','de','der','har','får','fra','som','ikke','at','sig','sin','sine','sit','sag','sagen','ny','nye','efter','under','over','mod','ved','kan','skal','vil','er','var','bliver','blev','mere','seneste'}
 
+# Explicit display-only repair for legacy articles that were approved before story
+# relations were normalized. New follow-ups must use story_id/related_news_slug.
+STORY_ALIASES={
+ '2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000':'nepal-tibet-flodboelgen-2026',
+ '2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres':'nepal-tibet-flodboelgen-2026',
+}
+
 def esc(x):return html.escape(str(x or ''),quote=True)
 def load(p,d=None):
  try:return json.loads(p.read_text(encoding='utf-8'))
@@ -24,10 +31,11 @@ def items():
  out.sort(key=lambda a:a.get('published_at') or '',reverse=True);return out
 
 def related_for(a,all_items):
- story=a.get('story_id'); rel=a.get('related_news_slug'); rows=[]
+ story=STORY_ALIASES.get(a.get('slug'),a.get('story_id')); rel=a.get('related_news_slug'); rows=[]
  for x in all_items:
   if x.get('slug')==a.get('slug'):continue
-  if story and x.get('story_id')==story:rows.append(x);continue
+  x_story=STORY_ALIASES.get(x.get('slug'),x.get('story_id'))
+  if story and x_story==story:rows.append(x);continue
   if rel and x.get('slug')==rel:rows.append(x);continue
   if x.get('related_news_slug')==a.get('slug'):rows.append(x)
  seen=set();uniq=[]
