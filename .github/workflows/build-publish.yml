@@ -1,3 +1,4 @@
+# manual publish trigger: 2026-09-02 three approved articles
 name: Build structured edition
 on:
   push:
