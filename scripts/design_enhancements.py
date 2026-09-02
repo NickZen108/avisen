@@ -2,8 +2,8 @@
 """Editorial layout enhancements applied after the canonical build.
 
 Every article gets two distinct eight-story hero grids. Recommendations are
-deterministic, contextual and diverse. Stories selected for the dedicated
-front-page magazine blocks are excluded from ordinary recommendation shelves.
+deterministic, contextual and diverse. Only stories explicitly born for one of
+the two magazines are excluded from ordinary recommendation shelves.
 """
 from __future__ import annotations
 import html,json,re
@@ -11,8 +11,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];ARTICLES=ROOT/'content'/'articles';DOCS=ROOT/'docs'
 FEATURE_CATEGORIES={'Feature','Features','Videnskab','Sundhed','Parforhold','Kultur','Forbruger','Guide','Liv','Teknologi','Viden'}
 NEWS_CATEGORIES={'Nyhed','Nyheder','Politik','Økonomi','Udland','Krimi','Sport','Danmark','Internationalt','Erhverv'}
-TECH_TERMS={"videnskab","forskning","naturvidenskab","teknologi","kunstig intelligens"," ai ","rumfart","rum","militær","militaer","forsvar","drone","robot","energi","fysik","biologi","astronomi","ingeniør","ingenioer","computer","chip","halvleder"}
-PEOPLE_TERMS={"psykologi","psykisk","sundhed","testosteron","hormon","overgangsalder","menopause","parforhold","ægteskab","aegteskab","sex","single","dating","date","opdragelse","forældre","foraeldre","bedsteforældre","bedsteforaeldre","familie","relation","evolutionær psykologi","evolutionaer psykologi","tilknytning","kærlighed","kaerlighed"}
+MAGAZINE_DESTINATIONS={'tech_magazine','people_magazine'}
 def esc(v):return html.escape(str(v or ''),quote=True)
 def published():
  items=[]
@@ -22,28 +21,8 @@ def published():
   except Exception:continue
   if a.get('status')=='published' and a.get('slug') and a.get('title'):items.append(a)
  items.sort(key=lambda a:a.get('published_at') or '',reverse=True);return items
-def article_text(a):
- tags=a.get('tags') or []
- if isinstance(tags,list):tags=' '.join(str(x) for x in tags)
- return f" {a.get('category','')} {a.get('title','')} {a.get('standfirst','')} {tags} ".lower()
-def magazine_score(a,terms,preferred):
- text=article_text(a);s=4 if str(a.get('category') or '') in preferred else 0
- for term in terms:
-  if term in text:s+=2
- if str(a.get('format') or '').lower() in {'feature','guide','baggrund'}:s+=1
- return s
 def magazine_exclusive_slugs(items):
- used=set()
- def pick(terms,categories):
-  ranked=[]
-  for a in items:
-   if a.get('slug') in used:continue
-   s=magazine_score(a,terms,categories)
-   if s>0:ranked.append((s,str(a.get('published_at') or ''),a))
-  ranked.sort(key=lambda row:(row[0],row[1]),reverse=True)
-  chosen=[row[2] for row in ranked[:4]];used.update(str(a.get('slug')) for a in chosen)
- pick(TECH_TERMS,{"Videnskab & teknologi"});pick(PEOPLE_TERMS,{"Sundhed","Liv"})
- return used
+ return {str(a.get('slug')) for a in items if str(a.get('editorial_destination') or '') in MAGAZINE_DESTINATIONS and a.get('slug')}
 def is_feature(a):return str(a.get('category') or '') in FEATURE_CATEGORIES
 def is_news(a):
  c=str(a.get('category') or '');return c in NEWS_CATEGORIES or (c not in FEATURE_CATEGORIES and c not in {'Kommentar','Kronik','Debat'})
