@@ -1,0 +1,74 @@
+{
+  "status": "published",
+  "story_id": "2026-09-02-soevn-er-ikke-spildtid",
+  "slug": "2026-09-02-soevn-er-ikke-spildtid",
+  "category": "Sundhed",
+  "weight": "D",
+  "title": "Søvn er ikke spildtid: Det er her hjernen og kroppen får arbejdsro",
+  "standfirst": "Voksne har typisk brug for omkring 7–9 timers søvn. Det handler ikke kun om at føle sig frisk næste morgen, men også om koncentration, reaktionstid og langsigtet helbred.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": "2026-09-02T10:17:00Z",
+  "updated_at": "2026-09-02T10:17:00Z",
+  "manual_review": false,
+  "ledger": "sources/2026-09-02-soevn-er-ikke-spildtid.json",
+  "claim_ids": ["F01", "F02", "F03"],
+  "seo": {
+    "title": "Hvor meget søvn har voksne brug for?",
+    "description": "Hvorfor søvn betyder noget for koncentration, reaktionstid og helbred – og hvorfor 7–9 timer er et nyttigt pejlemærke.",
+    "canonical": null
+  },
+  "body": [
+    {
+      "type": "p",
+      "text": "Søvn har et imageproblem. Den konkurrerer med arbejde, serier, telefonen, børn, træning og den sidste halve time, hvor man lige skal ordne noget. Men kroppen opfatter ikke søvn som tomgang. Søvn er en biologisk tilstand, hvor en lang række systemer får mulighed for at arbejde uden samtidig at skulle håndtere dagens krav."
+    },
+    {
+      "type": "h2",
+      "text": "Syv til ni timer er et pejlemærke"
+    },
+    {
+      "type": "p",
+      "text": "Det amerikanske National Heart, Lung, and Blood Institute angiver, at voksne typisk anbefales omkring 7 til 9 timers søvn i døgnet. Behovet varierer fra person til person, og et enkelt kort døgn er ikke i sig selv en katastrofe. Problemet opstår især, når for lidt søvn bliver normalen."
+    },
+    {
+      "type": "p",
+      "text": "Det kan være fristende at behandle søvn som den mest fleksible post i kalenderen: Man kan jo altid skære lidt i natten. Men søvnunderskud kan samle sig. Når man gentagne gange sover mindre end kroppen har brug for, kan det mærkes i dagtimerne – også selv om man vænner sig til følelsen af træthed."
+    },
+    {
+      "type": "h2",
+      "text": "Det første der ryger, er ikke nødvendigvis humøret"
+    },
+    {
+      "type": "p",
+      "text": "Søvnmangel kan påvirke koncentration, reaktionstid og evnen til at løse opgaver. NHLBI beskriver blandt andet langsommere reaktioner og flere fejl hos mennesker, der mangler søvn. Det er værd at huske, fordi man ikke altid selv er den bedste dommer over, hvor skarp man er efter flere korte nætter."
+    },
+    {
+      "type": "p",
+      "text": "Det er også en af grundene til, at søvn ikke kun er et spørgsmål om velvære. Hvis du skal køre bil, træffe komplicerede beslutninger eller passe et arbejde, hvor små fejl har store konsekvenser, er søvn en del af din funktionsevne."
+    },
+    {
+      "type": "h2",
+      "text": "Langsigtet sundhed"
+    },
+    {
+      "type": "p",
+      "text": "Over tid er utilstrækkelig eller dårlig søvn forbundet med øget risiko for flere kroniske helbredsproblemer. Det betyder ikke, at en dårlig uge automatisk giver sygdom, eller at søvn alene kan beskytte mod alt. Men søvn hører hjemme i samme grundkategori som bevægelse, kost og andre vaner, der påvirker sundheden over mange år."
+    },
+    {
+      "type": "p",
+      "text": "Den praktiske pointe er derfor mindre dramatisk end mange søvnråd på sociale medier: Du behøver ikke optimere hvert minut med gadgets og perfekte rutiner. Start med at give søvnen reel plads. Hvis du konsekvent forsøger at presse et voksent liv ned i seks timers nat, er problemet måske ikke din pude. Det er kalenderen."
+    },
+    {
+      "type": "h2",
+      "text": "Hvornår er det værd at reagere?"
+    },
+    {
+      "type": "p",
+      "text": "Hvis man har vedvarende søvnproblemer, meget udtalt søvnighed om dagen eller mistanke om en egentlig søvnforstyrrelse, er generelle råd ikke nødvendigvis nok. Så giver det mere mening at tale med en læge end at fortsætte med endnu en ny app, te eller søvnmaske."
+    }
+  ],
+  "source_ids_to_display": ["S1", "S2"],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null
+}
