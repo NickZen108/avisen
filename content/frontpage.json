@@ -2,14 +2,17 @@
   "date": "2026-09-02",
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
-  "ticker_text": "Rema 1000",
+  "ticker_text": "Mindst 1.114 mennesker er døde i Nepal efter katastrofal flodbølge",
   "ticker": {
-    "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk"
+    "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
   },
   "lead": {
-    "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk"
+    "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
   },
   "rail": [
+    {
+      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
+    },
     {
       "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk"
     },
@@ -21,9 +24,6 @@
     },
     {
       "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk"
-    },
-    {
-      "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed"
     }
   ],
   "stack": [
@@ -54,6 +54,9 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
+    },
+    {
       "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk"
     },
     {
@@ -73,9 +76,6 @@
     },
     {
       "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
-    },
-    {
-      "slug": "2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion"
     }
   ]
 }

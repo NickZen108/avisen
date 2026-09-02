@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T10:20:47+00:00",
+  "generated_at": "2026-09-02T10:49:43+00:00",
   "status": "yellow",
-  "published_count": 24,
+  "published_count": 25,
   "hard_failures": [],
   "warnings": [
     "5 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
