@@ -1,4 +1,4 @@
-# Scan 2026-09-02T19:10:57.505Z (Cloudflare runtime)
+# Scan 2026-09-02T19:20:57.289Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -194,7 +194,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - FRANCE 24 in Nepal: The unbearable wait for missing relatives
 - France's back-to-school challenges: Phones, payslips, pupils
 - French president to open Bayeux Tapestry exhibition as he starts UK visit
-- French-Saudi ‘Dragon Ball’ theme park puzzles Japanese manga fans
 - George Clooney, Robert Pattinson expected on the red carpet at Venice Film Festival
 - Israel ‘organised and prepared’ to remove Gaza population if US gives green light, Katz says
 - Israeli FM Gideon Sa'ar: 'I hope Iran will not make the mistake of attacking us'
@@ -204,6 +203,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Philippine couple married in hip-deep floodwaters
 - Russia blamed for explosive-laden drone found at German airport
 - Search continues for tunnel workers in Nepal floods
+- Spanish report flags Moroccan police's 'total permissiveness' in Ceuta migrant rush
 - US postal whistleblower warns thousands of midterm ballots could be lost
 - Videos and debris raise questions over alleged US strike on Iranian wedding
 - Xi calls on Mideast nations to be ‘masters of their own affairs’ in rare Egypt visit
