@@ -1,8 +1,9 @@
 {
   "schema_version": 1,
-  "published_count": 25,
+  "published_count": 29,
   "category_mix": {
     "Udland": 16,
+    "Videnskab & teknologi": 4,
     "Videnskab": 3,
     "Sundhed": 3,
     "Liv": 1,
@@ -16,20 +17,20 @@
     "www.euronews.com": 5,
     "www.bbc.co.uk": 5,
     "apnews.com": 5,
+    "science.nasa.gov": 5,
+    "www.iter.org": 3,
     "www.nhs.uk": 3,
     "commons.wikimedia.org": 3,
+    "www.nist.gov": 2,
     "www.nasa.gov": 2,
     "island.is": 2,
-    "science.nasa.gov": 2,
     "www.nhlbi.nih.gov": 2,
     "www.cdc.gov": 1,
     "pages.nist.gov": 1,
     "www.cisa.gov": 1,
-    "www.nist.gov": 1,
     "www.france24.com": 1,
     "www.svt.se": 1,
-    "www.bbc.com": 1,
-    "www.ft.com": 1
+    "www.bbc.com": 1
   },
   "top_source_groups": {
     "reuters-reporting": 5,
@@ -53,10 +54,10 @@
     "host-bbc-com": 1,
     "ap-own-reporting": 1
   },
-  "unique_source_hosts": 39,
-  "unique_source_groups": 53,
-  "followup_share": 0.12,
+  "unique_source_hosts": 41,
+  "unique_source_groups": 61,
+  "followup_share": 0.103,
   "correction_rate": 0.0,
-  "median_body_characters": 1063,
+  "median_body_characters": 1263,
   "principle": "These metrics are diagnostic. Clicks alone must not determine editorial priority."
 }
