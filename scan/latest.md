@@ -1,4 +1,4 @@
-# Scan 2026-09-02T20:21:01.394Z (Cloudflare runtime)
+# Scan 2026-09-02T20:50:57.827Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -17,23 +17,23 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Woher kommt der Strom? 34. Analysewoche 2026
 
 ## Al Jazeera
-- A year into Trump’s boat strike campaign, families search for answers
-- Brazilian activist demands Tunisia release Sumud Flotilla organisers
-- Deadly bus crash in Egypt’s Sinai kills 22, injures 28
 - Dreams shattered: Gaza amputees struggle under blockade and rubble
 - EU ministers in Ireland tackle Israeli settlement trade and Ukraine defence
 - EU pursuing more Russia sanctions after failed airport attack: Kallas
 - Gunman in deadly Swiss rave attack ‘lone perpetrator’, police say
 - Israel kills or injures 7 children a day in Lebanon invasion, report says
+- Israeli protesters call for an end to settler violence
 - Malta businessman acquitted of plotting journalist Caruana Galizia murder
-- Over 500 students hospitalised after eating state-supplied meals in Indones
 - Saudi Arabia condemns deadly Iranian attack on tanker in Strait of Hormuz
 - Signing ceremony as US to control a fifth of Venezuela’s oil reserves
-- Uber lays off 3,300 employees in largest cuts since the pandemic
+- Tiger Woods avoids jail time, takes plea deal over Florida crash
+- Trump says US sees ‘everything’ Iran does, threatens further attacks
+- Trump suggests renaming Strait of Hormuz as Trump Strait amid Iran war
 - UK’s Burnham faces first parliament grilling, vows to ‘bring back hope’
-- US oil giant Chevron to expand Venezuela operations
+- US judge rejects bid to break up Google’s ad business
 - US says it will use regional body to isolate Nicaragua
 - USS Abraham Lincoln reaches Thailand after 9 months at sea
+- What you need to know: US launches coin featuring Trump’s face
 - Will the EU take action against Israel?
 
 ## BBC Europe
@@ -46,6 +46,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Maltese tycoon acquitted of orchestrating murder of renowned journalist
 - Man arrested after Swiss rave shooting that killed woman
 - Moment tornado tears through southern France
+- Netherlands moves billions in gold to London in 'crisis preparedness' move
 - Norway's new king takes oath as mourners pay respects to his late father
 - Pistol in a lake gives hope for French cold case
 - Pub's 'beloved' manager stabbed to death in Germany
@@ -57,29 +58,28 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - WhatsApp chat used to launder cash for crime and extremism
 - Who is Norway's new King Haakon VIII?
 - Why did Modi urge Putin to end Ukraine war - and will he listen?
-- Why is Ukraine's ex-defence minister calling for wartime elections?
 - Zelensky says airlines should avoid Russian airspace as Ukraine escalates drone operations
 
 ## BBC World
 - Ariana Grande makes emotional tour exit and steps back from public life
-- BBC travels inside occupied Lebanon as officials say Israel expanding positions
 - Could the man who murdered a Christian missionary and his sons walk free in India?
 - EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany
 - Flock's rapidly expanding AI surveillance network facing growing backlash in US
 - 'I've never been to Afghanistan': Six million deportees forced to start over under the Taliban
 - Iran says US strike killed four at wedding in 'war crime' as US denies targeting civilians
 - Iranian attack on Saudi tanker killed two Filipino sailors, Saudi Arabia says
-- Lizzo 'grateful' after judge dismisses lawsuit against production company
 - Maltese tycoon acquitted of orchestrating murder of renowned journalist
 - More than 900 killed in Gaza this year despite ceasefire, Hamas-run health ministry says
 - Nepal intensifies relief and recovery efforts after deadly floods, UN says
+- Netherlands moves billions in gold to London in 'crisis preparedness' move
 - 'Nothing but mud and silt' - the village swept away by deadly floods in Nepal
 - Pistol in a lake gives hope for French cold case
 - Remarkable US oil deal puzzles analysts - and angers many Venezuelans
 - Rosenberg: Putin's veiled threat to UK part of Russia's campaign against West
 - South African airline behind daring stadium stunt cancels next flyby, regulator says
+- Uber shuts operations in Nigeria and Uganda with immediate effect
 - US sailors arrive in Thailand's Pattaya after record 250 days at sea
-- What we know about reported strike on Iran wedding celebrations
+- Watch: Jury still unable to reach unanimous decision in Lindsay Clancy case
 - Will self-flying planes transform the skies?
 - Woman charged with juror intimidation in Lindsay Clancy trial
 - Zelensky says airlines should avoid Russian airspace as Ukraine escalates drone operations
@@ -103,16 +103,16 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - (feed ikke nået; status=404)
 
 ## Contrepoints
-- Bruxelles veut « réveiller » l’épargne des Européens
+- Arrêts de travail : si on essayait la responsabilité ?
 - Contrairement à ce que soutient Manon Aubry, les effectifs salariés des grandes entreprises ont augmenté ces dernières années
-- Devrons-nous interdire d’« interdire d’interdire » ?
 - En France, le contribuable est impuissant mais présumé coupable
+- Intentions de vote des jeunes : l’Education nationale et les médias publics ont réussi leur endoctrinement
 - L’Islande dit non à l’UE
-- Le pouvoir d’achat s’invite dans la campagne présidentielle
 - Le RN veut interdire le port du voile islamique
-- Les retraites du privé confiées à un énarque, inspecteur des finances
 - Libéralisme, liberté et sécurité
+- Pendant les 45 dernières années, la France est le seul pays du G7 à ne pas avoir connu un taux de chômage à moins de 7 % !
 - Protectionnisme : arrêt des importations de bœuf et de volaille brésiliens
+- Travailler plus ! Oui, mais collectivement ou individuellement ?
 
 ## DR
 - 20 personer menes at være gået ned med forlist færge ved Cypern
@@ -213,7 +213,8 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Guardian World
 - Almost half of world’s farmers poisoned by pesticides every year, experts find
-- Apple Maps renames Lake Ontario to ‘Lake America’ for US users after Trump order
+- Apple Maps renames Lake Ontario as ‘Lake America’ for US users after Trump order
+- Australia news live: Jim Chalmers weighs in on One Nation WA byelection win; $2m for Indigenous racism online register
 - Countries legally obliged to consider slavery reparations, says UN committee
 - Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case
 - Japan halves speed limit to 30km/h on all narrow city streets
@@ -225,7 +226,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Shein shares slide on fast-fashion retailer’s stock market debut
 - South African airline defends dramatic low-level flyby before rugby union clash
 - Thai resort prepares to host USS Abraham Lincoln sailors after more than 270 days at sea
-- ‘Timidity is a virus’: Paul Keating fights the fading of the light as he seeks to enshrine his legacy
 - Trump ally defends Venezuela oil deal amid ‘gunpoint diplomacy’ criticism
 - Tumbler Ridge mass shooting victims file 30 new lawsuits against OpenAI
 - USS Abraham Lincoln arrives at Thai port after gruelling 270 days at sea
@@ -276,9 +276,9 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - The Ballroom Dance Doesn’t Belong in Court
 - The Court Tries to Give God a Restraining Order
 - The Illusion of One Voice in Wartime
+- The Need for Electricity Abundance
 - The Vindication of Tom Homan
 - Trump’s Big Bet on Data Centers
-- We Need Electricity Abundance
 
 ## Politico Europe
 - Bardella’s international blitz hints at new role for French far-right leader
@@ -288,9 +288,9 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Lecornu va-t-il passer l’hiver ?
 - Moscow likely behind drone-factory arson, says Poland&#8217;s Tusk
 - No budget deal without new EU taxes, Costa warns
-- Ulrich Siegmunds Erfolgsrezept
 - US Mint begins circulation, sale of Trump $1 coins
 - Von der Leyen, Rutte say Russian ‘intimidation will not work’ to stop Ukraine aid
+- White House pushes companies to ditch Macron’s space summit
 
 ## Reason
 - "[A]n Unopposed Grant" of Sealing "Carries Little Weight in a Contested Posture"
@@ -311,7 +311,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Boom för förtidsröstningen – här är det fullt upp för Ann-Charlotte
 - Claes Nordmarks ord i hovrätten: ”Jag är oskyldig”
 - En person till sjukhus efter dykolycka i Lerkils hamn
-- Filmredaktören tipsar: Guldkorn på filmfestivalen i Venedig
 - Hot anmält – gapig väljare oroade röstmottagare i Jönköping
 - Här trängs poliser i Eskilstunas gamla polishus – så ska trångboddheten lösas
 - Joakim Lundell stämmer kvinna i Trosa för förtal
@@ -322,6 +321,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - SSAB säger nej till gifttester – kostar för mycket
 - Stort intresse när dråpmisstänkta häktades i Karlstad
 - Tyskland terrorutreder misstänkt elsabotage
+- Villa övertänd i Tallhöjden i Södertälje
 - Ytterligare en misstänkt i utredning om förberedelse till mord
 - Äldre luras vid dörren – ministern: ”Ska inte känna rädsla när telefonen ringer”
 - Ökad ersättning till fjällräddningen föreslås – ”Något vi kämpat för i trettio år”
