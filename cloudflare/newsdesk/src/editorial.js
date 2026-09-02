@@ -377,11 +377,8 @@ const factCheckSchema = {
     contradictions: { type: "array", items: { type: "string" } },
     claims: { type: "array", minItems: 1, maxItems: 12, items: { type: "object", properties: {
       id: { type: "string" }, claim: { type: "string" }, source_indexes: { type: "array", items: { type: "integer" }, minItems: 1 },
-      evidence: { type: "array", minItems: 1, maxItems: 8, items: { type: "object", properties: {
-        source_index: { type: "integer" }, quote: { type: "string" },
-      }, required: ["source_index", "quote"] } },
       status: { type: "string", enum: ["verified", "uncertain", "rejected"] }, notes: { type: "string" },
-    }, required: ["id", "claim", "source_indexes", "evidence", "status", "notes"] } },
+    }, required: ["id", "claim", "source_indexes", "status", "notes"] } },
   }, required: ["decision", "rationale", "contradictions", "claims"],
 };
 
@@ -591,44 +588,6 @@ function evidenceRulePass(assignment, research, claim, evidence) {
   // Risk/fairness may still trigger Ethics or final review, but does not impose a hidden two-source quota.
   return evidence.some(authoritativeClaimSource);
 }
-function normalizedPassageText(value) {
-  return String(value || "").normalize("NFKC").toLocaleLowerCase("da-DK")
-    .replace(/[“”„‟«»]/g, '"').replace(/[‘’‚‛]/g, "'").replace(/[–—−]/g, "-")
-    .replace(/\s+/g, " ").trim();
-}
-function supportPassageValid(claim, support, source) {
-  if (!source || !support || !Number.isInteger(support.source_index)) return false;
-  const quote = normalizedPassageText(support.quote);
-  const hay = normalizedPassageText(source.excerpt || source.description || "");
-  if (quote.length < 24 || !hay.includes(quote)) return false;
-  const claimWords = [...new Set(words(claim?.claim || ""))];
-  const quoteWords = new Set(words(support.quote || ""));
-  if (claimWords.length) {
-    const overlap = claimWords.filter((x) => quoteWords.has(x)).length;
-    if (overlap < Math.min(2, claimWords.length)) return false;
-  }
-  if (numericMaterialClaim(claim)) {
-    const normalizeNumber = (value) => String(value || "").replace(/(?<=\d)[.\s](?=\d{3}(?:\D|$))/g, "").replace(",", ".");
-    const claimNums = (String(claim?.claim || "").match(/\d+(?:[.,\s]\d+)*/g) || []).map(normalizeNumber).filter(Boolean);
-    const quoteNums = new Set((String(support?.quote || "").match(/\d+(?:[.,\s]\d+)*/g) || []).map(normalizeNumber).filter(Boolean));
-    if (claimNums.length && !claimNums.every((n) => quoteNums.has(n))) return false;
-  }
-  return true;
-}
-function verifiedSupportPassages(claim, researched) {
-  const out = [];
-  const seen = new Set();
-  for (const row of Array.isArray(claim?.evidence) ? claim.evidence : []) {
-    const i = row?.source_index;
-    if (!Number.isInteger(i) || i < 0 || i >= researched.length || seen.has(i)) continue;
-    const source = researched[i];
-    if (!isEvidenceSource(source) || !supportPassageValid(claim, row, source)) continue;
-    seen.add(i);
-    out.push({ source_index: i, quote: String(row.quote || "").trim(), match_verified: true });
-  }
-  return out;
-}
-
 async function runResearch(env, assignment, selected) {
   let researched = await Promise.all(selected.map(fetchExcerpt));
   researched = researched.map((item) => ({ ...item, source_kind: normalizedSourceKind(item) }));
@@ -741,7 +700,7 @@ function focusedExcerpt(text, claims, maxChars = 500) {
 
 async function runFactCheck(env, assignment, research) {
   if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
-  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. For HVER source_index du bruger som støtte skal evidence indeholde samme source_index og en KORT, ORDRET passage kopieret direkte fra den vedlagte excerpt, som faktisk dokumenterer netop claimet. Brug aldrig en kilde som støtte blot fordi den handler om samme historie. Hvis du ikke kan citere en konkret støttepassage, må source_index ikke bruges som evidens. Et claim kan få Verified på baggrund af én relevant autoritativ kilde, når en kort ordret støttepassage faktisk dokumenterer claimet. Autoritative kilder er: (1) store etablerede redaktionelle medier, (2) myndigheder/officielle kilder, (3) virksomheder, organisationer eller personer om egne forhold, (4) relevante forskere/fageksperter inden for deres fagområde og (5) forskningspapirer/original forskning. Originale bureaukilder som Reuters/AP/AFP/Ritzau er også autoritative. Kræv ikke automatisk kilde nr. 2 blot fordi kilden er et medie. Ved høj risiko, alvorlige beskyldninger eller fairness kan ekstra kontrol, attribution, forelæggelse eller Etik-review være nødvendig, men høj risiko skaber ikke i sig selv en mekanisk to-kilde-regel. For alle materielle tal (døde, penge, procent, antal osv.) skal du aktivt sammenligne/falsificere tallet mod alle vedlagte relevante kilder; ved mismatch skal claimet være uncertain eller formuleres forsigtigt/attribueret, aldrig vælg automatisk det højeste tal. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder, fakta eller citater. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;
+  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Angiv kun source_indexes for kilder, der faktisk dokumenterer claimet; brug aldrig en kilde som støtte blot fordi den handler om samme historie. Et claim kan få Verified på baggrund af én relevant autoritativ kilde. Autoritative kilder er: (1) store etablerede redaktionelle medier som BBC, Reuters, AP, Financial Times m.fl., (2) myndigheder/officielle kilder, (3) virksomheder, organisationer eller personer om egne forhold, (4) relevante forskere/fageksperter inden for deres fagområde og (5) forskningspapirer/original forskning. Originale bureaukilder som Reuters/AP/AFP/Ritzau er også autoritative. Kræv ikke automatisk kilde nr. 2, når én relevant autoritativ kilde dokumenterer claimet. Ved høj risiko, alvorlige beskyldninger eller fairness kan ekstra kontrol, attribution, forelæggelse eller Etik-review være nødvendig, men høj risiko skaber ikke i sig selv en mekanisk to-kilde-regel. For alle materielle tal (døde, penge, procent, antal osv.) skal du aktivt sammenligne/falsificere tallet mod alle vedlagte relevante kilder; ved mismatch skal claimet være uncertain eller formuleres forsigtigt/attribueret, aldrig vælg automatisk det højeste tal. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder, fakta eller citater. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;
   const fact = await aiJson(env, system, JSON.stringify({
     assignment,
     research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
@@ -755,17 +714,14 @@ async function runFactCheck(env, assignment, research) {
   fact.right_of_reply_required = research.right_of_reply_required;
   fact.conflict_present = Boolean(research.conflict_present);
   for (const claim of fact.claims) {
-    const requestedIndexes = [...new Set((claim.source_indexes || []).filter((i) => Number.isInteger(i) && i >= 0 && i < fact.researched.length))];
-    const support = verifiedSupportPassages(claim, fact.researched).filter((x) => requestedIndexes.includes(x.source_index));
-    const indexes = support.map((x) => x.source_index);
+    const indexes = [...new Set((claim.source_indexes || []).filter((i) => Number.isInteger(i) && i >= 0 && i < fact.researched.length))];
     claim.source_indexes = indexes;
-    claim.support_passages = support;
     const evidence = indexes.map((i) => fact.researched[i]).filter(isEvidenceSource);
     claim.numeric_material = numericMaterialClaim(claim);
     claim.named_accused_primary_required = namedAccusedCrimeClaim(assignment, claim);
     if (claim.status === "verified" && (!indexes.length || !evidenceRulePass(assignment, research, claim, evidence))) {
       claim.status = "uncertain";
-      claim.notes = `${claim.notes || ""} Nedgraderet af deterministisk gate: claimet mangler en maskinverificeret støttepassage eller opfylder ikke kildekravet for risikoniveauet.`.trim();
+      claim.notes = `${claim.notes || ""} Nedgraderet af deterministisk gate: claimet mangler en relevant autoritativ kilde.`.trim();
     }
   }
   const verified = fact.claims.filter((c) => c.status === "verified");
@@ -1103,8 +1059,7 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   const groups = [...new Set(verificationSources.map((s) => s.source_group))];
   const claims = dossier.claims.filter((c) => c.status === "verified").map((c, i) => {
     const ids = [...new Set(c.source_indexes)].map((n) => sources[n]?.id).filter(Boolean);
-    const support_passages = (c.support_passages || []).map((x) => ({ source_id: sources[x.source_index]?.id, quote: x.quote, match_verified: x.match_verified === true })).filter((x) => x.source_id && ids.includes(x.source_id));
-    return { id: `F${String(i + 1).padStart(2, "0")}`, claim: c.claim, status: "verified", source_ids: ids, support_passages, independent_groups: ids.map((id) => sources.find((s) => s.id === id && !s.discovery_only)?.source_group).filter(Boolean), checked_at: accessedAt, notes: c.notes || "" };
+    return { id: `F${String(i + 1).padStart(2, "0")}`, claim: c.claim, status: "verified", source_ids: ids, independent_groups: ids.map((id) => sources.find((s) => s.id === id && !s.discovery_only)?.source_group).filter(Boolean), checked_at: accessedAt, notes: c.notes || "" };
   });
   return {
     schema_version: 3, story_id: storyId, article_slug: slug,
@@ -1112,7 +1067,7 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
     sources,
     coverage_sweep: { status: groups.length >= 1 ? "pass" : "limited", editorial_source_ids: verificationSources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 1 ? null : "Ingen brugbar dokumentationskilde registreret", notes: ["Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."] },
     claims, numbers: [], quotes: [], right_of_reply: { required: Boolean(dossier.right_of_reply_required), party: null, contacted_at: null, deadline: null, response: null, exception: dossier.right_of_reply_required ? "Flagged by Research; details must be supplied before any required forelæggelse can be considered complete" : null },
-    fact_check: { status: "pass", checked_at: accessedAt, notes: ["Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."] },
+    fact_check: { status: "pass", checked_at: accessedAt, notes: ["Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."] },
     desk_recheck: { status: desk.decision, checked_at: accessedAt, rationale: desk.rationale },
   };
 }

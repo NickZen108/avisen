@@ -51,7 +51,7 @@ Ved alvorlige anklager, høj juridisk risiko, sundhed/sikkerhed eller stærkt om
 
 ## Fact check
 
-Fact checker forsøger at falsificere Researchs kandidat-claims. `PASS` betyder, at de claims artiklen faktisk bruger er tilstrækkeligt dokumenterede. Et claim med en maskinverificeret støttepassage fra mindst én relevant autoritativ kilde kan få `verified`. Usikre eller afviste claims fjernes; de behøver ikke dræbe resten af historien, hvis den verificerede kerne stadig har selvstændig nyhedsværdi.
+Fact checker forsøger at falsificere Researchs kandidat-claims. `PASS` betyder, at de claims artiklen faktisk bruger er tilstrækkeligt dokumenterede. Et claim med mindst én relevant autoritativ kilde kan få `verified`. Usikre eller afviste claims fjernes; de behøver ikke dræbe resten af historien, hvis den verificerede kerne stadig har selvstændig nyhedsværdi.
 
 ## Forelæggelse og etik
 

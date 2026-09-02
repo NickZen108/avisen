@@ -53,13 +53,6 @@
       "source_ids": [
         "S1"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-dr-dk"
       ],
@@ -73,13 +66,6 @@
       "source_ids": [
         "S1"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-dr-dk"
       ],
@@ -92,13 +78,6 @@
       "status": "verified",
       "source_ids": [
         "S1"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
-          "match_verified": true
-        }
       ],
       "independent_groups": [
         "host-dr-dk"
@@ -121,7 +100,7 @@
     "status": "pass",
     "checked_at": "2026-09-02T09:35:10.745Z",
     "notes": [
-      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
     ]
   },
   "desk_recheck": {

@@ -53,13 +53,6 @@
       "source_ids": [
         "S1"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Det skyldes krangel om penger.",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-nrk-no"
       ],
@@ -72,13 +65,6 @@
       "status": "verified",
       "source_ids": [
         "S1"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "- Det handler ikke om penger",
-          "match_verified": true
-        }
       ],
       "independent_groups": [
         "host-nrk-no"
@@ -93,13 +79,6 @@
       "source_ids": [
         "S1"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "selv om han har tapt hele fire ganger for Alison dos Santos i år.",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-nrk-no"
       ],
@@ -112,13 +91,6 @@
       "status": "verified",
       "source_ids": [
         "S1"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "HOVEDKONKURRENT: Alison dos Santos (til venstre) har slått Karsten Warholm på hvert eneste forsøk denne sesongen.",
-          "match_verified": true
-        }
       ],
       "independent_groups": [
         "host-nrk-no"
@@ -133,13 +105,6 @@
       "source_ids": [
         "S1"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Årets Diamond League-finale går uten Karsten Warholm.",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-nrk-no"
       ],
@@ -152,13 +117,6 @@
       "status": "verified",
       "source_ids": [
         "S1"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "STÅR OVER FINALEN: Årets finale i Diamond League blir å se uten Karsten Warholm.",
-          "match_verified": true
-        }
       ],
       "independent_groups": [
         "host-nrk-no"
@@ -181,7 +139,7 @@
     "status": "pass",
     "checked_at": "2026-09-02T05:31:11.454Z",
     "notes": [
-      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
     ]
   },
   "desk_recheck": {

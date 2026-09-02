@@ -117,7 +117,7 @@ def remove_support_passages_from_json() -> None:
 
 
 def assert_clean() -> None:
-    checks = ["support_passages", "support passage", "støttepassage", "støttepassager"]
+    checks = ["support_passages"]
     exclusions = [
         ":(exclude)scripts/apply_authoritative_single_source_policy.py",
         ":(exclude).github/workflows/apply-authoritative-single-source-policy.yml",

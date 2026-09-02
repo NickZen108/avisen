@@ -53,13 +53,6 @@
       "source_ids": [
         "S1"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Für den Drohnenanschlag auf den Flughafen Leipzig macht die Bundesregierung Moskau nun auch ganz offiziell verantwortlich.",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-politico-eu"
       ],
@@ -72,13 +65,6 @@
       "status": "verified",
       "source_ids": [
         "S1"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Rixa Fürsen analysiert gemeinsam mit Hans von der Burchard die verkündeten Maßnahmen",
-          "match_verified": true
-        }
       ],
       "independent_groups": [
         "host-politico-eu"
@@ -93,13 +79,6 @@
       "source_ids": [
         "S1"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Rixa Fürsen analysiert gemeinsam mit Hans von der Burchard die verkündeten Maßnahmen",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-politico-eu"
       ],
@@ -112,13 +91,6 @@
       "status": "verified",
       "source_ids": [
         "S1"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Für den Drohnenanschlag auf den Flughafen Leipzig macht die Bundesregierung Moskau nun auch ganz offiziell verantwortlich.",
-          "match_verified": true
-        }
       ],
       "independent_groups": [
         "host-politico-eu"
@@ -141,7 +113,7 @@
     "status": "pass",
     "checked_at": "2026-09-02T05:42:53.398Z",
     "notes": [
-      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
     ]
   },
   "desk_recheck": {

@@ -78,18 +78,6 @@
         "S1",
         "S2"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Tyler Robinson pleads not guilty as judge clears path for death penalty in Charlie Kirk assassination case",
-          "match_verified": true
-        },
-        {
-          "source_id": "S2",
-          "quote": "Charlie Kirk murder suspect Tyler Robinson pleads not guilty as judge clears way for death penalty trial",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-euronews-com",
         "host-bbc-co-uk"
@@ -105,18 +93,6 @@
         "S1",
         "S2"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Tyler Robinson pleads not guilty as judge clears path for death penalty in Charlie Kirk assassination case",
-          "match_verified": true
-        },
-        {
-          "source_id": "S2",
-          "quote": "judge ruled prosecutors can seek the death penalty at trial",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-euronews-com",
         "host-bbc-co-uk"
@@ -131,13 +107,6 @@
       "source_ids": [
         "S2"
       ],
-      "support_passages": [
-        {
-          "source_id": "S2",
-          "quote": "Tyler Robinson denies aggravated murder, a capital offence in Utah, and six other charges in connection with the shooting of Kirk at a campus event on 10 September 2025.",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-bbc-co-uk"
       ],
@@ -150,13 +119,6 @@
       "status": "verified",
       "source_ids": [
         "S2"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S2",
-          "quote": "Turning Point USA co-founder Kirk, 31, was shot in the neck while speaking at Utah Valley University in Orem.",
-          "match_verified": true
-        }
       ],
       "independent_groups": [
         "host-bbc-co-uk"
@@ -179,7 +141,7 @@
     "status": "pass",
     "checked_at": "2026-09-02T05:28:42.738Z",
     "notes": [
-      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
     ]
   },
   "desk_recheck": {

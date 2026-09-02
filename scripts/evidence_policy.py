@@ -144,14 +144,9 @@ def named_accused_crime_claim(claim: dict | None) -> bool:
 
 
 def supporting_source_ids(ledger: dict, claim: dict) -> list[str]:
-    source_ids = list(claim.get("source_ids", []))
-    if int(ledger.get("schema_version") or 0) >= 3:
-        verified_passages = {
-            str(x.get("source_id")) for x in claim.get("support_passages", [])
-            if x.get("match_verified") is True and str(x.get("quote") or "").strip()
-        }
-        source_ids = [sid for sid in source_ids if sid in verified_passages]
-    return source_ids
+    # Canonical rule: source_ids are the evidence references. No separate passage
+    # object may veto an otherwise relevant authoritative source.
+    return list(claim.get("source_ids", []))
 
 
 def claim_has_required_support(article: dict, ledger: dict, claim: dict, sources: dict[str, dict]) -> bool:

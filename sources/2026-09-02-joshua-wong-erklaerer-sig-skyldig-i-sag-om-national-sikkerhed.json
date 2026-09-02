@@ -127,28 +127,6 @@
         "S3",
         "S4"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Prominent Hong Kong democracy activist Joshua Wong has pleaded guilty to a charge of foreign collusion in a second national security case that could see him jailed for life.",
-          "match_verified": true
-        },
-        {
-          "source_id": "S2",
-          "quote": "Hong Kong activist Joshua Wong pleads guilty to foreign collusion",
-          "match_verified": true
-        },
-        {
-          "source_id": "S3",
-          "quote": "Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case",
-          "match_verified": true
-        },
-        {
-          "source_id": "S4",
-          "quote": "Prominent pro-democracy Hong Kong activist Joshua Wong pleads guilty in second national security law case",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-aljazeera-com",
         "host-aljazeera-com",
@@ -165,13 +143,6 @@
       "source_ids": [
         "S1"
       ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "He is accused of asking foreign countries to “impose sanctions or blockade, or engage in other hostile activities” against China and Hong Kong in 2020",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-aljazeera-com"
       ],
@@ -185,13 +156,6 @@
       "source_ids": [
         "S3"
       ],
-      "support_passages": [
-        {
-          "source_id": "S3",
-          "quote": "Wong has been continuously imprisoned since November 2020",
-          "match_verified": true
-        }
-      ],
       "independent_groups": [
         "host-theguardian-com"
       ],
@@ -204,13 +168,6 @@
       "status": "verified",
       "source_ids": [
         "S3"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S3",
-          "quote": "Prosecutors have accused Wong, 29, of working with the exiled Hong Kong activist Nathan Law to urge foreign powers to impose sanctions, blockades or other hostile measures against China.",
-          "match_verified": true
-        }
       ],
       "independent_groups": [
         "host-theguardian-com"
@@ -233,7 +190,7 @@
     "status": "pass",
     "checked_at": "2026-09-02T05:26:50.001Z",
     "notes": [
-      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
     ]
   },
   "desk_recheck": {
