@@ -1,15 +1,18 @@
 {
   "date": "2026-09-01",
   "edition_label": "Danmarks nye avis",
-  "lead_rationale": "Ny A-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
+  "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker_text": "Redningsarbejdet fortsætter efter flodbølgen i Nepal og Tibet",
   "ticker": {
-    "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
+    "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden"
   },
   "lead": {
-    "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
+    "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden"
   },
   "rail": [
+    {
+      "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden"
+    },
     {
       "slug": "2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion"
     },
@@ -48,6 +51,9 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden"
+    },
+    {
       "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
     },
     {
@@ -73,12 +79,6 @@
       "category": "Sundhed",
       "title": "Hver anden stopper med Wegovy inden et år",
       "teaser": "Aarhus: 49 procent ophørte. Pris og bivirkninger."
-    },
-    {
-      "slug": "2026-08-30-spiralsagen-to-rapporter",
-      "category": "Politik",
-      "title": "Spiralsagen: To grønlandske partier vil gå til Haag",
-      "teaser": "To rapporter. Naalakkersuisut har ikke kunnet fastslå folkedrab."
     }
   ]
 }

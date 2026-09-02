@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "published_count": 14,
+  "published_count": 15,
   "category_mix": {
     "Udland": 9,
     "Videnskab": 3,
     "Guide": 1,
+    "Politik": 1,
     "Historie": 1
   },
   "top_source_hosts": {
@@ -12,28 +13,29 @@
     "www.theguardian.com": 5,
     "apnews.com": 5,
     "www.aljazeera.com": 4,
+    "www.bbc.co.uk": 3,
     "commons.wikimedia.org": 3,
     "www.euronews.com": 2,
-    "www.bbc.co.uk": 2,
     "www.nasa.gov": 2,
     "island.is": 2,
     "science.nasa.gov": 2,
     "pages.nist.gov": 1,
     "www.cisa.gov": 1,
     "www.nist.gov": 1,
+    "www.france24.com": 1,
+    "www.svt.se": 1,
+    "www.bbc.com": 1,
     "www.ft.com": 1,
     "holanews.com": 1,
     "eldiario.com": 1,
-    "www.space.com": 1,
-    "www.scmp.com": 1,
-    "www.turkishminute.com": 1,
-    "cyprus-mail.com": 1
+    "www.space.com": 1
   },
   "top_source_groups": {
     "reuters-reporting": 5,
     "guardian-reporting": 4,
     "ap-reporting": 4,
     "aljazeera-reporting": 3,
+    "wire-reuters": 2,
     "reuters-own-reporting": 2,
     "ukrainian-presidency": 2,
     "nist-800-63b-4": 1,
@@ -45,16 +47,15 @@
     "host-theguardian-com": 1,
     "bbc-reporting": 1,
     "euronews-reporting": 1,
+    "host-svt-se": 1,
+    "host-bbc-com": 1,
     "ap-own-reporting": 1,
-    "ft-own-reporting": 1,
-    "efe-own-reporting": 1,
-    "eldiario-own-reporting": 1,
-    "nasa-official": 1
+    "ft-own-reporting": 1
   },
-  "unique_source_hosts": 29,
-  "unique_source_groups": 40,
-  "followup_share": 0.214,
+  "unique_source_hosts": 32,
+  "unique_source_groups": 43,
+  "followup_share": 0.2,
   "correction_rate": 0.0,
-  "median_body_characters": 1186,
+  "median_body_characters": 1110,
   "principle": "These metrics are diagnostic. Clicks alone must not determine editorial priority."
 }

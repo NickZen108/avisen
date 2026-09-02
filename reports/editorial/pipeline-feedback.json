@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T18:37:03.283325Z",
-  "date_dk": "2026-09-01",
+  "generated_at": "2026-09-02T05:03:02.746430Z",
+  "date_dk": "2026-09-02",
   "policy": {
     "review_every_rejection": true,
     "automatic_threshold_changes": false,
@@ -14,299 +14,8 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 29,
-    "reviews": [
-      {
-        "at": "2026-09-01T18:36:45.682Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "AiError: 4006: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage.",
-        "class": "infrastructure",
-        "assessment": "Ingen redaktionel tærskel bør ændres. Løs kapacitet/drift eller genkør forsøget.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T17:50:50.968Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "AiError: 4006: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage.",
-        "class": "infrastructure",
-        "assessment": "Ingen redaktionel tærskel bør ændres. Løs kapacitet/drift eller genkør forsøget.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T17:34:28.284Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "AiError: 4006: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage.",
-        "class": "infrastructure",
-        "assessment": "Ingen redaktionel tærskel bør ændres. Løs kapacitet/drift eller genkør forsøget.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T17:10:43.438Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "AiError: 4006: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage.",
-        "class": "infrastructure",
-        "assessment": "Ingen redaktionel tærskel bør ændres. Løs kapacitet/drift eller genkør forsøget.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T16:36:03.429Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "AiError: 4006: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage.",
-        "class": "infrastructure",
-        "assessment": "Ingen redaktionel tærskel bør ændres. Løs kapacitet/drift eller genkør forsøget.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T15:46:22.951Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "media",
-        "reason": "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
-        "class": "repairable",
-        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T15:45:32.262Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "media",
-        "reason": "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
-        "class": "repairable",
-        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T15:45:29.320Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "research",
-        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T15:23:15.685Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "media",
-        "reason": "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
-        "class": "repairable",
-        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T15:22:44.962Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "seo",
-        "reason": "final_editor: materielt_forkert_sprog; final_editor: uforklaret_nødvendigt_fagsprog; final_editor: påstande_ud_over_dokumentationen; final_editor: utilstrækkelig_attribution/pluralisme; final_editor: etisk_problem; final_editor: misvisende_SEO; final_editor: falsk-dokumentarisk_hero-prompt",
-        "class": "repairable",
-        "assessment": "Sprog bør normalt auto-repareres. Hvis samme fejl gentages, test flere auto-repair-cycles før blokering.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T15:22:36.185Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "fact_check",
-        "reason": "Kilden er troværdig, men påstanden er ikke korrekt ifølge DR's artikel. DR's artikel nævner ikke, at Putin har lovet Iran støtte til krigen mod USA eller at Iran modtager støtte fra Rusland til krigen mod USA. DR's artikel er en overskrift, der ikke indeholder nogen informationer om, at Rusland støtter Iran i krigen mod USA eller at Iran modtager militær støtte fra Rusland til krigen mod USA. Derfor er påstanden ikke korrekt ifølge DR's artikel. Der er ikke nok informationer til at fastslå, om påstanden er korrekt. Derfor er påstanden  Ingen bærende claims er verificeret.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T15:04:33.481Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "fact_check",
-        "reason": "Nyhed om fem dømt for grov hvidvask Ingen bærende claims er verificeret.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T15:04:22.635Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "fact_check",
-        "reason": "Materialet giver kontrollerbart, men det er nødvendigt at undersøge flere kilder for at sikre, at påstandene er korrekte. Alle påstande er støttet af en autoritativ primærkilde inden for dens eget kompetenceområde, NRK, og er derfor blevet verificeret. Ingen bærende claims er verificeret.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T15:04:20.375Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "research",
-        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T14:48:09.726Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "fact_check",
-        "reason": "Der er ingen information om næste sports-betting case i Supreme Court i de vedlagte kilder. Alle claims handler om en anden sag, nemlig en sag om en ballroom på Det Hvide Hus. Ingen bærende claims er verificeret.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T14:47:35.190Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "media",
-        "reason": "Nyheder kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
-        "class": "repairable",
-        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T14:46:53.372Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "media",
-        "reason": "Hard news kræver et ægte, juridisk anvendeligt dokumentarisk hero-billede med kilde-, kredit- og licensmetadata; AI-illustration er ikke tilladt.",
-        "class": "repairable",
-        "assessment": "Tekniske billedproblemer bør normalt auto-repareres; rettigheds- eller integritetsproblemer skal fortsat blokere.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T14:42:52.518Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "fact_check",
-        "reason": "Kildebelægget materiale giver kontrollerbart information Ingen bærende claims er verificeret.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T14:42:31.172Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "fact_check",
-        "reason": "Kilderne giver kontrollerbart materiale til at støtte de foreslåede påstande. Ingen bærende claims er verificeret.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T14:42:21.439Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "fact_check",
-        "reason": "nyhedskrog Ingen bærende claims er verificeret.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T14:32:09.054Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "language",
-        "reason": "final_editor: material_facts_incorrect_or_unclear_language; final_editor: missing_necessary_technical_terms; final_editor: claims_exceeding_documentation; final_editor: missing_attribution_and_pluralism; final_editor: ethical_issue; final_editor: misleading_SEO_or_faux_documentary_hero_prompt",
-        "class": "repairable",
-        "assessment": "Sprog bør normalt auto-repareres. Hvis samme fejl gentages, test flere auto-repair-cycles før blokering.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T09:51:32.916Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "research",
-        "reason": "Lovende discovery-tip, men endnu ikke en autoritativ primærkilde eller to uafhængige redaktionelle kilder",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T09:29:44.655Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "research",
-        "reason": "Der er to forskellige påstande om årsagen til oversvømmelserne i Islamabad og Rawalpandi. Al Jazeera hævder at oversvømmelserne skyldes monsunregn, mens France 24 hævder at oversvømmelserne skyldes en kombination af iskalde kollaps og en stor jordskælv. Der er ingen påstande om at oversvømmelserne skyldes en kombination af monsunregn og en stor jordskælv. Derfor kan vi ikke fastslå en årsag til oversvømmelserne i Islamabad og Rawalpandi.",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T09:14:14.405Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "research",
-        "reason": "Lovende discovery-tip, men endnu ikke en autoritativ primærkilde eller to uafhængige redaktionelle kilder",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T09:14:10.953Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "research",
-        "reason": "Lovende discovery-tip, men endnu ikke en autoritativ primærkilde eller to uafhængige redaktionelle kilder",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T09:13:47.003Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "fact_check",
-        "reason": "Der er flere interessante nyheder på dagens nyhedsdesk, men den største nyhed er sandsynligvis den om den russiske angreb på jernbanearbejdere i Ukraine, der 20 mennesker, herunder to børn, blev såret. Dette er en alvorlig udvikling, der kan have store konsekvenser for den politiske situation i regionen. Derfor er det værd at undersøge denne nyhed yderligere for at få en bedre forståelse af situationen. Deterministisk gate: færre end to bærende claims er verificeret.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T09:02:04.747Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "ethics",
-        "reason": "Der er flere artikler om forskellige emner, men ingen af dem ser ud til at have reel nyhedsværdi. Der er dog flere artikler om naturkatastrofer, herunder oversvømmelser i Nepal og Kina, og om konflikter i Midtøsten. Disse emner ser ud til at have reel nyhedsværdi og bør derfor undersøges nærmere.",
-        "class": "review",
-        "assessment": "Manuel pipeline-vurdering: afgør om blokeringen beskyttede kvalitet eller var unødig friktion.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T09:01:28.339Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "fact_check",
-        "reason": "The claims are verified by the provided sources, and there are no contradictions between them. The sources are reputable news outlets, and the information is consistent across the different claims. Therefore, it is reasonable to publish the article based on these claims. Deterministisk gate: færre end to bærende claims er verificeret.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-01T05:02:31.850Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "AiError: 4006: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like to continue usage.",
-        "class": "infrastructure",
-        "assessment": "Ingen redaktionel tærskel bør ændres. Løs kapacitet/drift eller genkør forsøget.",
-        "pipeline_change_considered": true
-      }
-    ]
+    "rejections": 0,
+    "reviews": []
   },
   "last7_stage_counts": {
     "ethics": 1,
@@ -314,7 +23,7 @@
     "infrastructure": 6,
     "language": 1,
     "media": 5,
-    "research": 6,
+    "research": 8,
     "seo": 1
   },
   "suggested_adjustments": [
@@ -324,7 +33,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "15 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "17 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",

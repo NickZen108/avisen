@@ -1627,7 +1627,79 @@
           "automation_origin": "cloudflare-workers-ai"
         }
       }
+    ],
+    "2026-09-01-konflikter-og-politiske-udviklinger-i-verden": [
+      {
+        "hash": "5db0742741b145f4f28800f3c81a02acfcc8bafa3b8732b9f6cb051fd890a0f7",
+        "recorded_at": "2026-09-02T05:03:02+00:00",
+        "title": "Konflikter og politiske udviklinger i verden",
+        "story_id": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
+          "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
+          "category": "Politik",
+          "weight": "B",
+          "title": "Konflikter og politiske udviklinger i verden",
+          "standfirst": "Få overblik over de seneste nyheder fra verden, herunder om USA's angreb på Iran.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-01-konflikter-og-politiske-udviklinger-i-verden.json",
+          "claim_ids": [
+            "F01"
+          ],
+          "seo": {
+            "title": "Konflikter og politiske udviklinger i verden",
+            "description": "Læs om de seneste udviklinger i verden, herunder om konflikten mellem USA og Iran.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-konflikter-og-politiske-udviklinger-i-verden.jpg",
+            "alt": "Illustration til: Konflikter og politiske udviklinger i verden",
+            "credit": "Illustration: Morgentidende",
+            "license": "Morgentidende – statisk illustration",
+            "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-01-konflikter-og-politiske-udviklinger-i-verden.jpg",
+            "image_type": "illustration",
+            "context_type": "illustration",
+            "caption": "Illustration",
+            "pending_image": true,
+            "ai_generated": false,
+            "generator": "static_pencil_fallback",
+            "contains_people": false,
+            "people_style": "pencil_hatching",
+            "photorealistic": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Der er sket flere udviklinger i verden, blandt andet i forholdet mellem USA og Iran. Ifølge BBC World har USA lanceret flere angreb på Iran efter, at landet har forsøgt at angribe kommersielt skibsfart i Hormuz-strædet og amerikanske soldater i området.",
+              "type": "p"
+            },
+            {
+              "text": "Det er ikke alene i Mellemøsten, at der er politiske udviklinger. I Tyskland er der også sket noget nyt, men dette er ikke nærmere beskrevet i de tilgængelige kilder.",
+              "type": "p"
+            },
+            {
+              "text": "For tiden er der dog mest fokus på situationen mellem USA og Iran. Ifølge BBC World har der været flere eksplosioner i Iran, og landets statlige medier rapporterer om, at der er sket flere angreb fra USA's side.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
     ]
   },
-  "generated_at": "2026-09-01T18:37:03+00:00"
+  "generated_at": "2026-09-02T05:03:02+00:00"
 }

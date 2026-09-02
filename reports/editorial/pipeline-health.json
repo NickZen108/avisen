@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-01T18:37:02Z",
+  "generated_at": "2026-09-02T05:03:01Z",
   "counts": {
-    "published": 6,
+    "published": 7,
     "checking": 2,
-    "draft": 2
+    "draft": 3
   },
   "blocked_count": 2,
   "articles": [
@@ -92,8 +92,24 @@
       "reasons": []
     },
     {
+      "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
+      "title": "Konflikter og politiske udviklinger i verden",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
       "slug": "2026-09-01-nepal-efter-flodboelgerne-over-1-000-doede-og-4-000-savnet",
       "title": "Nepal efter flodbølgerne: Over 1.000 døde og 4.000 savnet",
+      "status": "draft",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-01-sundhedskrise-i-gaza-who-advarerer-om-foresta-ende-katastrofe",
+      "title": "Sundhedskrise i Gaza: WHO advarerer om forestående katastrofe",
       "status": "draft",
       "release_requested": false,
       "resume_from": null,
