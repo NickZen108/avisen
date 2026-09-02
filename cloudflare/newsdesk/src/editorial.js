@@ -233,13 +233,44 @@ async function fetchExcerpt(signal) {
   } finally { clearTimeout(timer); }
 }
 
+function parseJsonText(value) {
+  const text = String(value || "").trim();
+  if (!text) return null;
+  try { return JSON.parse(text); } catch (_) {}
+  const unfenced = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+  if (unfenced !== text) { try { return JSON.parse(unfenced); } catch (_) {} }
+  const starts = [];
+  for (let i = 0; i < text.length; i++) if (text[i] === "{" || text[i] === "[") starts.push(i);
+  for (const start of starts) {
+    const open = text[start], close = open === "{" ? "}" : "]";
+    let depth = 0, quoted = false, escaped = false;
+    for (let i = start; i < text.length; i++) {
+      const ch = text[i];
+      if (quoted) {
+        if (escaped) escaped = false;
+        else if (ch === "\\") escaped = true;
+        else if (ch === '"') quoted = false;
+        continue;
+      }
+      if (ch === '"') { quoted = true; continue; }
+      if (ch === open) depth += 1;
+      else if (ch === close) {
+        depth -= 1;
+        if (depth === 0) {
+          try { return JSON.parse(text.slice(start, i + 1)); } catch (_) { break; }
+        }
+      }
+    }
+  }
+  return null;
+}
 function responseObject(raw) {
   if (raw && typeof raw.response === "object" && raw.response !== null) return raw.response;
-  if (raw && typeof raw.response === "string") { try { return JSON.parse(raw.response); } catch (_) {} }
+  if (raw && typeof raw.response === "string") { const parsed = parseJsonText(raw.response); if (parsed) return parsed; }
   if (raw && Array.isArray(raw.choices)) {
     const content = raw.choices[0]?.message?.content;
     if (typeof content === "object" && content) return content;
-    if (typeof content === "string") { try { return JSON.parse(content); } catch (_) {} }
+    if (typeof content === "string") { const parsed = parseJsonText(content); if (parsed) return parsed; }
   }
   throw new Error("Workers AI returned no parseable structured response");
 }
