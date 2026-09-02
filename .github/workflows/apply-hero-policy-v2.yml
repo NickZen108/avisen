@@ -1,3 +1,4 @@
+# retry after Unicode tokenizer fix
 name: Apply hero policy v2
 on:
   push:
