@@ -149,6 +149,12 @@
     "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/V%C3%A6rl%C3%B8se_Station_01.jpg/1920px-V%C3%A6rl%C3%B8se_Station_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
     "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/1f1f593e426efa89ce2b.jpg"
   },
+  "https://commons.wikimedia.org/wiki/Special:Redirect/file/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29.jpg?width=1600": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/2ae5d6c0592b293db9a9.jpg",
+    "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/2ae5d6c0592b293db9a9.jpg"
+  },
   "https://i.ytimg.com/vi/8cBaHXLtmZg/hqdefault.jpg": {
     "content_type": "image/jpeg",
     "file": "/img/cache/212b319f849ad5ab8ad7.jpg",

@@ -4141,6 +4141,93 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "b7d172f99c2cf3383a8ea838e98e05b43b761ce669d0242b9aac49b1be0284d1",
+        "recorded_at": "2026-09-02T21:05:39+00:00",
+        "title": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+        "story_id": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+          "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+          "category": "Udland",
+          "weight": "C",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "USA",
+            "country_code": "US",
+            "hero_queries_english": [
+              "Trump proposes renaming Hormuz Strait after himself"
+            ],
+            "hero_queries_local": [
+              "Trump foreslår at navngive Hormuzstrædet efter sig selv"
+            ],
+            "hero_queries_transliterated": [],
+            "place_names_english": [
+              "Hormuz Strait"
+            ],
+            "place_names_local": [
+              "Hormuzstrædet"
+            ],
+            "primary_language": "engelsk",
+            "primary_language_code": "en",
+            "transliterations": []
+          },
+          "title": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+          "standfirst": "Donald Trump foreslår, at Hormuzstrædet skal opkaldes efter ham. Strædet er en strategisk vigtig handelsrute.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+            "description": "Trump foreslår at navngive Hormuzstrædet efter sig selv. Læs mere om det strategisk vigtige stræde og Trumps rolle i regionen.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29.jpg?width=1600",
+            "alt": "Donald Trump på officielt præsidentportræt fra 2025",
+            "credit": "Foto: Daniel Torok / The White House",
+            "license": "Public domain – U.S. federal government",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Official_Presidential_Portrait_of_President_Donald_J._Trump_(2025).jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto: Donald Trump på officielt præsidentportræt fra 2025.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "USA's tidligere præsident Donald Trump har foreslået at navngive Hormuzstrædet efter sig selv. Det skriver DR.",
+              "type": "h2"
+            },
+            {
+              "text": "Hormuzstrædet er et strategisk vigtigt stræde, der forbinder Persiske Golf med Det Arabiske Hav. Det er en vigtig handelsrute for mange lande, herunder Iran, Saudi-Arabien og Oman.",
+              "type": "p"
+            },
+            {
+              "text": "Trump har flere gange udtrykt sin støtte til USA's militære indsats i regionen. Det er ikke klart, om hans foreslåede navngivning af strædet er en del af en større strategi eller blot en personlig idé.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ],
     "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund": [
@@ -4273,6 +4360,146 @@
           },
           "title": "Tyskland og Rusland i konflikt efter droneangreb",
           "standfirst": "Tyskland og Rusland er i en meget anspændt situation efter et forsøg på at angribe Leipzig lufthavn med en drone. Det er første gang, at Rusland bliver beskyldt for et droneangreb mod en tysk lufthavn. Tyskland har allerede indført stramme sanktioner mod Rusland efter invasionen af Ukraine i 2022, men disse nye sanktioner er en ny fase i den tysk-russiske konflikt. Det er ikke klart, hvordan konflikten vil udvikle sig i fremtiden, men det er tydeligt, at Tyskland og Rusland er i en meget anspændt situation.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "seo": {
+            "title": "Tyskland og Rusland i konflikt efter droneangreb",
+            "description": "Tyskland og Rusland er i konflikt efter et forsøg på at angribe Leipzig lufthavn med en drone. Rusland har afvist beskyldningerne, men Tyskland har indført nye sanktioner.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb.jpg",
+            "alt": "U.S. Army Master Sgt. Nicholas Lombard, battalion operations sergeant, Team Viper observer controller, 7th Army Training Command, conducts final preparations for a drone swarm attack during Exercise Combined Resolve 24-2 at the Joint Multinational Readiness Center near Hohenfels, Germany, May 29, 2024. Combined Resolve 24-2 is a key U.S. Army multi-domain interoperability exercise in Europe and a major investment in the cohesion of the NATO alliance and the overall readiness of allies and partne",
+            "credit": "U.S. Army National Guard photo by Sgt. 1st Class Brandon Nelson",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Combined_Resolve_24-2_drone_swarm_attack_(8436765).jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Tyskland og Rusland i konflikt efter droneangreb",
+              "type": "h2"
+            },
+            {
+              "text": "Tyskland har beskyldt Rusland for et forsøg på at angribe Leipzig lufthavn med en drone, der var lastet med sprængstoffer.",
+              "type": "p"
+            },
+            {
+              "text": "Rusland har afvist beskyldningerne og påstår, at de ikke har noget med angrebet at gøre.",
+              "type": "p"
+            },
+            {
+              "text": "Tyskland har nu indført nye sanktioner mod Rusland, herunder at lukke det russiske konsulat i Bonn og det russiske hus i Berlin.",
+              "type": "p"
+            },
+            {
+              "text": "Men ifølge den russiske politiske forsker Dmitry Oreshkin kan de tyske sanktioner have begrænset virkning.",
+              "type": "p"
+            },
+            {
+              "text": "Oreshkin mener, at Rusland ikke vil blive skræmt af de tyske sanktioner og at de vil fortsætte med deres politik.",
+              "type": "p"
+            },
+            {
+              "text": "To mistænkte er ifølge rapporter blevet identificeret i forbindelse med droneangrebet.",
+              "type": "p"
+            },
+            {
+              "text": "Det er dog ikke klart, hvem der står bag angrebet og hvilke konsekvenser det vil få.",
+              "type": "p"
+            },
+            {
+              "text": "EU og NATO har lovet at træffe nye træk for at presse Rusland efter 'den nye eskalering' i Tyskland.",
+              "type": "p"
+            },
+            {
+              "text": "Det er første gang, at Rusland bliver beskyldt for et droneangreb mod en tysk lufthavn.",
+              "type": "p"
+            },
+            {
+              "text": "Tyskland har allerede indført stramme sanktioner mod Rusland efter invasionen af Ukraine i 2022.",
+              "type": "p"
+            },
+            {
+              "text": "Men disse nye sanktioner er en ny fase i den tysk-russiske konflikt.",
+              "type": "p"
+            },
+            {
+              "text": "Det er ikke klart, hvordan konflikten vil udvikle sig i fremtiden, men det er tydeligt, at Tyskland og Rusland er i en meget anspændt situation.",
+              "type": "p"
+            },
+            {
+              "text": "Tyskland og Rusland er to store lande i Europa, og deres konflikt kan have store konsekvenser for hele kontinentet.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      },
+      {
+        "hash": "e37b9fc462f2cef18859bd3b6ede86f7bf9baccdf6586e9869494f7816e8fd05",
+        "recorded_at": "2026-09-02T21:05:39+00:00",
+        "title": "Tyskland og Rusland i konflikt efter droneangreb",
+        "story_id": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+          "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+          "category": "Udland",
+          "weight": "B",
+          "editorial_destination": "tech_magazine",
+          "story_location": {
+            "country": "Tyskland",
+            "country_code": "DE",
+            "hero_queries_english": [
+              "Germany drone attack",
+              "Leipzig airport incident"
+            ],
+            "hero_queries_local": [
+              "Deutschland Drohnenangriff",
+              "Leipzig Flughafen Vorfall"
+            ],
+            "hero_queries_transliterated": [],
+            "place_names_english": [
+              "Germany",
+              "Leipzig"
+            ],
+            "place_names_local": [
+              "Deutschland",
+              "Leipzig"
+            ],
+            "primary_language": "deutsch",
+            "primary_language_code": "de",
+            "transliterations": []
+          },
+          "title": "Tyskland og Rusland i konflikt efter droneangreb",
+          "standfirst": "Tyskland beskylder Rusland for et droneangreb mod Leipzig lufthavn. Rusland afviser anklagen, mens Berlin svarer med nye sanktioner.",
           "byline": "Morgentidende Redaktion",
           "manual_review": false,
           "ledger": "sources/2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb.json",
@@ -4878,5 +5105,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-02T20:41:41+00:00"
+  "generated_at": "2026-09-02T21:05:39+00:00"
 }
