@@ -124,9 +124,8 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
             if not str(image.get(field, "")).strip(): err(f"{path.name}: image mangler udfyldt {field}")
         if image.get("image_type") not in {"photo", "video_still", "illustration", "graphic"}: err(f"{path.name}: ugyldig image_type")
         if image.get("image_type") == "illustration" and article.get("automation_origin") == "cloudflare-workers-ai":
-            static_fallback = image.get("generator") == "static_pencil_fallback"
-            if image.get("pending_image") is not True or (image.get("ai_generated") is not True and not static_fallback):
-                err(f"{path.name}: autonom nyhedsillustration skal være pending og AI-genereret eller godkendt statisk blyantfallback")
+            if image.get("pending_image") is not True or image.get("ai_generated") is not True:
+                err(f"{path.name}: autonom nyhedsillustration skal være pending og AI-genereret")
             if image.get("context_type") != "illustration":
                 err(f"{path.name}: autonom nyhedsillustration skal have context_type=illustration")
             if str(image.get("caption") or "").strip().lower() != "illustration":

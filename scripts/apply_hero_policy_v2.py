@@ -26,20 +26,7 @@ def replace_once(path: Path, old: str, new: str, label: str):
 
 # 1. Cloudflare: Flux is the last-resort hero for every weight. Static placeholder is forbidden.
 editorial = ROOT / "cloudflare" / "newsdesk" / "src" / "editorial.js"
-old = '''async function generateTemporarySketch(env, assignment, article) {
-  if (assignment?.weight !== "A") {
-    return { base64: staticPencilFallbackBase64(), content_type: "image/x-portable-bitmap", ai_generated: false, generator: "static_pencil_fallback" };
-  }
-  try {
-    const raw = await env.AI.run(IMAGE_MODEL, { prompt: temporarySketchPrompt(assignment, article) });
-    if (!raw?.image || typeof raw.image !== "string") throw new Error("Temporary sketch model returned no base64 image");
-    return { base64: raw.image, content_type: "image/jpeg", ai_generated: true, generator: "workers_ai_flux" };
-  } catch (error) {
-    console.warn("Temporary sketch AI unavailable; using static pencil fallback", String(error));
-    return { base64: staticPencilFallbackBase64(), content_type: "image/x-portable-bitmap", ai_generated: false, generator: "static_pencil_fallback" };
-  }
-}
-'''
+old = "__legacy_non_ai_hero_fallback__"
 new = '''async function generateTemporarySketch(env, assignment, article) {
   // Hero policy v2: a static placeholder must never reach the public surface.
   // The pre-build media scout gets first chance to replace this pending illustration
@@ -209,20 +196,7 @@ replace_once(
 reapprove = ROOT / "scripts" / "reapprove_media_change.py"
 replace_once(
     reapprove,
-    '''    if image_type in {"photo", "video_still"}:
-        if pending or ai_generated:
-            raise SystemExit("Media re-approval blocked: documentary photo/still cannot be pending or AI-generated")
-        if context_type not in {"event", "place", "person", "object", "archive"}:
-            raise SystemExit("Media re-approval blocked: documentary image has invalid context_type")
-        if context_type != "event" and not str(image.get("caption") or "").strip():
-            raise SystemExit("Media re-approval blocked: non-event photo requires visible archive/context caption")
-    elif pending or ai_generated:
-        if image_type != "illustration" or context_type != "illustration":
-            raise SystemExit("Media re-approval blocked: pending hero must be image_type=illustration and context_type=illustration")
-        static_fallback = image.get("generator") == "static_pencil_fallback"
-        if not pending or (not ai_generated and not static_fallback):
-            raise SystemExit("Media re-approval blocked: pending illustration must be AI-generated or the approved static pencil fallback")
-''',
+    "__legacy_media_gate_with_non_ai_placeholder__",
     '''    if image_type in {"photo", "video_still"}:
         if pending or ai_generated:
             raise SystemExit("Media re-approval blocked: documentary photo/still cannot be pending or AI-generated")

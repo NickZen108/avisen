@@ -174,7 +174,7 @@ def build_article(path: Path) -> None:
     page_title = seo_title if "Morgentidende" in seo_title else f"{seo_title} – Morgentidende"
     description = article.get("seo", {}).get("description") or article["standfirst"]
     category = article["category"]
-    news_categories = {"Nyhed", "Krimi", "Politik", "Økonomi", "Udland", "Forbruger", "Kultur", "Videnskab", "Sundhed", "Parforhold", "Sport"}
+    news_categories = {"Nyhed", "Indland", "Krimi", "Økonomi", "Udland", "Forbruger", "Kultur", "Videnskab", "Sundhed", "Parforhold", "Sport", "Penge", "Videnskab & teknologi", "Kultur & medier", "Liv"}
     schema_type = "NewsArticle" if category in news_categories else "Article"
     image = article.get("image")
     video = article.get("video") or {}

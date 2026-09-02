@@ -3,7 +3,7 @@
   "status": "pass",
   "story_id": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
   "article_slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
-  "checked_at": "2026-09-01T19:00:52.231Z",
+  "checked_at": "2026-09-02T16:39:42Z",
   "gates": {
     "language": "pass",
     "ethics": "pass",
@@ -32,20 +32,16 @@
       "canonical": null
     },
     "image": {
-      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-konflikter-og-politiske-udviklinger-i-verden.jpg",
-      "alt": "Illustration til: Konflikter og politiske udviklinger i verden",
-      "credit": "Illustration: Morgentidende",
-      "license": "Morgentidende – statisk illustration",
-      "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-01-konflikter-og-politiske-udviklinger-i-verden.jpg",
-      "image_type": "illustration",
-      "context_type": "illustration",
-      "caption": "Illustration",
-      "pending_image": true,
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Iran_map.svg/1280px-Iran_map.svg.png",
+      "alt": "Kort over Iran med administrative inddelinger",
+      "credit": "Wikideas1 / Wikimedia Commons",
+      "license": "CC0 1.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Iran_map.svg",
+      "image_type": "graphic",
+      "context_type": "map",
+      "caption": "Kort over Iran. Billedet viser ikke selve hændelsen.",
+      "pending_image": false,
       "ai_generated": false,
-      "generator": "static_pencil_fallback",
-      "contains_people": false,
-      "people_style": "pencil_hatching",
-      "photorealistic": false,
       "placement": "lead"
     },
     "body": [
@@ -82,5 +78,19 @@
       "category"
     ],
     "reason": "Politik removed as main category; Danmark renamed to Indland"
+  },
+  "media_reapproval": {
+    "mode": "targeted-image-only",
+    "checked_at": "2026-09-02T16:39:42Z",
+    "previous_snapshot_sha256": "d53b0a1e871ccee067a06f0ea876b97b8b5297278009c542adf8e4350d91da6d",
+    "new_snapshot_sha256": "2bf194ddddc2bd67b32578347ad38c7b3a6878907230f78153b7b92ea25ec0c4",
+    "changed_fields": [
+      "image"
+    ],
+    "checks": [
+      "only image differs from previous final approval",
+      "replacement image provenance metadata complete",
+      "article text, claims, SEO, category and byline unchanged"
+    ]
   }
 }

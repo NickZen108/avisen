@@ -3,7 +3,7 @@ const STRONG_TEXT_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 const IMAGE_MODEL = "@cf/black-forest-labs/flux-1-schnell";
 const PUBLIC_BASE = "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev";
 
-const CATEGORIES = ["Danmark", "Udland", "Politik", "Penge", "Krimi", "Videnskab & teknologi", "Sundhed", "Kultur & medier", "Sport", "Liv"];
+const CATEGORIES = ["Indland", "Udland", "Penge", "Krimi", "Videnskab & teknologi", "Sundhed", "Kultur & medier", "Sport", "Liv"];
 
 function nowIso() { return new Date().toISOString(); }
 function slugify(value) {
@@ -470,7 +470,7 @@ function signalSummary(scan, excludedSignalKeys = []) {
 }
 async function chooseAssignment(env, scan, excludedSignalKeys = []) {
   const signals = signalSummary(scan, excludedSignalKeys);
-  if (!signals.length) return { decision: "drop", title_hint: "", category: "Danmark", weight: "D", signal_indexes: [], rationale: "Ingen ubehandlede kandidater med tilstrækkelig aktualitet/grundscore", core_question: "" };
+  if (!signals.length) return { decision: "drop", title_hint: "", category: "Indland", weight: "D", signal_indexes: [], rationale: "Ingen ubehandlede kandidater med tilstrækkelig aktualitet/grundscore", core_question: "" };
   const system = `Du er Morgentidendes første Nyhedsdesk. Vælg ét konkret research-frø. RESEARCH er standard ved reel nyhedsværdi, originalitet, offentlig betydning eller tydelig redaktionel relevans; tynd dokumentation er Researchs problem, ikke en afvisningsgrund. WATCH kun hvis nyhedskrogen/aktualiteten endnu er uklar. DROP kun ved klar dublet, gammel/triviel sag, rent holdningsstof uden nyhedskrog eller åbenlys spam. discovery_only må udløse Research, men er aldrig dokumentation. Sæt kategori og A-D-vægt. Fastslå samtidig story_location FØR research og hero: primært land, ISO-landekode, vigtigste lokale sprog, lokale og engelske stednavne samt evt. translitterationer. Lav 1-3 korte hero-søgefraser på lokalt sprog og 1-3 på engelsk; ved andet alfabet også translittererede varianter. Brug hændelsestype + sted + år når det er kendt. Oversæt ikke egennavne forkert. Hvis landet reelt er uklart eller sagen ikke har ét primært land, brug country='unknown', country_code='', primary_language='unknown' og tomme lokale arrays, men lav stadig engelske hero-termer hvis muligt. Svar ultrakort.`;
   return aiJson(env, system, JSON.stringify({ generated_at: scan.generated_at, signals }), assignmentSchema, 260, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
@@ -899,35 +899,6 @@ function documentaryHeroFromSignals(selected = []) {
 function temporarySketchPrompt(assignment, article) {
   const subject = [assignment?.core_question, assignment?.title_hint, article?.title, article?.standfirst].filter(Boolean).join(". ").slice(0, 1200);
   return `Black-and-white editorial pencil hatching illustration, newspaper sketch, wide 16:9. Subject context: ${subject}. Clearly hand-drawn graphite/pencil cross-hatching, restrained, symbolic and non-literal. NO photorealism, NO realistic photography, NO documentary-photo aesthetic, NO camera realism, NO text, NO logos, NO watermarks. NO people, NO faces, NO human figures. Do not recreate a concrete accident/crime scene as if witnessed. Do not depict a named accused person, a child, victims, injured or dead people. Use only place/object/geographic/symbolic motifs.`;
-}
-
-function staticPencilFallbackBase64() {
-  const width = 1024, height = 576, rowBytes = width >> 3;
-  const header = `P4\n${width} ${height}\n`;
-  const bytes = new Uint8Array(header.length + rowBytes * height);
-  for (let i = 0; i < header.length; i++) bytes[i] = header.charCodeAt(i);
-  const offset = header.length;
-  const setPixel = (x, y) => {
-    if (x < 0 || y < 0 || x >= width || y >= height) return;
-    bytes[offset + y * rowBytes + (x >> 3)] |= (1 << (7 - (x & 7)));
-  };
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const hatch = ((x + y) % 31 === 0) || ((x - y + 4096) % 47 === 0);
-      const ground = y > 470 && y % 11 === 0;
-      const frame = (y === 354 || y === 470) && x > 70 && x < 954;
-      if (hatch || ground || frame) setPixel(x, y);
-    }
-  }
-  for (let bx = 105, n = 0; bx < 900; bx += 105, n++) {
-    const top = 300 - (n % 3) * 22;
-    for (let x = bx; x <= bx + 58; x++) { setPixel(x, top); setPixel(x, 470); }
-    for (let y = top; y <= 470; y++) { setPixel(bx, y); setPixel(bx + 58, y); }
-  }
-  let binary = "";
-  const chunk = 0x8000;
-  for (let i = 0; i < bytes.length; i += chunk) binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
-  return btoa(binary);
 }
 
 async function generateTemporarySketch(env, assignment, article) {

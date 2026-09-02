@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Normalize legacy Newsdesk categories to the current public taxonomy.
+"""Normalize removed or unknown Newsdesk categories to the public taxonomy.
 
-The Cloudflare desk may still emit legacy Danmark/Politik while deployments roll
-through. Only those legacy values are touched. Subject-specific sections win
-before the Indland/Udland fallback, so a Danish sports story becomes Sport rather
-than Indland and a foreign health story becomes Sundhed rather than Udland.
+Subject-specific sections win before the Indland/Udland fallback, so a Danish
+sports story becomes Sport rather than Indland and a foreign health story becomes
+Sundhed rather than Udland.
 """
 from __future__ import annotations
 
@@ -15,6 +14,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ARTICLES = ROOT / "content" / "articles"
 APPROVALS = ROOT / "reports" / "editorial" / "approvals"
+SOURCES = ROOT / "sources"
+ALLOWED_CATEGORIES = {
+    line.strip()
+    for line in (ROOT / "config" / "categories.txt").read_text(encoding="utf-8").splitlines()
+    if line.strip()
+}
 
 DOMESTIC = (
     "danmark", "dansk", "folketing", "folketinget", "christiansborg",
@@ -64,9 +69,19 @@ def classify_legacy(article: dict) -> str:
 
 def target_category(article: dict) -> str | None:
     old = str(article.get("category") or "").strip()
-    if old in {"Danmark", "Politik"}:
+    if old == "Danmark" or (old and old not in ALLOWED_CATEGORIES):
         return classify_legacy(article)
     return None
+
+
+def self_test() -> None:
+    domestic = {"category": "removed-label", "title": "Folketinget vedtager ny lov"}
+    foreign = {"category": "removed-label", "title": "Nepals premierminister varsler reform"}
+    allowed = {"category": "Penge", "title": "Renten falder"}
+    assert target_category(domestic) == "Indland"
+    assert target_category(foreign) == "Udland"
+    assert target_category(allowed) is None
+    print("category normalization self-test: PASS")
 
 
 def migrate_approval(slug: str, old: str, new: str) -> bool:
@@ -93,9 +108,26 @@ def migrate_approval(slug: str, old: str, new: str) -> bool:
     return True
 
 
+def migrate_source(slug: str, old: str, new: str) -> bool:
+    path = SOURCES / f"{slug}.json"
+    if not path.exists():
+        return False
+    try:
+        ledger = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    assignment = ledger.get("assignment")
+    if not isinstance(assignment, dict) or str(assignment.get("category") or "") != old:
+        return False
+    assignment["category"] = new
+    dump(path, ledger)
+    return True
+
+
 def main() -> int:
     changed = 0
     approvals_changed = 0
+    sources_changed = 0
     for path in sorted(ARTICLES.glob("*.json")):
         if path.name.startswith("_"):
             continue
@@ -113,7 +145,35 @@ def main() -> int:
         slug = str(article.get("slug") or path.stem)
         if migrate_approval(slug, old, new):
             approvals_changed += 1
-    print(f"category normalization: changed={changed}; approvals_changed={approvals_changed}")
+        if migrate_source(slug, old, new):
+            sources_changed += 1
+
+    # Ledgers can outlive an earlier article migration. Align them with the
+    # already-normalized canonical article as a final cleanup pass.
+    for path in sorted(SOURCES.glob("*.json")):
+        try:
+            ledger = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        slug = str(ledger.get("article_slug") or path.stem)
+        article_path = ARTICLES / f"{slug}.json"
+        if not article_path.exists():
+            continue
+        try:
+            article = json.loads(article_path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        assignment = ledger.get("assignment")
+        if not isinstance(assignment, dict):
+            continue
+        old = str(assignment.get("category") or "").strip()
+        new = str(article.get("category") or "").strip()
+        if old and new and old != new and old not in ALLOWED_CATEGORIES:
+            assignment["category"] = new
+            dump(path, ledger)
+            sources_changed += 1
+
+    print(f"category normalization: changed={changed}; approvals_changed={approvals_changed}; sources_changed={sources_changed}")
     return 0
 
 

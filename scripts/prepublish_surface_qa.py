@@ -132,12 +132,8 @@ def main() -> int:
                 if image.get("discovery_only_source") is True and image.get("independent_license") is not True:
                     faults.append(f"{path.name}: discovery_only må ikke være grafikkilde uden selvstændig licens")
             elif image_type == "illustration":
-                # Legacy static placeholders can still be read while old records are
-                # being replaced, but the canonical Cloudflare generator no longer
-                # creates them. New fallback heroes are Flux-generated pencil art.
-                static_fallback = image.get("generator") == "static_pencil_fallback"
-                if not pending or (not ai_generated and not static_fallback):
-                    faults.append(f"{path.name}: nyhedsillustration skal være pending og AI-genereret (legacy static accepteres kun under migration)")
+                if not pending or not ai_generated:
+                    faults.append(f"{path.name}: nyhedsillustration skal være pending og AI-genereret")
                 if context_type != "illustration":
                     faults.append(f"{path.name}: pending illustration skal have context_type=illustration")
                 if str(image.get("caption") or "").strip().lower() != "illustration":

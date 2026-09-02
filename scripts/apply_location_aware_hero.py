@@ -269,7 +269,7 @@ replace_once(
 "article story_location",
 )
 replace_once(
-'''media_policy: { documentary_first: true, pending_image: Boolean(hero.pending_image), temporary_sketch_allowed_after_scout: true, static_sketch_fallback: true, late_hold_for_no_photo: false }''',
+'''__legacy_media_policy_without_multilingual_location_search__''',
 '''media_policy: { documentary_first: true, multilingual_location_search: true, pending_image: Boolean(hero.pending_image), temporary_sketch_allowed_after_scout: true, static_sketch_fallback: false, late_hold_for_no_photo: false }''',
 "media policy audit",
 )

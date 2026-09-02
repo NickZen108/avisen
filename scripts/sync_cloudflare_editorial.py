@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# burst-trigger: 2026-09-02T13:31Z — quarter-hour editorial burst requested for the next two hours
 """Import one approved Cloudflare editorial package into GitHub source of truth."""
 from __future__ import annotations
 
@@ -23,6 +22,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.evidence_policy import claim_has_required_support
 from scripts.magazine_policy import infer_new_destination
+from scripts.normalize_categories import target_category
 
 DOCUMENTARY_CONTEXTS = {"event", "place", "person", "object", "archive"}
 ALLOWED_AI_PEOPLE_STYLES = {"pencil_hatching", "pencil_sketch", "line_art", "silhouette", "ink_drawing"}
@@ -62,9 +62,7 @@ def valid_documentary_image(image: dict) -> bool:
 def valid_pending_illustration(image: dict) -> bool:
     if image.get("pending_image") is not True:
         return False
-    ai_generated = image.get("ai_generated") is True
-    static_fallback = image.get("generator") == "static_pencil_fallback"
-    if not ai_generated and not static_fallback:
+    if image.get("ai_generated") is not True:
         return False
     if image.get("image_type") != "illustration" or image.get("context_type") != "illustration":
         return False
@@ -118,6 +116,23 @@ def normalize_coverage(ledger: dict) -> None:
     coverage["status"] = "pass" if len(groups) >= 1 else "limited"
     coverage["limitations"] = None if len(groups) >= 1 else "Ingen reel dokumentationskilde efter import"
     ledger["coverage_sweep"] = coverage
+
+
+def normalize_incoming_category(article: dict, ledger: dict, approval: dict) -> None:
+    old = str(article.get("category") or "").strip()
+    new = target_category(article)
+    if not new or new == old:
+        return
+    article["category"] = new
+    assignment = ledger.get("assignment")
+    if isinstance(assignment, dict) and str(assignment.get("category") or "").strip() == old:
+        assignment["category"] = new
+    approval["category_normalization"] = {
+        "mode": "deterministic-taxonomy-boundary",
+        "from": old,
+        "to": new,
+        "changed_fields": ["article.category", "ledger.assignment.category"],
+    }
 
 
 def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
@@ -231,6 +246,7 @@ def main() -> int:
         return 0
 
     article, ledger, approval, media = validate(payload)
+    normalize_incoming_category(article, ledger, approval)
     slug = article["slug"]
     article_path = ARTICLES / f"{slug}.json"
     if article_path.exists():

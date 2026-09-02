@@ -18,12 +18,6 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-# Temporary feedback burst requested 2026-09-02. It expires automatically after
-# three hours; normal cheap dispatch resumes without another code change.
-BURST_UNTIL = datetime(2026, 9, 2, 12, 32, tzinfo=timezone.utc)
-BURST_MAX_CYCLES = 3
-
-
 def parse_time(value: str | None):
     if not value:
         return None
@@ -76,14 +70,6 @@ def recommended_cycles(scan: dict, history: list[dict], maximum: int = 3) -> tup
             related = sum(1 for signal in eligible if classify_candidate(signal, lead)["related"])
     except Exception:
         related = 0
-
-    burst_active = datetime.now(timezone.utc) < BURST_UNTIL
-    if burst_active:
-        count = min(BURST_MAX_CYCLES, len(eligible))
-        reason = f"burst mode until {BURST_UNTIL.isoformat()}: {len(eligible)} fresh unhandled candidates"
-        if related:
-            reason += f"; {related} related to active lead"
-        return count, reason
 
     count = min(maximum, len(eligible))
     if related and count == 0:

@@ -10,7 +10,7 @@ import html,json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];ARTICLES=ROOT/'content'/'articles';DOCS=ROOT/'docs'
 FEATURE_CATEGORIES={'Feature','Features','Videnskab','Sundhed','Parforhold','Kultur','Forbruger','Guide','Liv','Teknologi','Viden'}
-NEWS_CATEGORIES={'Nyhed','Nyheder','Politik','Økonomi','Udland','Krimi','Sport','Danmark','Internationalt','Erhverv'}
+NEWS_CATEGORIES={'Nyhed','Nyheder','Indland','Økonomi','Udland','Krimi','Sport','Danmark','Internationalt','Erhverv'}
 MAGAZINE_DESTINATIONS={'tech_magazine','people_magazine'}
 def esc(v):return html.escape(str(v or ''),quote=True)
 def published():

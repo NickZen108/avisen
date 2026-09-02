@@ -35,6 +35,8 @@ def main() -> int:
 
     dispatch = load_module("dispatch", ROOT / "scripts" / "editorial_dispatch_gate.py")
     dispatch.self_test()
+    categories = load_module("categories", ROOT / "scripts" / "normalize_categories.py")
+    categories.self_test()
     prefetch = load_module("prefetch", ROOT / "scripts" / "github_source_prefetch.py")
     prefetch.self_test()
     pending_refresh = load_module("pending_refresh", ROOT / "scripts" / "refresh_pending_images.py")
@@ -117,14 +119,13 @@ def main() -> int:
     assert not sync.valid_pending_illustration({**pending, "image_type": "photo"})
     assert not sync.valid_pending_illustration({**pending, "context_type": "event"})
     assert not sync.valid_pending_illustration({**pending, "photorealistic": True})
-    static_pending = {
+    non_ai_pending = {
         **pending,
         "ai_generated": False,
-        "generator": "static_pencil_fallback",
-        "license": "Morgentidende – statisk illustration",
+        "generator": "non_ai_placeholder",
+        "license": "Morgentidende – placeholder",
     }
-    assert sync.valid_pending_illustration(static_pending)
-    assert not sync.valid_pending_illustration({**static_pending, "generator": "unknown"})
+    assert not sync.valid_pending_illustration(non_ai_pending)
 
     js = (ROOT / "cloudflare" / "newsdesk" / "src" / "editorial.js").read_text(encoding="utf-8")
     required = [
@@ -159,19 +160,17 @@ def main() -> int:
         'image/jpeg',
         'async function generateTemporarySketch(env, assignment, article)',
         'function pendingSketchHero(imageKey, article, sketch)',
-        'function staticPencilFallbackBase64()',
-        'static_pencil_fallback',
         'structured_fallback_calls',
         'pending_image: true',
         'people_style: "pencil_hatching"',
         'NO photorealism',
         'temporary_sketch_allowed_after_scout: true',
-        'static_sketch_fallback: true',
+        'static_sketch_fallback: false',
         'late_hold_for_no_photo: false',
         'function namedAccusedCrimeClaim(assignment, claim)',
         'function numericMaterialClaim(claim)',
         'media_strategy',
-        'context_type: "archive"',
+        'const contextType = isMap ? "map" : isSatellite ? "satellite" : "archive"',
         'Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.',
     ]
     missing = [item for item in required if item not in js]
@@ -188,6 +187,7 @@ def main() -> int:
     assert 'context_type: "illustration"' in js
     assert 'caption: "Illustration"' in js
     assert 'return { status: "hold", stage: "media"' not in js, "No-photo must not late-hold a verified article"
+    assert 'staticPencilFallbackBase64' not in js, "Static image placeholders must not exist in the runtime"
 
     index_js = (ROOT / "cloudflare" / "newsdesk" / "src" / "index.js").read_text(encoding="utf-8")
     for item in (
