@@ -1,0 +1,80 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-02-who-chief-warns-ebola-response-must-ramp-up-to-stem-drc-outbreak",
+  "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe",
+  "category": "Sundhed",
+  "weight": "C",
+  "editorial_destination": "people_magazine",
+  "story_location": {
+    "country": "unknown",
+    "country_code": "",
+    "hero_queries_english": [
+      "Ebola",
+      "WHO",
+      "DRC"
+    ],
+    "hero_queries_local": [],
+    "hero_queries_transliterated": [],
+    "place_names_english": [
+      "Democratic Republic of Congo"
+    ],
+    "place_names_local": [],
+    "primary_language": "unknown",
+    "primary_language_code": "",
+    "transliterations": []
+  },
+  "title": "WHO-chefen advarer om, at Ebola-udbruddet skal intensiveres for at stoppe udbruddet.",
+  "standfirst": "WHO-chefen advarer om, at Ebola-udbruddet skal intensiveres for at stoppe udbruddet.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe.json",
+  "claim_ids": [
+    "F01",
+    "F02"
+  ],
+  "seo": {
+    "title": "WHO-chefen advarer om, at Ebola-udbruddet skal intensiveres for at stoppe udbruddet.",
+    "description": "WHO-chefen advarer om, at Ebola-udbruddet i DRC skal intensiveres for at stoppe udbruddet. Antallet af døde har overskredet 3.000.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe.jpg",
+    "alt": "Tedros Adhanom , Director-General of the World Health Organization , met Shinzō Abe , Prime Minister , with Yasutoshi Nishimura , Deputy Chief Cabinet Secretary , in Tōkyō Metropolis on December 14, 2017.",
+    "credit": "内閣官房内閣広報室",
+    "license": "CC BY 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Tedros_Adhanom_Shinzo_Abe_and_Yasutoshi_Nishimura_cropped_Tedros_Adhanom_Shinzo_Abe_and_Yasutoshi_Nishimura_20171214_2.jpg",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Ebola-udbruddet i DRC fortsætter med at spille en alvorlig rolle i verdens sundhed. WHO-chefen Tedros Adhanom Ghebreyesus har advaret om, at udbruddet skal intensiveres for at stoppe det. Det er en advarsel, der ikke kan ignoreres, da antallet af døde i DRC på grund af Ebola-udbruddet har overskredet 3.000.",
+      "type": "h2"
+    },
+    {
+      "text": "WHO-chefen har advaret om, at udbruddet skal intensiveres for at stoppe det. Det er en advarsel, der ikke kan ignoreres, da antallet af døde i DRC på grund af Ebola-udbruddet har overskredet 3.000. Det er en alvorlig situation, der kræver en hurtig og effektiv respons.",
+      "type": "p"
+    },
+    {
+      "text": "Det er vigtigt at huske, at Ebola-udbruddet er en global sundhedsrisiko, der kan spredes til andre lande. Derfor er det nødvendigt at intensivere udbruddet for at stoppe det og forhindre, at det spredes til andre lande. WHO-chefen har advaret om, at udbruddet skal intensiveres for at stoppe det, og det er en advarsel, der ikke kan ignoreres.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}
