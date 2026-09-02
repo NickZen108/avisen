@@ -2,9 +2,9 @@
   "date": "2026-09-01",
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny A-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
+  "ticker_text": "Redningsarbejdet fortsætter efter flodbølgen i Nepal og Tibet",
   "ticker": {
-    "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000",
-    "text": "Redningsarbejdet fortsætter efter flodbølgen i Nepal og Tibet"
+    "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
   },
   "lead": {
     "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"

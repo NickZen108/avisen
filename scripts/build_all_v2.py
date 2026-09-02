@@ -64,7 +64,7 @@ def lead_visual(l):
 def front():
  s=load(ROOT/"content"/"frontpage.json");ix=idx();t=(ROOT/"templates"/"index.html").read_text(encoding="utf-8")
  d=legacy.datetime.now(legacy.COPENHAGEN).date();dl=f"{legacy.WEEKDAYS[d.weekday()]} {d.day}. {legacy.MONTHS[d.month-1]} {d.year}"
- tk=resolve(s["ticker"],ix);ticker_text=str(s.get("ticker",{}).get("text") or tk.get("title") or "").strip();ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(ticker_text)}</a></p>'
+ tk=resolve(s["ticker"],ix);ticker_text=str(s.get("ticker_text") or tk.get("title") or "").strip();ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(ticker_text)}</a></p>'
  l=resolve(s["lead"],ix);visual=lead_visual(l);lead_h=headline_link(l,legacy.front_item_url(l["slug"]),tag="h1",allow_split=True)
  lead_article='<section class="lead">'+visual+f'<p class="section-label">{esc(l["category"])}</p>{lead_h}<p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
  followups=lead_followups(l["slug"],ix)
