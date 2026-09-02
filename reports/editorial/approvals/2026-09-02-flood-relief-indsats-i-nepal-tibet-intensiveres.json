@@ -3,14 +3,8 @@
   "status": "pass",
   "story_id": "2026-09-02-nepal-tibet-flood-relief-and-recovery-intensifies",
   "article_slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres",
-  "checked_at": "2026-09-02T11:38:57Z",
-  "gates": {
-    "language": "pass",
-    "ethics": "pass",
-    "image": "pass",
-    "seo": "pass",
-    "final_editor": "pass"
-  },
+  "checked_at": "2026-09-02T10:46:16.585Z",
+  "gates": {"language":"pass","ethics":"pass","image":"pass","seo":"pass","final_editor":"pass"},
   "final_editor_mode": "ai",
   "editorial_snapshot": {
     "pipeline_version": 2,
@@ -24,76 +18,22 @@
     "byline": "Morgentidende Redaktion",
     "manual_review": false,
     "ledger": "sources/2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres.json",
-    "claim_ids": [
-      "F01",
-      "F02"
-    ],
-    "seo": {
-      "title": "Flood-relief indsats i Nepal-Tibet intensiveres",
-      "description": "Flood-relief indsats i Nepal-Tibet intensiveres efter katastrofal flodbølge",
-      "canonical": null
-    },
-    "image": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Landsat_Nepal_flood_2026-08-26.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "alt": "Satellite imagery of the aftermath of the 2026 Nepal floods",
-      "credit": "Landsat 9 via USGS, processed by User:Chorchapu",
-      "license": "Public domain",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Landsat_Nepal_flood_2026-08-26.png",
-      "image_type": "graphic",
-      "context_type": "satellite",
-      "caption": "Satellitbillede relateret til hændelsen eller det berørte område.",
-      "pending_image": false,
-      "ai_generated": false,
-      "placement": "lead"
-    },
+    "claim_ids": ["F01", "F02"],
+    "seo": {"title":"Flood-relief indsats i Nepal-Tibet intensiveres","description":"Flood-relief indsats i Nepal-Tibet intensiveres efter katastrofal flodbølge","canonical":null},
+    "image": {"src":"https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres.jpg","alt":"Illustration til: Flood-relief indsats i Nepal-Tibet intensiveres","credit":"Illustration: Morgentidende","license":"Morgentidende – statisk illustration","source_url":"https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres.jpg","image_type":"illustration","context_type":"illustration","caption":"Illustration","pending_image":true,"ai_generated":false,"generator":"static_pencil_fallback","contains_people":false,"people_style":"pencil_hatching","photorealistic":false,"placement":"lead"},
     "body": [
-      {
-        "text": "Flood-relief indsats i Nepal-Tibet intensiveres",
-        "type": "h2"
-      },
-      {
-        "text": "Mindst 1.114 mennesker er døde i Nepal, efter at en katastrofal flodbølge har ramt Nepal-Tibet-grænsen.",
-        "type": "p"
-      },
-      {
-        "text": "Det skriver BBC World, der også fortæller, at tusinder af mennesker stadig er savnet efter flodbølgen.",
-        "type": "p"
-      },
-      {
-        "text": "Nepals katastrofeagentur har rapporteret om de døde, og BBC World har fortalt om de savnede.",
-        "type": "p"
-      },
-      {
-        "text": "Familier fra Nepal har postet billeder af deres savnede på væggen i Kathmandus hospital.",
-        "type": "p"
-      },
-      {
-        "text": "Det skriver Euronews.",
-        "type": "p"
-      }
+      {"text":"Flood-relief indsats i Nepal-Tibet intensiveres","type":"h2"},
+      {"text":"Mindst 1.114 mennesker er døde i Nepal, efter at en katastrofal flodbølge har ramt Nepal-Tibet-grænsen.","type":"p"},
+      {"text":"Det skriver BBC World, der også fortæller, at tusinder af mennesker stadig er savnet efter flodbølgen.","type":"p"},
+      {"text":"Nepals katastrofeagentur har rapporteret om de døde, og BBC World har fortalt om de savnede.","type":"p"},
+      {"text":"Familier fra Nepal har postet billeder af deres savnede på væggen i Kathmandus hospital.","type":"p"},
+      {"text":"Det skriver Euronews.","type":"p"}
     ],
-    "source_ids_to_display": [
-      "S1",
-      "S2"
-    ],
+    "source_ids_to_display": ["S1", "S2"],
     "related_news_slug": null,
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
   },
-  "editorial_destination": "main",
-  "media_reapproval": {
-    "mode": "targeted-image-only",
-    "checked_at": "2026-09-02T11:38:57Z",
-    "previous_snapshot_sha256": "62788456d0f64d2f62ce91fb8399f5144f7262cc31c721f9aac166bf614d96bd",
-    "new_snapshot_sha256": "910b0561fba202bb4e406e618509a04a75ae69e883b44c7a753140c605986e29",
-    "changed_fields": [
-      "image"
-    ],
-    "checks": [
-      "only image differs from previous final approval",
-      "replacement image provenance metadata complete",
-      "article text, claims, SEO, category and byline unchanged"
-    ]
-  }
+  "editorial_destination": "main"
 }
