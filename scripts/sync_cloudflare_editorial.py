@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# burst-trigger: 2026-09-02T13:31Z — quarter-hour editorial burst requested for the next two hours
 """Import one approved Cloudflare editorial package into GitHub source of truth."""
 from __future__ import annotations
 
