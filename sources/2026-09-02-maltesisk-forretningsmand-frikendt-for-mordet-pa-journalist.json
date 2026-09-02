@@ -1,0 +1,185 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-maltese-tycoon-acquitted-of-orchestrating-murder-of-renowned-journalist",
+  "article_slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist",
+  "assignment": {
+    "category": "Krimi",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "MT",
+      "country_code": "MT",
+      "hero_queries_english": [
+        "Daphne Caruana Galizia murder",
+        "Malta journalist killed"
+      ],
+      "hero_queries_local": [
+        "qtila Daphne Caruana Galizia",
+        "Ġurnalist Malti maqtul"
+      ],
+      "hero_queries_transliterated": [],
+      "place_names_english": [
+        "Malta"
+      ],
+      "place_names_local": [
+        "Malta"
+      ],
+      "primary_language": "mt",
+      "primary_language_code": "mt",
+      "transliterations": []
+    },
+    "core_question": "Daphne Caruana Galizia",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "BBC Europe",
+      "url": "https://www.bbc.co.uk/news/articles/c5ye295pxgxo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-02T19:05:31.000Z",
+      "accessed_at": "2026-09-02T20:21:14.448Z",
+      "type": "news",
+      "source_group": "host-bbc-co-uk",
+      "publisher_root": "bbc-co-uk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Maltese tycoon acquitted of orchestrating murder of renowned journalist",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/9/2/malta-businessman-acquitted-of-plotting-journalist-caruana-galizia-murder?traffic_source=rss",
+      "published_at": "2026-09-02T19:06:58.000Z",
+      "accessed_at": "2026-09-02T20:21:14.448Z",
+      "type": "news",
+      "source_group": "host-aljazeera-com",
+      "publisher_root": "aljazeera-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": "https://www.aljazeera.com/news/2026/9/2/malta-businessman-acquitted-of-plotting-journalist-caruana-galizia-murder",
+      "primary_record": null,
+      "authoritative_for": "Malta businessman acquitted of plotting journalist Caruana Galizia murder",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2"
+    ],
+    "independent_source_groups": [
+      "host-bbc-co-uk",
+      "host-aljazeera-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Yorgen Fenech er blevet frikendt for at have bestilt mordet på Daphne Caruana Galizia.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T20:21:14.448Z",
+      "notes": "Frikendelsen skete efter 8 timer af juryafstemning med en stemme imod."
+    },
+    {
+      "id": "F02",
+      "claim": "Yorgen Fenech er blevet frikendt for at være medskyldig i mordet på Daphne Caruana Galizia.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T20:21:14.448Z",
+      "notes": "Frikendelsen skete efter 8 timer af juryafstemning med en stemme imod."
+    },
+    {
+      "id": "F03",
+      "claim": "Yorgen Fenech kunne have fået livsvarigt fængsel hvis han var blevet fundet skyldig.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T20:21:14.448Z",
+      "notes": "Fenech blev frikendt af en jury med 8 stemmer imod 1."
+    },
+    {
+      "id": "F04",
+      "claim": "Daphne Caruana Galizia var en fremtrædende journalist der havde afsløret korruption og organiseret kriminalitet i Malta og udlandet.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T20:21:14.448Z",
+      "notes": "Hun havde også afsløret penge-lavning og andre former for kriminalitet."
+    },
+    {
+      "id": "F05",
+      "claim": "Daphne Caruana Galizias mord var et chok for Europa og satte gang i en politisk storm i Malta.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T20:21:14.448Z",
+      "notes": "Mordet var også et chok for Daphne Caruana Galizias familie."
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T20:21:14.448Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T20:21:14.448Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "main"
+}
