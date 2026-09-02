@@ -1,0 +1,152 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-ruslands-gegenreaktion-auf-deutschlands-antwort",
+  "article_slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn",
+  "assignment": {
+    "category": "Politik",
+    "weight": "B",
+    "core_question": "Rusland",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Politico Europe",
+      "url": "https://www.politico.eu/podcast/berlin-playbook-podcast/russlands-gegenreaktion-auf-deutschlands-antwort/?utm_source=RSS_Feed&#038;utm_medium=RSS&#038;utm_campaign=RSS_Syndication",
+      "published_at": "2026-09-02T03:19:53.000Z",
+      "accessed_at": "2026-09-02T05:42:53.398Z",
+      "type": "news",
+      "source_group": "host-politico-eu",
+      "publisher_root": "politico-eu",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Russlands Gegenreaktion auf Deutschlands Antwort",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-politico-eu"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Bundesregierung macht Moskau für den Drohnenanschlag auf den Flughafen Leipzig verantwortlich",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Für den Drohnenanschlag auf den Flughafen Leipzig macht die Bundesregierung Moskau nun auch ganz offiziell verantwortlich.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-02T05:42:53.398Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F02",
+      "claim": "Die Bundesregierung hat verkündete Maßnahmen gegen Russland",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Rixa Fürsen analysiert gemeinsam mit Hans von der Burchard die verkündeten Maßnahmen",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-02T05:42:53.398Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F03",
+      "claim": "Rixa Fürsen und Hans von der Burchard analysieren die verkündeten Maßnahmen",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Rixa Fürsen analysiert gemeinsam mit Hans von der Burchard die verkündeten Maßnahmen",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-02T05:42:53.398Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F04",
+      "claim": "Der Drohnenanschlag auf den Flughafen Leipzig ist ein eskalierender Konflikt zwischen Deutschland und Russland",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Für den Drohnenanschlag auf den Flughafen Leipzig macht die Bundesregierung Moskau nun auch ganz offiziell verantwortlich.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-02T05:42:53.398Z",
+      "notes": "Politico Europe"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T05:42:53.398Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T05:42:53.398Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}
