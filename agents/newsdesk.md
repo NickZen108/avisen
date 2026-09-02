@@ -22,7 +22,7 @@ Dette må ikke blive endnu et research/fact-check-trin.
 - Kategori/vægt genvurderes senere kun af relevante placerings-/forsidefunktioner; rechecket skal ikke gøre det igen.
 
 ## Lead-opfølgning
-Først når en historie faktisk bliver lead, aktiveres `agents/lead-followups.md` som separat flow.
+Først når en historie faktisk bliver lead, oprettes en aktiv follow-up-state (`reports/editorial/lead-followup.json`). Discovery, ranking og import genbruges. Relaterede kandidater boostes deterministisk. Små opdateringer lægges i lead-artiklen; kun en selvstændig udvikling bliver en ny artikel med `related_news_slug`.
 
 ## Gate
 Fact checker PASS + eventuelt A-recheck er nok til at sende historien til Journalist.

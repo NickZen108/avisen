@@ -27,6 +27,7 @@ jobs:
           python scripts/claim_passage_contract_test.py
           python scripts/evidence_policy_selftest.py
           python scripts/release_ready.py --self-test
+          python scripts/lead_followup.py --self-test
           node scripts/test_structured_json.mjs
       - name: Normalize prematurely-ready articles
         run: python scripts/release_ready.py --normalize-only
