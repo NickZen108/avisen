@@ -49,20 +49,8 @@ def topic_tokens(a):
  return {w for w in words if len(w)>=4 and w not in STOPWORDS}
 
 def contextual_candidates(a,all_items):
- """Same story always wins. Otherwise require real topic/entity overlap; never fill Læs også with a random category story."""
- direct=related_for(a,all_items)
- if direct:return direct
- base=topic_tokens(a); scored=[]
- if not base:return []
- for x in all_items:
-  if x.get('slug')==a.get('slug'):continue
-  overlap=base & topic_tokens(x)
-  if not overlap:continue
-  # A named/entity-like shared token is enough; two ordinary topical tokens are stronger.
-  score=len(overlap)*10 + (2 if x.get('category')==a.get('category') else 0)
-  scored.append((score,x.get('published_at') or '',x))
- scored.sort(key=lambda row:(row[0],row[1]),reverse=True)
- return [x for _,__,x in scored]
+ """Læs også is reserved for an explicit, direct story relation."""
+ return related_for(a,all_items)
 
 def inject_context(a,all_items):
  p=DOCS/'artikler'/f"{a['slug']}.html"
