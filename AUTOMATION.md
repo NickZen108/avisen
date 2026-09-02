@@ -1,22 +1,22 @@
-# Gratis automationsarkitektur — eksperimentfase
+# Morgentidende automation
 
-## Princip
+## Grundprincip
 
-Redaktionel intelligens = få tydeligt ejede AI-beslutninger. GitHub Actions = deterministisk maskinrum. En rolle må ikke være et AI-kald bare fordi en klassisk avis ville have en medarbejder med den titel.
+GitHub er sandheden for redaktionelt indhold og publiceringsstatus. Cloudflare Newsdesk producerer og vurderer historier, mens deterministiske gates håndhæver de fælles minimumskrav uden at opfinde strengere redaktionelle kvoter.
 
-## Pipeline v2
+## Standardflow
 
-1. Scan/queue finder kandidater billigt.
-2. Nyhedsdesk vælger research-frø.
-3. Research bygger kompakt evidenskort.
-4. Fact checker verificerer/falsificerer claims.
-5. B-D går normalt deterministisk videre; A/breaking får ultrakort desk-recheck.
-6. Journalist skriver titel, manchet og artikel fra verified claims.
-7. Etik kører kun ved konkret risikoflag. Medieredaktør kører kun ved eksternt dokumentarisk foto/video; ellers bruges standardillustration.
-8. Slutredaktør laver ét kompakt slutcheck og approval snapshot.
-9. Forsideredaktør placerer publicerbare historier.
-10. Teknisk QA, metadata/SEO, build og publiceringskontrol er deterministiske.
-11. Udgiver gør artiklen `ready` + `release_requested: true`; faktisk `published_at` sættes ved release.
+1. Newsdesk opdager kandidathistorier.
+2. Desk vælger og prioriterer historier efter nyhedsværdi, aktualitet og relevans.
+3. Research henter relevante kilder og udleder kandidat-claims.
+4. Fact checker forsøger aktivt at falsificere kandidat-claims og markerer kun dokumenterede claims som verified.
+5. Desk recheck vurderer, om den verificerede kerne stadig er en publicerbar historie.
+6. Journalist skriver udelukkende på baggrund af verificerede claims.
+7. Sprog, etik/fairness, billede, SEO og slutredaktør gennemgår artiklen.
+8. Deterministiske quality gates kontrollerer kontrakterne.
+9. Godkendt indhold lander i GitHub og kan publiceres.
+10. Cloudflare bygger og serverer den aktuelle version.
+11. Post-publication checks kontrollerer live-output og materielle ændringer.
 12. Efter merge bygger generatoren output og post-deploy guard tester liveflader.
 13. Live proofreader er kun nødvendig ved A/lead, konkret anomaly eller stikprøve. Update-monitor følger materielle ændringer.
 
@@ -26,4 +26,4 @@ Llama 3.1 8B er standard til desk, research, fact-check, journalistik og slutkon
 
 ## Ingen skjulte kvoter
 
-Deterministiske scripts må ikke genindføre strengere redaktionelle krav end husreglen. Der er ingen universel hard gate på tre kilder, tre source-groups eller to claims. **Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum, når en maskinverificeret støttepassage dokumenterer claimet. Navngiven sigtet/tiltalt/mistænkt kræver primærkilde eller original bureaukilde. Højrisiko kan kræve etik/forelæggelse — ikke en skjult to-kilde-kvote. Discovery-only er aldrig evidens.
+Deterministiske scripts må ikke genindføre strengere redaktionelle krav end husreglen. Der er ingen universel hard gate på tre kilder, tre source-groups eller to claims. **Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum. Navngiven sigtet/tiltalt/mistænkt kræver primærkilde eller original bureaukilde. Højrisiko kan kræve etik/forelæggelse — ikke en skjult to-kilde-kvote. Discovery-only er aldrig evidens.
