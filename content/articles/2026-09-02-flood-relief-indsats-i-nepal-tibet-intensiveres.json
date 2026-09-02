@@ -2,7 +2,7 @@
   "pipeline_version": 2,
   "status": "published",
   "release_requested": false,
-  "story_id": "2026-09-02-nepal-tibet-flood-relief-and-recovery-intensifies",
+  "story_id": "2026-09-01-nepal-tibet-flodboelgen",
   "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres",
   "category": "Udland",
   "weight": "B",
@@ -26,7 +26,7 @@
     {"text":"Det skriver Euronews.","type":"p"}
   ],
   "source_ids_to_display": ["S1", "S2"],
-  "related_news_slug": null,
+  "related_news_slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000",
   "related": [],
   "correction_note": null,
   "scheduled_for": null,
