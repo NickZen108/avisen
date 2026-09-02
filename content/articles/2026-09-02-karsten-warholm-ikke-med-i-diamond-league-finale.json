@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-karsten-warholm-ikke-deltager-i-diamond-league-finale",
   "slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale",
   "category": "Politik",
@@ -9,7 +9,7 @@
   "title": "Karsten Warholm ikke med i Diamond League-finale",
   "standfirst": "Karsten Warholm deltager ikke i Diamond League-finale denne sæson.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T05:32:53Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale.json",
@@ -65,5 +65,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T05:32:53Z"
+  }
 }

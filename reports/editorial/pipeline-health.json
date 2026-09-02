@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T05:29:25Z",
+  "generated_at": "2026-09-02T05:32:53Z",
   "counts": {
-    "published": 9,
+    "published": 10,
     "checking": 2,
     "draft": 3
   },
@@ -118,6 +118,14 @@
     {
       "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed",
       "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale",
+      "title": "Karsten Warholm ikke med i Diamond League-finale",
       "status": "published",
       "release_requested": false,
       "resume_from": null,
