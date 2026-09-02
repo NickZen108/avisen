@@ -2,8 +2,8 @@
 """Editorial layout enhancements applied after the canonical build.
 
 Every article gets two distinct eight-story hero grids. Recommendations are
-deterministic, contextual and diverse. The legacy Perspektiv & liv shelf has
-been retired in favour of the dedicated front-page magazine blocks.
+deterministic, contextual and diverse. Stories selected for the dedicated
+front-page magazine blocks are excluded from ordinary recommendation shelves.
 """
 from __future__ import annotations
 import html,json,re
@@ -11,6 +11,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];ARTICLES=ROOT/'content'/'articles';DOCS=ROOT/'docs'
 FEATURE_CATEGORIES={'Feature','Features','Videnskab','Sundhed','Parforhold','Kultur','Forbruger','Guide','Liv','Teknologi','Viden'}
 NEWS_CATEGORIES={'Nyhed','Nyheder','Politik','Økonomi','Udland','Krimi','Sport','Danmark','Internationalt','Erhverv'}
+TECH_TERMS={"videnskab","forskning","naturvidenskab","teknologi","kunstig intelligens"," ai ","rumfart","rum","militær","militaer","forsvar","drone","robot","energi","fysik","biologi","astronomi","ingeniør","ingenioer","computer","chip","halvleder"}
+PEOPLE_TERMS={"psykologi","psykisk","sundhed","testosteron","hormon","overgangsalder","menopause","parforhold","ægteskab","aegteskab","sex","single","dating","date","opdragelse","forældre","foraeldre","bedsteforældre","bedsteforaeldre","familie","relation","evolutionær psykologi","evolutionaer psykologi","tilknytning","kærlighed","kaerlighed"}
 def esc(v):return html.escape(str(v or ''),quote=True)
 def published():
  items=[]
@@ -20,6 +22,28 @@ def published():
   except Exception:continue
   if a.get('status')=='published' and a.get('slug') and a.get('title'):items.append(a)
  items.sort(key=lambda a:a.get('published_at') or '',reverse=True);return items
+def article_text(a):
+ tags=a.get('tags') or []
+ if isinstance(tags,list):tags=' '.join(str(x) for x in tags)
+ return f" {a.get('category','')} {a.get('title','')} {a.get('standfirst','')} {tags} ".lower()
+def magazine_score(a,terms,preferred):
+ text=article_text(a);s=4 if str(a.get('category') or '') in preferred else 0
+ for term in terms:
+  if term in text:s+=2
+ if str(a.get('format') or '').lower() in {'feature','guide','baggrund'}:s+=1
+ return s
+def magazine_exclusive_slugs(items):
+ used=set()
+ def pick(terms,categories):
+  ranked=[]
+  for a in items:
+   if a.get('slug') in used:continue
+   s=magazine_score(a,terms,categories)
+   if s>0:ranked.append((s,str(a.get('published_at') or ''),a))
+  ranked.sort(key=lambda row:(row[0],row[1]),reverse=True)
+  chosen=[row[2] for row in ranked[:4]];used.update(str(a.get('slug')) for a in chosen)
+ pick(TECH_TERMS,{"Videnskab & teknologi"});pick(PEOPLE_TERMS,{"Sundhed","Liv"})
+ return used
 def is_feature(a):return str(a.get('category') or '') in FEATURE_CATEGORIES
 def is_news(a):
  c=str(a.get('category') or '');return c in NEWS_CATEGORIES or (c not in FEATURE_CATEGORIES and c not in {'Kommentar','Kronik','Debat'})
@@ -27,12 +51,10 @@ def teaser(a,max_len=150):
  t=str(a.get('standfirst') or a.get('teaser') or '').strip()
  if len(t)<=max_len:return t
  return t[:max_len].rsplit(' ',1)[0].rstrip(' ,;:-')+'…'
-def news_choices(items,current_slug,*,offset=0,exclude=None):
- excluded=set(exclude or set())|{current_slug};current=next((x for x in items if x.get('slug')==current_slug),{});story=current.get('story_id');category=current.get('category')
+def news_choices(items,current_slug,*,offset=0,exclude=None,magazine_exclusive=None):
+ excluded=set(exclude or set())|{current_slug}|set(magazine_exclusive or set());current=next((x for x in items if x.get('slug')==current_slug),{});story=current.get('story_id');category=current.get('category')
  pool=[a for a in items if a.get('slug') not in excluded and is_news(a)]
- if offset:
-  # Second shelf deliberately broadens away from the first shelf.
-  pool=pool[offset:]+pool[:offset]
+ if offset:pool=pool[offset:]+pool[:offset]
  scored=[]
  for rank,a in enumerate(pool):
   score=max(0,1000-rank)
@@ -44,7 +66,6 @@ def news_choices(items,current_slug,*,offset=0,exclude=None):
  choices=[];cat_counts={}
  for _,a in scored:
   c=str(a.get('category') or '')
-  # Keep a shelf from turning into eight versions of one category unless it is the same developing story.
   if cat_counts.get(c,0)>=3 and not (story and a.get('story_id')==story):continue
   choices.append(a);cat_counts[c]=cat_counts.get(c,0)+1
   if len(choices)==8:break
@@ -52,8 +73,8 @@ def news_choices(items,current_slug,*,offset=0,exclude=None):
   used={a.get('slug') for a in choices}|excluded
   choices += [a for a in pool if a.get('slug') not in used][:8-len(choices)]
  return choices[:8]
-def more_news_html(items,current_slug,*,offset=0,heading='Flere nyheder',exclude=None):
- choices=news_choices(items,current_slug,offset=offset,exclude=exclude)
+def more_news_html(items,current_slug,*,offset=0,heading='Flere nyheder',exclude=None,magazine_exclusive=None):
+ choices=news_choices(items,current_slug,offset=offset,exclude=exclude,magazine_exclusive=magazine_exclusive)
  if not choices:return '',set()
  cards=[]
  for i,a in enumerate(choices):
@@ -61,9 +82,9 @@ def more_news_html(items,current_slug,*,offset=0,heading='Flere nyheder',exclude
   variant=' more-news-card--anchor' if i==0 else (' more-news-card--compact' if i in {3,7} else '')
   cards.append(f'<article class="more-news-card{variant}">{hero}<p class="section-label more-news__category">{esc(a.get("category") or "Nyhed")}</p><h2><a href="{esc(a["slug"])}.html">{esc(a["title"])}</a></h2><p>{esc(teaser(a,120))}</p></article>')
  return '<section class="wrap below"><h2 class="below-heading">'+esc(heading)+'</h2>'+''.join(cards)+'</section>',{str(a.get('slug')) for a in choices}
-def enhance_article(path,items):
+def enhance_article(path,items,magazine_exclusive):
  current_slug=path.stem;text=path.read_text(encoding='utf-8');text=re.sub(r'<section class="wrap below">.*?</section>','',text,flags=re.S);text=re.sub(r'<section class="feature-shelf".*?</section>','',text,flags=re.S)
- first,used=more_news_html(items,current_slug,heading='Flere nyheder');second,_=more_news_html(items,current_slug,offset=8,heading='Mere fra Morgentidende',exclude=used);block='\n'.join(x for x in (first,second) if x)
+ first,used=more_news_html(items,current_slug,heading='Flere nyheder',magazine_exclusive=magazine_exclusive);second,_=more_news_html(items,current_slug,offset=8,heading='Mere fra Morgentidende',exclude=used,magazine_exclusive=magazine_exclusive);block='\n'.join(x for x in (first,second) if x)
  if block:text=text.replace('<footer>',block+'\n<footer>',1)
  path.write_text(text,encoding='utf-8')
 def enhance_front(items):
@@ -72,8 +93,8 @@ def enhance_front(items):
  text=path.read_text(encoding='utf-8');text=re.sub(r'\n?<section class="feature-shelf"[\s\S]*?</section>\n?','\n',text)
  path.write_text(text,encoding='utf-8')
 def main():
- items=published()
+ items=published();exclusive=magazine_exclusive_slugs(items)
  for p in sorted((DOCS/'artikler').glob('*.html')):
-  if not p.name.startswith('_'):enhance_article(p,items)
- enhance_front(items);print(f'Design enhancements OK: {len(items)} published articles')
+  if not p.name.startswith('_'):enhance_article(p,items,exclusive)
+ enhance_front(items);print(f'Design enhancements OK: {len(items)} published articles; magazine_exclusive={len(exclusive)}')
 if __name__=='__main__':main()
