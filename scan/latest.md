@@ -1,4 +1,4 @@
-# Scan 2026-09-02T19:20:57.289Z (Cloudflare runtime)
+# Scan 2026-09-02T19:35:57.084Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -18,21 +18,21 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Al Jazeera
 - A year into Trump’s boat strike campaign, families search for answers
-- Aubameyang ‘humiliated’ as ex-Arsenal striker quits Gabon national team
 - Brazilian activist demands Tunisia release Sumud Flotilla organisers
-- China’s Xi urges new Middle East security framework during rare Egypt visit
 - Deadly bus crash in Egypt’s Sinai kills 22, injures 28
-- Dismissal of ex-US soldier Bergdahl’s conviction was invalid, court rules
 - EU ministers in Ireland tackle Israeli settlement trade and Ukraine defence
-- George Clooney: US government run by ‘least qualified people’
+- EU pursuing more Russia sanctions after failed airport attack: Kallas
 - Gunman in deadly Swiss rave attack ‘lone perpetrator’, police say
 - Israel kills or injures 7 children a day in Lebanon invasion, report says
-- Israeli PM Netanyahu in Gaza, ‘we are not withdrawing’
+- Malta businessman acquitted of plotting journalist Caruana Galizia murder
 - Over 500 students hospitalised after eating state-supplied meals in Indones
+- Saudi Arabia condemns deadly Iranian attack on tanker in Strait of Hormuz
+- Signing ceremony as US to control a fifth of Venezuela’s oil reserves
 - Uber lays off 3,300 employees in largest cuts since the pandemic
 - UK’s Burnham faces first parliament grilling, vows to ‘bring back hope’
 - US oil giant Chevron to expand Venezuela operations
-- WHO chief warns Ebola response must ramp up to stem DRC outbreak
+- US says it will use regional body to isolate Nicaragua
+- USS Abraham Lincoln reaches Thailand after 9 months at sea
 - Will the EU take action against Israel?
 - Zambia’s Hichilema begins second term amid disputed vote and arrests
 
@@ -189,7 +189,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - World Nomad Games bring ancient traditions to life in Kyrgyzstan
 
 ## France 24
-- 'Dangerous consequences': Iran warns US after alleged strike on wedding
 - Egypt welcomes Xi as Beijing expands influence in region
 - FRANCE 24 in Nepal: The unbearable wait for missing relatives
 - France's back-to-school challenges: Phones, payslips, pupils
@@ -203,6 +202,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Philippine couple married in hip-deep floodwaters
 - Russia blamed for explosive-laden drone found at German airport
 - Search continues for tunnel workers in Nepal floods
+- 🔴 Spanish report flags Moroccan police's 'total permissiveness' in Ceuta migrant rush
 - Spanish report flags Moroccan police's 'total permissiveness' in Ceuta migrant rush
 - US postal whistleblower warns thousands of midterm ballots could be lost
 - Videos and debris raise questions over alleged US strike on Iranian wedding
@@ -213,10 +213,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Guardian World
 - Almost half of world’s farmers poisoned by pesticides every year, experts find
+- Apple Maps renames Lake Ontario to ‘Lake America’ for US users after Trump order
 - Countries legally obliged to consider slavery reparations, says UN committee
 - Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case
 - Japan halves speed limit to 30km/h on all narrow city streets
-- MapQuest app reaches No 1 on US Apple list after defying Trump’s Lake Ontario order
 - Mark Carney tells US to ‘start being serious’ amid escalating trade war
 - Morocco not to blame for Ceuta border breach, says Spanish PM
 - New constitution in Guinea-Bissau will undermine democracy, opponents say
@@ -253,6 +253,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Flere norske studiesteder utsatt for dataangrep
 - Full forvirring etter Russland-vedtak: Norge stemte imot – russisk stjerne fnyser
 - Hollywood utelater Norges glemte krigshelt
+- Haaland om Viking-signering: – Aldri vært så nær å bli Viking-supporter som nå
 - Iranske myndigheter: 18 mennesker drept i amerikanske angrep
 - Kan bli kompensert etter alvorleg sak om drikkevatn: – Beløpet er latterleg
 - Kongeparets sarkofag er klar til kong Haralds gravferd
@@ -261,7 +262,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Marthes siste hilsen til kongen: – Takk for at du reddet lille meg
 - Norske myndigheter har tatt arrest i et russisk fartøy på Svalbard
 - Norske studiesteder rammet av dataangrep
-- Senterpartiet avlyser møte om borgfred
 - Senterpartiet avlyser møte om borgfred
 - Slik stenges Oslo når kong Harald gravlegges
 - To menn dømt til fengsel for frihetsberøvelse, vold og trusler
@@ -310,6 +310,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Berusad man viftade med kniv i Norrköping
 - Boom för förtidsröstningen – här är det fullt upp för Ann-Charlotte
 - Claes Nordmarks ord i hovrätten: ”Jag är oskyldig”
+- En person till sjukhus efter dykolycka i Lerkils hamn
 - Filmredaktören tipsar: Guldkorn på filmfestivalen i Venedig
 - Hot anmält – gapig väljare oroade röstmottagare i Jönköping
 - Här trängs poliser i Eskilstunas gamla polishus – så ska trångboddheten lösas
@@ -321,7 +322,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - SSAB säger nej till gifttester – kostar för mycket
 - Stort intresse när dråpmisstänkta häktades i Karlstad
 - Tyskland terrorutreder misstänkt elsabotage
-- Valbussen på plats i Bergs kommun
 - Ytterligare en misstänkt i utredning om förberedelse till mord
 - Äldre luras vid dörren – ministern: ”Ska inte känna rädsla när telefonen ringer”
 - Ökad ersättning till fjällräddningen föreslås – ”Något vi kämpat för i trettio år”
@@ -361,31 +361,14 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - From Iryna Zarutska To Lindsay Clancy, The Left Only Likes Women If They&#8217;re Politically Useful
 - If You Have Mixed Feelings About Lindsay Clancy&#8217;s Guilt, You&#8217;re Too Stupid And Broken To Be On TikTok
 - Judge Rules Tyler Robinson Will Face Trial For Assassination Of Charlie Kirk
+- Leftists Tearing Down Statues Are Showing You What They Want To Do To America
 - Leftists Tried To Stop Clarence Thomas From Going Further. They Failed Miserably
-- NY Mag Goes From &#8216;Noncitizen Voting Is Imaginary&#8217; To &#8216;Here&#8217;s Why It&#8217;s Good&#8217;
 - Report: DHS Launches Voter Fraud &#8216;Surge&#8217; Probes In Nine States
 - Tech Firms Brought Data Center Hate Upon Themselves. Here&#8217;s What They Should Do Instead
 - The Story About Lindsay Clancy Being A Victim Comes From Deeper Roots Than 1960s Feminism
 
 ## The Local Denmark
-- Danish expression of the day: ellers tak
-- Danish word of the day: Ajourføre
-- Denmark reopens embassy in Syria after 14-year closure
-- Denmark set to host annual 'citizenship day' for thousands of new Danes
-- EXPLAINED: Can you work on a Danish study permit?
-- Five common rental scams in Denmark and how to avoid them
-- How do you feel about Danish citizenships potentially being frozen for another year?
-- How the make up of the Danish population could change by 2100
-- How to find a new hobby in Copenhagen this autumn
-- One in seven patients referred to hospital in Denmark is turned away
-- OPINION: The Danish flag-obsession is more 'hyggelig' than threatening
-- Ryanair to cut winter flights in Europe to save on fuel costs
-- The complete list of all the Danish pastries you need to try
-- Today in Denmark: A roundup of the latest news on Tuesday
-- Today in Denmark: A roundup of the latest news on Wednesday
-- 'Warning to Europe': How Iceland's 'No' vote is a blow to the EU
-- What changes in Denmark in September 2026?
-- Why were there so many tractors in central Copenhagen on Tuesday?
+- (feed ikke nået; status=403)
 
 ## Tichys Einblick
 - Der Wähler wählt rechts – Merz regiert links mit SED-Linken
