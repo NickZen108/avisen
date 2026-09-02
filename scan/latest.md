@@ -1,4 +1,4 @@
-# Scan 2026-09-01T23:10:35.342Z (Cloudflare runtime)
+# Scan 2026-09-02T01:00:37.157Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -23,13 +23,13 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Deadly car bomb attack at Colombia police station
 - Fernandez transfers to Man City from Chelsea in joint British record fee
 - Guinea-Bissau referendum nods to expansion of presidential powers
+- IAEA calls for access to Iran nuclear sites over proliferation concerns
+- Iran war live: US bombs Iran, Tehran retaliates on Gulf neighbours, Jordan
 - Iranian state media announces numerous US strikes on the country
-- Israel’s multiple wars see finance, defence ministries clash over spending
 - Munitions vehicle explodes killing five in Idlib
 - Palestinians mourn children killed in Israeli airstrikes on Gaza City
 - Police arrest 34 after deadly gang shootout in eastern Netherlands
 - UN slashes food aid for occupied West Bank and Gaza amid funding shortfall
-- Urgent need for access to Iranian sites, cautions UN nuclear watchdog
 - US energy secretary will travel to Venezuela to unveil oil arrangement
 - US House passes funding bill to avert government shutdown ahead of midterms
 - US urges G20 to cut trade imbalances, focus on China
@@ -69,6 +69,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Germany says Russia behind Leipzig airport drone attack
 - 'I have fired 40 of my agents for being corrupt', says Nigeria's anti-corruption chief
 - 'I've never been to Afghanistan': Six million deportees forced to start over under the Taliban
+- Iran retaliates after US strikes kills four at wedding party, state media reports
 - Israel says Hamas security chief captured as strikes kill four during Gaza raid
 - Jurors in Lindsay Clancy trial deadlocked but judge asks them to keep trying
 - Pistol in a lake gives hope for French cold case
@@ -80,7 +81,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Teen girl charged with murder over recording of San Diego mosque attack
 - Trump says US position on Falklands 'one of many' under review
 - US singer D4vd's celebrity lawyers withdraw from murder case
-- US strikes Iran as state media reports four killed at wedding party
 - Woman killed in Times Square stabbing, suspect shot dead by police
 - Zambia's president sworn in for second term while opponent detained
 
@@ -183,7 +183,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Times Square stabbing: Bank of America vice president named as killed victim
 - Two dead and one still unaccounted for in Grand Canyon flash floods, officials say
 - Ultra-Orthodox Jews celebrate Yeshiva student’s release in Elad amid draft dispute
-- US launches new strikes in southern Iran, Tehran responds with attacks on Jordan and Bahrain
+- US launches new strikes in southern Iran, Tehran responds with attacks across region
 - US-North Korea summit appears to be 'possible at any time,' Seoul spy agency says
 - US teen charged with aiding San Diego mosque shooters share livestream and manifesto
 - World Nomad Games open in Bishkek before an audience of world leaders
@@ -192,7 +192,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - AI data centers become surprise issue in US midterm elections
 - Burnham pledges to restore hope as he makes his House of Commons debut as UK leader
 - Football: Europe's top clubs scramble for last-minute signings
-- From North Korea to ICE: Photojournalist David Guttenfelder on the front lines in Minneapolis
+- G20 backs final statement despite Russia tensions, China dissent
 - Germany blames Russia for airport drone incident, hits back with sanctions
 - Germany blames Russia for Leipzig airport drone attack, orders Russian consulate closed
 - Germany set to blame Russia for airport explosive-laden drone incident
@@ -200,10 +200,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Google Maps changes Lake Ontario to ‘Lake America’ as MapQuest downloads surge
 - Lindsay Clancy: The trial putting postpartum mental illness in the spotlight
 - Mass burials held in Nepal as bodies wash up after catastrophic flooding
-- Niger's thwarted mutiny highlights junta's dependence on Russia
 - Replay: UK PM Andy Burnham faces lawmakers for first time since taking office
 - School without screens: Will France's high school phone ban fly?
 - South Africans missing in Nepal's glacial flood
+- "Subtle changes pointing to consumer fatigue" a challenge for fast-fashion retailers, expert says
 - US and Iran trade fire as hostilities flare again
 - US firm to take over some Venezuela oilfields previously run by Chinese, Russian firms
 - What to know about the new UK PM's agenda as he faces lawmakers
@@ -220,14 +220,14 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Kākāpō rising: 90 chicks swell population of the world’s heaviest parrot
 - MapQuest app reaches No 1 on US Apple list after defying Trump’s Lake Ontario order
 - Mark Carney tells US to ‘start being serious’ amid escalating trade war
+- More than a third of prenatal reports to NSW protective services not investigated, ombudsman finds
 - Morocco not to blame for Ceuta border breach, says Spanish PM
 - Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels
-- News live: Five Australians confirmed safe after Nepal-Tibet flooding; Spender backs Contos’s call for opt-in algorithms
+- News live: Labor has ‘grave concerns’ for missing Australians in Nepal-Tibet flooding; Canavan claims ‘feminisation of curriculum’ led to rise of ‘manosphere’
 - People fleeing Sudan civil war face ‘dire and deteriorating’ conditions in refuge city
 - Relief as Australians missing in Nepal-Tibet flood disaster found alive
 - Shein shares slide on fast-fashion retailer’s stock market debut
 - South African airline defends dramatic low-level flyby before rugby union clash
-- Sydney’s beaches enter the drone age to get swimmers back in the water after spate of shark attacks
 - Thai resort prepares to host USS Abraham Lincoln sailors after more than 270 days at sea
 - Trump suggests he is reviewing US support for UK over Falkland Islands
 
@@ -260,11 +260,11 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Mann omkom i MC-ulykke i Larvik
 - Marerittkveld i Wien: Raudt kort, sjølvmål og fire baklengsmål
 - Millioninnbrudd hos Urmaker Bjerke: Saken er henlagt
-- Ny rapport: Kystverket vil dekkje til nazi-ubåt
 - Nye bilete frå Nepal: Dette veit vi om det som skjedde
 - Rapport om nytt vinterbeite for Fosenrein: Kan ha konsekvenser for villreinen
 - USA angriper flere iranske mål i Hormuz-stredet
 - VG: Kongeparet har dratt fra Rikshospitalet
+- Væpnet politiaksjon i Dyrøy: – Løsnet skudd mot politiet
 
 ## National Review
 - Anti-Trumpism Is Driving the Media to Cheer Hostile Powers
@@ -330,10 +330,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Attempted drone attack at German airport blamed on Russia
 - Bank of America vice president killed in Times Square stabbing
 - Capsized ferry disaster kills at least eight, as search for survivors continues
-- Italy and Spain extend tit-for-tat border controls after Ceuta migrant surge
 - Jared Kushner's brother breaks silence on World Cup sell-off plans
 - Lionel Messi retires from international football
 - Met investigating death of British man in Caribbean
+- Stop doing memes and throwing shade, Carney tells Trump
 - Why Germany's far right is on verge of biggest win since before WWII
 
 ## Spiked
@@ -358,10 +358,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Everyone Knows Father Absence Is Bad, So Why Does Designer Fatherlessness Get A Pass?
 - Florida Bar Rejects Leftist Scheme To Probe DHS Attorney For Criticizing Rogue Judges
 - Friends Don&#8217;t Let Friends Vote For Dems&#8217; Gambit To Destroy SCOTUS
+- Judge Rules Tyler Robinson Will Face Trial For Assassination Of Charlie Kirk
 - Massachusetts Court Says Town Can&#8217;t Build Statues Of Christian Heroes Because They&#8217;re Christian
 - NY Mag Goes From &#8216;Noncitizen Voting Is Imaginary&#8217; To &#8216;Here&#8217;s Why It&#8217;s Good&#8217;
 - SCOTUS Greenlights White House Ballroom Construction
-- Senate GOP Would Rather Surrender Texas To Dems Than To Its Own Voters
 - The Federalist&#8217;s Guide To The 2026 Supreme Court Term
 - Whistleblower In Letitia James&#8217; Office Says He Was Ordered To &#8216;Target Trump&#8217;
 
@@ -411,8 +411,8 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Britain has a leadership fetish
 - Could the Middlesbrough crime spree spread?
 - Hell is other Leftists
-- How Domesday made modern England
 - How the Euro elite helps Trump
+- Inside the new Afghanistan
 - Milo Yiannopoulos’ horrible homecoming
 - The case for de-escalation with Russia
 - The man who made bin Laden
