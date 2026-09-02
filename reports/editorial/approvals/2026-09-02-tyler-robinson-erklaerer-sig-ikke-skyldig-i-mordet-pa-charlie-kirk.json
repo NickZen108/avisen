@@ -3,7 +3,7 @@
   "status": "pass",
   "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
   "article_slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
-  "checked_at": "2026-09-02T14:10:26Z",
+  "checked_at": "2026-09-02T05:28:42.738Z",
   "gates": {
     "language": "pass",
     "ethics": "pass",
@@ -35,16 +35,20 @@
       "canonical": null
     },
     "image": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/b/b2/CCTV_still_of_Tyler_James_Robinson_at_a_Dairy_Queen_shortly_after_the_Assassination_of_Charlie_Kirk.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "alt": "On September 10, 2025, at 6:38 p.m., six hours after the assassination of Charlie Kirk , the alleged shooter Tyler James Robinson can be seen at a Dairy Queen through this CCTV still.",
-      "credit": "CCTV",
-      "license": "Public domain",
-      "source_url": "https://commons.wikimedia.org/wiki/File:CCTV_still_of_Tyler_James_Robinson_at_a_Dairy_Queen_shortly_after_the_Assassination_of_Charlie_Kirk.png",
-      "image_type": "photo",
-      "context_type": "archive",
-      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
-      "pending_image": false,
-      "ai_generated": false,
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.jpg",
+      "alt": "Illustration til: Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+      "credit": "Illustration: Morgentidende",
+      "license": "Morgentidende – AI-genereret illustration",
+      "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.jpg",
+      "image_type": "illustration",
+      "context_type": "illustration",
+      "caption": "Illustration",
+      "pending_image": true,
+      "ai_generated": true,
+      "generator": "workers_ai_flux",
+      "contains_people": false,
+      "people_style": "pencil_hatching",
+      "photorealistic": false,
       "placement": "lead"
     },
     "body": [
@@ -79,19 +83,5 @@
       "category"
     ],
     "reason": "Politik removed as main category; Danmark renamed to Indland"
-  },
-  "media_reapproval": {
-    "mode": "targeted-image-only",
-    "checked_at": "2026-09-02T14:10:26Z",
-    "previous_snapshot_sha256": "a89799dfba42d5b8da04fdad5725387722e67f09379de86737b2871f4a3688b6",
-    "new_snapshot_sha256": "c3a3ded9a1ea983e742c97b9cb30aa27c56aa82881a1bbdd594943f77865668d",
-    "changed_fields": [
-      "image"
-    ],
-    "checks": [
-      "only image differs from previous final approval",
-      "replacement image provenance metadata complete",
-      "article text, claims, SEO, category and byline unchanged"
-    ]
   }
 }
