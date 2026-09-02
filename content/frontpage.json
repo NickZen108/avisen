@@ -2,28 +2,28 @@
   "date": "2026-09-02",
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
-  "ticker_text": "Ny udvikling: WHO-chefen advarer om, at Ebola-udbruddet skal intensiveres for at stoppe udbruddet.",
+  "ticker_text": "Tyskland og Rusland er i en meget anspændt situation efter et forsøg på at angribe Leipzig lufthavn med en drone. Det er første gang, at Rusland bliver beskyldt for et droneangreb mod en tysk lufthavn. Tyskland har allerede indført stramme sanktioner mod Rusland efter invasionen af Ukraine i 2022, men disse nye sanktioner er en ny fase i den tysk-russiske konflikt. Det er ikke klart, hvordan konflikten vil udvikle sig i fremtiden, men det er tydeligt, at Tyskland og Rusland er i en meget anspændt situation.",
   "ticker": {
-    "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
+    "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
   },
   "lead": {
-    "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
+    "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
   },
   "rail": [
     {
+      "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
+    },
+    {
+      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
+    },
+    {
+      "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv"
+    },
+    {
+      "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere"
+    },
+    {
       "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
-    },
-    {
-      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
-    },
-    {
-      "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk"
-    },
-    {
-      "slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn"
-    },
-    {
-      "slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale"
     }
   ],
   "stack": [
@@ -54,6 +54,18 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
+    },
+    {
+      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
+    },
+    {
+      "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv"
+    },
+    {
+      "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere"
+    },
+    {
       "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
     },
     {
@@ -64,18 +76,6 @@
     },
     {
       "slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn"
-    },
-    {
-      "slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale"
-    },
-    {
-      "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk"
-    },
-    {
-      "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed"
-    },
-    {
-      "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden"
     }
   ]
 }

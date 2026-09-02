@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T17:30:36Z",
+  "generated_at": "2026-09-02T20:15:15Z",
   "counts": {
-    "published": 14,
+    "published": 18,
     "checking": 2,
     "draft": 3
   },
@@ -132,6 +132,14 @@
       "reasons": []
     },
     {
+      "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere",
+      "title": "Israels udenrigsminister Gideon Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os'",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
       "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed",
       "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
       "status": "published",
@@ -156,8 +164,32 @@
       "reasons": []
     },
     {
+      "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+      "title": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
       "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
       "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+      "title": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+      "title": "Tyskland og Rusland i konflikt efter droneangreb",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

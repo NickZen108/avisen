@@ -3929,7 +3929,451 @@
           "automation_origin": "cloudflare-workers-ai"
         }
       }
+    ],
+    "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere": [
+      {
+        "hash": "92d00eeac55957281303d026c3e8b38334ba3ba832adf5a0355841d482908b94",
+        "recorded_at": "2026-09-02T20:15:19+00:00",
+        "title": "Israels udenrigsminister Gideon Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os'",
+        "story_id": "2026-09-02-israeli-fm-gideon-sa-ar-i-hope-iran-will-not-make-the-mistake-of-attacki",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-israeli-fm-gideon-sa-ar-i-hope-iran-will-not-make-the-mistake-of-attacki",
+          "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere",
+          "category": "Videnskab & teknologi",
+          "weight": "B",
+          "editorial_destination": "tech_magazine",
+          "story_location": {
+            "country": "Israel",
+            "country_code": "IL",
+            "hero_queries_english": [
+              "Israel",
+              "Iran",
+              "Gideon Sa'ar"
+            ],
+            "hero_queries_local": [
+              "Israel",
+              "Iran",
+              "Gideon Sa'ar"
+            ],
+            "hero_queries_transliterated": [
+              "Israel",
+              "Iran",
+              "Gideon Sa'ar"
+            ],
+            "place_names_english": [
+              "Israel",
+              "Iran"
+            ],
+            "place_names_local": [
+              "Israel",
+              "Iran"
+            ],
+            "primary_language": "hebrew",
+            "primary_language_code": "he",
+            "transliterations": [
+              "Israel",
+              "Iran"
+            ]
+          },
+          "title": "Israels udenrigsminister Gideon Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os'",
+          "standfirst": "Israels udenrigsminister Gideon Sa'ar har udtrykt håb om, at Iran ikke vil angribe landet. Han har også understreget, at hvis Israel bliver angrebet af Iran, vil landet sikkert svare kraftigt.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08"
+          ],
+          "seo": {
+            "title": "Israels udenrigsminister Gideon Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os'",
+            "description": "Israels udenrigsminister Gideon Sa'ar har udtrykt håb om, at Iran ikke vil angribe landet. Han har også understreget, at hvis Israel bliver angrebet af Iran, vil landet sikkert svare kraftigt.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere.jpg",
+            "alt": "President Reuven Rivlin at the Education Now conference. Tuesday, August 22, 2017. Photo Credit: Mark Neyman / GPO.",
+            "credit": "Mark Neyman",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Ranan_Hartman_and_Gideon_Sa%27ar,_August_2017_(7870)_(cropped).jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Israels udenrigsminister Gideon Sa'ar har udtrykt håb om, at Iran ikke vil angribe landet. I et interview med France 24 sagde Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os.'",
+              "type": "p"
+            },
+            {
+              "text": "Sa'ar understregede også, at hvis Israel bliver angrebet af Iran, vil landet sikkert svare kraftigt. 'Hvis vi bliver angrebet af Iran, vil vi sikkert svare meget kraftigt,' sagde han.",
+              "type": "p"
+            },
+            {
+              "text": "Desuden nægtede Sa'ar, at Israel har planer om at deltage i en krig i øjeblikket. 'Vi har ikke planer om at deltage i en krig i øjeblikket,' sagde han.",
+              "type": "p"
+            },
+            {
+              "text": "Sa'ar understregede også, at Israel ikke vil tillade Iran at opnå kernevåben. 'Israel vil ikke tillade Iran at opnå kernevåben,' sagde han.",
+              "type": "p"
+            },
+            {
+              "text": "I et andet interview med France 24 blev der også diskuteret en mulig amerikansk angreb på en iransk bryllupsfest. Der blev vist videoer og billeder, der viste, at flere mennesker var blevet såret og dræbt i angrebet.",
+              "type": "p"
+            },
+            {
+              "text": "Ifølge France 24 var bygningen, hvor angrebet fandt sted, mere end 135 meter fra det synlige mål, en kommunikationsmast. Der var også videoer fra et hospital i Minab, 45 km nord for stedet, der viste, at flere mennesker var blevet såret, herunder børn, der blev behandlet, samt lig af de døde.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv": [
+      {
+        "hash": "30d7aa0eb9451e750da454fdb85d169b1ae8ec94bf5b2de82ae9ffa3a6af01b4",
+        "recorded_at": "2026-09-02T20:15:19+00:00",
+        "title": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+        "story_id": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+          "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+          "category": "Udland",
+          "weight": "C",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "USA",
+            "country_code": "US",
+            "hero_queries_english": [
+              "Trump proposes renaming Hormuz Strait after himself"
+            ],
+            "hero_queries_local": [
+              "Trump foreslår at navngive Hormuzstrædet efter sig selv"
+            ],
+            "hero_queries_transliterated": [],
+            "place_names_english": [
+              "Hormuz Strait"
+            ],
+            "place_names_local": [
+              "Hormuzstrædet"
+            ],
+            "primary_language": "engelsk",
+            "primary_language_code": "en",
+            "transliterations": []
+          },
+          "title": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+          "standfirst": "DR",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+            "description": "Trump foreslår at navngive Hormuzstrædet efter sig selv. Læs mere om det strategisk vigtige stræde og Trumps rolle i regionen.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv.jpg",
+            "alt": "Illustration til: Trump foreslår at navngive Hormuzstrædet efter sig selv",
+            "credit": "Illustration: Morgentidende",
+            "license": "Morgentidende – AI-genereret illustration",
+            "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv.jpg",
+            "image_type": "illustration",
+            "context_type": "illustration",
+            "caption": "Illustration",
+            "pending_image": true,
+            "ai_generated": true,
+            "generator": "workers_ai_flux",
+            "contains_people": false,
+            "people_style": "pencil_hatching",
+            "photorealistic": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "USA's tidligere præsident Donald Trump har foreslået at navngive Hormuzstrædet efter sig selv. Det skriver DR.",
+              "type": "h2"
+            },
+            {
+              "text": "Hormuzstrædet er et strategisk vigtigt stræde, der forbinder Persiske Golf med Det Arabiske Hav. Det er en vigtig handelsrute for mange lande, herunder Iran, Saudi-Arabien og Oman.",
+              "type": "p"
+            },
+            {
+              "text": "Trump har flere gange udtrykt sin støtte til USA's militære indsats i regionen. Det er ikke klart, om hans foreslåede navngivning af strædet er en del af en større strategi eller blot en personlig idé.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund": [
+      {
+        "hash": "2ba95a79238fde23cdfc87d20a03b3a64cdf50315abd4fc571191f7219489dcb",
+        "recorded_at": "2026-09-02T20:15:19+00:00",
+        "title": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
+        "story_id": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+          "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+          "category": "Udland",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "DE",
+            "country_code": "DE",
+            "hero_queries_english": [
+              "Germany immigrant voters",
+              "German election"
+            ],
+            "hero_queries_local": [
+              "Deutschland Wähler mit Migrationshintergrund",
+              "Deutsche Wahl"
+            ],
+            "hero_queries_transliterated": [],
+            "place_names_english": [
+              "Germany"
+            ],
+            "place_names_local": [
+              "Deutschland"
+            ],
+            "primary_language": "de",
+            "primary_language_code": "de",
+            "transliterations": []
+          },
+          "title": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
+          "standfirst": "Tyskland har en stigende antal vælgere med indvandrerbaggrund. Ifølge en ny undersøgelse fra DW (2026) er dette en voksende gruppe, der kan spille en stor rolle i fremtidens tyske valg. ",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund.json",
+          "claim_ids": [
+            "F01",
+            "F02"
+          ],
+          "seo": {
+            "title": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
+            "description": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund.jpg",
+            "alt": "Smittetrykket i Skåne er øget kraftigt – Danmark lukker delvis grænsen igen på lørdag Photo: News Øresund - Anna Palmehag © News Øresund - Anna Palmehag (CC BY 3.0). Danmark erklærer igen Skåne i karantæne i anledning af den stigende smittespredning. De seneste to uger har Skåne haft 46,3 nye smittede pr. 100.000 indbyggere i gennemsnit pr. uge, hvilket er over Danmarks grænse på 30 smittede for når en region eller et land kommer i karantæne. Ved samme måling sidste uge var tallet for Skåne 29,8",
+            "credit": "News Oresund",
+            "license": "CC BY 2.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:20201023_antal_nye_smittede_Oresund_(50519875541).jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Tyskland har en stigende antal vælgere med indvandrerbaggrund. Ifølge en ny undersøgelse fra DW (2026) er dette en voksende gruppe, der kan spille en stor rolle i fremtidens tyske valg. ",
+              "type": "p"
+            },
+            {
+              "text": "Men hvordan kan de etablerede partier nå ud til disse vælgere? Det er en spørgsmål, der har været omdiskuteret i længere tid. Ifølge DW (2026) når de etablerede partier kun dårligt ud til vælgere med indvandrerbaggrund. ",
+              "type": "p"
+            },
+            {
+              "text": "For at vinde disse vælgere, anbefaler eksperter, at partierne skal være mere åbne og inklusive. De skal også være villige til at lytte til vælgernes bekymringer og ønsker. ",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb": [
+      {
+        "hash": "3edf6f3f88df2c75c4e500725e24f5e2f98c94a76bb057a86185037c722a4a29",
+        "recorded_at": "2026-09-02T20:15:19+00:00",
+        "title": "Tyskland og Rusland i konflikt efter droneangreb",
+        "story_id": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+          "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+          "category": "Udland",
+          "weight": "B",
+          "editorial_destination": "tech_magazine",
+          "story_location": {
+            "country": "Tyskland",
+            "country_code": "DE",
+            "hero_queries_english": [
+              "Germany drone attack",
+              "Leipzig airport incident"
+            ],
+            "hero_queries_local": [
+              "Deutschland Drohnenangriff",
+              "Leipzig Flughafen Vorfall"
+            ],
+            "hero_queries_transliterated": [],
+            "place_names_english": [
+              "Germany",
+              "Leipzig"
+            ],
+            "place_names_local": [
+              "Deutschland",
+              "Leipzig"
+            ],
+            "primary_language": "deutsch",
+            "primary_language_code": "de",
+            "transliterations": []
+          },
+          "title": "Tyskland og Rusland i konflikt efter droneangreb",
+          "standfirst": "Tyskland og Rusland er i en meget anspændt situation efter et forsøg på at angribe Leipzig lufthavn med en drone. Det er første gang, at Rusland bliver beskyldt for et droneangreb mod en tysk lufthavn. Tyskland har allerede indført stramme sanktioner mod Rusland efter invasionen af Ukraine i 2022, men disse nye sanktioner er en ny fase i den tysk-russiske konflikt. Det er ikke klart, hvordan konflikten vil udvikle sig i fremtiden, men det er tydeligt, at Tyskland og Rusland er i en meget anspændt situation.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "seo": {
+            "title": "Tyskland og Rusland i konflikt efter droneangreb",
+            "description": "Tyskland og Rusland er i konflikt efter et forsøg på at angribe Leipzig lufthavn med en drone. Rusland har afvist beskyldningerne, men Tyskland har indført nye sanktioner.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb.jpg",
+            "alt": "U.S. Army Master Sgt. Nicholas Lombard, battalion operations sergeant, Team Viper observer controller, 7th Army Training Command, conducts final preparations for a drone swarm attack during Exercise Combined Resolve 24-2 at the Joint Multinational Readiness Center near Hohenfels, Germany, May 29, 2024. Combined Resolve 24-2 is a key U.S. Army multi-domain interoperability exercise in Europe and a major investment in the cohesion of the NATO alliance and the overall readiness of allies and partne",
+            "credit": "U.S. Army National Guard photo by Sgt. 1st Class Brandon Nelson",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Combined_Resolve_24-2_drone_swarm_attack_(8436765).jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Tyskland og Rusland i konflikt efter droneangreb",
+              "type": "h2"
+            },
+            {
+              "text": "Tyskland har beskyldt Rusland for et forsøg på at angribe Leipzig lufthavn med en drone, der var lastet med sprængstoffer.",
+              "type": "p"
+            },
+            {
+              "text": "Rusland har afvist beskyldningerne og påstår, at de ikke har noget med angrebet at gøre.",
+              "type": "p"
+            },
+            {
+              "text": "Tyskland har nu indført nye sanktioner mod Rusland, herunder at lukke det russiske konsulat i Bonn og det russiske hus i Berlin.",
+              "type": "p"
+            },
+            {
+              "text": "Men ifølge den russiske politiske forsker Dmitry Oreshkin kan de tyske sanktioner have begrænset virkning.",
+              "type": "p"
+            },
+            {
+              "text": "Oreshkin mener, at Rusland ikke vil blive skræmt af de tyske sanktioner og at de vil fortsætte med deres politik.",
+              "type": "p"
+            },
+            {
+              "text": "To mistænkte er ifølge rapporter blevet identificeret i forbindelse med droneangrebet.",
+              "type": "p"
+            },
+            {
+              "text": "Det er dog ikke klart, hvem der står bag angrebet og hvilke konsekvenser det vil få.",
+              "type": "p"
+            },
+            {
+              "text": "EU og NATO har lovet at træffe nye træk for at presse Rusland efter 'den nye eskalering' i Tyskland.",
+              "type": "p"
+            },
+            {
+              "text": "Det er første gang, at Rusland bliver beskyldt for et droneangreb mod en tysk lufthavn.",
+              "type": "p"
+            },
+            {
+              "text": "Tyskland har allerede indført stramme sanktioner mod Rusland efter invasionen af Ukraine i 2022.",
+              "type": "p"
+            },
+            {
+              "text": "Men disse nye sanktioner er en ny fase i den tysk-russiske konflikt.",
+              "type": "p"
+            },
+            {
+              "text": "Det er ikke klart, hvordan konflikten vil udvikle sig i fremtiden, men det er tydeligt, at Tyskland og Rusland er i en meget anspændt situation.",
+              "type": "p"
+            },
+            {
+              "text": "Tyskland og Rusland er to store lande i Europa, og deres konflikt kan have store konsekvenser for hele kontinentet.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
     ]
   },
-  "generated_at": "2026-09-02T17:30:37+00:00"
+  "generated_at": "2026-09-02T20:15:19+00:00"
 }

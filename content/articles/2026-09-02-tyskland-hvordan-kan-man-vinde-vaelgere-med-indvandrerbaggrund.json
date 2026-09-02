@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
   "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
   "category": "Udland",
@@ -32,7 +32,7 @@
   "title": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
   "standfirst": "Tyskland har en stigende antal vælgere med indvandrerbaggrund. Ifølge en ny undersøgelse fra DW (2026) er dette en voksende gruppe, der kan spille en stor rolle i fremtidens tyske valg. ",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T20:15:15Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund.json",
@@ -80,5 +80,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T20:15:15Z"
+  }
 }

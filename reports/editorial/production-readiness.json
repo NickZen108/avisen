@@ -1,15 +1,31 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T17:30:38+00:00",
+  "generated_at": "2026-09-02T20:15:20+00:00",
   "status": "yellow",
-  "published_count": 30,
+  "published_count": 34,
   "hard_failures": [],
   "warnings": [
-    "8 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
+    "10 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
   ],
   "metrics": {
     "possible_duplicate_pairs": [],
     "source_independence_flags": [
+      {
+        "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 1,
+        "duplicate_urls": {}
+      },
+      {
+        "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 1,
+        "duplicate_urls": {}
+      },
       {
         "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe",
         "unique_urls": 1,

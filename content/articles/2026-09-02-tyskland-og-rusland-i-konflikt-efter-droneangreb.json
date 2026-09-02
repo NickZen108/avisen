@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
   "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
   "category": "Udland",
@@ -34,7 +34,7 @@
   "title": "Tyskland og Rusland i konflikt efter droneangreb",
   "standfirst": "Tyskland og Rusland er i en meget anspændt situation efter et forsøg på at angribe Leipzig lufthavn med en drone. Det er første gang, at Rusland bliver beskyldt for et droneangreb mod en tysk lufthavn. Tyskland har allerede indført stramme sanktioner mod Rusland efter invasionen af Ukraine i 2022, men disse nye sanktioner er en ny fase i den tysk-russiske konflikt. Det er ikke klart, hvordan konflikten vil udvikle sig i fremtiden, men det er tydeligt, at Tyskland og Rusland er i en meget anspændt situation.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T20:15:15Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb.json",
@@ -133,5 +133,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T20:15:15Z"
+  }
 }
