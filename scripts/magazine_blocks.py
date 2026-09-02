@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Inject two automatic magazine blocks into the generated front page.
+"""Inject two automatic, exclusive magazine blocks into the generated front page.
 
-Runs after build_all_v2.py. It does not change templates; the generated page gets
-recomputed on every build from published article JSON.
+Magazine stories are selected only from published stories not already used on the
+ordinary front page. Once selected, they are also removed from ordinary
+recommendation shelves under articles, so their editorial placement is exclusive
+to the two magazine blocks.
 """
 from __future__ import annotations
 
@@ -14,6 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ARTICLES = ROOT / "content" / "articles"
 INDEX = ROOT / "docs" / "index.html"
+ARTICLE_HTML = ROOT / "docs" / "artikler"
 
 TECH = {
     "videnskab", "forskning", "naturvidenskab", "teknologi", "kunstig intelligens", " ai ",
@@ -45,8 +48,7 @@ def score(a: dict, terms: set[str], preferred_categories: set[str]) -> int:
     for term in terms:
         if term in text:
             s += 2
-    fmt = str(a.get("format") or "").lower()
-    if fmt in {"feature", "guide", "baggrund"}:
+    if str(a.get("format") or "").lower() in {"feature", "guide", "baggrund"}:
         s += 1
     return s
 
@@ -66,10 +68,11 @@ def load_published() -> list[dict]:
     return out
 
 
-def pick(items: list[dict], terms: set[str], categories: set[str], used: set[str], limit: int = 4) -> list[dict]:
+def pick(items: list[dict], terms: set[str], categories: set[str], used: set[str], excluded: set[str], limit: int = 4) -> list[dict]:
     ranked = []
     for a in items:
-        if a.get("slug") in used:
+        slug = str(a.get("slug") or "")
+        if not slug or slug in used or slug in excluded:
             continue
         s = score(a, terms, categories)
         if s > 0:
@@ -85,9 +88,7 @@ def card(a: dict) -> str:
     src = str(image.get("src") or "")
     pic = f'<a class="magazine-card__image" href="artikler/{esc(a["slug"])}.html"><img src="{esc(src)}" alt="{esc(image.get("alt") or "")}"></a>' if src else ""
     return (
-        '<article class="card magazine-card">'
-        + pic
-        + '<div class="magazine-card__body">'
+        '<article class="card magazine-card">' + pic + '<div class="magazine-card__body">'
         + f'<p class="section-label">{esc(a.get("category") or "")}</p>'
         + f'<h2><a href="artikler/{esc(a["slug"])}.html">{esc(a["title"])}</a></h2>'
         + f'<p>{esc(a.get("standfirst") or "")}</p></div></article>'
@@ -104,6 +105,19 @@ def section(title: str, intro: str, items: list[dict], theme: str) -> str:
     )
 
 
+def remove_from_recommendation_shelves(slugs: set[str]) -> None:
+    if not slugs:
+        return
+    for path in ARTICLE_HTML.glob("*.html"):
+        text = path.read_text(encoding="utf-8")
+        original = text
+        for slug in slugs:
+            pattern = rf'<article class="more-news-card[^\"]*"(?:(?!</article>).)*?href="{re.escape(slug)}\.html"(?:(?!</article>).)*?</article>'
+            text = re.sub(pattern, "", text, flags=re.S)
+        if text != original:
+            path.write_text(text, encoding="utf-8")
+
+
 def main() -> int:
     if not INDEX.exists():
         print("magazine blocks: docs/index.html missing")
@@ -111,15 +125,24 @@ def main() -> int:
     page = INDEX.read_text(encoding="utf-8")
     page = re.sub(r'\n?<section class="[^"]*magazine-section[^"]*"[\s\S]*?</section>\s*', "\n", page)
     page = re.sub(r'<style id="magazine-block-style">[\s\S]*?</style>', "", page)
+
+    # Anything already used on the ordinary front page stays there and cannot also
+    # become a magazine story in this build.
+    frontpage_slugs = set(re.findall(r'href="artikler/([a-z0-9-]+)\.html"', page))
+
     items = load_published()
     used: set[str] = set()
-    tech = pick(items, TECH, {"Videnskab & teknologi"}, used)
-    people = pick(items, PEOPLE, {"Sundhed", "Liv", "Parforhold"}, used)
+    tech = pick(items, TECH, {"Videnskab & teknologi"}, used, frontpage_slugs)
+    people = pick(items, PEOPLE, {"Sundhed", "Liv", "Parforhold"}, used, frontpage_slugs)
+    exclusive = {str(a["slug"]) for a in tech + people}
+    remove_from_recommendation_shelves(exclusive)
+
     blocks = section("Viden & teknologi", "Videnskab, teknologi, AI, naturvidenskab og militær – nyheder, forskning og stærke evergreens.", tech, "tech")
     blocks += section("Mennesker & liv", "Psykologi, sundhed, hormoner, parforhold, sex, dating, familie og evolutionær psykologi.", people, "people")
     if not blocks:
-        print("magazine blocks: no matching published articles")
+        print("magazine blocks: no matching exclusive published articles")
         return 0
+
     css = '''<style id="magazine-block-style">
 .magazine-section{position:relative;overflow:hidden;margin:3.4rem 0 2.8rem;padding:clamp(1.35rem,3vw,2.25rem);border-radius:22px;color:#f7f7fb;box-shadow:0 20px 45px rgba(10,15,30,.16),inset 0 1px 0 rgba(255,255,255,.12)}
 .magazine-section::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 92% 0%,rgba(255,255,255,.12),transparent 34%),linear-gradient(120deg,rgba(255,255,255,.035),transparent 48%)}
@@ -137,7 +160,7 @@ def main() -> int:
     else:
         page = page.replace("<footer", blocks + "<footer", 1)
     INDEX.write_text(page, encoding="utf-8")
-    print(f"magazine blocks: tech={len(tech)} people={len(people)}")
+    print(f"magazine blocks: tech={len(tech)} people={len(people)} exclusive={len(exclusive)}")
     return 0
 
 
