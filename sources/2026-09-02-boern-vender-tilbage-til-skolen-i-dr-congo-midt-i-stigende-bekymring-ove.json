@@ -1,0 +1,174 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-boern-vender-tilbage-til-skole-i-dr-congo-midt-i-stigende-bekymring-over",
+  "article_slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove",
+  "assignment": {
+    "category": "Sundhed",
+    "weight": "B",
+    "editorial_destination": "people_magazine",
+    "story_location": {
+      "country": "Congo",
+      "country_code": "CD",
+      "hero_queries_english": [
+        "Ebola in DR Congo",
+        "DR Congo school reopening"
+      ],
+      "hero_queries_local": [
+        "Ebola na Congo",
+        "Congo école rouverture"
+      ],
+      "hero_queries_transliterated": [],
+      "place_names_english": [
+        "DR Congo"
+      ],
+      "place_names_local": [
+        "Congo"
+      ],
+      "primary_language": "fr",
+      "primary_language_code": "fr",
+      "transliterations": []
+    },
+    "core_question": "Ebola",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/9/2/children-return-to-school-in-dr-congo-amid-growing-concerns-over-ebola?traffic_source=rss",
+      "published_at": "2026-09-02T21:21:36.000Z",
+      "accessed_at": "2026-09-02T21:44:30.701Z",
+      "type": "news",
+      "source_group": "host-aljazeera-com",
+      "publisher_root": "aljazeera-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Children return to school in DR Congo amid growing concerns over Ebola",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-aljazeera-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Børn er vendt tilbage til skole i DR Congo midt i stigende bekymring over Ebola",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T21:44:30.701Z",
+      "notes": "Al Jazeera rapporterer, at børn er vendt tilbage til skole i DR Congo, selv om der er stigende bekymring over Ebola"
+    },
+    {
+      "id": "F02",
+      "claim": "Forældre er bekymrede for at sætte deres børn i risiko for at blive smittet med Ebola, når de vender tilbage til skole",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T21:44:30.701Z",
+      "notes": "Ifølge Al Jazeera er forældre bekymrede for, at deres børn kan blive smittet med Ebola, når de vender tilbage til skole"
+    },
+    {
+      "id": "F03",
+      "claim": "Myndighederne har iværksat foranstaltninger for at reducere smittespredning af Ebola i skolerne",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T21:44:30.701Z",
+      "notes": "Al Jazeera oplyser, at myndighederne har iværksat foranstaltninger for at reducere smittespredning af Ebola i skolerne"
+    },
+    {
+      "id": "F04",
+      "claim": "Nogle familier er skeptiske over for myndighedernes foranstaltninger til at forebygge Ebola",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T21:44:30.701Z",
+      "notes": "Ifølge Al Jazeera er nogle familier skeptiske over for myndighedernes foranstaltninger til at forebygge Ebola"
+    },
+    {
+      "id": "F05",
+      "claim": "En ny skoleår er begyndt i DR Congo",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T21:44:30.701Z",
+      "notes": "Al Jazeera rapporterer, at en ny skoleår er begyndt i DR Congo"
+    },
+    {
+      "id": "F06",
+      "claim": "Ebola er en væsentlig bekymring i DR Congo",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T21:44:30.701Z",
+      "notes": "Ifølge Al Jazeera er Ebola en væsentlig bekymring i DR Congo"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T21:44:30.701Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T21:44:30.701Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "people_magazine"
+}
