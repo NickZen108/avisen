@@ -1,0 +1,132 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder",
+  "article_slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk",
+  "assignment": {
+    "category": "Politik",
+    "weight": "B",
+    "core_question": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "DR",
+      "url": "https://www.dr.dk/nyheder/seneste/fire-rema-1000-butikker-faar-boeder-ikke-have-skjult-tobaksprodukter",
+      "published_at": "2026-09-02T08:33:56.000Z",
+      "accessed_at": "2026-09-02T09:35:10.745Z",
+      "type": "news",
+      "source_group": "host-dr-dk",
+      "publisher_root": "dr-dk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-dr-dk"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-dr-dk"
+      ],
+      "checked_at": "2026-09-02T09:35:10.745Z",
+      "notes": "Kilde: DR"
+    },
+    {
+      "id": "F02",
+      "claim": "Bøderne er en følge af ikke at have skjult tobaksprodukter",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-dr-dk"
+      ],
+      "checked_at": "2026-09-02T09:35:10.745Z",
+      "notes": "Kilde: DR"
+    },
+    {
+      "id": "F03",
+      "claim": "Fire Rema 1000-butikker er involveret i sagen",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-dr-dk"
+      ],
+      "checked_at": "2026-09-02T09:35:10.745Z",
+      "notes": "Kilde: DR"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T09:35:10.745Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T09:35:10.745Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}
