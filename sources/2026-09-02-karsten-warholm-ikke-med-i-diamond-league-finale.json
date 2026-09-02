@@ -1,0 +1,192 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-karsten-warholm-ikke-deltager-i-diamond-league-finale",
+  "article_slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale",
+  "assignment": {
+    "category": "Politik",
+    "weight": "B",
+    "core_question": "Krangel om penger skyldes at Karsten Warholm ikke deltager i Diamond League-finale",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "NRK",
+      "url": "https://www.nrk.no/sport/karsten-warholm-hardt-ut-mot-diamond-league-arrangor_-_-det-handler-ikke-om-penger-1.18003553",
+      "published_at": "2026-09-02T03:44:42.000Z",
+      "accessed_at": "2026-09-02T05:31:11.454Z",
+      "type": "news",
+      "source_group": "host-nrk-no",
+      "publisher_root": "nrk-no",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "Christian Dehlie Lokøy",
+      "publisher_name": "NRK",
+      "canonical_url": "https://www.nrk.no/sport/karsten-warholm-hardt-ut-mot-diamond-league-arrangor_-_-det-handler-ikke-om-penger-1.18003553",
+      "primary_record": null,
+      "authoritative_for": "Hardt ut mot Diamond League-arrangør: – De tar profitten på bekostning av oss utøvere",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-nrk-no"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Krangel om penger skyldes at Karsten Warholm ikke deltager i Diamond League-finale",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Det skyldes krangel om penger.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-02T05:31:11.454Z",
+      "notes": "Kilde: NRK (0) - Ingen detaljer om krangelen eller penger nævnt"
+    },
+    {
+      "id": "F02",
+      "claim": "Det handler ikke om penger",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "- Det handler ikke om penger",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-02T05:31:11.454Z",
+      "notes": "Kilde: NRK (0) - Karsten Warholm siger dette selv"
+    },
+    {
+      "id": "F03",
+      "claim": "Karsten Warholm har tapt fire gange for Alison dos Santos i år",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "selv om han har tapt hele fire ganger for Alison dos Santos i år.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-02T05:31:11.454Z",
+      "notes": "Kilde: NRK (0) - Ingen detaljer om disse løbene nævnt"
+    },
+    {
+      "id": "F04",
+      "claim": "Alison dos Santos har slått Karsten Warholm på hvert eneste forsøk denne sesongen",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "HOVEDKONKURRENT: Alison dos Santos (til venstre) har slått Karsten Warholm på hvert eneste forsøk denne sesongen.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-02T05:31:11.454Z",
+      "notes": "Kilde: NRK (0) - Ingen detaljer om disse løbene nævnt"
+    },
+    {
+      "id": "F05",
+      "claim": "Diamond League-finale går uten Karsten Warholm",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Årets Diamond League-finale går uten Karsten Warholm.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-02T05:31:11.454Z",
+      "notes": "Kilde: NRK (0) - Ingen detaljer om hvorfor han ikke deltager nævnt"
+    },
+    {
+      "id": "F06",
+      "claim": "Årets finale i Diamond League blir å se uten Karsten Warholm",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "STÅR OVER FINALEN: Årets finale i Diamond League blir å se uten Karsten Warholm.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-02T05:31:11.454Z",
+      "notes": "Kilde: NRK (0) - Ingen detaljer om hvorfor han ikke deltager nævnt"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T05:31:11.454Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T05:31:11.454Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}
