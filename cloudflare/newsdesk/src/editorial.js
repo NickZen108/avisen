@@ -406,6 +406,21 @@ function topicBoost(signal) {
   const general = GENERAL_IMPORTANCE.some((x) => hay.includes(x)) ? 4 : 0;
   return Math.max(lens, general);
 }
+const TECH_MAGAZINE_TERMS = ["videnskab", "forskning", "naturvidenskab", "teknologi", "kunstig intelligens", " ai ", "rumfart", "rumteleskop", "astronomi", "fysik", "biologi", "robot", "chip", "halvleder", "militærteknologi", "militaerteknologi", "forsvarsteknologi", "drone", "energi"];
+const PEOPLE_MAGAZINE_TERMS = ["psykologi", "psykisk", "mental sundhed", "sundhed", "testosteron", "hormon", "overgangsalder", "menopause", "parforhold", "ægteskab", "aegteskab", "sex", "singleliv", "single", "dating", "opdragelse", "forældre", "foraeldre", "bedsteforældre", "bedsteforaeldre", "familie", "relation", "tilknytning", "evolutionær psykologi", "evolutionaer psykologi"];
+function editorialDestination(assignment, scan) {
+  const indexes = Array.isArray(assignment?.signal_indexes) ? assignment.signal_indexes : [];
+  const signalText = indexes.map((i) => `${scan?.signals?.[i]?.headline || ""} ${scan?.signals?.[i]?.description || ""}`).join(" ");
+  const hay = ` ${assignment?.category || ""} ${assignment?.title_hint || ""} ${assignment?.core_question || ""} ${signalText} `.toLocaleLowerCase("da-DK");
+  if (assignment?.category === "Videnskab & teknologi" || TECH_MAGAZINE_TERMS.some((x) => hay.includes(x))) return "tech_magazine";
+  if (["Sundhed", "Liv"].includes(assignment?.category) || PEOPLE_MAGAZINE_TERMS.some((x) => hay.includes(x))) return "people_magazine";
+  return "main";
+}
+function magazineWritingBrief(destination) {
+  if (destination === "tech_magazine") return "Du skriver EKSKLUSIVT til Morgentidendes magasin Viden & teknologi. Artiklen er født til magasinet og må ikke skrives som en kort almindelig nyhedstelegramtekst. Giv verificeret forklaring, kontekst, mekanismer og hvorfor stoffet er interessant eller vigtigt for læseren. Nyheder, forskning, baggrund og evergreen er alle tilladt, men tilføj aldrig fakta ud over de verificerede claims.";
+  if (destination === "people_magazine") return "Du skriver EKSKLUSIVT til Morgentidendes magasin Mennesker & liv. Artiklen er født til magasinet og må ikke skrives som en kort almindelig nyhedstelegramtekst. Gør psykologi, sundhed, hormoner, relationer, sex, dating eller familieliv forståeligt, nuanceret og relevant for hverdagen. Brug verificeret forklaring og kontekst, men tilføj aldrig fakta ud over de verificerede claims.";
+  return "Du skriver til Morgentidendes almindelige nyhedsstrøm.";
+}
 function signalSummary(scan, excludedSignalKeys = []) {
   const excluded = new Set(excludedSignalKeys || []);
   const now = Date.parse(scan.generated_at || "") || Date.now();
@@ -764,7 +779,8 @@ async function deskRecheck(env, assignment, dossier) {
 async function writeArticle(env, assignment, dossier) {
   if ((dossier.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Journalist boundary");
   const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));
-  const system = `Du er journalist på Morgentidende. Skriv præcist og levende dansk, men brug KUN verificerede claims. Gør attribution tydelig og brug gerne korte, præcise citater når de faktisk findes i det verificerede materiale; opfind aldrig citater. Hvis research har conflict_present=true, tilstræb relevant pluralisme mellem reelle parter/synsvinkler ud fra verificeret materiale. Hvis conflict_present=false, må du ikke konstruere kunstig pluralisme. Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. En kort one-claim-nyhed med tre meningsfulde tekstblokke er fuldt acceptabel; fyld aldrig ud. Media ejer heroen; skriv ingen billedprompt eller billedmetadata.`;
+  const destinationBrief = magazineWritingBrief(assignment?.editorial_destination || "main");
+  const system = `Du er journalist på Morgentidende. ${destinationBrief} Skriv præcist og levende dansk, men brug KUN verificerede claims. Gør attribution tydelig og brug gerne korte, præcise citater når de faktisk findes i det verificerede materiale; opfind aldrig citater. Hvis research har conflict_present=true, tilstræb relevant pluralisme mellem reelle parter/synsvinkler ud fra verificeret materiale. Hvis conflict_present=false, må du ikke konstruere kunstig pluralisme. Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. En kort one-claim-nyhed med tre meningsfulde tekstblokke er fuldt acceptabel; fyld aldrig ud. Media ejer heroen; skriv ingen billedprompt eller billedmetadata.`;
   return aiJson(env, system, JSON.stringify({ assignment, conflict_present: Boolean(dossier.conflict_present), verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null);
 }
 
@@ -1087,7 +1103,7 @@ function makeLedger(storyId, slug, assignment, dossier, desk, accessedAt) {
   });
   return {
     schema_version: 3, story_id: storyId, article_slug: slug,
-    assignment: { category: assignment.category, weight: assignment.weight, core_question: dossier.core_question || assignment.core_question, manual_review: false },
+    assignment: { category: assignment.category, weight: assignment.weight, editorial_destination: assignment.editorial_destination || "main", core_question: dossier.core_question || assignment.core_question, manual_review: false },
     sources,
     coverage_sweep: { status: groups.length >= 1 ? "pass" : "limited", editorial_source_ids: verificationSources.slice(0, 6).map((s) => s.id), independent_source_groups: groups.slice(0, 6), limitations: groups.length >= 1 ? null : "Ingen brugbar dokumentationskilde registreret", notes: ["Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."] },
     claims, numbers: [], quotes: [], right_of_reply: { required: Boolean(dossier.right_of_reply_required), party: null, contacted_at: null, deadline: null, response: null, exception: dossier.right_of_reply_required ? "Flagged by Research; details must be supplied before any required forelæggelse can be considered complete" : null },
@@ -1159,6 +1175,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
     result = await (async () => {
   const startedAt = nowIso();
   const assignment = await chooseAssignment(env, scan, options.excludedSignalKeys || []);
+  assignment.editorial_destination = editorialDestination(assignment, scan);
   const check = validateAssignment(assignment, scan);
   const handledSignalKeys = check.handled_signal_keys || [];
   if (!check.ok) {
@@ -1234,7 +1251,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
   const ledger = makeLedger(storyId, slug, assignment, dossier, desk, startedAt);
   const canonical = {
     pipeline_version: 2, status: "ready", release_requested: true, story_id: storyId, slug,
-    category: assignment.category, weight: assignment.weight, title: article.title, standfirst: article.standfirst,
+    category: assignment.category, weight: assignment.weight, editorial_destination: assignment.editorial_destination || "main", title: article.title, standfirst: article.standfirst,
     byline: "Morgentidende Redaktion", published_at: null, updated_at: null, manual_review: false,
     ledger: `sources/${slug}.json`, claim_ids: ledger.claims.map((c) => c.id),
     seo: { title: article.seo_title, description: article.seo_description, canonical: null },
