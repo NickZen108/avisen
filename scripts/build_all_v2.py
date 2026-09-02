@@ -114,7 +114,6 @@ def public_surface():
   t=re.sub(r"\s*·\s*Public domain\s*\(PD automated\)","",t,flags=re.I)
   t=re.sub(r"\s*·\s*PD automated\b","",t,flags=re.I)
   t=re.sub(r"\s*·\s*(?:pipeline|agent|cache)[-_ ](?:status|flag|hash)\s*[:=]\s*[^<·]+","",t,flags=re.I)
-  t=t.replace('<aside class="related-teaser"><strong>Mere om sagen:</strong>','<aside class="related-teaser"><strong>Flere nyheder:</strong>')
   p.write_text(t,encoding="utf-8")
  sm=ROOT/"docs"/"sitemap.xml"
  if sm.exists():
