@@ -2,6 +2,7 @@
   "status": "published",
   "story_id": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
   "slug": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+  "editorial_destination": "people_magazine",
   "category": "Liv",
   "weight": "D",
   "title": "Gode relationer er også sundhed: Ensomhed handler om mere end at være alene",
@@ -12,64 +13,21 @@
   "manual_review": false,
   "ledger": "sources/2026-09-02-gode-relationer-er-ogsaa-sundhed.json",
   "claim_ids": ["F01", "F02", "F03"],
-  "seo": {
-    "title": "Sociale relationer og sundhed: hvorfor forbindelser betyder noget",
-    "description": "Støttende relationer hænger sammen med bedre mental og fysisk sundhed. Få overblik over hvorfor social forbindelse betyder noget.",
-    "canonical": null
-  },
+  "seo": {"title":"Sociale relationer og sundhed: hvorfor forbindelser betyder noget","description":"Støttende relationer hænger sammen med bedre mental og fysisk sundhed. Få overblik over hvorfor social forbindelse betyder noget.","canonical":null},
   "body": [
-    {
-      "type": "p",
-      "text": "Vi taler ofte om sundhed som noget, der foregår inde i kroppen: blodtryk, kondition, kost, søvn og gener. Men en del af vores sundhed foregår mellem mennesker. Hvem kan du ringe til? Hvem lægger mærke til, hvis du forsvinder fra radaren? Hvem kan du være sammen med uden at skulle præstere?"
-    },
-    {
-      "type": "h2",
-      "text": "At være omgivet af mennesker er ikke det samme som at være forbundet"
-    },
-    {
-      "type": "p",
-      "text": "CDC beskriver social forbindelse som mere end størrelsen på ens netværk. Det handler også om kvaliteten og variationen af relationer og om, hvorvidt man oplever tilhørsforhold, støtte og omsorg. Derfor kan man godt være alene uden at være ensom – og føle sig ensom i et rum fyldt med mennesker."
-    },
-    {
-      "type": "p",
-      "text": "Den forskel er vigtig. Ti overfladiske kontakter er ikke nødvendigvis mere beskyttende end to mennesker, man faktisk kan stole på. Relationer er heller ikke automatisk sunde, bare fordi de eksisterer. Konfliktfyldte eller utrygge relationer kan belaste snarere end støtte."
-    },
-    {
-      "type": "h2",
-      "text": "Relationer kan påvirke vanerne omkring dig"
-    },
-    {
-      "type": "p",
-      "text": "Støttende relationer kan gøre det lettere at håndtere stress, angst og perioder med lavt humør. De kan også hænge sammen med bedre søvn, mere fysisk aktivitet og sundere vaner. En mulig forklaring er enkel: mennesker påvirker hinandens adfærd, giver praktisk hjælp og hjælper med at regulere belastning, når livet bliver svært."
-    },
-    {
-      "type": "p",
-      "text": "Det behøver ikke være store følelsesmæssige samtaler. Social støtte kan også være nogen, der henter børnene, går en tur med dig, sender en besked efter en svær dag eller siger: 'Det dér lyder ikke helt godt – har du fået det undersøgt?'"
-    },
-    {
-      "type": "h2",
-      "text": "Sundhedseffekten er større end hygge"
-    },
-    {
-      "type": "p",
-      "text": "Ifølge CDC er stærkere sociale bånd forbundet med større sandsynlighed for et længere og sundere liv. Social forbindelse forbindes også med lavere risiko for flere alvorlige helbredsproblemer. Det betyder ikke, at venner fungerer som medicin, eller at sygdom skyldes manglende selskab. Sundhed er langt mere kompleks end det."
-    },
-    {
-      "type": "p",
-      "text": "Men relationer er en faktor, der let bliver overset, netop fordi den ikke kan måles lige så enkelt som skridt eller blodtryk. Man kan købe et ur, der tæller bevægelse. Der findes endnu ikke en troværdig ring, der blinker, når du har været for lidt menneske sammen med andre mennesker."
-    },
-    {
-      "type": "h2",
-      "text": "Det behøver ikke begynde med en ny bedste ven"
-    },
-    {
-      "type": "p",
-      "text": "Hvis ens sociale liv er blevet tyndt, kan det virke kunstigt at beslutte, at man nu skal 'få flere relationer'. Et mere realistisk første skridt er ofte at styrke en forbindelse, der allerede findes: invitere nogen på kaffe, genoptage en gammel kontakt, møde op fast et sted eller gøre en fælles aktivitet tilbagevendende."
-    },
-    {
-      "type": "p",
-      "text": "Nære relationer opstår sjældent af én stor samtale. De bygges oftere af gentagelser: Vi ses igen. Vi taler igen. Du var der sidst, og du er der også denne gang. Det lyder mindre romantisk end 'find dit tribe'. Til gengæld er det omtrent sådan, menneskelige relationer faktisk bliver til."
-    }
+    {"type":"p","text":"Vi taler ofte om sundhed som noget, der foregår inde i kroppen: blodtryk, kondition, kost, søvn og gener. Men en del af vores sundhed foregår mellem mennesker. Hvem kan du ringe til? Hvem lægger mærke til, hvis du forsvinder fra radaren? Hvem kan du være sammen med uden at skulle præstere?"},
+    {"type":"h2","text":"At være omgivet af mennesker er ikke det samme som at være forbundet"},
+    {"type":"p","text":"CDC beskriver social forbindelse som mere end størrelsen på ens netværk. Det handler også om kvaliteten og variationen af relationer og om, hvorvidt man oplever tilhørsforhold, støtte og omsorg. Derfor kan man godt være alene uden at være ensom – og føle sig ensom i et rum fyldt med mennesker."},
+    {"type":"p","text":"Den forskel er vigtig. Ti overfladiske kontakter er ikke nødvendigvis mere beskyttende end to mennesker, man faktisk kan stole på. Relationer er heller ikke automatisk sunde, bare fordi de eksisterer. Konfliktfyldte eller utrygge relationer kan belaste snarere end støtte."},
+    {"type":"h2","text":"Relationer kan påvirke vanerne omkring dig"},
+    {"type":"p","text":"Støttende relationer kan gøre det lettere at håndtere stress, angst og perioder med lavt humør. De kan også hænge sammen med bedre søvn, mere fysisk aktivitet og sundere vaner. En mulig forklaring er enkel: mennesker påvirker hinandens adfærd, giver praktisk hjælp og hjælper med at regulere belastning, når livet bliver svært."},
+    {"type":"p","text":"Det behøver ikke være store følelsesmæssige samtaler. Social støtte kan også være nogen, der henter børnene, går en tur med dig, sender en besked efter en svær dag eller siger: 'Det dér lyder ikke helt godt – har du fået det undersøgt?'"},
+    {"type":"h2","text":"Sundhedseffekten er større end hygge"},
+    {"type":"p","text":"Ifølge CDC er stærkere sociale bånd forbundet med større sandsynlighed for et længere og sundere liv. Social forbindelse forbindes også med lavere risiko for flere alvorlige helbredsproblemer. Det betyder ikke, at venner fungerer som medicin, eller at sygdom skyldes manglende selskab. Sundhed er langt mere kompleks end det."},
+    {"type":"p","text":"Men relationer er en faktor, der let bliver overset, netop fordi den ikke kan måles lige så enkelt som skridt eller blodtryk. Man kan købe et ur, der tæller bevægelse. Der findes endnu ikke en troværdig ring, der blinker, når du har været for lidt menneske sammen med andre mennesker."},
+    {"type":"h2","text":"Det behøver ikke begynde med en ny bedste ven"},
+    {"type":"p","text":"Hvis ens sociale liv er blevet tyndt, kan det virke kunstigt at beslutte, at man nu skal 'få flere relationer'. Et mere realistisk første skridt er ofte at styrke en forbindelse, der allerede findes: invitere nogen på kaffe, genoptage en gammel kontakt, møde op fast et sted eller gøre en fælles aktivitet tilbagevendende."},
+    {"type":"p","text":"Nære relationer opstår sjældent af én stor samtale. De bygges oftere af gentagelser: Vi ses igen. Vi taler igen. Du var der sidst, og du er der også denne gang. Det lyder mindre romantisk end 'find dit tribe'. Til gengæld er det omtrent sådan, menneskelige relationer faktisk bliver til."}
   ],
   "source_ids_to_display": ["S1"],
   "related_news_slug": null,
