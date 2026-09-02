@@ -2052,6 +2052,73 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "68f9cd57bce7fad3779885c4af172b17bc1bfa4a1583bdf4130a1fec7e526043",
+        "recorded_at": "2026-09-02T14:16:52+00:00",
+        "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+        "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
+          "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+          "standfirst": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk. Dommer åbner op for dødsstraf i sagen.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Tyler Robinson: Ikke skyldig i mordet på Charlie Kirk",
+            "description": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk. Dommer åbner op for dødsstraf i sagen.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/b/b2/CCTV_still_of_Tyler_James_Robinson_at_a_Dairy_Queen_shortly_after_the_Assassination_of_Charlie_Kirk.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "alt": "On September 10, 2025, at 6:38 p.m., six hours after the assassination of Charlie Kirk , the alleged shooter Tyler James Robinson can be seen at a Dairy Queen through this CCTV still.",
+            "credit": "CCTV",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:CCTV_still_of_Tyler_James_Robinson_at_a_Dairy_Queen_shortly_after_the_Assassination_of_Charlie_Kirk.png",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Tyler Robinson har erklæret sig ikke skyldig i mordet på den konservative aktivist Charlie Kirk. Det sker efter, at en dommer har åbnet op for, at anklagerne kan kræve dødsstraf i sagen.",
+              "type": "p"
+            },
+            {
+              "text": "Ifølge BBC World blev Charlie Kirk, som er medstifter af organisationen Turning Point USA, skudt i halsen, mens han talte ved Utah Valley University i Orem den 10. september 2025. Tyler Robinson har nu erklæret sig ikke skyldig i forbindelse med drabet og yderligere seks anklager.",
+              "type": "p"
+            },
+            {
+              "text": "Sagen er meget omtalt i medierne, og både Euronews og BBC World har dækket sagen. Ifølge Euronews har dommeren åbnet op for, at anklagerne kan kræve dødsstraf i sagen, hvilket er en mulighed i delstaten Utah, hvor drabet fandt sted.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ],
     "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale": [
@@ -2729,6 +2796,95 @@
           "related": [],
           "correction_note": null
         }
+      },
+      {
+        "hash": "ce5aa16f6949cb25908d150efbb871d3d96a1f3e2ddf328ea28dfeb823ab26ea",
+        "recorded_at": "2026-09-02T14:16:52+00:00",
+        "title": "Gode relationer er også sundhed: Ensomhed handler om mere end at være alene",
+        "story_id": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+          "slug": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+          "editorial_destination": "people_magazine",
+          "category": "Liv",
+          "weight": "D",
+          "title": "Gode relationer er også sundhed: Ensomhed handler om mere end at være alene",
+          "standfirst": "Sociale relationer påvirker ikke kun humøret. Stærke og støttende bånd hænger også sammen med bedre fysisk sundhed, søvn og evnen til at håndtere stress.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-gode-relationer-er-ogsaa-sundhed.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Sociale relationer og sundhed: hvorfor forbindelser betyder noget",
+            "description": "Støttende relationer hænger sammen med bedre mental og fysisk sundhed. Få overblik over hvorfor social forbindelse betyder noget.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Vi taler ofte om sundhed som noget, der foregår inde i kroppen: blodtryk, kondition, kost, søvn og gener. Men en del af vores sundhed foregår mellem mennesker. Hvem kan du ringe til? Hvem lægger mærke til, hvis du forsvinder fra radaren? Hvem kan du være sammen med uden at skulle præstere?"
+            },
+            {
+              "type": "h2",
+              "text": "At være omgivet af mennesker er ikke det samme som at være forbundet"
+            },
+            {
+              "type": "p",
+              "text": "CDC beskriver social forbindelse som mere end størrelsen på ens netværk. Det handler også om kvaliteten og variationen af relationer og om, hvorvidt man oplever tilhørsforhold, støtte og omsorg. Derfor kan man godt være alene uden at være ensom – og føle sig ensom i et rum fyldt med mennesker."
+            },
+            {
+              "type": "p",
+              "text": "Den forskel er vigtig. Ti overfladiske kontakter er ikke nødvendigvis mere beskyttende end to mennesker, man faktisk kan stole på. Relationer er heller ikke automatisk sunde, bare fordi de eksisterer. Konfliktfyldte eller utrygge relationer kan belaste snarere end støtte."
+            },
+            {
+              "type": "h2",
+              "text": "Relationer kan påvirke vanerne omkring dig"
+            },
+            {
+              "type": "p",
+              "text": "Støttende relationer kan gøre det lettere at håndtere stress, angst og perioder med lavt humør. De kan også hænge sammen med bedre søvn, mere fysisk aktivitet og sundere vaner. En mulig forklaring er enkel: mennesker påvirker hinandens adfærd, giver praktisk hjælp og hjælper med at regulere belastning, når livet bliver svært."
+            },
+            {
+              "type": "p",
+              "text": "Det behøver ikke være store følelsesmæssige samtaler. Social støtte kan også være nogen, der henter børnene, går en tur med dig, sender en besked efter en svær dag eller siger: 'Det dér lyder ikke helt godt – har du fået det undersøgt?'"
+            },
+            {
+              "type": "h2",
+              "text": "Sundhedseffekten er større end hygge"
+            },
+            {
+              "type": "p",
+              "text": "Ifølge CDC er stærkere sociale bånd forbundet med større sandsynlighed for et længere og sundere liv. Social forbindelse forbindes også med lavere risiko for flere alvorlige helbredsproblemer. Det betyder ikke, at venner fungerer som medicin, eller at sygdom skyldes manglende selskab. Sundhed er langt mere kompleks end det."
+            },
+            {
+              "type": "p",
+              "text": "Men relationer er en faktor, der let bliver overset, netop fordi den ikke kan måles lige så enkelt som skridt eller blodtryk. Man kan købe et ur, der tæller bevægelse. Der findes endnu ikke en troværdig ring, der blinker, når du har været for lidt menneske sammen med andre mennesker."
+            },
+            {
+              "type": "h2",
+              "text": "Det behøver ikke begynde med en ny bedste ven"
+            },
+            {
+              "type": "p",
+              "text": "Hvis ens sociale liv er blevet tyndt, kan det virke kunstigt at beslutte, at man nu skal 'få flere relationer'. Et mere realistisk første skridt er ofte at styrke en forbindelse, der allerede findes: invitere nogen på kaffe, genoptage en gammel kontakt, møde op fast et sted eller gøre en fælles aktivitet tilbagevendende."
+            },
+            {
+              "type": "p",
+              "text": "Nære relationer opstår sjældent af én stor samtale. De bygges oftere af gentagelser: Vi ses igen. Vi taler igen. Du var der sidst, og du er der også denne gang. Det lyder mindre romantisk end 'find dit tribe'. Til gengæld er det omtrent sådan, menneskelige relationer faktisk bliver til."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
       }
     ],
     "2026-09-02-overgangsalderen-er-mere-end-hedeture": [
@@ -2741,6 +2897,98 @@
           "status": "published",
           "story_id": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
           "slug": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+          "category": "Sundhed",
+          "weight": "D",
+          "title": "Overgangsalderen er mere end hedeture: Søvn, humør og sexliv kan også ændre sig",
+          "standfirst": "Perimenopause og menopause kan mærkes langt bredere end som hedeture. Søvn, koncentration, humør, slimhinder og sexlyst kan også blive påvirket – og der findes flere behandlingsmuligheder.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-overgangsalderen-er-mere-end-hedeture.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Overgangsalder og perimenopause: symptomer du bør kende",
+            "description": "Hedeture er kun ét symptom. Få overblik over søvn, humør, koncentration, tørhed, sexlyst og hvornår blødning bør undersøges.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Når overgangsalderen bliver omtalt, ender samtalen ofte ved hedeture. Det er forståeligt, fordi de er karakteristiske. Men for mange kvinder er det ikke nødvendigvis hedeturen, der fylder mest. Søvnen kan blive dårligere, koncentrationen mere svingende, humøret anderledes og sexlivet påvirket."
+            },
+            {
+              "type": "h2",
+              "text": "Perimenopause kommer før menopause"
+            },
+            {
+              "type": "p",
+              "text": "Perimenopause er perioden, hvor hormonforandringerne begynder, og menstruationerne ofte bliver mere uregelmæssige. Menopause bruges om tidspunktet, hvor man har været uden menstruation i 12 måneder, når fraværet ikke skyldes hormonel prævention. Forløbet er forskelligt fra person til person."
+            },
+            {
+              "type": "p",
+              "text": "Nogle mærker relativt lidt. Andre får symptomer, der påvirker arbejde, parforhold, søvn og hverdagsliv betydeligt. Det er netop derfor, det kan være misvisende at tale om overgangsalderen som én bestemt oplevelse."
+            },
+            {
+              "type": "h2",
+              "text": "Symptomerne kan ligne helt andre problemer"
+            },
+            {
+              "type": "p",
+              "text": "Ud over hedeture og nattesved beskriver NHS blandt andet søvnproblemer, humørsvingninger, lavt humør, problemer med hukommelse og koncentration, vaginal tørhed og ændret sexlyst. Nogle oplever også hjertebanken, hovedpine, ledgener eller ændringer i vandladning."
+            },
+            {
+              "type": "p",
+              "text": "Det kan gøre perioden forvirrende. Hvis man vågner flere gange om natten, føler sig irritabel om dagen og samtidig oplever mindre overskud og lyst, kan problemerne let blive fortolket som stress, dårlig trivsel eller et parforholdsproblem alene. I praksis kan flere ting spille sammen."
+            },
+            {
+              "type": "h2",
+              "text": "Det er ikke noget, man bare skal bide i sig"
+            },
+            {
+              "type": "p",
+              "text": "Der findes både hormonelle og ikke-hormonelle muligheder mod generende symptomer. Hormonbehandling kan være relevant for nogle, mens andre enten ikke ønsker den eller ikke bør bruge den. Samtale med læge eller andet kvalificeret sundhedspersonale giver mere mening end at vælge behandling ud fra venner, influencere eller tilfældige kosttilskud."
+            },
+            {
+              "type": "p",
+              "text": "Det er også vigtigt at skelne mellem almindelige overgangsaldersymptomer og symptomer, der bør undersøges. Hvis der opstår vaginal blødning efter 12 måneder uden menstruation, anbefales det at kontakte læge. Det er ikke ensbetydende med, at noget alvorligt er galt, men det bør vurderes."
+            },
+            {
+              "type": "h2",
+              "text": "En biologisk overgang – ikke en personlig fiasko"
+            },
+            {
+              "type": "p",
+              "text": "Overgangsalderen rammer på et tidspunkt i livet, hvor mange samtidig har ansvar for arbejde, familie, ældre forældre og relationer. Det gør det ekstra let at forklare alle forandringer med travlhed. Mere viden kan gøre det lettere at skelne: Hvad er et livsproblem, hvad kan være hormonelt, og hvad bør man få undersøgt?"
+            },
+            {
+              "type": "p",
+              "text": "Det vigtigste er måske netop at slippe idéen om, at man skal kunne genkende overgangsalderen på én bestemt måde. Kroppen udleverer ikke et skilt med teksten 'nu starter det'. Den sender ofte en samling mindre signaler."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
+      },
+      {
+        "hash": "741030a42b8975f79f8dc64bf0a003bb19ce2ba294dd2d0c34a626a9bb77c9c3",
+        "recorded_at": "2026-09-02T14:16:52+00:00",
+        "title": "Overgangsalderen er mere end hedeture: Søvn, humør og sexliv kan også ændre sig",
+        "story_id": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+          "slug": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+          "editorial_destination": "people_magazine",
           "category": "Sundhed",
           "weight": "D",
           "title": "Overgangsalderen er mere end hedeture: Søvn, humør og sexliv kan også ændre sig",
@@ -3079,8 +3327,458 @@
           "editorial_destination": "people_magazine",
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "5175a4af92f06678f76cbc02d33458609742434eda5a3d797a205db4e23a95fc",
+        "recorded_at": "2026-09-02T14:16:52+00:00",
+        "title": "Flood-relief indsats i Nepal-Tibet intensiveres",
+        "story_id": "2026-09-02-nepal-tibet-flood-relief-and-recovery-intensifies",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-nepal-tibet-flood-relief-and-recovery-intensifies",
+          "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres",
+          "category": "Udland",
+          "weight": "B",
+          "editorial_destination": "main",
+          "title": "Flood-relief indsats i Nepal-Tibet intensiveres",
+          "standfirst": "Mindst 1.114 mennesker er døde i Nepal efter katastrofal flodbølge",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres.json",
+          "claim_ids": [
+            "F01",
+            "F02"
+          ],
+          "seo": {
+            "title": "Flood-relief indsats i Nepal-Tibet intensiveres",
+            "description": "Flood-relief indsats i Nepal-Tibet intensiveres efter katastrofal flodbølge",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Landsat_Nepal_flood_2026-08-26.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "alt": "Satellite imagery of the aftermath of the 2026 Nepal floods",
+            "credit": "Landsat 9 via USGS, processed by User:Chorchapu",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Landsat_Nepal_flood_2026-08-26.png",
+            "image_type": "graphic",
+            "context_type": "satellite",
+            "caption": "Satellitbillede relateret til hændelsen eller det berørte område.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Flood-relief indsats i Nepal-Tibet intensiveres",
+              "type": "h2"
+            },
+            {
+              "text": "Mindst 1.114 mennesker er døde i Nepal, efter at en katastrofal flodbølge har ramt Nepal-Tibet-grænsen.",
+              "type": "p"
+            },
+            {
+              "text": "Det skriver BBC World, der også fortæller, at tusinder af mennesker stadig er savnet efter flodbølgen.",
+              "type": "p"
+            },
+            {
+              "text": "Nepals katastrofeagentur har rapporteret om de døde, og BBC World har fortalt om de savnede.",
+              "type": "p"
+            },
+            {
+              "text": "Familier fra Nepal har postet billeder af deres savnede på væggen i Kathmandus hospital.",
+              "type": "p"
+            },
+            {
+              "text": "Det skriver Euronews.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-02-crispr-er-en-programmerbar-dna-saks": [
+      {
+        "hash": "34b58242b1744818b96d518559fe2c5026b74c9ba38859f7935b6cc578e9496a",
+        "recorded_at": "2026-09-02T14:16:52+00:00",
+        "title": "CRISPR er en programmerbar DNA-saks – men klippet er kun begyndelsen",
+        "story_id": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
+          "slug": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
+          "editorial_destination": "tech_magazine",
+          "category": "Videnskab & teknologi",
+          "weight": "D",
+          "title": "CRISPR er en programmerbar DNA-saks – men klippet er kun begyndelsen",
+          "standfirst": "CRISPR-Cas9 bruger et RNA-molekyle som adresse og et Cas-enzym som skæreværktøj. Det gør genredigering langt mere målrettet – men cellens egen reparation afgør meget af resultatet.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-crispr-er-en-programmerbar-dna-saks.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Sådan virker CRISPR-Cas9 genredigering",
+            "description": "CRISPR forklaret: guide-RNA, Cas9, DNA-klip og cellens reparation. Derfor er genredigering både præcis og biologisk kompliceret.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "CRISPR bliver tit kaldt en genetisk saks. Det er et udmærket billede, men det mangler den vigtigste detalje: Saksen har en adresse. Det er netop kombinationen af et målrettende RNA-molekyle og et DNA-klippende protein, der gjorde CRISPR-Cas-systemer til så kraftfulde værktøjer i moderne biologi."
+            },
+            {
+              "type": "h2",
+              "text": "Systemet begyndte som bakteriers forsvar"
+            },
+            {
+              "type": "p",
+              "text": "CRISPR-sekvenser blev først opdaget som særlige gentagelser i bakteriers DNA. Bakterier bruger beslægtede CRISPR-Cas-systemer som en del af deres forsvar mod genetisk materiale fra blandt andet virus. Forskere lærte senere at programmere systemet og bruge det som laboratorieværktøj."
+            },
+            {
+              "type": "p",
+              "text": "I den klassiske CRISPR-Cas9-version består værktøjet af to centrale dele. Cas9 er et enzym, der kan klippe DNA. Et guide-RNA er konstrueret til at passe til en bestemt DNA-sekvens og leder Cas9 hen til det ønskede sted."
+            },
+            {
+              "type": "h2",
+              "text": "Det smarte er ikke bare klippet"
+            },
+            {
+              "type": "p",
+              "text": "Når Cas9 klipper DNA'et, opstår der et brud. Cellen forsøger straks at reparere det. Og det er her, biologien bliver mere interessant end metaforen om en saks. Afhængigt af reparationsprocessen kan et gen blive slået ud, en DNA-sekvens kan ændres, eller forskere kan forsøge at indsætte en bestemt ændring."
+            },
+            {
+              "type": "p",
+              "text": "Det betyder også, at CRISPR ikke fungerer som tekstbehandling, hvor man markerer et bogstav og skriver et nyt. Levende celler har egne reparationsmekanismer, og resultatet skal måles og kontrolleres."
+            },
+            {
+              "type": "h2",
+              "text": "Præcis betyder ikke fejlfri"
+            },
+            {
+              "type": "p",
+              "text": "Guide-RNA'et gør systemet målrettet, men biologiske systemer er ikke perfekte. Forskere undersøger derfor både, om redigeringen rammer det ønskede sted, og om der opstår utilsigtede ændringer andre steder."
+            },
+            {
+              "type": "p",
+              "text": "Moderne genredigering omfatter desuden flere teknikker end den klassiske Cas9-saks. Nogle systemer kan ændre enkelte DNA-baser eller skrive mindre ændringer uden nødvendigvis at lave et traditionelt dobbeltstrengsbrud. Grundidéen er den samme: gør biologisk redigering mere programmerbar."
+            },
+            {
+              "type": "h2",
+              "text": "Et laboratorieværktøj blev til en teknologisk platform"
+            },
+            {
+              "type": "p",
+              "text": "CRISPR bruges i forskning til at undersøge, hvad gener gør, skabe sygdomsmodeller og udvikle nye biologiske behandlinger. At kunne ændre et bestemt gen gør det muligt at teste årsagssammenhænge, som tidligere var langt sværere at isolere."
+            },
+            {
+              "type": "p",
+              "text": "Det er samtidig en teknologi, hvor etikken vokser sammen med præcisionen. Jo bedre vi bliver til at ændre arvemateriale, desto vigtigere bliver spørgsmålet om, hvilke celler man ændrer, hvorfor man gør det, og om ændringen kan føres videre til kommende generationer."
+            },
+            {
+              "type": "p",
+              "text": "CRISPRs store idé er derfor ikke, at mennesket pludselig kan omskrive livet efter behag. Den er mere jordnær og måske mere revolutionerende: Vi har fået et værktøj, der kan sendes til en bestemt genetisk adresse. Hvad der sker efter ankomsten, er stadig biologi."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
+      }
+    ],
+    "2026-09-02-fusion-kunsten-at-holde-en-stjerne-i-et-magnetfelt": [
+      {
+        "hash": "9178fa2968e9fd17a80b42a9fd7512dd8ef6a124e92c669d6ba0312e21b39371",
+        "recorded_at": "2026-09-02T14:16:52+00:00",
+        "title": "Fusion: Kunsten at holde en lille stjerne fanget i et magnetfelt",
+        "story_id": "2026-09-02-fusion-kunsten-at-holde-en-stjerne-i-et-magnetfelt",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-fusion-kunsten-at-holde-en-stjerne-i-et-magnetfelt",
+          "slug": "2026-09-02-fusion-kunsten-at-holde-en-stjerne-i-et-magnetfelt",
+          "editorial_destination": "tech_magazine",
+          "category": "Videnskab & teknologi",
+          "weight": "D",
+          "title": "Fusion: Kunsten at holde en lille stjerne fanget i et magnetfelt",
+          "standfirst": "Fusionskraft lyder enkelt: slå lette atomkerner sammen og høst energien. I praksis kræver det plasma omkring 150 millioner grader varmt – og et magnetisk bur, der kan holde det stabilt længe nok.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-fusion-kunsten-at-holde-en-stjerne-i-et-magnetfelt.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Sådan virker fusion og en tokamak",
+            "description": "Fusion forklaret: plasma, deuterium, tritium, tokamak og hvorfor ITER prøver at holde 150 millioner grader varmt plasma stabilt.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Der er noget næsten provokerende enkelt over idéen bag fusionsenergi. Solen gør det hele tiden: lette atomkerner smelter sammen til tungere kerner, og en lille del af massen bliver frigivet som energi. Problemet er bare, at Solen har en fordel, vi ikke har på Jorden: enorm tyngdekraft."
+            },
+            {
+              "type": "h2",
+              "text": "På Jorden skal vi snyde os til Solens forhold"
+            },
+            {
+              "type": "p",
+              "text": "I laboratorier arbejder forskere især med de to hydrogenisotoper deuterium og tritium. Når de fusionerer, dannes helium og en neutron, og der frigives energi. ITER beskriver deuterium-tritium-reaktionen som den mest effektive fusionsreaktion ved de laveste praktisk opnåelige temperaturer – hvilket stadig betyder omkring 150 millioner grader Celsius."
+            },
+            {
+              "type": "p",
+              "text": "Ved de temperaturer er stoffet ikke længere en almindelig gas. Elektronerne er revet løs fra atomkernerne, så man får plasma: en suppe af elektrisk ladede partikler. Det er nyttigt, fordi ladede partikler kan styres med magnetfelter."
+            },
+            {
+              "type": "h2",
+              "text": "Tokamakken er et magnetisk bur"
+            },
+            {
+              "type": "p",
+              "text": "En tokamak er grundlæggende en ringformet beholder omgivet af kraftige magneter. Magnetfelterne skal holde plasmaet væk fra væggene og samtidig få det til at cirkulere stabilt. Hvis det ekstremt varme plasma ramte materialerne direkte, ville processen hurtigt gå i stå – og komponenterne ville blive udsat for enorme belastninger."
+            },
+            {
+              "type": "p",
+              "text": "Det er derfor, fusionsforskning ikke bare handler om at få temperaturen høj nok. Tre ting skal spille sammen: høj temperatur, tilstrækkelig tæthed af partikler og lang nok indeslutningstid. Mister man kontrollen over én af dem, falder antallet af fusioner."
+            },
+            {
+              "type": "h2",
+              "text": "Hvorfor taler alle om energigevinst?"
+            },
+            {
+              "type": "p",
+              "text": "En maskine kan godt skabe fusion uden at være et nyttigt kraftværk. Det afgørende er, hvor meget fusionsenergi man får ud i forhold til den energi, der bruges til at varme plasmaet. ITER er konstrueret med målet om at demonstrere en fusionsgevinst på mindst Q=10: cirka 500 megawatt fusionskraft fra 50 megawatt tilført plasmaopvarmning."
+            },
+            {
+              "type": "p",
+              "text": "Det tal betyder dog ikke, at ITER bliver et elværk. ITER skal ikke sælge elektricitet til nettet. Projektet er et eksperiment, der skal vise, om fysikken og teknologien kan bringes tættere på de forhold, et fremtidigt fusionskraftværk skal håndtere."
+            },
+            {
+              "type": "h2",
+              "text": "Den svære del er ikke at lave fusion – men at gøre den stabil"
+            },
+            {
+              "type": "p",
+              "text": "Fusion er allerede demonstreret i laboratorier. Den store ingeniøropgave er at gøre reaktionen vedvarende, forudsigelig og teknisk håndterbar. Et såkaldt brændende plasma skal i høj grad kunne holde sig varmt ved hjælp af energien fra selve fusionen i stedet for konstant ekstern opvarmning."
+            },
+            {
+              "type": "p",
+              "text": "Det er derfor, fusion stadig er en lovende teknologi og ikke en færdig energikilde. Fysikken virker. Spørgsmålet er, om mennesker kan bygge en maskine, der får fysikken til at virke stabilt, længe og billigt nok til at blive et kraftværk. Solen har haft et forspring på nogle milliarder år."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
+      }
+    ],
+    "2026-09-02-james-webb-kan-laese-en-fjern-planets-luft-i-stjernelyset": [
+      {
+        "hash": "192075dc18e6743fd265e1e069cb72a7a77a27c7ce2d3840406b7dbaa987e21c",
+        "recorded_at": "2026-09-02T14:16:52+00:00",
+        "title": "James Webb kan læse en fjern planets luft i stjernelyset",
+        "story_id": "2026-09-02-james-webb-kan-laese-en-fjern-planets-luft-i-stjernelyset",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-james-webb-kan-laese-en-fjern-planets-luft-i-stjernelyset",
+          "slug": "2026-09-02-james-webb-kan-laese-en-fjern-planets-luft-i-stjernelyset",
+          "editorial_destination": "tech_magazine",
+          "category": "Videnskab & teknologi",
+          "weight": "D",
+          "title": "James Webb kan læse en fjern planets luft i stjernelyset",
+          "standfirst": "Når en planet passerer foran sin stjerne, filtreres en smule af stjernelyset gennem planetens atmosfære. De manglende farver kan afsløre molekyler hundreder af lysår væk.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-james-webb-kan-laese-en-fjern-planets-luft-i-stjernelyset.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Sådan måler James Webb atmosfæren på exoplaneter",
+            "description": "Transmission-spektroskopi forklaret: sådan bruger James Webb stjernelys til at finde molekyler i atmosfæren på fjerne exoplaneter.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Et billede af en exoplanet kan være spektakulært. Men ofte er det den kedelige graf ved siden af billedet, der fortæller mest. En ujævn kurve over forskellige bølgelængder kan afsløre, hvilke molekyler der findes i en atmosfære, selv når planeten befinder sig hundreder eller tusinder af lysår væk."
+            },
+            {
+              "type": "h2",
+              "text": "Planeten bliver sin egen lille prøveholder"
+            },
+            {
+              "type": "p",
+              "text": "Metoden hedder transmissionsspektroskopi. Først måler James Webb-rumteleskopet lyset fra stjernen alene. Derefter måler det igen, mens planeten passerer foran stjernen. En meget lille del af stjernelyset går da gennem planetens atmosfære på vej mod teleskopet."
+            },
+            {
+              "type": "p",
+              "text": "Atmosfæren er ikke gennemsigtig ved alle bølgelængder. Forskellige atomer og molekyler absorberer bestemte dele af lyset. Når forskerne sammenligner de to målinger, kan de se små dyk i spektret – kemiske fingeraftryk, der kan passe til bestemte stoffer."
+            },
+            {
+              "type": "h2",
+              "text": "Et spektrum er mere end en regnbue"
+            },
+            {
+              "type": "p",
+              "text": "Spektroskopi går ud på at sprede lys ud i dets enkelte bølgelængder og måle, hvor meget lys der findes ved hver af dem. NASA beskriver teknikken som en måde at udlede blandt andet kemisk sammensætning, temperatur, tæthed og bevægelse."
+            },
+            {
+              "type": "p",
+              "text": "Det er især Webbs infrarøde instrumenter, der gør teleskopet stærkt på området. Molekyler har karakteristiske absorptionsmønstre i infrarødt lys, og Webb kan derfor lede efter kemiske signaturer, som er svære eller umulige at se i almindeligt synligt lys."
+            },
+            {
+              "type": "h2",
+              "text": "At finde et molekyle er ikke det samme som at finde liv"
+            },
+            {
+              "type": "p",
+              "text": "Hvis forskere finder vanddamp, kuldioxid eller metan i en fjern atmosfære, er det en vigtig måling – men ikke en færdig konklusion om liv. Det samme molekyle kan i mange tilfælde dannes gennem flere forskellige processer. Atmosfærens temperatur, tryk, stjernens aktivitet og andre molekyler skal med i tolkningen."
+            },
+            {
+              "type": "p",
+              "text": "Det er en vigtig forskel mellem astronomi og science fiction. Webb kan ikke flyve hen til planeten og tage en luftprøve. Teleskopet må rekonstruere atmosfæren ud fra få fotoner og meget små forskelle i lys."
+            },
+            {
+              "type": "h2",
+              "text": "Det imponerende ligger i subtraktionen"
+            },
+            {
+              "type": "p",
+              "text": "Den grundlæggende idé er næsten barnligt enkel: mål stjernen, mål stjernen plus planeten, og træk de to målinger fra hinanden. Men signalet fra atmosfæren er så lille, at instrumenternes præcision, kalibrering og gentagne observationer bliver afgørende."
+            },
+            {
+              "type": "p",
+              "text": "Det gør Webb til noget mere interessant end et ekstremt dyrt kamera. Det er et laboratorium, der aldrig rører den prøve, det undersøger. I stedet lader det lyset rejse hele vejen gennem rummet med svaret gemt i sig."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
+      }
+    ],
+    "2026-09-02-kvantecomputeren-er-ikke-en-hurtigere-pc": [
+      {
+        "hash": "b45b48a144c63373a47134b060187dd157d6dbae950a2319264e62c58ee6c42d",
+        "recorded_at": "2026-09-02T14:16:52+00:00",
+        "title": "Kvantecomputeren er ikke en hurtigere pc – den regner på en anden måde",
+        "story_id": "2026-09-02-kvantecomputeren-er-ikke-en-hurtigere-pc",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-kvantecomputeren-er-ikke-en-hurtigere-pc",
+          "slug": "2026-09-02-kvantecomputeren-er-ikke-en-hurtigere-pc",
+          "editorial_destination": "tech_magazine",
+          "category": "Videnskab & teknologi",
+          "weight": "D",
+          "title": "Kvantecomputeren er ikke en hurtigere pc – den regner på en anden måde",
+          "standfirst": "En qubit kan udnytte superposition og sammenfiltring, men netop de kvanteeffekter, der gør maskinen interessant, gør den også ekstremt følsom over for støj og fejl.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-kvantecomputeren-er-ikke-en-hurtigere-pc.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Sådan virker en kvantecomputer og qubits",
+            "description": "Kvantecomputere forklaret: qubits, superposition, sammenfiltring, interferens og hvorfor fejlkorrektion er den store udfordring.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Kvantecomputeren bliver ofte forklaret som en almindelig computer på meget stærk kaffe. Det er misvisende. En kvantecomputer er ikke bare en pc, der udfører de samme instruktioner hurtigere. Den bruger fysiske egenskaber ved kvantemekaniske systemer til at repræsentere og bearbejde information på en anden måde."
+            },
+            {
+              "type": "h2",
+              "text": "En bit vælger. En qubit kan være i superposition"
+            },
+            {
+              "type": "p",
+              "text": "En almindelig bit har værdien 0 eller 1. En qubit kan befinde sig i en kvantetilstand, der beskrives som en kombination – en superposition – af 0 og 1, indtil den måles. Det betyder ikke, at man bare kan læse begge svar ud samtidig. Målingen giver et konkret resultat."
+            },
+            {
+              "type": "p",
+              "text": "Kunsten består derfor i at designe en kvantealgoritme, så sandsynlighederne for de nyttige svar forstærkes, mens andre udfald dæmpes gennem interferens. Kvantecomputeren er interessant, fordi den kan manipulere et helt mønster af amplituder, før man til sidst måler."
+            },
+            {
+              "type": "h2",
+              "text": "Sammenfiltring kobler qubits på en usædvanlig måde"
+            },
+            {
+              "type": "p",
+              "text": "Qubits kan også blive sammenfiltrede, så deres kvantetilstande ikke længere kan beskrives uafhængigt af hinanden. Det giver kvantealgoritmer et sæt muligheder, som almindelige bits ikke har på samme måde."
+            },
+            {
+              "type": "p",
+              "text": "Men flere qubits betyder ikke automatisk en bedre maskine. Det afgørende er også, hvor godt qubits kan styres, hvor længe de bevarer deres kvantetilstand, og hvor ofte operationerne laver fejl."
+            },
+            {
+              "type": "h2",
+              "text": "Problemet er, at verden hele tiden prikker til maskinen"
+            },
+            {
+              "type": "p",
+              "text": "NIST beskriver qubits som ekstremt skrøbelige. Temperaturændringer, elektriske og magnetiske felter og anden påvirkning fra omgivelserne kan ødelægge superposition og sammenfiltring. Det kaldes ofte decoherence: kvanteinformationen mister de egenskaber, man forsøgte at udnytte."
+            },
+            {
+              "type": "p",
+              "text": "Derfor bliver fejlkorrektion en af feltets store ingeniøropgaver. I klassiske computere er fejl sjældne og relativt lette at opdage. I kvantesystemer kan man ikke bare kopiere en ukendt kvantetilstand og kontrollere den bagefter. Man må kode informationen på tværs af flere fysiske qubits og opdage fejl indirekte."
+            },
+            {
+              "type": "h2",
+              "text": "Den vil ikke erstatte din laptop"
+            },
+            {
+              "type": "p",
+              "text": "Selv en fremtidig stor, fejlkorrigeret kvantecomputer vil næppe være den bedste maskine til e-mail, regneark eller videoredigering. Kvantefordele forventes på bestemte problemtyper, hvor strukturen i algoritmen kan udnytte kvantefænomener."
+            },
+            {
+              "type": "p",
+              "text": "Det mest nøgterne billede er derfor ikke en universel supercomputer, men en specialiseret regnemaskine, der kan blive ekstremt stærk til enkelte opgaver. Først skal forskerne dog løse et lidt komisk grundproblem: Jo mere avanceret kvanteinformationen bliver, desto mere kræver den, at resten af universet lader den være i fred."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
       }
     ]
   },
-  "generated_at": "2026-09-02T10:49:42+00:00"
+  "generated_at": "2026-09-02T14:16:52+00:00"
 }
