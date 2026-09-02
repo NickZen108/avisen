@@ -2,14 +2,17 @@
   "date": "2026-09-02",
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
-  "ticker_text": "Mindst 1.114 mennesker er døde i Nepal efter katastrofal flodbølge",
+  "ticker_text": "Ny udvikling: WHO-chefen advarer om, at Ebola-udbruddet skal intensiveres for at stoppe udbruddet.",
   "ticker": {
-    "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
+    "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
   },
   "lead": {
     "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
   },
   "rail": [
+    {
+      "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
+    },
     {
       "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
     },
@@ -21,9 +24,6 @@
     },
     {
       "slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale"
-    },
-    {
-      "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk"
     }
   ],
   "stack": [
@@ -54,6 +54,9 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
+    },
+    {
       "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
     },
     {
@@ -73,9 +76,6 @@
     },
     {
       "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden"
-    },
-    {
-      "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
     }
   ]
 }

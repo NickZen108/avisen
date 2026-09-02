@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T16:44:28Z",
+  "generated_at": "2026-09-02T17:30:36Z",
   "counts": {
-    "published": 13,
+    "published": 14,
     "checking": 2,
     "draft": 3
   },
@@ -158,6 +158,14 @@
     {
       "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
       "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe",
+      "title": "WHO-chefen advarer om, at Ebola-udbruddet skal intensiveres for at stoppe udbruddet.",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

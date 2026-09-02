@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "published_count": 29,
+  "published_count": 30,
   "category_mix": {
     "Udland": 16,
+    "Sundhed": 4,
     "Videnskab & teknologi": 4,
     "Videnskab": 3,
-    "Sundhed": 3,
     "Liv": 1,
     "Guide": 1,
     "Historie": 1
   },
   "top_source_hosts": {
     "www.reuters.com": 8,
-    "www.aljazeera.com": 6,
+    "www.aljazeera.com": 7,
     "www.theguardian.com": 6,
     "www.euronews.com": 5,
     "www.bbc.co.uk": 5,
@@ -34,10 +34,10 @@
   },
   "top_source_groups": {
     "reuters-reporting": 5,
+    "host-aljazeera-com": 4,
     "host-euronews-com": 4,
     "guardian-reporting": 4,
     "ap-reporting": 4,
-    "host-aljazeera-com": 3,
     "host-bbc-co-uk": 3,
     "aljazeera-reporting": 3,
     "host-theguardian-com": 2,
@@ -56,8 +56,8 @@
   },
   "unique_source_hosts": 41,
   "unique_source_groups": 61,
-  "followup_share": 0.103,
+  "followup_share": 0.1,
   "correction_rate": 0.0,
-  "median_body_characters": 1263,
+  "median_body_characters": 1186,
   "principle": "These metrics are diagnostic. Clicks alone must not determine editorial priority."
 }
