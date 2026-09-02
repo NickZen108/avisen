@@ -27,35 +27,27 @@ def regex_once(text: str, pattern: str, replacement: str, label: str) -> str:
 def patch_editorial() -> None:
     path = ROOT / "cloudflare/newsdesk/src/editorial.js"
     s = path.read_text(encoding="utf-8")
-
-    # Fact-check output no longer has a quote/passage sub-contract. Source indexes are
-    # the evidence references; the deterministic gate decides whether one of them is authoritative.
     s = replace_once(
         s,
         '''      evidence: { type: "array", minItems: 1, maxItems: 8, items: { type: "object", properties: {\n        source_index: { type: "integer" }, quote: { type: "string" },\n      }, required: ["source_index", "quote"] } },\n      status: { type: "string", enum: ["verified", "uncertain", "rejected"] }, notes: { type: "string" },\n    }, required: ["id", "claim", "source_indexes", "evidence", "status", "notes"] } },''',
         '''      status: { type: "string", enum: ["verified", "uncertain", "rejected"] }, notes: { type: "string" },\n    }, required: ["id", "claim", "source_indexes", "status", "notes"] } },''',
         "factCheckSchema evidence",
     )
-
-    # Remove the legacy passage-verification helper block entirely.
     s = regex_once(
         s,
         r'''function normalizedPassageText\(value\) \{.*?\n\}\nfunction verifiedSupportPassages\(claim, researched\) \{.*?\n\}\n\nasync function runResearch''',
         'async function runResearch',
         "legacy passage helper block",
     )
-
     old_system = '''  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. For HVER source_index du bruger som støtte skal evidence indeholde samme source_index og en KORT, ORDRET passage kopieret direkte fra den vedlagte excerpt, som faktisk dokumenterer netop claimet. Brug aldrig en kilde som støtte blot fordi den handler om samme historie. Hvis du ikke kan citere en konkret støttepassage, må source_index ikke bruges som evidens. Et claim kan få Verified på baggrund af én relevant autoritativ kilde, når en kort ordret støttepassage faktisk dokumenterer claimet. Autoritative kilder er: (1) store etablerede redaktionelle medier, (2) myndigheder/officielle kilder, (3) virksomheder, organisationer eller personer om egne forhold, (4) relevante forskere/fageksperter inden for deres fagområde og (5) forskningspapirer/original forskning. Originale bureaukilder som Reuters/AP/AFP/Ritzau er også autoritative. Kræv ikke automatisk kilde nr. 2 blot fordi kilden er et medie. Ved høj risiko, alvorlige beskyldninger eller fairness kan ekstra kontrol, attribution, forelæggelse eller Etik-review være nødvendig, men høj risiko skaber ikke i sig selv en mekanisk to-kilde-regel. For alle materielle tal (døde, penge, procent, antal osv.) skal du aktivt sammenligne/falsificere tallet mod alle vedlagte relevante kilder; ved mismatch skal claimet være uncertain eller formuleres forsigtigt/attribueret, aldrig vælg automatisk det højeste tal. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder, fakta eller citater. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;'''
     new_system = '''  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Angiv kun source_indexes for kilder, der faktisk dokumenterer claimet; brug aldrig en kilde som støtte blot fordi den handler om samme historie. Et claim kan få Verified på baggrund af én relevant autoritativ kilde. Autoritative kilder er: (1) store etablerede redaktionelle medier som BBC, Reuters, AP, Financial Times m.fl., (2) myndigheder/officielle kilder, (3) virksomheder, organisationer eller personer om egne forhold, (4) relevante forskere/fageksperter inden for deres fagområde og (5) forskningspapirer/original forskning. Originale bureaukilder som Reuters/AP/AFP/Ritzau er også autoritative. Kræv ikke automatisk kilde nr. 2, ekstra støttepassager eller andre sekundære evidensartefakter, når én relevant autoritativ kilde dokumenterer claimet. Ved høj risiko, alvorlige beskyldninger eller fairness kan ekstra kontrol, attribution, forelæggelse eller Etik-review være nødvendig, men høj risiko skaber ikke i sig selv en mekanisk to-kilde-regel. For alle materielle tal (døde, penge, procent, antal osv.) skal du aktivt sammenligne/falsificere tallet mod alle vedlagte relevante kilder; ved mismatch skal claimet være uncertain eller formuleres forsigtigt/attribueret, aldrig vælg automatisk det højeste tal. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder, fakta eller citater. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;'''
     s = replace_once(s, old_system, new_system, "fact-check system prompt")
-
     s = regex_once(
         s,
         r'''  for \(const claim of fact\.claims\) \{\n    const requestedIndexes = .*?\n  \}\n  const verified = fact\.claims\.filter''',
         '''  for (const claim of fact.claims) {\n    const indexes = [...new Set((claim.source_indexes || []).filter((i) => Number.isInteger(i) && i >= 0 && i < fact.researched.length))];\n    claim.source_indexes = indexes;\n    const evidence = indexes.map((i) => fact.researched[i]).filter(isEvidenceSource);\n    claim.numeric_material = numericMaterialClaim(claim);\n    claim.named_accused_primary_required = namedAccusedCrimeClaim(assignment, claim);\n    if (claim.status === "verified" && (!indexes.length || !evidenceRulePass(assignment, research, claim, evidence))) {\n      claim.status = "uncertain";\n      claim.notes = `${claim.notes || ""} Nedgraderet af deterministisk gate: claimet mangler en relevant autoritativ kilde.`.trim();\n    }\n  }\n  const verified = fact.claims.filter''',
         "fact-check deterministic gate",
     )
-
     s = replace_once(
         s,
         '''    const support_passages = (c.support_passages || []).map((x) => ({ source_id: sources[x.source_index]?.id, quote: x.quote, match_verified: x.match_verified === true })).filter((x) => x.source_id && ids.includes(x.source_id));\n    return { id: `F${String(i + 1).padStart(2, "0")}`, claim: c.claim, status: "verified", source_ids: ids, support_passages, independent_groups: ids.map((id) => sources.find((s) => s.id === id && !s.discovery_only)?.source_group).filter(Boolean), checked_at: accessedAt, notes: c.notes || "" };''',
@@ -93,6 +85,18 @@ def patch_source_gate() -> None:
     path.write_text(s, encoding="utf-8")
 
 
+def patch_selftest() -> None:
+    path = ROOT / "scripts/evidence_policy_selftest.py"
+    s = path.read_text(encoding="utf-8")
+    s = regex_once(
+        s,
+        r'''l3 = \{'schema_version': 3, 'right_of_reply': \{'required': False\}\}\ncheck\('v3 missing support passage fails'.*?\n\s*\[src\('S1', 'host-bbc-com', 'https://www\.bbc\.com/news/example'\)\]\)\n''',
+        '''l3 = {'schema_version': 3, 'right_of_reply': {'required': False}}\ncheck('v3 one major newsroom passes without any passage field', True, a, l3,\n      {'claim': 'En almindelig oplysning', 'source_ids': ['S1']},\n      [src('S1', 'host-bbc-com', 'https://www.bbc.com/news/example')])\n''',
+        "evidence policy v3 selftest",
+    )
+    path.write_text(s, encoding="utf-8")
+
+
 def remove_legacy_test() -> None:
     path = ROOT / "scripts/claim_passage_contract_test.py"
     if path.exists():
@@ -100,7 +104,6 @@ def remove_legacy_test() -> None:
 
 
 def remove_support_passages_from_json() -> None:
-    # Existing ledgers must not preserve a field whose semantics no longer exist.
     for path in ROOT.rglob("*.json"):
         if ".git" in path.parts:
             continue
@@ -127,9 +130,14 @@ def remove_support_passages_from_json() -> None:
 
 def assert_clean() -> None:
     checks = ["support_passages", "support passage", "støttepassage", "støttepassager"]
+    exclusions = [
+        ":(exclude)scripts/apply_authoritative_single_source_policy.py",
+        ":(exclude).github/workflows/apply-authoritative-single-source-policy.yml",
+        ":(exclude)reports/**",
+    ]
     for needle in checks:
         proc = subprocess.run(
-            ["git", "grep", "-n", "-i", needle, "--", ":(exclude)scripts/apply_authoritative_single_source_policy.py"],
+            ["git", "grep", "-n", "-i", needle, "--", *exclusions],
             cwd=ROOT, text=True, capture_output=True,
         )
         if proc.returncode == 0 and proc.stdout.strip():
@@ -140,6 +148,7 @@ if __name__ == "__main__":
     patch_editorial()
     patch_evidence_policy()
     patch_source_gate()
+    patch_selftest()
     remove_legacy_test()
     remove_support_passages_from_json()
     assert_clean()
