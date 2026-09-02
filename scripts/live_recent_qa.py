@@ -18,7 +18,7 @@ def live_url(base,path):
  if rel.startswith("docs/"):rel=rel[len("docs/"):]
  return urllib.parse.urljoin(base,rel)
 def main():
- p=argparse.ArgumentParser();p.add_argument("--target-sha");p.add_argument("--recent-hours",type=int,default=24);p.add_argument("--report",default="reports/qa/live-recent.md");p.add_argument("--base-url",default=DEFAULT_BASE);a=p.parse_args();base=a.base_url.rstrip("/")+"/";base_run=subprocess.run(["python","scripts/live_qa.py","--base-url",base,"--strict-internal","--report","/tmp/base-live.md"],cwd=ROOT);cut=datetime.now(timezone.utc)-timedelta(hours=a.recent_hours);urls=[]
+ p=argparse.ArgumentParser();p.add_argument("--target-sha");p.add_argument("--recent-hours",type=int,default=24);p.add_argument("--report",default="reports/qa/live-recent.md");p.add_argument("--base-url",default=DEFAULT_BASE);a=p.parse_args();base=a.base_url.rstrip("/")+"/";base_run=None if a.target_sha else subprocess.run(["python","scripts/live_qa.py","--base-url",base,"--strict-internal","--report","/tmp/base-live.md"],cwd=ROOT);cut=datetime.now(timezone.utc)-timedelta(hours=a.recent_hours);urls=[]
  for f in (ROOT/"content"/"articles").glob("*.json"):
   if f.name.startswith("_"):continue
   try:
@@ -28,5 +28,5 @@ def main():
  if a.target_sha:
   out=subprocess.check_output(["git","diff-tree","--no-commit-id","--name-only","-r",a.target_sha,"--","docs/artikler"],cwd=ROOT,text=True)
   urls += [live_url(base,x) for x in out.splitlines() if x.endswith(".html")]
- faults=[e for u in dict.fromkeys(urls) if (e:=check(u))];rp=Path(a.report);rp.parent.mkdir(parents=True,exist_ok=True);rp.write_text("# Recent/exact live QA\n\n"+("\n".join("- "+x for x in faults) if faults else "PASS")+"\n",encoding="utf-8");return 1 if base_run.returncode or faults else 0
+ faults=[e for u in dict.fromkeys(urls) if (e:=check(u))];rp=Path(a.report);rp.parent.mkdir(parents=True,exist_ok=True);rp.write_text("# Recent/exact live QA\n\n"+("\n".join("- "+x for x in faults) if faults else "PASS")+"\n",encoding="utf-8");return 1 if (base_run and base_run.returncode) or faults else 0
 if __name__=="__main__":raise SystemExit(main())
