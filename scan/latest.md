@@ -1,4 +1,4 @@
-# Scan 2026-09-02T20:05:57.272Z (Cloudflare runtime)
+# Scan 2026-09-02T20:21:01.394Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -37,13 +37,13 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Will the EU take action against Israel?
 
 ## BBC Europe
-- BBC visits smouldering Kyiv market after Russian strikes
 - Belugas and dolphins rescued from closed Canadian park arrive in Spain
 - Djokovic in tears during US Open first-round exit
 - EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany
 - France targets Shein and Temu with fast fashion fees
 - Iceland votes against restarting EU membership talks
 - Is UK's Storm Shadow missile a game changer for Ukraine?
+- Maltese tycoon acquitted of orchestrating murder of renowned journalist
 - Man arrested after Swiss rave shooting that killed woman
 - Moment tornado tears through southern France
 - Norway's new king takes oath as mourners pay respects to his late father
@@ -63,7 +63,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## BBC World
 - Ariana Grande makes emotional tour exit and steps back from public life
 - BBC travels inside occupied Lebanon as officials say Israel expanding positions
-- Bus crash on Egypt's Red Sea coast kills 22
 - Could the man who murdered a Christian missionary and his sons walk free in India?
 - EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany
 - Flock's rapidly expanding AI surveillance network facing growing backlash in US
@@ -71,6 +70,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Iran says US strike killed four at wedding in 'war crime' as US denies targeting civilians
 - Iranian attack on Saudi tanker killed two Filipino sailors, Saudi Arabia says
 - Lizzo 'grateful' after judge dismisses lawsuit against production company
+- Maltese tycoon acquitted of orchestrating murder of renowned journalist
 - More than 900 killed in Gaza this year despite ceasefire, Hamas-run health ministry says
 - Nepal intensifies relief and recovery efforts after deadly floods, UN says
 - 'Nothing but mud and silt' - the village swept away by deadly floods in Nepal
@@ -357,7 +357,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - A California City Drops Houses On Gavin Newsom&#8217;s Bullet Train
 - American Parents Spend More Energy Picking A Backpack For Their Kid Than Picking His School
 - Democrats Openly Declare Their Plans To Infiltrate Rural American Towns
-- Friends Don&#8217;t Let Friends Vote For Dems&#8217; Gambit To Destroy SCOTUS
+- DOJ Tells Sanctuary States They Must Report Illegals To Get Federal Welfare
 - From Iryna Zarutska To Lindsay Clancy, The Left Only Likes Women If They&#8217;re Politically Useful
 - If You Have Mixed Feelings About Lindsay Clancy&#8217;s Guilt, You&#8217;re Too Stupid And Broken To Be On TikTok
 - Judge Rules Tyler Robinson Will Face Trial For Assassination Of Charlie Kirk
