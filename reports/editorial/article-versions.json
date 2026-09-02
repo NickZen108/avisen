@@ -1699,7 +1699,151 @@
           "automation_origin": "cloudflare-workers-ai"
         }
       }
+    ],
+    "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed": [
+      {
+        "hash": "8a3c8b98dddeb354a0ccac159447f4d06d66cf37206ca8c3e7089b1952a18234",
+        "recorded_at": "2026-09-02T05:29:26+00:00",
+        "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+        "story_id": "2026-09-02-joshua-wong",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-joshua-wong",
+          "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed",
+          "category": "Politik",
+          "weight": "B",
+          "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+          "standfirst": "Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Han risikerer en livsvarig fængselsstraf.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+            "description": "Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Han risikerer en livsvarig fængselsstraf.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed.jpg",
+            "alt": "學民思潮召集人黃之鋒, July 2012",
+            "credit": "Iris Tong",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Joshua_Wong_Chi-fung.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Den kendte Hong Kong-aktivist Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Ifølge anklagerne har Wong bedt udenlandske lande om at pålægge sanktioner eller blokade mod Kina og Hong Kong i 2020.",
+              "type": "p"
+            },
+            {
+              "text": "Wong har været fængslet siden november 2020 og kunne risikere en livsvarig fængselsstraf. Han arbejdede sammen med den landsforviste Hong Kong-aktivist Nathan Law for at opfordre til sanktioner mod Kina.",
+              "type": "p"
+            },
+            {
+              "text": "Anklagerne mener, at Wong har samarbejdet med Nathan Law om at opfordre udenlandske lande til at pålægge sanktioner eller blokade mod Kina og Hong Kong. Wong har allerede været fængslet i mere end to år og kunne nu risikere en endnu længere fængselsstraf.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk": [
+      {
+        "hash": "4537488ebf5a42dd28490968aea9195d57f3bb62a3ae4a9a58eb03724bc8ce7f",
+        "recorded_at": "2026-09-02T05:29:26+00:00",
+        "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+        "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
+          "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
+          "category": "Politik",
+          "weight": "B",
+          "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+          "standfirst": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk. Dommer åbner op for dødsstraf i sagen.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Tyler Robinson: Ikke skyldig i mordet på Charlie Kirk",
+            "description": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk. Dommer åbner op for dødsstraf i sagen.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.jpg",
+            "alt": "Illustration til: Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+            "credit": "Illustration: Morgentidende",
+            "license": "Morgentidende – AI-genereret illustration",
+            "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.jpg",
+            "image_type": "illustration",
+            "context_type": "illustration",
+            "caption": "Illustration",
+            "pending_image": true,
+            "ai_generated": true,
+            "generator": "workers_ai_flux",
+            "contains_people": false,
+            "people_style": "pencil_hatching",
+            "photorealistic": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Tyler Robinson har erklæret sig ikke skyldig i mordet på den konservative aktivist Charlie Kirk. Det sker efter, at en dommer har åbnet op for, at anklagerne kan kræve dødsstraf i sagen.",
+              "type": "p"
+            },
+            {
+              "text": "Ifølge BBC World blev Charlie Kirk, som er medstifter af organisationen Turning Point USA, skudt i halsen, mens han talte ved Utah Valley University i Orem den 10. september 2025. Tyler Robinson har nu erklæret sig ikke skyldig i forbindelse med drabet og yderligere seks anklager.",
+              "type": "p"
+            },
+            {
+              "text": "Sagen er meget omtalt i medierne, og både Euronews og BBC World har dækket sagen. Ifølge Euronews har dommeren åbnet op for, at anklagerne kan kræve dødsstraf i sagen, hvilket er en mulighed i delstaten Utah, hvor drabet fandt sted.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
     ]
   },
-  "generated_at": "2026-09-02T05:23:28+00:00"
+  "generated_at": "2026-09-02T05:29:26+00:00"
 }

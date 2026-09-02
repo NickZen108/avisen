@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T05:23:27Z",
+  "generated_at": "2026-09-02T05:29:25Z",
   "counts": {
-    "published": 7,
+    "published": 9,
     "checking": 2,
     "draft": 3
   },
@@ -111,6 +111,22 @@
       "slug": "2026-09-01-sundhedskrise-i-gaza-who-advarerer-om-foresta-ende-katastrofe",
       "title": "Sundhedskrise i Gaza: WHO advarerer om forestående katastrofe",
       "status": "draft",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed",
+      "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
+      "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+      "status": "published",
       "release_requested": false,
       "resume_from": null,
       "reasons": []

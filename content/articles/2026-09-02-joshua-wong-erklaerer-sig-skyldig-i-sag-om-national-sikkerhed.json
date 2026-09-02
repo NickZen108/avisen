@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-joshua-wong",
   "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed",
   "category": "Politik",
@@ -9,7 +9,7 @@
   "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
   "standfirst": "Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Han risikerer en livsvarig fængselsstraf.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T05:29:25Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed.json",
@@ -62,5 +62,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T05:29:25Z"
+  }
 }

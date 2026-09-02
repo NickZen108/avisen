@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
   "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
   "category": "Politik",
@@ -9,7 +9,7 @@
   "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
   "standfirst": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk. Dommer åbner op for dødsstraf i sagen.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T05:29:25Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.json",
@@ -64,5 +64,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T05:29:25Z"
+  }
 }
