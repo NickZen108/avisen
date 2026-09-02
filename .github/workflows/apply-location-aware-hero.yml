@@ -1,3 +1,4 @@
+# canonical one-shot migration; safe to re-run because patch script is idempotent
 name: Apply location-aware hero policy
 on:
   push:
