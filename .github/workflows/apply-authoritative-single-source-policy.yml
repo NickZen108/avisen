@@ -1,93 +1,69 @@
-# canonical migration: one authoritative source is sufficient
-name: Apply authoritative single-source policy
+name: Burst orchestrator 4x10
 on:
   push:
     branches: [main]
     paths:
       - '.github/workflows/apply-authoritative-single-source-policy.yml'
-  workflow_dispatch:
 permissions:
-  contents: write
   actions: write
+  contents: read
 jobs:
-  apply:
+  burst:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
-        with: {ref: main, fetch-depth: 0}
-      - name: Sync latest main
-        run: git fetch origin main && git reset --hard origin/main
-      - name: Apply canonical single-source rule
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Run four publication slots ten minutes apart
+        shell: bash
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('scripts/apply_authoritative_single_source_policy.py')
-          s = p.read_text()
-          old = 'checks = ["support_passages", "support passage", "støttepassage", "støttepassager"]'
-          if old in s:
-              s = s.replace(old, 'checks = ["support_passages"]')
-          p.write_text(s)
-          PY
-          python scripts/apply_authoritative_single_source_policy.py
-          python - <<'PY'
-          from pathlib import Path
+          set -u
 
-          replacements = {
-              'AUTOMATION.md': [
-                  ('**Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum, når en maskinverificeret støttepassage dokumenterer claimet.',
-                   '**Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum.'),
-              ],
-              'SOURCES.md': [
-                  ('Et claim med en maskinverificeret støttepassage fra mindst én relevant autoritativ kilde kan få `verified`.',
-                   'Et claim med mindst én relevant autoritativ kilde kan få `verified`.'),
-              ],
-              'cloudflare/newsdesk/src/editorial.js': [
-                  ('Kræv ikke automatisk kilde nr. 2, ekstra støttepassager eller andre sekundære evidensartefakter, når én relevant autoritativ kilde dokumenterer claimet.',
-                   'Kræv ikke automatisk kilde nr. 2, når én relevant autoritativ kilde dokumenterer claimet.'),
-              ],
+          run_and_wait() {
+            workflow="$1"
+            shift
+            marker=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+            if ! gh workflow run "$workflow" --ref main "$@"; then
+              echo "Dispatch failed for $workflow; continuing burst."
+              return 0
+            fi
+            sleep 3
+            rid=""
+            for n in $(seq 1 20); do
+              rid=$(gh run list --workflow "$workflow" --event workflow_dispatch --limit 10 --json databaseId,createdAt --jq ".[] | select(.createdAt >= \"$marker\") | .databaseId" | head -n1 || true)
+              if [ -n "$rid" ]; then
+                break
+              fi
+              sleep 3
+            done
+            if [ -z "$rid" ]; then
+              echo "Could not identify $workflow run; continuing burst."
+              return 0
+            fi
+            echo "Waiting for $workflow run $rid"
+            if ! gh run watch "$rid" --exit-status; then
+              echo "$workflow run $rid failed; continuing to next burst step/slot."
+            fi
+            return 0
           }
-          for name, pairs in replacements.items():
-              p = Path(name)
-              if not p.exists():
-                  continue
-              s = p.read_text()
-              for old, new in pairs:
-                  s = s.replace(old, new)
-              p.write_text(s)
 
-          for p in Path('sources').glob('*.json'):
-              s = p.read_text()
-              s = s.replace('Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims.',
-                            'Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims.')
-              p.write_text(s)
-          PY
-          node --check cloudflare/newsdesk/src/editorial.js
-          python -m py_compile scripts/evidence_policy.py scripts/quality_gate.py scripts/source_independence_gate.py
-          python scripts/evidence_policy_selftest.py
-      - name: Verify legacy passage contract is gone from active repo
-        run: |
-          if git grep -n -i -E 'support_passages|support passage|støttepassage|støttepassager' -- ':!scripts/apply_authoritative_single_source_policy.py' ':!.github/workflows/apply-authoritative-single-source-policy.yml' ':!reports/**'; then
-            echo 'Legacy support-passage logic or wording still exists in active repo'
-            exit 1
-          fi
-      - name: Commit canonical evidence-policy changes
-        id: commit
-        run: |
-          git config user.name "morgentidende-publisher"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            git commit -m "newsdesk: one authoritative source is sufficient"
-            git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Deploy patched Newsdesk
-        if: ${{ steps.commit.outputs.changed == 'true' }}
-        env: {GH_TOKEN: '${{ github.token }}'}
-        run: gh workflow run cloudflare-newsdesk-deploy.yml --ref main
-      - name: Run quality gates
-        if: ${{ steps.commit.outputs.changed == 'true' }}
-        env: {GH_TOKEN: '${{ github.token }}'}
-        run: gh workflow run quality-gates.yml --ref main
+          for slot in 1 2 3 4; do
+            slot_start=$(date +%s)
+            echo "=== SLOT $slot/4 $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
+            run_and_wait breaking-scan.yml
+            run_and_wait cloudflare-editorial-sync.yml -f cycles=3
+            if [ "$slot" -lt 4 ]; then
+              elapsed=$(( $(date +%s) - slot_start ))
+              delay=$(( 600 - elapsed ))
+              if [ "$delay" -gt 0 ]; then
+                echo "Sleeping ${delay}s before next slot."
+                sleep "$delay"
+              else
+                echo "Slot exceeded ten minutes; starting next slot now."
+              fi
+            fi
+          done
