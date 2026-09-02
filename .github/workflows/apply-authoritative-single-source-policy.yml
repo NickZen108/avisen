@@ -1,5 +1,4 @@
-# canonical migration: one authoritative source is sufficient
-name: Apply authoritative single-source policy
+name: Apply global language house rules
 on:
   push:
     branches: [main]
@@ -17,77 +16,17 @@ jobs:
         with: {ref: main, fetch-depth: 0}
       - name: Sync latest main
         run: git fetch origin main && git reset --hard origin/main
-      - name: Apply canonical single-source rule
+      - name: Apply language house rules
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('scripts/apply_authoritative_single_source_policy.py')
-          s = p.read_text()
-          old = 'checks = ["support_passages", "support passage", "støttepassage", "støttepassager"]'
-          if old in s:
-              s = s.replace(old, 'checks = ["support_passages"]')
-          p.write_text(s)
-          PY
-          python scripts/apply_authoritative_single_source_policy.py
-          python - <<'PY'
-          from pathlib import Path
-
-          replacements = {
-              'AUTOMATION.md': [
-                  ('**Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum, når en maskinverificeret støttepassage dokumenterer claimet.',
-                   '**Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum.'),
-              ],
-              'SOURCES.md': [
-                  ('Et claim med en maskinverificeret støttepassage fra mindst én relevant autoritativ kilde kan få `verified`.',
-                   'Et claim med mindst én relevant autoritativ kilde kan få `verified`.'),
-              ],
-              'cloudflare/newsdesk/src/editorial.js': [
-                  ('Kræv ikke automatisk kilde nr. 2, ekstra støttepassager eller andre sekundære evidensartefakter, når én relevant autoritativ kilde dokumenterer claimet.',
-                   'Kræv ikke automatisk kilde nr. 2, når én relevant autoritativ kilde dokumenterer claimet.'),
-              ],
-          }
-          for name, pairs in replacements.items():
-              p = Path(name)
-              if not p.exists():
-                  continue
-              s = p.read_text()
-              for old, new in pairs:
-                  s = s.replace(old, new)
-              p.write_text(s)
-
-          for p in Path('sources').glob('*.json'):
-              s = p.read_text()
-              s = s.replace('Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims.',
-                            'Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims.')
-              p.write_text(s)
-          PY
+          python scripts/apply_language_house_rules_once.py
           node --check cloudflare/newsdesk/src/editorial.js
-          python -m py_compile scripts/evidence_policy.py scripts/quality_gate.py scripts/source_independence_gate.py
-          python scripts/evidence_policy_selftest.py
-      - name: Verify legacy passage contract is gone from active repo
-        run: |
-          if git grep -n -i -E 'support_passages|support passage|støttepassage|støttepassager' -- ':!scripts/apply_authoritative_single_source_policy.py' ':!.github/workflows/apply-authoritative-single-source-policy.yml' ':!reports/**'; then
-            echo 'Legacy support-passage logic or wording still exists in active repo'
-            exit 1
-          fi
-      - name: Commit canonical evidence-policy changes
-        id: commit
+      - name: Commit changes
         run: |
           git config user.name "morgentidende-publisher"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            git commit -m "newsdesk: one authoritative source is sufficient"
-            git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Deploy patched Newsdesk
-        if: ${{ steps.commit.outputs.changed == 'true' }}
+          git add HUSREGLER.md STYLE.md cloudflare/newsdesk/src/editorial.js
+          git commit -m "language: explain proper nouns and prevent Nordic leakage"
+          git push
+      - name: Deploy Newsdesk
         env: {GH_TOKEN: '${{ github.token }}'}
         run: gh workflow run cloudflare-newsdesk-deploy.yml --ref main
-      - name: Run quality gates
-        if: ${{ steps.commit.outputs.changed == 'true' }}
-        env: {GH_TOKEN: '${{ github.token }}'}
-        run: gh workflow run quality-gates.yml --ref main
