@@ -2331,6 +2331,74 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "bd1844bd13a0a4fba31e01f298d4fcd98bfa34ce8c495b82a1ba45494071133f",
+        "recorded_at": "2026-09-02T21:06:31+00:00",
+        "title": "Karsten Warholm ikke med i Diamond League-finale",
+        "story_id": "2026-09-02-karsten-warholm-ikke-deltager-i-diamond-league-finale",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-karsten-warholm-ikke-deltager-i-diamond-league-finale",
+          "slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Karsten Warholm ikke med i Diamond League-finale",
+          "standfirst": "Karsten Warholm deltager ikke i Diamond League-finale denne sæson.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "seo": {
+            "title": "Karsten Warholm ikke med i Diamond League-finale",
+            "description": "Karsten Warholm deltager ikke i Diamond League-finale på grund af en krangel om penge.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/AC_SO_Karlspreisverleihung_2026_14._Mai_Catarina_dos_Santos-Wintz.jpg/1920px-AC_SO_Karlspreisverleihung_2026_14._Mai_Catarina_dos_Santos-Wintz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "alt": "Catarina dos Santos-Wintz während der Karlspreisverleihung 2026",
+            "credit": "Grunpfnul",
+            "license": "CC BY-SA 4.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:AC_SO_Karlspreisverleihung_2026_14._Mai_Catarina_dos_Santos-Wintz.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Karsten Warholm deltager ikke i Diamond League-finale denne sæson. Ifølge NRK skyldes dette en krangel om penge, hvor Warholm selv siger: \"- Det handler ikke om penger.\" ",
+              "type": "p"
+            },
+            {
+              "text": "Warholm har haft en tøff sæson, hvor han har tabt fire gange til sin hovedkonkurrent, Alison dos Santos. Dos Santos har faktisk slået Warholm på hvert eneste forsøg denne sæson.",
+              "type": "p"
+            },
+            {
+              "text": "Diamond League-finale vil derfor gå uden Warholms deltagelse. Warholm har tidligere været kritisk overfor Diamond League-arrangøren, og har udtalt, at de tager profitten på bekostning af udøverne.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ],
     "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn": [
@@ -5105,5 +5173,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-02T21:05:39+00:00"
+  "generated_at": "2026-09-02T21:06:31+00:00"
 }
