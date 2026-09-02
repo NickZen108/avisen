@@ -1,0 +1,76 @@
+name: Manual burst 4x10 2026-09-02
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/manual-burst-4x10-20260902.yml'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  burst:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Run four fresh editorial slots ten minutes apart
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          run_and_wait() {
+            local workflow="$1"
+            shift
+            local marker
+            marker=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+            gh workflow run "$workflow" --ref main "$@"
+            sleep 3
+            local rid=""
+            for _ in $(seq 1 20); do
+              rid=$(gh run list --workflow "$workflow" --event workflow_dispatch --limit 10 --json databaseId,createdAt \
+                --jq ".[] | select(.createdAt >= \"$marker\") | .databaseId" | head -n1 || true)
+              if [ -n "$rid" ]; then
+                break
+              fi
+              sleep 3
+            done
+            if [ -z "$rid" ]; then
+              echo "Kunne ikke finde dispatch-run for $workflow"
+              return 1
+            fi
+            echo "Waiting for $workflow run $rid"
+            gh run watch "$rid" --exit-status
+          }
+
+          for slot in 1 2 3 4; do
+            slot_start=$(date +%s)
+            echo "=== Burst slot $slot/4 start $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
+
+            # Refresh the candidate pool so each slot sees current news.
+            run_and_wait breaking-scan.yml
+
+            # Up to three distinct candidates may be tried, but editorial sync stops
+            # immediately after the first approved/publicable article.
+            run_and_wait cloudflare-editorial-sync.yml -f cycles=3
+
+            echo "=== Burst slot $slot/4 complete $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
+
+            if [ "$slot" -lt 4 ]; then
+              elapsed=$(( $(date +%s) - slot_start ))
+              delay=$(( 600 - elapsed ))
+              if [ "$delay" -gt 0 ]; then
+                echo "Sleeping ${delay}s so next slot starts 10 minutes after this slot."
+                sleep "$delay"
+              else
+                echo "Slot took ${elapsed}s; starting next slot immediately because the 10-minute mark has passed."
+              fi
+            fi
+          done
