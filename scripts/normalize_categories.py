@@ -18,9 +18,12 @@ ARTICLES = ROOT / "content" / "articles"
 APPROVALS = ROOT / "reports" / "editorial" / "approvals"
 
 DOMESTIC = (
-    "danmark", "dansk", "folketing", "christiansborg", "regering", "statsminister",
-    "minister", "kommune", "region", "grønland", "faero", "færø", "ft.dk",
-    "stm.dk", "politi.dk", "dr.dk", "tv2.dk",
+    "danmark", "dansk", "folketing", "folketinget", "christiansborg",
+    "den danske regering", "statsministeriet", "statsministeren",
+    "kommunal", "kommune", "region hovedstaden", "region sjælland",
+    "region syddanmark", "region midtjylland", "region nordjylland",
+    "grønland", "færø", "forbrugerombudsmand", "sikkerhedsstyrelsen",
+    "fødevarestyrelsen", "rigspolitiet", "ft.dk", "stm.dk",
 )
 
 
