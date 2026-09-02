@@ -7,7 +7,7 @@ Alle roller følger `HUSREGLER.md`. Hver beslutning har én ejer. En senere roll
 1. **Scan** — billig bred radar. Finder, normaliserer og grupperer signaler. Ingen endelig nyhedsværdi eller verifikation.
 2. **Nyhedsdesk** — vælger research-frø, story-id, kategori og foreløbig A-D-vægt. Åben ved indgangen; tynd dokumentation er Researchs problem.
 3. **Research** — finder og strukturerer nødvendig evidens til 1–6 bærende kandidat-claims. Ingen nyhedsvurdering og ingen endelig sandhedsdom.
-4. **Fact checker** — uafhængig verifier. Almindelige claims kan normalt bæres af én autoritativ primærkilde eller to reelt uafhængige troværdige kilder. Ét verificeret bærende claim kan være nok til en kort artikel.
+4. **Fact checker** — uafhængig verifier. Ét claim kan verificeres af én relevant autoritativ kilde, når kilden faktisk dokumenterer claimet inden for sit kompetence- eller vidensområde. Autoritative kilder omfatter store redaktionelle medier, myndigheder/officielle kilder, virksomheder eller personer om egne forhold, relevante forskere/fageksperter samt forskningspapirer/original forskning. Ét verificeret bærende claim kan være nok til en kort artikel.
 5. **Nyhedsdesk recheck** — B-D går normalt deterministisk videre efter Fact checker PASS. Kun A/breaking får et ultrakort aktualitetsrecheck.
 6. **Journalist** — skriver titel, manchet og artikel direkte fra verificerede claims og ejer normalt lægmandssprog/rubrik.
 7. **Etik/fairness — betinget** — kører kun ved konkret risikoflag om fx forelæggelse, alvorlige beskyldninger, privatliv, børn, identifikation eller skade.
@@ -36,8 +36,8 @@ Separate produktflows som `commentator.md`, `kronik-agent.md` og `short-video.md
 - **Én ejer pr. beslutning:** nyhedsværdi = Nyhedsdesk; evidensindsamling = Research; faktuel verifikation = Fact checker; fairness/forelæggelse = Etik; tekst = Journalist; slutkontrol = Slutredaktør; placering = Forsideredaktør; teknik = deterministic QA.
 - **Billigt først:** kode/metadata/simple regler før AI.
 - **Progressiv strenghed:** Scan og Newsdesk er åbne; strenghed stiger tættere på publicering og med reel risiko.
-- **Risiko frem for kvoter:** ingen universelle minimumskrav på to claims, tre kilder eller tre source-groups.
-- **Normal kildegrundregel:** én autoritativ primærkilde kan bære et simpelt faktum inden for eget område; ellers er to reelt uafhængige troværdige kilder normalt nok. Samme bureau/pressemeddelelse tæller én gang.
+- **Risiko frem for kvoter:** ingen universelle minimumskrav på to claims, to eller tre kilder eller tre source-groups.
+- **Normal kildegrundregel:** én relevant autoritativ kilde kan verificere et claim. Store medier er autoritative redaktionelle kilder; myndigheder er autoritative om deres officielle område; virksomheder/personer er autoritative om egne forhold; relevante forskere/fageksperter og forskningspapirer er autoritative inden for deres faglige/resultatmæssige område. Flere kilder bruges for pluralisme, mod-evidens og ekstra sikkerhed, ikke som mekanisk minimum.
 - **Soft flags er ikke hard gates:** tvivl og risici routes til rette ejer.
 - **Kompakte payloads:** claims + kildeindeks + korte relevante uddrag sendes videre; samme lange kildekontekst genbruges ikke blindt.
 - **8B som standard:** stærk model bruges kun, når kompleksitet/risiko eller kvalitetsbehov reelt kræver det.
@@ -51,4 +51,4 @@ Approval snapshot beskytter redaktionelt indhold efter sidste kontrol. Udgiver m
 
 ## Hard stops
 
-Hard stops skal være få og konkrete: ingen verificerede bærende claims; falsk kildeuafhængighed når to kilder er nødvendige; uafsluttet konkret etik/manual-review; manglende final approval; teknisk korrupt artikel; højrisiko autopublicering; ugyldigt/opdigtet publiceringstidspunkt. Et bestemt antal kilder eller claims er ikke i sig selv et hard stop.
+Hard stops skal være få og konkrete: ingen verificerede bærende claims; et claim uden mindst én relevant autoritativ dokumentationskilde; uafsluttet konkret etik/manual-review; manglende final approval; teknisk korrupt artikel; højrisiko autopublicering; ugyldigt/opdigtet publiceringstidspunkt. Et bestemt antal kilder eller claims er ikke i sig selv et hard stop.
