@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "story_id": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+  "article_slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+  "checked_at": "2026-09-02T17:30:59.503Z",
+  "gates": {
+    "language": "pass",
+    "ethics": "pass",
+    "image": "pass",
+    "seo": "pass",
+    "final_editor": "pass"
+  },
+  "final_editor_mode": "ai",
+  "editorial_snapshot": {
+    "pipeline_version": 2,
+    "story_id": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+    "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "DE",
+      "country_code": "DE",
+      "hero_queries_english": [
+        "Germany immigrant voters",
+        "German election"
+      ],
+      "hero_queries_local": [
+        "Deutschland Wähler mit Migrationshintergrund",
+        "Deutsche Wahl"
+      ],
+      "hero_queries_transliterated": [],
+      "place_names_english": [
+        "Germany"
+      ],
+      "place_names_local": [
+        "Deutschland"
+      ],
+      "primary_language": "de",
+      "primary_language_code": "de",
+      "transliterations": []
+    },
+    "title": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
+    "standfirst": "Tyskland har en stigende antal vælgere med indvandrerbaggrund. Ifølge en ny undersøgelse fra DW (2026) er dette en voksende gruppe, der kan spille en stor rolle i fremtidens tyske valg. ",
+    "byline": "Morgentidende Redaktion",
+    "manual_review": false,
+    "ledger": "sources/2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund.json",
+    "claim_ids": [
+      "F01",
+      "F02"
+    ],
+    "seo": {
+      "title": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
+      "description": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
+      "canonical": null
+    },
+    "image": {
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund.jpg",
+      "alt": "Smittetrykket i Skåne er øget kraftigt – Danmark lukker delvis grænsen igen på lørdag Photo: News Øresund - Anna Palmehag © News Øresund - Anna Palmehag (CC BY 3.0). Danmark erklærer igen Skåne i karantæne i anledning af den stigende smittespredning. De seneste to uger har Skåne haft 46,3 nye smittede pr. 100.000 indbyggere i gennemsnit pr. uge, hvilket er over Danmarks grænse på 30 smittede for når en region eller et land kommer i karantæne. Ved samme måling sidste uge var tallet for Skåne 29,8",
+      "credit": "News Oresund",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:20201023_antal_nye_smittede_Oresund_(50519875541).jpg",
+      "image_type": "photo",
+      "context_type": "archive",
+      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "pending_image": false,
+      "ai_generated": false,
+      "placement": "lead"
+    },
+    "body": [
+      {
+        "text": "Tyskland har en stigende antal vælgere med indvandrerbaggrund. Ifølge en ny undersøgelse fra DW (2026) er dette en voksende gruppe, der kan spille en stor rolle i fremtidens tyske valg. ",
+        "type": "p"
+      },
+      {
+        "text": "Men hvordan kan de etablerede partier nå ud til disse vælgere? Det er en spørgsmål, der har været omdiskuteret i længere tid. Ifølge DW (2026) når de etablerede partier kun dårligt ud til vælgere med indvandrerbaggrund. ",
+        "type": "p"
+      },
+      {
+        "text": "For at vinde disse vælgere, anbefaler eksperter, at partierne skal være mere åbne og inklusive. De skal også være villige til at lytte til vælgernes bekymringer og ønsker. ",
+        "type": "p"
+      }
+    ],
+    "source_ids_to_display": [
+      "S1"
+    ],
+    "related_news_slug": null,
+    "related": [],
+    "correction_note": null,
+    "automation_origin": "cloudflare-workers-ai"
+  },
+  "editorial_destination": "main"
+}

@@ -1,0 +1,122 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+  "article_slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "DE",
+      "country_code": "DE",
+      "hero_queries_english": [
+        "Germany immigrant voters",
+        "German election"
+      ],
+      "hero_queries_local": [
+        "Deutschland Wähler mit Migrationshintergrund",
+        "Deutsche Wahl"
+      ],
+      "hero_queries_transliterated": [],
+      "place_names_english": [
+        "Germany"
+      ],
+      "place_names_local": [
+        "Deutschland"
+      ],
+      "primary_language": "de",
+      "primary_language_code": "de",
+      "transliterations": []
+    },
+    "core_question": "Tyskland",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "DW",
+      "url": "https://www.dw.com/en/germany-how-to-woo-voters-with-an-immigrant-background/a-78790775?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-02T16:03:00.000Z",
+      "accessed_at": "2026-09-02T17:30:59.503Z",
+      "type": "news",
+      "source_group": "host-dw-com",
+      "publisher_root": "dw-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "Oliver Pieper",
+      "publisher_name": "Deutsche Welle",
+      "canonical_url": "https://www.dw.com/en/germany-how-to-woo-voters-with-an-immigrant-background/a-78790775",
+      "primary_record": null,
+      "authoritative_for": "Germany: How to woo voters with an immigrant background",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-dw-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Tyskland har en stigende antal vælgere med indvandrerbaggrund.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-02T17:30:59.503Z",
+      "notes": "Kilde: DW (2026)"
+    },
+    {
+      "id": "F02",
+      "claim": "De etablerede partier når kun dårligt ud til vælgere med indvandrerbaggrund.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-02T17:30:59.503Z",
+      "notes": "Kilde: DW (2026)"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T17:30:59.503Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T17:30:59.503Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "main"
+}
