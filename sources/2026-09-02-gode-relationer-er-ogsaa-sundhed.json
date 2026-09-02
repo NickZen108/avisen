@@ -1,0 +1,55 @@
+{
+  "story_id": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+  "article_slug": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+  "assignment": {
+    "category": "Liv",
+    "weight": "D",
+    "core_question": "Hvorfor er sociale relationer relevante for både mental og fysisk sundhed?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "CDC: Social Connection",
+      "url": "https://www.cdc.gov/social-connectedness/about/index.html",
+      "published_at": "2024-05-15T00:00:00Z",
+      "accessed_at": "2026-09-02T10:17:00Z",
+      "type": "primary",
+      "source_group": "cdc-social-connection",
+      "authoritative_for": "Sammenhængen mellem social forbindelse, mental sundhed, fysisk sundhed og trivsel"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Stærke og støttende sociale relationer er forbundet med bedre mental og fysisk sundhed.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["cdc-social-connection"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "CDC beskriver social forbindelse som en sundhedsfaktor."
+    },
+    {
+      "id": "F02",
+      "claim": "Social forbindelse kan støtte evnen til at håndtere stress, angst og depression og hænger sammen med bedre søvn og sundere vaner.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["cdc-social-connection"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "CDC fremhæver både psykiske og adfærdsmæssige mekanismer."
+    },
+    {
+      "id": "F03",
+      "claim": "Mennesker med stærkere sociale bånd har større sandsynlighed for at leve længere og sundere liv.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["cdc-social-connection"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "Formuleret som sandsynlighed/association, ikke som individuel garanti."
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {"required": false, "party": null, "contacted_at": null, "deadline": null, "response": null, "exception": null},
+  "fact_check": {"status": "pass", "checked_at": "2026-09-02T10:17:00Z", "notes": ["Artiklen undgår at reducere sundhed til relationer alene og beskriver fundene som sammenhænge."]}
+}
