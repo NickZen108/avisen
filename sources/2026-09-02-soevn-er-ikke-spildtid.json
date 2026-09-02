@@ -1,0 +1,65 @@
+{
+  "story_id": "2026-09-02-soevn-er-ikke-spildtid",
+  "article_slug": "2026-09-02-soevn-er-ikke-spildtid",
+  "assignment": {
+    "category": "Sundhed",
+    "weight": "D",
+    "core_question": "Hvorfor betyder søvn så meget for både krop, hjerne og hverdagsfunktion?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "NHLBI, NIH: How Much Sleep Is Enough?",
+      "url": "https://www.nhlbi.nih.gov/health/sleep/how-much-sleep",
+      "published_at": null,
+      "accessed_at": "2026-09-02T10:17:00Z",
+      "type": "primary",
+      "source_group": "nih-sleep-guidance",
+      "authoritative_for": "Anbefalet søvnlængde for voksne og sammenhængen mellem kort søvn og helbredsproblemer"
+    },
+    {
+      "id": "S2",
+      "name": "NHLBI, NIH: How Sleep Affects Your Health",
+      "url": "https://www.nhlbi.nih.gov/health/sleep-deprivation/health-effects",
+      "published_at": null,
+      "accessed_at": "2026-09-02T10:17:00Z",
+      "type": "primary",
+      "source_group": "nih-sleep-health-effects",
+      "authoritative_for": "Søvnmangels betydning for daglig funktion, reaktionstid og helbred"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Voksne anbefales generelt omkring 7 til 9 timers søvn pr. nat.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["nih-sleep-guidance"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "NHLBI gengiver søvnanbefalinger for voksne."
+    },
+    {
+      "id": "F02",
+      "claim": "For lidt eller dårlig søvn over tid er forbundet med øget risiko for en række kroniske helbredsproblemer.",
+      "status": "verified",
+      "source_ids": ["S1", "S2"],
+      "independent_groups": ["nih-sleep-guidance", "nih-sleep-health-effects"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "Formuleret som association/risiko, ikke som garanti for sygdom."
+    },
+    {
+      "id": "F03",
+      "claim": "Søvnmangel kan forringe koncentration, reaktionstid og evnen til at udføre opgaver i dagtimerne.",
+      "status": "verified",
+      "source_ids": ["S2"],
+      "independent_groups": ["nih-sleep-health-effects"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "NHLBI beskriver langsommere reaktionstid, flere fejl og dårligere funktion ved søvnmangel."
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {"required": false, "party": null, "contacted_at": null, "deadline": null, "response": null, "exception": null},
+  "fact_check": {"status": "pass", "checked_at": "2026-09-02T10:17:00Z", "notes": ["Artiklen holder sig til generel sundhedsoplysning og undgår individuel medicinsk rådgivning."]}
+}
