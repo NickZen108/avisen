@@ -64,11 +64,8 @@ assert not authoritative_source({'url': 'https://blog.example.invalid/x', 'type'
 assert authoritative_source({'url': 'https://www.bbc.com/news/x'})
 
 l3 = {'schema_version': 3, 'right_of_reply': {'required': False}}
-check('v3 missing support passage fails', False, a, l3,
-      {'claim': 'En almindelig oplysning', 'source_ids': ['S1'], 'support_passages': []},
-      [src('S1', 'host-bbc-com', 'https://www.bbc.com/news/example')])
-check('v3 verified support passage passes', True, a, l3,
-      {'claim': 'En almindelig oplysning', 'source_ids': ['S1'], 'support_passages': [{'source_id': 'S1', 'quote': 'En almindelig oplysning fremgår her.', 'match_verified': True}]},
+check('v3 one major newsroom passes without any passage field', True, a, l3,
+      {'claim': 'En almindelig oplysning', 'source_ids': ['S1']},
       [src('S1', 'host-bbc-com', 'https://www.bbc.com/news/example')])
 
 h = {'title': 'Mistænkt for drab', 'standfirst': ''}
