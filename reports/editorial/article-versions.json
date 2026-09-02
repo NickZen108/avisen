@@ -2469,7 +2469,363 @@
           "automation_origin": "cloudflare-workers-ai"
         }
       }
+    ],
+    "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne": [
+      {
+        "hash": "55b20a9c423cd2ddeae3447ac9b7f60e37088f66c5c3b01f113815c67cd19b9f",
+        "recorded_at": "2026-09-02T10:20:46+00:00",
+        "title": "Bevægelse hjælper både kroppen og hovedet – og det behøver ikke ligne træning",
+        "story_id": "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne",
+          "slug": "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne",
+          "category": "Sundhed",
+          "weight": "D",
+          "title": "Bevægelse hjælper både kroppen og hovedet – og det behøver ikke ligne træning",
+          "standfirst": "WHO anbefaler voksne 150–300 minutters moderat aktivitet om ugen. Men gevinsterne handler ikke kun om kondition: fysisk aktivitet hænger også sammen med bedre mental sundhed og søvn.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Hvor meget motion har voksne brug for? WHO's råd forklaret",
+            "description": "Fysisk aktivitet gavner både fysisk og mental sundhed. Her er WHO's anbefalinger omsat til almindelig hverdag.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Ordet motion får let folk til at tænke på løbesko, fitnesscentre og træningsprogrammer. Men fysisk aktivitet er langt bredere. Gåture, cykling, havearbejde, leg, sport og aktiv transport tæller også. Det afgørende er, at kroppen bevæger sig og bruger energi."
+            },
+            {
+              "type": "h2",
+              "text": "WHO's tal er mindre voldsomme, end de ser ud"
+            },
+            {
+              "type": "p",
+              "text": "Verdenssundhedsorganisationen WHO anbefaler voksne mindst 150 til 300 minutters moderat aerob aktivitet om ugen eller 75 til 150 minutters hård aktivitet. Derudover anbefales muskelstyrkende aktivitet mindst to dage om ugen. Fordelt over syv dage svarer den lave ende af anbefalingen til godt 20 minutters moderat bevægelse om dagen."
+            },
+            {
+              "type": "p",
+              "text": "Moderate aktiviteter er typisk ting, hvor pulsen kommer op, men hvor man stadig kan føre en samtale. Det kan være en rask gåtur eller cykling. Pointen er ikke, at alle skal begynde at træne som atleter. Pointen er, at en stillesiddende hverdag kan brydes på mange måder."
+            },
+            {
+              "type": "h2",
+              "text": "Gevinsten sidder ikke kun i musklerne"
+            },
+            {
+              "type": "p",
+              "text": "Regelmæssig fysisk aktivitet er forbundet med lavere risiko for blandt andet hjerte-kar-sygdom, type 2-diabetes og flere kræftformer. Det er velkendt. Mindre synligt er det, at WHO også fremhæver gevinster for mental sundhed, søvn, kognition og generelt velbefindende."
+            },
+            {
+              "type": "p",
+              "text": "Fysisk aktivitet kan reducere symptomer på depression og angst. Det betyder ikke, at en gåtur erstatter professionel behandling ved alvorlig psykisk sygdom. Men det betyder, at bevægelse kan være en reel del af den samlede sundhedsindsats – ikke kun et projekt for vægten eller konditallet."
+            },
+            {
+              "type": "h2",
+              "text": "Det perfekte program er ofte fjenden"
+            },
+            {
+              "type": "p",
+              "text": "Mange starter for ambitiøst: fem træningspas, ny kostplan og et ur, der bipper, hvis man har siddet stille i 43 minutter. Det kan virke i en uge. Den mere holdbare strategi er ofte at gøre bevægelse så nem at gentage, at den overlever dårlige dage."
+            },
+            {
+              "type": "p",
+              "text": "En rask gåtur efter aftensmad, cyklen til korte ture, trapperne i stedet for elevatoren eller to korte styrkepas om ugen lyder mindre imponerende end en total livsstilsforvandling. Til gengæld har små vaner den fordel, at de faktisk kan blive til vaner."
+            },
+            {
+              "type": "h2",
+              "text": "Lidt er bedre end ingenting"
+            },
+            {
+              "type": "p",
+              "text": "WHO's centrale budskab er netop, at al bevægelse tæller. Hvis du i dag bevæger dig meget lidt, behøver næste skridt ikke være 300 minutter om ugen. Det kan være at begynde med noget, du kan holde fast i. Sundhed bliver sjældent afgjort af den mest heroiske tirsdag i september. Den bliver oftere formet af det, du stadig gør i november."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
+      }
+    ],
+    "2026-09-02-gode-relationer-er-ogsaa-sundhed": [
+      {
+        "hash": "dd35cf12d550628431e0dbfe075c451d401133bb69dfc229f67a40ba57fa68c1",
+        "recorded_at": "2026-09-02T10:20:46+00:00",
+        "title": "Gode relationer er også sundhed: Ensomhed handler om mere end at være alene",
+        "story_id": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+          "slug": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+          "category": "Liv",
+          "weight": "D",
+          "title": "Gode relationer er også sundhed: Ensomhed handler om mere end at være alene",
+          "standfirst": "Sociale relationer påvirker ikke kun humøret. Stærke og støttende bånd hænger også sammen med bedre fysisk sundhed, søvn og evnen til at håndtere stress.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-gode-relationer-er-ogsaa-sundhed.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Sociale relationer og sundhed: hvorfor forbindelser betyder noget",
+            "description": "Støttende relationer hænger sammen med bedre mental og fysisk sundhed. Få overblik over hvorfor social forbindelse betyder noget.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Vi taler ofte om sundhed som noget, der foregår inde i kroppen: blodtryk, kondition, kost, søvn og gener. Men en del af vores sundhed foregår mellem mennesker. Hvem kan du ringe til? Hvem lægger mærke til, hvis du forsvinder fra radaren? Hvem kan du være sammen med uden at skulle præstere?"
+            },
+            {
+              "type": "h2",
+              "text": "At være omgivet af mennesker er ikke det samme som at være forbundet"
+            },
+            {
+              "type": "p",
+              "text": "CDC beskriver social forbindelse som mere end størrelsen på ens netværk. Det handler også om kvaliteten og variationen af relationer og om, hvorvidt man oplever tilhørsforhold, støtte og omsorg. Derfor kan man godt være alene uden at være ensom – og føle sig ensom i et rum fyldt med mennesker."
+            },
+            {
+              "type": "p",
+              "text": "Den forskel er vigtig. Ti overfladiske kontakter er ikke nødvendigvis mere beskyttende end to mennesker, man faktisk kan stole på. Relationer er heller ikke automatisk sunde, bare fordi de eksisterer. Konfliktfyldte eller utrygge relationer kan belaste snarere end støtte."
+            },
+            {
+              "type": "h2",
+              "text": "Relationer kan påvirke vanerne omkring dig"
+            },
+            {
+              "type": "p",
+              "text": "Støttende relationer kan gøre det lettere at håndtere stress, angst og perioder med lavt humør. De kan også hænge sammen med bedre søvn, mere fysisk aktivitet og sundere vaner. En mulig forklaring er enkel: mennesker påvirker hinandens adfærd, giver praktisk hjælp og hjælper med at regulere belastning, når livet bliver svært."
+            },
+            {
+              "type": "p",
+              "text": "Det behøver ikke være store følelsesmæssige samtaler. Social støtte kan også være nogen, der henter børnene, går en tur med dig, sender en besked efter en svær dag eller siger: 'Det dér lyder ikke helt godt – har du fået det undersøgt?'"
+            },
+            {
+              "type": "h2",
+              "text": "Sundhedseffekten er større end hygge"
+            },
+            {
+              "type": "p",
+              "text": "Ifølge CDC er stærkere sociale bånd forbundet med større sandsynlighed for et længere og sundere liv. Social forbindelse forbindes også med lavere risiko for flere alvorlige helbredsproblemer. Det betyder ikke, at venner fungerer som medicin, eller at sygdom skyldes manglende selskab. Sundhed er langt mere kompleks end det."
+            },
+            {
+              "type": "p",
+              "text": "Men relationer er en faktor, der let bliver overset, netop fordi den ikke kan måles lige så enkelt som skridt eller blodtryk. Man kan købe et ur, der tæller bevægelse. Der findes endnu ikke en troværdig ring, der blinker, når du har været for lidt menneske sammen med andre mennesker."
+            },
+            {
+              "type": "h2",
+              "text": "Det behøver ikke begynde med en ny bedste ven"
+            },
+            {
+              "type": "p",
+              "text": "Hvis ens sociale liv er blevet tyndt, kan det virke kunstigt at beslutte, at man nu skal 'få flere relationer'. Et mere realistisk første skridt er ofte at styrke en forbindelse, der allerede findes: invitere nogen på kaffe, genoptage en gammel kontakt, møde op fast et sted eller gøre en fælles aktivitet tilbagevendende."
+            },
+            {
+              "type": "p",
+              "text": "Nære relationer opstår sjældent af én stor samtale. De bygges oftere af gentagelser: Vi ses igen. Vi taler igen. Du var der sidst, og du er der også denne gang. Det lyder mindre romantisk end 'find dit tribe'. Til gengæld er det omtrent sådan, menneskelige relationer faktisk bliver til."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
+      }
+    ],
+    "2026-09-02-overgangsalderen-er-mere-end-hedeture": [
+      {
+        "hash": "f9209bddb0e0787c55a94870fa0d2ebebe19d24e99b1387a7b83e6e7aca13cf1",
+        "recorded_at": "2026-09-02T10:20:46+00:00",
+        "title": "Overgangsalderen er mere end hedeture: Søvn, humør og sexliv kan også ændre sig",
+        "story_id": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+          "slug": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+          "category": "Sundhed",
+          "weight": "D",
+          "title": "Overgangsalderen er mere end hedeture: Søvn, humør og sexliv kan også ændre sig",
+          "standfirst": "Perimenopause og menopause kan mærkes langt bredere end som hedeture. Søvn, koncentration, humør, slimhinder og sexlyst kan også blive påvirket – og der findes flere behandlingsmuligheder.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-overgangsalderen-er-mere-end-hedeture.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Overgangsalder og perimenopause: symptomer du bør kende",
+            "description": "Hedeture er kun ét symptom. Få overblik over søvn, humør, koncentration, tørhed, sexlyst og hvornår blødning bør undersøges.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Når overgangsalderen bliver omtalt, ender samtalen ofte ved hedeture. Det er forståeligt, fordi de er karakteristiske. Men for mange kvinder er det ikke nødvendigvis hedeturen, der fylder mest. Søvnen kan blive dårligere, koncentrationen mere svingende, humøret anderledes og sexlivet påvirket."
+            },
+            {
+              "type": "h2",
+              "text": "Perimenopause kommer før menopause"
+            },
+            {
+              "type": "p",
+              "text": "Perimenopause er perioden, hvor hormonforandringerne begynder, og menstruationerne ofte bliver mere uregelmæssige. Menopause bruges om tidspunktet, hvor man har været uden menstruation i 12 måneder, når fraværet ikke skyldes hormonel prævention. Forløbet er forskelligt fra person til person."
+            },
+            {
+              "type": "p",
+              "text": "Nogle mærker relativt lidt. Andre får symptomer, der påvirker arbejde, parforhold, søvn og hverdagsliv betydeligt. Det er netop derfor, det kan være misvisende at tale om overgangsalderen som én bestemt oplevelse."
+            },
+            {
+              "type": "h2",
+              "text": "Symptomerne kan ligne helt andre problemer"
+            },
+            {
+              "type": "p",
+              "text": "Ud over hedeture og nattesved beskriver NHS blandt andet søvnproblemer, humørsvingninger, lavt humør, problemer med hukommelse og koncentration, vaginal tørhed og ændret sexlyst. Nogle oplever også hjertebanken, hovedpine, ledgener eller ændringer i vandladning."
+            },
+            {
+              "type": "p",
+              "text": "Det kan gøre perioden forvirrende. Hvis man vågner flere gange om natten, føler sig irritabel om dagen og samtidig oplever mindre overskud og lyst, kan problemerne let blive fortolket som stress, dårlig trivsel eller et parforholdsproblem alene. I praksis kan flere ting spille sammen."
+            },
+            {
+              "type": "h2",
+              "text": "Det er ikke noget, man bare skal bide i sig"
+            },
+            {
+              "type": "p",
+              "text": "Der findes både hormonelle og ikke-hormonelle muligheder mod generende symptomer. Hormonbehandling kan være relevant for nogle, mens andre enten ikke ønsker den eller ikke bør bruge den. Samtale med læge eller andet kvalificeret sundhedspersonale giver mere mening end at vælge behandling ud fra venner, influencere eller tilfældige kosttilskud."
+            },
+            {
+              "type": "p",
+              "text": "Det er også vigtigt at skelne mellem almindelige overgangsaldersymptomer og symptomer, der bør undersøges. Hvis der opstår vaginal blødning efter 12 måneder uden menstruation, anbefales det at kontakte læge. Det er ikke ensbetydende med, at noget alvorligt er galt, men det bør vurderes."
+            },
+            {
+              "type": "h2",
+              "text": "En biologisk overgang – ikke en personlig fiasko"
+            },
+            {
+              "type": "p",
+              "text": "Overgangsalderen rammer på et tidspunkt i livet, hvor mange samtidig har ansvar for arbejde, familie, ældre forældre og relationer. Det gør det ekstra let at forklare alle forandringer med travlhed. Mere viden kan gøre det lettere at skelne: Hvad er et livsproblem, hvad kan være hormonelt, og hvad bør man få undersøgt?"
+            },
+            {
+              "type": "p",
+              "text": "Det vigtigste er måske netop at slippe idéen om, at man skal kunne genkende overgangsalderen på én bestemt måde. Kroppen udleverer ikke et skilt med teksten 'nu starter det'. Den sender ofte en samling mindre signaler."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
+      }
+    ],
+    "2026-09-02-soevn-er-ikke-spildtid": [
+      {
+        "hash": "ba9460e579a917f0cfce479a4592522dcaecd921a0e25d973ae6af5f9cd8c72f",
+        "recorded_at": "2026-09-02T10:20:46+00:00",
+        "title": "Søvn er ikke spildtid: Det er her hjernen og kroppen får arbejdsro",
+        "story_id": "2026-09-02-soevn-er-ikke-spildtid",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-soevn-er-ikke-spildtid",
+          "slug": "2026-09-02-soevn-er-ikke-spildtid",
+          "category": "Sundhed",
+          "weight": "D",
+          "title": "Søvn er ikke spildtid: Det er her hjernen og kroppen får arbejdsro",
+          "standfirst": "Voksne har typisk brug for omkring 7–9 timers søvn. Det handler ikke kun om at føle sig frisk næste morgen, men også om koncentration, reaktionstid og langsigtet helbred.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-soevn-er-ikke-spildtid.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Hvor meget søvn har voksne brug for?",
+            "description": "Hvorfor søvn betyder noget for koncentration, reaktionstid og helbred – og hvorfor 7–9 timer er et nyttigt pejlemærke.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Søvn har et imageproblem. Den konkurrerer med arbejde, serier, telefonen, børn, træning og den sidste halve time, hvor man lige skal ordne noget. Men kroppen opfatter ikke søvn som tomgang. Søvn er en biologisk tilstand, hvor en lang række systemer får mulighed for at arbejde uden samtidig at skulle håndtere dagens krav."
+            },
+            {
+              "type": "h2",
+              "text": "Syv til ni timer er et pejlemærke"
+            },
+            {
+              "type": "p",
+              "text": "Det amerikanske National Heart, Lung, and Blood Institute angiver, at voksne typisk anbefales omkring 7 til 9 timers søvn i døgnet. Behovet varierer fra person til person, og et enkelt kort døgn er ikke i sig selv en katastrofe. Problemet opstår især, når for lidt søvn bliver normalen."
+            },
+            {
+              "type": "p",
+              "text": "Det kan være fristende at behandle søvn som den mest fleksible post i kalenderen: Man kan jo altid skære lidt i natten. Men søvnunderskud kan samle sig. Når man gentagne gange sover mindre end kroppen har brug for, kan det mærkes i dagtimerne – også selv om man vænner sig til følelsen af træthed."
+            },
+            {
+              "type": "h2",
+              "text": "Det første der ryger, er ikke nødvendigvis humøret"
+            },
+            {
+              "type": "p",
+              "text": "Søvnmangel kan påvirke koncentration, reaktionstid og evnen til at løse opgaver. NHLBI beskriver blandt andet langsommere reaktioner og flere fejl hos mennesker, der mangler søvn. Det er værd at huske, fordi man ikke altid selv er den bedste dommer over, hvor skarp man er efter flere korte nætter."
+            },
+            {
+              "type": "p",
+              "text": "Det er også en af grundene til, at søvn ikke kun er et spørgsmål om velvære. Hvis du skal køre bil, træffe komplicerede beslutninger eller passe et arbejde, hvor små fejl har store konsekvenser, er søvn en del af din funktionsevne."
+            },
+            {
+              "type": "h2",
+              "text": "Langsigtet sundhed"
+            },
+            {
+              "type": "p",
+              "text": "Over tid er utilstrækkelig eller dårlig søvn forbundet med øget risiko for flere kroniske helbredsproblemer. Det betyder ikke, at en dårlig uge automatisk giver sygdom, eller at søvn alene kan beskytte mod alt. Men søvn hører hjemme i samme grundkategori som bevægelse, kost og andre vaner, der påvirker sundheden over mange år."
+            },
+            {
+              "type": "p",
+              "text": "Den praktiske pointe er derfor mindre dramatisk end mange søvnråd på sociale medier: Du behøver ikke optimere hvert minut med gadgets og perfekte rutiner. Start med at give søvnen reel plads. Hvis du konsekvent forsøger at presse et voksent liv ned i seks timers nat, er problemet måske ikke din pude. Det er kalenderen."
+            },
+            {
+              "type": "h2",
+              "text": "Hvornår er det værd at reagere?"
+            },
+            {
+              "type": "p",
+              "text": "Hvis man har vedvarende søvnproblemer, meget udtalt søvnighed om dagen eller mistanke om en egentlig søvnforstyrrelse, er generelle råd ikke nødvendigvis nok. Så giver det mere mening at tale med en læge end at fortsætte med endnu en ny app, te eller søvnmaske."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
+      }
     ]
   },
-  "generated_at": "2026-09-02T10:13:16+00:00"
+  "generated_at": "2026-09-02T10:20:46+00:00"
 }

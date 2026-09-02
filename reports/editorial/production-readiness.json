@@ -1,15 +1,31 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T10:13:20+00:00",
+  "generated_at": "2026-09-02T10:20:47+00:00",
   "status": "yellow",
-  "published_count": 20,
+  "published_count": 24,
   "hard_failures": [],
   "warnings": [
-    "3 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
+    "5 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
   ],
   "metrics": {
     "possible_duplicate_pairs": [],
     "source_independence_flags": [
+      {
+        "slug": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 0,
+        "duplicate_urls": {}
+      },
+      {
+        "slug": "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 0,
+        "duplicate_urls": {}
+      },
       {
         "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk",
         "unique_urls": 1,
