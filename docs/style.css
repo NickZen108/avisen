@@ -29,6 +29,11 @@ a:hover { text-decoration: underline; text-underline-offset: .16em; }
   letter-spacing: -0.025em; line-height: 0.95; color: var(--dark-ink); text-decoration: none;
 }
 .wordmark:hover { text-decoration: none; }
+.edition-tagline {
+  margin: .42rem 0 0; text-align: center; font-family: var(--sans);
+  font-size: .7rem; letter-spacing: .16em; line-height: 1.2;
+  text-transform: uppercase; color: var(--dark-ink); opacity: .82;
+}
 .article-page .masthead {
   position: sticky;
   top: 0;
@@ -42,7 +47,7 @@ a:hover { text-decoration: underline; text-underline-offset: .16em; }
 }
 .article-page .masthead-inner { min-height: 2rem; }
 .dateline {
-  display: flex; justify-content: space-between; align-items: baseline;
+  display: flex; justify-content: center; align-items: baseline;
   border-top: 1px solid rgba(244,241,234,.35);
   border-bottom: 1px solid rgba(244,241,234,.35);
   margin-top: .75rem; padding: .45rem 0;
