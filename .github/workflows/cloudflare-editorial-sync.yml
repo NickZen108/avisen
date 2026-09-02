@@ -1,6 +1,6 @@
 name: Cloudflare editorial sync
 
-# manual-three-cycle-trigger: 2026-09-02T09:18+02:00 parser-fixed
+# manual-three-cycle-trigger: 2026-09-02T09:23+02:00 schema-hardened
 
 # Pushes to this workflow run a fresh live editorial cycle through the hardened source boundary.
 on:
