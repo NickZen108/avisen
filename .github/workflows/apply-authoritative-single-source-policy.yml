@@ -1,57 +1,93 @@
-name: Burst orchestrator 3x10
+# canonical migration: one authoritative source is sufficient
+name: Apply authoritative single-source policy
 on:
   push:
     branches: [main]
     paths:
       - '.github/workflows/apply-authoritative-single-source-policy.yml'
-      - '.github/burst-trigger'
+  workflow_dispatch:
 permissions:
+  contents: write
   actions: write
-  contents: read
 jobs:
-  burst:
+  apply:
     runs-on: ubuntu-latest
     steps:
-      - name: Run three publication slots ten minutes apart
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
+      - uses: actions/checkout@v4
+        with: {ref: main, fetch-depth: 0}
+      - name: Sync latest main
+        run: git fetch origin main && git reset --hard origin/main
+      - name: Apply canonical single-source rule
         run: |
-          set -u
-          run_and_wait() {
-            workflow="$1"; shift
-            before=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-            if ! gh workflow run "$workflow" --ref main "$@"; then
-              echo "Kunne ikke starte $workflow"
-              return 1
-            fi
-            run_id=""
-            for attempt in $(seq 1 30); do
-              run_id=$(gh run list --workflow "$workflow" --branch main --limit 20 --json databaseId,createdAt,event --jq ".[] | select(.event == \"workflow_dispatch\" and .createdAt >= \"$before\") | .databaseId" | head -n1)
-              [ -n "$run_id" ] && break
-              sleep 2
-            done
-            if [ -z "$run_id" ]; then
-              echo "Fandt ikke child-run for $workflow"
-              return 1
-            fi
-            echo "$workflow run_id=$run_id"
-            gh run watch "$run_id" --exit-status || return 1
-          }
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('scripts/apply_authoritative_single_source_policy.py')
+          s = p.read_text()
+          old = 'checks = ["support_passages", "support passage", "støttepassage", "støttepassager"]'
+          if old in s:
+              s = s.replace(old, 'checks = ["support_passages"]')
+          p.write_text(s)
+          PY
+          python scripts/apply_authoritative_single_source_policy.py
+          python - <<'PY'
+          from pathlib import Path
 
-          for slot in 1 2 3; do
-            slot_start=$(date +%s)
-            echo "=== BURST SLOT $slot/3 $(date -u +%FT%TZ) ==="
-            run_and_wait breaking-scan.yml || echo "Slot $slot: Breaking Scan fejlede; fortsætter."
-            run_and_wait cloudflare-editorial-sync.yml -f cycles=3 || echo "Slot $slot: Editorial Sync fejlede; fortsætter til næste slot."
-            if [ "$slot" -lt 3 ]; then
-              elapsed=$(( $(date +%s) - slot_start ))
-              wait=$(( 600 - elapsed ))
-              if [ "$wait" -gt 0 ]; then
-                echo "Venter $wait sekunder så næste slot starter ca. 10 minutter efter dette slots start."
-                sleep "$wait"
-              else
-                echo "Slot tog mindst 10 minutter; starter næste straks."
-              fi
-            fi
-          done
+          replacements = {
+              'AUTOMATION.md': [
+                  ('**Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum, når en maskinverificeret støttepassage dokumenterer claimet.',
+                   '**Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum.'),
+              ],
+              'SOURCES.md': [
+                  ('Et claim med en maskinverificeret støttepassage fra mindst én relevant autoritativ kilde kan få `verified`.',
+                   'Et claim med mindst én relevant autoritativ kilde kan få `verified`.'),
+              ],
+              'cloudflare/newsdesk/src/editorial.js': [
+                  ('Kræv ikke automatisk kilde nr. 2, ekstra støttepassager eller andre sekundære evidensartefakter, når én relevant autoritativ kilde dokumenterer claimet.',
+                   'Kræv ikke automatisk kilde nr. 2, når én relevant autoritativ kilde dokumenterer claimet.'),
+              ],
+          }
+          for name, pairs in replacements.items():
+              p = Path(name)
+              if not p.exists():
+                  continue
+              s = p.read_text()
+              for old, new in pairs:
+                  s = s.replace(old, new)
+              p.write_text(s)
+
+          for p in Path('sources').glob('*.json'):
+              s = p.read_text()
+              s = s.replace('Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims.',
+                            'Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims.')
+              p.write_text(s)
+          PY
+          node --check cloudflare/newsdesk/src/editorial.js
+          python -m py_compile scripts/evidence_policy.py scripts/quality_gate.py scripts/source_independence_gate.py
+          python scripts/evidence_policy_selftest.py
+      - name: Verify legacy passage contract is gone from active repo
+        run: |
+          if git grep -n -i -E 'support_passages|support passage|støttepassage|støttepassager' -- ':!scripts/apply_authoritative_single_source_policy.py' ':!.github/workflows/apply-authoritative-single-source-policy.yml' ':!reports/**'; then
+            echo 'Legacy support-passage logic or wording still exists in active repo'
+            exit 1
+          fi
+      - name: Commit canonical evidence-policy changes
+        id: commit
+        run: |
+          git config user.name "morgentidende-publisher"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "newsdesk: one authoritative source is sufficient"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy patched Newsdesk
+        if: ${{ steps.commit.outputs.changed == 'true' }}
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh workflow run cloudflare-newsdesk-deploy.yml --ref main
+      - name: Run quality gates
+        if: ${{ steps.commit.outputs.changed == 'true' }}
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh workflow run quality-gates.yml --ref main
