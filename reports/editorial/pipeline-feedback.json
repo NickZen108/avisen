@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T21:46:22.213178Z",
-  "date_dk": "2026-09-02",
+  "generated_at": "2026-09-02T23:36:52.723897Z",
+  "date_dk": "2026-09-03",
   "policy": {
     "review_every_rejection": true,
     "automatic_threshold_changes": false,
@@ -14,129 +14,8 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 12,
-    "reviews": [
-      {
-        "at": "2026-09-02T20:23:30.350Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "Error: Workers AI returned no parseable structured response",
-        "class": "review",
-        "assessment": "Manuel pipeline-vurdering: afgør om blokeringen beskyttede kvalitet eller var unødig friktion.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T18:01:14.133Z",
-        "slug": null,
-        "title": "Skyderi på rave i Schweiz: En kvinde er blevet dræbt og flere er såret",
-        "stage": "ethics",
-        "reason": "seo: SEO-titlen er lidt for lang og kan være mere specifik; seo: SEO-beskrivelsen er lidt for generisk og kan være mere detaljeret; ethics: Der er ingen oplysninger om, hvordan de sårede er, og hvordan de er blevet hjulpet; final_editor: Der er ingen oplysninger om, hvordan politiet arbejder for at finde gerningspersonen; final_editor: Der er ingen oplysninger om, hvordan man kan hjælpe de sårede og deres familier",
-        "class": "repairable",
-        "assessment": "SEO bør normalt auto-repareres. Gentagne stop bør flyttes fra hard stop til automatisk reparation før final editor.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T17:51:12.573Z",
-        "slug": null,
-        "title": "Invasion of the Robot Teachers",
-        "stage": "research",
-        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T16:43:10.303Z",
-        "slug": null,
-        "title": "Iran anklager USA for krigsforbrydelse efter angreb på bryllup",
-        "stage": "fact_check",
-        "reason": "Deterministisk Fact checker: ingen bærende claims opfylder dokumentationskravet.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T06:36:16.732Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "Error: Workers AI returned JSON that does not match required schema shape",
-        "class": "process",
-        "assessment": "Bevar kvalitetskravet; reparer dokumentation/legacy-format automatisk, hvis evidensen faktisk findes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T05:43:38.364Z",
-        "slug": null,
-        "title": "Friedrich Merz og Putin",
-        "stage": "research",
-        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T05:42:51.014Z",
-        "slug": null,
-        "title": "Scott Bessent mødte sin russiske motpart på amerikansk jord",
-        "stage": "research",
-        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T05:28:13.435Z",
-        "slug": null,
-        "title": "Zelensky siger, at flyselskaber skal undgå russisk luftfarve",
-        "stage": "fact_check",
-        "reason": "Deterministisk Fact checker: ingen bærende claims opfylder dokumentationskravet.",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T05:23:14.098Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "Error: Workers AI returned JSON that does not match required schema shape",
-        "class": "process",
-        "assessment": "Bevar kvalitetskravet; reparer dokumentation/legacy-format automatisk, hvis evidensen faktisk findes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T05:18:11.072Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "TypeError: fact.claims is not iterable",
-        "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T05:17:56.642Z",
-        "slug": null,
-        "title": "Konflikt i Iran, US-krise og politiske udviklinger",
-        "stage": "research",
-        "reason": "Research hold",
-        "class": "evidence",
-        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
-        "pipeline_change_considered": true
-      },
-      {
-        "at": "2026-09-02T05:10:20.043Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "infrastructure",
-        "reason": "Error: Workers AI returned no parseable structured response",
-        "class": "review",
-        "assessment": "Manuel pipeline-vurdering: afgør om blokeringen beskyttede kvalitet eller var unødig friktion.",
-        "pipeline_change_considered": true
-      }
-    ]
+    "rejections": 0,
+    "reviews": []
   },
   "last7_stage_counts": {
     "ethics": 2,

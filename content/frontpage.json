@@ -3,12 +3,15 @@
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker": {
-    "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
+    "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
   },
   "lead": {
-    "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
+    "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
   },
   "rail": [
+    {
+      "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
+    },
     {
       "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
     },
@@ -20,9 +23,6 @@
     },
     {
       "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
-    },
-    {
-      "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
     }
   ],
   "stack": [
@@ -53,6 +53,9 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
+    },
+    {
       "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
     },
     {
@@ -72,9 +75,6 @@
     },
     {
       "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv"
-    },
-    {
-      "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere"
     }
   ]
 }

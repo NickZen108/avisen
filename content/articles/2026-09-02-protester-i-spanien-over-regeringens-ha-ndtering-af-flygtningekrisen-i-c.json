@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-protests-in-spain-over-government-s-handling-of-ceuta-migrant-crisis",
   "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c",
   "category": "Sport",
@@ -43,7 +43,7 @@
   "title": "Protester i Spanien over regeringens håndtering af flygtningekrisen i Ceuta",
   "standfirst": "Tusindvis af mennesker har protesteret i Spanien over regeringens håndtering af flygtningekrisen i Ceuta, hvor op til 141 mennesker er døde under forsøget på at krydse grænsen fra Marokko til Ceuta.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T23:36:47Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c.json",
@@ -95,5 +95,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T23:36:47Z"
+  }
 }
