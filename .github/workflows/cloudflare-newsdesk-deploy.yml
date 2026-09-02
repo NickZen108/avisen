@@ -1,7 +1,7 @@
 name: Deploy Cloudflare Newsdesk Runtime
 
 # Deploy canonical source as committed; do not mutate editorial code during deploy.
-# deployment trigger: structured JSON repair fallback 2026-09-02
+# deployment trigger: magazine birth policy 2026-09-02
 on:
   push:
     branches: [main]
