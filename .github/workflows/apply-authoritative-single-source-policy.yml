@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/apply-authoritative-single-source-policy.yml'
+      - '.github/burst-trigger'
 permissions:
   actions: write
   contents: read
@@ -17,7 +18,6 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           set -u
-          echo "burst-trigger=2026-09-02T20:xx+02:00"
           run_and_wait() {
             workflow="$1"; shift
             before=$(date -u +%Y-%m-%dT%H:%M:%SZ)
