@@ -28,11 +28,12 @@
   <header class="masthead">
     <div class="wrap masthead-inner">
       <a class="wordmark" href="./"><img class="brand-sun" src="logo-mark.svg" alt=""><span>Morgentidende</span></a>
+      <p class="edition-tagline">{{EDITION_LABEL}}</p>
       <div class="masthead-actions">
         <button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Skift mellem lyst og mørkt tema"><span class="theme-toggle__label">Mørk</span><span class="theme-toggle__track" aria-hidden="true"><span class="theme-toggle__thumb"></span></span></button>
         <a class="account-link" href="login.html" aria-label="Log ind"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0"/></svg><span>Log ind</span></a>
       </div>
-      <div class="dateline"><time datetime="{{DATE_ISO}}">{{DATE_LABEL}}</time><span>{{EDITION_LABEL}}</span></div>
+      <div class="dateline"><time datetime="{{DATE_ISO}}">{{DATE_LABEL}}</time></div>
       <nav class="nav">
         <a href="./" aria-current="page">Nyheder</a>
         <a href="nyhedsbrev.html">Nyhedsbrev</a>
