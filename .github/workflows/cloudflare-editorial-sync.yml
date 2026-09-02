@@ -107,7 +107,15 @@ jobs:
               echo 'Godkendt artikel fundet; stopper denne kvartér-runde efter første publicerbare artikel.'
               break
             fi
-            if [ "$STAGE" = 'runtime-error' ] || { [ "$HANDLED" -eq 0 ] && [ "$STATUS" != 'approved' ]; }; then
+            if [ "$STAGE" = 'runtime-error' ]; then
+              if [ "$i" -lt "$MAX" ]; then
+                echo 'Transient Workers AI/runtime-fejl; prøver næste cycle i samme runde.'
+                continue
+              fi
+              echo 'Runtime-fejl på sidste tilladte cycle i denne runde.'
+              break
+            fi
+            if [ "$HANDLED" -eq 0 ] && [ "$STATUS" != 'approved' ]; then
               echo 'Ingen yderligere distinkt kandidat i denne runde'
               break
             fi
@@ -130,6 +138,10 @@ jobs:
           else
             git commit -m 'editorial: import cycle results'
           fi
+
+          # Discard only unstaged/generated workspace drift. Source-of-truth changes
+          # are already committed above, so this makes rebase deterministic.
+          git reset --hard HEAD
 
           # Rebase the compact source-of-truth commit first. If main moved because
           # another workflow rebuilt generated pages, those generated files are not
