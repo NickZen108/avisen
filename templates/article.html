@@ -22,6 +22,51 @@
   <link rel="stylesheet" href="../style.css?v=8">
   <link rel="stylesheet" href="../theme.css?v=4">
   <link rel="stylesheet" href="../morgentidende-ui.css?v=3">
+  <style id="article-global-fixes">
+    /* The standfirst above the hero is the only intro/manchet. A first body h2
+       must never become a second oversized lead immediately below the hero. */
+    .article-body > .lead-fig + h2,
+    .article-body > .article-video--hero + h2,
+    .article-body > .byline + h2 {
+      margin: 0 0 1rem;
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.55;
+      font-weight: 400;
+      letter-spacing: normal;
+    }
+
+    /* Hero captions always sit on a dark caption surface; do not use --muted,
+       which is intended for text on the page background. */
+    .article-body .lead-fig figcaption {
+      margin: 0;
+      padding: .45rem .6rem;
+      background: #1B2430;
+      color: #F4F1EA;
+      font-family: var(--sans);
+      font-size: .72rem;
+      line-height: 1.4;
+    }
+    .article-body .lead-fig figcaption a {
+      color: #FFFFFF;
+      text-decoration: underline;
+      text-underline-offset: .14em;
+    }
+    html[data-theme="dark"] .article-body .lead-fig figcaption {
+      background: #0B1016;
+      color: #F4F1EA;
+    }
+    html[data-theme="dark"] .article-body .lead-fig figcaption a { color: #FFFFFF; }
+
+    /* Inline figure captions remain on the page surface, with theme-aware
+       foreground colours that retain readable contrast in both modes. */
+    .article-body .article-graphic figcaption { color: var(--ink); }
+    .article-body .article-graphic figcaption a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: .14em;
+    }
+  </style>
   <script src="../theme.js?v=1"></script>
 </head>
 <body class="article-page">
