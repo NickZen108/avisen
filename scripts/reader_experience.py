@@ -60,9 +60,9 @@ def inject_context(a,all_items):
  p=DOCS/'artikler'/f"{a['slug']}.html"
  if not p.exists():return
  text=p.read_text(encoding='utf-8'); related=related_for(a,all_items)
- if related and 'story-update-box' not in text:
-  rows=''.join(f'<li><a href="{esc(x["slug"])}.html">{esc(x.get("title"))}</a></li>' for x in related[:5])
-  box=f'<aside class="story-update-box"><p class="section-label">Seneste udvikling</p><ul>{rows}</ul></aside>'
+ if related and 'article-story-package' not in text:
+  rows=''.join(f'<a class="lead-followup" href="{esc(x["slug"])}.html"><span class="lead-followup__type">{esc(x.get("category") or "Nyhed")}</span><strong>{esc(x.get("title"))}</strong></a>' for x in related[:5])
+  box=f'<aside class="article-story-package lead-package" aria-label="Mere om sagen"><p class="lead-package__title">Mere om sagen</p>{rows}</aside>'
   pos=text.find('<section class="wrap below">')
   if pos<0:pos=text.find('<footer>')
   if pos>=0:text=text[:pos]+box+'\n'+text[pos:]
