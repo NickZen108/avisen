@@ -1,6 +1,6 @@
 # Git blob SHA  path
 # Opdateres kun efter udtrykkelig brugerordre om designændring.
-08ddec5a2b5820ada0d879a855fd9bb5b85acdec docs/style.css
+1991f7b99664cbdcb2e61d3ae3fa7384798fc55b docs/style.css
 19c0c2ace05968ca427cc51977105059170034a4 docs/signup.css
 c7b9acaa545d95070afb6ffda9644f6ba456d0ec docs/theme.css
 62ff0cb904ad1afb0b08639313941a8eabd32e1f docs/theme.js

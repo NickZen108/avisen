@@ -1,6 +1,6 @@
 # Design — Morgentidende
 
-Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Brugeren har samme dag godkendt dark mode med en diskret skydeknap øverst. Den 31. august 2026 godkendte brugeren en skarpere ikke-kursiv wordmark samt en mindre sticky masthead på artikelsider. Samme dag godkendte brugeren en lysere varm papirbaggrund, kontrolleret variation i forsidens rubriktypografi og en oprydning af undersider/navigation. Det visuelle design er fortsat låst bortset fra disse udtrykkeligt godkendte ændringer.
+Låst 29. august 2026. Brugeren har 30. august 2026 godkendt en teknisk ændring: indhold og forside skal fremover genereres fra strukturerede data, så redaktionelle agenter ikke kan ændre layout ved et uheld. Brugeren har samme dag godkendt dark mode med en diskret skydeknap øverst. Den 31. august 2026 godkendte brugeren en skarpere ikke-kursiv wordmark samt en mindre sticky masthead på artikelsider. Samme dag godkendte brugeren en lysere varm papirbaggrund, kontrolleret variation i forsidens rubriktypografi og en oprydning af undersider/navigation. Den 2. september 2026 godkendte brugeren, at mastheaden med logoet skal være sticky på alle sider. Det visuelle design er fortsat låst bortset fra disse udtrykkeligt godkendte ændringer.
 
 ## Farver
 
@@ -19,7 +19,7 @@ Den varme papirfarve skal give Morgentidende en egen identitet uden at gøre sid
 
 Wordmark: **Roboto Slab 700**, ikke kursiv, med let negativ bogstavafstand for et mere kantet og autoritativt avisudtryk. Samme wordmark-font skal bruges på forside, artikler og alle undersider.
 
-På artikelsider er mastheaden sticky og kompakt: wordmark omkring `1.55–2rem` på desktop og cirka `1.45rem` på mobil. Den forbliver synlig ved scroll uden at optage unødigt meget læseareal.
+Mastheaden med logoet er sticky på alle sider og forbliver synlig ved scroll. På artikelsider er den desuden kompakt: wordmark omkring `1.55–2rem` på desktop og cirka `1.45rem` på mobil, så den ikke optager unødigt meget læseareal.
 
 Brød: Source Serif 4. Kicker/UI: Source Sans 3.
 
