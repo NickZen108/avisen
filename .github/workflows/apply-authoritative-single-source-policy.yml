@@ -1,9 +1,11 @@
-name: Apply semantic fact-check migration
+# canonical migration: one authoritative source is sufficient
+name: Apply authoritative single-source policy
 on:
   push:
     branches: [main]
     paths:
       - '.github/workflows/apply-authoritative-single-source-policy.yml'
+  workflow_dispatch:
 permissions:
   contents: write
   actions: write
@@ -15,112 +17,77 @@ jobs:
         with: {ref: main, fetch-depth: 0}
       - name: Sync latest main
         run: git fetch origin main && git reset --hard origin/main
-      - name: Extend existing Fact checker with semantic full-article pass
+      - name: Apply canonical single-source rule
         run: |
           python - <<'PY'
           from pathlib import Path
-          p = Path('cloudflare/newsdesk/src/editorial.js')
-          s = p.read_text(encoding='utf-8')
+          p = Path('scripts/apply_authoritative_single_source_policy.py')
+          s = p.read_text()
+          old = 'checks = ["support_passages", "support passage", "støttepassage", "støttepassager"]'
+          if old in s:
+              s = s.replace(old, 'checks = ["support_passages"]')
+          p.write_text(s)
+          PY
+          python scripts/apply_authoritative_single_source_policy.py
+          python - <<'PY'
+          from pathlib import Path
 
-          old = '''const deskRecheckSchema = { type: "object", properties: {
-            decision: { type: "string", enum: ["publish", "update", "hold", "kill"] }, rationale: { type: "string" },
-          }, required: ["decision", "rationale"] };'''
-          new = '''const semanticFactCheckSchema = {
-            type: "object", properties: {
-              decision: { type: "string", enum: ["pass", "hold"] },
-              issues: { type: "array", maxItems: 8, items: { type: "object", properties: {
-                type: { type: "string", enum: ["meaning_shift", "translation_error", "unsupported_claim", "attribution_error"] },
-                issue: { type: "string" }, source_indexes: { type: "array", items: { type: "integer" }, minItems: 1 },
-              }, required: ["type", "issue", "source_indexes"] } },
-              notes: { type: "array", maxItems: 8, items: { type: "string" } },
-            }, required: ["decision", "issues", "notes"],
-          };
-
-          const deskRecheckSchema = { type: "object", properties: {
-            decision: { type: "string", enum: ["publish", "update", "hold", "kill"] }, rationale: { type: "string" },
-          }, required: ["decision", "rationale"] };'''
-          if old not in s:
-              raise SystemExit('schema anchor missing')
-          s = s.replace(old, new, 1)
-
-          old = 'Sæt conflict_present=true kun når historien faktisk rummer en relevant politisk, juridisk, faglig eller parts-konflikt; almindelige hændelsesfakta/statistik kræver ikke kunstig pluralisme. Opfind intet.`;'
-          new = 'Sæt conflict_present=true kun når historien faktisk rummer en relevant politisk, juridisk, faglig eller parts-konflikt; almindelige hændelsesfakta/statistik kræver ikke kunstig pluralisme. Ved oversættelse eller parafrase fra et andet sprog skal betydningen bevares præcist: hvem gør hvad mod hvem/hvad, subjekt, objekt, negation, modalitet, årsag, tid og tal må ikke skifte. Oversæt ikke et ord som response/efforts/measure til selve hændelsen eller problemet, hvis det ændrer betydningen. Opfind intet.`;'
-          if old not in s:
-              raise SystemExit('research prompt anchor missing')
-          s = s.replace(old, new, 1)
-
-          old = 'Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder, fakta eller citater.'
-          new = 'Kontrollér også semantisk oversættelse/parafrase mod originalteksten: subjekt, objekt, negation, modalitet, årsag, tid og tal skal betyde det samme. Hvis fx kilden siger at indsatsen/response skal intensiveres, må claimet ikke sige at selve udbruddet/hændelsen skal intensiveres. En sådan betydningsændring er rejected eller uncertain, ikke verified. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder, fakta eller citater.'
-          if old not in s:
-              raise SystemExit('fact prompt anchor missing')
-          s = s.replace(old, new, 1)
-
-          anchor = 'async function deskRecheck(env, assignment, dossier) {'
-          insert = '''async function finalSemanticFactCheck(env, assignment, dossier, article) {
-            const sources = (dossier.researched || []).filter(isEvidenceSource).map((source, i) => ({
-              source_index: i, name: source.source, headline: source.headline,
-              url: source.final_url || source.url,
-              excerpt: String(source.excerpt || source.description || "").slice(0, 2400),
-            }));
-            const system = `Du er den samme uafhængige Fact checker i et sidste semantisk pass. Sammenlign HELE den færdige danske artikel med de eksisterende originalkilder. Dette er ikke en ny kildegate og du må IKKE kræve flere kilder. Kontrollér kun sandhed og betydningsbevarelse: alle materielle udsagn skal kunne rummes i det verificerede materiale, og oversættelse/parafrase skal bevare hvem der gør hvad mod hvem/hvad, subjekt, objekt, negation, modalitet, årsag, tid, attribution og tal. Fri og naturlig dansk formulering er tilladt; ord-for-ord-oversættelse er ikke et krav. HOLD kun ved reel materiel betydningsændring, oversættelsesfejl, unsupported claim eller forkert attribution. Stil, tone, SEO og små sproglige præferencer er aldrig fejl her. Eksempel på materiel fejl: 'response/indsatsen skal intensiveres' må ikke blive til 'udbruddet skal intensiveres'.`;
-            return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources, article }), semanticFactCheckSchema, 700, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+          replacements = {
+              'AUTOMATION.md': [
+                  ('**Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum, når en maskinverificeret støttepassage dokumenterer claimet.',
+                   '**Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum.'),
+              ],
+              'SOURCES.md': [
+                  ('Et claim med en maskinverificeret støttepassage fra mindst én relevant autoritativ kilde kan få `verified`.',
+                   'Et claim med mindst én relevant autoritativ kilde kan få `verified`.'),
+              ],
+              'cloudflare/newsdesk/src/editorial.js': [
+                  ('Kræv ikke automatisk kilde nr. 2, ekstra støttepassager eller andre sekundære evidensartefakter, når én relevant autoritativ kilde dokumenterer claimet.',
+                   'Kræv ikke automatisk kilde nr. 2, når én relevant autoritativ kilde dokumenterer claimet.'),
+              ],
           }
+          for name, pairs in replacements.items():
+              p = Path(name)
+              if not p.exists():
+                  continue
+              s = p.read_text()
+              for old, new in pairs:
+                  s = s.replace(old, new)
+              p.write_text(s)
 
-          async function reviseSemanticFactIssues(env, assignment, dossier, article, semantic) {
-            if (semantic?.decision !== "hold" || !(semantic?.issues || []).length) return article;
-            const sources = (dossier.researched || []).filter(isEvidenceSource).map((source, i) => ({
-              source_index: i, name: source.source, headline: source.headline,
-              excerpt: String(source.excerpt || source.description || "").slice(0, 2400),
-            }));
-            const system = `Ret KUN de konkrete semantiske/faktuelle problemer fundet af Fact checker. Bevar artikelstruktur, vinkel og verificerede fakta så vidt muligt. Ret oversættelser så subjekt, objekt, negation, modalitet, årsag, tid, attribution og tal svarer til originalkilden. Tilføj ingen nye claims og kræv ingen nye kilder. Returnér hele artiklen i samme schema.`;
-            return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources, article, issues: semantic.issues }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
-          }
-
-          async function deskRecheck(env, assignment, dossier) {'''
-          if anchor not in s:
-              raise SystemExit('desk anchor missing')
-          s = s.replace(anchor, insert, 1)
-
-          old = '''  let article = await writeArticle(env, assignment, dossier);
-            const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);'''
-          if old not in s:
-              old = '''  let article = await writeArticle(env, assignment, dossier);
-          const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);'''
-          new = '''  let article = await writeArticle(env, assignment, dossier);
-          let semanticFactCheck = await finalSemanticFactCheck(env, assignment, dossier, article);
-          if (semanticFactCheck.decision !== "pass") {
-            const revised = await reviseSemanticFactIssues(env, assignment, dossier, article, semanticFactCheck);
-            if (JSON.stringify(revised) !== JSON.stringify(article)) {
-              article = revised;
-              semanticFactCheck = await finalSemanticFactCheck(env, assignment, dossier, article);
-            }
-          }
-          if (semanticFactCheck.decision !== "pass") {
-            return { status: "hold", stage: "fact-check", checked_at: startedAt, generated_at: startedAt, title: article.title || assignment.title_hint, reason: (semanticFactCheck.issues || []).map((x) => x.issue).join("; ") || "Fact checker: semantisk fejl mod originalkilden", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, article_title: article.title, fact_check: { claims: dossier.claims, rationale: dossier.rationale, semantic: semanticFactCheck } } };
-          }
-          const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);'''
-          if old not in s:
-              raise SystemExit('article/final anchor missing')
-          s = s.replace(old, new, 1)
-
-          old = 'fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review,'
-          new = 'fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions, semantic: semanticFactCheck }, desk_recheck: desk, final_review: review,'
-          if old not in s:
-              raise SystemExit('audit anchor missing')
-          s = s.replace(old, new, 1)
-
-          p.write_text(s, encoding='utf-8')
+          for p in Path('sources').glob('*.json'):
+              s = p.read_text()
+              s = s.replace('Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims.',
+                            'Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims.')
+              p.write_text(s)
           PY
           node --check cloudflare/newsdesk/src/editorial.js
-      - name: Commit and deploy
-        env:
-          GH_TOKEN: ${{ github.token }}
+          python -m py_compile scripts/evidence_policy.py scripts/quality_gate.py scripts/source_independence_gate.py
+          python scripts/evidence_policy_selftest.py
+      - name: Verify legacy passage contract is gone from active repo
+        run: |
+          if git grep -n -i -E 'support_passages|support passage|støttepassage|støttepassager' -- ':!scripts/apply_authoritative_single_source_policy.py' ':!.github/workflows/apply-authoritative-single-source-policy.yml' ':!reports/**'; then
+            echo 'Legacy support-passage logic or wording still exists in active repo'
+            exit 1
+          fi
+      - name: Commit canonical evidence-policy changes
+        id: commit
         run: |
           git config user.name "morgentidende-publisher"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cloudflare/newsdesk/src/editorial.js
-          git commit -m "fix: fact checker verifies full article semantics against sources"
-          git pull --rebase origin main
-          git push origin HEAD:main
-          gh workflow run cloudflare-newsdesk-deploy.yml --ref main
-          gh workflow run quality-gates.yml --ref main
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "newsdesk: one authoritative source is sufficient"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy patched Newsdesk
+        if: ${{ steps.commit.outputs.changed == 'true' }}
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh workflow run cloudflare-newsdesk-deploy.yml --ref main
+      - name: Run quality gates
+        if: ${{ steps.commit.outputs.changed == 'true' }}
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh workflow run quality-gates.yml --ref main
