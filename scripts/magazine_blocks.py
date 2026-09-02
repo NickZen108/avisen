@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""Inject two automatic, exclusive magazine blocks into the generated front page.
+"""Inject the two editorially separate magazine blocks into the front page.
 
-Magazine stories are selected only from published stories not already used on the
-ordinary front page. Once selected, they are also removed from ordinary
-recommendation shelves under articles, so their editorial placement is exclusive
-to the two magazine blocks.
+A story is eligible only when it was born with an explicit editorial_destination.
+Topic similarity never moves an ordinary newspaper story into a magazine later.
 """
 from __future__ import annotations
 
@@ -17,40 +15,12 @@ ROOT = Path(__file__).resolve().parents[1]
 ARTICLES = ROOT / "content" / "articles"
 INDEX = ROOT / "docs" / "index.html"
 ARTICLE_HTML = ROOT / "docs" / "artikler"
-
-TECH = {
-    "videnskab", "forskning", "naturvidenskab", "teknologi", "kunstig intelligens", " ai ",
-    "rumfart", "rum", "militær", "militaer", "forsvar", "drone", "robot", "energi",
-    "fysik", "biologi", "astronomi", "ingeniør", "ingenioer", "computer", "chip", "halvleder",
-}
-PEOPLE = {
-    "psykologi", "psykisk", "sundhed", "testosteron", "hormon", "overgangsalder", "menopause",
-    "parforhold", "ægteskab", "aegteskab", "sex", "single", "dating", "date", "opdragelse",
-    "forældre", "foraeldre", "bedsteforældre", "bedsteforaeldre", "familie", "relation",
-    "evolutionær psykologi", "evolutionaer psykologi", "tilknytning", "kærlighed", "kaerlighed",
-}
+TECH = "tech_magazine"
+PEOPLE = "people_magazine"
 
 
 def esc(value: object) -> str:
     return html.escape(str(value or ""), quote=True)
-
-
-def article_text(a: dict) -> str:
-    tags = a.get("tags") or []
-    if isinstance(tags, list):
-        tags = " ".join(str(x) for x in tags)
-    return f" {a.get('category','')} {a.get('title','')} {a.get('standfirst','')} {tags} ".lower()
-
-
-def score(a: dict, terms: set[str], preferred_categories: set[str]) -> int:
-    text = article_text(a)
-    s = 4 if str(a.get("category") or "") in preferred_categories else 0
-    for term in terms:
-        if term in text:
-            s += 2
-    if str(a.get("format") or "").lower() in {"feature", "guide", "baggrund"}:
-        s += 1
-    return s
 
 
 def load_published() -> list[dict]:
@@ -68,19 +38,8 @@ def load_published() -> list[dict]:
     return out
 
 
-def pick(items: list[dict], terms: set[str], categories: set[str], used: set[str], excluded: set[str], limit: int = 4) -> list[dict]:
-    ranked = []
-    for a in items:
-        slug = str(a.get("slug") or "")
-        if not slug or slug in used or slug in excluded:
-            continue
-        s = score(a, terms, categories)
-        if s > 0:
-            ranked.append((s, str(a.get("published_at") or ""), a))
-    ranked.sort(key=lambda row: (row[0], row[1]), reverse=True)
-    chosen = [row[2] for row in ranked[:limit]]
-    used.update(str(a["slug"]) for a in chosen)
-    return chosen
+def born_for(items: list[dict], destination: str, limit: int = 4) -> list[dict]:
+    return [a for a in items if str(a.get("editorial_destination") or "") == destination][:limit]
 
 
 def card(a: dict) -> str:
@@ -126,21 +85,16 @@ def main() -> int:
     page = re.sub(r'\n?<section class="[^"]*magazine-section[^"]*"[\s\S]*?</section>\s*', "\n", page)
     page = re.sub(r'<style id="magazine-block-style">[\s\S]*?</style>', "", page)
 
-    # Anything already used on the ordinary front page stays there and cannot also
-    # become a magazine story in this build.
-    frontpage_slugs = set(re.findall(r'href="artikler/([a-z0-9-]+)\.html"', page))
-
     items = load_published()
-    used: set[str] = set()
-    tech = pick(items, TECH, {"Videnskab & teknologi"}, used, frontpage_slugs)
-    people = pick(items, PEOPLE, {"Sundhed", "Liv", "Parforhold"}, used, frontpage_slugs)
+    tech = born_for(items, TECH)
+    people = born_for(items, PEOPLE)
     exclusive = {str(a["slug"]) for a in tech + people}
     remove_from_recommendation_shelves(exclusive)
 
     blocks = section("Viden & teknologi", "Videnskab, teknologi, AI, naturvidenskab og militær – nyheder, forskning og stærke evergreens.", tech, "tech")
     blocks += section("Mennesker & liv", "Psykologi, sundhed, hormoner, parforhold, sex, dating, familie og evolutionær psykologi.", people, "people")
     if not blocks:
-        print("magazine blocks: no matching exclusive published articles")
+        print("magazine blocks: no born-magazine articles yet")
         return 0
 
     css = '''<style id="magazine-block-style">
@@ -160,7 +114,7 @@ def main() -> int:
     else:
         page = page.replace("<footer", blocks + "<footer", 1)
     INDEX.write_text(page, encoding="utf-8")
-    print(f"magazine blocks: tech={len(tech)} people={len(people)} exclusive={len(exclusive)}")
+    print(f"magazine blocks: tech={len(tech)} people={len(people)} born_exclusive={len(exclusive)}")
     return 0
 
 
