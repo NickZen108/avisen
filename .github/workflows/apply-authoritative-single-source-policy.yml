@@ -1,0 +1,51 @@
+name: Apply authoritative single-source policy
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-authoritative-single-source-policy.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main, fetch-depth: 0}
+      - name: Sync latest main
+        run: git fetch origin main && git reset --hard origin/main
+      - name: Remove legacy support-passage gate
+        run: |
+          python scripts/apply_authoritative_single_source_policy.py
+          node --check cloudflare/newsdesk/src/editorial.js
+          python -m py_compile scripts/evidence_policy.py scripts/quality_gate.py scripts/source_independence_gate.py
+          python scripts/evidence_policy_contract_test.py
+      - name: Verify no legacy passage contract remains
+        run: |
+          if git grep -n -i -E 'support_passages|support passage|støttepassage|støttepassager' -- ':!scripts/apply_authoritative_single_source_policy.py'; then
+            echo 'Legacy support-passage logic still exists'
+            exit 1
+          fi
+      - name: Commit canonical evidence-policy changes
+        id: commit
+        run: |
+          git config user.name "morgentidende-publisher"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "newsdesk: one authoritative source is sufficient"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy patched Newsdesk
+        if: ${{ steps.commit.outputs.changed == 'true' }}
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh workflow run cloudflare-newsdesk-deploy.yml --ref main
+      - name: Run quality gates
+        if: ${{ steps.commit.outputs.changed == 'true' }}
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh workflow run quality-gates.yml --ref main
