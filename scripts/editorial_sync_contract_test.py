@@ -9,18 +9,21 @@ required = {
     'dispatch uses expanded max': '--max-cycles "$MAX"',
     'runtime loop uses dispatch output': 'INPUT_CYCLES: ${{ steps.dispatch.outputs.cycles }}',
     'loop respects max': 'for i in $(seq 1 "$MAX"); do',
+    'default is one cycle': "default: '1'",
 }
 errors = [label for label, needle in required.items() if needle not in workflow]
 
-correct = 'MAX="${INPUT_CYCLES:-3}"'
-wrong = "MAX='${INPUT_CYCLES:-3}'"
+correct = 'MAX="${INPUT_CYCLES:-1}"'
+wrong = "MAX='${INPUT_CYCLES:-1}'"
 if workflow.count(correct) != 2:
     errors.append(f'expected exactly 2 safe MAX expansions, found {workflow.count(correct)}')
 if wrong in workflow:
     errors.append('literal single-quoted MAX expansion reintroduced')
+if 'INPUT_CYCLES:-3' in workflow:
+    errors.append('legacy three-cycle default still present')
 
 # Both the cheap dispatch decision and the paid execution loop must clamp identically.
-clamp = 'case "$MAX" in 1|2|3) ;; *) MAX=3 ;; esac'
+clamp = 'case "$MAX" in 1|2|3) ;; *) MAX=1 ;; esac'
 if workflow.count(clamp) != 2:
     errors.append(f'expected exactly 2 identical cycle clamps, found {workflow.count(clamp)}')
 
