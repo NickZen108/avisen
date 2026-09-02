@@ -144,7 +144,7 @@ def main() -> int:
         'fetch_origin: "github-actions-prefetch"',
         'host === "reuters.com"',
         'source === "ap"',
-        'For almindelige lavrisiko-fakta kan Verified bæres',
+        'Et claim kan få Verified på baggrund af én relevant autoritativ kilde',
         'Ét verificeret bærende claim er nok til en kort one-claim-artikel',
         'Din overordnede publish/hold-vurdering er rådgivende',
         'feed_summary_only',
