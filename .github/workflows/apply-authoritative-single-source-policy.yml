@@ -18,6 +18,7 @@ jobs:
         run: git fetch origin main && git reset --hard origin/main
       - name: Apply language house rules
         run: |
+          echo 'language-house-rule-v2'
           python scripts/apply_language_house_rules_once.py
           node --check cloudflare/newsdesk/src/editorial.js
       - name: Commit changes
