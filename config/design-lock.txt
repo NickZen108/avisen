@@ -1,14 +1,14 @@
 # Git blob SHA  path
 # Opdateres kun efter udtrykkelig brugerordre om designændring.
-63b74d1af3510b9e86e7eaf1fedc31b45347b393 docs/style.css
+08ddec5a2b5820ada0d879a855fd9bb5b85acdec docs/style.css
 19c0c2ace05968ca427cc51977105059170034a4 docs/signup.css
 c7b9acaa545d95070afb6ffda9644f6ba456d0ec docs/theme.css
 62ff0cb904ad1afb0b08639313941a8eabd32e1f docs/theme.js
 e48d5f4592a8a24d7b3a87ef1956fed642bdbe2f docs/account-ui.css
-820be66f326d7d55318e5ac47c881d36dcc9678b docs/morgentidende-ui.css
+3f1c297a7fdee483eff49cf9eaadaa82a86b87ac docs/morgentidende-ui.css
 5acbd2ed9cc9b9e4877fcc2586366662002031bf docs/short-videos.js
 1c79eb821797aa7061d8780b1eda4d2533155971 docs/logo.svg
 83f1e071db636d0b3db652fdf8af2af926150d02 docs/logo-mark.svg
 c71cdb69f9a759947c2c9ac94b4612d1cda87012 docs/morning-sun.svg
-a2fe7b49d6aebeeeb7099983c1179b5239c39711 templates/article.html
-d61bc44761c6f941eec4bbde03298e57a4ba4ee9 templates/index.html
+d8fdea5db96cf0e126570ebd229205dbc139bf63 templates/article.html
+494cae71b41b881da6354b83dbf40aa3aa87cac3 templates/index.html
