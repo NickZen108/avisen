@@ -1,6 +1,6 @@
 name: Cloudflare editorial sync
 
-# manual-three-cycle-trigger: 2026-09-01T15:03Z
+# manual-three-cycle-trigger: 2026-09-02T04:22Z
 
 # Pushes to this workflow run a fresh live editorial cycle through the hardened source boundary.
 on:
