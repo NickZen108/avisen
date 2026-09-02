@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Deterministic post-publication photo scout for pending news heroes.
+"""Deterministic pre-build lawful-media scout for pending news heroes.
 
-Only published articles with image.pending_image=true are touched. The scout
-queries Wikimedia Commons for a lawful contextual photo, changes image metadata
-only, and delegates approval to the existing targeted media re-approval flow.
+Only published article records with image.pending_image=true are touched before
+the public HTML build. The scout queries Wikimedia Commons for a lawful free
+visual, preferring direct documentary material, then contextual photos, maps and
+satellite imagery, and delegates approval to the targeted media re-approval flow.
 """
 from __future__ import annotations
 
@@ -80,13 +81,15 @@ def queries(article: dict) -> list[str]:
 
 
 def commons_photo(article: dict) -> dict | None:
+    # Keep the story year available for result ranking as well as query building.
+    year = str(article.get("published_at") or "")[:4]
     for q in queries(article):
         params = urllib.parse.urlencode({
             "action": "query", "format": "json", "generator": "search",
             "gsrnamespace": 6, "gsrsearch": q, "gsrlimit": 8,
             "prop": "imageinfo", "iiprop": "url|mime|size|extmetadata", "iiurlwidth": 1600,
         })
-        req = urllib.request.Request(COMMONS_API + "?" + params, headers={"User-Agent": "MorgentidendePendingMedia/1.0"})
+        req = urllib.request.Request(COMMONS_API + "?" + params, headers={"User-Agent": "MorgentidendePendingMedia/2.0"})
         try:
             with urllib.request.urlopen(req, timeout=30) as response:
                 payload = json.loads(response.read().decode("utf-8"))
@@ -123,7 +126,7 @@ def commons_photo(article: dict) -> dict | None:
                 "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen."
             )
             # Prefer exact/current event documentation, then contextual visuals.
-            event_bonus = 3 if year and year in visual_text else 0
+            event_bonus = 3 if year.isdigit() and year in visual_text else 0
             ranked.append((overlap + event_bonus, {
                 "src": info.get("thumburl") or info.get("url"),
                 "alt": desc or title,
@@ -187,7 +190,7 @@ def process(limit: int = 5) -> int:
 
 
 def self_test() -> None:
-    article = {"title": "Brand ved rådhuset i København", "standfirst": "Brandvæsenet rykkede ud", "category": "Danmark"}
+    article = {"title": "Brand ved rådhuset i København", "standfirst": "Brandvæsenet rykkede ud", "category": "Indland", "published_at": "2026-09-02T10:00:00Z"}
     assert queries(article)
     old = {
         "pending_image": True, "ai_generated": True, "image_type": "illustration",
@@ -200,6 +203,7 @@ def self_test() -> None:
     }
     validate_image(new)
     validate_replacement_transition(old, new)
+    assert "2026" in " ".join(queries(article))
     print("pending_image_refresh self-test: PASS")
 
 
