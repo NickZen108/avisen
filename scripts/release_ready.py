@@ -19,11 +19,6 @@ def article_for_slug(slug):
  if not p.exists(): return None
  try:return load(p)
  except Exception:return None
-def ticker_copy(article):
- if not article:return ''
- standfirst=str(article.get('standfirst') or '').strip(); title=str(article.get('title') or '').strip()
- if standfirst and standfirst.casefold()!=title.casefold(): return standfirst
- return f'Ny udvikling: {title}' if title else ''
 def published_slugs():
  out=[]
  for p in sorted(ARTICLE_DIR.glob('*.json'),reverse=True):
@@ -33,16 +28,12 @@ def published_slugs():
   if x.get('status')=='published' and x.get('slug'): out.append(x['slug'])
  return out
 def set_ticker(state, slug, article=None):
- """Only writer for ticker slug + copy. Keeps the two fields atomic."""
+ """Store only the canonical article reference; the renderer reads its title."""
  if slug:
-  article = article or article_for_slug(slug)
   state['ticker']={'slug':slug}
-  copy_text=ticker_copy(article)
-  if copy_text: state['ticker_text']=copy_text
-  else: state.pop('ticker_text',None)
  else:
   state['ticker']={}
-  state.pop('ticker_text',None)
+ state.pop('ticker_text',None)
  return state
 def write_frontpage(state):
  FRONTPAGE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
@@ -124,7 +115,7 @@ def self_test():
  article={'slug':'new-slug','title':'Ny titel','standfirst':'Ny standfirst om sagen.'}
  set_ticker(state,'new-slug',article)
  assert state['ticker']=={'slug':'new-slug'}, state
- assert state['ticker_text']=='Ny standfirst om sagen.', state
+ assert 'ticker_text' not in state, state
  set_ticker(state,None)
  assert state['ticker']=={}
  assert 'ticker_text' not in state
