@@ -1,4 +1,4 @@
-# Scan 2026-09-02T19:35:57.084Z (Cloudflare runtime)
+# Scan 2026-09-02T20:05:57.272Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -20,6 +20,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - A year into Trump’s boat strike campaign, families search for answers
 - Brazilian activist demands Tunisia release Sumud Flotilla organisers
 - Deadly bus crash in Egypt’s Sinai kills 22, injures 28
+- Dreams shattered: Gaza amputees struggle under blockade and rubble
 - EU ministers in Ireland tackle Israeli settlement trade and Ukraine defence
 - EU pursuing more Russia sanctions after failed airport attack: Kallas
 - Gunman in deadly Swiss rave attack ‘lone perpetrator’, police say
@@ -34,7 +35,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - US says it will use regional body to isolate Nicaragua
 - USS Abraham Lincoln reaches Thailand after 9 months at sea
 - Will the EU take action against Israel?
-- Zambia’s Hichilema begins second term amid disputed vote and arrests
 
 ## BBC Europe
 - BBC visits smouldering Kyiv market after Russian strikes
@@ -164,7 +164,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Fyllingsgraden sank 0,5 prosentpoeng i forrige uke
 - Hemmelig spansk politirapport: Marokko bak invasjonen av Ceuta
 - Knivdrept rett fra fødselspermisjon, ingen er trygg i Demokratenes byer
-- Skogpod 2. september 2026
+- Norsk landskap med en regnbue (1821).
 - Social­demokraterna faller brått halv­annen uke før riksdags­valget i Sverige
 - Vesten over&#173;svømmes av vold, og venstre&#173;siden vil ikke snakke om det
 
@@ -190,7 +190,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## France 24
 - Egypt welcomes Xi as Beijing expands influence in region
-- FRANCE 24 in Nepal: The unbearable wait for missing relatives
 - France's back-to-school challenges: Phones, payslips, pupils
 - French president to open Bayeux Tapestry exhibition as he starts UK visit
 - George Clooney, Robert Pattinson expected on the red carpet at Venice Film Festival
@@ -207,6 +206,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - US postal whistleblower warns thousands of midterm ballots could be lost
 - Videos and debris raise questions over alleged US strike on Iranian wedding
 - Xi calls on Mideast nations to be ‘masters of their own affairs’ in rare Egypt visit
+- Zelensky warns airlines Russian skies not safe due to Ukraine drones
 
 ## FrontPageMag
 - (feed ikke nået; status=403)
@@ -253,7 +253,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Flere norske studiesteder utsatt for dataangrep
 - Full forvirring etter Russland-vedtak: Norge stemte imot – russisk stjerne fnyser
 - Hollywood utelater Norges glemte krigshelt
-- Haaland om Viking-signering: – Aldri vært så nær å bli Viking-supporter som nå
+- Haaland om signering: – Aldri vært så nær å bli Viking-supporter som nå!
 - Iranske myndigheter: 18 mennesker drept i amerikanske angrep
 - Kan bli kompensert etter alvorleg sak om drikkevatn: – Beløpet er latterleg
 - Kongeparets sarkofag er klar til kong Haralds gravferd
@@ -297,12 +297,12 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Automatic Selective Service Registration Keeps the Threat of Conscription Alive
 - Georgia Cop Claimed Petting Zoo Donkey Was Charging at His Team When He Shot It
 - Invasion of the Robot Teachers
-- Lion King Composer vs. Comedian Dispute Leads to ~$40K Attorney Fee Award Against Composer
 - My New Liberalism.Org Article on the Centrality of Private Property Rights to Liberalism
 - Strikes Without End
 - Third Circuit Rejects Facial Challenge to Ban on Nonimmigrant Aliens' Gun Possession
 - Trump Is Back To Seeking Regime Change in Iran
 - Trump's Venezuela Oil Deal Sells Out Democracy and Free Markets
+- USDA Approves Bioengineered American Chestnut Tree That Could Bring Them Back From Near-Extinction
 - Why the Right Is Embracing State Power
 - Wisconsin Cops Used Flock Over 100 Times To Track a Navy Veteran After He Lawfully Recorded a Traffic Stop
 
@@ -368,7 +368,24 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - The Story About Lindsay Clancy Being A Victim Comes From Deeper Roots Than 1960s Feminism
 
 ## The Local Denmark
-- (feed ikke nået; status=403)
+- Danish expression of the day: ellers tak
+- Danish word of the day: Ajourføre
+- Denmark reopens embassy in Syria after 14-year closure
+- Denmark set to host annual 'citizenship day' for thousands of new Danes
+- EXPLAINED: Can you work on a Danish study permit?
+- Five common rental scams in Denmark and how to avoid them
+- How do you feel about Danish citizenships potentially being frozen for another year?
+- How the make up of the Danish population could change by 2100
+- How to find a new hobby in Copenhagen this autumn
+- One in seven patients referred to hospital in Denmark is turned away
+- OPINION: The Danish flag-obsession is more 'hyggelig' than threatening
+- Ryanair to cut winter flights in Europe to save on fuel costs
+- The complete list of all the Danish pastries you need to try
+- Today in Denmark: A roundup of the latest news on Tuesday
+- Today in Denmark: A roundup of the latest news on Wednesday
+- 'Warning to Europe': How Iceland's 'No' vote is a blow to the EU
+- What changes in Denmark in September 2026?
+- Why were there so many tractors in central Copenhagen on Tuesday?
 
 ## Tichys Einblick
 - Der Wähler wählt rechts – Merz regiert links mit SED-Linken
