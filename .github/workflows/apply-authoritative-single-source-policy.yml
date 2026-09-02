@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/apply-authoritative-single-source-policy.yml'
+      - '.github/language-repair-trigger'
   workflow_dispatch:
 permissions:
   contents: write
