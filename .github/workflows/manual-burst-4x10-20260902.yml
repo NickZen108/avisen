@@ -1,6 +1,6 @@
-name: Manual burst 3x5 2026-09-02
+name: Manual burst 3 immediate 2026-09-02
 
-# trigger: 2026-09-02T19:25Z
+# trigger: 2026-09-02T20:16Z
 on:
   push:
     branches: [main]
@@ -22,7 +22,7 @@ jobs:
         with:
           ref: main
           fetch-depth: 1
-      - name: Run three fresh editorial slots five minutes apart
+      - name: Run three fresh editorial slots back-to-back
         shell: bash
         run: |
           set -euo pipefail
@@ -52,26 +52,14 @@ jobs:
           }
 
           for slot in 1 2 3; do
-            slot_start=$(date +%s)
             echo "=== Burst slot $slot/3 start $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
 
-            # Refresh the candidate pool so each slot sees current news.
+            # Refresh candidate pool before each article.
             run_and_wait breaking-scan.yml
 
-            # Up to three distinct candidates may be tried, but editorial sync stops
-            # immediately after the first approved/publicable article.
+            # Up to three distinct candidates may be tried; stop on first approved/publicable article.
             run_and_wait cloudflare-editorial-sync.yml -f cycles=3
 
             echo "=== Burst slot $slot/3 complete $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
-
-            if [ "$slot" -lt 3 ]; then
-              elapsed=$(( $(date +%s) - slot_start ))
-              delay=$(( 300 - elapsed ))
-              if [ "$delay" -gt 0 ]; then
-                echo "Sleeping ${delay}s so next slot starts 5 minutes after this slot."
-                sleep "$delay"
-              else
-                echo "Slot took ${elapsed}s; starting next slot immediately because the 5-minute mark has passed."
-              fi
-            fi
+            echo "Starting next slot immediately."
           done
