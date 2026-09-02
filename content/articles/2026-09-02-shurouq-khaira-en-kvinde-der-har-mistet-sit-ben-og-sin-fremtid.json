@@ -1,0 +1,115 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-02-gaza-amputees-struggle-under-blockade-and-rubble",
+  "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid",
+  "category": "Sundhed",
+  "weight": "B",
+  "editorial_destination": "people_magazine",
+  "story_location": {
+    "country": "Palestine",
+    "country_code": "PS",
+    "hero_queries_english": [
+      "Gaza amputees",
+      "Palestine amputees",
+      "amputees in Gaza"
+    ],
+    "hero_queries_local": [
+      "amputeret i Gaza",
+      "amputeret i Palæstina"
+    ],
+    "hero_queries_transliterated": [
+      "amputeret i Gaze",
+      "amputeret i Filistin"
+    ],
+    "place_names_english": [
+      "Gaza",
+      "Palestine"
+    ],
+    "place_names_local": [
+      "Gaza",
+      "Palæstina"
+    ],
+    "primary_language": "arabisk",
+    "primary_language_code": "ar",
+    "transliterations": [
+      "Gaze",
+      "Filistin"
+    ]
+  },
+  "title": "Shurouq Khaira: En kvinde, der har mistet sit ben og sin fremtid",
+  "standfirst": "Shurouq Khaira er en af mange, der har lidt under blokaden og ødelæggelsen i Gaza-striben. Hun søger stadig at overleve og at finde en måde at gøre det på, selv om hendes drømme er blevet til nothingness. ",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04"
+  ],
+  "seo": {
+    "title": "Shurouq Khaira: En kvinde, der har mistet sit ben og sin fremtid",
+    "description": "Shurouq Khaira, en ung kvinde fra Gaza-striben, har mistet sit ben i en katastrofe. Hun har drømt om at repræsentere Palæstina på internationalt plan og deltage i olympiaden, men nu er hendes drømme blevet til nothingness. ",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid.jpg",
+    "alt": "Illustration til: Shurouq Khaira: En kvinde, der har mistet sit ben og sin fremtid",
+    "credit": "Illustration: Morgentidende",
+    "license": "Morgentidende – AI-genereret illustration",
+    "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid.jpg",
+    "image_type": "illustration",
+    "context_type": "illustration",
+    "caption": "Illustration",
+    "pending_image": true,
+    "ai_generated": true,
+    "generator": "workers_ai_flux",
+    "contains_people": false,
+    "people_style": "pencil_hatching",
+    "photorealistic": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "I Gaza-striben, hvor israelske angreb i 2023 har efterladt en skæbnesvær ødelæggelse, møder vi Shurouq Khaira, en ung kvinde, der har mistet sit ben i en katastrofe. Før hendes ulykke var hun en begavet atlet, der havde drømt om at repræsentere Palæstina på internationalt plan og deltage i olympiaden. Men nu, efter at hun mistede benet i 2023, er hendes drømme blevet til nothingness. ",
+      "type": "h2"
+    },
+    {
+      "text": "Shurouq Khaira var en atlet før hun mistede benet i 2023. Hun havde drømt om at repræsentere Palæstina på internationalt plan og deltage i olympiaden. Men nu, efter at hun mistede benet, er hendes drømme blevet til nothingness. ",
+      "type": "p"
+    },
+    {
+      "text": "Gaza City var målet for israelske angreb i 2023. Angrebene har efterladt en skæbnesvær ødelæggelse i området, og mange mennesker har mistet deres hjem og deres fremtid. Shurouq Khaira er kun en af mange, der har lidt under blokaden og ødelæggelsen. ",
+      "type": "p"
+    },
+    {
+      "text": "Shurouq Khaira er ikke alene i hendes kamp. Mange andre i Gaza-striben har også mistet deres hjem og deres fremtid under blokaden og ødelæggelsen. De alle sammen søger at overleve i en verden, hvor der ikke er meget håb. ",
+      "type": "p"
+    },
+    {
+      "text": "Men selv om Shurouq Khaira har mistet sit ben, har hun ikke mistet sin vilje til at leve. Hun søger stadig at overleve og at finde en måde at gøre det på, selv om hendes drømme er blevet til nothingness. ",
+      "type": "p"
+    },
+    {
+      "text": "Shurouq Khaira er en af mange, der har lidt under blokaden og ødelæggelsen i Gaza-striben. Hun søger stadig at overleve og at finde en måde at gøre det på, selv om hendes drømme er blevet til nothingness. ",
+      "type": "p"
+    },
+    {
+      "text": "Artiklen er baseret på en artikel fra Al Jazeera, hvor det står: 'Dreams shattered: Gaza amputees struggle under blockade and rubble'.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

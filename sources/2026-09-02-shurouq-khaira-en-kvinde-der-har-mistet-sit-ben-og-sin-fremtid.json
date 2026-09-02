@@ -1,0 +1,157 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-gaza-amputees-struggle-under-blockade-and-rubble",
+  "article_slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid",
+  "assignment": {
+    "category": "Sundhed",
+    "weight": "B",
+    "editorial_destination": "people_magazine",
+    "story_location": {
+      "country": "Palestine",
+      "country_code": "PS",
+      "hero_queries_english": [
+        "Gaza amputees",
+        "Palestine amputees",
+        "amputees in Gaza"
+      ],
+      "hero_queries_local": [
+        "amputeret i Gaza",
+        "amputeret i Palæstina"
+      ],
+      "hero_queries_transliterated": [
+        "amputeret i Gaze",
+        "amputeret i Filistin"
+      ],
+      "place_names_english": [
+        "Gaza",
+        "Palestine"
+      ],
+      "place_names_local": [
+        "Gaza",
+        "Palæstina"
+      ],
+      "primary_language": "arabisk",
+      "primary_language_code": "ar",
+      "transliterations": [
+        "Gaze",
+        "Filistin"
+      ]
+    },
+    "core_question": "Gaza amputees struggle under blockade and rubble",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/features/2026/9/2/dreams-shattered-gaza-amputees-struggle-under-blockade-and-rubble?traffic_source=rss",
+      "published_at": "2026-09-02T19:35:36.000Z",
+      "accessed_at": "2026-09-02T20:19:43.850Z",
+      "type": "news",
+      "source_group": "host-aljazeera-com",
+      "publisher_root": "aljazeera-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Dreams shattered: Gaza amputees struggle under blockade and rubble",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-aljazeera-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Shurouq Khaira var en atlet før hun mistede benet i 2023.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T20:19:43.850Z",
+      "notes": "Kilde: Al Jazeera"
+    },
+    {
+      "id": "F02",
+      "claim": "Shurouq Khaira havde drømt om at repræsentere Palæstina på internationalt plan.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T20:19:43.850Z",
+      "notes": "Kilde: Al Jazeera"
+    },
+    {
+      "id": "F03",
+      "claim": "Shurouq Khaira havde drømt om at deltage i olympiaden.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T20:19:43.850Z",
+      "notes": "Kilde: Al Jazeera"
+    },
+    {
+      "id": "F04",
+      "claim": "Gaza City var målet for israelske angreb i 2023.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T20:19:43.850Z",
+      "notes": "Kilde: Al Jazeera"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T20:19:43.850Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T20:19:43.850Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "people_magazine"
+}
