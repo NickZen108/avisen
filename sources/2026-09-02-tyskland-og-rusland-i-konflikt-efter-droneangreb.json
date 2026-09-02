@@ -1,0 +1,248 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+  "article_slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "tech_magazine",
+    "story_location": {
+      "country": "Tyskland",
+      "country_code": "DE",
+      "hero_queries_english": [
+        "Germany drone attack",
+        "Leipzig airport incident"
+      ],
+      "hero_queries_local": [
+        "Deutschland Drohnenangriff",
+        "Leipzig Flughafen Vorfall"
+      ],
+      "hero_queries_transliterated": [],
+      "place_names_english": [
+        "Germany",
+        "Leipzig"
+      ],
+      "place_names_local": [
+        "Deutschland",
+        "Leipzig"
+      ],
+      "primary_language": "deutsch",
+      "primary_language_code": "de",
+      "transliterations": []
+    },
+    "core_question": "Droneangreb",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "DW",
+      "url": "https://www.dw.com/en/berlins-punitive-measures-unlikely-to-deter-putin-experts/a-78803217?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-02T17:37:00.000Z",
+      "accessed_at": "2026-09-02T17:41:14.227Z",
+      "type": "news",
+      "source_group": "host-dw-com",
+      "publisher_root": "dw-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Berlin's punitive measures unlikely to deter Putin: experts",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "BBC Europe",
+      "url": "https://www.bbc.co.uk/news/articles/ce9e810pg7ko?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-02T16:49:00.000Z",
+      "accessed_at": "2026-09-02T17:41:14.227Z",
+      "type": "news",
+      "source_group": "host-bbc-co-uk",
+      "publisher_root": "bbc-co-uk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "Sky World",
+      "url": "https://news.sky.com/story/attempted-drone-attack-at-leipzig-airport-blamed-on-russia-german-government-says-13579937",
+      "published_at": "2026-09-01T15:49:00.000Z",
+      "accessed_at": "2026-09-02T17:41:14.227Z",
+      "type": "news",
+      "source_group": "host-sky-com",
+      "publisher_root": "sky-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-3",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Attempted drone attack at German airport blamed on Russia",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S4",
+      "name": "France 24",
+      "url": "https://www.france24.com/en/video/20260902-russia-blamed-for-explosive-laden-drone-found-at-german-airport",
+      "published_at": "2026-09-02T16:11:30.000Z",
+      "accessed_at": "2026-09-02T17:41:14.227Z",
+      "type": "news",
+      "source_group": "host-france24-com",
+      "publisher_root": "france24-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-4",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "https://www.facebook.com/FRANCE24.English",
+      "publisher_name": "https://www.facebook.com/FRANCE24.English",
+      "canonical_url": "https://www.france24.com/en/video/20260902-russia-blamed-for-explosive-laden-drone-found-at-german-airport",
+      "primary_record": null,
+      "authoritative_for": "Russia blamed for explosive-laden drone found at German airport",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "independent_source_groups": [
+      "host-dw-com",
+      "host-bbc-co-uk",
+      "host-sky-com",
+      "host-france24-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Germany has announced punitive measures against Russia after blaming them for an attempted airport drone attack.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-02T17:41:14.227Z",
+      "notes": "Source: DW, Source Index: 0"
+    },
+    {
+      "id": "F02",
+      "claim": "The practical impact of Germany's latest measures against Russia may be limited, according to Russian political scientist Dmitry Oreshkin.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-02T17:41:14.227Z",
+      "notes": "Source: DW, Source Index: 0"
+    },
+    {
+      "id": "F03",
+      "claim": "Russia has rejected German accusations that a drone carrying explosives deliberately targeted a Ukrainian cargo plane on 4 August.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T17:41:14.227Z",
+      "notes": "Source: BBC Europe, Source Index: 1"
+    },
+    {
+      "id": "F04",
+      "claim": "The interior minister said that the drone's configuration, components, explosives and detonator were all known from other Russian hybrid operations.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T17:41:14.227Z",
+      "notes": "Source: BBC Europe, Source Index: 1"
+    },
+    {
+      "id": "F05",
+      "claim": "Two suspects have reportedly been identified in connection with the drone attack.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T17:41:14.227Z",
+      "notes": "Source: BBC Europe, Source Index: 1"
+    },
+    {
+      "id": "F06",
+      "claim": "Germany has introduced new sanctions against Russia, including closing the Russian consulate in Bonn and the Russian House in Berlin.",
+      "status": "verified",
+      "source_ids": [
+        "S4"
+      ],
+      "independent_groups": [
+        "host-france24-com"
+      ],
+      "checked_at": "2026-09-02T17:41:14.227Z",
+      "notes": "Source: France 24, Source Index: 3"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T17:41:14.227Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T17:41:14.227Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "tech_magazine"
+}

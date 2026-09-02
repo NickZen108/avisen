@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "story_id": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+  "article_slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+  "checked_at": "2026-09-02T17:41:14.227Z",
+  "gates": {
+    "language": "pass",
+    "ethics": "pass",
+    "image": "pass",
+    "seo": "pass",
+    "final_editor": "pass"
+  },
+  "final_editor_mode": "ai",
+  "editorial_snapshot": {
+    "pipeline_version": 2,
+    "story_id": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+    "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb",
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "tech_magazine",
+    "story_location": {
+      "country": "Tyskland",
+      "country_code": "DE",
+      "hero_queries_english": [
+        "Germany drone attack",
+        "Leipzig airport incident"
+      ],
+      "hero_queries_local": [
+        "Deutschland Drohnenangriff",
+        "Leipzig Flughafen Vorfall"
+      ],
+      "hero_queries_transliterated": [],
+      "place_names_english": [
+        "Germany",
+        "Leipzig"
+      ],
+      "place_names_local": [
+        "Deutschland",
+        "Leipzig"
+      ],
+      "primary_language": "deutsch",
+      "primary_language_code": "de",
+      "transliterations": []
+    },
+    "title": "Tyskland og Rusland i konflikt efter droneangreb",
+    "standfirst": "Tyskland og Rusland er i en meget anspændt situation efter et forsøg på at angribe Leipzig lufthavn med en drone. Det er første gang, at Rusland bliver beskyldt for et droneangreb mod en tysk lufthavn. Tyskland har allerede indført stramme sanktioner mod Rusland efter invasionen af Ukraine i 2022, men disse nye sanktioner er en ny fase i den tysk-russiske konflikt. Det er ikke klart, hvordan konflikten vil udvikle sig i fremtiden, men det er tydeligt, at Tyskland og Rusland er i en meget anspændt situation.",
+    "byline": "Morgentidende Redaktion",
+    "manual_review": false,
+    "ledger": "sources/2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb.json",
+    "claim_ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06"
+    ],
+    "seo": {
+      "title": "Tyskland og Rusland i konflikt efter droneangreb",
+      "description": "Tyskland og Rusland er i konflikt efter et forsøg på at angribe Leipzig lufthavn med en drone. Rusland har afvist beskyldningerne, men Tyskland har indført nye sanktioner.",
+      "canonical": null
+    },
+    "image": {
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb.jpg",
+      "alt": "U.S. Army Master Sgt. Nicholas Lombard, battalion operations sergeant, Team Viper observer controller, 7th Army Training Command, conducts final preparations for a drone swarm attack during Exercise Combined Resolve 24-2 at the Joint Multinational Readiness Center near Hohenfels, Germany, May 29, 2024. Combined Resolve 24-2 is a key U.S. Army multi-domain interoperability exercise in Europe and a major investment in the cohesion of the NATO alliance and the overall readiness of allies and partne",
+      "credit": "U.S. Army National Guard photo by Sgt. 1st Class Brandon Nelson",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Combined_Resolve_24-2_drone_swarm_attack_(8436765).jpg",
+      "image_type": "photo",
+      "context_type": "archive",
+      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "pending_image": false,
+      "ai_generated": false,
+      "placement": "lead"
+    },
+    "body": [
+      {
+        "text": "Tyskland og Rusland i konflikt efter droneangreb",
+        "type": "h2"
+      },
+      {
+        "text": "Tyskland har beskyldt Rusland for et forsøg på at angribe Leipzig lufthavn med en drone, der var lastet med sprængstoffer.",
+        "type": "p"
+      },
+      {
+        "text": "Rusland har afvist beskyldningerne og påstår, at de ikke har noget med angrebet at gøre.",
+        "type": "p"
+      },
+      {
+        "text": "Tyskland har nu indført nye sanktioner mod Rusland, herunder at lukke det russiske konsulat i Bonn og det russiske hus i Berlin.",
+        "type": "p"
+      },
+      {
+        "text": "Men ifølge den russiske politiske forsker Dmitry Oreshkin kan de tyske sanktioner have begrænset virkning.",
+        "type": "p"
+      },
+      {
+        "text": "Oreshkin mener, at Rusland ikke vil blive skræmt af de tyske sanktioner og at de vil fortsætte med deres politik.",
+        "type": "p"
+      },
+      {
+        "text": "To mistænkte er ifølge rapporter blevet identificeret i forbindelse med droneangrebet.",
+        "type": "p"
+      },
+      {
+        "text": "Det er dog ikke klart, hvem der står bag angrebet og hvilke konsekvenser det vil få.",
+        "type": "p"
+      },
+      {
+        "text": "EU og NATO har lovet at træffe nye træk for at presse Rusland efter 'den nye eskalering' i Tyskland.",
+        "type": "p"
+      },
+      {
+        "text": "Det er første gang, at Rusland bliver beskyldt for et droneangreb mod en tysk lufthavn.",
+        "type": "p"
+      },
+      {
+        "text": "Tyskland har allerede indført stramme sanktioner mod Rusland efter invasionen af Ukraine i 2022.",
+        "type": "p"
+      },
+      {
+        "text": "Men disse nye sanktioner er en ny fase i den tysk-russiske konflikt.",
+        "type": "p"
+      },
+      {
+        "text": "Det er ikke klart, hvordan konflikten vil udvikle sig i fremtiden, men det er tydeligt, at Tyskland og Rusland er i en meget anspændt situation.",
+        "type": "p"
+      },
+      {
+        "text": "Tyskland og Rusland er to store lande i Europa, og deres konflikt kan have store konsekvenser for hele kontinentet.",
+        "type": "p"
+      }
+    ],
+    "source_ids_to_display": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "related_news_slug": null,
+    "related": [],
+    "correction_note": null,
+    "automation_origin": "cloudflare-workers-ai"
+  },
+  "editorial_destination": "tech_magazine"
+}
