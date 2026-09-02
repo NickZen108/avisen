@@ -1,4 +1,4 @@
-# Scan 2026-09-02T17:20:57.177Z (Cloudflare runtime)
+# Scan 2026-09-02T17:25:57.336Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -287,8 +287,8 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Lecornu va-t-il passer l’hiver ?
 - No budget deal without new EU taxes, Costa warns
 - Slovenian parliament lifts former PM Golob’s immunity in police-meddling probe
-- TikTok ban divides European Commission
 - Ulrich Siegmunds Erfolgsrezept
+- US Mint begins circulation, sale of Trump $1 coins
 - Von der Leyen, Rutte say Russian ‘intimidation will not work’ to stop Ukraine aid
 
 ## Reason
