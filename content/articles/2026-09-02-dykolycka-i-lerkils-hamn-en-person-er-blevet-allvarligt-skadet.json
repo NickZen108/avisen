@@ -27,8 +27,8 @@
     "primary_language_code": "sv",
     "transliterations": []
   },
-  "title": "Dykolycka i Lerkils hamn: En person er blevet allvarligt skadet",
-  "standfirst": "SVT",
+  "title": "Dykkerulykke i Lerkils havn: En person alvorligt kvæstet",
+  "standfirst": "To dykkere blev reddet op af vandet efter en ulykke i Lerkils havn. Den ene blev kørt på hospitalet med alvorlige skader, oplyser SVT, Sveriges public service-tv.",
   "byline": "Morgentidende Redaktion",
   "published_at": "2026-09-02T20:28:29Z",
   "updated_at": null,
@@ -43,13 +43,13 @@
     "F06"
   ],
   "seo": {
-    "title": "Dykolycka i Lerkils hamn: En person er blevet allvarligt skadet",
-    "description": "En person er blevet allvarligt skadet efter en dykolycka i Lerkils hamn i Kungsbacka. Larmet om dykolyckan kom klokken 20.20, og en forbipasserende har larmet SOS efter at have opdaget to dykere i vandet.",
+    "title": "Dykkerulykke i Lerkils havn: En person alvorligt kvæstet",
+    "description": "To dykkere blev reddet op af vandet efter en dykkerulykke i Lerkils havn i Kungsbacka. Den ene blev kørt på hospitalet med alvorlige skader.",
     "canonical": null
   },
   "image": {
     "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet.jpg",
-    "alt": "Illustration til: Dykolycka i Lerkils hamn: En person er blevet allvarligt skadet",
+    "alt": "Illustration til: Dykkerulykke i Lerkils havn: En person alvorligt kvæstet",
     "credit": "Illustration: Morgentidende",
     "license": "Morgentidende – AI-genereret illustration",
     "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet.jpg",
@@ -66,16 +66,16 @@
   },
   "body": [
     {
-      "text": "En person er blevet allvarligt skadet efter en dykolycka i Lerkils hamn i Kungsbacka. Larmet om dykolyckan kom klokken 20.20, og en forbipasserende har larmet SOS efter at have opdaget to dykere i vandet. To personer er blevet reddet fra vandet efter dykolyckan, og en af dem er blevet ført til sygehus med ambulans. En person har blivit ført til sygehus efter dykolyckan i Lerkils hamn. ",
-      "type": "p"
+      "type": "p",
+      "text": "En person er blevet alvorligt kvæstet efter en dykkerulykke i Lerkils havn i Kungsbacka. Alarmen om ulykken kom klokken 20.20, efter at en forbipasserende opdagede to dykkere i vandet og slog alarm. To personer blev reddet op af vandet, og den ene blev kørt på hospitalet med ambulance."
     },
     {
-      "text": "Kilde: SVT, artikel fra 21:29",
-      "type": "p"
+      "type": "p",
+      "text": "Kilde: SVT, Sveriges public service-tv."
     },
     {
-      "text": "Läs mer på SVT:s hjemmeside: https://www.svt.se/nyheter/lokalt/halland/en-person-till-sjukhus-efter-dykolycka-i-lerkils-hamn",
-      "type": "p"
+      "type": "p",
+      "text": "Læs mere hos SVT: https://www.svt.se/nyheter/lokalt/halland/en-person-till-sjukhus-efter-dykolycka-i-lerkils-hamn"
     }
   ],
   "source_ids_to_display": [

@@ -781,6 +781,17 @@ async function writeArticle(env, assignment, dossier) {
   return aiJson(env, system, JSON.stringify({ assignment, conflict_present: Boolean(dossier.conflict_present), verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null);
 }
 
+async function polishArticleLanguage(env, assignment, dossier, article) {
+  const sourceLanguage = String(assignment?.story_location?.primary_language_code || assignment?.story_location?.primary_language || "").toLowerCase();
+  const system = `Du er Morgentidendes eksisterende sprogredaktør. Gennemlæs HELE den færdige artikel og returnér hele artiklen i samme schema på idiomatisk, naturligt dansk. Dette er et repair/polish-step, IKKE en ny gate og må ikke kræve nye kilder. Bevar alle verificerede fakta, attributioner, citater, tal, URL'er, vinkel og betydning; tilføj ingen nye claims. Ret svensk, norsk, engelsk eller andet kildesprog, der er gledet ind i titel, standfirst, brødtekst eller SEO. Når kildesproget er svensk eller norsk, skal alle almindelige ord og bøjningsformer oversættes til dansk; egennavne og egentlige citater bevares. Sørg også for, at standfirst er en rigtig kort manchet og ikke blot et kildenavn. Forklar egennavne kort første gang, når forklaringen allerede kan udledes sikkert af det verificerede materiale; opfind ikke baggrundsoplysninger. Skriv ikke kilde- eller redaktionsnoter ind, medmindre de allerede er en del af artiklen. Returnér kun den reparerede artikel.`;
+  return aiJson(env, system, JSON.stringify({
+    source_language: sourceLanguage,
+    assignment,
+    verified_claims: dossier.claims.filter((c) => c.status === "verified"),
+    article,
+  }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2400 : 1600, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null);
+}
+
 function deterministicFinalReview(assignment, dossier, article) {
   const issues = [];
   const add = (gate, issue) => issues.push({ gate, issue });
@@ -1191,6 +1202,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
   if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, fact_check: { claims: dossier.claims, rationale: dossier.rationale }, desk_recheck: desk } };
 
   let article = await writeArticle(env, assignment, dossier);
+  article = await polishArticleLanguage(env, assignment, dossier, article);
 let semanticFactCheck = await finalSemanticFactCheck(env, assignment, dossier, article);
 if (semanticFactCheck.decision !== "pass") {
   const revised = await reviseSemanticFactIssues(env, assignment, dossier, article, semanticFactCheck);
