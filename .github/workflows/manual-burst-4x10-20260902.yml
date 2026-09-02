@@ -1,5 +1,6 @@
 name: Manual burst 4x10 2026-09-02
 
+# trigger: 2026-09-02T17:25Z
 on:
   push:
     branches: [main]
