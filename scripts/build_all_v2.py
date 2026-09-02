@@ -18,7 +18,7 @@ def resolve(i,ix):
  a=ix.get(i["slug"])
  if not a or a.get("pipeline_version")!=2:return i
  im=a.get("image") or {};video=a.get("video") or {}
- return {"slug":a["slug"],"category":a["category"],"title":a["title"],"standfirst":a["standfirst"],"teaser":a["standfirst"],"published_label":legacy.dk_label(a["published_at"]),"image_src":im.get("src",""),"image_alt":im.get("alt",""),"video":video,"followup_type":a.get("followup_type"),"headline_style":a.get("headline_style")}
+ return {"slug":a["slug"],"category":a["category"],"title":a["title"],"standfirst":a["standfirst"],"teaser":a["standfirst"],"published_label":legacy.dk_label(a["published_at"]),"image_src":im.get("src",""),"image_alt":im.get("alt",""),"image_caption":im.get("caption",""),"image_credit":im.get("credit",""),"video":video,"followup_type":a.get("followup_type"),"headline_style":a.get("headline_style")}
 def headline_parts(item,allow_split=True):
  title=str(item.get("title") or "").strip();style=item.get("headline_style")
  if not style:
@@ -55,12 +55,16 @@ def lead_visual(l):
  v=l.get("video") or {}
  if v.get("provider")=="youtube" and v.get("id") and v.get("frontpage_hero") is True:
   return legacy.youtube_embed(v,autoplay=bool(v.get("frontpage_autoplay")),css_class="frontpage-video-hero")
- return f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}"></figure>' if l.get("image_src") else ""
+ if not l.get("image_src"):return ""
+ bits=[]
+ if l.get("image_caption"):bits.append(esc(l["image_caption"]))
+ if l.get("image_credit"):bits.append(f'Foto: {esc(l["image_credit"])}')
+ cap=f'<figcaption>{" · ".join(bits)}</figcaption>' if bits else ""
+ return f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}">{cap}</figure>'
 def front():
  s=load(ROOT/"content"/"frontpage.json");ix=idx();t=(ROOT/"templates"/"index.html").read_text(encoding="utf-8")
- from datetime import datetime
- d=datetime.fromisoformat(s["date"]).date();dl=f"{legacy.WEEKDAYS[d.weekday()]} {d.day}. {legacy.MONTHS[d.month-1]} {d.year}"
- tk=resolve(s["ticker"],ix);ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(tk["title"])}</a></p>'
+ d=legacy.datetime.now(legacy.COPENHAGEN).date();dl=f"{legacy.WEEKDAYS[d.weekday()]} {d.day}. {legacy.MONTHS[d.month-1]} {d.year}"
+ tk=resolve(s["ticker"],ix);ticker_text=str(s.get("ticker",{}).get("text") or tk.get("title") or "").strip();ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(ticker_text)}</a></p>'
  l=resolve(s["lead"],ix);visual=lead_visual(l);lead_h=headline_link(l,legacy.front_item_url(l["slug"]),tag="h1",allow_split=True)
  lead_article='<section class="lead">'+visual+f'<p class="section-label">{esc(l["category"])}</p>{lead_h}<p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
  followups=lead_followups(l["slug"],ix)
@@ -73,8 +77,12 @@ def front():
    x=resolve(raw,ix)
    if x.get("slug") in seen or not unrelated_to_lead(x,l["slug"],ix):continue
    seen.add(x["slug"]);rail_candidates.append(x)
+ seen_images=set()
  for x in rail_candidates[:5]:
-  pic=f'<img src="{esc(x["image_src"])}" alt="{esc(x.get("image_alt",""))}">' if x.get("image_src") else ""
+  image_src=str(x.get("image_src") or "")
+  pic=""
+  if image_src and image_src not in seen_images:
+   seen_images.add(image_src);pic=f'<img src="{esc(image_src)}" alt="{esc(x.get("image_alt",""))}">'
   style,headline=headline_parts(x,allow_split=False)
   rail.append(f'<a class="rail-item headline--{esc(style)}" href="{legacy.front_item_url(x["slug"])}">{pic}<span><span>{esc(x["category"])}</span> {headline}</span></a>')
  rail.append("</aside>");stack=['<section class="stack">']
@@ -84,7 +92,7 @@ def front():
  for raw in s.get("narrow",[]):
   x=resolve(raw,ix);narrow.append(f'<article><p class="section-label">{esc(x["category"])}</p>{headline_link(x,legacy.front_item_url(x["slug"]),tag="h2",allow_split=False)}<p>{esc(x.get("teaser",x.get("standfirst","")))}</p></article>')
  narrow.append("</section>")
- r={"{{DATE_ISO}}":esc(s["date"]),"{{DATE_LABEL}}":esc(dl),"{{EDITION_LABEL}}":esc(s.get("edition_label","Danmarks nye avis")),"{{TICKER_HTML}}":ticker,"{{LEAD_HTML}}":lead,"{{RAIL_HTML}}":"".join(rail),"{{STACK_HTML}}":"".join(stack),"{{NARROW_HTML}}":"".join(narrow)}
+ r={"{{DATE_ISO}}":esc(d.isoformat()),"{{DATE_LABEL}}":esc(dl),"{{EDITION_LABEL}}":esc(s.get("edition_label","Danmarks nye avis")),"{{TICKER_HTML}}":ticker,"{{LEAD_HTML}}":lead,"{{RAIL_HTML}}":"".join(rail),"{{STACK_HTML}}":"".join(stack),"{{NARROW_HTML}}":"".join(narrow)}
  for k,v in r.items():t=t.replace(k,v)
  (ROOT/"docs"/"index.html").write_text(t,encoding="utf-8")
 def correction_page():
@@ -95,7 +103,7 @@ def correction_page():
  page='<!DOCTYPE html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rettelser – Morgentidende</title><meta name="description" content="Morgentidendes åbne log over væsentlige rettelser og præciseringer."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css?v=7"><link rel="stylesheet" href="theme.css?v=2"><script src="theme.js?v=1"></script></head><body class="subpage"><header class="masthead"><div class="wrap masthead-inner"><a class="wordmark" href="./">Morgentidende</a><button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Skift mellem lyst og mørkt tema"><span class="theme-toggle__label">Mørk</span><span class="theme-toggle__track" aria-hidden="true"><span class="theme-toggle__thumb"></span></span></button></div></header><main class="wrap subpage-main"><article class="subpage-card"><p class="section-label">Rettelser</p><h1>Vi retter fejl åbent</h1><p class="subpage-intro">Troværdighed kræver også, at man viser det, når noget blev forkert. Væsentlige faktuelle fejl og præciseringer registreres her.</p><h2>Aktuel log</h2>'+log+'</article></main><footer><div class="wrap"><p class="wordmark-sm">Morgentidende</p><p><a href="./">Forside</a> · <a href="nyhedsbrev.html">Nyhedsbrev</a> · <a href="om.html">Om</a> · <a href="rettelser.html">Rettelser</a></p></div></footer></body></html>\n'
  (ROOT/"docs"/"rettelser.html").write_text(page,encoding="utf-8")
 def public_surface():
- """Keep public pages tool-neutral without making false human-authorship claims."""
+ """Keep public pages tool-neutral and strip internal pipeline metadata."""
  ai=ROOT/"docs"/"ai-politik.html"
  if ai.exists():ai.unlink()
  for p in [ROOT/"docs"/"index.html",*sorted((ROOT/"docs"/"artikler").glob("*.html"))]:
@@ -103,6 +111,10 @@ def public_surface():
   t=p.read_text(encoding="utf-8")
   t=t.replace(' · <a href="ai-politik.html">AI-politik</a>',"")
   t=t.replace(' · <a href="../ai-politik.html">AI-politik</a>',"")
+  t=re.sub(r"\s*·\s*Public domain\s*\(PD automated\)","",t,flags=re.I)
+  t=re.sub(r"\s*·\s*PD automated\b","",t,flags=re.I)
+  t=re.sub(r"\s*·\s*(?:pipeline|agent|cache)[-_ ](?:status|flag|hash)\s*[:=]\s*[^<·]+","",t,flags=re.I)
+  t=t.replace('<aside class="related-teaser"><strong>Mere om sagen:</strong>','<aside class="related-teaser"><strong>Flere nyheder:</strong>')
   p.write_text(t,encoding="utf-8")
  sm=ROOT/"docs"/"sitemap.xml"
  if sm.exists():
