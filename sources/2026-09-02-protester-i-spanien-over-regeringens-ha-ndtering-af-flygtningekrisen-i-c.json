@@ -1,0 +1,196 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-protests-in-spain-over-government-s-handling-of-ceuta-migrant-crisis",
+  "article_slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c",
+  "assignment": {
+    "category": "Sport",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "Spain",
+      "country_code": "ES",
+      "hero_queries_english": [
+        "Ceuta migrant crisis",
+        "Spain protests",
+        "Pedro Sánchez"
+      ],
+      "hero_queries_local": [
+        "crise des migrants à Ceuta",
+        "manifestations en Espagne",
+        "Pedro Sánchez"
+      ],
+      "hero_queries_transliterated": [
+        "krise de los migrantes en Ceuta",
+        "manifestaciones en España",
+        "Pedro Sánchez"
+      ],
+      "place_names_english": [
+        "Ceuta",
+        "Spain"
+      ],
+      "place_names_local": [
+        "Ceuta",
+        "Espagne"
+      ],
+      "primary_language": "español",
+      "primary_language_code": "es",
+      "transliterations": [
+        "Ceuta",
+        "España"
+      ]
+    },
+    "core_question": "Protests in Spain over government's handling of Ceuta migrant crisis",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "BBC Europe",
+      "url": "https://www.bbc.co.uk/news/articles/c1mvn2yp9n2o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-02T21:34:27.000Z",
+      "accessed_at": "2026-09-02T23:35:46.734Z",
+      "type": "news",
+      "source_group": "host-bbc-co-uk",
+      "publisher_root": "bbc-co-uk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Protests in Spain over government's handling of Ceuta migrant crisis",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "Guardian World",
+      "url": "https://www.theguardian.com/world/2026/aug/31/morocco-ceuta-border-breach-spanish-pm-migration-pedro-sanchez",
+      "published_at": "2026-08-31T10:21:56.000Z",
+      "accessed_at": "2026-09-02T23:35:46.734Z",
+      "type": "news",
+      "source_group": "host-theguardian-com",
+      "publisher_root": "theguardian-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "https://www.theguardian.com/profile/samjones",
+      "publisher_name": "https://www.facebook.com/theguardian",
+      "canonical_url": "https://www.theguardian.com/world/2026/aug/31/morocco-ceuta-border-breach-spanish-pm-migration-pedro-sanchez",
+      "primary_record": null,
+      "authoritative_for": "Morocco not to blame for Ceuta border breach, says Spanish PM",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2"
+    ],
+    "independent_source_groups": [
+      "host-bbc-co-uk",
+      "host-theguardian-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Tusindvis af mennesker har protesteret i Spanien over regeringens håndtering af flygtningekrisen i Ceuta.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T23:35:46.734Z",
+      "notes": "BBC Europe"
+    },
+    {
+      "id": "F02",
+      "claim": "Morocco er ikke ansvarlig for den massive grænseovertrædelse i Ceuta, ifølge den spanske premierminister Pedro Sánchez.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-02T23:35:46.734Z",
+      "notes": "Guardian World"
+    },
+    {
+      "id": "F03",
+      "claim": "Det er blevet rapporteret, at op til 141 mennesker er døde under forsøget på at krydse grænsen fra Morocco til Ceuta i slutningen af juli og begyndelsen af august.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-02T23:35:46.734Z",
+      "notes": "Guardian World"
+    },
+    {
+      "id": "F04",
+      "claim": "Tusindvis af mennesker er blevet flygtninge i Ceuta, og mange af dem er blevet placeret i improviserede lejre eller er spredt ud over byens gader eller på stranden.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T23:35:46.734Z",
+      "notes": "BBC Europe"
+    },
+    {
+      "id": "F05",
+      "claim": "Den spanske regering har sagt, at højreorienterede partier udnytter flygtningekrisen, mens oppositionspartier anklager premierminister Pedro Sánchez for at have forladt befolkningen i Ceuta.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T23:35:46.734Z",
+      "notes": "BBC Europe"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T23:35:46.734Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T23:35:46.734Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "main"
+}
