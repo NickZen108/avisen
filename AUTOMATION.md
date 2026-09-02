@@ -22,8 +22,8 @@ Redaktionel intelligens = få tydeligt ejede AI-beslutninger. GitHub Actions = d
 
 ## Forbrugsregel
 
-Brug 8B-modellen som standard til klassifikation, Research, Fact check og slutkontrol. Stærk model reserveres til A/B-journalistik, reel kompleksitet, høj risiko eller fallback ved struktureret output-fejl. Send korte kildeuddrag og strukturerede claims frem for fulde artikler gentagne gange.
+Llama 3.1 8B er standard til desk, research, fact-check, journalistik og slutkontrol. Llama 3.3 70B er kun fallback ved struktureret output-fejl på A- og B-artikler. Flux Schnell bruges kun som sidste hero-udvej på A; B–D får statisk skitse, hvis intet lovligt foto findes. Send korte kildeuddrag og strukturerede claims. Editorial-sync kører én cyklus pr. cron som standard.
 
 ## Ingen skjulte kvoter
 
-Deterministiske scripts må ikke genindføre strengere redaktionelle krav end agentreglerne. Der er derfor ingen universel hard gate på tre kilder, tre source-groups eller to claims. Én autoritativ primærkilde eller to reelt uafhængige troværdige kilder er normalt nok til et almindeligt bærende faktum; højrisiko vurderes konkret.
+Deterministiske scripts må ikke genindføre strengere redaktionelle krav end husreglen. Der er ingen universel hard gate på tre kilder, tre source-groups eller to claims. **Én relevant autoritativ kilde er nok** til et almindeligt bærende faktum, når en maskinverificeret støttepassage dokumenterer claimet. Navngiven sigtet/tiltalt/mistænkt kræver primærkilde eller original bureaukilde. Højrisiko kan kræve etik/forelæggelse — ikke en skjult to-kilde-kvote. Discovery-only er aldrig evidens.
