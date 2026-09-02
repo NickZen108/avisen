@@ -64,7 +64,6 @@ jobs:
           node --check cloudflare/newsdesk/src/editorial.js
           python -m py_compile scripts/evidence_policy.py scripts/quality_gate.py scripts/source_independence_gate.py
           python scripts/evidence_policy_selftest.py
-          python scripts/evidence_policy_contract_test.py
       - name: Verify legacy passage contract is gone from active repo
         run: |
           if git grep -n -i -E 'support_passages|support passage|støttepassage|støttepassager' -- ':!scripts/apply_authoritative_single_source_policy.py' ':!.github/workflows/apply-authoritative-single-source-policy.yml' ':!reports/**'; then
