@@ -1,4 +1,5 @@
-name: One-shot structured schema cleanup
+name: One-shot structured schema repair fallback
+# trigger: 2026-09-02T09:26+02:00
 on:
   push:
     branches: [main]
@@ -13,25 +14,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: {ref: main, fetch-depth: 0}
-      - name: Remove duplicate schema helper block
+      - name: Add validated JSON-object repair fallback
         run: |
           python - <<'PY'
           from pathlib import Path
           p=Path('cloudflare/newsdesk/src/editorial.js')
           s=p.read_text(encoding='utf-8')
-          marker='function schemaShapeValid(value, schema) {'
-          first=s.index(marker)
-          second=s.index(marker, first+1)
-          ai=s.index('async function aiJson(', second)
-          s=s[:second]+s[ai:]
-          p.write_text(s,encoding='utf-8')
+          start=s.index('async function aiJson(')
+          end=s.index('\n}\n\nconst assignmentSchema', start)+3
+          new='''async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRONG_TEXT_MODEL, fallbackModel = null) {\n  const request = {\n    messages: [{ role: "system", content: system }, { role: "user", content: user }],\n    max_tokens: maxTokens, temperature: 0.15,\n    response_format: { type: "json_schema", json_schema: schema },\n  };\n  let firstError = null;\n  try {\n    const raw = await env.AI.run(model, request);\n    return structuredResponse(raw, schema);\n  } catch (error) {\n    firstError = error;\n    if (!fallbackModel || fallbackModel === model) throw error;\n    console.warn("Workers AI structured-call fallback", model, "->", fallbackModel, String(error));\n    try { env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1; } catch (_) {}\n  }\n  try {\n    const raw = await env.AI.run(fallbackModel, request);\n    return structuredResponse(raw, schema);\n  } catch (error) {\n    console.warn("Workers AI schema fallback still malformed; trying JSON-object repair", String(error));\n    try { env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1; } catch (_) {}\n    const repairRequest = {\n      messages: [\n        { role: "system", content: `${system}\\nReturn ONLY one JSON object that satisfies every required field and type in the supplied JSON Schema. Do not omit required arrays; use empty arrays only when the schema permits them.` },\n        { role: "user", content: `${user}\\n\\nRequired JSON Schema:\\n${JSON.stringify(schema)}` },\n      ],\n      max_tokens: maxTokens, temperature: 0,\n      response_format: { type: "json_object" },\n    };\n    const repairedRaw = await env.AI.run(fallbackModel, repairRequest);\n    try { return structuredResponse(repairedRaw, schema); }\n    catch (repairError) {\n      repairError.cause = error || firstError;\n      throw repairError;\n    }\n  }\n}\n'''
+          p.write_text(s[:start]+new+s[end:],encoding='utf-8')
           PY
           node --check cloudflare/newsdesk/src/editorial.js
-      - name: Commit cleanup
+      - name: Commit repair fallback
         run: |
           git config user.name 'morgentidende-maintenance'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add cloudflare/newsdesk/src/editorial.js
-          git commit -m 'chore: deduplicate structured response validator'
+          git commit -m 'fix: repair malformed structured AI output'
           git pull --rebase origin main
           git push origin main
