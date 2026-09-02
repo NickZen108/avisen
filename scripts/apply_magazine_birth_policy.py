@@ -2,6 +2,7 @@
 """One-shot source migration: make magazine destination part of Newsdesk birth.
 
 Idempotent. Fails loudly if the expected canonical anchors have drifted.
+Triggered once after the workflow was installed.
 """
 from pathlib import Path
 
