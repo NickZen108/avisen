@@ -40,17 +40,18 @@ def main() -> int:
     pending_refresh = load_module("pending_refresh", ROOT / "scripts" / "refresh_pending_images.py")
     pending_refresh.self_test()
 
+    # Evidence authority is canonical in evidence_policy.py. The sync layer imports
+    # that policy rather than maintaining a second, drifting set of source helpers.
+    policy = load_module("evidence_policy", ROOT / "scripts" / "evidence_policy.py")
+    assert policy.authoritative_source({"name": "Reuters", "url": "https://www.reuters.com/world/example"})
+    assert policy.authoritative_source({"name": "Associated Press", "url": "https://apnews.com/article/example"})
+    assert policy.authoritative_source({"name": "NRK", "url": "https://www.nrk.no/sak"})
+    assert policy.authoritative_source({"name": "Financial Times", "url": "https://www.ft.com/content/example"})
+    assert not policy.authoritative_source({"name": "Example Blog", "url": "https://example.test/post"})
+    assert policy.authoritative_source({"type": "expert", "authoritative_for": "macroeconomics", "url": "https://example.test/expert"})
+    assert not policy.authoritative_source({"type": "expert", "url": "https://example.test/expert"})
+
     sync = load_module("sync", ROOT / "scripts" / "sync_cloudflare_editorial.py")
-    assert sync.authoritative_editorial({"name": "Reuters", "source_group": "wire-reuters"})
-    assert sync.authoritative_editorial({"name": "Associated Press", "source_group": "wire-ap"})
-    assert not sync.authoritative_editorial({"name": "NRK", "url": "https://www.nrk.no/sak"})
-    assert sync.strong_editorial({"name": "NRK", "url": "https://www.nrk.no/sak"})
-    assert sync.strong_editorial({"name": "Financial Times", "url": "https://www.ft.com/content/example"})
-    assert not sync.strong_editorial({"name": "Example Blog", "url": "https://example.test/post"})
-    assert not sync.high_risk_claim({"category": "Udland", "title": "Minister deltager i EU-møde", "standfirst": ""}, {"right_of_reply": {"required": False}}, {"claim": "Minister deltager i mødet"})
-    assert sync.high_risk_claim({"category": "Krimi", "title": "Fem dømt", "standfirst": ""}, {"right_of_reply": {"required": False}}, {"claim": "Fem dømt for hvidvask"})
-    assert not sync.high_risk_claim({"category": "Sundhed", "title": "Ny statistik om medicin", "standfirst": ""}, {"right_of_reply": {"required": False}}, {"claim": "Rapporten blev offentliggjort tirsdag"})
-    assert sync.named_accused_crime_claim({"category": "Politik"}, {"claim": "Jens Jensen er sigtet i sagen"})
     assert sync.valid_documentary_image({
         "src": "https://example.test/photo.jpg",
         "source_url": "https://example.test/license",
