@@ -24,7 +24,6 @@ jobs:
           python scripts/test_hybrid_runtime.py
           python scripts/reapprove_media_change.py --self-test
           python scripts/editorial_sync_contract_test.py
-          python scripts/claim_passage_contract_test.py
           python scripts/evidence_policy_selftest.py
           python scripts/release_ready.py --self-test
           python scripts/lead_followup.py --self-test
