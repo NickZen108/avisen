@@ -4,16 +4,21 @@
 The Cloudflare Worker mirrors these rules and parity fixtures guard drift.
 """
 from __future__ import annotations
+
+import re
 from urllib.parse import urlparse
 
 PRIMARY_TYPES = {"primary", "paper", "research_paper", "interview", "official_statement"}
-AUTHORITATIVE_CLASSES = {
-    "primary", "official", "authority", "government", "public_body",
-    "strong_editorial", "public_media", "major_media", "wire",
+SCOPED_AUTHORITY = {
     "paper", "research_paper", "researcher", "scientist", "expert",
     "company_statement", "organization_statement", "person_statement",
     "first_party_statement", "interview", "official_statement",
 }
+INSTITUTIONAL_CLASSES = {"official", "authority", "government", "public_body"}
+LABEL_ONLY_MEDIA = {"public_media", "major_media", "strong_editorial", "wire"}
+AUTHORITATIVE_CLASSES = (
+    {"primary"} | INSTITUTIONAL_CLASSES | LABEL_ONLY_MEDIA | SCOPED_AUTHORITY
+)
 MAJOR_MEDIA_HOSTS = {
     "reuters.com", "apnews.com", "bbc.com", "bbc.co.uk", "dr.dk", "tv2.dk",
     "svt.se", "nrk.no", "ft.com", "politico.eu", "bloomberg.com",
@@ -26,6 +31,10 @@ WIRE_HOSTS = {
     "reuters.com": "reuters",
     "apnews.com": "ap",
 }
+NAMED_ACCUSED_VERBS = re.compile(r"\b(sigtet|tiltalt|mistænkt)\b", re.IGNORECASE)
+NAMED_PERSON = re.compile(
+    r"\b[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\s+[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\b"
+)
 
 
 def _source_host(source: dict | None) -> str:
@@ -41,13 +50,26 @@ def _host_in(host: str, hosts: set[str]) -> bool:
     return any(host == base or host.endswith("." + base) for base in hosts)
 
 
+def _labels(source: dict | None) -> set[str]:
+    if not source:
+        return set()
+    labels = {
+        str(source.get("authority_class") or "").strip().lower(),
+        str(source.get("source_kind") or "").strip().lower(),
+        str(source.get("source_strength") or "").strip().lower(),
+        str(source.get("provenance_type") or "").strip().lower(),
+        str(source.get("type") or "").strip().lower(),
+    }
+    labels.discard("")
+    return labels
+
+
 def authoritative_primary(source: dict | None) -> bool:
     if not source:
         return False
     source_type = str(source.get("type") or "").strip().lower()
     if source_type not in PRIMARY_TYPES:
         return False
-    # Primary/first-party material must say what it is authoritative for.
     return bool(str(source.get("authoritative_for") or "").strip())
 
 
@@ -60,6 +82,10 @@ def original_wire(source: dict | None) -> bool:
     return _host_in(_source_host(source), set(WIRE_HOSTS))
 
 
+def primary_or_original_wire(source: dict | None) -> bool:
+    return authoritative_primary(source) or original_wire(source)
+
+
 def authoritative_source(source: dict | None) -> bool:
     """Whether one source may, by itself, verify a claim.
 
@@ -67,32 +93,22 @@ def authoritative_source(source: dict | None) -> bool:
     major newsrooms, official/public authorities, first-party statements about
     own affairs, researchers/experts in field, and original research papers.
     Discovery-only and utility/account pages are never authoritative evidence.
+    A media label without a known major-media host or wire origin is not enough.
     """
     if not source or source.get("discovery_only"):
         return False
-    if authoritative_primary(source) or original_wire(source):
+    if primary_or_original_wire(source):
         return True
     host = _source_host(source)
     if _host_in(host, MAJOR_MEDIA_HOSTS):
         return True
-    labels = {
-        str(source.get("authority_class") or "").strip().lower(),
-        str(source.get("source_kind") or "").strip().lower(),
-        str(source.get("source_strength") or "").strip().lower(),
-        str(source.get("provenance_type") or "").strip().lower(),
-        str(source.get("type") or "").strip().lower(),
-    }
-    labels.discard("")
-    if labels & AUTHORITATIVE_CLASSES:
-        # First-party/expert/research authority must be explicitly scoped.
-        scoped = {
-            "paper", "research_paper", "researcher", "scientist", "expert",
-            "company_statement", "organization_statement", "person_statement",
-            "first_party_statement", "interview", "official_statement",
-        }
-        if labels & scoped:
-            return bool(str(source.get("authoritative_for") or "").strip())
+    labels = _labels(source)
+    if labels & INSTITUTIONAL_CLASSES:
         return True
+    if labels & SCOPED_AUTHORITY:
+        return bool(str(source.get("authoritative_for") or "").strip())
+    if labels & LABEL_ONLY_MEDIA:
+        return False
     return False
 
 
@@ -119,7 +135,15 @@ def evidence_atom(source: dict | None) -> str:
     return "publisher:" + root if root else ""
 
 
-def claim_has_required_support(article: dict, ledger: dict, claim: dict, sources: dict[str, dict]) -> bool:
+def named_accused_crime_claim(claim: dict | None) -> bool:
+    """Danish named-person accusation verbs. English court copy is not auto-classified here."""
+    text = str((claim or {}).get("claim") or "")
+    if not NAMED_ACCUSED_VERBS.search(text):
+        return False
+    return bool(NAMED_PERSON.search(text))
+
+
+def supporting_source_ids(ledger: dict, claim: dict) -> list[str]:
     source_ids = list(claim.get("source_ids", []))
     if int(ledger.get("schema_version") or 0) >= 3:
         verified_passages = {
@@ -127,8 +151,17 @@ def claim_has_required_support(article: dict, ledger: dict, claim: dict, sources
             if x.get("match_verified") is True and str(x.get("quote") or "").strip()
         }
         source_ids = [sid for sid in source_ids if sid in verified_passages]
-        if not source_ids:
-            return False
+    return source_ids
+
+
+def claim_has_required_support(article: dict, ledger: dict, claim: dict, sources: dict[str, dict]) -> bool:
+    source_ids = supporting_source_ids(ledger, claim)
+    if not source_ids:
+        return False
     rows = [sources.get(sid) for sid in source_ids]
     rows = [s for s in rows if s and not s.get("discovery_only")]
+    if not rows:
+        return False
+    if named_accused_crime_claim(claim):
+        return any(primary_or_original_wire(s) for s in rows)
     return any(authoritative_source(s) for s in rows)
