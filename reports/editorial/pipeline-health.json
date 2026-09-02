@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T10:20:42Z",
+  "generated_at": "2026-09-02T10:47:02Z",
   "counts": {
-    "published": 12,
+    "published": 13,
     "checking": 2,
     "draft": 3
   },
@@ -118,6 +118,14 @@
     {
       "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk",
       "title": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres",
+      "title": "Flood-relief indsats i Nepal-Tibet intensiveres",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

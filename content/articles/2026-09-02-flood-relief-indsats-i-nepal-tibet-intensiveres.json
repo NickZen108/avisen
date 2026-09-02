@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-nepal-tibet-flood-relief-and-recovery-intensifies",
   "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres",
   "category": "Udland",
@@ -9,7 +9,7 @@
   "title": "Flood-relief indsats i Nepal-Tibet intensiveres",
   "standfirst": "Mindst 1.114 mennesker er døde i Nepal efter katastrofal flodbølge",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T10:47:02Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres.json",
@@ -75,5 +75,9 @@
   "scheduled_for": null,
   "released_from_schedule_at": null,
   "editorial_destination": "people_magazine",
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T10:47:02Z"
+  }
 }
