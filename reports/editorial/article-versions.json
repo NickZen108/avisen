@@ -2822,6 +2822,98 @@
           "related": [],
           "correction_note": null
         }
+      },
+      {
+        "hash": "741030a42b8975f79f8dc64bf0a003bb19ce2ba294dd2d0c34a626a9bb77c9c3",
+        "recorded_at": "2026-09-02T10:50:04+00:00",
+        "title": "Overgangsalderen er mere end hedeture: Søvn, humør og sexliv kan også ændre sig",
+        "story_id": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+        "snapshot": {
+          "status": "published",
+          "story_id": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+          "slug": "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+          "editorial_destination": "people_magazine",
+          "category": "Sundhed",
+          "weight": "D",
+          "title": "Overgangsalderen er mere end hedeture: Søvn, humør og sexliv kan også ændre sig",
+          "standfirst": "Perimenopause og menopause kan mærkes langt bredere end som hedeture. Søvn, koncentration, humør, slimhinder og sexlyst kan også blive påvirket – og der findes flere behandlingsmuligheder.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-overgangsalderen-er-mere-end-hedeture.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Overgangsalder og perimenopause: symptomer du bør kende",
+            "description": "Hedeture er kun ét symptom. Få overblik over søvn, humør, koncentration, tørhed, sexlyst og hvornår blødning bør undersøges.",
+            "canonical": null
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Når overgangsalderen bliver omtalt, ender samtalen ofte ved hedeture. Det er forståeligt, fordi de er karakteristiske. Men for mange kvinder er det ikke nødvendigvis hedeturen, der fylder mest. Søvnen kan blive dårligere, koncentrationen mere svingende, humøret anderledes og sexlivet påvirket."
+            },
+            {
+              "type": "h2",
+              "text": "Perimenopause kommer før menopause"
+            },
+            {
+              "type": "p",
+              "text": "Perimenopause er perioden, hvor hormonforandringerne begynder, og menstruationerne ofte bliver mere uregelmæssige. Menopause bruges om tidspunktet, hvor man har været uden menstruation i 12 måneder, når fraværet ikke skyldes hormonel prævention. Forløbet er forskelligt fra person til person."
+            },
+            {
+              "type": "p",
+              "text": "Nogle mærker relativt lidt. Andre får symptomer, der påvirker arbejde, parforhold, søvn og hverdagsliv betydeligt. Det er netop derfor, det kan være misvisende at tale om overgangsalderen som én bestemt oplevelse."
+            },
+            {
+              "type": "h2",
+              "text": "Symptomerne kan ligne helt andre problemer"
+            },
+            {
+              "type": "p",
+              "text": "Ud over hedeture og nattesved beskriver NHS blandt andet søvnproblemer, humørsvingninger, lavt humør, problemer med hukommelse og koncentration, vaginal tørhed og ændret sexlyst. Nogle oplever også hjertebanken, hovedpine, ledgener eller ændringer i vandladning."
+            },
+            {
+              "type": "p",
+              "text": "Det kan gøre perioden forvirrende. Hvis man vågner flere gange om natten, føler sig irritabel om dagen og samtidig oplever mindre overskud og lyst, kan problemerne let blive fortolket som stress, dårlig trivsel eller et parforholdsproblem alene. I praksis kan flere ting spille sammen."
+            },
+            {
+              "type": "h2",
+              "text": "Det er ikke noget, man bare skal bide i sig"
+            },
+            {
+              "type": "p",
+              "text": "Der findes både hormonelle og ikke-hormonelle muligheder mod generende symptomer. Hormonbehandling kan være relevant for nogle, mens andre enten ikke ønsker den eller ikke bør bruge den. Samtale med læge eller andet kvalificeret sundhedspersonale giver mere mening end at vælge behandling ud fra venner, influencere eller tilfældige kosttilskud."
+            },
+            {
+              "type": "p",
+              "text": "Det er også vigtigt at skelne mellem almindelige overgangsaldersymptomer og symptomer, der bør undersøges. Hvis der opstår vaginal blødning efter 12 måneder uden menstruation, anbefales det at kontakte læge. Det er ikke ensbetydende med, at noget alvorligt er galt, men det bør vurderes."
+            },
+            {
+              "type": "h2",
+              "text": "En biologisk overgang – ikke en personlig fiasko"
+            },
+            {
+              "type": "p",
+              "text": "Overgangsalderen rammer på et tidspunkt i livet, hvor mange samtidig har ansvar for arbejde, familie, ældre forældre og relationer. Det gør det ekstra let at forklare alle forandringer med travlhed. Mere viden kan gøre det lettere at skelne: Hvad er et livsproblem, hvad kan være hormonelt, og hvad bør man få undersøgt?"
+            },
+            {
+              "type": "p",
+              "text": "Det vigtigste er måske netop at slippe idéen om, at man skal kunne genkende overgangsalderen på én bestemt måde. Kroppen udleverer ikke et skilt med teksten 'nu starter det'. Den sender ofte en samling mindre signaler."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null
+        }
       }
     ],
     "2026-09-02-soevn-er-ikke-spildtid": [
@@ -3082,5 +3174,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-02T10:49:42+00:00"
+  "generated_at": "2026-09-02T10:50:04+00:00"
 }
