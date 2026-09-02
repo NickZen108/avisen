@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Post-build reader experience: topic hubs and explicitly related story links."""
+"""Post-build reader experience: topic hubs and direct story-only links."""
 from __future__ import annotations
 import html,json,re,unicodedata
 from collections import defaultdict
