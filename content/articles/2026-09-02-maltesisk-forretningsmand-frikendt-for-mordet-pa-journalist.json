@@ -29,11 +29,11 @@
     "primary_language_code": "mt",
     "transliterations": []
   },
-  "title": "Maltesisk forretningsmand frikendt for mordet på journalist",
-  "standfirst": "Yorgen Fenech er blevet frikendt for at have bestilt mordet på den kendte journalist Daphne Caruana Galizia.",
+  "title": "Maltesisk forretningsmand frikendt for medvirken til journalistmord",
+  "standfirst": "Yorgen Fenech er frikendt for medvirken til mordet på journalisten Daphne Caruana Galizia. Forsvaret anfægtede et centralt vidne, mens hendes familie efter dommen siger, at retfærdigheden er blevet nægtet.",
   "byline": "Morgentidende Redaktion",
   "published_at": "2026-09-02T20:28:29Z",
-  "updated_at": null,
+  "updated_at": "2026-09-02T20:40:00Z",
   "manual_review": false,
   "ledger": "sources/2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist.json",
   "claim_ids": [
@@ -41,43 +41,54 @@
     "F02",
     "F03",
     "F04",
-    "F05"
+    "F05",
+    "F06",
+    "F07"
   ],
   "seo": {
-    "title": "Maltesisk forretningsmand frikendt for mordet på journalist",
-    "description": "Yorgen Fenech frikendt for mordet på Daphne Caruana Galizia",
+    "title": "Yorgen Fenech frikendt i sagen om Daphne Caruana Galizia",
+    "description": "Yorgen Fenech er frikendt for medvirken til mordet på Daphne Caruana Galizia. Forsvaret anfægtede et nøglevidne, mens familien kritiserer udfaldet.",
     "canonical": null
   },
   "image": {
     "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist.jpg",
-    "alt": "Memorial to murdered investigative journalist Daphne Caruana Galizia at the foot of the Great Siege Monument in Valletta, Malta.",
+    "alt": "Mindested for den myrdede undersøgende journalist Daphne Caruana Galizia i Valletta på Malta.",
     "credit": "Ethan Doyle White",
     "license": "CC BY-SA 4.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Memorial_to_Daphne_Caruana_Galizia.jpg",
     "image_type": "photo",
     "context_type": "archive",
-    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "caption": "Arkivfoto – mindested for Daphne Caruana Galizia i Valletta.",
     "pending_image": false,
     "ai_generated": false,
     "placement": "lead"
   },
   "body": [
     {
-      "text": "Den maltesiske forretningsmand Yorgen Fenech er blevet frikendt for at have bestilt mordet på den kendte journalist Daphne Caruana Galizia. Frikendelsen skete efter 8 timer af juryafstemning med en stemme imod.",
-      "type": "p"
+      "type": "p",
+      "text": "Den maltesiske forretningsmand Yorgen Fenech er blevet frikendt for medvirken til mordet på Daphne Caruana Galizia, en undersøgende journalist kendt for afsløringer om korruption på Malta. Juryen frikendte ham med stemmerne 8-1 efter omkring otte timers votering. Han risikerede livsvarigt fængsel, hvis han var blevet kendt skyldig."
     },
     {
-      "text": "Daphne Caruana Galizia var en fremtrædende journalist, der havde afsløret korruption og organiseret kriminalitet i Malta og udlandet. Hun havde også afsløret penge-lavning og andre former for kriminalitet. Hendes mord var et chok for Europa og satte gang i en politisk storm i Malta.",
-      "type": "p"
+      "type": "p",
+      "text": "Caruana Galizia blev dræbt af en bilbombe i 2017. Anklagemyndigheden havde hævdet, at Fenech stod bag og finansierede drabet, blandt andet med henvisning til forklaringen fra Melvin Theuma, som blev betragtet som mellemmand i sagen."
     },
     {
-      "text": "Yorgen Fenech kunne have fået livsvarigt fængsel, hvis han var blevet fundet skyldig. Frikendelsen er blevet rapporteret af både BBC Europe og Al Jazeera.",
-      "type": "p"
+      "type": "p",
+      "text": "Fenech nægtede sig skyldig. Hans forsvar anfægtede Theumas troværdighed og pegede i stedet på, at politiet efter deres opfattelse ikke havde undersøgt Keith Schembri tilstrækkeligt. Schembri, der var stabschef for Maltas daværende premierminister Joseph Muscat, har afvist enhver involvering og var ikke mistænkt i mordefterforskningen."
+    },
+    {
+      "type": "p",
+      "text": "Efter frifindelsen sagde Caruana Galizias familie, at retfærdigheden efter deres opfattelse var blevet nægtet. Familien mener, at de institutionelle svigt, som gjorde mordet muligt, fortsat ikke er blevet håndteret, og efterlyser yderligere ansvarlighed."
+    },
+    {
+      "type": "p",
+      "text": "Andre personer er tidligere blevet dømt for deres roller i drabet og for at levere bomben. Frifindelsen af Fenech afslutter derfor ikke den bredere debat på Malta om mordet, korruption og myndighedernes håndtering af sagen."
     }
   ],
   "source_ids_to_display": [
     "S1",
-    "S2"
+    "S2",
+    "S3"
   ],
   "related_news_slug": null,
   "related": [],
