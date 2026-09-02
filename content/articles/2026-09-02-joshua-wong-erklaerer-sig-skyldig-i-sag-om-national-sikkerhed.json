@@ -1,0 +1,66 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-02-joshua-wong",
+  "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed",
+  "category": "Politik",
+  "weight": "B",
+  "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+  "standfirst": "Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Han risikerer en livsvarig fængselsstraf.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04"
+  ],
+  "seo": {
+    "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+    "description": "Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Han risikerer en livsvarig fængselsstraf.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed.jpg",
+    "alt": "學民思潮召集人黃之鋒, July 2012",
+    "credit": "Iris Tong",
+    "license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Joshua_Wong_Chi-fung.jpg",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Den kendte Hong Kong-aktivist Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Ifølge anklagerne har Wong bedt udenlandske lande om at pålægge sanktioner eller blokade mod Kina og Hong Kong i 2020.",
+      "type": "p"
+    },
+    {
+      "text": "Wong har været fængslet siden november 2020 og kunne risikere en livsvarig fængselsstraf. Han arbejdede sammen med den landsforviste Hong Kong-aktivist Nathan Law for at opfordre til sanktioner mod Kina.",
+      "type": "p"
+    },
+    {
+      "text": "Anklagerne mener, at Wong har samarbejdet med Nathan Law om at opfordre udenlandske lande til at pålægge sanktioner eller blokade mod Kina og Hong Kong. Wong har allerede været fængslet i mere end to år og kunne nu risikere en endnu længere fængselsstraf.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

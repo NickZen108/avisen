@@ -1,0 +1,244 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-joshua-wong",
+  "article_slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed",
+  "assignment": {
+    "category": "Politik",
+    "weight": "B",
+    "core_question": "Joshua Wong",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/9/2/hong-kong-activist-joshua-wong-pleads-guilty-in-national-security-case?traffic_source=rss",
+      "published_at": "2026-09-02T05:05:02.000Z",
+      "accessed_at": "2026-09-02T05:26:50.001Z",
+      "type": "news",
+      "source_group": "host-aljazeera-com",
+      "publisher_root": "aljazeera-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Hong Kong activist Joshua Wong pleads guilty in national security case",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/9/2/hong-kong-activist-joshua-wong-pleads-guilty-to-foreign-collusion?traffic_source=rss",
+      "published_at": "2026-09-02T04:26:33.000Z",
+      "accessed_at": "2026-09-02T05:26:50.001Z",
+      "type": "news",
+      "source_group": "host-aljazeera-com",
+      "publisher_root": "aljazeera-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": "https://www.aljazeera.com/video/newsfeed/2026/9/2/hong-kong-activist-joshua-wong-pleads-guilty-to-foreign-collusion",
+      "primary_record": null,
+      "authoritative_for": "Hong Kong activist Joshua Wong pleads guilty to foreign collusion",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "Guardian World",
+      "url": "https://www.theguardian.com/world/2026/sep/02/hong-kong-pro-democracy-activist-joshua-wong-pleads-guilty-collusion-china",
+      "published_at": "2026-09-02T04:57:27.000Z",
+      "accessed_at": "2026-09-02T05:26:50.001Z",
+      "type": "news",
+      "source_group": "host-theguardian-com",
+      "publisher_root": "theguardian-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-3",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "https://www.theguardian.com/profile/danny-vincent",
+      "publisher_name": "https://www.facebook.com/theguardian",
+      "canonical_url": "https://www.theguardian.com/world/2026/sep/02/hong-kong-pro-democracy-activist-joshua-wong-pleads-guilty-collusion-china",
+      "primary_record": null,
+      "authoritative_for": "Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S4",
+      "name": "Euronews",
+      "url": "https://www.euronews.com/2026/09/02/prominent-pro-democracy-hong-kong-activist-joshua-wong-pleads-guilty-in-second-national-se",
+      "published_at": "2026-09-02T03:52:04.000Z",
+      "accessed_at": "2026-09-02T05:26:50.001Z",
+      "type": "news",
+      "source_group": "host-euronews-com",
+      "publisher_root": "euronews-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-4",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "Malek Fouda",
+      "publisher_name": null,
+      "canonical_url": "https://www.euronews.com/2026/09/02/prominent-pro-democracy-hong-kong-activist-joshua-wong-pleads-guilty-in-second-national-se",
+      "primary_record": null,
+      "authoritative_for": "Prominent pro-democracy Hong Kong activist Joshua Wong pleads guilty in second national security law case",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "independent_source_groups": [
+      "host-aljazeera-com",
+      "host-theguardian-com",
+      "host-euronews-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Prominent Hong Kong democracy activist Joshua Wong has pleaded guilty to a charge of foreign collusion in a second national security case that could see him jailed for life.",
+          "match_verified": true
+        },
+        {
+          "source_id": "S2",
+          "quote": "Hong Kong activist Joshua Wong pleads guilty to foreign collusion",
+          "match_verified": true
+        },
+        {
+          "source_id": "S3",
+          "quote": "Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case",
+          "match_verified": true
+        },
+        {
+          "source_id": "S4",
+          "quote": "Prominent pro-democracy Hong Kong activist Joshua Wong pleads guilty in second national security law case",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-aljazeera-com",
+        "host-aljazeera-com",
+        "host-theguardian-com",
+        "host-euronews-com"
+      ],
+      "checked_at": "2026-09-02T05:26:50.001Z",
+      "notes": ""
+    },
+    {
+      "id": "F02",
+      "claim": "Joshua Wong er anklaget for at have bedt udenlandske lande om at pålægge sanktioner eller blokade mod Kina og Hong Kong i 2020.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "He is accused of asking foreign countries to “impose sanctions or blockade, or engage in other hostile activities” against China and Hong Kong in 2020",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-02T05:26:50.001Z",
+      "notes": ""
+    },
+    {
+      "id": "F03",
+      "claim": "Joshua Wong har været fængslet siden november 2020.",
+      "status": "verified",
+      "source_ids": [
+        "S3"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S3",
+          "quote": "Wong has been continuously imprisoned since November 2020",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-02T05:26:50.001Z",
+      "notes": ""
+    },
+    {
+      "id": "F04",
+      "claim": "Joshua Wong arbejdede sammen med den landsforviste Hong Kong-aktivist Nathan Law for at opfordre til sanktioner mod Kina.",
+      "status": "verified",
+      "source_ids": [
+        "S3"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S3",
+          "quote": "Prosecutors have accused Wong, 29, of working with the exiled Hong Kong activist Nathan Law to urge foreign powers to impose sanctions, blockades or other hostile measures against China.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-theguardian-com"
+      ],
+      "checked_at": "2026-09-02T05:26:50.001Z",
+      "notes": ""
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T05:26:50.001Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T05:26:50.001Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}

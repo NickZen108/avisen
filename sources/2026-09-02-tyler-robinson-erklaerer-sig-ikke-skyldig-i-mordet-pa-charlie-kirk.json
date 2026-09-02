@@ -1,0 +1,190 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
+  "article_slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
+  "assignment": {
+    "category": "Politik",
+    "weight": "B",
+    "core_question": "Tyler Robinson pleads not guilty as judge clears path for death penalty in Charlie Kirk assassination case",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Euronews",
+      "url": "https://www.euronews.com/2026/09/02/tyler-robinson-pleads-not-guilty-as-judge-clears-path-for-death-penalty-in-charlie-kirk-as",
+      "published_at": "2026-09-02T04:22:51.000Z",
+      "accessed_at": "2026-09-02T05:28:42.738Z",
+      "type": "news",
+      "source_group": "host-euronews-com",
+      "publisher_root": "euronews-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "Malek Fouda",
+      "publisher_name": null,
+      "canonical_url": "https://www.euronews.com/2026/09/02/tyler-robinson-pleads-not-guilty-as-judge-clears-path-for-death-penalty-in-charlie-kirk-as",
+      "primary_record": null,
+      "authoritative_for": "Tyler Robinson pleads not guilty as judge clears path for death penalty in Charlie Kirk assassination case",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "BBC World",
+      "url": "https://www.bbc.co.uk/news/articles/cj4jn9q7evpo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-02T01:59:10.000Z",
+      "accessed_at": "2026-09-02T05:28:42.738Z",
+      "type": "news",
+      "source_group": "host-bbc-co-uk",
+      "publisher_root": "bbc-co-uk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "https://www.facebook.com/bbcnews",
+      "publisher_name": "BBC News",
+      "canonical_url": "https://www.bbc.co.uk/news/articles/cj4jn9q7evpo",
+      "primary_record": null,
+      "authoritative_for": "Charlie Kirk murder suspect pleads not guilty as judge clears way for death penalty trial",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2"
+    ],
+    "independent_source_groups": [
+      "host-euronews-com",
+      "host-bbc-co-uk"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Tyler Robinson pleads not guilty to the murder of conservative activist Charlie Kirk.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Tyler Robinson pleads not guilty as judge clears path for death penalty in Charlie Kirk assassination case",
+          "match_verified": true
+        },
+        {
+          "source_id": "S2",
+          "quote": "Charlie Kirk murder suspect Tyler Robinson pleads not guilty as judge clears way for death penalty trial",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T05:28:42.738Z",
+      "notes": "Source: Euronews, BBC World"
+    },
+    {
+      "id": "F02",
+      "claim": "Judge clears path for death penalty in Charlie Kirk assassination case.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S1",
+          "quote": "Tyler Robinson pleads not guilty as judge clears path for death penalty in Charlie Kirk assassination case",
+          "match_verified": true
+        },
+        {
+          "source_id": "S2",
+          "quote": "judge ruled prosecutors can seek the death penalty at trial",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-euronews-com",
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T05:28:42.738Z",
+      "notes": "Source: Euronews, BBC World"
+    },
+    {
+      "id": "F03",
+      "claim": "Tyler Robinson denies aggravated murder, a capital offence in Utah, and six other charges in connection with the shooting of Kirk at a campus event on 10 September 2025.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S2",
+          "quote": "Tyler Robinson denies aggravated murder, a capital offence in Utah, and six other charges in connection with the shooting of Kirk at a campus event on 10 September 2025.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T05:28:42.738Z",
+      "notes": "Source: BBC World"
+    },
+    {
+      "id": "F04",
+      "claim": "Kirk was shot in the neck while speaking at Utah Valley University in Orem.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "support_passages": [
+        {
+          "source_id": "S2",
+          "quote": "Turning Point USA co-founder Kirk, 31, was shot in the neck while speaking at Utah Valley University in Orem.",
+          "match_verified": true
+        }
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-02T05:28:42.738Z",
+      "notes": "Source: BBC World"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T05:28:42.738Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T05:28:42.738Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  }
+}
