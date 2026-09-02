@@ -1,4 +1,4 @@
-# retry after excluding immutable historical publication logs
+# retry after removing final legacy selftest residue
 name: Apply authoritative single-source policy
 on:
   push:
