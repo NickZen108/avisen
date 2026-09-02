@@ -22,12 +22,12 @@ jobs:
         run: git fetch origin main && git reset --hard origin/main
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
+      - name: Normalize current categories before validation
+        run: python scripts/normalize_categories.py
       - name: Gates before release
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Release approved ready articles; park incomplete ones
         run: python scripts/release_ready.py
-      - name: Normalize current categories
-        run: python scripts/normalize_categories.py
       - name: Prefer lawful free documentary photos before final build
         run: python scripts/refresh_pending_images.py --limit 10
       - name: Gates after release before build
