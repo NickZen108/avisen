@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "published_count": 37,
+  "published_count": 38,
   "category_mix": {
     "Udland": 20,
-    "Sundhed": 5,
+    "Sundhed": 6,
     "Videnskab & teknologi": 5,
     "Videnskab": 3,
     "Liv": 1,
@@ -12,7 +12,7 @@
     "Historie": 1
   },
   "top_source_hosts": {
-    "www.aljazeera.com": 9,
+    "www.aljazeera.com": 10,
     "www.reuters.com": 9,
     "www.bbc.co.uk": 8,
     "www.theguardian.com": 6,
@@ -34,7 +34,7 @@
     "pages.nist.gov": 1
   },
   "top_source_groups": {
-    "host-aljazeera-com": 6,
+    "host-aljazeera-com": 7,
     "host-bbc-co-uk": 6,
     "reuters-reporting": 5,
     "host-euronews-com": 4,
@@ -57,8 +57,8 @@
   },
   "unique_source_hosts": 43,
   "unique_source_groups": 65,
-  "followup_share": 0.081,
+  "followup_share": 0.079,
   "correction_rate": 0.0,
-  "median_body_characters": 1177,
+  "median_body_characters": 1143,
   "principle": "These metrics are diagnostic. Clicks alone must not determine editorial priority."
 }

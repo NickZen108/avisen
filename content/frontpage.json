@@ -3,12 +3,15 @@
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker": {
-    "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
+    "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
   },
   "lead": {
-    "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
+    "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
   },
   "rail": [
+    {
+      "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
+    },
     {
       "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
     },
@@ -20,9 +23,6 @@
     },
     {
       "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
-    },
-    {
-      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
     }
   ],
   "stack": [
@@ -53,6 +53,9 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
+    },
+    {
       "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
     },
     {
@@ -72,9 +75,6 @@
     },
     {
       "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere"
-    },
-    {
-      "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T21:06:23Z",
+  "generated_at": "2026-09-02T21:46:16Z",
   "counts": {
-    "published": 21,
+    "published": 22,
     "checking": 2,
     "draft": 3
   },
@@ -111,6 +111,14 @@
       "slug": "2026-09-01-sundhedskrise-i-gaza-who-advarerer-om-foresta-ende-katastrofe",
       "title": "Sundhedskrise i Gaza: WHO advarerer om forestående katastrofe",
       "status": "draft",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove",
+      "title": "Børn vender tilbage til skolen i DR Congo midt i stigende bekymring over Ebola",
+      "status": "published",
       "release_requested": false,
       "resume_from": null,
       "reasons": []

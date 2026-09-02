@@ -1,15 +1,23 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T21:06:34+00:00",
+  "generated_at": "2026-09-02T21:46:22+00:00",
   "status": "yellow",
-  "published_count": 37,
+  "published_count": 38,
   "hard_failures": [],
   "warnings": [
-    "12 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
+    "13 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
   ],
   "metrics": {
     "possible_duplicate_pairs": [],
     "source_independence_flags": [
+      {
+        "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 1,
+        "duplicate_urls": {}
+      },
       {
         "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid",
         "unique_urls": 1,

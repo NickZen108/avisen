@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-boern-vender-tilbage-til-skole-i-dr-congo-midt-i-stigende-bekymring-over",
   "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove",
   "category": "Sundhed",
@@ -32,7 +32,7 @@
   "title": "Børn vender tilbage til skolen i DR Congo midt i stigende bekymring over Ebola",
   "standfirst": "Børn er vendt tilbage til skolen i Den Demokratiske Republik Congo, selv om der er stigende bekymring over Ebola. Forældre er bekymrede for, at deres børn kan blive smittet, når de vender tilbage til skolen.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T21:46:16Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove.json",
@@ -84,5 +84,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T21:46:16Z"
+  }
 }
