@@ -1,4 +1,4 @@
-# Scan 2026-09-02T17:25:57.336Z (Cloudflare runtime)
+# Scan 2026-09-02T17:35:57.406Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -64,16 +64,16 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Ariana Grande makes emotional tour exit and steps back from public life
 - BBC travels inside occupied Lebanon as officials say Israel expanding positions
 - Bus crash on Egypt's Red Sea coast kills 22
-- Charlie Kirk murder suspect pleads not guilty as judge clears way for death penalty trial
 - Could the man who murdered a Christian missionary and his sons walk free in India?
 - EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany
 - Flock's rapidly expanding AI surveillance network facing growing backlash in US
 - 'I've never been to Afghanistan': Six million deportees forced to start over under the Taliban
 - Iran says US strike killed four at wedding in 'war crime' as US denies targeting civilians
+- Iranian attack on Saudi tanker killed two Filipino sailors, Saudi Arabia says
 - Lizzo 'grateful' after judge dismisses lawsuit against production company
-- Madagascar ex-Senate chief sentenced to hard labour over deadly Gen Z protest crackdown
 - More than 900 killed in Gaza this year despite ceasefire, Hamas-run health ministry says
 - Nepal intensifies relief and recovery efforts after deadly floods, UN says
+- 'Nothing but mud and silt' - the village swept away by deadly floods in Nepal
 - Pistol in a lake gives hope for French cold case
 - Remarkable US oil deal puzzles analysts - and angers many Venezuelans
 - Rosenberg: Putin's veiled threat to UK part of Russia's campaign against West
@@ -195,16 +195,16 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - French president to open Bayeux Tapestry exhibition as he starts UK visit
 - French-Saudi ‘Dragon Ball’ theme park puzzles Japanese manga fans
 - George Clooney, Robert Pattinson expected on the red carpet at Venice Film Festival
-- Germany investigates suspected power substation sabotage, Russia summons German envoy
 - Israel ‘organised and prepared’ to remove Gaza population if US gives green light, Katz says
 - 🔴 Live: Trump suggests renaming Hormuz 'Trump Strait'
 - Macron set to unveil Bayeux Tapestry in 'once in a generation' UK loan
 - Nepal floods: Hundreds of unidentified bodies
-- Paradox of Balladur's legacy: 'Highly popular' Gaullist an innovator who gradually became irrelevant
+- Paradox of Balladur's legacy: 'Highly popular' innovative Gaullist gradually became irrelevant
 - Philippine couple married in hip-deep floodwaters
 - Russia blamed for explosive-laden drone found at German airport
 - Search continues for tunnel workers in Nepal floods
 - US postal whistleblower warns thousands of midterm ballots could be lost
+- Videos and debris raise questions over alleged US strike on Iranian wedding
 - Xi calls on Mideast nations to be ‘masters of their own affairs’ in rare Egypt visit
 
 ## FrontPageMag
