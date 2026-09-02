@@ -1,4 +1,4 @@
-# Scan 2026-09-02T17:40:57.330Z (Cloudflare runtime)
+# Scan 2026-09-02T17:55:57.135Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -17,6 +17,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Woher kommt der Strom? 34. Analysewoche 2026
 
 ## Al Jazeera
+- A year into Trump’s boat strike campaign, families search for answers
 - Aubameyang ‘humiliated’ as ex-Arsenal striker quits Gabon national team
 - Brazilian activist demands Tunisia release Sumud Flotilla organisers
 - Can Ukraine’s drones shut Russian airspace? What that means for airlines
@@ -26,11 +27,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Dismissal of ex-US soldier Bergdahl’s conviction was invalid, court rules
 - Gaza Civil Defence worker finds 21 relatives beneath rubble
 - George Clooney: US government run by ‘least qualified people’
-- How Trumpism is changing the world
+- Gunman in deadly Swiss rave attack ‘lone perpetrator’, police say
 - Israeli PM Netanyahu in Gaza, ‘we are not withdrawing’
 - Nepal PM links deadly floods to climate change
-- Palestinians in fear as Israeli forces mount pogroms on West Bank mosques
-- Summer transfers 2026: All to know as Premier League signings break records
+- Over 500 students hospitalised after eating state-supplied meals in Indones
 - Uber lays off 3,300 employees in largest cuts since the pandemic
 - US oil giant Chevron to expand Venezuela operations
 - WHO chief warns Ebola response must ramp up to stem DRC outbreak
@@ -147,7 +147,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Germany news: Police probe suspected power station attacks
 - Guinea-Bissau referendum tests democratic future
 - India rejects Hague ruling on Indus waters: What's next?
-- Macron visits Bayeux Tapestry on UK arrival with King Charles, PM Burnham
+- Macron visits Bayeux Tapestry with King Charles, PM Andy Burnham
 - Police exhume body of former Czechoslovak foreign minister Jan Masaryk
 - Russia's hybrid attacks on Germany: When is it 'war?'
 - Ukraine: Zelenskyy warns airlines to avoid Russian airspace
@@ -163,6 +163,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Fagforeninger har fått spesial&#173;tillatelse til å foreslå egne kvote&#173;flyktninger
 - Fem EU-land forsøker å opprette retur­sentre i tredje­land
 - Fyllingsgraden sank 0,5 prosentpoeng i forrige uke
+- Knivdrept rett fra fødselspermisjon, ingen er trygg i Demokratenes byer
 - Skogpod 2. september 2026
 - Social­demokraterna faller brått halv­annen uke før riksdags­valget i Sverige
 - Vesten over&#173;svømmes av vold, og venstre&#173;siden vil ikke snakke om det
@@ -196,9 +197,9 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - French-Saudi ‘Dragon Ball’ theme park puzzles Japanese manga fans
 - George Clooney, Robert Pattinson expected on the red carpet at Venice Film Festival
 - Israel ‘organised and prepared’ to remove Gaza population if US gives green light, Katz says
+- Israeli FM Gideon Sa'ar: 'I hope Iran will not make the mistake of attacking us'
 - 🔴 Live: Trump suggests renaming Hormuz 'Trump Strait'
 - Macron set to unveil Bayeux Tapestry in 'once in a generation' UK loan
-- Nepal floods: Hundreds of unidentified bodies
 - Paradox of Balladur's legacy: 'Highly popular' innovative Gaullist gradually became irrelevant
 - Philippine couple married in hip-deep floodwaters
 - Russia blamed for explosive-laden drone found at German airport
@@ -255,6 +256,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Iranske myndigheter: 18 mennesker drept i amerikanske angrep
 - Kan bli kompensert etter alvorleg sak om drikkevatn: – Beløpet er latterleg
 - Kongeparets sarkofag er klar til kong Haralds gravferd
+- «Lille» Brodd sjokkerte Viking – cupbomben glapp
 - Mann tiltalt for drap på beboer på sykehjem i Lyngen
 - Marthes siste hilsen til kongen: – Takk for at du reddet lille meg
 - Norske studiesteder rammet av dataangrep
@@ -263,7 +265,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Slik stenges Oslo når kong Harald gravlegges
 - Sp ber om møte om politisk borgfred
 - To menn dømt til fengsel for frihetsberøvelse, vold og trusler
-- Zelenskyj signerte kondolanseprotokoll i Kyiv
 
 ## National Review
 - Fiscal Armageddon, Revisited
@@ -365,24 +366,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - The Story About Lindsay Clancy Being A Victim Comes From Deeper Roots Than 1960s Feminism
 
 ## The Local Denmark
-- Danish expression of the day: ellers tak
-- Danish word of the day: Ajourføre
-- Denmark reopens embassy in Syria after 14-year closure
-- Denmark set to host annual 'citizenship day' for thousands of new Danes
-- EXPLAINED: Can you work on a Danish study permit?
-- Five common rental scams in Denmark and how to avoid them
-- How do you feel about Danish citizenships potentially being frozen for another year?
-- How the make up of the Danish population could change by 2100
-- How to find a new hobby in Copenhagen this autumn
-- One in seven patients referred to hospital in Denmark is turned away
-- OPINION: The Danish flag-obsession is more 'hyggelig' than threatening
-- Ryanair to cut winter flights in Europe to save on fuel costs
-- The complete list of all the Danish pastries you need to try
-- Today in Denmark: A roundup of the latest news on Tuesday
-- Today in Denmark: A roundup of the latest news on Wednesday
-- 'Warning to Europe': How Iceland's 'No' vote is a blow to the EU
-- What changes in Denmark in September 2026?
-- Why were there so many tractors in central Copenhagen on Tuesday?
+- (feed ikke nået; status=403)
 
 ## Tichys Einblick
 - Der Wähler wählt rechts – Merz regiert links mit SED-Linken
