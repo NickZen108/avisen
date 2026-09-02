@@ -22,9 +22,6 @@ a:hover { text-decoration: underline; text-underline-offset: .16em; }
 .wrap { width: min(var(--max), calc(100% - 2rem)); margin-inline: auto; }
 
 .masthead {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   background: var(--dark);
   color: var(--dark-ink);
   padding: 1.15rem 0 0;

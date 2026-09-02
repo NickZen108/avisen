@@ -32,9 +32,38 @@
     masthead.appendChild(link);
   };
 
+  const addStickyWordmark = () => {
+    const source = document.querySelector(".masthead .wordmark");
+    if (!source || document.querySelector(".sticky-wordmark")) return;
+
+    const bar = document.createElement("div");
+    bar.className = "sticky-wordmark";
+    const link = source.cloneNode(true);
+    link.classList.add("sticky-wordmark__link");
+    bar.appendChild(link);
+    document.body.appendChild(bar);
+
+    let scheduled = false;
+    const syncStickyWordmark = () => {
+      scheduled = false;
+      const sourceHasScrolledAway = source.getBoundingClientRect().bottom <= 0;
+      document.documentElement.classList.toggle("has-sticky-wordmark", sourceHasScrolledAway);
+    };
+    const scheduleSync = () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(syncStickyWordmark);
+    };
+
+    window.addEventListener("scroll", scheduleSync, { passive: true });
+    window.addEventListener("resize", scheduleSync);
+    syncStickyWordmark();
+  };
+
   const ready = () => {
     sync();
     addAccountLink();
+    addStickyWordmark();
     const button = document.querySelector(".theme-toggle");
     if (!button) return;
     button.addEventListener("click", () => {
