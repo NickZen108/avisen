@@ -71,10 +71,10 @@
       "id": "F04",
       "claim": "Færgen var sejlet fra Kyrenia mod den tyrkiske havn Tasucu, da den kæntrede kort efter afgang.",
       "status": "verified",
-      "source_ids": ["S2", "S3"],
-      "independent_groups": ["cyprus-mail-own-reporting", "sol-haber-reporting"],
+      "source_ids": ["S1", "S2", "S3"],
+      "independent_groups": ["reuters-own-reporting", "cyprus-mail-own-reporting", "sol-haber-reporting"],
       "checked_at": "2026-08-30T13:48:42+02:00",
-      "notes": "Bekræftet af to lokale/regionale nyhedskilder."
+      "notes": "Reuters samt to lokale/regionale nyhedskilder beskriver afgang fra Kyrenia mod Tasucu og problemer kort efter afgang."
     },
     {
       "id": "F05",
