@@ -1,4 +1,4 @@
-# Scan 2026-09-02T01:00:37.157Z (Cloudflare runtime)
+# Scan 2026-09-02T05:35:49.786Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -11,44 +11,43 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - E&#45;Auto&#45;Überraaaschung! Null ist doch nicht null
 - Gameover für Hatespeech?
 - Judenmord als Mathematikaufgabe für Kinder
-- Separatisten&#45;Prozess: Rechtsextremistische Hasenfellmützen
+- Rollatorgang: Deutschland jagt die galaktische Allianz
 - Tom des Tages
 - Tom des Tages
 - Woher kommt der Strom? 34. Analysewoche 2026
 
 ## Al Jazeera
-- Canada’s Carney says US must ‘start being serious’ to resolve trade dispute
-- China’s Xi makes his first visit to Egypt in a decade
-- Cisco accused of fostering a hostile workplace for Muslim and Arab employees
-- Deadly car bomb attack at Colombia police station
+- Apple changes name of Lake Ontario to ‘Lake America’ in maps app
 - Fernandez transfers to Man City from Chelsea in joint British record fee
-- Guinea-Bissau referendum nods to expansion of presidential powers
-- IAEA calls for access to Iran nuclear sites over proliferation concerns
-- Iran war live: US bombs Iran, Tehran retaliates on Gulf neighbours, Jordan
-- Iranian state media announces numerous US strikes on the country
-- Munitions vehicle explodes killing five in Idlib
-- Palestinians mourn children killed in Israeli airstrikes on Gaza City
-- Police arrest 34 after deadly gang shootout in eastern Netherlands
-- UN slashes food aid for occupied West Bank and Gaza amid funding shortfall
-- US energy secretary will travel to Venezuela to unveil oil arrangement
-- US House passes funding bill to avert government shutdown ahead of midterms
-- US urges G20 to cut trade imbalances, focus on China
-- What’s driven the defence deal between Israel and Greece?
-- Zelenskyy warns airlines as Ukrainian drones target Russian airspace
+- Germany says Russia preparing ‘hybrid’ attacks over Ukraine support
+- Honduran court drops case against ex-President Hernandez after Trump pardon
+- Hong Kong activist Joshua Wong pleads guilty in national security case
+- Hong Kong activist Joshua Wong pleads guilty to foreign collusion
+- IAEA says Syria built a nuclear reactor in Deir Az Zor under al-Assad
+- Iran says US bombed a wedding party in Sirik, killing five people
+- Iran war live: Tehran claims attacks on US bases in Bahrain, Jordan, Iraq
+- Moment US strikes on Iranian port city hit wedding party
+- ‘Really terrified’: Milo Yiannopoulos speaks out after deportation from US
+- Syria’s restrained approach to Israel carries risks
+- Top US lawmaker Mike Johnson says lying is part of some Iranians’ religion
+- Tunisia’s civil society faces growing pressure as crackdown widens
+- US launches new strikes on Iran, denies its bases hit in Jordan
+- US pushes looser approach to AI regulation, while EU pushes new law
+- US strikes on Iran kill child at wedding ceremony
+- What to know about Germany’s drone attack accusations against Russia
 
 ## BBC Europe
 - Allan Little: I met dangerously fanatical Mladić early in Bosnian war
+- Belugas and dolphins rescued from closed Canadian park arrive in Spain
 - Berlin is being blackmailed by hackers, mayor says
 - Djokovic in tears during US Open first-round exit
 - Germany says Russia behind Leipzig airport drone attack
-- Greenland says findings on genocide allegation not final
 - Iceland votes against restarting EU membership talks
 - Man arrested after Swiss rave shooting that killed woman
 - Memory wars: Election clash over Germany's Nazi past as AfD eyes power in east
 - Norway's King Harald dies aged 89: A beloved monarch buffeted by family crises
 - Norway's new king remembers 'my dear father' in first speech
 - Norway's new king takes oath as mourners pay respects to his late father
-- Russian attack hits rail workers in new deadly strikes on Kyiv
 - Russian strikes destroy 12 million books ahead of Ukraine's first week back at school
 - Sexual assaults happening almost every day in Ceuta, prosecutors say
 - 'She slipped out of my hand' - children missing after ferry sinks off northern Cyprus
@@ -59,30 +58,31 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - When is the Champions League draw and who is in each pot?
 - Who is Norway's new King Haakon VIII?
 - Why did Modi urge Putin to end Ukraine war - and will he listen?
+- Zelensky says airlines should avoid Russian airspace as Ukraine escalates drone operations
 
 ## BBC World
-- Amazon rigged $20bn worth of ad prices, US lawsuit alleges
+- Apple Maps renames Lake Ontario as Lake America after Trump order
 - Ariana Grande completes tour and steps back from public life
-- As Michigan Senate race heats up, Vance calls El-Sayed 'evil'
-- Ex-gang boss guilty of orchestrating 1996 murder of rapper Tupac Shakur
-- France targets Shein and Temu with fast fashion fees
+- Charlie Kirk murder suspect pleads not guilty as judge clears way for death penalty trial
+- Cup noodles made with cold water? BBC tries Japan's viral snack
+- Flock's rapidly expanding AI surveillance network facing growing backlash in US
 - Germany says Russia behind Leipzig airport drone attack
-- 'I have fired 40 of my agents for being corrupt', says Nigeria's anti-corruption chief
 - 'I've never been to Afghanistan': Six million deportees forced to start over under the Taliban
-- Iran retaliates after US strikes kills four at wedding party, state media reports
-- Israel says Hamas security chief captured as strikes kill four during Gaza raid
-- Jurors in Lindsay Clancy trial deadlocked but judge asks them to keep trying
+- Iran attacks US bases in Middle East after reports US strike killed five at wedding party
+- Israel expanding presence in Lebanon, officials say, as BBC visits occupied areas
+- Norway's new king takes oath as mourners pay respects to his late father
+- Orangutans in danger as wildfires blaze through Borneo
 - Pistol in a lake gives hope for French cold case
+- Remarkable US oil deal puzzles analysts - and angers many Venezuelans
 - River water smashed into tunnel and chased me for 20 minutes, Nepal worker tells BBC
-- Russian attack hits rail workers in new deadly strikes on Kyiv
 - Sexual assaults happening almost every day in Ceuta, prosecutors say
-- Shein valued at $26bn after long-awaited stock market debut
-- South Korean police officer admits to closing missing person cases to avoid work
-- Teen girl charged with murder over recording of San Diego mosque attack
-- Trump says US position on Falklands 'one of many' under review
-- US singer D4vd's celebrity lawyers withdraw from murder case
-- Woman killed in Times Square stabbing, suspect shot dead by police
-- Zambia's president sworn in for second term while opponent detained
+- The final minutes before floodwater crashed through Nepal-China border
+- Tiger Woods to change plea after crash arrest
+- US aircraft carrier docks near Thai beach resort Pattaya after record 250 days at sea
+- Watch: Moment Duane 'Keffe D' Davis is found guilty of Tupac Shakur's murder
+- What it was like inside court for Tupac Shakur’s murder trial verdict
+- Why did Modi urge Putin to end Ukraine war - and will he listen?
+- Zelensky says airlines should avoid Russian airspace as Ukraine escalates drone operations
 
 ## CapX
 - (feed ikke nået; status=200)
@@ -93,10 +93,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Edouard Balladur, un gentilhomme en politique
 - Hollande &#8211; Philippe: duel au sommet
 - Influenceurs, abstenez-vous !
+- Léna Situations coincée dans un épisode sinistre de «Black Mirror»
 - Liberté, liberté cherra
 - Mini-jupe, moquerie et liberté: mon programme pour la rue
-- Pourquoi « l’Ancien Régime » craint le peuple trahi
-- Rock en Seine 2026: une cuvée d’exception
+- Pluralisme et féodalités médiatiques
 - Voiles et vapeurs de la République
 
 ## City Journal
@@ -116,6 +116,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## DR
 - 16.000 børn skal på 'dannelsesrejse' i Odense
+- Apple ændrer også navn på sø efter Trump-ordre
 - Arkæologer finder 20 skeletter fra middelalderen midt på Frederiksberg
 - Dødstal i Nepal opjusteret til 1.000
 - Europæisk inflation stiger markant
@@ -123,7 +124,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Flere unge end ældre går på museum, viser opgørelse
 - For første gang lancerer Novo Nordisk sin Wegovy-pille i et EU-land
 - Keir Starmer trækker sig fra det britiske parlament
-- Konservative forlader budgetforhandlingerne på Københavns Rådhus
 - Ni ud af ti nye biler kører på el
 - Ny Storstrømsbro ventes at åbne for togtrafik tidligere end regnet
 - Otte kvinder udsat for menneskehandel ved neglesaloner
@@ -138,98 +138,81 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## DW
 - As glaciers melt, can communities be protected?
-- Can new Apple CEO John Ternus fix the tech giant's AI woes?
 - Congo's Ebola caseload tops 6,000 as concerns grow
 - Germany news: Explosive devices found near power plant
 - Germany's center-left SPD is fighting for survival
 - Germany says Russia behind attempted drone attack at Leipzig airport
 - Germany terminates lease for Berlin's Russian House
+- Hong Kong activist Joshua Wong pleads guilty to collusion
 - Iran says it will return to ceasefire if US does
 - Iran: US launches fresh strikes as hostilities flare again
 - Iran war: US, Tehran trade fire in new flare-up
 - Mladic's death, Bosnia and Serbia's unfinished reckoning
 - Nepal flood: Death toll tops 1,000 as rescue continues
 - Norway's new King Haakon VIII takes oath in parliament
-- Times Square stabbing in NYC leaves 1 dead, assailant killed
+- Tunisia's human rights defenders decry civil society crackdown
 - Ukraine: Russia threatens 'devastating' Baltic response
 - US irks Germany, Europe with Russian G20 invite, press bans
 - War and sanctions deepen Iran's fuel crisis
 - Will Bangladesh join the Mecca defense alliance?
 
 ## Document.no
-- Brussel, snart like ille som Chicago
-- Kjenninger av politiet fikk gå etter å ha lagd kvalm på et tog i Larvik
-- Mor og barn ved havet (1830).
-- Ny serie: Konspitimen &#8211; et møte på Stavanger-toget
+- Bessent: 19 G20-land enige om å bremse «billig eksport» – Kina sa nei
+- Høy risiko for trusler og vold i høyere utdanning
+- Kvinne tiltalt for å ha drept lillebroren
+- «Markens grøde»: – En tidløs historie om kjærlighet
 - Politiet kritiserer Oslo-pressens oppførsel ved Rikshospitalet
-- Skogpod 1. september 2026
+- Scott Bessent møtte sin russiske motpart på amerikansk jord
 - Sosialistene vil overta Amerika
-- Truet politiet med våpen – stor væpnet aksjon på Dyrøya
 - Trump hamrer Iran som ikke har stort mer enn store ord å svare med
-- V-politiker truet med å drepe 16 år gammel jente: «Jeg vil drepe alle rasister»
+- Tyskland mener Russland sto bak forsøk på droneangrep – Putin sier beviser er plantet
+- V-politiker truet med å drepe 16 år gammel jente: «Jeg vil drepe alle rasister!»
 
 ## Euronews
+- Controversial US aircraft carrier Abraham Lincoln arrives in Thailand after months at sea
 - Death toll passes 1,000 from catastrophic flooding in Nepal and China, officials say
 - Exclusive: UN's Guterres urges world leaders to 'stop this madness' and end all wars
 - Fake goods, real danger: the €83 billion business behind Europe's illicit trade
 - Iran says it will return to June ceasefire deal if US does the same
 - Israeli airstrikes kill at least five palestinians in Gaza City
-- Jury convicts Duane 'Keffe D' Davis of first degree murder in 1996 killing of hip-hop icon Tupac Shakur
-- Latest news bulletin | September 1st, 2026 – Morning
+- Latest news bulletin | September 2nd, 2026 – Morning
+- Mass burials of unidentified victims continue in Nepal as death toll exceeds 1,000 one week after flash floods
 - Nepal families post photos of missing relatives on Kathmandu hospital wall
 - Notting Hill carnival returns to West London for 60th anniversary
+- Prominent pro-democracy Hong Kong activist Joshua Wong pleads guilty in second national security law case
 - SCO challenges West as diverse group of nations pursues multipolar future
 - South London Hindu temple prays for missing members after deadly floods in Nepal
-- Times Square stabbing: Bank of America vice president named as killed victim
-- Two dead and one still unaccounted for in Grand Canyon flash floods, officials say
+- Tyler Robinson pleads not guilty as judge clears path for death penalty in Charlie Kirk assassination case
 - Ultra-Orthodox Jews celebrate Yeshiva student’s release in Elad amid draft dispute
 - US launches new strikes in southern Iran, Tehran responds with attacks across region
 - US-North Korea summit appears to be 'possible at any time,' Seoul spy agency says
-- US teen charged with aiding San Diego mosque shooters share livestream and manifesto
 - World Nomad Games open in Bishkek before an audience of world leaders
 
 ## France 24
-- AI data centers become surprise issue in US midterm elections
-- Burnham pledges to restore hope as he makes his House of Commons debut as UK leader
-- Football: Europe's top clubs scramble for last-minute signings
-- G20 backs final statement despite Russia tensions, China dissent
-- Germany blames Russia for airport drone incident, hits back with sanctions
-- Germany blames Russia for Leipzig airport drone attack, orders Russian consulate closed
-- Germany set to blame Russia for airport explosive-laden drone incident
-- Global bond selloff deepens as US launches fresh attacks on Iran
-- Google Maps changes Lake Ontario to ‘Lake America’ as MapQuest downloads surge
-- Lindsay Clancy: The trial putting postpartum mental illness in the spotlight
-- Mass burials held in Nepal as bodies wash up after catastrophic flooding
-- Replay: UK PM Andy Burnham faces lawmakers for first time since taking office
-- School without screens: Will France's high school phone ban fly?
-- South Africans missing in Nepal's glacial flood
-- "Subtle changes pointing to consumer fatigue" a challenge for fast-fashion retailers, expert says
-- US and Iran trade fire as hostilities flare again
-- US firm to take over some Venezuela oilfields previously run by Chinese, Russian firms
-- What to know about the new UK PM's agenda as he faces lawmakers
+- (feed ikke nået; status=200)
 
 ## FrontPageMag
 - (feed ikke nået; status=403)
 
 ## Guardian World
+- Australia news live: Jim Chalmers hails ‘resilient’ economy but expert says national accounts show ’too little growth and too much inflation’
 - Canada’s ruling Liberals sweep byelections in boost to Mark Carney
-- China is concealing scale of flood disaster, say Tibet campaigners
 - Countries legally obliged to consider slavery reparations, says UN committee
 - Echoes of cold war as US accused of meddling in another Brazilian election
 - Egyptian queen’s 673-diamond necklace stolen in Vienna smash-and-grab raid
-- Kākāpō rising: 90 chicks swell population of the world’s heaviest parrot
+- Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case
+- Japan halves speed limit to 30km/h on all narrow city streets
+- Jury in Bruce Lehrmann’s Queensland rape trial may face questions about prior knowledge of case
 - MapQuest app reaches No 1 on US Apple list after defying Trump’s Lake Ontario order
 - Mark Carney tells US to ‘start being serious’ amid escalating trade war
-- More than a third of prenatal reports to NSW protective services not investigated, ombudsman finds
 - Morocco not to blame for Ceuta border breach, says Spanish PM
-- Nepal rescuers race to reach hundreds feared trapped in hydropower tunnels
-- News live: Labor has ‘grave concerns’ for missing Australians in Nepal-Tibet flooding; Canavan claims ‘feminisation of curriculum’ led to rise of ‘manosphere’
 - People fleeing Sudan civil war face ‘dire and deteriorating’ conditions in refuge city
-- Relief as Australians missing in Nepal-Tibet flood disaster found alive
+- Ray Hadley used homophobic slur against Alan Jones after 2GB withdrew offer of $4m breakfast radio gig, court hears
 - Shein shares slide on fast-fashion retailer’s stock market debut
 - South African airline defends dramatic low-level flyby before rugby union clash
 - Thai resort prepares to host USS Abraham Lincoln sailors after more than 270 days at sea
 - Trump suggests he is reviewing US support for UK over Falkland Islands
+- USS Abraham Lincoln arrives at Thai port after gruelling 270 days at sea
 
 ## Indblik
 - CO2-indholdet i jordens atmosfære har været højere end det er idag.
@@ -249,20 +232,20 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## NRK
 - Da kongen «reddet» OL-stemningen
 - Debatten raste på 60-tallet: Ville ikke ha Sonja som dronning
-- Equinor erkjenner ulovlege utslepp – nektar å betale 720 millionar kroner
 - Fare for togstreik onsdag morgen –mekler på overtid
+- Hardt ut mot Diamond League-arrangør: – De tar profitten på bekostning av oss utøvere
 - Her sparer du ti kroner literen – nå vil svensker fjerne avgiftene for godt
-- Hevdar Russland sto bak droneangrep i Tyskland
-- Hevder Russland var involvert i angrepsforsøk i Tyskland
 - Høiby i båreseremoni skaper debatt i utlandet
+- Ingen togstreik onsdag
+- Ingen togstreik på Østlandet
 - Kong Haakon er tilbake på Rikshospitalet
 - Kritisk til politisk sorgpause under prisopprør: – Vil innhente Høyre
+- Lot rusmidler og våpenkopi ligge igjen i død datters leilighet
 - Mann omkom i MC-ulykke i Larvik
 - Marerittkveld i Wien: Raudt kort, sjølvmål og fire baklengsmål
 - Millioninnbrudd hos Urmaker Bjerke: Saken er henlagt
 - Nye bilete frå Nepal: Dette veit vi om det som skjedde
 - Rapport om nytt vinterbeite for Fosenrein: Kan ha konsekvenser for villreinen
-- USA angriper flere iranske mål i Hormuz-stredet
 - VG: Kongeparet har dratt fra Rikshospitalet
 - Væpnet politiaksjon i Dyrøy: – Løsnet skudd mot politiet
 
@@ -281,57 +264,56 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Trump’s Big Bet on Data Centers
 
 ## Politico Europe
+- Burnham&#8217;s energy chief eyes new year cost of living cut
 - Burnham promised hope. Reality is already getting in the way
-- Germany blames Russia for drone incursion, announces retaliatory measures
-- Les datacenters énergivores se développent en Europe, la résistance aussi
-- Leuven mayor bans Europa League match against Israeli team
-- Marine Le Pen a-t-elle déjà un pied à l’Elysée ?
+- Ceuta spirals into chaos as Spain&#8217;s Sánchez struggles to regain control
 - Pressure mounts on Europe as Trump deals push pharma to the US
+- Rival German lawmakers plot pact to shut out EU far right
+- Russlands Gegenreaktion auf Deutschlands Antwort
 - Security-Update: Wie hart treffen Deutschlands Konsequenzen Russland? – mit Peter Neumann
+- The plan to shut out Europe&#8217;s far right
 - Think tank Beijing hates is getting a Labor reset
 - US launches ‘large and powerful’ new strikes at Iran
-- Why Trump&#8217;s trade war with Canada is poised to drag past the midterms
 
 ## Reason
 - 2,400 Baseball Games for the Price of 1
+- Advocate John Roberts v. Chief Justice John Roberts
+- CJ Roberts and the Smithsonian Bypass Congress To Build New Latino Museum
 - Federalism Will Save the Data Centers
 - Foreign Regulators Are Trying To Censor Americans Online. A Bill Would Ensure Those Demands Are Unenforceable.
 - Free Speech Unmuted: The Process Is The Punishment: ABC v. FCC with Stuart Benjamin
-- Is This the Supreme Court's Next Sports Betting Case?
 - Kalshi Says It's a Prediction Market. The 9th Circuit Says It's Gambling.
-- New in Civitas Outlook: "The End Is Near for the American Bar Association"
 - The Biggest Revelation In Recent NYT Expose Is Justice Scalia Wasn't Planning on Dying
 - The Iran War's Defenders Are Losing the Plot
-- Trouble at the Pentagon
 - Trump Loves Data Centers: 'Let Data Reign'
+- Trump's White House Ballroom Is a Monument to His Lawlessness
 - What About a "'Let's Go Brandon' Was a Hallucination in the First Place" Defense?
 
 ## SVT
+- Avslöjar: Här hjälper jobbcoacherna mannen att kontrollera sin fru
 - Claes Nordmark i hovrätten – ny bevisning från försvaret
-- Hör eleverna om inrymningen på Chapmangymnasiet: ”Aldrig varit med om detta”
-- Kastade molotovcocktail in i frisörsalong – två tonåringar döms
+- Domare: Grönt ljus för Kirk-rättegång
+- Gamla ögonsjukhuset på Kungsholmen rivs – blir nya bostäder
+- Liberalerna: Så ska länet få fler vårdcentraler
 - Malmödebattör utreds för olaga hot mot Simona Mohamsson – Säpo inkopplat
 - Man allvarligt skadad – fastnade i skogsmaskin
-- Man till sjukhus efter olycka på badanläggning i Nyköping
 - Nora kommunhus utrymdes efter hot – nu har facket krävt att det stängs
+- Novus/TV4: Gapet mellan blocken 2,6 procentenheter
 - Officiellt: Hugo Larsson klar för Fulham
+- Restaurang på Djurgården i brand
 - S vill inte höja bränslepriset – trots risk för missat klimatmål
-- S vill ta bort nätläkartaxan: ”Tar betalt för vård som de inte utför”
-- Socialdemokraterna går till val på ”århundradets tandvårdsreform”
 - Störtfloden i Nepal – tio timmar av skräck
 - Sänkta straff efter mordförsök på Manillagatan i Kalmar
-- Traktor och personbil kolliderade – två personer till sjukhus
 - Två barn vårdas på sjukhus med frätskador
+- Två personer döda efter olycka utanför Landskrona
 - Tåg rullar igen efter stopp på Västkustbanan
 - Ungdomsdebatt i Örebro – applåder när MUF föreslog sänkt åldersgräns på Systembolaget
-- Överlämnandet av vägar i Härjedalen har mött hård kritik – så tänker politikerna framåt
 
 ## Sky World
 - Attempted drone attack at German airport blamed on Russia
 - Bank of America vice president killed in Times Square stabbing
 - Capsized ferry disaster kills at least eight, as search for survivors continues
-- Jared Kushner's brother breaks silence on World Cup sell-off plans
-- Lionel Messi retires from international football
+- Joshua Wong pleads guilty under Hong Kong's security law
 - Met investigating death of British man in Caribbean
 - Stop doing memes and throwing shade, Carney tells Trump
 - Why Germany's far right is on verge of biggest win since before WWII
@@ -386,22 +368,22 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Why were there so many tractors in central Copenhagen on Tuesday?
 
 ## Tichys Einblick
-- CDU: Aus Angst vor dem Tod Selbstmord begehen
 - CDU spielt Opposition gegen sich selbst
 - Das Märchen vom ausländischen Investitionsboom in Deutschland
-- Frank-Walter Steinmeier oder der teuerste Untermieter Deutschlands
+- Der Russe will den Krieg? Im Web wollen das tausende User nicht glauben
+- Der Wähler wählt rechts – Merz regiert mit links – TE-Wecker am 2. September 2026
 - Israel-Hasserin als neue Jurorin beim Deutschen Buchpreis
 - Jabaroot-Leak: Hat Marokko den Sturm auf Ceuta gezielt geplant?
 - Jobverlust-Report August
-- Sprengstoff-Angriff auf Umspannwerk: Deutschlands Stromnetz im Visier
-- Störkommando bekommt Gegenwind: ZPS-Adenauer-Bus fährt bei Siegmund-Veranstaltung wieder ab
+- Merz lenkt mit Putin ab und will die CDU mit der Linken retten
+- Reich werden mit Dividenden-Aktien &#124; Tichys Börsenwecker am 2. September 2026
 - Unsere gelenkte Demokratie: Harald Martenstein im Sommerinterview
 
 ## Timbro
+- Där revolutionen är en livsstil
 - Hon tar inte företagandet på allvar
 - Högerns plan B: Håll ut, håll ihop och använd mandaten
 - Ledare: Klimatdebatten blir bättre av lite bråk
-- Ledare: Med Le Pen blir vår nära allierade ett annat land
 - Ledare: Rikslarm från näringslivet
 
 ## UnHerd
@@ -412,7 +394,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Could the Middlesbrough crime spree spread?
 - Hell is other Leftists
 - How the Euro elite helps Trump
-- Inside the new Afghanistan
+- How Wendell Berry saved my life
 - Milo Yiannopoulos’ horrible homecoming
 - The case for de-escalation with Russia
 - The man who made bin Laden
