@@ -1,0 +1,74 @@
+{
+  "status": "published",
+  "story_id": "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne",
+  "slug": "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne",
+  "category": "Sundhed",
+  "weight": "D",
+  "title": "Bevægelse hjælper både kroppen og hovedet – og det behøver ikke ligne træning",
+  "standfirst": "WHO anbefaler voksne 150–300 minutters moderat aktivitet om ugen. Men gevinsterne handler ikke kun om kondition: fysisk aktivitet hænger også sammen med bedre mental sundhed og søvn.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": "2026-09-02T10:17:00Z",
+  "updated_at": "2026-09-02T10:17:00Z",
+  "manual_review": false,
+  "ledger": "sources/2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne.json",
+  "claim_ids": ["F01", "F02", "F03"],
+  "seo": {
+    "title": "Hvor meget motion har voksne brug for? WHO's råd forklaret",
+    "description": "Fysisk aktivitet gavner både fysisk og mental sundhed. Her er WHO's anbefalinger omsat til almindelig hverdag.",
+    "canonical": null
+  },
+  "body": [
+    {
+      "type": "p",
+      "text": "Ordet motion får let folk til at tænke på løbesko, fitnesscentre og træningsprogrammer. Men fysisk aktivitet er langt bredere. Gåture, cykling, havearbejde, leg, sport og aktiv transport tæller også. Det afgørende er, at kroppen bevæger sig og bruger energi."
+    },
+    {
+      "type": "h2",
+      "text": "WHO's tal er mindre voldsomme, end de ser ud"
+    },
+    {
+      "type": "p",
+      "text": "Verdenssundhedsorganisationen WHO anbefaler voksne mindst 150 til 300 minutters moderat aerob aktivitet om ugen eller 75 til 150 minutters hård aktivitet. Derudover anbefales muskelstyrkende aktivitet mindst to dage om ugen. Fordelt over syv dage svarer den lave ende af anbefalingen til godt 20 minutters moderat bevægelse om dagen."
+    },
+    {
+      "type": "p",
+      "text": "Moderate aktiviteter er typisk ting, hvor pulsen kommer op, men hvor man stadig kan føre en samtale. Det kan være en rask gåtur eller cykling. Pointen er ikke, at alle skal begynde at træne som atleter. Pointen er, at en stillesiddende hverdag kan brydes på mange måder."
+    },
+    {
+      "type": "h2",
+      "text": "Gevinsten sidder ikke kun i musklerne"
+    },
+    {
+      "type": "p",
+      "text": "Regelmæssig fysisk aktivitet er forbundet med lavere risiko for blandt andet hjerte-kar-sygdom, type 2-diabetes og flere kræftformer. Det er velkendt. Mindre synligt er det, at WHO også fremhæver gevinster for mental sundhed, søvn, kognition og generelt velbefindende."
+    },
+    {
+      "type": "p",
+      "text": "Fysisk aktivitet kan reducere symptomer på depression og angst. Det betyder ikke, at en gåtur erstatter professionel behandling ved alvorlig psykisk sygdom. Men det betyder, at bevægelse kan være en reel del af den samlede sundhedsindsats – ikke kun et projekt for vægten eller konditallet."
+    },
+    {
+      "type": "h2",
+      "text": "Det perfekte program er ofte fjenden"
+    },
+    {
+      "type": "p",
+      "text": "Mange starter for ambitiøst: fem træningspas, ny kostplan og et ur, der bipper, hvis man har siddet stille i 43 minutter. Det kan virke i en uge. Den mere holdbare strategi er ofte at gøre bevægelse så nem at gentage, at den overlever dårlige dage."
+    },
+    {
+      "type": "p",
+      "text": "En rask gåtur efter aftensmad, cyklen til korte ture, trapperne i stedet for elevatoren eller to korte styrkepas om ugen lyder mindre imponerende end en total livsstilsforvandling. Til gengæld har små vaner den fordel, at de faktisk kan blive til vaner."
+    },
+    {
+      "type": "h2",
+      "text": "Lidt er bedre end ingenting"
+    },
+    {
+      "type": "p",
+      "text": "WHO's centrale budskab er netop, at al bevægelse tæller. Hvis du i dag bevæger dig meget lidt, behøver næste skridt ikke være 300 minutter om ugen. Det kan være at begynde med noget, du kan holde fast i. Sundhed bliver sjældent afgjort af den mest heroiske tirsdag i september. Den bliver oftere formet af det, du stadig gør i november."
+    }
+  ],
+  "source_ids_to_display": ["S1"],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null
+}
