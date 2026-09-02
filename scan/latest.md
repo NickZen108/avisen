@@ -1,4 +1,4 @@
-# Scan 2026-09-02T17:55:57.135Z (Cloudflare runtime)
+# Scan 2026-09-02T19:00:57.561Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -20,20 +20,20 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - A year into Trump’s boat strike campaign, families search for answers
 - Aubameyang ‘humiliated’ as ex-Arsenal striker quits Gabon national team
 - Brazilian activist demands Tunisia release Sumud Flotilla organisers
-- Can Ukraine’s drones shut Russian airspace? What that means for airlines
 - China’s Xi urges new Middle East security framework during rare Egypt visit
-- China’s Xi visits Egypt’s el-Sisi: Why it matters
 - Deadly bus crash in Egypt’s Sinai kills 22, injures 28
 - Dismissal of ex-US soldier Bergdahl’s conviction was invalid, court rules
-- Gaza Civil Defence worker finds 21 relatives beneath rubble
+- EU ministers in Ireland tackle Israeli settlement trade and Ukraine defence
 - George Clooney: US government run by ‘least qualified people’
 - Gunman in deadly Swiss rave attack ‘lone perpetrator’, police say
+- Israel kills or injures 7 children a day in Lebanon invasion, report says
 - Israeli PM Netanyahu in Gaza, ‘we are not withdrawing’
-- Nepal PM links deadly floods to climate change
 - Over 500 students hospitalised after eating state-supplied meals in Indones
 - Uber lays off 3,300 employees in largest cuts since the pandemic
+- UK’s Burnham faces first parliament grilling, vows to ‘bring back hope’
 - US oil giant Chevron to expand Venezuela operations
 - WHO chief warns Ebola response must ramp up to stem DRC outbreak
+- Will the EU take action against Israel?
 - Zambia’s Hichilema begins second term amid disputed vote and arrests
 
 ## BBC Europe
@@ -115,10 +115,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Protectionnisme : arrêt des importations de bœuf et de volaille brésiliens
 
 ## DR
-- 16.000 børn skal på 'dannelsesrejse' i Odense
 - 20 personer menes at være gået ned med forlist færge ved Cypern
 - 22 mister livet i busulykke i Egypten
 - Apple ændrer også navn på sø efter Trump-ordre
+- Er momsdifferentiering en dårlig idé?
 - Fem dømt for grov hvidvask
 - Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter
 - Italiensk salami tilbagekaldes
@@ -158,11 +158,11 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Document.no
 - 12.000 lovbrudd registrert blant utviste migranter i Nordrhein-Westfalen
-- Demokratene er desperate, håper Kamala Harris kan redde partiet
 - EU-land vil skrote vetoretten
 - Fagforeninger har fått spesial&#173;tillatelse til å foreslå egne kvote&#173;flyktninger
 - Fem EU-land forsøker å opprette retur­sentre i tredje­land
 - Fyllingsgraden sank 0,5 prosentpoeng i forrige uke
+- Hemmelig spansk politirapport: Marokko bak invasjonen av Ceuta
 - Knivdrept rett fra fødselspermisjon, ingen er trygg i Demokratenes byer
 - Skogpod 2. september 2026
 - Social­demokraterna faller brått halv­annen uke før riksdags­valget i Sverige
@@ -198,8 +198,8 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - George Clooney, Robert Pattinson expected on the red carpet at Venice Film Festival
 - Israel ‘organised and prepared’ to remove Gaza population if US gives green light, Katz says
 - Israeli FM Gideon Sa'ar: 'I hope Iran will not make the mistake of attacking us'
+- 🔴 Live: Macron and Charles III visit historic Bayeux tapestry exhibition together
 - 🔴 Live: Trump suggests renaming Hormuz 'Trump Strait'
-- Macron set to unveil Bayeux Tapestry in 'once in a generation' UK loan
 - Paradox of Balladur's legacy: 'Highly popular' innovative Gaullist gradually became irrelevant
 - Philippine couple married in hip-deep floodwaters
 - Russia blamed for explosive-laden drone found at German airport
@@ -247,38 +247,38 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - (feed ikke nået; status=403)
 
 ## NRK
-- Derfor kjøper Englands storlag så mange (dyre) spillere fra sine rivaler
-- Ein varsla politisk fiasko
+- Aftenposten: Norske myndigheter har tatt arrest i et russisk fartøy på Svalbard
+- BBC: Bryllup ble trolig rammet av amerikansk angrep
 - Ekspertane slår alarm etter Brann-fiaskoen: – Må ta skikkeleg grep
 - Flere norske studiesteder utsatt for dataangrep
 - Full forvirring etter Russland-vedtak: Norge stemte imot – russisk stjerne fnyser
-- Heile styret har trekt seg etter 9. mai-markering
+- Hollywood utelater Norges glemte krigshelt
 - Iranske myndigheter: 18 mennesker drept i amerikanske angrep
 - Kan bli kompensert etter alvorleg sak om drikkevatn: – Beløpet er latterleg
 - Kongeparets sarkofag er klar til kong Haralds gravferd
 - «Lille» Brodd sjokkerte Viking – cupbomben glapp
 - Mann tiltalt for drap på beboer på sykehjem i Lyngen
 - Marthes siste hilsen til kongen: – Takk for at du reddet lille meg
+- Norske myndigheter har tatt arrest i et russisk fartøy på Svalbard
 - Norske studiesteder rammet av dataangrep
 - Senterpartiet avlyser møte om borgfred
 - Senterpartiet avlyser møte om borgfred
 - Slik stenges Oslo når kong Harald gravlegges
-- Sp ber om møte om politisk borgfred
 - To menn dømt til fengsel for frihetsberøvelse, vold og trusler
 
 ## National Review
-- Fiscal Armageddon, Revisited
 - How the DSA Is Making Inroads in Battleground North Carolina
 - <i>Coyote</i> vs. Culture: An Iconoclastic Cartoon
 - In Response to Russian Aggression, Germany Should Trigger NATO’s Article 4
 - It’s Not Just the Economics, Stupid
-- It’s the Debt, Stupid
 - Surrendering to the Machines
 - The American Nationalization of Venezuelan Oil
 - The Ballroom Dance Doesn’t Belong in Court
+- The Court Tries to Give God a Restraining Order
 - The Illusion of One Voice in Wartime
 - The Vindication of Tom Homan
 - Trump’s Big Bet on Data Centers
+- We Need Electricity Abundance
 
 ## Politico Europe
 - Bardella’s international blitz hints at new role for French far-right leader
@@ -295,21 +295,21 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## Reason
 - "[A]n Unopposed Grant" of Sealing "Carries Little Weight in a Contested Posture"
 - Automatic Selective Service Registration Keeps the Threat of Conscription Alive
-- COVID-19 Origins: Lab Leak or Natural Spillover?
+- Georgia Cop Claimed Petting Zoo Donkey Was Charging at His Team When He Shot It
 - Invasion of the Robot Teachers
 - Lion King Composer vs. Comedian Dispute Leads to ~$40K Attorney Fee Award Against Composer
-- Second Amendment Doesn't Protect Machineguns, Doesn't Preclude Registration Requirement for Silencers
+- My New Liberalism.Org Article on the Centrality of Private Property Rights to Liberalism
 - Strikes Without End
-- Study: Even Well-Intentioned Regulators Do More Harm Than Good
 - Third Circuit Rejects Facial Challenge to Ban on Nonimmigrant Aliens' Gun Possession
-- Virginia Mom Gets 6-Month Suspended Jail Sentence for Letting 5-Year-Old Walk to the Pond
+- Trump Is Back To Seeking Regime Change in Iran
+- Trump's Venezuela Oil Deal Sells Out Democracy and Free Markets
 - Why the Right Is Embracing State Power
 - Wisconsin Cops Used Flock Over 100 Times To Track a Navy Veteran After He Lawfully Recorded a Traffic Stop
 
 ## SVT
+- Berusad man viftade med kniv i Norrköping
 - Boom för förtidsröstningen – här är det fullt upp för Ann-Charlotte
 - Claes Nordmarks ord i hovrätten: ”Jag är oskyldig”
-- Ettåring dog efter fall i Skellefteå – nu frikänns föräldrarna
 - Filmredaktören tipsar: Guldkorn på filmfestivalen i Venedig
 - Hot anmält – gapig väljare oroade röstmottagare i Jönköping
 - Här trängs poliser i Eskilstunas gamla polishus – så ska trångboddheten lösas
@@ -330,9 +330,11 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - 22 people killed in bus crash in Egypt
 - Attempted drone attack at German airport blamed on Russia
 - Bank of America vice president killed in Times Square stabbing
+- British woman, 34, stabbed to death in hotel corridor in Portugal
+- Discovery of explosive devices at substation leads to sabotage probe
 - Joshua Wong pleads guilty under Hong Kong's security law
 - Nationwide migrant protests prompt appeals for calm in Spain's North African territory
-- Pistol in lake could be linked to unsolved killings of British family in France
+- Pistol in lake could be linked to unsolved killings of British family
 - Stop doing memes and throwing shade, Carney tells Trump
 - Tiger Woods gets five-year driving ban and fine after entering car crash plea deal
 
@@ -340,12 +342,12 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Hollywood’s paranoid hatred of Israel
 - How Milo owned himself
 - Iceland’s No vote is a humiliation for the EU
+- In Hong Kong, remembering the past is now a crime
 - Inside the Iranian clampdown
 - Net Zero is leaving Britain defenceless
 - Students aren’t being told the truth about the British Empire
 - The Ali G haters are the dumbest people alive
 - There’s still no evidence to justify a social-media ban
-- This isn’t criticism – it’s sneering
 - Why we should fear a Burnham bust
 
 ## TV2
@@ -366,7 +368,24 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - The Story About Lindsay Clancy Being A Victim Comes From Deeper Roots Than 1960s Feminism
 
 ## The Local Denmark
-- (feed ikke nået; status=403)
+- Danish expression of the day: ellers tak
+- Danish word of the day: Ajourføre
+- Denmark reopens embassy in Syria after 14-year closure
+- Denmark set to host annual 'citizenship day' for thousands of new Danes
+- EXPLAINED: Can you work on a Danish study permit?
+- Five common rental scams in Denmark and how to avoid them
+- How do you feel about Danish citizenships potentially being frozen for another year?
+- How the make up of the Danish population could change by 2100
+- How to find a new hobby in Copenhagen this autumn
+- One in seven patients referred to hospital in Denmark is turned away
+- OPINION: The Danish flag-obsession is more 'hyggelig' than threatening
+- Ryanair to cut winter flights in Europe to save on fuel costs
+- The complete list of all the Danish pastries you need to try
+- Today in Denmark: A roundup of the latest news on Tuesday
+- Today in Denmark: A roundup of the latest news on Wednesday
+- 'Warning to Europe': How Iceland's 'No' vote is a blow to the EU
+- What changes in Denmark in September 2026?
+- Why were there so many tractors in central Copenhagen on Tuesday?
 
 ## Tichys Einblick
 - Der Wähler wählt rechts – Merz regiert links mit SED-Linken
