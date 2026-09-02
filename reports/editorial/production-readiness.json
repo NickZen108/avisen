@@ -1,15 +1,31 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T20:15:20+00:00",
+  "generated_at": "2026-09-02T20:28:37+00:00",
   "status": "yellow",
-  "published_count": 34,
+  "published_count": 37,
   "hard_failures": [],
   "warnings": [
-    "10 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
+    "12 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
   ],
   "metrics": {
     "possible_duplicate_pairs": [],
     "source_independence_flags": [
+      {
+        "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 1,
+        "duplicate_urls": {}
+      },
+      {
+        "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 1,
+        "duplicate_urls": {}
+      },
       {
         "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
         "unique_urls": 1,
@@ -35,7 +51,7 @@
         "duplicate_urls": {}
       },
       {
-        "slug": "2026-09-02-kvantecomputeren-er-ikke-en-hurtigere-pc",
+        "slug": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
         "unique_urls": 1,
         "unique_hosts": 1,
         "unique_groups": 1,
@@ -43,7 +59,7 @@
         "duplicate_urls": {}
       },
       {
-        "slug": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
+        "slug": "2026-09-02-kvantecomputeren-er-ikke-en-hurtigere-pc",
         "unique_urls": 1,
         "unique_hosts": 1,
         "unique_groups": 1,

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T20:15:15Z",
+  "generated_at": "2026-09-02T20:28:29Z",
   "counts": {
-    "published": 18,
+    "published": 21,
     "checking": 2,
     "draft": 3
   },
@@ -116,6 +116,14 @@
       "reasons": []
     },
     {
+      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet",
+      "title": "Dykolycka i Lerkils hamn: En person er blevet allvarligt skadet",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
       "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk",
       "title": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
       "status": "published",
@@ -156,8 +164,24 @@
       "reasons": []
     },
     {
+      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist",
+      "title": "Maltesisk forretningsmand frikendt for mordet på journalist",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
       "slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn",
       "title": "Rusland beskyldes for dronemål mod Leipzig Lufthavn",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid",
+      "title": "Shurouq Khaira: En kvinde, der har mistet sit ben og sin fremtid",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

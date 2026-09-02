@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-dykolycka-i-lerkils-hamn",
   "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet",
   "category": "Udland",
@@ -30,7 +30,7 @@
   "title": "Dykolycka i Lerkils hamn: En person er blevet allvarligt skadet",
   "standfirst": "SVT",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T20:28:29Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet.json",
@@ -86,5 +86,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T20:28:29Z"
+  }
 }

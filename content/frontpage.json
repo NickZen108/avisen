@@ -2,28 +2,28 @@
   "date": "2026-09-02",
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
-  "ticker_text": "Tyskland og Rusland er i en meget anspændt situation efter et forsøg på at angribe Leipzig lufthavn med en drone. Det er første gang, at Rusland bliver beskyldt for et droneangreb mod en tysk lufthavn. Tyskland har allerede indført stramme sanktioner mod Rusland efter invasionen af Ukraine i 2022, men disse nye sanktioner er en ny fase i den tysk-russiske konflikt. Det er ikke klart, hvordan konflikten vil udvikle sig i fremtiden, men det er tydeligt, at Tyskland og Rusland er i en meget anspændt situation.",
+  "ticker_text": "Shurouq Khaira er en af mange, der har lidt under blokaden og ødelæggelsen i Gaza-striben. Hun søger stadig at overleve og at finde en måde at gøre det på, selv om hendes drømme er blevet til nothingness.",
   "ticker": {
-    "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
+    "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
   },
   "lead": {
-    "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
+    "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
   },
   "rail": [
+    {
+      "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
+    },
+    {
+      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
+    },
+    {
+      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
+    },
     {
       "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
     },
     {
       "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
-    },
-    {
-      "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv"
-    },
-    {
-      "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere"
-    },
-    {
-      "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
     }
   ],
   "stack": [
@@ -54,6 +54,15 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
+    },
+    {
+      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
+    },
+    {
+      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
+    },
+    {
       "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
     },
     {
@@ -67,15 +76,6 @@
     },
     {
       "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
-    },
-    {
-      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
-    },
-    {
-      "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk"
-    },
-    {
-      "slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn"
     }
   ]
 }

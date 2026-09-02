@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-02-gaza-amputees-struggle-under-blockade-and-rubble",
   "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid",
   "category": "Sundhed",
@@ -41,7 +41,7 @@
   "title": "Shurouq Khaira: En kvinde, der har mistet sit ben og sin fremtid",
   "standfirst": "Shurouq Khaira er en af mange, der har lidt under blokaden og ødelæggelsen i Gaza-striben. Hun søger stadig at overleve og at finde en måde at gøre det på, selv om hendes drømme er blevet til nothingness. ",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-02T20:28:29Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid.json",
@@ -111,5 +111,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-02T20:28:29Z"
+  }
 }
