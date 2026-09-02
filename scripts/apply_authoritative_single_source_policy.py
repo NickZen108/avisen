@@ -85,18 +85,6 @@ def patch_source_gate() -> None:
     path.write_text(s, encoding="utf-8")
 
 
-def patch_selftest() -> None:
-    path = ROOT / "scripts/evidence_policy_selftest.py"
-    s = path.read_text(encoding="utf-8")
-    s = regex_once(
-        s,
-        r'''l3 = \{'schema_version': 3, 'right_of_reply': \{'required': False\}\}\ncheck\('v3 missing support passage fails'.*?\n\s*\[src\('S1', 'host-bbc-com', 'https://www\.bbc\.com/news/example'\)\]\)\n''',
-        '''l3 = {'schema_version': 3, 'right_of_reply': {'required': False}}\ncheck('v3 one major newsroom passes without any passage field', True, a, l3,\n      {'claim': 'En almindelig oplysning', 'source_ids': ['S1']},\n      [src('S1', 'host-bbc-com', 'https://www.bbc.com/news/example')])\n''',
-        "evidence policy v3 selftest",
-    )
-    path.write_text(s, encoding="utf-8")
-
-
 def remove_legacy_test() -> None:
     path = ROOT / "scripts/claim_passage_contract_test.py"
     if path.exists():
@@ -148,7 +136,6 @@ if __name__ == "__main__":
     patch_editorial()
     patch_evidence_policy()
     patch_source_gate()
-    patch_selftest()
     remove_legacy_test()
     remove_support_passages_from_json()
     assert_clean()
