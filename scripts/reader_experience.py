@@ -62,7 +62,9 @@ def inject_context(a,all_items):
   pos=text.find('<section class="wrap below">')
   if pos<0:pos=text.find('<footer>')
   if pos>=0:text=text[:pos]+box+'\n'+text[pos:]
- if 'read-also-inline' not in text:
+ # A story package already presents every direct relation below the article.
+ # Never repeat the same link as an inline Læs også card.
+ if not related and 'read-also-inline' not in text:
   candidates=contextual_candidates(a,all_items)
   if candidates:
    article_start=text.find('<article class="article-body">'); article_end=text.find('</article>',article_start)
