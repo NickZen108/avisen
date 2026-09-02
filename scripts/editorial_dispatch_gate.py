@@ -10,8 +10,13 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 
 def parse_time(value: str | None):
@@ -50,7 +55,6 @@ def recommended_cycles(scan: dict, history: list[dict], maximum: int = 3) -> tup
         if key in handled:
             continue
         published = parse_time(signal.get("published_at"))
-        # Keep undated feeds eligible; reject only clearly stale dated items.
         if published is not None and (now - published).total_seconds() > 72 * 3600:
             continue
         eligible.append(signal)
@@ -58,10 +62,23 @@ def recommended_cycles(scan: dict, history: list[dict], maximum: int = 3) -> tup
     if not eligible:
         return 0, "no fresh unhandled candidates"
 
-    # One editorial cycle can mark several related signals handled. Do not attempt to
-    # predict semantic clustering here; just cap the expensive calls conservatively.
+    related = 0
+    try:
+        from scripts.lead_followup import is_active, load_state, load_article, classify_candidate
+        state = load_state()
+        if is_active(state, now):
+            lead = load_article(state.get("lead_slug"))
+            related = sum(1 for signal in eligible if classify_candidate(signal, lead)["related"])
+    except Exception:
+        related = 0
+
     count = min(maximum, len(eligible))
-    return count, f"{len(eligible)} fresh unhandled candidates"
+    if related and count == 0:
+        count = 1
+    reason = f"{len(eligible)} fresh unhandled candidates"
+    if related:
+        reason += f"; {related} related to active lead"
+    return count, reason
 
 
 def write_output(path: str | None, cycles: int, reason: str) -> None:
