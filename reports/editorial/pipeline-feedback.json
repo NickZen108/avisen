@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T05:06:27.026138Z",
+  "generated_at": "2026-09-02T05:10:35.434150Z",
   "date_dk": "2026-09-02",
   "policy": {
     "review_every_rejection": true,
@@ -14,13 +14,24 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 0,
-    "reviews": []
+    "rejections": 1,
+    "reviews": [
+      {
+        "at": "2026-09-02T05:10:20.043Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "infrastructure",
+        "reason": "Error: Workers AI returned no parseable structured response",
+        "class": "review",
+        "assessment": "Manuel pipeline-vurdering: afgør om blokeringen beskyttede kvalitet eller var unødig friktion.",
+        "pipeline_change_considered": true
+      }
+    ]
   },
   "last7_stage_counts": {
     "ethics": 1,
     "fact_check": 9,
-    "infrastructure": 6,
+    "infrastructure": 7,
     "language": 1,
     "media": 5,
     "research": 8,
@@ -41,7 +52,7 @@
       "current": "observeret driftsstop",
       "proposed": "genkør/kapacitetsstyring",
       "status": "fix-system",
-      "why": "6 driftsstop på 7 dage er ikke et argument for at svække redaktionelle gates."
+      "why": "7 driftsstop på 7 dage er ikke et argument for at svække redaktionelle gates."
     }
   ],
   "current_blockers": [
