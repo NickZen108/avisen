@@ -921,17 +921,15 @@ function staticPencilFallbackBase64() {
 }
 
 async function generateTemporarySketch(env, assignment, article) {
-  if (assignment?.weight !== "A") {
-    return { base64: staticPencilFallbackBase64(), content_type: "image/x-portable-bitmap", ai_generated: false, generator: "static_pencil_fallback" };
+  // Hero policy v2: a static placeholder must never reach the public surface.
+  // The pre-build media scout gets first chance to replace this pending illustration
+  // with a lawful free documentary/context/map/satellite visual. If no such visual
+  // exists, Flux pencil hatching is the final public fallback for every story weight.
+  const raw = await env.AI.run(IMAGE_MODEL, { prompt: temporarySketchPrompt(assignment, article) });
+  if (!raw?.image || typeof raw.image !== "string") {
+    throw new Error("Hero unavailable: no lawful free visual found yet and Flux returned no image");
   }
-  try {
-    const raw = await env.AI.run(IMAGE_MODEL, { prompt: temporarySketchPrompt(assignment, article) });
-    if (!raw?.image || typeof raw.image !== "string") throw new Error("Temporary sketch model returned no base64 image");
-    return { base64: raw.image, content_type: "image/jpeg", ai_generated: true, generator: "workers_ai_flux" };
-  } catch (error) {
-    console.warn("Temporary sketch AI unavailable; using static pencil fallback", String(error));
-    return { base64: staticPencilFallbackBase64(), content_type: "image/x-portable-bitmap", ai_generated: false, generator: "static_pencil_fallback" };
-  }
+  return { base64: raw.image, content_type: "image/jpeg", ai_generated: true, generator: "workers_ai_flux" };
 }
 
 function pendingSketchHero(imageKey, article, sketch) {

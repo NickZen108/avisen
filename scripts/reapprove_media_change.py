@@ -73,12 +73,16 @@ def validate_image(image: dict):
             raise SystemExit("Media re-approval blocked: documentary image has invalid context_type")
         if context_type != "event" and not str(image.get("caption") or "").strip():
             raise SystemExit("Media re-approval blocked: non-event photo requires visible archive/context caption")
+    elif image_type == "graphic" and not pending and not ai_generated:
+        if context_type not in {"map", "satellite", "archive"}:
+            raise SystemExit("Media re-approval blocked: documentary graphic must be map/satellite/archive")
+        if not str(image.get("caption") or "").strip():
+            raise SystemExit("Media re-approval blocked: documentary graphic requires a visible caption")
     elif pending or ai_generated:
         if image_type != "illustration" or context_type != "illustration":
             raise SystemExit("Media re-approval blocked: pending hero must be image_type=illustration and context_type=illustration")
-        static_fallback = image.get("generator") == "static_pencil_fallback"
-        if not pending or (not ai_generated and not static_fallback):
-            raise SystemExit("Media re-approval blocked: pending illustration must be AI-generated or the approved static pencil fallback")
+        if not pending or not ai_generated:
+            raise SystemExit("Media re-approval blocked: pending illustration must be AI-generated; static placeholders are forbidden")
         if str(image.get("caption") or "").strip().lower() != "illustration":
             raise SystemExit("Media re-approval blocked: pending illustration requires visible caption Illustration")
         if image.get("photorealistic") is True:
@@ -92,9 +96,10 @@ def validate_replacement_transition(previous_image: dict, current_image: dict):
             raise SystemExit("Media re-approval blocked: replacement still marked pending_image")
         if current_image.get("ai_generated") is True:
             raise SystemExit("Media re-approval blocked: replacement for pending sketch must not be AI-generated")
-        if current_image.get("image_type") not in {"photo", "video_still"}:
-            raise SystemExit("Media re-approval blocked: pending sketch must be replaced by photo/video_still")
-        if str(current_image.get("context_type") or "") not in {"event", "place", "person", "object", "archive"}:
+        if current_image.get("image_type") not in {"photo", "video_still", "graphic"}:
+            raise SystemExit("Media re-approval blocked: pending sketch must be replaced by documentary photo/still/map/satellite graphic")
+        allowed_context = {"event", "place", "person", "object", "archive"} if current_image.get("image_type") != "graphic" else {"map", "satellite", "archive"}
+        if str(current_image.get("context_type") or "") not in allowed_context:
             raise SystemExit("Media re-approval blocked: replacement documentary context_type invalid")
 
 
