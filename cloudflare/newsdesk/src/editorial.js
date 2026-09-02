@@ -302,33 +302,6 @@ function structuredResponse(raw, schema) {
   if (!schemaShapeValid(parsed, schema)) throw new Error("Workers AI returned JSON that does not match required schema shape");
   return parsed;
 }
-function schemaShapeValid(value, schema) {
-  if (!schema) return true;
-  if (schema.type === "object") {
-    if (!value || typeof value !== "object" || Array.isArray(value)) return false;
-    for (const key of schema.required || []) if (!(key in value)) return false;
-    for (const [key, child] of Object.entries(schema.properties || {})) {
-      if (key in value && !schemaShapeValid(value[key], child)) return false;
-    }
-    return true;
-  }
-  if (schema.type === "array") {
-    if (!Array.isArray(value)) return false;
-    if (Number.isInteger(schema.minItems) && value.length < schema.minItems) return false;
-    if (Number.isInteger(schema.maxItems) && value.length > schema.maxItems) return false;
-    return !schema.items || value.every((item) => schemaShapeValid(item, schema.items));
-  }
-  if (schema.type === "string") return typeof value === "string" && (!schema.enum || schema.enum.includes(value));
-  if (schema.type === "boolean") return typeof value === "boolean";
-  if (schema.type === "integer") return Number.isInteger(value);
-  if (schema.type === "number") return typeof value === "number" && Number.isFinite(value);
-  return true;
-}
-function structuredResponse(raw, schema) {
-  const parsed = responseObject(raw);
-  if (!schemaShapeValid(parsed, schema)) throw new Error("Workers AI returned JSON that does not match required schema shape");
-  return parsed;
-}
 async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRONG_TEXT_MODEL, fallbackModel = null) {
   const request = {
     messages: [{ role: "system", content: system }, { role: "user", content: user }],
