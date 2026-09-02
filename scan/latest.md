@@ -1,4 +1,4 @@
-# Scan 2026-09-02T20:50:57.827Z (Cloudflare runtime)
+# Scan 2026-09-02T23:10:57.384Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -17,28 +17,27 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Woher kommt der Strom? 34. Analysewoche 2026
 
 ## Al Jazeera
+- Children return to school in DR Congo amid growing concerns over Ebola
 - Dreams shattered: Gaza amputees struggle under blockade and rubble
-- EU ministers in Ireland tackle Israeli settlement trade and Ukraine defence
-- EU pursuing more Russia sanctions after failed airport attack: Kallas
-- Gunman in deadly Swiss rave attack ‘lone perpetrator’, police say
-- Israel kills or injures 7 children a day in Lebanon invasion, report says
+- Israel still wants to remove Palestinians from Gaza, defence minister says
+- Israeli PM says Israel is working to overthrow Iran’s government
 - Israeli protesters call for an end to settler violence
 - Malta businessman acquitted of plotting journalist Caruana Galizia murder
+- Nepal families hold symbolic funerals, thousands still missing
+- OpenAI faces new lawsuits over Tumbler Ridge mass shooting tragedy
+- Republican senator calls on Trump to fire Secretary of Defence Hegseth
 - Saudi Arabia condemns deadly Iranian attack on tanker in Strait of Hormuz
-- Signing ceremony as US to control a fifth of Venezuela’s oil reserves
+- The long-term implications of Pete Hegseth’s US military purges
 - Tiger Woods avoids jail time, takes plea deal over Florida crash
 - Trump says US sees ‘everything’ Iran does, threatens further attacks
 - Trump suggests renaming Strait of Hormuz as Trump Strait amid Iran war
-- UK’s Burnham faces first parliament grilling, vows to ‘bring back hope’
+- Two Palestinians killed as settlers, Israeli forces raid West Bank village
 - US judge rejects bid to break up Google’s ad business
 - US says it will use regional body to isolate Nicaragua
-- USS Abraham Lincoln reaches Thailand after 9 months at sea
 - What you need to know: US launches coin featuring Trump’s face
-- Will the EU take action against Israel?
 
 ## BBC Europe
 - Belugas and dolphins rescued from closed Canadian park arrive in Spain
-- Djokovic in tears during US Open first-round exit
 - EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany
 - France targets Shein and Temu with fast fashion fees
 - Iceland votes against restarting EU membership talks
@@ -49,6 +48,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Netherlands moves billions in gold to London in 'crisis preparedness' move
 - Norway's new king takes oath as mourners pay respects to his late father
 - Pistol in a lake gives hope for French cold case
+- Protests in Spain over government's handling of Ceuta migrant crisis
 - Pub's 'beloved' manager stabbed to death in Germany
 - Rosenberg: Putin's veiled threat to UK part of Russia's campaign against West
 - Russian strikes destroy 12 million books ahead of Ukraine's first week back at school
@@ -70,13 +70,13 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Iranian attack on Saudi tanker killed two Filipino sailors, Saudi Arabia says
 - Maltese tycoon acquitted of orchestrating murder of renowned journalist
 - More than 900 killed in Gaza this year despite ceasefire, Hamas-run health ministry says
-- Nepal intensifies relief and recovery efforts after deadly floods, UN says
 - Netherlands moves billions in gold to London in 'crisis preparedness' move
 - 'Nothing but mud and silt' - the village swept away by deadly floods in Nepal
 - Pistol in a lake gives hope for French cold case
+- Protests in Spain over government's handling of Ceuta migrant crisis
 - Remarkable US oil deal puzzles analysts - and angers many Venezuelans
 - Rosenberg: Putin's veiled threat to UK part of Russia's campaign against West
-- South African airline behind daring stadium stunt cancels next flyby, regulator says
+- South African airline behind daring stadium stunt cancels next flyby
 - Uber shuts operations in Nigeria and Uganda with immediate effect
 - US sailors arrive in Thailand's Pattaya after record 250 days at sea
 - Watch: Jury still unable to reach unanimous decision in Lindsay Clancy case
@@ -144,10 +144,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Charlie Kirk murder suspect to face potential death penalty
 - EU summons Russian envoy over failed Leipzig drone attack
 - Germany: How to woo voters with an immigrant background
-- Germany news: Police probe suspected power station attacks
 - Guinea-Bissau referendum tests democratic future
 - India rejects Hague ruling on Indus waters: What's next?
 - Macron visits Bayeux Tapestry with King Charles, PM Andy Burnham
+- Malta: Businessman acquitted of journalist's murder
 - Police exhume body of former Czechoslovak foreign minister Jan Masaryk
 - Russia's hybrid attacks on Germany: When is it 'war?'
 - Ukraine: Zelenskyy warns airlines to avoid Russian airspace
@@ -158,14 +158,14 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Document.no
 - 12.000 lovbrudd registrert blant utviste migranter i Nordrhein-Westfalen
+- Bortskjemte og radikaliserte kvinner ødelegger Vesten
 - EU-land vil skrote vetoretten
-- Fagforeninger har fått spesial&#173;tillatelse til å foreslå egne kvote&#173;flyktninger
 - Fem EU-land forsøker å opprette retur­sentre i tredje­land
-- Fyllingsgraden sank 0,5 prosentpoeng i forrige uke
 - Hemmelig spansk politirapport: Marokko bak invasjonen av Ceuta
 - Knivdrept rett fra fødselspermisjon, ingen er trygg i Demokratenes byer
+- Massive protester mot migrasjonen i Spania
 - Norsk landskap med en regnbue (1821).
-- Social­demokraterna faller brått halv­annen uke før riksdags­valget i Sverige
+- USA svarer på iranske angrep på to tankskip i Hormuz&#173;stredet
 - Vesten over&#173;svømmes av vold, og venstre&#173;siden vil ikke snakke om det
 
 ## Euronews
@@ -189,23 +189,23 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - World Nomad Games bring ancient traditions to life in Kyrgyzstan
 
 ## France 24
-- Egypt welcomes Xi as Beijing expands influence in region
-- France's back-to-school challenges: Phones, payslips, pupils
-- French president to open Bayeux Tapestry exhibition as he starts UK visit
-- George Clooney, Robert Pattinson expected on the red carpet at Venice Film Festival
-- Israel ‘organised and prepared’ to remove Gaza population if US gives green light, Katz says
+- Chevron, Eni commit to expand oil projects in Venezuela under US eye
+- Is Wintour still en vogue? Met navigates rough seas as Galliano retrospective sinks into 'Horizons'
 - Israeli FM Gideon Sa'ar: 'I hope Iran will not make the mistake of attacking us'
+- Kenyan editor found safe after abduction
 - 🔴 Live: Macron and Charles III visit historic Bayeux tapestry exhibition together
 - 🔴 Live: Trump suggests renaming Hormuz 'Trump Strait'
-- Paradox of Balladur's legacy: 'Highly popular' innovative Gaullist gradually became irrelevant
-- Philippine couple married in hip-deep floodwaters
+- Malta acquits tycoon Yorgen Fenech in investigative journalist's murder case
+- Outrage as Maltese tycoon acquitted of reporter Daphne Caruana Galizia's murder
+- Palantir CEO Alex Karp says French restrictions on US software are ‘backfiring’
 - Russia blamed for explosive-laden drone found at German airport
-- Search continues for tunnel workers in Nepal floods
 - 🔴 Spanish report flags Moroccan police's 'total permissiveness' in Ceuta migrant rush
 - Spanish report flags Moroccan police's 'total permissiveness' in Ceuta migrant rush
-- US postal whistleblower warns thousands of midterm ballots could be lost
+- Ukraine warns Russian airspace ‘not safe’ in message to UN aviation watchdog
+- US-Iran war: Old videos falsely claim to show new attacks on American bases
+- US oversees signing of ‘billions’ in deals between Venezuela and Chevron, ENI, GE
+- Venice Film Festival opens with George Clooney, Murdoch film and geopolitics
 - Videos and debris raise questions over alleged US strike on Iranian wedding
-- Xi calls on Mideast nations to be ‘masters of their own affairs’ in rare Egypt visit
 - Zelensky warns airlines Russian skies not safe due to Ukraine drones
 
 ## FrontPageMag
@@ -214,22 +214,22 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## Guardian World
 - Almost half of world’s farmers poisoned by pesticides every year, experts find
 - Apple Maps renames Lake Ontario as ‘Lake America’ for US users after Trump order
-- Australia news live: Jim Chalmers weighs in on One Nation WA byelection win; $2m for Indigenous racism online register
+- Australia news live: Marles and Hegseth meet in Washington; teen charged after ‘near complete amputation’ of boy’s hand
 - Countries legally obliged to consider slavery reparations, says UN committee
 - Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case
 - Japan halves speed limit to 30km/h on all narrow city streets
 - Mark Carney tells US to ‘start being serious’ amid escalating trade war
 - Morocco not to blame for Ceuta border breach, says Spanish PM
 - New constitution in Guinea-Bissau will undermine democracy, opponents say
-- Palestinian Australian sues NSW police claiming he was punched at Herzog rally when helping prayer group
+- Palestinian Australian sues NSW police, claiming he was punched at Herzog rally when helping prayer group
 - Pete Hegseth criticized for body-shaming Canadian cadets: ‘Literally they’re kids’
 - Shein shares slide on fast-fashion retailer’s stock market debut
 - South African airline defends dramatic low-level flyby before rugby union clash
 - Thai resort prepares to host USS Abraham Lincoln sailors after more than 270 days at sea
+- ‘Timidity is a virus’: Paul Keating fights the fading of the light as he seeks to enshrine his legacy
 - Trump ally defends Venezuela oil deal amid ‘gunpoint diplomacy’ criticism
 - Tumbler Ridge mass shooting victims file 30 new lawsuits against OpenAI
 - USS Abraham Lincoln arrives at Thai port after gruelling 270 days at sea
-- We’re purchasing EVs instead of holidaying in Europe – and what else we learned from Australia’s national accounts
 
 ## Indblik
 - CO2-indholdet i jordens atmosfære har været højere end det er idag.
@@ -293,13 +293,13 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - White House pushes companies to ditch Macron’s space summit
 
 ## Reason
-- "[A]n Unopposed Grant" of Sealing "Carries Little Weight in a Contested Posture"
-- Automatic Selective Service Registration Keeps the Threat of Conscription Alive
 - Georgia Cop Claimed Petting Zoo Donkey Was Charging at His Team When He Shot It
+- How St. Paul's Rent Control Experiment Backfired Spectacularly
 - Invasion of the Robot Teachers
+- Mamdani Wants To Block a Law Giving Teachers' Aides $10,000 Bonuses. The Teachers Union Is Not Happy.
 - My New Liberalism.Org Article on the Centrality of Private Property Rights to Liberalism
-- Strikes Without End
-- Third Circuit Rejects Facial Challenge to Ban on Nonimmigrant Aliens' Gun Possession
+- No TRO Against Arkansas Democrat-Gazette as to Publishing of Data Center Plans
+- Prosecutors Say a North Carolina Teenager Committed Murder by Livestreaming a California Mosque Shooting
 - Trump Is Back To Seeking Regime Change in Iran
 - Trump's Venezuela Oil Deal Sells Out Democracy and Free Markets
 - USDA Approves Bioengineered American Chestnut Tree That Could Bring Them Back From Near-Extinction
@@ -329,10 +329,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## Sky World
 - 22 people killed in bus crash in Egypt
 - Attempted drone attack at German airport blamed on Russia
-- Bank of America vice president killed in Times Square stabbing
 - British woman, 34, stabbed to death in hotel corridor in Portugal
 - Discovery of explosive devices at substation leads to sabotage probe
 - Joshua Wong pleads guilty under Hong Kong's security law
+- Maltese businessman cleared over murder of journalist Daphne Caruana Galizia
 - Nationwide migrant protests prompt appeals for calm in Spain's North African territory
 - Pistol in lake could be linked to unsolved killings of British family
 - Stop doing memes and throwing shade, Carney tells Trump
@@ -354,13 +354,13 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - (feed ikke nået; status=530)
 
 ## The Federalist
+- 205 House Democrats Vote To Kill Anti-Court Packing Amendment
 - A California City Drops Houses On Gavin Newsom&#8217;s Bullet Train
 - American Parents Spend More Energy Picking A Backpack For Their Kid Than Picking His School
 - Democrats Openly Declare Their Plans To Infiltrate Rural American Towns
 - DOJ Tells Sanctuary States They Must Report Illegals To Get Federal Welfare
 - From Iryna Zarutska To Lindsay Clancy, The Left Only Likes Women If They&#8217;re Politically Useful
 - If You Have Mixed Feelings About Lindsay Clancy&#8217;s Guilt, You&#8217;re Too Stupid And Broken To Be On TikTok
-- Judge Rules Tyler Robinson Will Face Trial For Assassination Of Charlie Kirk
 - Leftists Tearing Down Statues Are Showing You What They Want To Do To America
 - Leftists Tried To Stop Clarence Thomas From Going Further. They Failed Miserably
 - Report: DHS Launches Voter Fraud &#8216;Surge&#8217; Probes In Nine States
@@ -410,12 +410,12 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - AI is Trump’s Manhattan Project
 - America’s brain-rotting socialism debate
 - Andy Burnham meets reality
-- Britain has a leadership fetish
+- Can Team Trump save Western Civ?
 - Could the Middlesbrough crime spree spread?
-- Hell is other Leftists
+- Get ready for the Trump Slump
+- How Domesday made modern England
 - How the Euro elite helps Trump
 - How Wendell Berry saved my life
 - Milo Yiannopoulos’ horrible homecoming
-- The case for de-escalation with Russia
+- Nepal’s clean energy curse
 - The man who made bin Laden
-- The summer of Idiossey
