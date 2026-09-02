@@ -1,15 +1,31 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T10:49:43+00:00",
+  "generated_at": "2026-09-02T11:39:02+00:00",
   "status": "yellow",
-  "published_count": 25,
+  "published_count": 29,
   "hard_failures": [],
   "warnings": [
-    "5 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
+    "7 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
   ],
   "metrics": {
     "possible_duplicate_pairs": [],
     "source_independence_flags": [
+      {
+        "slug": "2026-09-02-kvantecomputeren-er-ikke-en-hurtigere-pc",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 0,
+        "duplicate_urls": {}
+      },
+      {
+        "slug": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 0,
+        "duplicate_urls": {}
+      },
       {
         "slug": "2026-09-02-gode-relationer-er-ogsaa-sundhed",
         "unique_urls": 1,
