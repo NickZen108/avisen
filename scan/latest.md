@@ -1,4 +1,4 @@
-# Scan 2026-09-02T17:35:57.406Z (Cloudflare runtime)
+# Scan 2026-09-02T17:40:57.330Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -139,19 +139,19 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## DW
 - Armed men abduct Kenyan editor, employer suspects government
 - Austria women ice hockey team fight for future generations
+- Berlin's punitive measures unlikely to deter Putin: experts
 - Cargo ship with 10 crew sinks off Turkey coast — authorities
 - Charlie Kirk murder suspect to face potential death penalty
 - EU summons Russian envoy over failed Leipzig drone attack
 - Germany: How to woo voters with an immigrant background
 - Germany news: Police probe suspected power station attacks
 - Guinea-Bissau referendum tests democratic future
-- Hong Kong activist Joshua Wong pleads guilty to collusion
 - India rejects Hague ruling on Indus waters: What's next?
-- Macron to visit Bayeux Tapestry on UK arrival with King Charles, PM Burnham
+- Macron visits Bayeux Tapestry on UK arrival with King Charles, PM Burnham
 - Police exhume body of former Czechoslovak foreign minister Jan Masaryk
 - Russia's hybrid attacks on Germany: When is it 'war?'
-- Tunisia's activists decry civil society crackdown
 - Ukraine: Zelenskyy warns airlines to avoid Russian airspace
+- Unity at last: Is Libya's damaging power struggle at an end?
 - US sanctions halt TOEFL and GRE tests in Iran, disrupting study plans
 - What really helps Europe deal with drought
 - Women's football: Anyomi, London City and the German exodus
