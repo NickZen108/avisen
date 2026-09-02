@@ -16,7 +16,7 @@
     "pipeline_version": 2,
     "story_id": "2026-09-02-joshua-wong",
     "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed",
-    "category": "Politik",
+    "category": "Udland",
     "weight": "B",
     "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
     "standfirst": "Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Han risikerer en livsvarig fængselsstraf.",
@@ -71,5 +71,15 @@
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
+  },
+  "category_migration": {
+    "mode": "deterministic-taxonomy-migration",
+    "from": "Politik",
+    "to": "Udland",
+    "migrated_at": "2026-09-02T10:13:08Z",
+    "changed_fields": [
+      "category"
+    ],
+    "reason": "Politik removed as main category; Danmark renamed to Indland"
   }
 }

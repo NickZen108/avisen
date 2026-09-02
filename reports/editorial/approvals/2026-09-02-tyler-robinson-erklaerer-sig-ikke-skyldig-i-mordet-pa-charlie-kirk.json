@@ -16,7 +16,7 @@
     "pipeline_version": 2,
     "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
     "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
-    "category": "Politik",
+    "category": "Udland",
     "weight": "B",
     "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
     "standfirst": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk. Dommer åbner op for dødsstraf i sagen.",
@@ -73,5 +73,15 @@
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
+  },
+  "category_migration": {
+    "mode": "deterministic-taxonomy-migration",
+    "from": "Politik",
+    "to": "Udland",
+    "migrated_at": "2026-09-02T10:13:08Z",
+    "changed_fields": [
+      "category"
+    ],
+    "reason": "Politik removed as main category; Danmark renamed to Indland"
   }
 }

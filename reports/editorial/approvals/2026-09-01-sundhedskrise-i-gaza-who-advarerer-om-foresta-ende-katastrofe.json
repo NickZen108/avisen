@@ -16,7 +16,7 @@
     "pipeline_version": 2,
     "story_id": "2026-09-01-health-crisis-looming-as-gaza-heads-towards-rainy-season-warns-who",
     "slug": "2026-09-01-sundhedskrise-i-gaza-who-advarerer-om-foresta-ende-katastrofe",
-    "category": "Politik",
+    "category": "Udland",
     "weight": "B",
     "title": "Sundhedskrise i Gaza: WHO advarerer om forestående katastrofe",
     "standfirst": "WHO advarerer om en forestående sundhedskrise i Gaza, da regntiden nærmer sig. Situationen er ekstremt alvorlig, og der er behov for øjeblikkelig hjælp.",
@@ -70,5 +70,15 @@
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
+  },
+  "category_migration": {
+    "mode": "deterministic-taxonomy-migration",
+    "from": "Politik",
+    "to": "Udland",
+    "migrated_at": "2026-09-02T10:13:08Z",
+    "changed_fields": [
+      "category"
+    ],
+    "reason": "Politik removed as main category; Danmark renamed to Indland"
   }
 }

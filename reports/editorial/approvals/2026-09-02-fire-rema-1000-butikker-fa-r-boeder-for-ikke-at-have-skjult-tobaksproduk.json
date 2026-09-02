@@ -3,7 +3,7 @@
   "status": "pass",
   "story_id": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder",
   "article_slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk",
-  "checked_at": "2026-09-02T09:35:10.745Z",
+  "checked_at": "2026-09-02T10:13:14Z",
   "gates": {
     "language": "pass",
     "ethics": "pass",
@@ -16,7 +16,7 @@
     "pipeline_version": 2,
     "story_id": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder",
     "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk",
-    "category": "Politik",
+    "category": "Udland",
     "weight": "B",
     "title": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
     "standfirst": "Rema 1000",
@@ -34,20 +34,16 @@
       "canonical": null
     },
     "image": {
-      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk.jpg",
-      "alt": "Illustration til: Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
-      "credit": "Illustration: Morgentidende",
-      "license": "Morgentidende – statisk illustration",
-      "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk.jpg",
-      "image_type": "illustration",
-      "context_type": "illustration",
-      "caption": "Illustration",
-      "pending_image": true,
+      "src": "https://upload.wikimedia.org/wikipedia/commons/2/2c/REMA_1000_in_Dr%C3%B8bak_18.04.2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "alt": "A REMA 1000 in Drøbak, Akershus",
+      "credit": "Sebbog13",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:REMA_1000_in_Dr%C3%B8bak_18.04.2024.jpg",
+      "image_type": "photo",
+      "context_type": "archive",
+      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "pending_image": false,
       "ai_generated": false,
-      "generator": "static_pencil_fallback",
-      "contains_people": false,
-      "people_style": "pencil_hatching",
-      "photorealistic": false,
       "placement": "lead"
     },
     "body": [
@@ -71,5 +67,29 @@
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
+  },
+  "category_migration": {
+    "mode": "deterministic-taxonomy-migration",
+    "from": "Politik",
+    "to": "Udland",
+    "migrated_at": "2026-09-02T10:13:08Z",
+    "changed_fields": [
+      "category"
+    ],
+    "reason": "Politik removed as main category; Danmark renamed to Indland"
+  },
+  "media_reapproval": {
+    "mode": "targeted-image-only",
+    "checked_at": "2026-09-02T10:13:14Z",
+    "previous_snapshot_sha256": "385d0cd93c122371593d91655de51c90bcf093c7e25d3b1f6cfb458942fa290d",
+    "new_snapshot_sha256": "835e406cd2b04f96f793e411de419de6b2632d83d3dfd435ee313992d7c8dbb0",
+    "changed_fields": [
+      "image"
+    ],
+    "checks": [
+      "only image differs from previous final approval",
+      "replacement image provenance metadata complete",
+      "article text, claims, SEO, category and byline unchanged"
+    ]
   }
 }

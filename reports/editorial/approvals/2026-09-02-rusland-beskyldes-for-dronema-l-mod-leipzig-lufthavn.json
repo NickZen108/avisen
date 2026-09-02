@@ -16,7 +16,7 @@
     "pipeline_version": 2,
     "story_id": "2026-09-02-ruslands-gegenreaktion-auf-deutschlands-antwort",
     "slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn",
-    "category": "Politik",
+    "category": "Udland",
     "weight": "B",
     "title": "Rusland beskyldes for dronemål mod Leipzig Lufthavn",
     "standfirst": "Tyskland har officielt beskyldt Rusland for at stå bag et dronemål mod Leipzig Lufthavn. Læs mere om reaktionen fra den tyske regering og de annoncerede foranstaltninger mod Rusland.",
@@ -68,5 +68,15 @@
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
+  },
+  "category_migration": {
+    "mode": "deterministic-taxonomy-migration",
+    "from": "Politik",
+    "to": "Udland",
+    "migrated_at": "2026-09-02T10:13:08Z",
+    "changed_fields": [
+      "category"
+    ],
+    "reason": "Politik removed as main category; Danmark renamed to Indland"
   }
 }

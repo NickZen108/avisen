@@ -16,7 +16,7 @@
     "pipeline_version": 2,
     "story_id": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
     "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
-    "category": "Politik",
+    "category": "Udland",
     "weight": "B",
     "title": "Konflikter og politiske udviklinger i verden",
     "standfirst": "Få overblik over de seneste nyheder fra verden, herunder om USA's angreb på Iran.",
@@ -72,5 +72,15 @@
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
+  },
+  "category_migration": {
+    "mode": "deterministic-taxonomy-migration",
+    "from": "Politik",
+    "to": "Udland",
+    "migrated_at": "2026-09-02T10:13:08Z",
+    "changed_fields": [
+      "category"
+    ],
+    "reason": "Politik removed as main category; Danmark renamed to Indland"
   }
 }

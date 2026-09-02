@@ -1698,6 +1698,76 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "5d4e976620941cdcd4ddf3591c2341175190965026ac8a44a2d61a351af4ec63",
+        "recorded_at": "2026-09-02T10:13:16+00:00",
+        "title": "Konflikter og politiske udviklinger i verden",
+        "story_id": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
+          "slug": "2026-09-01-konflikter-og-politiske-udviklinger-i-verden",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Konflikter og politiske udviklinger i verden",
+          "standfirst": "Få overblik over de seneste nyheder fra verden, herunder om USA's angreb på Iran.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-01-konflikter-og-politiske-udviklinger-i-verden.json",
+          "claim_ids": [
+            "F01"
+          ],
+          "seo": {
+            "title": "Konflikter og politiske udviklinger i verden",
+            "description": "Læs om de seneste udviklinger i verden, herunder om konflikten mellem USA og Iran.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-01-konflikter-og-politiske-udviklinger-i-verden.jpg",
+            "alt": "Illustration til: Konflikter og politiske udviklinger i verden",
+            "credit": "Illustration: Morgentidende",
+            "license": "Morgentidende – statisk illustration",
+            "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-01-konflikter-og-politiske-udviklinger-i-verden.jpg",
+            "image_type": "illustration",
+            "context_type": "illustration",
+            "caption": "Illustration",
+            "pending_image": true,
+            "ai_generated": false,
+            "generator": "static_pencil_fallback",
+            "contains_people": false,
+            "people_style": "pencil_hatching",
+            "photorealistic": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Der er sket flere udviklinger i verden, blandt andet i forholdet mellem USA og Iran. Ifølge BBC World har USA lanceret flere angreb på Iran efter, at landet har forsøgt at angribe kommersielt skibsfart i Hormuz-strædet og amerikanske soldater i området.",
+              "type": "p"
+            },
+            {
+              "text": "Det er ikke alene i Mellemøsten, at der er politiske udviklinger. I Tyskland er der også sket noget nyt, men dette er ikke nærmere beskrevet i de tilgængelige kilder.",
+              "type": "p"
+            },
+            {
+              "text": "For tiden er der dog mest fokus på situationen mellem USA og Iran. Ifølge BBC World har der været flere eksplosioner i Iran, og landets statlige medier rapporterer om, at der er sket flere angreb fra USA's side.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ],
     "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed": [
@@ -1769,6 +1839,75 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "360c048adaf7cee74f6c588dda03f2cda38b728d782b41a89e0adbf62fef78c8",
+        "recorded_at": "2026-09-02T10:13:16+00:00",
+        "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+        "story_id": "2026-09-02-joshua-wong",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-joshua-wong",
+          "slug": "2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+          "standfirst": "Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Han risikerer en livsvarig fængselsstraf.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Joshua Wong erklærer sig skyldig i sag om national sikkerhed",
+            "description": "Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Han risikerer en livsvarig fængselsstraf.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-joshua-wong-erklaerer-sig-skyldig-i-sag-om-national-sikkerhed.jpg",
+            "alt": "學民思潮召集人黃之鋒, July 2012",
+            "credit": "Iris Tong",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Joshua_Wong_Chi-fung.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Den kendte Hong Kong-aktivist Joshua Wong har erklæret sig skyldig i en sag om national sikkerhed i Hong Kong. Ifølge anklagerne har Wong bedt udenlandske lande om at pålægge sanktioner eller blokade mod Kina og Hong Kong i 2020.",
+              "type": "p"
+            },
+            {
+              "text": "Wong har været fængslet siden november 2020 og kunne risikere en livsvarig fængselsstraf. Han arbejdede sammen med den landsforviste Hong Kong-aktivist Nathan Law for at opfordre til sanktioner mod Kina.",
+              "type": "p"
+            },
+            {
+              "text": "Anklagerne mener, at Wong har samarbejdet med Nathan Law om at opfordre udenlandske lande til at pålægge sanktioner eller blokade mod Kina og Hong Kong. Wong har allerede været fængslet i mere end to år og kunne nu risikere en endnu længere fængselsstraf.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ],
     "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk": [
@@ -1784,6 +1923,77 @@
           "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
           "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
           "category": "Politik",
+          "weight": "B",
+          "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+          "standfirst": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk. Dommer åbner op for dødsstraf i sagen.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Tyler Robinson: Ikke skyldig i mordet på Charlie Kirk",
+            "description": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk. Dommer åbner op for dødsstraf i sagen.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.jpg",
+            "alt": "Illustration til: Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+            "credit": "Illustration: Morgentidende",
+            "license": "Morgentidende – AI-genereret illustration",
+            "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk.jpg",
+            "image_type": "illustration",
+            "context_type": "illustration",
+            "caption": "Illustration",
+            "pending_image": true,
+            "ai_generated": true,
+            "generator": "workers_ai_flux",
+            "contains_people": false,
+            "people_style": "pencil_hatching",
+            "photorealistic": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Tyler Robinson har erklæret sig ikke skyldig i mordet på den konservative aktivist Charlie Kirk. Det sker efter, at en dommer har åbnet op for, at anklagerne kan kræve dødsstraf i sagen.",
+              "type": "p"
+            },
+            {
+              "text": "Ifølge BBC World blev Charlie Kirk, som er medstifter af organisationen Turning Point USA, skudt i halsen, mens han talte ved Utah Valley University i Orem den 10. september 2025. Tyler Robinson har nu erklæret sig ikke skyldig i forbindelse med drabet og yderligere seks anklager.",
+              "type": "p"
+            },
+            {
+              "text": "Sagen er meget omtalt i medierne, og både Euronews og BBC World har dækket sagen. Ifølge Euronews har dommeren åbnet op for, at anklagerne kan kræve dødsstraf i sagen, hvilket er en mulighed i delstaten Utah, hvor drabet fandt sted.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      },
+      {
+        "hash": "132246a2a6e1975fb39f83792540a564ded7a1059ea3d3d75e95feca0257f084",
+        "recorded_at": "2026-09-02T10:13:16+00:00",
+        "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
+        "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-tyler-robinson-pleads-not-guilty",
+          "slug": "2026-09-02-tyler-robinson-erklaerer-sig-ikke-skyldig-i-mordet-pa-charlie-kirk",
+          "category": "Udland",
           "weight": "B",
           "title": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk",
           "standfirst": "Tyler Robinson erklærer sig ikke skyldig i mordet på Charlie Kirk. Dommer åbner op for dødsstraf i sagen.",
@@ -1916,6 +2126,78 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "29dacb2bd55ba795bbf56287e4704e2edfc2f0d21c4f4066a3b7d38d36063a50",
+        "recorded_at": "2026-09-02T10:13:16+00:00",
+        "title": "Karsten Warholm ikke med i Diamond League-finale",
+        "story_id": "2026-09-02-karsten-warholm-ikke-deltager-i-diamond-league-finale",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-karsten-warholm-ikke-deltager-i-diamond-league-finale",
+          "slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Karsten Warholm ikke med i Diamond League-finale",
+          "standfirst": "Karsten Warholm deltager ikke i Diamond League-finale denne sæson.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "seo": {
+            "title": "Karsten Warholm ikke med i Diamond League-finale",
+            "description": "Karsten Warholm deltager ikke i Diamond League-finale på grund af en krangel om penge.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale.jpg",
+            "alt": "Illustration til: Karsten Warholm ikke med i Diamond League-finale",
+            "credit": "Illustration: Morgentidende",
+            "license": "Morgentidende – AI-genereret illustration",
+            "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale.jpg",
+            "image_type": "illustration",
+            "context_type": "illustration",
+            "caption": "Illustration",
+            "pending_image": true,
+            "ai_generated": true,
+            "generator": "workers_ai_flux",
+            "contains_people": false,
+            "people_style": "pencil_hatching",
+            "photorealistic": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Karsten Warholm deltager ikke i Diamond League-finale denne sæson. Ifølge NRK skyldes dette en krangel om penge, hvor Warholm selv siger: \"- Det handler ikke om penger.\" ",
+              "type": "p"
+            },
+            {
+              "text": "Warholm har haft en tøff sæson, hvor han har tabt fire gange til sin hovedkonkurrent, Alison dos Santos. Dos Santos har faktisk slået Warholm på hvert eneste forsøg denne sæson.",
+              "type": "p"
+            },
+            {
+              "text": "Diamond League-finale vil derfor gå uden Warholms deltagelse. Warholm har tidligere været kritisk overfor Diamond League-arrangøren, og har udtalt, at de tager profitten på bekostning af udøverne.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ],
     "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn": [
@@ -1931,6 +2213,72 @@
           "story_id": "2026-09-02-ruslands-gegenreaktion-auf-deutschlands-antwort",
           "slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn",
           "category": "Politik",
+          "weight": "B",
+          "title": "Rusland beskyldes for dronemål mod Leipzig Lufthavn",
+          "standfirst": "Tyskland har officielt beskyldt Rusland for at stå bag et dronemål mod Leipzig Lufthavn. Læs mere om reaktionen fra den tyske regering og de annoncerede foranstaltninger mod Rusland.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "Rusland beskyldes for dronemål mod Leipzig Lufthavn",
+            "description": "Tyskland har officielt beskyldt Rusland for at stå bag et dronemål mod Leipzig Lufthavn. Læs mere om reaktionen fra den tyske regering og de annoncerede foranstaltninger mod Rusland.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn.jpg",
+            "alt": "Rusland",
+            "credit": "Simon Cobb",
+            "license": "CC0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Rusland.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Tyskland har officielt beskyldt Rusland for at stå bag et dronemål mod Leipzig Lufthavn. Ifølge Politico Europe har den tyske regering nu også officielt gjort Moskva ansvarlig for angrebet.",
+              "type": "p"
+            },
+            {
+              "text": "Som reaktion på angrebet har den tyske regering annonceret en række foranstaltninger mod Rusland. Rixa Fürsen og Hans von der Burchard har analyseret disse foranstaltninger i et podcast på Politico Europe.",
+              "type": "p"
+            },
+            {
+              "text": "Dronemålet mod Leipzig Lufthavn ses som en eskalerende konflikt mellem Tyskland og Rusland. Ifølge Politico Europe har den tyske regering nu officielt gjort Moskva ansvarlig for angrebet, hvilket kan føre til yderligere spændinger mellem de to lande.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      },
+      {
+        "hash": "d2f35869b08a242307564be0f9f3cb8b65e16005ef212684cccece5b95bf164e",
+        "recorded_at": "2026-09-02T10:13:16+00:00",
+        "title": "Rusland beskyldes for dronemål mod Leipzig Lufthavn",
+        "story_id": "2026-09-02-ruslands-gegenreaktion-auf-deutschlands-antwort",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-ruslands-gegenreaktion-auf-deutschlands-antwort",
+          "slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn",
+          "category": "Udland",
           "weight": "B",
           "title": "Rusland beskyldes for dronemål mod Leipzig Lufthavn",
           "standfirst": "Tyskland har officielt beskyldt Rusland for at stå bag et dronemål mod Leipzig Lufthavn. Læs mere om reaktionen fra den tyske regering og de annoncerede foranstaltninger mod Rusland.",
@@ -2055,8 +2403,73 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "e3acc804626537c512e958353969e75b394f4f4ebee496251e7d800a4a066d02",
+        "recorded_at": "2026-09-02T10:13:16+00:00",
+        "title": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+        "story_id": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder",
+          "slug": "2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk",
+          "category": "Udland",
+          "weight": "B",
+          "title": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+          "standfirst": "Rema 1000",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-fire-rema-1000-butikker-fa-r-boeder-for-ikke-at-have-skjult-tobaksproduk.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Fire Rema 1000-butikker får bøder for ikke at have skjult tobaksprodukter",
+            "description": "Fire Rema 1000-butikker har fået bøder for ikke at have skjult tobaksprodukter. Det meddelte DR.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/2/2c/REMA_1000_in_Dr%C3%B8bak_18.04.2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+            "alt": "A REMA 1000 in Drøbak, Akershus",
+            "credit": "Sebbog13",
+            "license": "CC BY-SA 4.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:REMA_1000_in_Dr%C3%B8bak_18.04.2024.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Fire Rema 1000-butikker har fået bøder for ikke at have skjult tobaksprodukter. Det meddelte DR. Bøderne er en følge af ikke at have skjult tobaksprodukter, som er et krav ifølge loven om tobaksforældelse.",
+              "type": "h2"
+            },
+            {
+              "text": "Ifølge loven om tobaksforældelse skal tobaksprodukter være skjult i butikkerne, så de ikke kan ses af kunderne. Rema 1000 har ikke overholdt dette krav, og derfor har de fået bøder.",
+              "type": "p"
+            },
+            {
+              "text": "Det er første gang, at Rema 1000-butikker har fået bøder for ikke at have skjult tobaksprodukter. Det er ikke klart, hvor store bøderne er, men det er tydeligt, at Rema 1000 skal overholde loven om tobaksforældelse.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ]
   },
-  "generated_at": "2026-09-02T09:36:07+00:00"
+  "generated_at": "2026-09-02T10:13:16+00:00"
 }

@@ -16,7 +16,7 @@
     "pipeline_version": 2,
     "story_id": "2026-09-02-karsten-warholm-ikke-deltager-i-diamond-league-finale",
     "slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale",
-    "category": "Politik",
+    "category": "Udland",
     "weight": "B",
     "title": "Karsten Warholm ikke med i Diamond League-finale",
     "standfirst": "Karsten Warholm deltager ikke i Diamond League-finale denne sæson.",
@@ -74,5 +74,15 @@
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
+  },
+  "category_migration": {
+    "mode": "deterministic-taxonomy-migration",
+    "from": "Politik",
+    "to": "Udland",
+    "migrated_at": "2026-09-02T10:13:08Z",
+    "changed_fields": [
+      "category"
+    ],
+    "reason": "Politik removed as main category; Danmark renamed to Indland"
   }
 }

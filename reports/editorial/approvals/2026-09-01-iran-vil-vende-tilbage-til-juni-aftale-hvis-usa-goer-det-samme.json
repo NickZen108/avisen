@@ -16,7 +16,7 @@
     "pipeline_version": 2,
     "story_id": "2026-09-01-iran-siger-det-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme",
     "slug": "2026-09-01-iran-vil-vende-tilbage-til-juni-aftale-hvis-usa-goer-det-samme",
-    "category": "Politik",
+    "category": "Udland",
     "weight": "B",
     "title": "Iran vil vende tilbage til juni-aftale, hvis USA gør det samme",
     "standfirst": "Iran har udtalt, at de vil vende tilbage til juni-aftalen, hvis USA også gør det. Konflikten mellem USA og Iran er fortsat ikke løst.",
@@ -67,5 +67,15 @@
     "related": [],
     "correction_note": null,
     "automation_origin": "cloudflare-workers-ai"
+  },
+  "category_migration": {
+    "mode": "deterministic-taxonomy-migration",
+    "from": "Politik",
+    "to": "Udland",
+    "migrated_at": "2026-09-02T10:13:08Z",
+    "changed_fields": [
+      "category"
+    ],
+    "reason": "Politik removed as main category; Danmark renamed to Indland"
   }
 }
