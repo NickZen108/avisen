@@ -4467,6 +4467,99 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "7da76bac2e000242e701cc22ab718929d202d40531ffa0f1cd942e49549fa3df",
+        "recorded_at": "2026-09-02T20:41:41+00:00",
+        "title": "Dykkerulykke i Lerkils havn: En person alvorligt kvæstet",
+        "story_id": "2026-09-02-dykolycka-i-lerkils-hamn",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-dykolycka-i-lerkils-hamn",
+          "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet",
+          "category": "Udland",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "SE",
+            "country_code": "SE",
+            "hero_queries_english": [
+              "Diving accident in Lerkils harbor"
+            ],
+            "hero_queries_local": [
+              "Dykolycka i Lerkils hamn"
+            ],
+            "hero_queries_transliterated": [],
+            "place_names_english": [
+              "Lerkils harbor"
+            ],
+            "place_names_local": [
+              "Lerkils hamn"
+            ],
+            "primary_language": "sv",
+            "primary_language_code": "sv",
+            "transliterations": []
+          },
+          "title": "Dykkerulykke i Lerkils havn: En person alvorligt kvæstet",
+          "standfirst": "To dykkere blev reddet op af vandet efter en ulykke i Lerkils havn. Den ene blev kørt på hospitalet med alvorlige skader, oplyser SVT, Sveriges public service-tv.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "seo": {
+            "title": "Dykkerulykke i Lerkils havn: En person alvorligt kvæstet",
+            "description": "To dykkere blev reddet op af vandet efter en dykkerulykke i Lerkils havn i Kungsbacka. Den ene blev kørt på hospitalet med alvorlige skader.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet.jpg",
+            "alt": "Illustration til: Dykkerulykke i Lerkils havn: En person alvorligt kvæstet",
+            "credit": "Illustration: Morgentidende",
+            "license": "Morgentidende – AI-genereret illustration",
+            "source_url": "https://morgentidende-newsdesk.nicolaipetersen108.workers.dev/media/2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet.jpg",
+            "image_type": "illustration",
+            "context_type": "illustration",
+            "caption": "Illustration",
+            "pending_image": true,
+            "ai_generated": true,
+            "generator": "workers_ai_flux",
+            "contains_people": false,
+            "people_style": "pencil_hatching",
+            "photorealistic": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "En person er blevet alvorligt kvæstet efter en dykkerulykke i Lerkils havn i Kungsbacka. Alarmen om ulykken kom klokken 20.20, efter at en forbipasserende opdagede to dykkere i vandet og slog alarm. To personer blev reddet op af vandet, og den ene blev kørt på hospitalet med ambulance."
+            },
+            {
+              "type": "p",
+              "text": "Kilde: SVT, Sveriges public service-tv."
+            },
+            {
+              "type": "p",
+              "text": "Læs mere hos SVT: https://www.svt.se/nyheter/lokalt/halland/en-person-till-sjukhus-efter-dykolycka-i-lerkils-hamn"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ],
     "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist": [
@@ -4553,6 +4646,108 @@
           "source_ids_to_display": [
             "S1",
             "S2"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      },
+      {
+        "hash": "b60138b9bb4408a9a0f4746f341329d8f82b1756533909078fb1241cd1988128",
+        "recorded_at": "2026-09-02T20:41:41+00:00",
+        "title": "Maltesisk forretningsmand frikendt for medvirken til journalistmord",
+        "story_id": "2026-09-02-maltese-tycoon-acquitted-of-orchestrating-murder-of-renowned-journalist",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-maltese-tycoon-acquitted-of-orchestrating-murder-of-renowned-journalist",
+          "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist",
+          "category": "Krimi",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "MT",
+            "country_code": "MT",
+            "hero_queries_english": [
+              "Daphne Caruana Galizia murder",
+              "Malta journalist killed"
+            ],
+            "hero_queries_local": [
+              "qtila Daphne Caruana Galizia",
+              "Ġurnalist Malti maqtul"
+            ],
+            "hero_queries_transliterated": [],
+            "place_names_english": [
+              "Malta"
+            ],
+            "place_names_local": [
+              "Malta"
+            ],
+            "primary_language": "mt",
+            "primary_language_code": "mt",
+            "transliterations": []
+          },
+          "title": "Maltesisk forretningsmand frikendt for medvirken til journalistmord",
+          "standfirst": "Yorgen Fenech er frikendt for medvirken til mordet på journalisten Daphne Caruana Galizia. Forsvaret anfægtede et centralt vidne, mens hendes familie efter dommen siger, at retfærdigheden er blevet nægtet.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07"
+          ],
+          "seo": {
+            "title": "Yorgen Fenech frikendt i sagen om Daphne Caruana Galizia",
+            "description": "Yorgen Fenech er frikendt for medvirken til mordet på Daphne Caruana Galizia. Forsvaret anfægtede et nøglevidne, mens familien kritiserer udfaldet.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist.jpg",
+            "alt": "Mindested for den myrdede undersøgende journalist Daphne Caruana Galizia i Valletta på Malta.",
+            "credit": "Ethan Doyle White",
+            "license": "CC BY-SA 4.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Memorial_to_Daphne_Caruana_Galizia.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – mindested for Daphne Caruana Galizia i Valletta.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Den maltesiske forretningsmand Yorgen Fenech er blevet frikendt for medvirken til mordet på Daphne Caruana Galizia, en undersøgende journalist kendt for afsløringer om korruption på Malta. Juryen frikendte ham med stemmerne 8-1 efter omkring otte timers votering. Han risikerede livsvarigt fængsel, hvis han var blevet kendt skyldig."
+            },
+            {
+              "type": "p",
+              "text": "Caruana Galizia blev dræbt af en bilbombe i 2017. Anklagemyndigheden havde hævdet, at Fenech stod bag og finansierede drabet, blandt andet med henvisning til forklaringen fra Melvin Theuma, som blev betragtet som mellemmand i sagen."
+            },
+            {
+              "type": "p",
+              "text": "Fenech nægtede sig skyldig. Hans forsvar anfægtede Theumas troværdighed og pegede i stedet på, at politiet efter deres opfattelse ikke havde undersøgt Keith Schembri tilstrækkeligt. Schembri, der var stabschef for Maltas daværende premierminister Joseph Muscat, har afvist enhver involvering og var ikke mistænkt i mordefterforskningen."
+            },
+            {
+              "type": "p",
+              "text": "Efter frifindelsen sagde Caruana Galizias familie, at retfærdigheden efter deres opfattelse var blevet nægtet. Familien mener, at de institutionelle svigt, som gjorde mordet muligt, fortsat ikke er blevet håndteret, og efterlyser yderligere ansvarlighed."
+            },
+            {
+              "type": "p",
+              "text": "Andre personer er tidligere blevet dømt for deres roller i drabet og for at levere bomben. Frifindelsen af Fenech afslutter derfor ikke den bredere debat på Malta om mordet, korruption og myndighedernes håndtering af sagen."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
           ],
           "related_news_slug": null,
           "related": [],
@@ -4683,5 +4878,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-02T20:35:00+00:00"
+  "generated_at": "2026-09-02T20:41:41+00:00"
 }
