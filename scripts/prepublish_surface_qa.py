@@ -119,10 +119,25 @@ def main() -> int:
                         faults.append(f"{path.name}: YouTube-video-still kræver dokumenteret rights_basis")
                 if image.get("discovery_only_source") is True and image.get("independent_license") is not True:
                     faults.append(f"{path.name}: discovery_only må ikke være billedkilde uden selvstændig licens")
+            elif image_type == "graphic":
+                # Lawful, non-AI documentary maps/satellite images are a valid hero
+                # before we fall back to a Flux pencil illustration.
+                if pending or ai_generated:
+                    faults.append(f"{path.name}: dokumentarisk grafik må ikke være pending eller AI-genereret")
+                if context_type not in {"map", "satellite", "archive"}:
+                    faults.append(f"{path.name}: ugyldig context_type for dokumentarisk grafik")
+                if not str(image.get("caption") or "").strip():
+                    faults.append(f"{path.name}: dokumentarisk grafik kræver synlig kontekst-caption")
+                source_url = str(image.get("source_url") or "").lower()
+                if image.get("discovery_only_source") is True and image.get("independent_license") is not True:
+                    faults.append(f"{path.name}: discovery_only må ikke være grafikkilde uden selvstændig licens")
             elif image_type == "illustration":
+                # Legacy static placeholders can still be read while old records are
+                # being replaced, but the canonical Cloudflare generator no longer
+                # creates them. New fallback heroes are Flux-generated pencil art.
                 static_fallback = image.get("generator") == "static_pencil_fallback"
                 if not pending or (not ai_generated and not static_fallback):
-                    faults.append(f"{path.name}: nyhedsillustration skal være pending og enten AI-genereret eller godkendt statisk blyantfallback")
+                    faults.append(f"{path.name}: nyhedsillustration skal være pending og AI-genereret (legacy static accepteres kun under migration)")
                 if context_type != "illustration":
                     faults.append(f"{path.name}: pending illustration skal have context_type=illustration")
                 if str(image.get("caption") or "").strip().lower() != "illustration":
@@ -137,8 +152,9 @@ def main() -> int:
                     faults.append(f"{path.name}: hero mangler {key}")
 
             src = str(image.get("src") or "")
+            # Raw SVG is still not a public hero; Commons SVGs are requested as raster thumbnails.
             if src.lower().endswith(".svg"):
-                faults.append(f"{path.name}: autonom hero må ikke være SVG/diagram")
+                faults.append(f"{path.name}: autonom hero må ikke være rå SVG")
             if src.startswith("/img/"):
                 local = ROOT / "docs" / src.lstrip("/")
                 if not local.exists():
@@ -153,8 +169,8 @@ def main() -> int:
                 faults.append(f"{path.name}: lead-billede mangler alt-tekst")
             if not str(image.get("credit") or "").strip():
                 faults.append(f"{path.name}: lead-billede mangler kredit")
-            if image.get("image_type") == "photo" and not str(image.get("license") or "").strip():
-                faults.append(f"{path.name}: foto mangler licens")
+            if image.get("image_type") in {"photo", "graphic"} and not str(image.get("license") or "").strip():
+                faults.append(f"{path.name}: foto/grafik mangler licens")
 
         for i, block in enumerate(article.get("body") or []):
             if block.get("type") != "figure":
