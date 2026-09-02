@@ -18,7 +18,7 @@ jobs:
         run: git fetch origin main && git reset --hard origin/main
       - name: Apply language house rules
         run: |
-          echo 'language-house-rule-v2'
+          echo 'language-house-rule-v3'
           python scripts/apply_language_house_rules_once.py
           node --check cloudflare/newsdesk/src/editorial.js
       - name: Commit changes
@@ -26,7 +26,7 @@ jobs:
           git config user.name "morgentidende-publisher"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add HUSREGLER.md STYLE.md cloudflare/newsdesk/src/editorial.js
-          git commit -m "language: explain proper nouns and prevent Nordic leakage"
+          git commit -m "language: normalize research claims to Danish"
           git push
       - name: Deploy Newsdesk
         env: {GH_TOKEN: '${{ github.token }}'}
