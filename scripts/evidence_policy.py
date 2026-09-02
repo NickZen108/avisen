@@ -4,21 +4,28 @@
 The Cloudflare Worker mirrors these rules and parity fixtures guard drift.
 """
 from __future__ import annotations
-import re
 from urllib.parse import urlparse
 
-PRIMARY_TYPES = {"primary", "paper", "interview"}
-HIGH_RISK = re.compile(r"\b(sigtet|tiltalt|anklag|mistænkt|voldtægt|seksual|misbrug|selvmord|mindreår|diagnose|terror|drab|korruption|svindel|hvidvask|overgreb|racist|ekstremist)\b|\bprivat\s+helbred\b", re.I)
-ACCUSED = re.compile(r"\b(sigtet|tiltalt|mistænkt|anklaget)\b", re.I)
-NAMED = re.compile(r"\b[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\s+[A-ZÆØÅ][a-zæøåéèáàíìóòúù-]+\b")
+PRIMARY_TYPES = {"primary", "paper", "research_paper", "interview", "official_statement"}
+AUTHORITATIVE_CLASSES = {
+    "primary", "official", "authority", "government", "public_body",
+    "strong_editorial", "public_media", "major_media", "wire",
+    "paper", "research_paper", "researcher", "scientist", "expert",
+    "company_statement", "organization_statement", "person_statement",
+    "first_party_statement", "interview", "official_statement",
+}
+MAJOR_MEDIA_HOSTS = {
+    "reuters.com", "apnews.com", "bbc.com", "bbc.co.uk", "dr.dk", "tv2.dk",
+    "svt.se", "nrk.no", "ft.com", "politico.eu", "bloomberg.com",
+    "theguardian.com", "nytimes.com", "wsj.com", "france24.com", "dw.com",
+    "euronews.com", "aljazeera.com", "sky.com", "skynews.com", "cnn.com",
+    "nbcnews.com", "cbsnews.com", "abcnews.go.com", "foxnews.com",
+    "spiegel.de", "lemonde.fr", "tagesschau.de", "rbb24.de", "itv.com",
+}
 WIRE_HOSTS = {
     "reuters.com": "reuters",
     "apnews.com": "ap",
 }
-
-
-def authoritative_primary(source: dict | None) -> bool:
-    return bool(source and source.get("type") in PRIMARY_TYPES and str(source.get("authoritative_for") or "").strip())
 
 
 def _source_host(source: dict | None) -> str:
@@ -30,18 +37,63 @@ def _source_host(source: dict | None) -> str:
         return ""
 
 
-def original_wire(source: dict | None) -> bool:
-    """True only for explicit provenance or a known original wire host.
+def _host_in(host: str, hosts: set[str]) -> bool:
+    return any(host == base or host.endswith("." + base) for base in hosts)
 
-    A source_group label alone is not proof of bureau origin; it may have been
-    derived from a secondary publisher mentioning a wire service.
-    """
+
+def authoritative_primary(source: dict | None) -> bool:
+    if not source:
+        return False
+    source_type = str(source.get("type") or "").strip().lower()
+    if source_type not in PRIMARY_TYPES:
+        return False
+    # Primary/first-party material must say what it is authoritative for.
+    return bool(str(source.get("authoritative_for") or "").strip())
+
+
+def original_wire(source: dict | None) -> bool:
+    """True only for explicit provenance or a known original wire host."""
     if not source:
         return False
     if str(source.get("wire_origin") or "").strip():
         return True
+    return _host_in(_source_host(source), set(WIRE_HOSTS))
+
+
+def authoritative_source(source: dict | None) -> bool:
+    """Whether one source may, by itself, verify a claim.
+
+    House rule: one relevant authoritative source is enough. Authority includes
+    major newsrooms, official/public authorities, first-party statements about
+    own affairs, researchers/experts in field, and original research papers.
+    Discovery-only and utility/account pages are never authoritative evidence.
+    """
+    if not source or source.get("discovery_only"):
+        return False
+    if authoritative_primary(source) or original_wire(source):
+        return True
     host = _source_host(source)
-    return any(host == base or host.endswith("." + base) for base in WIRE_HOSTS)
+    if _host_in(host, MAJOR_MEDIA_HOSTS):
+        return True
+    labels = {
+        str(source.get("authority_class") or "").strip().lower(),
+        str(source.get("source_kind") or "").strip().lower(),
+        str(source.get("source_strength") or "").strip().lower(),
+        str(source.get("provenance_type") or "").strip().lower(),
+        str(source.get("type") or "").strip().lower(),
+    }
+    labels.discard("")
+    if labels & AUTHORITATIVE_CLASSES:
+        # First-party/expert/research authority must be explicitly scoped.
+        scoped = {
+            "paper", "research_paper", "researcher", "scientist", "expert",
+            "company_statement", "organization_statement", "person_statement",
+            "first_party_statement", "interview", "official_statement",
+        }
+        if labels & scoped:
+            return bool(str(source.get("authoritative_for") or "").strip())
+        return True
+    return False
 
 
 def evidence_atom(source: dict | None) -> str:
@@ -67,18 +119,6 @@ def evidence_atom(source: dict | None) -> str:
     return "publisher:" + root if root else ""
 
 
-def high_risk(article: dict, ledger: dict, claim: dict) -> bool:
-    if (ledger.get("right_of_reply") or {}).get("required"):
-        return True
-    text = " ".join(str(x or "") for x in (article.get("title"), article.get("standfirst"), claim.get("claim")))
-    return bool(HIGH_RISK.search(text))
-
-
-def named_accused(claim: dict) -> bool:
-    text = str(claim.get("claim") or "")
-    return bool(ACCUSED.search(text) and NAMED.search(text))
-
-
 def claim_has_required_support(article: dict, ledger: dict, claim: dict, sources: dict[str, dict]) -> bool:
     source_ids = list(claim.get("source_ids", []))
     if int(ledger.get("schema_version") or 0) >= 3:
@@ -91,10 +131,4 @@ def claim_has_required_support(article: dict, ledger: dict, claim: dict, sources
             return False
     rows = [sources.get(sid) for sid in source_ids]
     rows = [s for s in rows if s and not s.get("discovery_only")]
-    primary_ok = any(authoritative_primary(s) for s in rows)
-    if named_accused(claim):
-        return primary_ok
-    atoms = {evidence_atom(s) for s in rows if evidence_atom(s)}
-    if high_risk(article, ledger, claim):
-        return primary_ok or len(atoms) >= 2
-    return primary_ok or any(original_wire(s) for s in rows) or len(atoms) >= 2
+    return any(authoritative_source(s) for s in rows)
