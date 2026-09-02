@@ -21,6 +21,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.evidence_policy import claim_has_required_support
+from scripts.magazine_policy import infer_new_destination
 
 DOCUMENTARY_CONTEXTS = {"event", "place", "person", "object", "archive"}
 ALLOWED_AI_PEOPLE_STYLES = {"pencil_hatching", "pencil_sketch", "line_art", "silhouette", "ink_drawing"}
@@ -235,6 +236,14 @@ def main() -> int:
         print(f"Allerede importeret: {slug}")
         return 0
 
+    # Editorial destination is immutable from first GitHub ingestion onward.
+    # An explicit destination from Newsdesk wins; otherwise deterministic subject
+    # rules provide the transition while the runtime rolls out the same field.
+    destination = infer_new_destination(article)
+    article["editorial_destination"] = destination
+    ledger["editorial_destination"] = destination
+    approval["editorial_destination"] = destination
+
     hero_path = save_hero(media)
     original_source_url = article["image"].get("source_url")
     article["image"]["src"] = f"{PUBLIC_SITE}/img/auto/{hero_path.name}"
@@ -250,7 +259,7 @@ def main() -> int:
     article_path.write_text(json.dumps(article, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (SOURCES / f"{slug}.json").write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (APPROVALS / f"{slug}.json").write_text(json.dumps(approval, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Imported Cloudflare editorial package: {slug}; hero={hero_path.relative_to(ROOT)}")
+    print(f"Imported Cloudflare editorial package: {slug}; destination={destination}; hero={hero_path.relative_to(ROOT)}")
     return 0
 
 
