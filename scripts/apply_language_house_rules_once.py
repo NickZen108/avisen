@@ -29,13 +29,20 @@ if 'Norske bokmåls-/nynorskformer' not in s:
     s = s.replace(old, new, 1)
 style.write_text(s)
 
-# Bind the house rules into the active journalist prompt without adding a new gate.
+# Bind the house rules into active Research and Journalist prompts without adding a new gate.
 js = Path('cloudflare/newsdesk/src/editorial.js')
 s = js.read_text()
+research_old = ('Ved oversættelse eller parafrase fra et andet sprog skal betydningen bevares præcist: hvem gør hvad mod hvem/hvad, subjekt, objekt, negation, modalitet, årsag, tid og tal må ikke skifte. '
+                'Oversæt ikke et ord som response/efforts/measure til selve hændelsen eller problemet, hvis det ændrer betydningen. Opfind intet.')
+research_new = ('Skriv alle kandidat-claims på idiomatisk dansk, også når originalkilden er norsk, svensk eller et andet sprog. Norske bokmåls-/nynorskformer og svenske ord eller bøjningsformer må ikke føres videre som dansk. '
+                'Ved oversættelse eller parafrase skal originalens samlede betydning bevares præcist. Opfind intet.')
+if research_old in s:
+    s = s.replace(research_old, research_new, 1)
+
 old1 = 'Skriv præcist og levende dansk, men brug KUN verificerede claims.'
 new1 = ('Skriv præcist, levende og idiomatisk dansk, men brug KUN verificerede claims. '
         'Når kilden er norsk eller svensk, skal du oversætte fuldt til naturligt dansk; bokmåls-, nynorsk- og svenske ord eller bøjningsformer må ikke glide med over i teksten.')
-if old1 in s and 'bokmåls-, nynorsk-' not in s:
+if old1 in s and 'Når kilden er norsk eller svensk' not in s:
     s = s.replace(old1, new1, 1)
 old2 = 'Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram.'
 new2 = ('Skriv til almindelige læsere: erstat fagord og engelske brancheord med almindeligt dansk, forklar nødvendige tekniske begreber første gang med 1-2 korte sætninger, og omsæt uvante mål til fx kilometer, meter, Celsius og kilogram. '
@@ -44,7 +51,6 @@ if old2 in s and 'Forklar desuden alle egennavne kort første gang' not in s:
     s = s.replace(old2, new2, 1)
 js.write_text(s)
 
-# Print any existing Diamond League article(s) for targeted follow-up.
 for p in sorted(Path('content/articles').glob('*.json')):
     text = p.read_text(errors='ignore')
     if 'Diamond League' in text:
