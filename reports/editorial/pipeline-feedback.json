@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T05:10:35.434150Z",
+  "generated_at": "2026-09-02T05:18:24.173872Z",
   "date_dk": "2026-09-02",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,28 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 1,
+    "rejections": 3,
     "reviews": [
+      {
+        "at": "2026-09-02T05:18:11.072Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "infrastructure",
+        "reason": "TypeError: fact.claims is not iterable",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-02T05:17:56.642Z",
+        "slug": null,
+        "title": "Konflikt i Iran, US-krise og politiske udviklinger",
+        "stage": "research",
+        "reason": "Research hold",
+        "class": "evidence",
+        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-02T05:10:20.043Z",
         "slug": null,
@@ -31,10 +51,10 @@
   "last7_stage_counts": {
     "ethics": 1,
     "fact_check": 9,
-    "infrastructure": 7,
+    "infrastructure": 8,
     "language": 1,
     "media": 5,
-    "research": 8,
+    "research": 9,
     "seo": 1
   },
   "suggested_adjustments": [
@@ -44,7 +64,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "17 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "18 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",
@@ -52,7 +72,7 @@
       "current": "observeret driftsstop",
       "proposed": "genkør/kapacitetsstyring",
       "status": "fix-system",
-      "why": "7 driftsstop på 7 dage er ikke et argument for at svække redaktionelle gates."
+      "why": "8 driftsstop på 7 dage er ikke et argument for at svække redaktionelle gates."
     }
   ],
   "current_blockers": [
