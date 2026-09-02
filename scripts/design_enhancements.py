@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Editorial layout enhancements applied after the canonical build.
 
-Every article gets two distinct eight-story hero grids with a premium magazine
-shelf between them. Recommendations are deterministic, contextual and diverse.
+Every article gets two distinct eight-story hero grids. Recommendations are
+deterministic, contextual and diverse. The legacy Perspektiv & liv shelf has
+been retired in favour of the dedicated front-page magazine blocks.
 """
 from __future__ import annotations
 import html,json,re
@@ -60,24 +61,16 @@ def more_news_html(items,current_slug,*,offset=0,heading='Flere nyheder',exclude
   variant=' more-news-card--anchor' if i==0 else (' more-news-card--compact' if i in {3,7} else '')
   cards.append(f'<article class="more-news-card{variant}">{hero}<p class="section-label more-news__category">{esc(a.get("category") or "Nyhed")}</p><h2><a href="{esc(a["slug"])}.html">{esc(a["title"])}</a></h2><p>{esc(teaser(a,120))}</p></article>')
  return '<section class="wrap below"><h2 class="below-heading">'+esc(heading)+'</h2>'+''.join(cards)+'</section>',{str(a.get('slug')) for a in choices}
-def feature_html(items,*,prefix,current_slug=None):
- choices=[a for a in items if a.get('slug')!=current_slug and is_feature(a)][:4]
- if len(choices)<4:
-  used={a.get('slug') for a in choices}|({current_slug} if current_slug else set());fallback=[a for a in items if a.get('slug') not in used and a.get('category') not in {'Krimi'}];choices+=fallback[:4-len(choices)]
- if not choices:return ''
- cards=''.join(f'<a class="feature-card" href="{prefix}{esc(a["slug"])}.html"><span class="feature-card__category">{esc(a.get("category") or "Feature")}</span><strong>{esc(a["title"])}</strong><p>{esc(teaser(a,105))}</p></a>' for a in choices[:4])
- return '<section class="feature-shelf" aria-label="Perspektiv og liv"><div class="feature-shelf__head"><div><p class="feature-shelf__eyebrow">Morgentidende magasin</p><h2 class="feature-shelf__title">Perspektiv &amp; liv</h2></div><p class="feature-shelf__deck">Videnskab, sundhed, kultur, relationer og historier med længere levetid end nyhedsstrømmen.</p></div><div class="feature-shelf__grid">'+cards+'</div></section>'
 def enhance_article(path,items):
  current_slug=path.stem;text=path.read_text(encoding='utf-8');text=re.sub(r'<section class="wrap below">.*?</section>','',text,flags=re.S);text=re.sub(r'<section class="feature-shelf".*?</section>','',text,flags=re.S)
- first,used=more_news_html(items,current_slug,heading='Flere nyheder');shelf=feature_html(items,prefix='',current_slug=current_slug);second,_=more_news_html(items,current_slug,offset=8,heading='Mere fra Morgentidende',exclude=used);block='\n'.join(x for x in (first,shelf,second) if x)
+ first,used=more_news_html(items,current_slug,heading='Flere nyheder');second,_=more_news_html(items,current_slug,offset=8,heading='Mere fra Morgentidende',exclude=used);block='\n'.join(x for x in (first,second) if x)
  if block:text=text.replace('<footer>',block+'\n<footer>',1)
  path.write_text(text,encoding='utf-8')
 def enhance_front(items):
  path=DOCS/'index.html'
  if not path.exists():return
- text=path.read_text(encoding='utf-8');shelf=feature_html(items,prefix='artikler/')
- if not shelf:return
- marker='<!-- SHORT_VIDEOS -->';text=text.replace(marker,shelf+'\n  '+marker,1) if marker in text else text.replace('<section class="signup"',shelf+'\n<section class="signup"',1);path.write_text(text,encoding='utf-8')
+ text=path.read_text(encoding='utf-8');text=re.sub(r'\n?<section class="feature-shelf"[\s\S]*?</section>\n?','\n',text)
+ path.write_text(text,encoding='utf-8')
 def main():
  items=published()
  for p in sorted((DOCS/'artikler').glob('*.html')):
