@@ -1,15 +1,23 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T05:32:56+00:00",
+  "generated_at": "2026-09-02T05:43:57+00:00",
   "status": "yellow",
-  "published_count": 18,
+  "published_count": 19,
   "hard_failures": [],
   "warnings": [
-    "1 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
+    "2 publicerede artikler har svag eller tvivlsom kildeuafhængighed"
   ],
   "metrics": {
     "possible_duplicate_pairs": [],
     "source_independence_flags": [
+      {
+        "slug": "2026-09-02-rusland-beskyldes-for-dronema-l-mod-leipzig-lufthavn",
+        "unique_urls": 1,
+        "unique_hosts": 1,
+        "unique_groups": 1,
+        "declared_groups": 1,
+        "duplicate_urls": {}
+      },
       {
         "slug": "2026-09-02-karsten-warholm-ikke-med-i-diamond-league-finale",
         "unique_urls": 1,

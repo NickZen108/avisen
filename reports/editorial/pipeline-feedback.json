@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T05:32:55.508987Z",
+  "generated_at": "2026-09-02T05:43:56.515869Z",
   "date_dk": "2026-09-02",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,28 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 5,
+    "rejections": 7,
     "reviews": [
+      {
+        "at": "2026-09-02T05:43:38.364Z",
+        "slug": null,
+        "title": "Friedrich Merz og Putin",
+        "stage": "research",
+        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
+        "class": "evidence",
+        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-02T05:42:51.014Z",
+        "slug": null,
+        "title": "Scott Bessent mødte sin russiske motpart på amerikansk jord",
+        "stage": "research",
+        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
+        "class": "evidence",
+        "assessment": "Bevar kildekrav som udgangspunkt. Undersøg om fetch, source-grouping eller legacy-data skaber falske stop.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-02T05:28:13.435Z",
         "slug": null,
@@ -74,7 +94,7 @@
     "infrastructure": 9,
     "language": 1,
     "media": 5,
-    "research": 9,
+    "research": 11,
     "seo": 1
   },
   "suggested_adjustments": [
@@ -84,7 +104,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "19 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "21 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",
