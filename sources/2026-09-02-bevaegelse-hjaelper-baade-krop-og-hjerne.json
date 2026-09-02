@@ -1,0 +1,55 @@
+{
+  "story_id": "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne",
+  "article_slug": "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne",
+  "assignment": {
+    "category": "Sundhed",
+    "weight": "D",
+    "core_question": "Hvad ved vi om fysisk aktivitets betydning for både fysisk og mental sundhed?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "WHO: Physical activity",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/physical-activity",
+      "published_at": "2024-06-26T00:00:00Z",
+      "accessed_at": "2026-09-02T10:17:00Z",
+      "type": "primary",
+      "source_group": "who-physical-activity",
+      "authoritative_for": "WHO's anbefalinger og dokumenterede sundhedsgevinster ved fysisk aktivitet"
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "WHO anbefaler voksne mindst 150 til 300 minutters moderat aerob fysisk aktivitet om ugen eller 75 til 150 minutters hård aktivitet, plus muskelstyrkende aktivitet mindst to dage om ugen.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["who-physical-activity"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "WHO's generelle anbefaling for voksne."
+    },
+    {
+      "id": "F02",
+      "claim": "Regelmæssig fysisk aktivitet er forbundet med lavere risiko for blandt andet hjerte-kar-sygdom, type 2-diabetes og flere kræftformer.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["who-physical-activity"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "WHO beskriver både forebyggelse og risikoreduktion."
+    },
+    {
+      "id": "F03",
+      "claim": "Fysisk aktivitet kan reducere symptomer på depression og angst og forbedre søvn og generelt velbefindende.",
+      "status": "verified",
+      "source_ids": ["S1"],
+      "independent_groups": ["who-physical-activity"],
+      "checked_at": "2026-09-02T10:17:00Z",
+      "notes": "WHO angiver mentale sundhedsgevinster som del af den samlede evidens."
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {"required": false, "party": null, "contacted_at": null, "deadline": null, "response": null, "exception": null},
+  "fact_check": {"status": "pass", "checked_at": "2026-09-02T10:17:00Z", "notes": ["Artiklen skelner mellem generelle sundhedsgevinster og behandling af konkrete sygdomme."]}
+}
