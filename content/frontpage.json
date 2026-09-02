@@ -3,15 +3,13 @@
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny A-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker": {
-    "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
+    "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000",
+    "text": "Redningsarbejdet fortsætter efter flodbølgen i Nepal og Tibet"
   },
   "lead": {
     "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
   },
   "rail": [
-    {
-      "slug": "2026-09-01-flodboelgen-i-nepal-og-tibet-doedstallet-stiger-til-over-1-000"
-    },
     {
       "slug": "2026-08-31-video-passagerer-klamrer-sig-til-kaentret-faerge-under-redningsaktion"
     },
