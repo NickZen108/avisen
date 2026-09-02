@@ -115,6 +115,8 @@ Relaterede interne links må aldrig bruge CMS-agtig tekst som `Læs den faktuell
 
 ## Lægmandssprog, fremmedord og måleenheder
 
+**Egennavne skal forklares første gang de optræder**, så en almindelig dansk læser straks ved, hvad personen, organisationen, virksomheden, institutionen, turneringen, ligaen, programmet, myndigheden, stedet eller begivenheden er i den konkrete sammenhæng. Brug en kort naturlig apposition eller forklaring, fx `Diamond League, den internationale serie af topstævner i atletik, ...`, `OpenAI, det amerikanske AI-selskab, ...` eller `Gideon Sa'ar, Israels udenrigsminister, ...`. Forklaringen skal være kort og relevant; den må ikke blive til leksikonfyld.
+
 Morgentidende skrives til almindelige læsere, ikke til fagfolk. **Hvis et fremmedord, fagudtryk, teknisk begreb eller brancheudtryk kan erstattes af almindeligt dansk uden at miste vigtig præcision, skal det erstattes.** Skriv fx `andre planeter` før eller i stedet for `exoplaneter`, og `større/bredere kortlægninger` eller en konkret dansk forklaring i stedet for engelske fagord som `surveys`, medmindre selve fagtermen er nødvendig.
 
 Hvis en nødvendig term ikke kan oversættes enkelt eller præcist nok, skal den **forklares første gang den optræder med 1–2 korte sætninger i direkte lægmandssprog**. Forklaringen skal fortælle, hvad begrebet er, og hvorfor det betyder noget i netop historien. Eksempel: Et `Lagrange-punkt` må ikke stå uforklaret; læseren skal kort få at vide, at det er et område i rummet, hvor tyngdekraften fra to store legemer gør det muligt for et rumfartøj at holde en stabil placering med relativt lidt brændstof.

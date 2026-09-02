@@ -7,6 +7,8 @@ Kort. Aktivt. Dansk. Præcist. Seriøst uden at være stift.
 - Skriv den vigtigste oplysning først.
 - Brug korte, konkrete sætninger og aktive verber.
 - Forklar nødvendige fagord første gang. Brug almindeligt dansk frem for unødvendige engelske brancheord.
+- Forklar alle egennavne kort første gang: personer med relevant rolle, organisationer/virksomheder med hvad de er, turneringer/ligaer/programmer med hvad de dækker, og mindre kendte steder med nødvendig geografisk kontekst.
+- Skriv idiomatisk dansk også når kilden er norsk eller svensk. Norske bokmåls-/nynorskformer og svenske ord eller bøjninger må ikke glide med over i den danske tekst. Oversæt meningen til naturligt dansk.
 - Oversæt betydning, ikke syntaks. Undgå maskinoversættelsesdansk og AI-fyld.
 - Ingen slang, hån, sarkasme eller dramatisk overdrivelse i nyheder.
 - Bevar tal, navne, datoer, citater, juridisk status og faktuel nuance fra de verificerede claims.
