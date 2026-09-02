@@ -32,6 +32,20 @@ def published_slugs():
   except Exception:continue
   if x.get('status')=='published' and x.get('slug'): out.append(x['slug'])
  return out
+def set_ticker(state, slug, article=None):
+ """Only writer for ticker slug + copy. Keeps the two fields atomic."""
+ if slug:
+  article = article or article_for_slug(slug)
+  state['ticker']={'slug':slug}
+  copy_text=ticker_copy(article)
+  if copy_text: state['ticker_text']=copy_text
+  else: state.pop('ticker_text',None)
+ else:
+  state['ticker']={}
+  state.pop('ticker_text',None)
+ return state
+def write_frontpage(state):
+ FRONTPAGE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def repair_frontpage(blocked_slug):
  if not FRONTPAGE.exists(): return
  state=load(FRONTPAGE); changed=False
@@ -48,21 +62,18 @@ def repair_frontpage(blocked_slug):
  fallback=next((s for s in candidates if s and s!=blocked_slug),None)
  for key in ('ticker','lead'):
   if (state.get(key) or {}).get('slug')==blocked_slug:
-   if fallback: state[key]={'slug':fallback}
+   if key=='ticker': set_ticker(state, fallback)
+   elif fallback: state[key]={'slug':fallback}
    else: state[key]={}
-   if key=='ticker':
-    copy_text=ticker_copy(article_for_slug(fallback)) if fallback else ''
-    if copy_text: state['ticker_text']=copy_text
-    else: state.pop('ticker_text',None)
    changed=True
- if changed: FRONTPAGE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ if changed: write_frontpage(state)
 def add_to_frontpage(article):
- slug=article['slug']; state=load(FRONTPAGE); state['date']=slug[:10]; state['ticker']={'slug':slug}; state['ticker_text']=ticker_copy(article)
+ slug=article['slug']; state=load(FRONTPAGE); state['date']=slug[:10]; set_ticker(state, slug, article)
  if article.get('weight') in {'A','B'} and not article.get('related_news_slug'):
   state['lead']={'slug':slug}; state['lead_rationale']=f"Ny {article.get('weight')}-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead."
  for key,limit in (('rail',5),('narrow',8)):
   items=[x for x in state.get(key,[]) if x.get('slug')!=slug]; items.insert(0,{'slug':slug}); state[key]=items[:limit]
- FRONTPAGE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ write_frontpage(state)
 def diagnose(path,x):
  reasons=[]; missing=[]
  if x.get('manual_review') and not x.get('manual_review_completed'):
@@ -105,7 +116,21 @@ def main():
    if changed:
     ws.update({'state':'blocked','resume_from':resume,'reasons':reasons}); ws.setdefault('blocked_at',stamp); x['workflow_state']=ws; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
   elif x.get('status')=='ready' and x.get('release_requested') is True and not reasons and not a.normalize_only:
-   x['status']='published'; x['published_at']=stamp; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; x.pop('workflow_state',None); path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); add_to_frontpage(x); released+=1
+   x['status']='published'; x['published_at':stamp]; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; x.pop('workflow_state',None); path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); add_to_frontpage(x); released+=1
   rows.append({'slug':x.get('slug'),'title':x.get('title'),'status':x.get('status'),'release_requested':x.get('release_requested'),'resume_from':resume if reasons else None,'reasons':reasons})
  write_health(rows,stamp); print(f'Ready release: {released}; recovered/parked: {recovered}'); return 0
-if __name__=='__main__': raise SystemExit(main())
+def self_test():
+ state={'ticker':{'slug':'old-slug'},'ticker_text':'Gammel ticker','lead':{'slug':'old-lead'},'rail':[],'narrow':[],'stack':[]}
+ article={'slug':'new-slug','title':'Ny titel','standfirst':'Ny standfirst om sagen.'}
+ set_ticker(state,'new-slug',article)
+ assert state['ticker']=={'slug':'new-slug'}, state
+ assert state['ticker_text']=='Ny standfirst om sagen.', state
+ set_ticker(state,None)
+ assert state['ticker']=={}
+ assert 'ticker_text' not in state
+ print('release_ready self-test: PASS')
+if __name__=='__main__':
+ import sys
+ if '--self-test' in sys.argv:
+  self_test(); raise SystemExit(0)
+ raise SystemExit(main())
