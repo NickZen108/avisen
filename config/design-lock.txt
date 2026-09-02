@@ -11,4 +11,4 @@ e48d5f4592a8a24d7b3a87ef1956fed642bdbe2f docs/account-ui.css
 83f1e071db636d0b3db652fdf8af2af926150d02 docs/logo-mark.svg
 c71cdb69f9a759947c2c9ac94b4612d1cda87012 docs/morning-sun.svg
 a2fe7b49d6aebeeeb7099983c1179b5239c39711 templates/article.html
-c9c6e26a292366009f9018babc4e4aab900fa512 templates/index.html
+d61bc44761c6f941eec4bbde03298e57a4ba4ee9 templates/index.html
