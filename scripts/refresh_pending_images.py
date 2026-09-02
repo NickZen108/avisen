@@ -17,6 +17,7 @@ import argparse
 import html
 import json
 import re
+import unicodedata
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -48,21 +49,35 @@ def clean(value: str) -> str:
 
 
 def words(value: str) -> list[str]:
-    """Unicode-aware search tokens; supports Devanagari, Cyrillic, CJK, etc."""
+    """Unicode-aware tokens including combining marks used by many scripts."""
     stop = {
         "efter", "over", "under", "siger", "mener", "skal", "ville", "bliver", "med", "fra", "til", "for",
         "the", "and", "with", "from", "after", "says",
     }
-    value = str(value or "").replace("-", " ").replace("/", " ")
-    tokens = re.findall(r"[^\W_]{2,}", value, flags=re.UNICODE)
-    return [x for x in tokens if x.lower() not in stop]
+    value = unicodedata.normalize("NFC", str(value or "").replace("-", " ").replace("/", " "))
+    tokens: list[str] = []
+    current: list[str] = []
+    for ch in value:
+        category = unicodedata.category(ch)
+        if ch.isalnum() or category.startswith("M"):
+            current.append(ch)
+        else:
+            if current:
+                token = "".join(current).strip()
+                if len(token) >= 2:
+                    tokens.append(token)
+                current = []
+    if current:
+        token = "".join(current).strip()
+        if len(token) >= 2:
+            tokens.append(token)
+    return [x for x in tokens if x.casefold() not in stop]
 
 
 def location_queries(article: dict) -> list[str]:
     loc = article.get("story_location") or {}
     if not isinstance(loc, dict):
         return []
-    # Local language first, then transliterations/alternate spellings, then English.
     buckets = (
         loc.get("hero_queries_local") or [],
         loc.get("hero_queries_transliterated") or [],
@@ -114,8 +129,6 @@ def fallback_queries(article: dict) -> list[str]:
 
 
 def queries(article: dict) -> list[str]:
-    # Newsdesk-supplied local/English queries are authoritative for new stories.
-    # Keep up to two fallback queries as resilience for incomplete metadata.
     raw = location_queries(article) + fallback_queries(article)[:2]
     return list(dict.fromkeys(x for x in raw if x))[:8]
 
@@ -138,7 +151,7 @@ def commons_photo(article: dict) -> dict | None:
             "gsrnamespace": 6, "gsrsearch": q, "gsrlimit": 10,
             "prop": "imageinfo", "iiprop": "url|mime|size|extmetadata", "iiurlwidth": 1600,
         })
-        req = urllib.request.Request(COMMONS_API + "?" + params, headers={"User-Agent": "MorgentidendePendingMedia/3.0"})
+        req = urllib.request.Request(COMMONS_API + "?" + params, headers={"User-Agent": "MorgentidendePendingMedia/3.1"})
         try:
             with urllib.request.urlopen(req, timeout=30) as response:
                 payload = json.loads(response.read().decode("utf-8"))
@@ -155,7 +168,6 @@ def commons_photo(article: dict) -> dict | None:
                 continue
             if int(info.get("width") or 0) < 800 or int(info.get("height") or 0) < 450:
                 continue
-            # TIFF/SVG/GIF are used through MediaWiki's raster thumbnail when available.
             src = info.get("thumburl") or info.get("url")
             if not src:
                 continue
@@ -165,7 +177,6 @@ def commons_photo(article: dict) -> dict | None:
             bag = set(x.casefold() for x in words(title + " " + desc))
             overlap = len(query_terms & bag)
             min_overlap = 1 if len(query_terms) <= 1 else 2
-            # CJK/short local-language queries may tokenize to only a few terms.
             if query_terms and overlap < min_overlap:
                 continue
 
@@ -182,9 +193,6 @@ def commons_photo(article: dict) -> dict | None:
                 if is_satellite else
                 "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen."
             )
-
-            # Rank all languages together. Local queries run first but cannot block a
-            # materially better English result. Direct event/year/place matches dominate.
             event_bonus = 5 if year.isdigit() and year in visual_text else 0
             place_bonus = min(4, len(location_terms & bag) * 2)
             query_priority_bonus = max(0.0, 1.0 - q_index * 0.1)
@@ -278,7 +286,7 @@ def self_test() -> None:
     qs = queries(article)
     assert qs[0].startswith("नेपाल")
     assert any("Nepal flood" in q for q in qs)
-    assert words("नेपाल बाढी")
+    assert words("नेपाल बाढी") == ["नेपाल", "बाढी"]
     old = {
         "pending_image": True, "ai_generated": True, "image_type": "illustration",
         "context_type": "illustration", "caption": "Illustration",
