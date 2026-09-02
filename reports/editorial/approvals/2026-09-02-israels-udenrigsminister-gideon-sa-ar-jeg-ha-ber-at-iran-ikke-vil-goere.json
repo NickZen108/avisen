@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "story_id": "2026-09-02-israeli-fm-gideon-sa-ar-i-hope-iran-will-not-make-the-mistake-of-attacki",
+  "article_slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere",
+  "checked_at": "2026-09-02T17:51:16.069Z",
+  "gates": {
+    "language": "pass",
+    "ethics": "pass",
+    "image": "pass",
+    "seo": "pass",
+    "final_editor": "pass"
+  },
+  "final_editor_mode": "ai",
+  "editorial_snapshot": {
+    "pipeline_version": 2,
+    "story_id": "2026-09-02-israeli-fm-gideon-sa-ar-i-hope-iran-will-not-make-the-mistake-of-attacki",
+    "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere",
+    "category": "Videnskab & teknologi",
+    "weight": "B",
+    "editorial_destination": "tech_magazine",
+    "story_location": {
+      "country": "Israel",
+      "country_code": "IL",
+      "hero_queries_english": [
+        "Israel",
+        "Iran",
+        "Gideon Sa'ar"
+      ],
+      "hero_queries_local": [
+        "Israel",
+        "Iran",
+        "Gideon Sa'ar"
+      ],
+      "hero_queries_transliterated": [
+        "Israel",
+        "Iran",
+        "Gideon Sa'ar"
+      ],
+      "place_names_english": [
+        "Israel",
+        "Iran"
+      ],
+      "place_names_local": [
+        "Israel",
+        "Iran"
+      ],
+      "primary_language": "hebrew",
+      "primary_language_code": "he",
+      "transliterations": [
+        "Israel",
+        "Iran"
+      ]
+    },
+    "title": "Israels udenrigsminister Gideon Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os'",
+    "standfirst": "Israels udenrigsminister Gideon Sa'ar har udtrykt håb om, at Iran ikke vil angribe landet. Han har også understreget, at hvis Israel bliver angrebet af Iran, vil landet sikkert svare kraftigt.",
+    "byline": "Morgentidende Redaktion",
+    "manual_review": false,
+    "ledger": "sources/2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere.json",
+    "claim_ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06",
+      "F07",
+      "F08"
+    ],
+    "seo": {
+      "title": "Israels udenrigsminister Gideon Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os'",
+      "description": "Israels udenrigsminister Gideon Sa'ar har udtrykt håb om, at Iran ikke vil angribe landet. Han har også understreget, at hvis Israel bliver angrebet af Iran, vil landet sikkert svare kraftigt.",
+      "canonical": null
+    },
+    "image": {
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere.jpg",
+      "alt": "President Reuven Rivlin at the Education Now conference. Tuesday, August 22, 2017. Photo Credit: Mark Neyman / GPO.",
+      "credit": "Mark Neyman",
+      "license": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ranan_Hartman_and_Gideon_Sa%27ar,_August_2017_(7870)_(cropped).jpg",
+      "image_type": "photo",
+      "context_type": "archive",
+      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "pending_image": false,
+      "ai_generated": false,
+      "placement": "lead"
+    },
+    "body": [
+      {
+        "text": "Israels udenrigsminister Gideon Sa'ar har udtrykt håb om, at Iran ikke vil angribe landet. I et interview med France 24 sagde Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os.'",
+        "type": "p"
+      },
+      {
+        "text": "Sa'ar understregede også, at hvis Israel bliver angrebet af Iran, vil landet sikkert svare kraftigt. 'Hvis vi bliver angrebet af Iran, vil vi sikkert svare meget kraftigt,' sagde han.",
+        "type": "p"
+      },
+      {
+        "text": "Desuden nægtede Sa'ar, at Israel har planer om at deltage i en krig i øjeblikket. 'Vi har ikke planer om at deltage i en krig i øjeblikket,' sagde han.",
+        "type": "p"
+      },
+      {
+        "text": "Sa'ar understregede også, at Israel ikke vil tillade Iran at opnå kernevåben. 'Israel vil ikke tillade Iran at opnå kernevåben,' sagde han.",
+        "type": "p"
+      },
+      {
+        "text": "I et andet interview med France 24 blev der også diskuteret en mulig amerikansk angreb på en iransk bryllupsfest. Der blev vist videoer og billeder, der viste, at flere mennesker var blevet såret og dræbt i angrebet.",
+        "type": "p"
+      },
+      {
+        "text": "Ifølge France 24 var bygningen, hvor angrebet fandt sted, mere end 135 meter fra det synlige mål, en kommunikationsmast. Der var også videoer fra et hospital i Minab, 45 km nord for stedet, der viste, at flere mennesker var blevet såret, herunder børn, der blev behandlet, samt lig af de døde.",
+        "type": "p"
+      }
+    ],
+    "source_ids_to_display": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "related_news_slug": null,
+    "related": [],
+    "correction_note": null,
+    "automation_origin": "cloudflare-workers-ai"
+  },
+  "editorial_destination": "tech_magazine"
+}

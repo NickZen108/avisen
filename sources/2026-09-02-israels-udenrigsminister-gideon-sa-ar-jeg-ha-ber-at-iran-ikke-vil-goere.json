@@ -1,0 +1,258 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-israeli-fm-gideon-sa-ar-i-hope-iran-will-not-make-the-mistake-of-attacki",
+  "article_slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere",
+  "assignment": {
+    "category": "Videnskab & teknologi",
+    "weight": "B",
+    "editorial_destination": "tech_magazine",
+    "story_location": {
+      "country": "Israel",
+      "country_code": "IL",
+      "hero_queries_english": [
+        "Israel",
+        "Iran",
+        "Gideon Sa'ar"
+      ],
+      "hero_queries_local": [
+        "Israel",
+        "Iran",
+        "Gideon Sa'ar"
+      ],
+      "hero_queries_transliterated": [
+        "Israel",
+        "Iran",
+        "Gideon Sa'ar"
+      ],
+      "place_names_english": [
+        "Israel",
+        "Iran"
+      ],
+      "place_names_local": [
+        "Israel",
+        "Iran"
+      ],
+      "primary_language": "hebrew",
+      "primary_language_code": "he",
+      "transliterations": [
+        "Israel",
+        "Iran"
+      ]
+    },
+    "core_question": "Research",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "France 24",
+      "url": "https://www.france24.com/en/tv-shows/t%C3%AAte-%C3%A0-t%C3%AAte/20260902-israeli-fm-gideon-sa-ar-i-hope-iran-will-not-make-the-mistake-of-attacking-us",
+      "published_at": "2026-09-02T17:49:03.000Z",
+      "accessed_at": "2026-09-02T17:51:16.069Z",
+      "type": "news",
+      "source_group": "host-france24-com",
+      "publisher_root": "france24-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Israeli FM Gideon Sa'ar: 'I hope Iran will not make the mistake of attacking us'",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "France 24",
+      "url": "https://www.france24.com/en/middle-east/20260902-videos-and-debris-raise-questions-over-alleged-us-strike-on-iranian-wedding",
+      "published_at": "2026-09-02T17:31:06.000Z",
+      "accessed_at": "2026-09-02T17:51:16.069Z",
+      "type": "news",
+      "source_group": "host-france24-com",
+      "publisher_root": "france24-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Videos and debris raise questions over alleged US strike on Iranian wedding",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "BBC Europe",
+      "url": "https://www.bbc.co.uk/news/videos/c3d79mp2jeno?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-08-25T01:06:01.000Z",
+      "accessed_at": "2026-09-02T17:51:16.069Z",
+      "type": "news",
+      "source_group": "host-bbc-co-uk",
+      "publisher_root": "bbc-co-uk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-3",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": "https://www.bbc.co.uk/news/videos/c3d79mp2jeno",
+      "primary_record": null,
+      "authoritative_for": "Moment tornado tears through southern France",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "independent_source_groups": [
+      "host-france24-com",
+      "host-bbc-co-uk"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Israeli FM Gideon Sa'ar: 'I hope Iran will not make the mistake of attacking us'",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-france24-com"
+      ],
+      "checked_at": "2026-09-02T17:51:16.069Z",
+      "notes": "Source: France 24"
+    },
+    {
+      "id": "F02",
+      "claim": "If we will be attacked by Iran, we will surely respond heavily",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-france24-com"
+      ],
+      "checked_at": "2026-09-02T17:51:16.069Z",
+      "notes": "Source: France 24"
+    },
+    {
+      "id": "F03",
+      "claim": "We don't have plans to join the war right now",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-france24-com"
+      ],
+      "checked_at": "2026-09-02T17:51:16.069Z",
+      "notes": "Source: France 24"
+    },
+    {
+      "id": "F04",
+      "claim": "I hope that Iran will not make the mistake to attack right now",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-france24-com"
+      ],
+      "checked_at": "2026-09-02T17:51:16.069Z",
+      "notes": "Source: France 24"
+    },
+    {
+      "id": "F05",
+      "claim": "Israel 'will not allow' Iran to achieve nuclear weapons aspirations",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-france24-com"
+      ],
+      "checked_at": "2026-09-02T17:51:16.069Z",
+      "notes": "Source: France 24"
+    },
+    {
+      "id": "F06",
+      "claim": "Videos and debris raise questions over alleged US strike on Iranian wedding",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-france24-com"
+      ],
+      "checked_at": "2026-09-02T17:51:16.069Z",
+      "notes": "Source: France 24"
+    },
+    {
+      "id": "F07",
+      "claim": "The building was more than 135 meters from the apparent target, a communications tower",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-france24-com"
+      ],
+      "checked_at": "2026-09-02T17:51:16.069Z",
+      "notes": "Source: France 24"
+    },
+    {
+      "id": "F08",
+      "claim": "Videos from a hospital in Minab, 45 km to the north, also show people injured in the attack, including children being treated, as well as the bodies of the dead",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-france24-com"
+      ],
+      "checked_at": "2026-09-02T17:51:16.069Z",
+      "notes": "Source: France 24"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T17:51:16.069Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T17:51:16.069Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "tech_magazine"
+}
