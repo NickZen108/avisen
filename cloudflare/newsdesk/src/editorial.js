@@ -382,6 +382,17 @@ const factCheckSchema = {
   }, required: ["decision", "rationale", "contradictions", "claims"],
 };
 
+const semanticFactCheckSchema = {
+  type: "object", properties: {
+    decision: { type: "string", enum: ["pass", "hold"] },
+    issues: { type: "array", maxItems: 8, items: { type: "object", properties: {
+      type: { type: "string", enum: ["meaning_shift", "translation_error", "unsupported_claim", "attribution_error"] },
+      issue: { type: "string" }, source_indexes: { type: "array", items: { type: "integer" }, minItems: 1 },
+    }, required: ["type", "issue", "source_indexes"] } },
+    notes: { type: "array", maxItems: 8, items: { type: "string" } },
+  }, required: ["decision", "issues", "notes"],
+};
+
 const deskRecheckSchema = { type: "object", properties: {
   decision: { type: "string", enum: ["publish", "update", "hold", "kill"] }, rationale: { type: "string" },
 }, required: ["decision", "rationale"] };
@@ -676,7 +687,7 @@ async function runResearch(env, assignment, selected) {
     canonical_url: item.provenance_meta?.canonical_url || null,
     feed_summary_only: Boolean(item.feed_summary_only),
   }));
-  const system = `Du er Research på Morgentidende. Lav et kompakt evidens-kort til Fact checker; vurder ikke nyhedsværdi igen og fæld ikke den endelige sandhedsdom. Kortlæg 1-6 bærende kandidat-claims med præcise source_indexes. Notér kun reelle modsigelser, væsentlige forbehold og nødvendig kontekst. En primærkilde er værdifuld, men du skal ikke kræve et bestemt antal medier. Hvis mindst ét brugbart claim kan kildebelægges, vælg continue; watch kun hvis materialet reelt ikke giver noget kontrollerbart. Flag alvorlige belastende påstande via right_of_reply_required, men brug ikke flaget som stopregel. Sæt conflict_present=true kun når historien faktisk rummer en relevant politisk, juridisk, faglig eller parts-konflikt; almindelige hændelsesfakta/statistik kræver ikke kunstig pluralisme. Opfind intet.`;
+  const system = `Du er Research på Morgentidende. Lav et kompakt evidens-kort til Fact checker; vurder ikke nyhedsværdi igen og fæld ikke den endelige sandhedsdom. Kortlæg 1-6 bærende kandidat-claims med præcise source_indexes. Notér kun reelle modsigelser, væsentlige forbehold og nødvendig kontekst. En primærkilde er værdifuld, men du skal ikke kræve et bestemt antal medier. Hvis mindst ét brugbart claim kan kildebelægges, vælg continue; watch kun hvis materialet reelt ikke giver noget kontrollerbart. Flag alvorlige belastende påstande via right_of_reply_required, men brug ikke flaget som stopregel. Sæt conflict_present=true kun når historien faktisk rummer en relevant politisk, juridisk, faglig eller parts-konflikt; almindelige hændelsesfakta/statistik kræver ikke kunstig pluralisme. Ved oversættelse eller parafrase fra et andet sprog skal betydningen bevares præcist: hvem gør hvad mod hvem/hvad, subjekt, objekt, negation, modalitet, årsag, tid og tal må ikke skifte. Oversæt ikke et ord som response/efforts/measure til selve hændelsen eller problemet, hvis det ændrer betydningen. Opfind intet.`;
   const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 650, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
   research.researched = unique;
   research.source_payload = sources;
@@ -700,7 +711,7 @@ function focusedExcerpt(text, claims, maxChars = 500) {
 
 async function runFactCheck(env, assignment, research) {
   if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
-  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Angiv kun source_indexes for kilder, der faktisk dokumenterer claimet; brug aldrig en kilde som støtte blot fordi den handler om samme historie. Et claim kan få Verified på baggrund af én relevant autoritativ kilde. Autoritative kilder er: (1) store etablerede redaktionelle medier som BBC, Reuters, AP, Financial Times m.fl., (2) myndigheder/officielle kilder, (3) virksomheder, organisationer eller personer om egne forhold, (4) relevante forskere/fageksperter inden for deres fagområde og (5) forskningspapirer/original forskning. Originale bureaukilder som Reuters/AP/AFP/Ritzau er også autoritative. Kræv ikke automatisk kilde nr. 2, når én relevant autoritativ kilde dokumenterer claimet. Ved høj risiko, alvorlige beskyldninger eller fairness kan ekstra kontrol, attribution, forelæggelse eller Etik-review være nødvendig, men høj risiko skaber ikke i sig selv en mekanisk to-kilde-regel. For alle materielle tal (døde, penge, procent, antal osv.) skal du aktivt sammenligne/falsificere tallet mod alle vedlagte relevante kilder; ved mismatch skal claimet være uncertain eller formuleres forsigtigt/attribueret, aldrig vælg automatisk det højeste tal. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder, fakta eller citater. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;
+  const system = `Du er en UAFHÆNGIG Fact checker på Morgentidende. Forsøg aktivt at falsificere hvert kandidat-claim mod de vedlagte kildetekster. Discovery-blogs og perspektiv/advocacy-feeds er fjernet før dette trin og må aldrig bruges som kilder. Angiv kun source_indexes for kilder, der faktisk dokumenterer claimet; brug aldrig en kilde som støtte blot fordi den handler om samme historie. Et claim kan få Verified på baggrund af én relevant autoritativ kilde. Autoritative kilder er: (1) store etablerede redaktionelle medier som BBC, Reuters, AP, Financial Times m.fl., (2) myndigheder/officielle kilder, (3) virksomheder, organisationer eller personer om egne forhold, (4) relevante forskere/fageksperter inden for deres fagområde og (5) forskningspapirer/original forskning. Originale bureaukilder som Reuters/AP/AFP/Ritzau er også autoritative. Kræv ikke automatisk kilde nr. 2, når én relevant autoritativ kilde dokumenterer claimet. Ved høj risiko, alvorlige beskyldninger eller fairness kan ekstra kontrol, attribution, forelæggelse eller Etik-review være nødvendig, men høj risiko skaber ikke i sig selv en mekanisk to-kilde-regel. For alle materielle tal (døde, penge, procent, antal osv.) skal du aktivt sammenligne/falsificere tallet mod alle vedlagte relevante kilder; ved mismatch skal claimet være uncertain eller formuleres forsigtigt/attribueret, aldrig vælg automatisk det højeste tal. Kontrollér også semantisk oversættelse/parafrase mod originalteksten: subjekt, objekt, negation, modalitet, årsag, tid og tal skal betyde det samme. Hvis fx kilden siger at indsatsen/response skal intensiveres, må claimet ikke sige at selve udbruddet/hændelsen skal intensiveres. En sådan betydningsændring er rejected eller uncertain, ikke verified. Rejected når evidensen modsiger claimet; ellers uncertain. Ét verificeret bærende claim er nok til en kort one-claim-artikel; usikre sekundære detaljer skal blot udelades. Opfind ingen nye kilder, fakta eller citater. Din overordnede publish/hold-vurdering er rådgivende; en deterministisk gate beregner den endelige beslutning efter claim-kontrollen.`;
   const fact = await aiJson(env, system, JSON.stringify({
     assignment,
     research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
@@ -732,6 +743,26 @@ async function runFactCheck(env, assignment, research) {
     ? `Deterministisk Fact checker: ${verified.length} bærende claim(s) verificeret; usikre eller afviste detaljer udelades fra artiklen.`
     : "Deterministisk Fact checker: ingen bærende claims opfylder dokumentationskravet.";
   return fact;
+}
+
+async function finalSemanticFactCheck(env, assignment, dossier, article) {
+  const sources = (dossier.researched || []).filter(isEvidenceSource).map((source, i) => ({
+    source_index: i, name: source.source, headline: source.headline,
+    url: source.final_url || source.url,
+    excerpt: String(source.excerpt || source.description || "").slice(0, 2400),
+  }));
+  const system = `Du er den samme uafhængige Fact checker i et sidste semantisk pass. Sammenlign HELE den færdige danske artikel med de eksisterende originalkilder. Dette er ikke en ny kildegate og du må IKKE kræve flere kilder. Kontrollér kun sandhed og betydningsbevarelse: alle materielle udsagn skal kunne rummes i det verificerede materiale, og oversættelse/parafrase skal bevare hvem der gør hvad mod hvem/hvad, subjekt, objekt, negation, modalitet, årsag, tid, attribution og tal. Fri og naturlig dansk formulering er tilladt; ord-for-ord-oversættelse er ikke et krav. HOLD kun ved reel materiel betydningsændring, oversættelsesfejl, unsupported claim eller forkert attribution. Stil, tone, SEO og små sproglige præferencer er aldrig fejl her. Eksempel på materiel fejl: 'response/indsatsen skal intensiveres' må ikke blive til 'udbruddet skal intensiveres'.`;
+  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources, article }), semanticFactCheckSchema, 700, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+}
+
+async function reviseSemanticFactIssues(env, assignment, dossier, article, semantic) {
+  if (semantic?.decision !== "hold" || !(semantic?.issues || []).length) return article;
+  const sources = (dossier.researched || []).filter(isEvidenceSource).map((source, i) => ({
+    source_index: i, name: source.source, headline: source.headline,
+    excerpt: String(source.excerpt || source.description || "").slice(0, 2400),
+  }));
+  const system = `Ret KUN de konkrete semantiske/faktuelle problemer fundet af Fact checker. Bevar artikelstruktur, vinkel og verificerede fakta så vidt muligt. Ret oversættelser så subjekt, objekt, negation, modalitet, årsag, tid, attribution og tal svarer til originalkilden. Tilføj ingen nye claims og kræv ingen nye kilder. Returnér hele artiklen i samme schema.`;
+  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources, article, issues: semantic.issues }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
 
 async function deskRecheck(env, assignment, dossier) {
@@ -1160,7 +1191,18 @@ export async function runEditorialCycle(env, scan, options = {}) {
   if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, fact_check: { claims: dossier.claims, rationale: dossier.rationale }, desk_recheck: desk } };
 
   let article = await writeArticle(env, assignment, dossier);
-  const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);
+let semanticFactCheck = await finalSemanticFactCheck(env, assignment, dossier, article);
+if (semanticFactCheck.decision !== "pass") {
+  const revised = await reviseSemanticFactIssues(env, assignment, dossier, article, semanticFactCheck);
+  if (JSON.stringify(revised) !== JSON.stringify(article)) {
+    article = revised;
+    semanticFactCheck = await finalSemanticFactCheck(env, assignment, dossier, article);
+  }
+}
+if (semanticFactCheck.decision !== "pass") {
+  return { status: "hold", stage: "fact-check", checked_at: startedAt, generated_at: startedAt, title: article.title || assignment.title_hint, reason: (semanticFactCheck.issues || []).map((x) => x.issue).join("; ") || "Fact checker: semantisk fejl mod originalkilden", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, article_title: article.title, fact_check: { claims: dossier.claims, rationale: dossier.rationale, semantic: semanticFactCheck } } };
+}
+const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);
   let review = aiFinalRequired ? await finalReview(env, assignment, dossier, article) : deterministicFinalReview(assignment, dossier, article);
   if (review.decision !== "pass") {
     const hardIssues = (review.issues || []).filter((x) => !["language", "seo"].includes(x.gate));
@@ -1226,7 +1268,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
     status: "approved", schema_version: 1, generated_at: startedAt, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys,
     runtime: "cloudflare-workers-ai", model: STRONG_TEXT_MODEL, models: { fast: FAST_TEXT_MODEL, strong: STRONG_TEXT_MODEL, image: IMAGE_MODEL }, story_id: storyId, slug, article: canonical, ledger, approval,
     media,
-    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, desk_recheck: desk, final_review: review, media_policy: { documentary_first: true, multilingual_location_search: true, pending_image: Boolean(hero.pending_image), temporary_sketch_allowed_after_scout: true, static_sketch_fallback: false, late_hold_for_no_photo: false }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
+    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions, semantic: semanticFactCheck }, desk_recheck: desk, final_review: review, media_policy: { documentary_first: true, multilingual_location_search: true, pending_image: Boolean(hero.pending_image), temporary_sketch_allowed_after_scout: true, static_sketch_fallback: false, late_hold_for_no_photo: false }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
   };
     })();
   } catch (error) {
