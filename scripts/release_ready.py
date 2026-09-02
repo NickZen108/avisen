@@ -116,7 +116,7 @@ def main():
    if changed:
     ws.update({'state':'blocked','resume_from':resume,'reasons':reasons}); ws.setdefault('blocked_at',stamp); x['workflow_state']=ws; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
   elif x.get('status')=='ready' and x.get('release_requested') is True and not reasons and not a.normalize_only:
-   x['status']='published'; x['published_at':stamp]; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; x.pop('workflow_state',None); path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); add_to_frontpage(x); released+=1
+   x['status']='published'; x['published_at']=stamp; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; x.pop('workflow_state',None); path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); add_to_frontpage(x); released+=1
   rows.append({'slug':x.get('slug'),'title':x.get('title'),'status':x.get('status'),'release_requested':x.get('release_requested'),'resume_from':resume if reasons else None,'reasons':reasons})
  write_health(rows,stamp); print(f'Ready release: {released}; recovered/parked: {recovered}'); return 0
 def self_test():
