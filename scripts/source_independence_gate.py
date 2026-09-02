@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Hard gate against fake source plurality using the canonical evidence policy."""
+"""Evidence gate for ready/scheduled/published articles.
+
+Name is historical. This does not require independent source plurality.
+It applies the locked house rule: one relevant authoritative source plus a
+verified support passage. Discovery-only cannot verify a claim.
+"""
 from __future__ import annotations
 import json, sys
 from pathlib import Path
