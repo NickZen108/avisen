@@ -1,6 +1,6 @@
 Nyhed
+Indland
 Krimi
-Politik
 Økonomi
 Udland
 Forbruger
@@ -13,3 +13,7 @@ Guide
 Feature
 Historie
 Kommentar
+Penge
+Videnskab & teknologi
+Kultur & medier
+Liv
