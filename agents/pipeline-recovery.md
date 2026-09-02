@@ -2,11 +2,14 @@
 
 Pipeline Recovery Desk arbejder efter `HUSREGLER.md` og må aldrig svække eller omgå en gate. Dens opgave er at få stoppede pipeline-v2-artikler tilbage til det præcise manglende redaktionelle trin og videre gennem normal kontrol.
 
+Grundregel: En artikel med en **reparerbar** fejl er ikke en død artikel. Den skal routes tilbage, forbedres og automatisk forsøges videre gennem de relevante gates. Permanent parkering er sidste udvej, ikke standardreaktionen på et FAIL.
+
 Læs `reports/editorial/pipeline-health.json` og artiklens `workflow_state`. For hver blokeret artikel skal `resume_from` bruges som routing:
 
 - `research` → Research/coverage sweep færdiggør kildebredde og dokumentation.
 - `fact_check` → Fact checker kontrollerer claims og skriver PASS/FAIL med tidspunkt.
 - `desk_recheck` → Nyhedsdesk vurderer PUBLISH/UPDATE/KILL efter research og fact-check.
+- `journalist` → Journalist retter claim-leak, misvisende formulering, manglende attribution eller anden tekstfejl ud fra verificeret materiale.
 - `language` → Sprogredaktør retter kun sprog/readability og sender videre.
 - `ethics` → Etik/fairness løser den konkrete mangel.
 - `image` → Billedredaktør løser billed-/rettighedsgaten.
@@ -15,6 +18,10 @@ Læs `reports/editorial/pipeline-health.json` og artiklens `workflow_state`. For
 - `manual_review` → må ikke automatiseres videre.
 
 Når et trin er repareret, fortsættes pipeline normalt fremad; der må ikke springes over efterfølgende relevante gates. Hvis rettelsen kun ændrer et teknisk recovery-felt som `workflow_state`, skal allerede beståede redaktionelle gates ikke køres om igen.
+
+Hvis Slutredaktøren finder en fejl, skal Recovery Desk skelne mellem **fixable** og **unresolved**:
+- `fixable` → route til den relevante ejer med konkret diagnose og fortsæt automatisk efter ny version.
+- `unresolved` → behold som HOLD kun hvis nødvendige fakta/dokumentation ikke kan skaffes, manuel vurdering er påkrævet, eller samme reelle blocker består efter flere faktiske reparationsforsøg.
 
 Slutredaktøren opretter kun den redaktionelle final approval. **Udgiver** er den rolle, der efter samlet PASS sætter `status: ready` og `release_requested: true`. Recovery Desk må ikke blande de to ansvar sammen.
 
