@@ -1,0 +1,146 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+  "article_slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv",
+  "assignment": {
+    "category": "Udland",
+    "weight": "C",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "USA",
+      "country_code": "US",
+      "hero_queries_english": [
+        "Trump proposes renaming Hormuz Strait after himself"
+      ],
+      "hero_queries_local": [
+        "Trump foreslår at navngive Hormuzstrædet efter sig selv"
+      ],
+      "hero_queries_transliterated": [],
+      "place_names_english": [
+        "Hormuz Strait"
+      ],
+      "place_names_local": [
+        "Hormuzstrædet"
+      ],
+      "primary_language": "engelsk",
+      "primary_language_code": "en",
+      "transliterations": []
+    },
+    "core_question": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "DR",
+      "url": "https://www.dr.dk/nyheder/seneste/trump-foreslaar-navngive-hormuzstraedet-efter-sig-selv",
+      "published_at": "2026-09-02T16:08:54.000Z",
+      "accessed_at": "2026-09-02T18:02:01.764Z",
+      "type": "news",
+      "source_group": "host-dr-dk",
+      "publisher_root": "dr-dk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": "DR, DR BYEN, Emil Holms Kanal 20, DK-0999 København C, tlf.: +45 35 20 30 40",
+      "canonical_url": "https://www.dr.dk/nyheder/seneste/trump-foreslaar-navngive-hormuzstraedet-efter-sig-selv",
+      "primary_record": null,
+      "authoritative_for": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-dr-dk"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Trump foreslår at navngive Hormuzstrædet efter sig selv",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dr-dk"
+      ],
+      "checked_at": "2026-09-02T18:02:01.764Z",
+      "notes": "DR"
+    },
+    {
+      "id": "F02",
+      "claim": "Hormuzstrædet er et strategisk vigtigt stræde",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dr-dk"
+      ],
+      "checked_at": "2026-09-02T18:02:01.764Z",
+      "notes": "DR"
+    },
+    {
+      "id": "F03",
+      "claim": "Hormuzstrædet er et vigtigt handelsrute for mange lande",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dr-dk"
+      ],
+      "checked_at": "2026-09-02T18:02:01.764Z",
+      "notes": "DR"
+    },
+    {
+      "id": "F04",
+      "claim": "Trump har flere gange udtrykt sin støtte til USA's militære indsats i regionen",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dr-dk"
+      ],
+      "checked_at": "2026-09-02T18:02:01.764Z",
+      "notes": "DR"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-02T18:02:01.764Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-02T18:02:01.764Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "main"
+}
