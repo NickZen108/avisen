@@ -5,133 +5,23 @@
   "assignment": {
     "category": "Udland",
     "weight": "B",
+    "editorial_destination": "main",
     "core_question": "Nepal-Tibet flood relief and recovery intensifies",
     "manual_review": false
   },
   "sources": [
-    {
-      "id": "S1",
-      "name": "BBC World",
-      "url": "https://www.bbc.co.uk/news/articles/c8xk45k9r1go?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-02T10:07:02.000Z",
-      "accessed_at": "2026-09-02T10:46:16.585Z",
-      "type": "news",
-      "source_group": "host-bbc-co-uk",
-      "publisher_root": "bbc-co-uk",
-      "wire_origin": null,
-      "upstream_origin": null,
-      "provenance_type": "reporting",
-      "provenance_cluster": "pc-1",
-      "provenance_basis": "publisher_or_similarity",
-      "byline": null,
-      "publisher_name": null,
-      "canonical_url": null,
-      "primary_record": null,
-      "authoritative_for": "Thousands still missing as Nepal-Tibet flood relief and recovery intensifies",
-      "authority_class": "strong_editorial",
-      "discovery_only": false
-    },
-    {
-      "id": "S2",
-      "name": "Euronews",
-      "url": "https://www.euronews.com/video/2026/09/01/nepal-families-post-photos-of-missing-relatives-on-kathmandu-hospital-wall",
-      "published_at": "2026-09-01T14:06:09.000Z",
-      "accessed_at": "2026-09-02T10:46:16.585Z",
-      "type": "news",
-      "source_group": "host-euronews-com",
-      "publisher_root": "euronews-com",
-      "wire_origin": null,
-      "upstream_origin": null,
-      "provenance_type": "reporting",
-      "provenance_cluster": "pc-2",
-      "provenance_basis": "publisher_or_similarity",
-      "byline": "Nathalie Texier",
-      "publisher_name": null,
-      "canonical_url": "https://www.euronews.com/video/2026/09/01/nepal-families-post-photos-of-missing-relatives-on-kathmandu-hospital-wall",
-      "primary_record": null,
-      "authoritative_for": "Nepal families post photos of missing relatives on Kathmandu hospital wall",
-      "authority_class": "strong_editorial",
-      "discovery_only": false
-    }
+    {"id":"S1","name":"BBC World","url":"https://www.bbc.co.uk/news/articles/c8xk45k9r1go?at_medium=RSS&at_campaign=rss","published_at":"2026-09-02T10:07:02.000Z","accessed_at":"2026-09-02T10:46:16.585Z","type":"news","source_group":"host-bbc-co-uk","publisher_root":"bbc-co-uk","wire_origin":null,"upstream_origin":null,"provenance_type":"reporting","provenance_cluster":"pc-1","provenance_basis":"publisher_or_similarity","byline":null,"publisher_name":null,"canonical_url":null,"primary_record":null,"authoritative_for":"Thousands still missing as Nepal-Tibet flood relief and recovery intensifies","authority_class":"strong_editorial","discovery_only":false},
+    {"id":"S2","name":"Euronews","url":"https://www.euronews.com/video/2026/09/01/nepal-families-post-photos-of-missing-relatives-on-kathmandu-hospital-wall","published_at":"2026-09-01T14:06:09.000Z","accessed_at":"2026-09-02T10:46:16.585Z","type":"news","source_group":"host-euronews-com","publisher_root":"euronews-com","wire_origin":null,"upstream_origin":null,"provenance_type":"reporting","provenance_cluster":"pc-2","provenance_basis":"publisher_or_similarity","byline":"Nathalie Texier","publisher_name":null,"canonical_url":"https://www.euronews.com/video/2026/09/01/nepal-families-post-photos-of-missing-relatives-on-kathmandu-hospital-wall","primary_record":null,"authoritative_for":"Nepal families post photos of missing relatives on Kathmandu hospital wall","authority_class":"strong_editorial","discovery_only":false}
   ],
-  "coverage_sweep": {
-    "status": "pass",
-    "editorial_source_ids": [
-      "S1",
-      "S2"
-    ],
-    "independent_source_groups": [
-      "host-bbc-co-uk",
-      "host-euronews-com"
-    ],
-    "limitations": null,
-    "notes": [
-      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
-    ]
-  },
+  "coverage_sweep": {"status":"pass","editorial_source_ids":["S1","S2"],"independent_source_groups":["host-bbc-co-uk","host-euronews-com"],"limitations":null,"notes":["Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."]},
   "claims": [
-    {
-      "id": "F01",
-      "claim": "At least 1,114 people have died in Nepal.",
-      "status": "verified",
-      "source_ids": [
-        "S1"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "At least 1,114 people have died in Nepal",
-          "match_verified": true
-        }
-      ],
-      "independent_groups": [
-        "host-bbc-co-uk"
-      ],
-      "checked_at": "2026-09-02T10:46:16.585Z",
-      "notes": "Source: Nepal's disaster agency, as reported by BBC World"
-    },
-    {
-      "id": "F02",
-      "claim": "Thousands of people remain missing after a catastrophic flash flood along the Nepal-Tibet border.",
-      "status": "verified",
-      "source_ids": [
-        "S1"
-      ],
-      "support_passages": [
-        {
-          "source_id": "S1",
-          "quote": "Thousands of people remain missing after a catastrophic flash flood along the Nepal-Tibet border",
-          "match_verified": true
-        }
-      ],
-      "independent_groups": [
-        "host-bbc-co-uk"
-      ],
-      "checked_at": "2026-09-02T10:46:16.585Z",
-      "notes": "Source: BBC World"
-    }
+    {"id":"F01","claim":"At least 1,114 people have died in Nepal.","status":"verified","source_ids":["S1"],"support_passages":[{"source_id":"S1","quote":"At least 1,114 people have died in Nepal","match_verified":true}],"independent_groups":["host-bbc-co-uk"],"checked_at":"2026-09-02T10:46:16.585Z","notes":"Source: Nepal's disaster agency, as reported by BBC World"},
+    {"id":"F02","claim":"Thousands of people remain missing after a catastrophic flash flood along the Nepal-Tibet border.","status":"verified","source_ids":["S1"],"support_passages":[{"source_id":"S1","quote":"Thousands of people remain missing after a catastrophic flash flood along the Nepal-Tibet border","match_verified":true}],"independent_groups":["host-bbc-co-uk"],"checked_at":"2026-09-02T10:46:16.585Z","notes":"Source: BBC World"}
   ],
   "numbers": [],
   "quotes": [],
-  "right_of_reply": {
-    "required": false,
-    "party": null,
-    "contacted_at": null,
-    "deadline": null,
-    "response": null,
-    "exception": null
-  },
-  "fact_check": {
-    "status": "pass",
-    "checked_at": "2026-09-02T10:46:16.585Z",
-    "notes": [
-      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."
-    ]
-  },
-  "desk_recheck": {
-    "status": "publish",
-    "checked_at": "2026-09-02T10:46:16.585Z",
-    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
-  },
-  "editorial_destination": "people_magazine"
+  "right_of_reply": {"required":false,"party":null,"contacted_at":null,"deadline":null,"response":null,"exception":null},
+  "fact_check": {"status":"pass","checked_at":"2026-09-02T10:46:16.585Z","notes":["Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én maskinverificeret støttepassage, og discovery-only-kilder kan ikke verificere claims."]},
+  "desk_recheck": {"status":"publish","checked_at":"2026-09-02T10:46:16.585Z","rationale":"Fact check bestået; intet særskilt A-recheck nødvendigt"},
+  "editorial_destination": "main"
 }
