@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-fifa-vs-uefa",
   "slug": "2026-09-03-fifa-vs-uefa-fifa-beskylder-uefa-for-smaeldrift-mod-infantino",
   "category": "Sport",
@@ -22,7 +22,7 @@
   "title": "FIFA vs UEFA: FIFA beskylder UEFA for 'smældrift' mod Infantino",
   "standfirst": "FIFA beskylder UEFA for 'smældrift' mod Infantino. UEFA søger tilladelse til at samle beviser for kriminalforsøg i Schweiz.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T23:30:55Z",
   "updated_at": null,
   "ledger": "sources/2026-09-03-fifa-vs-uefa-fifa-beskylder-uefa-for-smaeldrift-mod-infantino.json",
   "claim_ids": [
@@ -91,5 +91,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T23:30:55Z"
+  }
 }

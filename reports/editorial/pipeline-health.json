@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-03T18:44:21Z",
+  "generated_at": "2026-09-03T23:30:55Z",
   "counts": {
-    "published": 35,
+    "published": 36,
     "checking": 2,
     "draft": 4
   },
@@ -263,6 +263,14 @@
     {
       "slug": "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage",
       "title": "EU-diplomater går forsigtigt efter Nigel Farage",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-fifa-vs-uefa-fifa-beskylder-uefa-for-smaeldrift-mod-infantino",
+      "title": "FIFA vs UEFA: FIFA beskylder UEFA for 'smældrift' mod Infantino",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

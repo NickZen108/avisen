@@ -6766,7 +6766,107 @@
           "automation_origin": "cloudflare-workers-ai"
         }
       }
+    ],
+    "2026-09-03-fifa-vs-uefa-fifa-beskylder-uefa-for-smaeldrift-mod-infantino": [
+      {
+        "hash": "6b7bb49dd6483c58dadddcf6ac3327201efe80047c11642e6c4c763139725182",
+        "recorded_at": "2026-09-03T23:30:59+00:00",
+        "title": "FIFA vs UEFA: FIFA beskylder UEFA for 'smældrift' mod Infantino",
+        "story_id": "2026-09-03-fifa-vs-uefa",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-03-fifa-vs-uefa",
+          "slug": "2026-09-03-fifa-vs-uefa-fifa-beskylder-uefa-for-smaeldrift-mod-infantino",
+          "category": "Sport",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "DE",
+            "country_code": "Germany",
+            "place_names_english": [
+              "Berlin",
+              "Saxony-Anhalt"
+            ],
+            "place_names_local": [
+              "Berlin",
+              "Sachsen-Anhalt"
+            ]
+          },
+          "title": "FIFA vs UEFA: FIFA beskylder UEFA for 'smældrift' mod Infantino",
+          "standfirst": "FIFA beskylder UEFA for 'smældrift' mod Infantino. UEFA søger tilladelse til at samle beviser for kriminalforsøg i Schweiz.",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-03-fifa-vs-uefa-fifa-beskylder-uefa-for-smaeldrift-mod-infantino.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "FIFA vs UEFA: FIFA beskylder UEFA for 'smældrift' mod Infantino",
+            "description": "FIFA beskylder UEFA for 'smældrift' mod Infantino. UEFA søger tilladelse til at samle beviser for kriminalforsøg i Schweiz.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-fifa-vs-uefa-fifa-beskylder-uefa-for-smaeldrift-mod-infantino.jpg",
+            "alt": "Landtag von Sachsen-Anhalt am Domplatz in Magdeburg",
+            "credit": "Torsten Maue",
+            "license": "CC BY-SA 2.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Landtag_von_Sachsen-Anhalt_in_Magdeburg.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "FIFA beskylder UEFA for 'smældrift' mod Infantino",
+              "type": "h2"
+            },
+            {
+              "text": "FIFA har ifølge egen udtalelse beskyldt UEFA for at have startet en 'smældrift' mod FIFA's præsident, Gianni Infantino. Ifølge FIFA er dette en 'fiskerexpedition' uden grund.",
+              "type": "p"
+            },
+            {
+              "text": "UEFA søger tilladelse til at samle beviser for kriminalforsøg i Schweiz",
+              "type": "h3"
+            },
+            {
+              "text": "UEFA søger ifølge egen udtalelse tilladelse til at samle beviser for kriminalforsøg i Schweiz, hvor både FIFA og UEFA har hjemsted.",
+              "type": "p"
+            },
+            {
+              "text": "UEFA har indgivet eks parte-anke til US District Court i New York",
+              "type": "h3"
+            },
+            {
+              "text": "UEFA har ifølge egen udtalelse indgivet en eks parte-anke til US District Court i New York for at få adgang til vidnesbyrd og dokumenter fra US-baserede enheder.",
+              "type": "p"
+            },
+            {
+              "text": "Dokumenterne vil blive brugt i mulige kriminalforsøg i Schweiz",
+              "type": "h3"
+            },
+            {
+              "text": "Dokumenterne vil ifølge egen udtalelse blive brugt i mulige kriminalforsøg i Schweiz, hvor både FIFA og UEFA er hjemmehørende.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
     ]
   },
-  "generated_at": "2026-09-03T18:44:25+00:00"
+  "generated_at": "2026-09-03T23:30:59+00:00"
 }

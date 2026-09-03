@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-03T18:44:25.313738Z",
-  "date_dk": "2026-09-03",
+  "generated_at": "2026-09-03T23:30:59.971264Z",
+  "date_dk": "2026-09-04",
   "policy": {
     "diagnostic_only": true,
     "automatic_rule_changes": false,
@@ -18,99 +18,8 @@
     "release"
   ],
   "today": {
-    "rejections": 10,
-    "reviews": [
-      {
-        "at": "2026-09-03T18:43:31.082Z",
-        "slug": null,
-        "title": "Trump says he’ll ask Europe to pay back US for munitions sent to Ukraine",
-        "stage": "fact_check",
-        "reason": "Deterministisk Fact checker: ingen bærende claims opfylder dokumentationskravet.",
-        "class": "evidence",
-        "assessment": "Send kun konkret evidensmangel til Research/Fact checker."
-      },
-      {
-        "at": "2026-09-03T11:39:23.851Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "runtime_error",
-        "reason": "Error: Workers AI returned JSON that does not match required schema shape",
-        "class": "review",
-        "assessment": "Diagnostisk efterkontrol; opret ikke nye gates."
-      },
-      {
-        "at": "2026-09-03T11:13:33.171Z",
-        "slug": null,
-        "title": "Kunstig intelligens",
-        "stage": "research",
-        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
-        "class": "evidence",
-        "assessment": "Send kun konkret evidensmangel til Research/Fact checker."
-      },
-      {
-        "at": "2026-09-03T10:48:32.671Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "runtime_error",
-        "reason": "Error: Workers AI returned no parseable structured response",
-        "class": "review",
-        "assessment": "Diagnostisk efterkontrol; opret ikke nye gates."
-      },
-      {
-        "at": "2026-09-03T10:30:53.208Z",
-        "slug": null,
-        "title": "Ikke navngivet kandidat",
-        "stage": "runtime_error",
-        "reason": "Error: Workers AI returned no parseable structured response",
-        "class": "review",
-        "assessment": "Diagnostisk efterkontrol; opret ikke nye gates."
-      },
-      {
-        "at": "2026-09-03T06:31:46.703Z",
-        "slug": null,
-        "title": "Begrænsning af AI-forbrug blandt unge i New York City",
-        "stage": "fact_check",
-        "reason": "Fact checker: semantisk fejl mod originalkilden",
-        "class": "evidence",
-        "assessment": "Send kun konkret evidensmangel til Research/Fact checker."
-      },
-      {
-        "at": "2026-09-03T06:26:04.797Z",
-        "slug": null,
-        "title": "Kanalen smuglerbander",
-        "stage": "final_editor",
-        "reason": "seo: overlappende meta-titler; seo: overlappende meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner",
-        "class": "technical",
-        "assessment": "Reparer deterministisk; må ikke være redaktionelt stop."
-      },
-      {
-        "at": "2026-09-03T06:22:02.224Z",
-        "slug": null,
-        "title": "El Niño: FN advarer om 'supersized' vejrfænomen",
-        "stage": "final_editor",
-        "reason": "seo: Seo_description er ikke en nødvendig eller relevant beskrivelse af artiklen. Den giver kun en overordnet ide om, hvad artiklen handler om, men ikke den specifikke information, der findes i artiklen.; seo: Seo_title er ikke en nødvendig eller relevant titel for artiklen. Den giver kun en overordnet ide om, hvad artiklen handler om, men ikke den specifikke information, der findes i artiklen.; ethics: Artiklen citerer flere kilder, men uden at specificere, hvilke kilder der er blevet brugt til at støtte hver enkelt påstand. Dette kan give anledning til misforståelser eller forvrængninger af informationen.; seo: Artiklen indeholder flere påstande uden at give en tydelig forklaring på, hvordan disse påstande er blevet til. Dette kan gøre det svært for læserne at forstå, hvordan artiklen er blevet skrevet og hvilke kilder der er blevet brugt til at støtte hver enkelt påstand.",
-        "class": "technical",
-        "assessment": "Reparer deterministisk; må ikke være redaktionelt stop."
-      },
-      {
-        "at": "2026-09-03T06:01:53.327Z",
-        "slug": null,
-        "title": "Iran modificerer raketværktøjer: USA og Iran i konflikt",
-        "stage": "fact_check",
-        "reason": "Fact checker: semantisk fejl mod originalkilden",
-        "class": "evidence",
-        "assessment": "Send kun konkret evidensmangel til Research/Fact checker."
-      },
-      {
-        "at": "2026-09-03T05:22:40.064Z",
-        "slug": null,
-        "title": "Storm rammer Toronto: Tausinder uden strøm",
-        "stage": "fact_check",
-        "reason": "Fact checker: semantisk fejl mod originalkilden",
-        "class": "evidence",
-        "assessment": "Send kun konkret evidensmangel til Research/Fact checker."
-      }
-    ]
+    "rejections": 0,
+    "reviews": []
   },
   "last7_stage_counts": {
     "ethics": 1,
