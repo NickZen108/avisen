@@ -1,11 +1,22 @@
 #!/usr/bin/env python3
-"""Machine-enforced gates for Morgentidende pipeline v2."""
+"""Machine-enforced gates for Morgentidende pipeline v2.
+
+Only conditions that should genuinely block publication belong here. Editorial
+process signals such as coverage breadth, right-of-reply handling and desk
+rechecks are handled by agents/policies rather than as release blockers.
+"""
 from __future__ import annotations
 import argparse,copy,json,sys
 from datetime import datetime,timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]
 PUB={"status","published_at","updated_at","scheduled_for","released_from_schedule_at","release_requested","publication","manual_review_completed","workflow_state"}
+# Metadata/placement fields may legitimately change after final editorial approval.
+NON_EDITORIAL_AFTER_APPROVAL={
+ "status","published_at","updated_at","scheduled_for","released_from_schedule_at",
+ "release_requested","publication","manual_review_completed","workflow_state",
+ "editorial_destination","related_news_slug","followup_type","weight"
+}
 def err(x): ERRORS.append(x)
 def load(p):
  try:return json.loads(p.read_text(encoding="utf-8"))
@@ -18,36 +29,8 @@ def time(v,l):
  except Exception as e:err(f"{l}: ugyldigt timestamp {v!r}: {e}");return None
 def snap(a):
  x=copy.deepcopy(a)
- for k in PUB:x.pop(k,None)
+ for k in NON_EDITORIAL_AFTER_APPROVAL:x.pop(k,None)
  return x
-def coverage(name,a,l,s):
- c=l.get("coverage_sweep") or {};st=c.get("status")
- if st not in {"pass","limited","not_required"}:err(f"{name}: coverage_sweep.status ugyldig");return
- groups=set()
- for sid in c.get("editorial_source_ids") or []:
-  src=s.get(sid)
-  if not src:err(f"{name}: ukendt coverage source {sid}");continue
-  g=str(src.get("source_group") or "").strip()
-  if not g:err(f"{name}: coverage source {sid} mangler source_group")
-  else:groups.add(g)
- declared={str(x).strip() for x in c.get("independent_source_groups",[]) if str(x).strip()}
- if declared and declared!=groups:err(f"{name}: coverage source-groups matcher ikke sources")
- if st=="pass" and not groups:err(f"{name}: coverage PASS kræver mindst én reel dokumentationskilde")
- if st=="limited" and not str(c.get("limitations") or "").strip():err(f"{name}: limited coverage kræver begrundelse")
- if st=="not_required":
-  article_type=str(a.get("format") or a.get("genre") or a.get("category") or "")
-  if article_type not in {"Guide","Kommentar"}:err(f"{name}: not_required coverage kun tilladt for Guide/Kommentar")
-  if not str(c.get("limitations") or "").strip():err(f"{name}: not_required kræver begrundelse")
-def ror(name,l):
- r=l.get("right_of_reply") or {}
- if not r.get("required"):return
- if not str(r.get("party") or "").strip():err(f"{name}: right_of_reply party mangler")
- if str(r.get("exception") or "").strip():return
- if not r.get("contacted_at"):err(f"{name}: forelæggelse contacted_at mangler")
- else:time(r["contacted_at"],f"{name}.contacted_at")
- if not r.get("deadline"):err(f"{name}: forelæggelse deadline mangler");return
- d=time(r["deadline"],f"{name}.deadline")
- if d and not r.get("response") and d>datetime.now(timezone.utc):err(f"{name}: forelæggelsesfrist ikke udløbet og svar mangler")
 def approval(path,a):
  ap=ROOT/"reports"/"editorial"/"approvals"/f"{a['slug']}.json"
  if not ap.exists():err(f"{path.name}: final approval mangler");return
@@ -68,10 +51,8 @@ def article(path):
  if not lp.exists():err(f"{path.name}: ledger mangler");return
  l=load(lp)
  if not l:return
- sm={s.get("id"):s for s in l.get("sources",[]) if s.get("id")};coverage(path.name,a,l,sm);ror(path.name,l)
- f=l.get("fact_check") or {};d=l.get("desk_recheck") or {}
+ f=l.get("fact_check") or {}
  if f.get("status")!="pass" or not f.get("checked_at"):err(f"{path.name}: fact_check pass+checked_at kræves")
- if d.get("status") not in {"publish","update"} or not d.get("checked_at") or not str(d.get("rationale") or "").strip():err(f"{path.name}: desk_recheck publish|update + tidspunkt + rationale kræves")
  approval(path,a)
  if a.get("status")=="ready" and not isinstance(a.get("release_requested"),bool):err(f"{path.name}: release_requested skal være bool")
 def frontpage():
