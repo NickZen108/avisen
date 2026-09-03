@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-03T05:52:12.275290Z",
+  "generated_at": "2026-09-03T06:22:19.169217Z",
   "date_dk": "2026-09-03",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,18 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 1,
+    "rejections": 2,
     "reviews": [
+      {
+        "at": "2026-09-03T06:01:53.327Z",
+        "slug": null,
+        "title": "Iran modificerer raketværktøjer: USA og Iran i konflikt",
+        "stage": "fact_check",
+        "reason": "Fact checker: semantisk fejl mod originalkilden",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-03T05:22:40.064Z",
         "slug": null,
@@ -30,7 +40,7 @@
   },
   "last7_stage_counts": {
     "ethics": 2,
-    "fact_check": 12,
+    "fact_check": 13,
     "infrastructure": 11,
     "language": 1,
     "media": 5,
@@ -44,7 +54,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "24 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "25 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",
