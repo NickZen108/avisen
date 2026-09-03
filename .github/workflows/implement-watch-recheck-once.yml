@@ -1,0 +1,154 @@
+name: Implement watch recheck policy once
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/implement-watch-recheck-once.yml']
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Patch existing Scan/Newsdesk watch state
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('cloudflare/newsdesk/src/index.js')
+          s=p.read_text(encoding='utf-8')
+          old='''      const now = Date.now();
+      let handled = (await this.ctx.storage.get("handled_signals")) || [];
+      handled = handled.filter((x) => Date.parse(x.expires_at || "") > now);
+      const ttlHours = incoming.status === "approved" ? 36
+        : incoming.status === "watch" && incoming.stage === "research" ? 18
+        : incoming.status === "watch" ? 4
+        : incoming.status === "drop" ? 12 : 6;
+      for (const key of incoming.handled_signal_keys || []) {
+        if (!key) continue;
+        handled = handled.filter((x) => x.key !== key);
+        handled.unshift({ key, at: stampedAt, status: incoming.status || "hold", expires_at: new Date(now + ttlHours * 3600_000).toISOString() });
+      }
+      await this.ctx.storage.put("handled_signals", handled.slice(0, 180));'''
+          new='''      const now = Date.now();
+      let handled = (await this.ctx.storage.get("handled_signals")) || [];
+      handled = handled.filter((x) => Date.parse(x.expires_at || "") > now);
+      const category = incoming.audit?.assignment?.category || null;
+      const weight = incoming.audit?.assignment?.weight || null;
+      const fastWatch = ["Indland", "Udland", "Krimi"].includes(category);
+      const slowWatch = !fastWatch && weight === "D";
+      const watchRetryHours = fastWatch ? 1 : slowWatch ? 24 : 6;
+      const watchTtlHours = fastWatch ? 24 : 72;
+      const ttlHours = incoming.status === "approved" ? 36
+        : incoming.status === "watch" ? watchTtlHours
+        : incoming.status === "drop" ? 12 : 6;
+      for (const key of incoming.handled_signal_keys || []) {
+        if (!key) continue;
+        const previous = handled.find((x) => x.key === key);
+        handled = handled.filter((x) => x.key !== key);
+        if (incoming.status === "approved") {
+          const currentTopic = watchTopicWords(key);
+          handled = handled.filter((x) => x.status !== "watch" || !watchTopicsOverlap(currentTopic, watchTopicWords(x.key)));
+        }
+        const watchStartedAt = incoming.status === "watch" ? (previous?.watch_started_at || stampedAt) : null;
+        const hardExpiry = incoming.status === "watch"
+          ? new Date(Date.parse(watchStartedAt) + watchTtlHours * 3600_000).toISOString()
+          : new Date(now + ttlHours * 3600_000).toISOString();
+        handled.unshift({
+          key, at: stampedAt, status: incoming.status || "hold", category, weight,
+          watch_started_at: watchStartedAt,
+          retry_at: incoming.status === "watch" ? new Date(now + watchRetryHours * 3600_000).toISOString() : null,
+          retry_hours: incoming.status === "watch" ? watchRetryHours : null,
+          expires_at: hardExpiry,
+        });
+      }
+      await this.ctx.storage.put("handled_signals", handled.slice(0, 180));'''
+          assert old in s, 'handled state block not found'
+          s=s.replace(old,new,1)
+          anchor='''function base64ToBytes(base64) {
+  const binary = atob(base64); const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+'''
+          helper='''function base64ToBytes(base64) {
+  const binary = atob(base64); const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+function watchTopicWords(key) {
+  const title = String(key || "").split("|")[0];
+  const stop = new Set(["og","i","på","af","at","for","fra","med","til","en","et","den","det","de","der","som","om","efter","over","under","the","a","an","and","of","to","in","on","for","from","with"]);
+  return new Set(normalizeTitle(title).split(" ").filter((x) => x.length >= 4 && !stop.has(x)));
+}
+function watchTopicsOverlap(a, b) {
+  if (!a?.size || !b?.size) return false;
+  let hits = 0;
+  for (const word of a) if (b.has(word)) hits += 1;
+  return hits >= 2 || (hits >= 1 && Math.min(a.size, b.size) <= 2);
+}
+function annotateWatchMatches(scan, handledSignals, now = Date.now()) {
+  const active = (handledSignals || []).filter((x) => x.status === "watch" && Date.parse(x.expires_at || "") > now);
+  if (!active.length) return scan;
+  const watchTopics = active.map((x) => ({ entry: x, words: watchTopicWords(x.key) }));
+  const signals = (scan.signals || []).map((signal) => {
+    const words = watchTopicWords(`${signal.normalized || normalizeTitle(signal.headline || "")}|${signal.url || ""}`);
+    const matched = watchTopics.find((x) => watchTopicsOverlap(words, x.words));
+    return matched ? { ...signal, watch_match: true, watch_category: matched.entry.category || null } : signal;
+  });
+  return { ...scan, signals };
+}
+'''
+          assert anchor in s
+          s=s.replace(anchor,helper,1)
+          old2='''  const now = Date.now();
+  const excludedSignalKeys = (status.handled_signals || [])
+    .filter((x) => Date.parse(x.expires_at || "") > now)
+    .map((x) => x.key)
+    .filter(Boolean);
+  try {
+    const result = await runEditorialCycle(env, scan, { excludedSignalKeys });'''
+          new2='''  const now = Date.now();
+  scan = annotateWatchMatches(scan, status.handled_signals || [], now);
+  const excludedSignalKeys = (status.handled_signals || [])
+    .filter((x) => Date.parse(x.expires_at || "") > now)
+    .filter((x) => x.status !== "watch" || !x.retry_at || Date.parse(x.retry_at) > now)
+    .map((x) => x.key)
+    .filter(Boolean);
+  try {
+    const result = await runEditorialCycle(env, scan, { excludedSignalKeys });'''
+          assert old2 in s, 'maybeRunEditorial exclusion block not found'
+          s=s.replace(old2,new2,1)
+          p.write_text(s,encoding='utf-8')
+
+          p=Path('cloudflare/newsdesk/src/editorial.js')
+          s=p.read_text(encoding='utf-8')
+          old='''    const clusterBonus = Math.min(2, Math.max(0, (clusterSizes.get(s.normalized) || 1) - 1));
+    return { s, i, score: freshness + feedScore + sourceScore + clusterBonus + topicBoost(s), published };'''
+          new='''    const clusterBonus = Math.min(2, Math.max(0, (clusterSizes.get(s.normalized) || 1) - 1));
+    const watchBonus = s.watch_match ? 10 : 0;
+    return { s, i, score: freshness + feedScore + sourceScore + clusterBonus + topicBoost(s) + watchBonus, published };'''
+          assert old in s, 'signal scoring block not found'
+          s=s.replace(old,new,1)
+          old3='''    discovery_only: Boolean(s.discovery_only), score,
+  }));'''
+          new3='''    discovery_only: Boolean(s.discovery_only), watch_match: Boolean(s.watch_match), score,
+  }));'''
+          assert old3 in s, 'signal summary output block not found'
+          s=s.replace(old3,new3,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+          node --check cloudflare/newsdesk/src/index.js
+          node --check cloudflare/newsdesk/src/editorial.js
+          python scripts/test_hybrid_runtime.py
+          python scripts/quality_gate.py
+          git diff --check
+      - name: Commit watch policy
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add cloudflare/newsdesk/src/index.js cloudflare/newsdesk/src/editorial.js
+          git commit -m 'feat: make Newsdesk watch stories self-rechecking' || exit 0
+          git push origin main
