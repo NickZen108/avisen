@@ -1,0 +1,171 @@
+name: Apply agreed Gemini optimizations once
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-gemini-agreed-cleanup-once.yml'
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply agreed optimizations
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          root = Path('.')
+          p = root/'cloudflare/newsdesk/src/editorial.js'
+          js = p.read_text(encoding='utf-8')
+
+          # 1) Fact checker output: decision/rationale are deterministic downstream, so do not spend model output on them.
+          old_fact_schema = '''const factCheckSchema = {
+            type: "object", properties: {
+              decision: { type: "string", enum: ["publish", "hold"] }, rationale: { type: "string" },
+              contradictions: { type: "array", items: { type: "string" } },
+              claims: { type: "array", minItems: 1, maxItems: 12, items: { type: "object", properties: {
+                id: { type: "string" }, claim: { type: "string" }, source_indexes: { type: "array", items: { type: "integer" }, minItems: 1 },
+                status: { type: "string", enum: ["verified", "uncertain", "rejected"] }, notes: { type: "string" },
+              }, required: ["id", "claim", "source_indexes", "status", "notes"] } },
+            }, required: ["decision", "rationale", "contradictions", "claims"],
+          };'''
+          new_fact_schema = '''const factCheckSchema = {
+            type: "object", properties: {
+              contradictions: { type: "array", items: { type: "string" } },
+              claims: { type: "array", minItems: 1, maxItems: 12, items: { type: "object", properties: {
+                id: { type: "string" }, claim: { type: "string" }, source_indexes: { type: "array", items: { type: "integer" }, minItems: 1 },
+                status: { type: "string", enum: ["verified", "uncertain", "rejected"] }, notes: { type: "string" },
+              }, required: ["id", "claim", "source_indexes", "status", "notes"] } },
+            }, required: ["contradictions", "claims"],
+          };'''
+          assert old_fact_schema in js
+          js = js.replace(old_fact_schema, new_fact_schema, 1)
+          js = js.replace('  const modelRationale = fact.rationale || "";\n  fact.model_rationale = modelRationale;\n', '', 1)
+
+          # 2) Research payload: keep semantic Research, but send less source text and fewer low-value sources.
+          old_limit = '''  for (const item of prioritized) {
+            const url = item.final_url || item.url;
+            if (!url || seenUrls.has(url)) continue;
+            seenUrls.add(url);
+            unique.push(item);
+            if (unique.length >= 4) break;
+          }
+
+          const researchClusters = provenanceClusters(unique);'''
+          new_limit = '''  const hasAuthoritative = prioritized.some(authoritativeClaimSource);
+          const researchSourceLimit = hasAuthoritative ? 3 : 4;
+          for (const item of prioritized) {
+            const url = item.final_url || item.url;
+            if (!url || seenUrls.has(url)) continue;
+            seenUrls.add(url);
+            unique.push(item);
+            if (unique.length >= researchSourceLimit) break;
+          }
+
+          const researchClusters = provenanceClusters(unique);'''
+          assert old_limit in js
+          js = js.replace(old_limit, new_limit, 1)
+          js = js.replace('    excerpt: item.excerpt.slice(0, 1800),', '    excerpt: item.excerpt.slice(0, authoritativeClaimSource(item) ? 1400 : 1000),', 1)
+
+          # 3) Track structured fallbacks per editorial stage without changing routing.
+          js = js.replace(
+              'async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRONG_TEXT_MODEL, fallbackModel = null) {',
+              'async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRONG_TEXT_MODEL, fallbackModel = null, stage = "unknown") {'
+          )
+          old_inc = '    try { env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1; } catch (_) {}'
+          new_inc = '''    try {
+              env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1;
+              env.__AI_FALLBACK_BY_STAGE__ = env.__AI_FALLBACK_BY_STAGE__ || {};
+              env.__AI_FALLBACK_BY_STAGE__[stage] = Number(env.__AI_FALLBACK_BY_STAGE__[stage] || 0) + 1;
+            } catch (_) {}'''
+          assert js.count(old_inc) == 2
+          js = js.replace(old_inc, new_inc)
+
+          call_repls = {
+            'assignmentSchema, 260, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);': 'assignmentSchema, 260, FAST_TEXT_MODEL, STRONG_TEXT_MODEL, "newsdesk");',
+            'researchSchema, 650, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);': 'researchSchema, 650, FAST_TEXT_MODEL, STRONG_TEXT_MODEL, "research");',
+            'factCheckSchema, 850, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);': 'factCheckSchema, 850, FAST_TEXT_MODEL, STRONG_TEXT_MODEL, "fact-check");',
+            'articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null);': 'articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null, "journalist");',
+            'finalSchema, 360, reviewModel, reviewFallback);': 'finalSchema, 360, reviewModel, reviewFallback, "final-editor");',
+            'articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, null);': 'articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, null, "repair");',
+          }
+          for old, new in call_repls.items():
+              assert old in js, old
+              js = js.replace(old, new, 1)
+
+          # 4) Local repair input: pure language repair does not need verified claims or assignment.
+          old_repair = '''  const system = `Du reparerer en allerede fact-checket artikel. Ret KUN de konkrete problemer fra Slutredaktøren og returnér hele artiklen i samme schema. Brug kun de verificerede claims. Ved language: ret kun sprog og klarhed. Ved final_editor: fjern eller omskriv tekst, der går ud over de verificerede claims; opfind aldrig nye fakta. Ved ethics: tilføj kun fairness/attribution, hvis den nødvendige information allerede findes i de verificerede claims; ellers kan problemet ikke repareres automatisk. SEO må aldrig være blocker. Bevar vinkel og betydning så langt det er forsvarligt.`;
+          return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), article, issues }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, null, "repair");'''
+          new_repair = '''  const languageOnly = issues.every((x) => x.gate === "language");
+          const system = languageOnly
+            ? `Du reparerer KUN sprog og klarhed i en allerede fact-checket artikel. Returnér hele artiklen i samme schema. Ændr ikke fakta, attribution, vinkel eller betydning. Ret kun de konkrete sprogproblemer fra Slutredaktøren.`
+            : `Du reparerer en allerede fact-checket artikel. Ret KUN de konkrete problemer fra Slutredaktøren og returnér hele artiklen i samme schema. Brug kun de verificerede claims. Ved final_editor: fjern eller omskriv tekst, der går ud over de verificerede claims; opfind aldrig nye fakta. Ved ethics: tilføj kun fairness/attribution, hvis den nødvendige information allerede findes i de verificerede claims; ellers kan problemet ikke repareres automatisk. SEO må aldrig være blocker. Bevar vinkel og betydning så langt det er forsvarligt.`;
+          const payload = languageOnly
+            ? { article, issues }
+            : { verified_claims: dossier.claims.filter((c) => c.status === "verified"), article, issues };
+          return aiJson(env, system, JSON.stringify(payload), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, null, "repair");'''
+          assert old_repair in js
+          js = js.replace(old_repair, new_repair, 1)
+
+          # 5) Deterministic normalized no-progress detection for repair retries.
+          marker = 'async function reviseArticleIssues(env, assignment, dossier, article, review) {'
+          helper = '''function normalizedArticleFingerprint(article) {
+            const normalized = {
+              title: String(article?.title || "").replace(/\\s+/g, " ").trim(),
+              standfirst: String(article?.standfirst || "").replace(/\\s+/g, " ").trim(),
+              body: (article?.body || []).map((b) => ({ type: b?.type || "", text: String(b?.text || "").replace(/\\s+/g, " ").trim() })),
+            };
+            return JSON.stringify(normalized);
+          }
+          ''' + marker
+          assert marker in js
+          js = js.replace(marker, helper, 1)
+          js = js.replace('    if (JSON.stringify(revised) === JSON.stringify(article)) break;', '    if (normalizedArticleFingerprint(revised) === normalizedArticleFingerprint(article)) { routing.push("local-repair→no-progress"); break; }', 1)
+
+          # Telemetry exposes by-stage fallback counts.
+          old_usage1 = 'error.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0) };'
+          new_usage1 = 'error.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0), structured_fallback_by_stage: env.__AI_FALLBACK_BY_STAGE__ || {} };'
+          old_usage2 = 'result.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0) };'
+          new_usage2 = 'result.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0), structured_fallback_by_stage: env.__AI_FALLBACK_BY_STAGE__ || {} };'
+          assert old_usage1 in js and old_usage2 in js
+          js = js.replace(old_usage1, new_usage1, 1).replace(old_usage2, new_usage2, 1)
+
+          p.write_text(js, encoding='utf-8')
+
+          # Update regression contract with the new optimizations.
+          t = root/'scripts/test_hybrid_runtime.py'
+          s = t.read_text(encoding='utf-8')
+          anchor = '        \'structured_fallback_calls\',\n'
+          assert anchor in s
+          s = s.replace(anchor, anchor + '        \'structured_fallback_by_stage\',\n        \'function normalizedArticleFingerprint(article)\',\n        \'const languageOnly = issues.every((x) => x.gate === "language")\',\n        \'const researchSourceLimit = hasAuthoritative ? 3 : 4\',\n', 1)
+          insert = '''    fact_schema = js.split('const factCheckSchema', 1)[1].split('const articleSchema', 1)[0]
+              assert 'decision:' not in fact_schema, "Fact model must not spend output tokens on deterministic decision"
+              assert 'rationale:' not in fact_schema, "Fact model must not spend output tokens on deterministic rationale"
+          '''
+          target = "    assert 'hero_prompt' not in js.split('const articleSchema', 1)[1].split('const finalSchema', 1)[0], \"Journalist schema must not spend output tokens on hero_prompt\"\n"
+          assert target in s
+          s = s.replace(target, insert + target, 1)
+          t.write_text(s, encoding='utf-8')
+          PY
+      - name: Validate
+        run: |
+          set -euo pipefail
+          node --check cloudflare/newsdesk/src/editorial.js
+          python -m py_compile scripts/test_hybrid_runtime.py
+          python scripts/test_hybrid_runtime.py
+          python scripts/quality_gate.py --prebuild
+          git diff --check
+      - name: Remove one-shot workflow
+        run: rm -f .github/workflows/apply-gemini-agreed-cleanup-once.yml
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet || git commit -m 'refactor: reduce retry and research AI overhead'
+          git push
