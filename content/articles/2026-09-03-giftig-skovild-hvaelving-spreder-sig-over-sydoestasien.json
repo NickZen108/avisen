@@ -1,0 +1,103 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien",
+  "slug": "2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien",
+  "category": "Udland",
+  "weight": "B",
+  "editorial_destination": "main",
+  "story_location": {
+    "country": "Sydøstasien",
+    "country_code": "asia",
+    "place_names_english": [
+      "South East Asia",
+      "Indonesia",
+      "Malaysia",
+      "Thailand"
+    ],
+    "place_names_local": [
+      "Sydøstasien",
+      "Indonesien",
+      "Malaysia",
+      "Thailand"
+    ]
+  },
+  "title": "Giftig skovild hvælving spreder sig over Sydøstasien",
+  "standfirst": "En giftig skovild hvælving spreder sig over Sydøstasien og påvirker millioner af mennesker. Over 12.000 børn under 5 år har fået respiratoriske problemer.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "ledger": "sources/2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04"
+  ],
+  "seo": {
+    "title": "Giftig skovild hvælving spreder sig over Sydøstasien",
+    "description": "En giftig skovild hvælving spreder sig over Sydøstasien og påvirker millioner af mennesker. Over 12.000 børn under 5 år har fået respiratoriske problemer.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien.jpg",
+    "alt": "Data source: World Bank Group - World Development Indicators",
+    "credit": "Lady3mlnm",
+    "license": "CC0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Life_expectancy_in_countries_of_South-East_Asia_and_Oceania.png",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Giftig skovild hvælving spreder sig over Sydøstasien",
+      "type": "h2"
+    },
+    {
+      "text": "Milioner af mennesker påvirket af skovild hvælvingen",
+      "type": "h3"
+    },
+    {
+      "text": "Over 12.000 børn under 5 år får respiratoriske problemer",
+      "type": "h3"
+    },
+    {
+      "text": "Fugten er forårsaget af en såkaldt 'super' El Niño",
+      "type": "h3"
+    },
+    {
+      "text": "En giftig skovild hvælving spreder sig over Sydøstasien og påvirker millioner af mennesker. Ifølge BBC World har over 12.000 børn under 5 år fået respiratoriske problemer på grund af skovild hvælvingen.",
+      "type": "p"
+    },
+    {
+      "text": "Fugten er forårsaget af en såkaldt 'super' El Niño, ifølge BBC World. Det er en meget intens El Niño-episode, der har ført til en meget stor mængde fugt i regionen.",
+      "type": "p"
+    },
+    {
+      "text": "BBC World rapporterer, at millioner af mennesker er blevet påvirket af skovild hvælvingen. Det er en meget alvorlig situation, der kræver en hurtig og effektiv løsning.",
+      "type": "p"
+    },
+    {
+      "text": "For at forhindre yderligere skader er det vigtigt, at myndighederne tager konkrete skridt til at reducere fugten og beskytte befolkningen.",
+      "type": "p"
+    },
+    {
+      "text": "Kilder: BBC World",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien",
+  "article_slug": "2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "Sydøstasien",
+      "country_code": "asia",
+      "place_names_english": [
+        "South East Asia",
+        "Indonesia",
+        "Malaysia",
+        "Thailand"
+      ],
+      "place_names_local": [
+        "Sydøstasien",
+        "Indonesien",
+        "Malaysia",
+        "Thailand"
+      ]
+    },
+    "core_question": "Hvorfor spreder sig en giftig skovild hvælving over Sydøstasien?"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "BBC World",
+      "url": "https://www.bbc.co.uk/news/articles/clyqw44w142o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-03T11:35:52.000Z",
+      "accessed_at": "2026-09-03T11:50:44.459Z",
+      "type": "news",
+      "source_group": "host-bbc-co-uk",
+      "publisher_root": "bbc-co-uk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Toxic wildfire haze spreads across South East Asia as 'super' El Niño intensifies",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-bbc-co-uk"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Toxic wildfire haze spreder sig over Sydøstasien",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T11:50:44.459Z",
+      "notes": "BBC World"
+    },
+    {
+      "id": "F02",
+      "claim": "Milioner af mennesker er blevet påvirket af skovild hvælvingen",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T11:50:44.459Z",
+      "notes": "BBC World"
+    },
+    {
+      "id": "F03",
+      "claim": "Over 12.000 børn under 5 år har fået respiratoriske problemer",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T11:50:44.459Z",
+      "notes": "BBC World"
+    },
+    {
+      "id": "F04",
+      "claim": "Fugten er forårsaget af en såkaldt 'super' El Niño",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T11:50:44.459Z",
+      "notes": "BBC World"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T11:50:44.459Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "main"
+}

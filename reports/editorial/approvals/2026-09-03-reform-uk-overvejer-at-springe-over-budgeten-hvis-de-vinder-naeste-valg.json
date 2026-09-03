@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "story_id": "2026-09-03-reform-uk-floats-skipping-budget-if-it-wins-next-election",
+  "article_slug": "2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg",
+  "checked_at": "2026-09-03T11:51:27.569Z",
+  "final_editor_mode": "ai",
+  "editorial_snapshot": {
+    "pipeline_version": 2,
+    "story_id": "2026-09-03-reform-uk-floats-skipping-budget-if-it-wins-next-election",
+    "slug": "2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg",
+    "category": "Penge",
+    "weight": "A",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "UK",
+      "country_code": "GB",
+      "place_names_english": [
+        "London",
+        "UK",
+        "Europe"
+      ],
+      "place_names_local": [
+        "London",
+        "UK",
+        "Europe"
+      ]
+    },
+    "title": "Reform UK overvejer at springe over budgeten hvis de vinder næste valg",
+    "standfirst": "Reform UK overvejer at springe over budgeten hvis de vinder næste valg. Det skriver Politico Europe.",
+    "byline": "Morgentidende Redaktion",
+    "ledger": "sources/2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg.json",
+    "claim_ids": [
+      "F01",
+      "F02"
+    ],
+    "seo": {
+      "title": "Reform UK overvejer at springe over budgeten hvis de vinder næste valg",
+      "description": "Reform UK overvejer at springe over budgeten hvis de vinder næste valg. Det skriver Politico Europe.",
+      "canonical": null
+    },
+    "image": {
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg.jpg",
+      "alt": "Image of the logos of Reform UK and TUV",
+      "credit": "ThirdWaySocialDemocrat",
+      "license": "CC0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Reform_UK%E2%80%93TUV_alliance.png",
+      "image_type": "photo",
+      "context_type": "archive",
+      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "pending_image": false,
+      "ai_generated": false,
+      "placement": "lead"
+    },
+    "body": [
+      {
+        "text": "Reform UK overvejer at springe over budgeten hvis de vinder næste valg.",
+        "type": "h2"
+      },
+      {
+        "text": "Det skriver Politico Europe.",
+        "type": "p"
+      },
+      {
+        "text": "Reform UK vil træffe store finansielle beslutninger inden for få dage eller uger efter et valg.",
+        "type": "p"
+      },
+      {
+        "text": "Det skriver Politico Europe.",
+        "type": "p"
+      },
+      {
+        "text": "Politico Europe er en troværdig kilde.",
+        "type": "p"
+      },
+      {
+        "text": "Læs mere på Politico Europes hjemmeside.",
+        "type": "p"
+      }
+    ],
+    "source_ids_to_display": [
+      "S1"
+    ],
+    "related_news_slug": null,
+    "related": [],
+    "correction_note": null,
+    "automation_origin": "cloudflare-workers-ai"
+  },
+  "editorial_destination": "main"
+}

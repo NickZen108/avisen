@@ -1,0 +1,108 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-reform-uk-floats-skipping-budget-if-it-wins-next-election",
+  "article_slug": "2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg",
+  "assignment": {
+    "category": "Penge",
+    "weight": "A",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "UK",
+      "country_code": "GB",
+      "place_names_english": [
+        "London",
+        "UK",
+        "Europe"
+      ],
+      "place_names_local": [
+        "London",
+        "UK",
+        "Europe"
+      ]
+    },
+    "core_question": "Reform UK"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Politico Europe",
+      "url": "https://www.politico.eu/article/reform-uk-budget-election-robert-jenrick/?utm_source=RSS_Feed&#038;utm_medium=RSS&#038;utm_campaign=RSS_Syndication",
+      "published_at": "2026-09-03T11:36:34.000Z",
+      "accessed_at": "2026-09-03T11:51:27.569Z",
+      "type": "news",
+      "source_group": "host-politico-eu",
+      "publisher_root": "politico-eu",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Reform UK floats skipping budget if it wins next election",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-politico-eu"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Reform UK vil overveje at springe over budgeten hvis de vinder næste valg",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-03T11:51:27.569Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F02",
+      "claim": "Reform UK vil træffe store finansielle beslutninger inden for få dage eller uger efter et valg",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-03T11:51:27.569Z",
+      "notes": "Politico Europe"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T11:51:27.569Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "main"
+}
