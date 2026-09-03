@@ -1,0 +1,185 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget",
+  "article_slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget",
+  "assignment": {
+    "category": "Sport",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "Norge",
+      "country_code": "NO",
+      "hero_queries_english": [
+        "Vålerenga",
+        "Bjørdal",
+        "Norge"
+      ],
+      "hero_queries_local": [
+        "Vålerenga",
+        "Bjørdal",
+        "Norge"
+      ],
+      "hero_queries_transliterated": [
+        "Vålerenga",
+        "Bjørdal",
+        "Norge"
+      ],
+      "place_names_english": [
+        "Oslo",
+        "Norge"
+      ],
+      "place_names_local": [
+        "Oslo",
+        "Norge"
+      ],
+      "primary_language": "Bokmål",
+      "primary_language_code": "no",
+      "transliterations": [
+        "Oslo",
+        "Norge"
+      ]
+    },
+    "core_question": "Vålerenga-styreleder går av etter Bjørdal-salget",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "NRK",
+      "url": "https://www.nrk.no/sport/valerenga-styreleder-gar-av-etter-bjordal-salget-1.18012609",
+      "published_at": "2026-09-03T06:34:24.000Z",
+      "accessed_at": "2026-09-03T06:40:22.870Z",
+      "type": "news",
+      "source_group": "host-nrk-no",
+      "publisher_root": "nrk-no",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Vålerenga-styreleder går av etter Bjørdal-salget",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-nrk-no"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Vålerenga-styreleder Søren Eriksen går av etter salget av Henrik Bjørdal til Viking.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-03T06:40:22.870Z",
+      "notes": "Kilde: NRK"
+    },
+    {
+      "id": "F02",
+      "claim": "Søren Eriksen mente han ikke hadde nødvendig støtte for de beslutninger han hadde vært med på å ta.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-03T06:40:22.870Z",
+      "notes": "Kilde: NRK"
+    },
+    {
+      "id": "F03",
+      "claim": "Vålerenga-kapteinen Henrik Bjørdal ble hentet av Viking onsdag kveld.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-03T06:40:22.870Z",
+      "notes": "Kilde: NRK"
+    },
+    {
+      "id": "F04",
+      "claim": "Overgangen av Henrik Bjørdal til Viking har blitt beskrevet som en sjokkovergang.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-03T06:40:22.870Z",
+      "notes": "Kilde: NRK"
+    },
+    {
+      "id": "F05",
+      "claim": "Søren Eriksen mente det var vanskelig å si nei til salg av Henrik Bjørdal, da spilleren ønsket å gå i en alder av 29 år.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-03T06:40:22.870Z",
+      "notes": "Kilde: NRK"
+    },
+    {
+      "id": "F06",
+      "claim": "Nestleder Ine Hope Karlsen overtar ledervervet i Vålerenga Fotball Elite.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-nrk-no"
+      ],
+      "checked_at": "2026-09-03T06:40:22.870Z",
+      "notes": "Kilde: NRK"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T06:40:22.870Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-03T06:40:22.870Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "main"
+}

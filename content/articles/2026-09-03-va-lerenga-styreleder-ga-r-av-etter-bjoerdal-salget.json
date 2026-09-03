@@ -1,0 +1,99 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget",
+  "slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget",
+  "category": "Sport",
+  "weight": "B",
+  "editorial_destination": "main",
+  "story_location": {
+    "country": "Norge",
+    "country_code": "NO",
+    "hero_queries_english": [
+      "Vålerenga",
+      "Bjørdal",
+      "Norge"
+    ],
+    "hero_queries_local": [
+      "Vålerenga",
+      "Bjørdal",
+      "Norge"
+    ],
+    "hero_queries_transliterated": [
+      "Vålerenga",
+      "Bjørdal",
+      "Norge"
+    ],
+    "place_names_english": [
+      "Oslo",
+      "Norge"
+    ],
+    "place_names_local": [
+      "Oslo",
+      "Norge"
+    ],
+    "primary_language": "Bokmål",
+    "primary_language_code": "no",
+    "transliterations": [
+      "Oslo",
+      "Norge"
+    ]
+  },
+  "title": "Vålerenga-styreleder går av etter Bjørdal-salget",
+  "standfirst": "Vålerenga-styreleder Søren Eriksen har gået af efter salget af Henrik Bjørdal til Viking.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06"
+  ],
+  "seo": {
+    "title": "Vålerenga-styreleder går av efter Bjørdal-salget",
+    "description": "Vålerenga-styreleder Søren Eriksen har gået af efter salget af Henrik Bjørdal til Viking. Det skriver NRK.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget.jpg",
+    "alt": "An SJ Norge El 18 with a Regiontog from Trondheim to Oslo is crossing the Orkla bridge between Ulsberg and Fagerhaug, Norway.",
+    "credit": "Kabelleger / David Gubler",
+    "license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:SJ_Norge_El_18_with_Regiontog_on_Orkla_bridge.jpg",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Vålerenga-styreleder Søren Eriksen har gået af efter salget af Henrik Bjørdal til Viking. Det skriver NRK. Eriksen mente han ikke havde nødvendig støtte for de beslutninger han havde været med på at tage. Overgangen af Henrik Bjørdal til Viking har blivt beskrevet som en sjokkovergang. Eriksen mente det var vanskelig at sige nei til salget af Henrik Bjørdal, da spilleren ønskede at gå i en alder af 29 år. Nestleder Ine Hope Karlsen overtar nu ledervervet i Vålerenga Fotball Elite.",
+      "type": "h2"
+    },
+    {
+      "text": "Vålerenga Fotball Elite er en norsk fodboldklub fra Oslo. Klubben spiller i Eliteserien, som er den bedste række i norsk fodbold. Henrik Bjørdal er en af klubbens mest kendte spillere og har været kaptein for Vålerenga. Han blev hentet af Viking onsdag aften.",
+      "type": "p"
+    },
+    {
+      "text": "Søren Eriksen har været styreleder for Vålerenga i flere år og har været med til at tage flere vigtige beslutninger for klubben. Han har nu gået af efter salget af Henrik Bjørdal til Viking. Det er ikke klart hvem der vil overtage styrelederposten i fremtiden.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}
