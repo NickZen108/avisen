@@ -6106,7 +6106,202 @@
           "automation_origin": "cloudflare-workers-ai"
         }
       }
+    ],
+    "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet": [
+      {
+        "hash": "de4b5ead765d685bf28f15374e531bab33204fec3b93f740a14c96dc315e5fc8",
+        "recorded_at": "2026-09-03T11:13:57+00:00",
+        "title": "Datacenteres udvikling kan have store konsekvenser for miljøet",
+        "story_id": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
+          "slug": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
+          "category": "Videnskab & teknologi",
+          "weight": "C",
+          "editorial_destination": "tech_magazine",
+          "story_location": {
+            "country": "Tyskland",
+            "country_code": "DE",
+            "place_names_english": [
+              "Germany"
+            ],
+            "place_names_local": [
+              "Tyskland"
+            ]
+          },
+          "title": "Datacenteres udvikling kan have store konsekvenser for miljøet",
+          "standfirst": "Datacenterer er en af de største forbrugere af elektricitet i verden, og deres udvikling kan have store konsekvenser for miljøet. Men hvad kan vi gøre for at mindske datacenteres miljøpåvirkning?",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "seo": {
+            "title": "Datacenteres udvikling kan have store konsekvenser for miljøet",
+            "description": "Datacenterer er en af de største forbrugere af elektricitet i verden, og deres udvikling kan have store konsekvenser for miljøet. Men hvad kan vi gøre for at mindske datacenteres miljøpåvirkning?",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet.jpg",
+            "alt": "Male Ruddy Darter ( Sympetrum sanguineum ), Chemnitz, Germany",
+            "credit": "Jörg Hempel",
+            "license": "CC BY-SA 3.0 de",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Sympetrum_sanguineum_LC0316.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Datacenteres udvikling kan have store konsekvenser for miljøet",
+              "type": "h2"
+            },
+            {
+              "text": "Datacenterer er en af de største forbrugere af elektricitet i verden",
+              "type": "p"
+            },
+            {
+              "text": "Hvis datacenterer var et land, ville deres energiforbrug være på niveau med et af verdens største lande",
+              "type": "p"
+            },
+            {
+              "text": "Datacenterer forbruger meget vand, og dette kan have store konsekvenser for vandressourcerne",
+              "type": "p"
+            },
+            {
+              "text": "Datacenterer kan ændre landskabet og luften omkring dem",
+              "type": "p"
+            },
+            {
+              "text": "AI-modeller og cloud-lagring, streaming, web-hosting og sociale medier har en reel fysisk fodfæste",
+              "type": "p"
+            },
+            {
+              "text": "Datacenterer er nødvendige for at opfylde kravene til AI-modellerne",
+              "type": "p"
+            },
+            {
+              "text": "Men hvad betyder det for miljøet?",
+              "type": "h3"
+            },
+            {
+              "text": "Datacenteres udvikling kan have store konsekvenser for miljøet, inklusive stræning af elnettet, udvinding af vandressourcer og ændring af landskabet og luften",
+              "type": "p"
+            },
+            {
+              "text": "Ifølge DW, er datacenterer en af de største forbrugere af elektricitet i verden",
+              "type": "p"
+            },
+            {
+              "text": "Hvis datacenterer var et land, ville deres energiforbrug være på niveau med et af verdens største lande",
+              "type": "p"
+            },
+            {
+              "text": "Datacenterer forbruger meget vand, og dette kan have store konsekvenser for vandressourcerne",
+              "type": "p"
+            },
+            {
+              "text": "Datacenterer kan ændre landskabet og luften omkring dem",
+              "type": "p"
+            },
+            {
+              "text": "Men hvad kan vi gøre for at mindske datacenteres miljøpåvirkning?",
+              "type": "h3"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-03-ugyldigt-struktureret-svar": [
+      {
+        "hash": "7711e9c5101943a07a784d40d70da020e320f55c76fe3795fb04298ac506ee85",
+        "recorded_at": "2026-09-03T11:13:57+00:00",
+        "title": "Ugyldigt struktureret svar",
+        "story_id": "2026-09-03-will-the-us-or-china-emerge-as-the-ai-superpower",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-03-will-the-us-or-china-emerge-as-the-ai-superpower",
+          "slug": "2026-09-03-ugyldigt-struktureret-svar",
+          "category": "Videnskab & teknologi",
+          "weight": "B",
+          "editorial_destination": "tech_magazine",
+          "story_location": {
+            "country": "USA",
+            "country_code": "US",
+            "place_names_english": [
+              "USA",
+              "China"
+            ],
+            "place_names_local": [
+              "USA",
+              "Kina"
+            ]
+          },
+          "title": "Ugyldigt struktureret svar",
+          "standfirst": "Ugyldigt struktureret svar",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-03-ugyldigt-struktureret-svar.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03"
+          ],
+          "seo": {
+            "title": "Ugyldigt struktureret svar",
+            "description": "Ugyldigt struktureret svar",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-ugyldigt-struktureret-svar.jpg",
+            "alt": "Banknoten (Kina) und Münzen von Papua Neuguinea. 2- , 10- und 20-Kina-Banknote und 1-Kina-Münze. 1 Kina = 100 Toea",
+            "credit": "Bin im Garten",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Banknotes_and_Coins_of_Papua_New_Guinea_2673.JPG",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Ugyldigt struktureret svar",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
     ]
   },
-  "generated_at": "2026-09-03T10:53:04+00:00"
+  "generated_at": "2026-09-03T11:13:57+00:00"
 }

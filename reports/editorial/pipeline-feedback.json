@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-03T10:53:04.604397Z",
+  "generated_at": "2026-09-03T11:13:57.631370Z",
   "date_dk": "2026-09-03",
   "policy": {
     "diagnostic_only": true,
@@ -18,8 +18,17 @@
     "release"
   ],
   "today": {
-    "rejections": 7,
+    "rejections": 8,
     "reviews": [
+      {
+        "at": "2026-09-03T11:13:33.171Z",
+        "slug": null,
+        "title": "Kunstig intelligens",
+        "stage": "research",
+        "reason": "Ingen brugbar dokumentationskilde kunne hentes endnu",
+        "class": "evidence",
+        "assessment": "Send kun konkret evidensmangel til Research/Fact checker."
+      },
       {
         "at": "2026-09-03T10:48:32.671Z",
         "slug": null,
@@ -90,7 +99,7 @@
     "fact_check": 14,
     "final_editor": 5,
     "media": 5,
-    "research": 12,
+    "research": 13,
     "runtime_error": 13
   },
   "current_blockers": [

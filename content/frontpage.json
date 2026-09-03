@@ -3,7 +3,7 @@
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker": {
-    "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r"
+    "slug": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet"
   },
   "lead": {
     "slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget"
@@ -86,16 +86,16 @@
       "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
     },
     {
+      "slug": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet"
+    },
+    {
+      "slug": "2026-09-03-ugyldigt-struktureret-svar"
+    },
+    {
       "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r"
     },
     {
       "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
-    },
-    {
-      "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
-    },
-    {
-      "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere"
     }
   ],
   "publication_strategy": {

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-03T10:52:59Z",
+  "generated_at": "2026-09-03T11:13:50Z",
   "counts": {
-    "published": 28,
+    "published": 30,
     "checking": 2,
     "draft": 4
   },
@@ -245,6 +245,14 @@
       "reasons": []
     },
     {
+      "slug": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
+      "title": "Datacenteres udvikling kan have store konsekvenser for miljøet",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
       "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r",
       "title": "El Nino kunne være den stærkeste på 40 år",
       "status": "published",
@@ -263,6 +271,14 @@
     {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede",
       "title": "Skyderi i lejlighedskompleks i Minneapolis: Tre døde og flere sårede",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-ugyldigt-struktureret-svar",
+      "title": "Ugyldigt struktureret svar",
       "status": "published",
       "release_requested": false,
       "resume_from": null,
