@@ -10,25 +10,25 @@
   },
   "rail": [
     {
-      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
-    },
-    {
-      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
-    },
-    {
-      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
-    },
-    {
-      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
-    },
-    {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
+    },
+    {
+      "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
     },
     {
       "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen"
     },
     {
-      "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
+      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
+    },
+    {
+      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
+    },
+    {
+      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
+    },
+    {
+      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
     },
     {
       "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
@@ -62,25 +62,25 @@
   ],
   "narrow": [
     {
-      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
-    },
-    {
-      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
-    },
-    {
-      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
-    },
-    {
-      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
-    },
-    {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
+    },
+    {
+      "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
     },
     {
       "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen"
     },
     {
-      "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
+      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
+    },
+    {
+      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
+    },
+    {
+      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
+    },
+    {
+      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
     },
     {
       "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
@@ -93,8 +93,9 @@
     }
   ],
   "publication_strategy": {
-    "version": 1,
+    "version": 2,
     "mode": "placement_only_non_gating",
-    "recalculated_from_published_articles": true
+    "recalculated_from_published_articles": true,
+    "related_followups_promoted_as_packages": true
   }
 }
