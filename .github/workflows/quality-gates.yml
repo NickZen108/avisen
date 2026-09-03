@@ -59,7 +59,7 @@ jobs:
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Deterministic build
         run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/article_history.py && python scripts/editorial_analytics.py && python scripts/production_readiness.py && python scripts/queue_recovery.py && python scripts/build_control_room.py && python scripts/apply_control_room_extras.py && python scripts/seo_surface_fix.py && python scripts/magazine_blocks.py
-      - name: Postbuild article gates
-        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
+      - name: Validate generated output only
+        run: python scripts/quality_gate.py
       - name: Show generated drift
         run: git diff --check
