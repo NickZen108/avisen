@@ -1,31 +1,35 @@
-# Morgentidende / Avisen
+# Morgentidende
 
-GitHub er den kanoniske tekniske kopi. Nye artikler går gennem en gated redaktionel pipeline som struktureret indhold; `docs/` er genereret public-output.
+GitHub er source of truth for redaktionelt indhold og pipelinekode. `content/` og `sources/` er canonical data; `docs/` er genereret public-output.
 
-## Pipeline v2
+## Canonical dokumentation
 
-Scan → Nyhedsdesk assignment → Research/coverage sweep → Fact check → Nyhedsdesk recheck → Journalist → Sprog → Etik → Billede → SEO → Slutredaktør → Forside → Teknisk QA → Udgiver → live technical QA → Live proofreader → Redaktionel update-monitor.
+- `HUSREGLER.md` — overordnede principper og hard stops
+- `EDITORIAL.md` — redaktionel linje og presseetik
+- `SOURCES.md` — kilder og faktuel evidens
+- `AGENTS.md` — roller og ansvar
+- `ARCHITECTURE.md` — teknisk arkitektur
+- `SCAN.md` — discovery
+- `SCHEDULE.md` — udgivelsesrytme
+- `FRONTPAGE.md` — lead og placering
+- `MEDIA_SOURCES.md` — lovlige/gratis billedkilder og mediaregler
+- `STYLE.md`, `DESIGN.md`, `CATEGORIES.md`, `SEO.md` — specialistregler
 
-Ingen agent gør sit eget arbejde publiceringsklart. Slutredaktøren laver et versionsbundet final approval snapshot efter alle redaktionelle ændringer.
+README’en gentager ikke disse regler. Ved konflikt gælder prioriteten i `HUSREGLER.md`.
 
-## Publicering
-
-Nye auto-artikler bruger `pipeline_version: 2`. Udgiver afleverer `status: ready` + `release_requested: true` uden `published_at`. GitHub Actions sætter faktisk publiceringstid ved release/build efter merge, bygger HTML/sitemaps/rettelseslog og tester live-sitet.
-
-## Canonical data
+## Centrale data
 
 - `content/articles/` — artikler
-- `sources/` — fact ledgers
-- `content/frontpage.json` — placering; v2-artikler er normalt slug-referencer
+- `sources/` — faktaledgers
+- `content/frontpage.json` — forsideplacering
 - `content/corrections.json` — offentlig rettelseslog
-- `reports/editorial/approvals/` — Slutredaktørens final approvals
-- `docs/` — genereret public-output
+- `reports/editorial/approvals/` — versionsbundne final approvals
+- `docs/` — genereret offentlig avis
 
-## Build
+## Canonical build
 
 ```bash
-python scripts/release_ready.py
-python scripts/quality_gate.py --prebuild
-python scripts/build_all.py
-python scripts/quality_gate.py
+python scripts/build_all_v2.py
 ```
+
+Publicering og øvrige nødvendige trin køres af workflows i `.github/workflows/`; README’en er ikke en proceskontrakt.
