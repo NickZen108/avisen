@@ -48,10 +48,17 @@ jobs:
         run: |
           git config user.name "morgentidende-publisher"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/articles content/frontpage.json reports/editorial/approvals queue/recovery.json reports/editorial/pipeline-health.json reports/editorial/pipeline-feedback.json reports/editorial/production-readiness.json reports/editorial/article-versions.json reports/editorial/editorial-analytics.json docs/index.html docs/artikler docs/emner docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/robots.txt docs/kontrolrum docs/img/cache
-          if git diff --cached --quiet; then echo "published=false" >> "$GITHUB_OUTPUT"; else git commit -m "publish: build structured edition"; git push; echo "published=true" >> "$GITHUB_OUTPUT"; echo "publisher_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"; fi
-      - name: Dispatch post-deploy guard
+          if git diff --cached --quiet; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "publish: build structured edition"
+            git push
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "publisher_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Dispatch production Cloudflare deploy explicitly
         if: ${{ steps.publish.outputs.published == 'true' }}
-        env: {GH_TOKEN: '${{ github.token }}', PUBLISHER_SHA: '${{ steps.publish.outputs.publisher_sha }}'}
-        run: gh workflow run post-deploy-guard.yml --ref main -f target_sha="$PUBLISHER_SHA"
-
-# Manual source touch on 2026-09-03 to publish the approved three-cycle burst after bot-originated editorial commit.
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUBLISHER_SHA: ${{ steps.publish.outputs.publisher_sha }}
+        run: gh workflow run cloudflare-deploy.yml --ref main -f target_sha="$PUBLISHER_SHA"
