@@ -26,7 +26,7 @@ To URLs er ikke automatisk to kilder. Samme bureauhistorie, pressemeddelelse ell
 
 Research søger kun så bredt som historien kræver. Der er ingen generel kvote på to eller tre medier, source-groups eller claims. Coverage stopper, når ekstra kilder ikke længere tilfører væsentlig dokumentation, mod-evidens, fairness eller nødvendig kontekst.
 
-Ledgerens `coverage_sweep` beskriver kilder, source-groups, begrænsninger og eventuelle modsigelser. `pass` betyder, at der findes et tilstrækkeligt researchgrundlag til de konkrete claims; det er ikke et bestemt antal links.
+Ledgerens `coverage_sweep` beskriver kilder, source-groups, begrænsninger og eventuelle modsigelser. Det er researchmetadata, ikke en selvstændig publiceringsgate.
 
 ## Minimum for et bærende faktum
 
@@ -45,7 +45,7 @@ Der kræves **ikke automatisk kilde nr. 2**, blot fordi kilden er et redaktionel
 
 En parts egen udtalelse dokumenterer sikkert, **at parten siger, har besluttet eller har gjort noget om egne forhold**; den beviser ikke automatisk partens omstridte påstand om en anden part. Et forskningspaper dokumenterer sikkert, hvad studiet fandt og rapporterede; det gør ikke enhver generalisering ud over studiet automatisk sand.
 
-Ved alvorlige anklager, høj juridisk risiko, sundhed/sikkerhed eller stærkt omstridte fakta kan Etik, Slutredaktør eller Fact checker kræve ekstra kontrol, fairness eller forelæggelse. Men høj risiko skaber ikke i sig selv en fast regel om to uafhængige kilder, hvis det konkrete claim allerede er dokumenteret af en relevant autoritativ kilde.
+Ved alvorlige anklager, høj juridisk risiko, sundhed/sikkerhed eller stærkt omstridte fakta kan Fact checker, Etik eller Slutredaktør kræve ekstra kontrol eller fairness. Høj risiko skaber ikke i sig selv en fast regel om to uafhængige kilder, hvis det konkrete claim allerede er dokumenteret af en relevant autoritativ kilde.
 
 Ét verificeret bærende claim kan være nok til en kort artikel. Artiklen må aldrig fyldes med svagere claims blot for at nå et minimumsantal.
 
@@ -53,9 +53,9 @@ Ved alvorlige anklager, høj juridisk risiko, sundhed/sikkerhed eller stærkt om
 
 Fact checker forsøger at falsificere Researchs kandidat-claims. `PASS` betyder, at de claims artiklen faktisk bruger er tilstrækkeligt dokumenterede. Et claim med mindst én relevant autoritativ kilde kan få `verified`. Usikre eller afviste claims fjernes; de behøver ikke dræbe resten af historien, hvis den verificerede kerne stadig har selvstændig nyhedsværdi.
 
-## Forelæggelse og etik
+## Etik og fairness
 
-Fact checker kan markere et faktuelt risikosignal, men Etik/fairness ejer beslutningen om forelæggelse/right-of-reply, identifikation, børn, privatliv og anden skade. Et sådant soft flag må ikke blive en skjult automatisk stopregel før Etik har vurderet det.
+Fact checker kan markere et faktuelt risikosignal, men Etik/fairness ejer vurderingen af identifikation, børn, privatliv, alvorlige beskyldninger og anden skade. Kendte relevante partspositioner håndteres efter `HUSREGLER.md` og `EDITORIAL.md`. Der findes ingen separat automatisk right-of-reply-/forelæggelsesgate.
 
 ## AI
 
