@@ -1,0 +1,66 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-03-will-the-us-or-china-emerge-as-the-ai-superpower",
+  "slug": "2026-09-03-ugyldigt-struktureret-svar",
+  "category": "Videnskab & teknologi",
+  "weight": "B",
+  "editorial_destination": "tech_magazine",
+  "story_location": {
+    "country": "USA",
+    "country_code": "US",
+    "place_names_english": [
+      "USA",
+      "China"
+    ],
+    "place_names_local": [
+      "USA",
+      "Kina"
+    ]
+  },
+  "title": "Ugyldigt struktureret svar",
+  "standfirst": "Ugyldigt struktureret svar",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "ledger": "sources/2026-09-03-ugyldigt-struktureret-svar.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03"
+  ],
+  "seo": {
+    "title": "Ugyldigt struktureret svar",
+    "description": "Ugyldigt struktureret svar",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-ugyldigt-struktureret-svar.jpg",
+    "alt": "Banknoten (Kina) und Münzen von Papua Neuguinea. 2- , 10- und 20-Kina-Banknote und 1-Kina-Münze. 1 Kina = 100 Toea",
+    "credit": "Bin im Garten",
+    "license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Banknotes_and_Coins_of_Papua_New_Guinea_2673.JPG",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Ugyldigt struktureret svar",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

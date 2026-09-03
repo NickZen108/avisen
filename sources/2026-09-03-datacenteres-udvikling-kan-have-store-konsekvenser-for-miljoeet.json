@@ -1,0 +1,156 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
+  "article_slug": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
+  "assignment": {
+    "category": "Videnskab & teknologi",
+    "weight": "C",
+    "editorial_destination": "tech_magazine",
+    "story_location": {
+      "country": "Tyskland",
+      "country_code": "DE",
+      "place_names_english": [
+        "Germany"
+      ],
+      "place_names_local": [
+        "Tyskland"
+      ]
+    },
+    "core_question": "Hvad er konsekvenserne af datacenteres udvikling?"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "DW",
+      "url": "https://www.dw.com/en/data-centers-are-everywhere-heres-what-theyre-doing-to-the-planet/a-78789889?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-03T08:53:00.000Z",
+      "accessed_at": "2026-09-03T11:12:08.262Z",
+      "type": "news",
+      "source_group": "host-dw-com",
+      "publisher_root": "dw-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "Josh Axelrod",
+      "publisher_name": "Deutsche Welle",
+      "canonical_url": "https://www.dw.com/en/data-centers-are-everywhere-heres-what-theyre-doing-to-the-planet/a-78789889",
+      "primary_record": null,
+      "authoritative_for": "Data centers are everywhere. Here's what they're doing to the planet.",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-dw-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Datacenteres udvikling kan have store konsekvenser for miljøet, inklusive stræning af elnettet, udvinding af vandressourcer og ændring af landskabet og luften.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T11:12:08.262Z",
+      "notes": "Kilde: DW"
+    },
+    {
+      "id": "F02",
+      "claim": "Hvis datacenterer var et land, ville deres energiforbrug være på niveau med et af verdens største lande.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T11:12:08.262Z",
+      "notes": "Kilde: DW"
+    },
+    {
+      "id": "F03",
+      "claim": "Datacenterer forbruger meget vand, og dette kan have store konsekvenser for vandressourcerne.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T11:12:08.262Z",
+      "notes": "Kilde: DW"
+    },
+    {
+      "id": "F04",
+      "claim": "Datacenterer kan ændre landskabet og luften omkring dem.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T11:12:08.262Z",
+      "notes": "Kilde: DW"
+    },
+    {
+      "id": "F05",
+      "claim": "AI-modeller og cloud-lagring, streaming, web-hosting og sociale medier har en reel fysisk fodfæste.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T11:12:08.262Z",
+      "notes": "Kilde: DW"
+    },
+    {
+      "id": "F06",
+      "claim": "Datacenterer er nødvendige for at opfylde kravene til AI-modellerne.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T11:12:08.262Z",
+      "notes": "Kilde: DW"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T11:12:08.262Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "tech_magazine"
+}
