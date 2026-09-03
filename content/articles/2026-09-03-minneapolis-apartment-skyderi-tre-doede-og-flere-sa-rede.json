@@ -1,0 +1,91 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-03-minneapolis-apartment-shooting-leaves-three-dead-multiple-injured",
+  "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede",
+  "category": "Krimi",
+  "weight": "B",
+  "editorial_destination": "main",
+  "story_location": {
+    "country": "USA",
+    "country_code": "US",
+    "hero_queries_english": [
+      "Minneapolis apartment shooting",
+      "US shooting incident"
+    ],
+    "hero_queries_local": [
+      "Minneapolis leilighets-skyting",
+      "Skyting i Minneapolis"
+    ],
+    "hero_queries_transliterated": [],
+    "place_names_english": [
+      "Minneapolis",
+      "USA"
+    ],
+    "place_names_local": [
+      "Minneapolis",
+      "USA"
+    ],
+    "primary_language": "engelsk",
+    "primary_language_code": "en",
+    "transliterations": []
+  },
+  "title": "Minneapolis-apartment-skyderi: Tre døde og flere sårede",
+  "standfirst": "To personer blev dræbt og en mistænkt døde efter en skydeepisode i en lejlighedskompleks i Minneapolis, USA.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "manual_review": false,
+  "ledger": "sources/2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06"
+  ],
+  "seo": {
+    "title": "Minneapolis-apartment-skyderi: Tre døde og flere sårede",
+    "description": "Skyderi i Minneapolis: To personer dræbt og en mistænkt død",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede.jpg",
+    "alt": "Outside Bolero Flats on Marquette Ave in Minneapolis where an officer shot and killed a man on the 7th floor. Interim Minneapolis police chief Amelia Huffman says 9 seconds after making entry to the apartment 1 officer shot the victim who was holding a gun in his hand.",
+    "credit": "Chad Davis from Minneapolis, United States",
+    "license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Amir_Lock,_Minneapolis_Police_shooting_death_(51858433183).jpg",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Et skuddrama har ramt Minneapolis, hvor to personer er blevet dræbt og en mistænkt er død efter en skydeepisode i en lejlighedskompleks i Minneapolis, USA. Ifølge kilder fra France 24 og DW blev tre politibetjente såret under skyderiet, herunder to, der blev ramt af skud.",
+      "type": "p"
+    },
+    {
+      "text": "To af de sårede politibetjente var i stabilt tilstand, mens den tredje var i stabilt tilstand efter at være blevet behandlet på hospitalet. En af de dræbte blev skudt på stedet, mens den anden døde efter at være blevet bragt til Hennepin County Medical Center.",
+      "type": "p"
+    },
+    {
+      "text": "Motivet for skydeepisoden er stadig ukendt, men FBI er involveret i undersøgelsen af skydeepisoden. Sagen er under efterforskning, og der er endnu ikke offentliggjort nogen oplysninger om den mistænktes identitet eller motiv.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

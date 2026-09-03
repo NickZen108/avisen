@@ -1,0 +1,208 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-minneapolis-apartment-shooting-leaves-three-dead-multiple-injured",
+  "article_slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede",
+  "assignment": {
+    "category": "Krimi",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "USA",
+      "country_code": "US",
+      "hero_queries_english": [
+        "Minneapolis apartment shooting",
+        "US shooting incident"
+      ],
+      "hero_queries_local": [
+        "Minneapolis leilighets-skyting",
+        "Skyting i Minneapolis"
+      ],
+      "hero_queries_transliterated": [],
+      "place_names_english": [
+        "Minneapolis",
+        "USA"
+      ],
+      "place_names_local": [
+        "Minneapolis",
+        "USA"
+      ],
+      "primary_language": "engelsk",
+      "primary_language_code": "en",
+      "transliterations": []
+    },
+    "core_question": "Minneapolis-apartment-skyderi",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "France 24",
+      "url": "https://www.france24.com/en/americas/20260903-minneapolis-apartment-shooting",
+      "published_at": "2026-09-03T00:01:52.000Z",
+      "accessed_at": "2026-09-03T01:31:05.552Z",
+      "type": "news",
+      "source_group": "host-france24-com",
+      "publisher_root": "france24-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Minneapolis apartment shooting leaves three dead, multiple injured",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "DW",
+      "url": "https://www.dw.com/en/us-3-dead-including-suspect-in-minneapolis-shooting/a-78815092?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-03T00:45:00.000Z",
+      "accessed_at": "2026-09-03T01:31:05.552Z",
+      "type": "news",
+      "source_group": "host-dw-com",
+      "publisher_root": "dw-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "US: 3 dead including suspect in Minneapolis shooting",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2"
+    ],
+    "independent_source_groups": [
+      "host-france24-com",
+      "host-dw-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "To personer blev dræbt og en mistænkt døde efter en skydeepisode i en lejlighedskompleks i Minneapolis.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T01:31:05.552Z",
+      "notes": "Kilder: France 24, DW"
+    },
+    {
+      "id": "F02",
+      "claim": "Tre politibetjente blev såret, herunder to, der blev ramt af skud.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T01:31:05.552Z",
+      "notes": "Kilder: France 24, DW"
+    },
+    {
+      "id": "F03",
+      "claim": "To af de sårede politibetjente var i stabilt tilstand, mens den tredje var i stabilt tilstand efter at være blevet behandlet på hospitalet.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T01:31:05.552Z",
+      "notes": "Kilder: France 24, DW"
+    },
+    {
+      "id": "F04",
+      "claim": "En af de dræbte blev skudt på stedet, mens den anden døde efter at være blevet bragt til Hennepin County Medical Center.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T01:31:05.552Z",
+      "notes": "Kilder: France 24, DW"
+    },
+    {
+      "id": "F05",
+      "claim": "Motivet for skydeepisoden er stadig ukendt.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T01:31:05.552Z",
+      "notes": "Kilder: DW"
+    },
+    {
+      "id": "F06",
+      "claim": "FBI er involveret i undersøgelsen af skydeepisoden.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T01:31:05.552Z",
+      "notes": "Kilder: DW"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T01:31:05.552Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "desk_recheck": {
+    "status": "publish",
+    "checked_at": "2026-09-03T01:31:05.552Z",
+    "rationale": "Fact check bestået; intet særskilt A-recheck nødvendigt"
+  },
+  "editorial_destination": "main"
+}
