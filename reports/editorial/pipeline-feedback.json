@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-03T05:16:59.154475Z",
+  "generated_at": "2026-09-03T05:24:09.868473Z",
   "date_dk": "2026-09-03",
   "policy": {
     "review_every_rejection": true,
@@ -14,12 +14,23 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 0,
-    "reviews": []
+    "rejections": 1,
+    "reviews": [
+      {
+        "at": "2026-09-03T05:22:40.064Z",
+        "slug": null,
+        "title": "Storm rammer Toronto: Tausinder uden strøm",
+        "stage": "fact_check",
+        "reason": "Fact checker: semantisk fejl mod originalkilden",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      }
+    ]
   },
   "last7_stage_counts": {
     "ethics": 2,
-    "fact_check": 11,
+    "fact_check": 12,
     "infrastructure": 11,
     "language": 1,
     "media": 5,
@@ -33,7 +44,7 @@
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "23 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "24 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",
