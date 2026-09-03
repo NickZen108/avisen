@@ -119,7 +119,10 @@ def main() -> int:
             continue
         if destination == "main" and weight in {"A", "B"}:
             candidates.append(article)
-        if is_magazine(article):
+        # The canonical builder resolves current pipeline-v2 article metadata by slug.
+        # Legacy magazine records can lack the fields required by that builder, so
+        # only current v2 magazine articles are promoted into ordinary frontpage slots.
+        if is_magazine(article) and article.get("pipeline_version") == 2:
             magazine_candidates.append(article)
 
     # Preserve the former release behaviour in one place: a fresh standalone A/B
