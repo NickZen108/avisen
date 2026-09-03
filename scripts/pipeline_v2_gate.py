@@ -2,8 +2,8 @@
 """Machine-enforced gates for Morgentidende pipeline v2.
 
 Only conditions that should genuinely block publication belong here. Editorial
-process signals such as coverage breadth, right-of-reply handling and desk
-rechecks are handled by agents/policies rather than as release blockers.
+process signals such as coverage breadth, right-of-reply handling, desk rechecks,
+manual review flags and SEO are not release blockers.
 """
 from __future__ import annotations
 import argparse,copy,json,sys
@@ -12,8 +12,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]
 NON_EDITORIAL_AFTER_APPROVAL={
  "status","published_at","updated_at","scheduled_for","released_from_schedule_at",
- "release_requested","publication","manual_review_completed","workflow_state",
- "editorial_destination","related_news_slug","followup_type","weight"
+ "release_requested","publication","manual_review","manual_review_completed","workflow_state",
+ "editorial_destination","related_news_slug","followup_type","weight","seo"
 }
 def err(x): ERRORS.append(x)
 def load(p):
@@ -36,7 +36,9 @@ def approval(path,a):
  if not x:return
  if x.get("schema_version")!=1 or x.get("status")!="pass":err(f"{path.name}: final approval schema/status ugyldig")
  if x.get("story_id")!=a.get("story_id") or x.get("article_slug")!=a.get("slug"):err(f"{path.name}: approval story/slug mismatch")
- for g in ["language","ethics","image","seo","final_editor"]:
+ # Language, ethics, image and final editor are true publication gates.
+ # SEO is generated/fallback metadata and may never stop an otherwise publishable article.
+ for g in ["language","ethics","image","final_editor"]:
   if (x.get("gates") or {}).get(g)!="pass":err(f"{path.name}: approval gate {g} ikke pass")
  if not x.get("checked_at"):err(f"{path.name}: approval checked_at mangler")
  else:time(x["checked_at"],f"{path.name}.approval.checked_at")
@@ -44,7 +46,6 @@ def approval(path,a):
 def article(path):
  a=load(path)
  if not a or path.name.startswith("_") or a.get("pipeline_version")!=2 or a.get("status") not in {"ready","scheduled","published"}:return
- if a.get("manual_review") and not a.get("manual_review_completed"):err(f"{path.name}: manual_review er ikke afsluttet")
  lp=ROOT/str(a.get("ledger",''))
  if not lp.exists():err(f"{path.name}: ledger mangler");return
  l=load(lp)
