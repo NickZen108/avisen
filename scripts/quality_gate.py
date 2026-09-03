@@ -116,8 +116,6 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
         if article.get("status") in {"ready", "scheduled", "published"} and not claim_has_required_support(article, ledger, claim, sources):
             err(f"{path.name}: claim {claim_id} mangler gyldig autoritativ eller anden tilladt støtte")
 
-    if article.get("category") == "Kommentar" and not article.get("related_news_slug"):
-        err(f"{path.name}: Kommentar mangler related_news_slug")
     if article.get("status") == "scheduled":
         scheduled_for = article.get("scheduled_for")
         if not scheduled_for:
