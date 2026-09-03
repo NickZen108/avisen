@@ -48,13 +48,6 @@ def repair_frontpage(blocked_slug):
    else: state[key]={}
    changed=True
  if changed: write_frontpage(state)
-def add_to_frontpage(article):
- slug=article['slug']; state=load(FRONTPAGE); state['date']=slug[:10]; set_ticker(state,slug)
- if article.get('weight') in {'A','B'} and not article.get('related_news_slug'):
-  state['lead']={'slug':slug}; state['lead_rationale']=f"Ny {article.get('weight')}-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead."
- for key,limit in (('rail',5),('narrow',8)):
-  items=[x for x in state.get(key,[]) if x.get('slug')!=slug]; items.insert(0,{'slug':slug}); state[key]=items[:limit]
- write_frontpage(state)
 def diagnose(x):
  reasons=[]; missing=[]
  lp=ROOT/str(x.get('ledger',''))
@@ -68,7 +61,6 @@ def diagnose(x):
   if a.get('status')!='pass': reasons.append('final approval status er ikke PASS'); missing.append('final_editor')
   for g in ['language','ethics','image']:
    if gates.get(g)!='pass': reasons.append(f'approval gate {g} er ikke PASS'); missing.append(g)
-  # SEO is deliberately non-blocking. Missing SEO is repaired/fallbacked by build/discovery tooling.
   if gates.get('final_editor')!='pass': reasons.append('approval gate final_editor er ikke PASS'); missing.append('final_editor')
   if snap(a.get('editorial_snapshot'))!=snap(x): reasons.append('artiklens redaktionelle indhold er ændret efter final approval'); missing.append('final_editor')
  priority=['fact_check','language','ethics','image','final_editor']
@@ -102,7 +94,7 @@ def main():
    if changed:
     ws.update({'state':'blocked','resume_from':resume,'reasons':reasons}); ws.setdefault('blocked_at',stamp); x['workflow_state']=ws; path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
   elif x.get('status')=='ready' and x.get('release_requested') is True and not reasons and not a.normalize_only:
-   x['status']='published'; x['published_at']=stamp; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; x.pop('workflow_state',None); path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); add_to_frontpage(x); released+=1
+   x['status']='published'; x['published_at']=stamp; x['release_requested']=False; x['publication']={'release_mode':'immediate','released_at':stamp}; x.pop('workflow_state',None); path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); released+=1
   rows.append({'slug':x.get('slug'),'title':x.get('title'),'status':x.get('status'),'release_requested':x.get('release_requested'),'resume_from':resume if reasons else None,'reasons':reasons})
  write_health(rows,stamp); print(f'Ready release: {released}; recovered/parked: {recovered}; dropped after retries: {dropped}'); return 0
 def self_test():
