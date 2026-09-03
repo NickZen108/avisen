@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-03T06:22:15Z",
+  "generated_at": "2026-09-03T06:47:49Z",
   "counts": {
-    "published": 25,
+    "published": 26,
     "checking": 2,
     "draft": 3
   },
@@ -243,6 +243,14 @@
     {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede",
       "title": "Skyderi i lejlighedskompleks i Minneapolis: Tre døde og flere sårede",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget",
+      "title": "Vålerenga-styreleder går av etter Bjørdal-salget",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

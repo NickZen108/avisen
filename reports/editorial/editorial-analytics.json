@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "published_count": 41,
+  "published_count": 42,
   "category_mix": {
     "Udland": 22,
     "Sundhed": 6,
@@ -9,6 +9,7 @@
     "Krimi": 2,
     "Liv": 1,
     "Guide": 1,
+    "Sport": 1,
     "Historie": 1
   },
   "top_source_hosts": {
@@ -31,7 +32,7 @@
     "www.dr.dk": 2,
     "island.is": 2,
     "www.nhlbi.nih.gov": 2,
-    "www.cdc.gov": 1
+    "www.nrk.no": 2
   },
   "top_source_groups": {
     "host-aljazeera-com": 7,
@@ -50,15 +51,15 @@
     "reuters-own-reporting": 2,
     "host-dr-dk": 2,
     "ukrainian-presidency": 2,
+    "host-nrk-no": 2,
     "cdc-social-connection": 1,
     "nist-800-63b-4": 1,
-    "cisa-mfa": 1,
-    "nist-passkeys": 1
+    "cisa-mfa": 1
   },
   "unique_source_hosts": 45,
   "unique_source_groups": 69,
-  "followup_share": 0.122,
+  "followup_share": 0.119,
   "correction_rate": 0.0,
-  "median_body_characters": 1110,
+  "median_body_characters": 1086,
   "principle": "These metrics are diagnostic. Clicks alone must not determine editorial priority."
 }

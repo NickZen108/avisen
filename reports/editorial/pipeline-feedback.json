@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-03T06:22:19.169217Z",
+  "generated_at": "2026-09-03T06:47:54.093379Z",
   "date_dk": "2026-09-03",
   "policy": {
     "review_every_rejection": true,
@@ -14,8 +14,38 @@
     "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
   },
   "today": {
-    "rejections": 2,
+    "rejections": 5,
     "reviews": [
+      {
+        "at": "2026-09-03T06:31:46.703Z",
+        "slug": null,
+        "title": "Begrænsning af AI-forbrug blandt unge i New York City",
+        "stage": "fact_check",
+        "reason": "Fact checker: semantisk fejl mod originalkilden",
+        "class": "evidence",
+        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-03T06:26:04.797Z",
+        "slug": null,
+        "title": "Kanalen smuglerbander",
+        "stage": "seo",
+        "reason": "seo: overlappende meta-titler; seo: overlappende meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner",
+        "class": "repairable",
+        "assessment": "SEO bør normalt auto-repareres. Gentagne stop bør flyttes fra hard stop til automatisk reparation før final editor.",
+        "pipeline_change_considered": true
+      },
+      {
+        "at": "2026-09-03T06:22:02.224Z",
+        "slug": null,
+        "title": "El Niño: FN advarer om 'supersized' vejrfænomen",
+        "stage": "ethics",
+        "reason": "seo: Seo_description er ikke en nødvendig eller relevant beskrivelse af artiklen. Den giver kun en overordnet ide om, hvad artiklen handler om, men ikke den specifikke information, der findes i artiklen.; seo: Seo_title er ikke en nødvendig eller relevant titel for artiklen. Den giver kun en overordnet ide om, hvad artiklen handler om, men ikke den specifikke information, der findes i artiklen.; ethics: Artiklen citerer flere kilder, men uden at specificere, hvilke kilder der er blevet brugt til at støtte hver enkelt påstand. Dette kan give anledning til misforståelser eller forvrængninger af informationen.; seo: Artiklen indeholder flere påstande uden at give en tydelig forklaring på, hvordan disse påstande er blevet til. Dette kan gøre det svært for læserne at forstå, hvordan artiklen er blevet skrevet og hvilke kilder der er blevet brugt til at støtte hver enkelt påstand.",
+        "class": "repairable",
+        "assessment": "SEO bør normalt auto-repareres. Gentagne stop bør flyttes fra hard stop til automatisk reparation før final editor.",
+        "pipeline_change_considered": true
+      },
       {
         "at": "2026-09-03T06:01:53.327Z",
         "slug": null,
@@ -39,22 +69,30 @@
     ]
   },
   "last7_stage_counts": {
-    "ethics": 2,
-    "fact_check": 13,
+    "ethics": 3,
+    "fact_check": 14,
     "infrastructure": 11,
     "language": 1,
     "media": 5,
     "research": 12,
-    "seo": 1
+    "seo": 2
   },
   "suggested_adjustments": [
+    {
+      "stage": "seo",
+      "parameter": "repair_policy",
+      "current": "1 auto-repair",
+      "proposed": "2 auto-repair",
+      "status": "experiment",
+      "why": "2 SEO-stop på 7 dage; dette er normalt reparerbar friktion."
+    },
     {
       "stage": "research",
       "parameter": "source_retrieval",
       "current": "2 kilder / 3 gruppe-mål",
       "proposed": "bevar tærskel; forbedr retrieval",
       "status": "investigate",
-      "why": "25 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
+      "why": "26 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
     },
     {
       "stage": "infrastructure",

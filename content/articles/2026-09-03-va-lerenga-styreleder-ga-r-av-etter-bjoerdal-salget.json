@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget",
   "slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget",
   "category": "Sport",
@@ -43,7 +43,7 @@
   "title": "Vålerenga-styreleder går av etter Bjørdal-salget",
   "standfirst": "Vålerenga-styreleder Søren Eriksen har gået af efter salget af Henrik Bjørdal til Viking.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T06:47:49Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget.json",
@@ -95,5 +95,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T06:47:49Z"
+  }
 }
