@@ -14,7 +14,7 @@ def parse_iso(v):
  return d
 def load(path): return json.loads(path.read_text(encoding='utf-8'))
 def snap(a):
- x=copy.deepcopy(a)
+ x=copy.deepcopy(a or {})
  for k in NON_EDITORIAL_AFTER_APPROVAL:x.pop(k,None)
  return x
 def article_for_slug(slug):
@@ -77,7 +77,7 @@ def diagnose(path,x):
   for g in ['language','ethics','image','seo']:
    if gates.get(g)!='pass': reasons.append(f'approval gate {g} er ikke PASS'); missing.append(g)
   if gates.get('final_editor')!='pass': reasons.append('approval gate final_editor er ikke PASS'); missing.append('final_editor')
-  if a.get('editorial_snapshot')!=snap(x): reasons.append('artiklens redaktionelle indhold er ændret efter final approval'); missing.append('final_editor')
+  if snap(a.get('editorial_snapshot'))!=snap(x): reasons.append('artiklens redaktionelle indhold er ændret efter final approval'); missing.append('final_editor')
  priority=['manual_review','fact_check','language','ethics','image','seo','final_editor']
  resume=next((step for step in priority if step in missing),None)
  return reasons,resume
