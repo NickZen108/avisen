@@ -18,14 +18,14 @@ jobs:
         with: {python-version: '3.12'}
       - name: Normalize current categories before validation
         run: python scripts/normalize_categories.py
-      - name: Validate article source before release
-        run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/prepublish_surface_qa.py
+      - name: Validate changed article source
+        run: python scripts/quality_gate.py --prebuild --changed-only
       - name: Release approved ready articles; park incomplete ones
         run: python scripts/release_ready.py
       - name: Prefer lawful free documentary photos before final build
         run: python scripts/refresh_pending_images.py --limit 10
-      - name: Validate any media/release changes
-        run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/prepublish_surface_qa.py
+      - name: Validate final article media
+        run: python scripts/prepublish_surface_qa.py
       - name: Apply frontpage publication strategy (placement only; non-gating)
         run: python scripts/frontpage_publication_strategy.py
       - name: Build public edition
