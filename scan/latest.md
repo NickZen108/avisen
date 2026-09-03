@@ -1,4 +1,4 @@
-# Scan 2026-09-02T23:10:57.384Z (Cloudflare runtime)
+# Scan 2026-09-03T01:05:56.938Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -18,23 +18,23 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Al Jazeera
 - Children return to school in DR Congo amid growing concerns over Ebola
-- Dreams shattered: Gaza amputees struggle under blockade and rubble
+- Did DOGE ruin America’s food safety system?
+- Iran war live: Trump says renewed US-Iran clashes will not last ‘too long’
 - Israel still wants to remove Palestinians from Gaza, defence minister says
 - Israeli PM says Israel is working to overthrow Iran’s government
 - Israeli protesters call for an end to settler violence
-- Malta businessman acquitted of plotting journalist Caruana Galizia murder
 - Nepal families hold symbolic funerals, thousands still missing
 - OpenAI faces new lawsuits over Tumbler Ridge mass shooting tragedy
 - Republican senator calls on Trump to fire Secretary of Defence Hegseth
-- Saudi Arabia condemns deadly Iranian attack on tanker in Strait of Hormuz
 - The long-term implications of Pete Hegseth’s US military purges
+- Thousands protest in Spain as Ceuta’s migration crisis festers a month on
 - Tiger Woods avoids jail time, takes plea deal over Florida crash
 - Trump says US sees ‘everything’ Iran does, threatens further attacks
 - Trump suggests renaming Strait of Hormuz as Trump Strait amid Iran war
 - Two Palestinians killed as settlers, Israeli forces raid West Bank village
+- US judge blocks Trump’s latest effort to limit birthright citizenship
 - US judge rejects bid to break up Google’s ad business
-- US says it will use regional body to isolate Nicaragua
-- What you need to know: US launches coin featuring Trump’s face
+- US launches $1 coin featuring Trump’s face: What to know
 
 ## BBC Europe
 - Belugas and dolphins rescued from closed Canadian park arrive in Spain
@@ -140,8 +140,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Armed men abduct Kenyan editor, employer suspects government
 - Austria women ice hockey team fight for future generations
 - Berlin's punitive measures unlikely to deter Putin: experts
-- Cargo ship with 10 crew sinks off Turkey coast — authorities
-- Charlie Kirk murder suspect to face potential death penalty
 - EU summons Russian envoy over failed Leipzig drone attack
 - Germany: How to woo voters with an immigrant background
 - Guinea-Bissau referendum tests democratic future
@@ -150,17 +148,19 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Malta: Businessman acquitted of journalist's murder
 - Police exhume body of former Czechoslovak foreign minister Jan Masaryk
 - Russia's hybrid attacks on Germany: When is it 'war?'
+- Spain: Tens of thousands rally over Ceuta crisis
 - Ukraine: Zelenskyy warns airlines to avoid Russian airspace
+- UNICEF: 1 in 5 youths targeted by online sexual abuse
 - Unity at last: Is Libya's damaging power struggle at an end?
+- US: 3 dead including suspect in Minneapolis shooting
 - US sanctions halt TOEFL and GRE tests in Iran, disrupting study plans
 - What really helps Europe deal with drought
-- Women's football: Anyomi, London City and the German exodus
 
 ## Document.no
 - 12.000 lovbrudd registrert blant utviste migranter i Nordrhein-Westfalen
 - Bortskjemte og radikaliserte kvinner ødelegger Vesten
-- EU-land vil skrote vetoretten
 - Fem EU-land forsøker å opprette retur­sentre i tredje­land
+- Flere personer drept i skudd&#173;veksling i Minne&#173;apolis, Minne&#173;sota
 - Hemmelig spansk politirapport: Marokko bak invasjonen av Ceuta
 - Knivdrept rett fra fødselspermisjon, ingen er trygg i Demokratenes byer
 - Massive protester mot migrasjonen i Spania
@@ -194,8 +194,8 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Israeli FM Gideon Sa'ar: 'I hope Iran will not make the mistake of attacking us'
 - Kenyan editor found safe after abduction
 - 🔴 Live: Macron and Charles III visit historic Bayeux tapestry exhibition together
-- 🔴 Live: Trump suggests renaming Hormuz 'Trump Strait'
 - Malta acquits tycoon Yorgen Fenech in investigative journalist's murder case
+- Minneapolis apartment shooting leaves three dead, multiple injured
 - Outrage as Maltese tycoon acquitted of reporter Daphne Caruana Galizia's murder
 - Palantir CEO Alex Karp says French restrictions on US software are ‘backfiring’
 - Russia blamed for explosive-laden drone found at German airport
@@ -214,19 +214,19 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## Guardian World
 - Almost half of world’s farmers poisoned by pesticides every year, experts find
 - Apple Maps renames Lake Ontario as ‘Lake America’ for US users after Trump order
-- Australia news live: Marles and Hegseth meet in Washington; teen charged after ‘near complete amputation’ of boy’s hand
+- Australia news live: Marles says US relationship ‘transcends governments of the day’; Sydney to get new ferry stop
+- Boy charged after teenager's hand nearly cut off in Sydney
+- China’s falling emissions amid Iran war spark hope of decarbonisation watershed
 - Countries legally obliged to consider slavery reparations, says UN committee
 - Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case
+- ‘I didn’t go looking for trouble’: Protester sues NSW after allegedly being punched by police at Herzog rally
 - Japan halves speed limit to 30km/h on all narrow city streets
 - Mark Carney tells US to ‘start being serious’ amid escalating trade war
 - Morocco not to blame for Ceuta border breach, says Spanish PM
 - New constitution in Guinea-Bissau will undermine democracy, opponents say
-- Palestinian Australian sues NSW police, claiming he was punched at Herzog rally when helping prayer group
 - Pete Hegseth criticized for body-shaming Canadian cadets: ‘Literally they’re kids’
-- Shein shares slide on fast-fashion retailer’s stock market debut
 - South African airline defends dramatic low-level flyby before rugby union clash
 - Thai resort prepares to host USS Abraham Lincoln sailors after more than 270 days at sea
-- ‘Timidity is a virus’: Paul Keating fights the fading of the light as he seeks to enshrine his legacy
 - Trump ally defends Venezuela oil deal amid ‘gunpoint diplomacy’ criticism
 - Tumbler Ridge mass shooting victims file 30 new lawsuits against OpenAI
 - USS Abraham Lincoln arrives at Thai port after gruelling 270 days at sea
@@ -368,24 +368,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - The Story About Lindsay Clancy Being A Victim Comes From Deeper Roots Than 1960s Feminism
 
 ## The Local Denmark
-- Danish expression of the day: ellers tak
-- Danish word of the day: Ajourføre
-- Denmark reopens embassy in Syria after 14-year closure
-- Denmark set to host annual 'citizenship day' for thousands of new Danes
-- EXPLAINED: Can you work on a Danish study permit?
-- Five common rental scams in Denmark and how to avoid them
-- How do you feel about Danish citizenships potentially being frozen for another year?
-- How the make up of the Danish population could change by 2100
-- How to find a new hobby in Copenhagen this autumn
-- One in seven patients referred to hospital in Denmark is turned away
-- OPINION: The Danish flag-obsession is more 'hyggelig' than threatening
-- Ryanair to cut winter flights in Europe to save on fuel costs
-- The complete list of all the Danish pastries you need to try
-- Today in Denmark: A roundup of the latest news on Tuesday
-- Today in Denmark: A roundup of the latest news on Wednesday
-- 'Warning to Europe': How Iceland's 'No' vote is a blow to the EU
-- What changes in Denmark in September 2026?
-- Why were there so many tractors in central Copenhagen on Tuesday?
+- (feed ikke nået; status=403)
 
 ## Tichys Einblick
 - Der Wähler wählt rechts – Merz regiert links mit SED-Linken
@@ -394,10 +377,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Die Schlacht um die Macht: Entscheidung in Sachsen-Anhalt
 - Haltung bis zur Selbstzerstörung: Deutsche Wirtschaft schafft sich ab
 - Mit Kriegsangst an der Macht bleiben wollen
-- Nach Brandenburg jetzt NRW: Reul spricht nach Anschlag auf Umspannwerk von „Sabotage“
 - Putsch? Wirtschaftskrise? Krieg?
 - Staat im Staat: Kölner Abschiebeskandal weitet sich aus und erfasst Tausende Ausreisepflichtige
 - Tanz am Anleihenabgrund: Bundesregierung hüllt sich in Schweigen
+- TE-Wecker am 3. September 2026
 
 ## Timbro
 - Att stoppa skatteslöseriet i Stockholm är en fråga om moral
