@@ -17,6 +17,28 @@ const FEEDS = [
   { name: "Guardian World", url: "https://www.theguardian.com/world/rss", source_class: "news", region: "UK", priority: 3, limit: 18 },
   { name: "Sky World", url: "https://feeds.skynews.com/feeds/rss/world.xml", source_class: "news", region: "UK", priority: 3, limit: 18 },
   { name: "Al Jazeera", url: "https://www.aljazeera.com/xml/rss/all.xml", source_class: "news", region: "WORLD", priority: 3, limit: 18 },
+  { name: "Reuters World", url: "https://www.reuters.com/world/", mode: "html_links", link_path: "/world/", source_class: "core_news", region: "WORLD", priority: 4, limit: 20 },
+
+  // Danish primary/authority sources.
+  { name: "Politi Update", url: "https://via.ritzau.dk/rss/short-messages/latest", source_class: "authority_primary", region: "DK", priority: 5, limit: 30 },
+  { name: "Statens Serum Institut", url: "https://www.ssi.dk/rss", source_class: "authority_primary", region: "DK", priority: 4, limit: 18 },
+  { name: "Sundhedsstyrelsen", url: "https://www.sst.dk/nyheder", mode: "html_links", link_path: "/nyheder/", source_class: "authority_primary", region: "DK", priority: 4, limit: 18 },
+  { name: "Danmarks Statistik", url: "https://www.dst.dk/da/Statistik/nyheder-analyser-publ/nyt", mode: "html_links", link_path: "/nyt/", source_class: "authority_primary", region: "DK", priority: 4, limit: 18 },
+  { name: "Justitsministeriet", url: "https://www.justitsministeriet.dk/pressemeddelelse/", mode: "html_links", link_path: "/pressemeddelelse/", source_class: "authority_primary", region: "DK", priority: 4, limit: 16 },
+  { name: "Beredskabsstyrelsen", url: "https://www.brs.dk/da/nyheder/", mode: "html_links", link_path: "/nyheder/", source_class: "authority_primary", region: "DK", priority: 4, limit: 16 },
+  { name: "Forsvaret", url: "https://www.forsvaret.dk/da/nyheder/", mode: "html_links", link_path: "/nyheder/", source_class: "authority_primary", region: "DK", priority: 4, limit: 16 },
+  { name: "Udenrigsministeriet", url: "https://um.dk/", mode: "html_links", link_path: "/nyheder/", source_class: "authority_primary", region: "DK", priority: 4, limit: 16 },
+  { name: "Statsministeriet", url: "https://stm.dk/presse/pressemeddelelser/", mode: "html_links", link_path: "/presse/", source_class: "authority_primary", region: "DK", priority: 4, limit: 16 },
+
+  // Official Danish authority profiles on X. X has no open RSS feed, so Scan
+  // uses X's public syndication timeline as a supplementary discovery surface.
+  { name: "Statsministeriet X", url: "https://syndication.twitter.com/srv/timeline-profile/screen-name/Statsmin", mode: "x_syndication", x_handle: "Statsmin", source_class: "authority_social", region: "DK", priority: 4, limit: 12 },
+  { name: "Forsvaret X", url: "https://syndication.twitter.com/srv/timeline-profile/screen-name/forsvaretdk", mode: "x_syndication", x_handle: "forsvaretdk", source_class: "authority_social", region: "DK", priority: 4, limit: 12 },
+  { name: "Udenrigsministeriet X", url: "https://syndication.twitter.com/srv/timeline-profile/screen-name/DanishMFA", mode: "x_syndication", x_handle: "DanishMFA", source_class: "authority_social", region: "DK", priority: 4, limit: 12 },
+  { name: "UM Borgerservice X", url: "https://syndication.twitter.com/srv/timeline-profile/screen-name/UMBorgerservice", mode: "x_syndication", x_handle: "UMBorgerservice", source_class: "authority_social", region: "DK", priority: 5, limit: 12 },
+  { name: "Beredskabsstyrelsen X", url: "https://syndication.twitter.com/srv/timeline-profile/screen-name/BRSdk", mode: "x_syndication", x_handle: "BRSdk", source_class: "authority_social", region: "DK", priority: 5, limit: 12 },
+  { name: "Indenrigs- og Sundhedsministeriet X", url: "https://syndication.twitter.com/srv/timeline-profile/screen-name/DKsundhed", mode: "x_syndication", x_handle: "DKsundhed", source_class: "authority_social", region: "DK", priority: 4, limit: 12 },
+  { name: "Transportministeriet X", url: "https://syndication.twitter.com/srv/timeline-profile/screen-name/TRM_dk", mode: "x_syndication", x_handle: "TRM_dk", source_class: "authority_social", region: "DK", priority: 3, limit: 12 },
 
   // Perspective/discovery sources. Valuable as tips and agenda discovery, but never
   // sufficient verification merely because they are separate URLs/sites.
@@ -82,6 +104,63 @@ function extractItems(xml, feed) {
   }
   return out;
 }
+
+function makeSignal(feed, headline, url, description = "", published_at = null, feedRank = 0) {
+  return {
+    source: feed.name, headline, normalized: normalizeTitle(headline), description: String(description || "").slice(0, 900), url,
+    feed_rank: feedRank, published_at, source_class: feed.source_class || "news", region: feed.region || null,
+    source_priority: Number.isFinite(feed.priority) ? feed.priority : 2, discovery_only: Boolean(feed.discovery_only),
+  };
+}
+function extractHtmlItems(html, feed) {
+  const out = []; const seen = new Set();
+  const re = /<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+  for (const match of String(html || "").matchAll(re)) {
+    const headline = decodeXml(match[2]);
+    if (!headline || headline.length < 18 || headline.length > 240) continue;
+    let url;
+    try { url = new URL(decodeXml(match[1]), feed.url).href; } catch (_) { continue; }
+    if (feed.link_path) {
+      try { if (!new URL(url).pathname.includes(feed.link_path)) continue; } catch (_) { continue; }
+    }
+    const key = `${normalizeTitle(headline)}|${url.replace(/[?#].*$/, "")}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(makeSignal(feed, headline, url, "", null, out.length));
+    if (out.length >= (Number.isInteger(feed.limit) ? feed.limit : 18)) break;
+  }
+  return out;
+}
+function extractXSyndicationItems(html, feed) {
+  const marker = '<script id="__NEXT_DATA__" type="application/json">';
+  const start = String(html || "").indexOf(marker);
+  if (start < 0) return [];
+  const end = String(html || "").indexOf('</script>', start + marker.length);
+  if (end < 0) return [];
+  let root;
+  try { root = JSON.parse(String(html).slice(start + marker.length, end)); } catch (_) { return []; }
+  const found = new Map();
+  const visit = (node) => {
+    if (!node || typeof node !== "object") return;
+    const candidate = node.tweet_results?.result || node.tweet || node;
+    const legacy = candidate?.legacy || candidate;
+    const id = candidate?.rest_id || legacy?.id_str || candidate?.id_str;
+    const text = legacy?.full_text || legacy?.text || candidate?.full_text || candidate?.text;
+    if (id && typeof text === "string" && text.trim().length >= 8) {
+      const created = legacy?.created_at || candidate?.created_at || null;
+      const parsed = created ? Date.parse(created) : NaN;
+      found.set(String(id), makeSignal(feed, text.trim().slice(0, 240), `https://x.com/${feed.x_handle}/status/${id}`, text.trim(), Number.isFinite(parsed) ? new Date(parsed).toISOString() : null, found.size));
+    }
+    for (const value of Object.values(node)) {
+      if (value && typeof value === "object") {
+        if (Array.isArray(value)) for (const item of value) visit(item); else visit(value);
+      }
+    }
+  };
+  visit(root?.props?.pageProps || root);
+  return [...found.values()].slice(0, Number.isInteger(feed.limit) ? feed.limit : 12);
+}
+
 async function sha256Hex(text) {
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
   return [...new Uint8Array(digest)].map((x) => x.toString(16).padStart(2, "0")).join("");
@@ -91,8 +170,10 @@ async function fetchFeed(feed) {
   try {
     const response = await fetch(feed.url, { headers: { "user-agent": "MorgentidendeNewsdesk/4.0 (+https://morgentidende.nicolaipetersen108.workers.dev/)" }, signal: controller.signal, redirect: "follow" });
     if (!response.ok) return { source: feed.name, source_class: feed.source_class, region: feed.region, discovery_only: Boolean(feed.discovery_only), ok: false, status: response.status, signals: [] };
-    const xml = await response.text();
-    const signals = extractItems(xml, feed);
+    const payload = await response.text();
+    const signals = feed.mode === "html_links" ? extractHtmlItems(payload, feed)
+      : feed.mode === "x_syndication" ? extractXSyndicationItems(payload, feed)
+      : extractItems(payload, feed);
     return { source: feed.name, source_class: feed.source_class, region: feed.region, discovery_only: Boolean(feed.discovery_only), ok: signals.length > 0, status: response.status, error: signals.length ? null : "no-feed-items-parsed", signals };
   } catch (error) { return { source: feed.name, source_class: feed.source_class, region: feed.region, discovery_only: Boolean(feed.discovery_only), ok: false, status: null, error: String(error), signals: [] }; }
   finally { clearTimeout(timer); }
