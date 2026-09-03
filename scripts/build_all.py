@@ -268,9 +268,6 @@ def front_item_url(slug: str) -> str:
 def build_frontpage() -> None:
     state = load_json(ROOT / "content" / "frontpage.json")
     template = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
-    date = datetime.fromisoformat(state["date"]).date()
-    date_label = f"{WEEKDAYS[date.weekday()]} {date.day}. {MONTHS[date.month-1]} {date.year}"
-
     ticker = state["ticker"]
     ticker_html = f'<p><a href="{front_item_url(ticker["slug"])}">{esc(ticker["title"])}</a></p>'
     lead = state["lead"]
@@ -279,12 +276,10 @@ def build_frontpage() -> None:
         f'<figure class="lead-fig"><img src="{esc(lead["image_src"])}" alt="{esc(lead.get("image_alt", ""))}"></figure>'
         f'<p class="section-label">{esc(lead["category"])}</p>'
         f'<h1><a href="{front_item_url(lead["slug"])}">{esc(lead["title"])}</a></h1>'
-        f'<p class="standfirst">{esc(lead["standfirst"])}</p>'
-        f'<p class="meta">{esc(lead["published_label"])} · {esc(lead["category"])}</p>'
         '</section>'
     )
 
-    rail = ['<aside class="rail"><p class="rail-title">Også i dag</p>']
+    rail = ['<aside class="rail">']
     for item in state.get("rail", []):
         rail.append(f'<a class="rail-item" href="{front_item_url(item["slug"])}"><img src="{esc(item["image_src"])}" alt="{esc(item.get("image_alt", ""))}"><span><span>{esc(item["category"])}</span> {esc(item["title"])}</span></a>')
     rail.append("</aside>")
@@ -300,8 +295,6 @@ def build_frontpage() -> None:
     narrow.append("</section>")
 
     replacements = {
-        "{{DATE_ISO}}": esc(state["date"]),
-        "{{DATE_LABEL}}": esc(date_label),
         "{{EDITION_LABEL}}": esc(state.get("edition_label", "Danmarks nye avis")),
         "{{TICKER_HTML}}": ticker_html,
         "{{LEAD_HTML}}": lead_html,

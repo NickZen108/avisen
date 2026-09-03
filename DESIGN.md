@@ -23,13 +23,15 @@ Kun en kompakt bjælke med sol-logoet og wordmarken “Morgentidende” forblive
 
 Brød: Source Serif 4. Kicker/UI: Source Sans 3.
 
-`Også i dag` og `Mere om sagen` bruger samme serif-familie og omtrent samme visuelle vægt. Kategorilabels forbliver små sans serif-labels.
+`Mere om sagen` bruger samme serif-familie som avisens øvrige rubrikker. Kategorilabels forbliver små sans serif-labels. Forsiden må ikke have sektionsoverskriften `Også i dag`.
 
 ## Rubrikhierarki på forsiden
 
 Forsiden skal have kontrolleret variation, ikke én mekanisk rubrikstil. Canonical artikeltitel ændres ikke af rendererens typografi.
 
 Forsiden viser kategori og rubrik, men aldrig artiklens manchet eller brødtekst. Manchet og brødtekst er forbeholdt artikelsiden. Rubrikkerne skal samtidig bevare et tydeligt avishierarki: lead er markant størst, almindelige kort er tydeligt større end brødtekst, og smalle lister er mindre uden at blive miniatureoverskrifter.
+
+Forsiden viser ingen datoer eller klokkeslæt, hverken i headeren, ved leadhistorien eller andre steder. Hero-billeder på forsiden vises uden billedtekst, arkivmarkering eller fotokreditering under billedet; disse oplysninger bevares og vises på den tilhørende artikelside.
 
 - `classic`: almindelig seriøs rubrik.
 - `split`: ved en naturlig kolon-opdeling kan anslaget før kolon stå tydeligere/federe, mens resten står lettere.
@@ -74,7 +76,7 @@ Låst:
 - `docs/logo.svg`
 - `docs/logo-mark.svg`
 - grundstruktur i generatorens header/footer/layout
-- forside-rendererne `scripts/build_all_v2.py` og `scripts/magazine_blocks.py`, så automatisk drift ikke kan genindføre manchetter, brødtekst eller ændrede rubrikstørrelser
+- forside-rendererne `scripts/build_all.py`, `scripts/build_all_v2.py` og `scripts/magazine_blocks.py`, så automatisk drift ikke kan genindføre datoer, `Også i dag`, billedtekster, manchetter, brødtekst eller ændrede rubrikstørrelser på forsiden
 
 ## Forbudt uden ny brugerordre
 

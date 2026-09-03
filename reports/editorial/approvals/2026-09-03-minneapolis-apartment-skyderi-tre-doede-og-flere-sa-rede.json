@@ -43,8 +43,8 @@
       "primary_language_code": "en",
       "transliterations": []
     },
-    "title": "Minneapolis-apartment-skyderi: Tre døde og flere sårede",
-    "standfirst": "To personer blev dræbt og en mistænkt døde efter en skydeepisode i en lejlighedskompleks i Minneapolis, USA.",
+    "title": "Skyderi i lejlighedskompleks i Minneapolis: Tre døde og flere sårede",
+    "standfirst": "To personer blev dræbt og en mistænkt døde efter en skydeepisode i et lejlighedskompleks i Minneapolis, USA.",
     "byline": "Morgentidende Redaktion",
     "manual_review": false,
     "ledger": "sources/2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede.json",
@@ -57,7 +57,7 @@
       "F06"
     ],
     "seo": {
-      "title": "Minneapolis-apartment-skyderi: Tre døde og flere sårede",
+      "title": "Skyderi i lejlighedskompleks i Minneapolis: Tre døde og flere sårede",
       "description": "Skyderi i Minneapolis: To personer dræbt og en mistænkt død",
       "canonical": null
     },

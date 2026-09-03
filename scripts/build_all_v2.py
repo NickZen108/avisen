@@ -56,24 +56,19 @@ def lead_visual(l):
  if v.get("provider")=="youtube" and v.get("id") and v.get("frontpage_hero") is True:
   return legacy.youtube_embed(v,autoplay=bool(v.get("frontpage_autoplay")),css_class="frontpage-video-hero")
  if not l.get("image_src"):return ""
- bits=[]
- if l.get("image_caption"):bits.append(esc(l["image_caption"]))
- if l.get("image_credit"):bits.append(f'Foto: {esc(l["image_credit"])}')
- cap=f'<figcaption>{" · ".join(bits)}</figcaption>' if bits else ""
- return f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}">{cap}</figure>'
+ return f'<figure class="lead-fig"><img src="{esc(l["image_src"])}" alt="{esc(l.get("image_alt",""))}"></figure>'
 def front():
  s=load(ROOT/"content"/"frontpage.json");ix=idx();t=(ROOT/"templates"/"index.html").read_text(encoding="utf-8")
- d=legacy.datetime.now(legacy.COPENHAGEN).date();dl=f"{legacy.WEEKDAYS[d.weekday()]} {d.day}. {legacy.MONTHS[d.month-1]} {d.year}"
  tk=resolve(s["ticker"],ix);ticker_text=str(tk.get("title") or "").strip();ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(ticker_text)}</a></p>'
  l=resolve(s["lead"],ix);visual=lead_visual(l);lead_h=headline_link(l,legacy.front_item_url(l["slug"]),tag="h1",allow_split=True)
  # Forsiden viser rubrikker, ikke artikelmanchet eller brødtekst. Manchetten
  # hører kun til på artikelsiden; ellers kan en lang/manipuleret standfirst få
  # en hel artikel til at ligne forsideindhold.
- lead_article='<section class="lead">'+visual+f'<p class="section-label">{esc(l["category"])}</p>{lead_h}<p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
+ lead_article='<section class="lead">'+visual+f'<p class="section-label">{esc(l["category"])}</p>{lead_h}</section>'
  followups=lead_followups(l["slug"],ix)
  lead_class="lead-column lead-column--story-package" if followups else "lead-column"
  lead=f'<div class="{lead_class}">'+lead_article+followups+'</div>'
- rail=['<aside class="rail"><p class="rail-title">Også i dag</p>']
+ rail=['<aside class="rail">']
  seen=set();rail_candidates=[]
  for group in (s.get("rail",[]),s.get("narrow",[]),s.get("stack",[])):
   for raw in group:
@@ -95,7 +90,7 @@ def front():
  for raw in s.get("narrow",[]):
   x=resolve(raw,ix);narrow.append(f'<article><p class="section-label">{esc(x["category"])}</p>{headline_link(x,legacy.front_item_url(x["slug"]),tag="h2",allow_split=False)}</article>')
  narrow.append("</section>")
- r={"{{DATE_ISO}}":esc(d.isoformat()),"{{DATE_LABEL}}":esc(dl),"{{EDITION_LABEL}}":esc(s.get("edition_label","Danmarks nye avis")),"{{TICKER_HTML}}":ticker,"{{LEAD_HTML}}":lead,"{{RAIL_HTML}}":"".join(rail),"{{STACK_HTML}}":"".join(stack),"{{NARROW_HTML}}":"".join(narrow)}
+ r={"{{EDITION_LABEL}}":esc(s.get("edition_label","Danmarks nye avis")),"{{TICKER_HTML}}":ticker,"{{LEAD_HTML}}":lead,"{{RAIL_HTML}}":"".join(rail),"{{STACK_HTML}}":"".join(stack),"{{NARROW_HTML}}":"".join(narrow)}
  for k,v in r.items():t=t.replace(k,v)
  (ROOT/"docs"/"index.html").write_text(t,encoding="utf-8")
 def correction_page():
