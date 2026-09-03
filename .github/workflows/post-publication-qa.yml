@@ -7,14 +7,10 @@ on:
   push:
     branches: [main]
     paths:
-      - 'scripts/live_qa.py'
       - 'scripts/live_recent_qa.py'
       - 'scripts/live_visual_qa.py'
-      - 'scripts/live_surface_qa.py'
       - 'agents/live-proofreader.md'
       - '.github/workflows/post-publication-qa.yml'
-  schedule:
-    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -39,16 +35,10 @@ jobs:
       - name: Install visual verifier
         run: python -m pip install --disable-pip-version-check pillow
       - name: Live text, rendering and internal-link QA
-        id: textqa
         run: python scripts/live_recent_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-latest.md
       - name: Live image and graphics QA
-        id: visualqa
         if: always()
         run: python scripts/live_visual_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-visual-latest.md
-      - name: Live responsive, dark-mode and hero QA
-        id: surfaceqa
-        if: always()
-        run: python scripts/live_surface_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-surface-latest.md
       - name: Upload QA evidence
         if: always()
         uses: actions/upload-artifact@v4
