@@ -1,0 +1,47 @@
+name: Nightly janitor
+
+on:
+  schedule:
+    - cron: '40 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: morgentidende-nightly-janitor
+  cancel-in-progress: false
+
+jobs:
+  janitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Deterministic cleanup and daily cost rollup
+        run: |
+          python -m py_compile scripts/nightly_janitor.py
+          python scripts/nightly_janitor.py
+          git diff --check
+      - name: Commit maintenance state if changed
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo 'No janitor changes.'
+            exit 0
+          fi
+          git config user.name 'morgentidende-janitor'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/editorial/publication-attempts.jsonl reports/editorial/ai-usage-daily.json docs/img/cache/manifest.json docs/img/cache 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo 'No tracked janitor changes.'
+            exit 0
+          fi
+          git commit -m 'chore: nightly deterministic cleanup'
+          git pull --rebase origin main
+          git push origin main
