@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien",
   "slug": "2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien",
   "category": "Udland",
@@ -26,7 +26,7 @@
   "title": "Giftig skovild hvælving spreder sig over Sydøstasien",
   "standfirst": "En giftig skovild hvælving spreder sig over Sydøstasien og påvirker millioner af mennesker. Over 12.000 børn under 5 år har fået respiratoriske problemer.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T11:52:36Z",
   "updated_at": null,
   "ledger": "sources/2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien.json",
   "claim_ids": [
@@ -99,5 +99,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T11:52:36Z"
+  }
 }

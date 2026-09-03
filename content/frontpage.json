@@ -3,12 +3,15 @@
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker": {
-    "slug": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet"
+    "slug": "2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien"
   },
   "lead": {
-    "slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget"
+    "slug": "2026-09-03-giftig-skovild-hvaelving-spreder-sig-over-sydoestasien"
   },
   "rail": [
+    {
+      "slug": "2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg"
+    },
     {
       "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
     },
@@ -19,6 +22,9 @@
       "slug": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion"
     },
     {
+      "slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget"
+    },
+    {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
     },
     {
@@ -26,12 +32,6 @@
     },
     {
       "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
-    },
-    {
-      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
-    },
-    {
-      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
     }
   ],
   "stack": [
@@ -62,6 +62,9 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg"
+    },
+    {
       "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
     },
     {
@@ -69,6 +72,9 @@
     },
     {
       "slug": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion"
+    },
+    {
+      "slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget"
     },
     {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
@@ -90,12 +96,6 @@
     },
     {
       "slug": "2026-09-03-ugyldigt-struktureret-svar"
-    },
-    {
-      "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r"
-    },
-    {
-      "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
     }
   ],
   "publication_strategy": {

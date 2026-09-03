@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "published_count": 46,
+  "published_count": 48,
   "category_mix": {
-    "Udland": 23,
+    "Udland": 24,
     "Videnskab & teknologi": 8,
     "Sundhed": 6,
     "Videnskab": 3,
@@ -10,11 +10,12 @@
     "Liv": 1,
     "Guide": 1,
     "Sport": 1,
+    "Penge": 1,
     "Historie": 1
   },
   "top_source_hosts": {
+    "www.bbc.co.uk": 11,
     "www.aljazeera.com": 11,
-    "www.bbc.co.uk": 10,
     "www.reuters.com": 10,
     "www.theguardian.com": 7,
     "apnews.com": 6,
@@ -30,12 +31,12 @@
     "www.svt.se": 2,
     "www.nasa.gov": 2,
     "www.dr.dk": 2,
+    "www.politico.eu": 2,
     "island.is": 2,
-    "www.nhlbi.nih.gov": 2,
-    "www.nrk.no": 2
+    "www.nhlbi.nih.gov": 2
   },
   "top_source_groups": {
-    "host-bbc-co-uk": 8,
+    "host-bbc-co-uk": 9,
     "host-aljazeera-com": 8,
     "host-dw-com": 5,
     "reuters-reporting": 5,
@@ -50,16 +51,16 @@
     "host-svt-se": 2,
     "reuters-own-reporting": 2,
     "host-dr-dk": 2,
+    "host-politico-eu": 2,
     "ukrainian-presidency": 2,
     "host-nrk-no": 2,
     "cdc-social-connection": 1,
-    "nist-800-63b-4": 1,
-    "cisa-mfa": 1
+    "nist-800-63b-4": 1
   },
   "unique_source_hosts": 45,
   "unique_source_groups": 69,
-  "followup_share": 0.109,
+  "followup_share": 0.104,
   "correction_rate": 0.0,
-  "median_body_characters": 1060,
+  "median_body_characters": 1048,
   "principle": "These metrics are diagnostic. Clicks alone must not determine editorial priority."
 }

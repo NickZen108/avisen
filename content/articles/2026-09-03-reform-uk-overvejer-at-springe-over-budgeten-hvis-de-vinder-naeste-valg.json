@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-reform-uk-floats-skipping-budget-if-it-wins-next-election",
   "slug": "2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg",
   "category": "Penge",
@@ -24,7 +24,7 @@
   "title": "Reform UK overvejer at springe over budgeten hvis de vinder næste valg",
   "standfirst": "Reform UK overvejer at springe over budgeten hvis de vinder næste valg. Det skriver Politico Europe.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T11:52:36Z",
   "updated_at": null,
   "ledger": "sources/2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg.json",
   "claim_ids": [
@@ -83,5 +83,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T11:52:36Z"
+  }
 }
