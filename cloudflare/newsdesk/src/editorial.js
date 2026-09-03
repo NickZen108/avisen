@@ -391,10 +391,11 @@ const articleSchema = { type: "object", properties: {
 }, required: ["title", "standfirst", "body", "seo_title", "seo_description"] };
 
 const finalSchema = { type: "object", properties: {
+  category: { type: "string", enum: CATEGORIES },
   blocking_issues: { type: "array", maxItems: 10, items: { type: "object", properties: {
     gate: { type: "string", enum: ["language", "ethics", "final_editor"] }, issue: { type: "string" },
   }, required: ["gate", "issue"] } },
-}, required: ["blocking_issues"] };
+}, required: ["category", "blocking_issues"] };
 
 const EDITORIAL_LENS = [
   "ytringsfri", "censur", "overvåg", "privacy", "freedom", "liberty", "surveillance", "censor",
@@ -732,55 +733,10 @@ async function writeArticle(env, assignment, dossier) {
   return aiJson(env, system, JSON.stringify({ assignment, conflict_present: Boolean(dossier.conflict_present), verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null);
 }
 
-async function polishArticleLanguage(env, assignment, dossier, article) {
-  const sourceLanguage = String(assignment?.story_location?.primary_language_code || assignment?.story_location?.primary_language || "").toLowerCase();
-  const system = `Du er Morgentidendes eksisterende sprogredaktør. Gennemlæs HELE den færdige artikel og returnér hele artiklen i samme schema på idiomatisk, naturligt dansk. Dette er et repair/polish-step, IKKE en ny gate og må ikke kræve nye kilder. Bevar alle verificerede fakta, attributioner, citater, tal, URL'er, vinkel og betydning; tilføj ingen nye claims. Ret svensk, norsk, engelsk eller andet kildesprog, der er gledet ind i titel, standfirst, brødtekst eller SEO. Titel/rubrik skal kontrolleres særskilt og følge præcis samme sprogregel som brødteksten: oversæt alle almindelige fremmedord til naturligt dansk. Lav aldrig blandede konstruktioner som et fremmed navneord koblet til et dansk ord med bindestreg. Undtag kun egennavne og officielle produktnavne. Direkte citater skal også oversættes loyalt til naturligt dansk uden at ændre betydning, tone eller styrke. Når kildesproget er svensk eller norsk, skal alle almindelige ord og bøjningsformer oversættes til dansk. Fjern afsnit, hvis eneste funktion er at opremse eller fortælle, hvilke medier der har dækket sagen; kildeoversigten vises separat. Bevar nødvendig attribution ved at knytte mediets rigtige navn naturligt til den konkrete oplysning, og erstat interne feednavne som 'BBC Europe' og 'Guardian World' med 'BBC' og 'The Guardian'. Sørg også for, at standfirst er en rigtig kort manchet og ikke blot et kildenavn: normalt 1-2 korte sætninger og højst 35 ord. Den skal opsummere nyheden, gerne med vigtigste modpart eller konsekvens, uden gentagelser, spekulation eller mini-brødtekst. Forklar egennavne kort første gang, når forklaringen allerede kan udledes sikkert af det verificerede materiale; opfind ikke baggrundsoplysninger. Skriv ikke kilde- eller redaktionsnoter ind, medmindre de allerede er en del af artiklen. Returnér kun den reparerede artikel.`;
-  return aiJson(env, system, JSON.stringify({
-    source_language: sourceLanguage,
-    assignment,
-    verified_claims: dossier.claims.filter((c) => c.status === "verified"),
-    article,
-  }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2400 : 1600, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null);
-}
-
-function deterministicFinalReview(assignment, dossier, article) {
-  const issues = [];
-  const add = (gate, issue) => issues.push({ gate, issue });
-  if (!String(article?.title || "").trim()) add("language", "Titel mangler");
-  if (!String(article?.standfirst || "").trim()) add("language", "Standfirst mangler");
-  const body = Array.isArray(article?.body) ? article.body : [];
-  if (body.length < 3) add("final_editor", "Færre end tre meningsfulde tekstblokke");
-  for (const block of body) {
-    if (!["p", "h2", "h3"].includes(block?.type) || !String(block?.text || "").trim()) {
-      add("final_editor", "Ugyldig eller tom tekstblok");
-      break;
-    }
-  }
-  const failed = new Set(issues.map((x) => x.gate));
-  return {
-    decision: issues.length ? "hold" : "pass",
-    language: failed.has("language") ? "hold" : "pass",
-    ethics: "pass",
-    final_editor: failed.has("final_editor") ? "hold" : "pass",
-    issues,
-    notes: issues.map((x) => `${x.gate}: ${x.issue}`),
-    mode: "deterministic-low-risk",
-  };
-}
-function requiresAiFinalReview(assignment, dossier, article) {
-  if (["A", "B"].includes(assignment?.weight)) return true;
-  if (dossier?.right_of_reply_required) return true;
-  if ((dossier?.contradictions || []).length) return true;
-  const text = [
-    assignment?.title_hint, assignment?.core_question, article?.title, article?.standfirst,
-    ...(article?.body || []).map((b) => b?.text || ""),
-  ].join(" ").toLocaleLowerCase("da-DK");
-  return /\b(sigtet|tiltalt|anklag|voldtægt|seksual|selvmord|mindreår|barnet|børn|privat helbred|diagnose|terror|drab|korruption)\b/u.test(text);
-}
-
 async function finalReview(env, assignment, dossier, article) {
-  const system = `Du er uafhængig slutredaktør. Kontrollér den færdige artikel mod de verificerede claims uden at genresearche. Returnér kun reelle sikkerheds-/sandhedsproblemer som blockers: materielle påstande ud over dokumentationen, vildledende attribution, relevant men manglende fairness/pluralisme ved conflict_present=true, etisk problem, uklar/blandet genre eller en materielt forkert kategori i forhold til artikelens faktiske hovedemne og Morgentidendes kategorier. Hvis kategorien er forkert, rapportér det som final_editor-problem og angiv den korrekte kategori i issue-teksten. Kontrollér også at rubrik og manchet ikke er stærkere end dokumentationen. Sprog og SEO er repair/polish og må ikke i sig selv blokere. Media ejer hero og billedsandhed. Små stilpræferencer er aldrig blockers.`;
-  const raw = await aiJson(env, system, JSON.stringify({ assignment, claims: dossier.claims, contradictions: dossier.contradictions, article }), finalSchema, 450, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  const system = `Du er Morgentidendes uafhængige slutredaktør. Lav ét kort slutcheck af den færdige artikel mod de ALLEREDE verificerede claims; du må ikke genresearche og må ikke kræve flere kilder. Vælg samtidig den korrekte kategori blandt de tilladte kategorier. Forkert kategori er IKKE en blocker: returnér bare korrekt category. Returnér kun reelle blockers: (final_editor) materielle påstande ud over verified claims, vildledende/forkert attribution, rubrik/manchet stærkere end dokumentationen eller blanding af nyhed og kommentar; (ethics) konkret uløst fairness-/presseetisk risiko; (language) tydeligt fremmedsprogligt læk, brudt dansk eller uklar formulering som faktisk kræver reparation. Små stilpræferencer, SEO, metadata og media er aldrig blockers her. Media ejer billedsandhed og brugsret. Hvis artiklen er klar, returnér tom blocking_issues.`;
+  const raw = await aiJson(env, system, JSON.stringify({ categories: CATEGORIES, assignment, claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions, article }), finalSchema, 360, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  if (CATEGORIES.includes(raw.category)) assignment.category = raw.category;
   const issues = Array.isArray(raw.blocking_issues) ? raw.blocking_issues.filter((x) => x?.gate && x?.issue) : [];
   const failed = new Set(issues.map((x) => x.gate));
   return { decision: issues.length ? "hold" : "pass", language: failed.has("language") ? "hold" : "pass", ethics: failed.has("ethics") ? "hold" : "pass", final_editor: failed.has("final_editor") ? "hold" : "pass", issues, notes: issues.map((x) => `${x.gate}: ${x.issue}`) };
@@ -1146,7 +1102,6 @@ export async function runEditorialCycle(env, scan, options = {}) {
   research.media_strategy = mediaScout ? "have" : "pending_illustration";
 
   let article = await writeArticle(env, assignment, dossier);
-  article = await polishArticleLanguage(env, assignment, dossier, article);
 
   const date = startedAt.slice(0, 10);
   const slug = `${date}-${slugify(article.title)}`.slice(0, 96).replace(/-+$/g, "");
@@ -1181,14 +1136,13 @@ export async function runEditorialCycle(env, scan, options = {}) {
 
   const MAX_ARTICLE_ATTEMPTS = 3;
   let articleAttempts = 1;
-  const aiFinalRequired = requiresAiFinalReview(assignment, dossier, article);
-  let review = aiFinalRequired ? await finalReview(env, assignment, dossier, article) : deterministicFinalReview(assignment, dossier, article);
+  let review = await finalReview(env, assignment, dossier, article);
   while (review.decision !== "pass" && articleAttempts < MAX_ARTICLE_ATTEMPTS) {
     const revised = await reviseArticleIssues(env, assignment, dossier, article, review);
     if (JSON.stringify(revised) === JSON.stringify(article)) break;
     article = revised;
     articleAttempts += 1;
-    review = aiFinalRequired ? await finalReview(env, assignment, dossier, article) : deterministicFinalReview(assignment, dossier, article);
+    review = await finalReview(env, assignment, dossier, article);
   }
   if (review.decision !== "pass") {
     return { status: "drop", stage: "final-editor", checked_at: startedAt, generated_at: startedAt, title: article.title || assignment.title_hint, reason: `Droppet efter ${articleAttempts} artikel-forsøg: ${(review.notes || []).join("; ") || "Slutredaktør godkendte ikke artiklen"}`, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, article_title: article.title, article_attempts: articleAttempts, fact_check: { claims: dossier.claims, rationale: dossier.rationale }, final_review: review } };
@@ -1212,7 +1166,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
     status: "approved", schema_version: 1, generated_at: startedAt, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys,
     runtime: "cloudflare-workers-ai", model: STRONG_TEXT_MODEL, models: { fast: FAST_TEXT_MODEL, strong: STRONG_TEXT_MODEL, image: IMAGE_MODEL }, story_id: storyId, slug, article: canonical, ledger, approval,
     media,
-    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, article_attempts: articleAttempts, final_review: review, media_policy: { documentary_first: true, multilingual_location_search: true, pending_image: Boolean(hero.pending_image), temporary_sketch_allowed_after_scout: true, static_sketch_fallback: false, late_hold_for_no_photo: false }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
+    audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, article_attempts: articleAttempts, language_mode: articleAttempts === 1 ? "write-once-no-repair" : "conditional-repair", final_review: review, media_policy: { documentary_first: true, multilingual_location_search: true, pending_image: Boolean(hero.pending_image), temporary_sketch_allowed_after_scout: true, static_sketch_fallback: false, late_hold_for_no_photo: false }, source_count: ledger.sources.length, independent_source_groups: ledger.coverage_sweep.independent_source_groups },
   };
     })();
   } catch (error) {
