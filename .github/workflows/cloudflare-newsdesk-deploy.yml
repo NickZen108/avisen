@@ -1,7 +1,7 @@
 name: Deploy Cloudflare Newsdesk Runtime
 
 # Deploy canonical source as committed; do not mutate editorial code during deploy.
-# Bot-originated runtime commits can require a direct deploy because GitHub suppresses recursive push workflows.
+# Direct workflow-path commits are used only to deploy bot-originated runtime commits that GitHub does not recursively trigger.
 on:
   push:
     branches: [main]
