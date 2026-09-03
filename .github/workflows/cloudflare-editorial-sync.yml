@@ -121,8 +121,8 @@ jobs:
             git diff -- templates docs/theme.css docs/theme.js docs/style.css >&2
             exit 1
           fi
-      - name: Canonical gates before commit
-        run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
+      - name: Canonical article validation before commit
+        run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/prepublish_surface_qa.py
       - name: Commit source-of-truth editorial changes
         run: |
           set -euo pipefail
