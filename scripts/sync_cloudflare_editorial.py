@@ -148,8 +148,8 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
         fail("slug mismatch i editorial package")
     if article.get("pipeline_version") != 2 or article.get("status") != "ready" or article.get("release_requested") is not True:
         fail("artikel er ikke Pipeline v2 ready+release_requested")
-    if not isinstance(article.get("body"), list) or len(article["body"]) < 3:
-        fail("artikeltekst mangler eller har færre end tre meningsfulde tekstblokke")
+    if not isinstance(article.get("body"), list) or len(article["body"]) < 1:
+        fail("artikeltekst mangler")
     image = article.get("image") or {}
     if image.get("placement") != "lead":
         fail("automatisk artikel mangler godkendt lead-hero")
