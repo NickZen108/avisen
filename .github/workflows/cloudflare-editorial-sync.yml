@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: morgentidende-editorial-import
@@ -124,19 +125,23 @@ jobs:
       - name: Canonical article validation before commit
         run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/prepublish_surface_qa.py
       - name: Commit source-of-truth editorial changes
+        id: editorial
         run: |
           set -euo pipefail
           git config user.name 'morgentidende-cloudflare-editorial'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add content/articles sources reports/editorial/approvals content/frontpage.json docs/img/auto reports/editorial/publication-attempts.jsonl 2>/dev/null || true
           if git diff --cached --quiet; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
             echo 'Ingen nye redaktionelle source-of-truth ændringer at committe'
           else
             git commit -m 'editorial: import cycle results'
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
           fi
           git reset --hard HEAD
           git pull --rebase origin main
       - name: Push editorial sync atomically
+        if: ${{ steps.editorial.outputs.changed == 'true' }}
         run: |
           set -euo pipefail
           if git push origin main; then
@@ -145,3 +150,8 @@ jobs:
           echo 'Main flyttede sig mellem rebase og push; prøver én sikker retry.'
           git pull --rebase origin main
           git push origin main
+      - name: Dispatch build/publish explicitly
+        if: ${{ steps.editorial.outputs.changed == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run build-publish.yml --ref main
