@@ -21,11 +21,29 @@ jobs:
           sleep 45
           for n in 1 2 3; do python scripts/live_recent_qa.py --target-sha "$TARGET_SHA" --recent-hours 24 --report /tmp/post-deploy.md && exit 0; [ "$n" -lt 3 ] && sleep 30; done
           exit 1
-      - name: Safe rollback latest publisher commit
+      - name: Verify catastrophic homepage failure
+        id: catastrophe
         if: ${{ steps.smoke.outcome == 'failure' }}
+        shell: bash
+        run: |
+          set +e
+          URL='https://morgentidende.nicolaipetersen108.workers.dev/'
+          catastrophic=0
+          bad=0
+          for n in 1 2 3; do
+            code=$(curl -L -sS --max-time 20 -o /tmp/home.html -w '%{http_code}' "$URL" || echo 000)
+            size=$(wc -c </tmp/home.html 2>/dev/null || echo 0)
+            if [[ "$code" == "404" || "$code" =~ ^5 || "$code" == "000" || "$size" -lt 500 ]]; then bad=$((bad+1)); fi
+            [ "$n" -lt 3 ] && sleep 15
+          done
+          if [ "$bad" -eq 3 ]; then catastrophic=1; fi
+          echo "catastrophic=$catastrophic" >> "$GITHUB_OUTPUT"
+          if [ "$catastrophic" -eq 1 ]; then echo 'Vedvarende katastrofal live-fejl bekræftet.'; else echo 'Smoke-fejl var ikke katastrofal; ingen total rollback.'; fi
+      - name: Safe rollback latest publisher commit
+        if: ${{ steps.smoke.outcome == 'failure' && steps.catastrophe.outputs.catastrophic == '1' }}
         env: {TARGET_SHA: '${{ inputs.target_sha }}'}
         run: |
           set -euo pipefail; git fetch origin main; git reset --hard origin/main
           [ "$(git show -s --format=%s "$TARGET_SHA")" = "publish: build structured edition" ] || { cat /tmp/post-deploy.md || true; exit 1; }
           [ "$(git log -1 --format=%H -- docs/)" = "$TARGET_SHA" ] || { cat /tmp/post-deploy.md || true; exit 1; }
-          mkdir -p reports/qa; cp /tmp/post-deploy.md reports/qa/rollback-latest.md; git config user.name morgentidende-safety; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"; git revert --no-commit "$TARGET_SHA"; git add reports/qa/rollback-latest.md; git commit -m "rollback: failed post-deploy internal smoke test"; git push
+          mkdir -p reports/qa; cp /tmp/post-deploy.md reports/qa/rollback-latest.md; git config user.name morgentidende-safety; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"; git revert --no-commit "$TARGET_SHA"; git add reports/qa/rollback-latest.md; git commit -m "rollback: verified catastrophic post-deploy failure"; git push
