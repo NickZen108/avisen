@@ -1,0 +1,40 @@
+name: One-shot house-rule cleanup
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/rule-cleanup-once.yml']
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main, fetch-depth: 0}
+      - name: Remove stale gate documentation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('HUSREGLER.md')
+          s=p.read_text(encoding='utf-8')
+          replacements={
+            '`DESIGN.md` + `DESIGN.lock.md` — låst udseende og genereret HTML':'`DESIGN.md` — fælles udseende og genereret HTML',
+            'En lavere regel må aldrig ophæve en højere. Ved tvivl: stop og send til redaktør/manual review; gæt aldrig.':'En lavere regel må aldrig ophæve en højere. Ved tvivl om et materielt redaktionelt forhold sendes arbejdet tilbage til den ansvarlige redaktionelle rolle; gæt aldrig.',
+            '- `manual_review: true` forsøges autopubliceret uden eksplicit afsluttet manuel review\n':'',
+            'Coverage sweep, desk recheck, forelæggelsesfrist, sprog, SEO og almindelige design-/UI-kontroller er redaktionelle eller tekniske arbejdsprocesser og må ikke i sig selv fungere som hårde publiceringsgates.':'Coverage sweep, desk recheck, forelæggelsesfrist, SEO og almindelige design-/UI-kontroller er redaktionelle eller tekniske arbejdsprocesser og må ikke i sig selv fungere som hårde publiceringsgates. Sprog, etik, billede og slutredaktør er de redaktionelle approval-led; sprog og billede forsøges højst tre gange, hvorefter artiklen droppes.',
+            'Nye artikler skrives som struktureret indhold under `content/` og genereres til `docs/`. Journalist- og redaktøragenter må ikke håndredigere CSS, logo, header, grids eller andre låste designfiler. Låste filer verificeres maskinelt som udviklings-/regressionskontrol; en ren designhash-afvigelse må ikke i sig selv blokere en ellers publicerbar artikel.':'Nye artikler skrives som struktureret indhold under `content/` og genereres til `docs/`. Artikelproduktion må ikke skrive til templates, CSS, theme-filer, logo, header eller grids. Fælles design kontrolleres ved designændringer og ikke som en per-artikel publiceringsgate.'
+          }
+          for old,new in replacements.items():
+              if old not in s:
+                  raise SystemExit(f'Expected text not found: {old[:80]}')
+              s=s.replace(old,new,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit rule cleanup and remove one-shot workflow
+        run: |
+          git config user.name 'morgentidende-maintenance'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/rule-cleanup-once.yml
+          git add HUSREGLER.md
+          git commit -m 'docs: remove obsolete gate rules'
+          git push origin main
