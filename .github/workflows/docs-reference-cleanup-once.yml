@@ -1,0 +1,35 @@
+name: Docs reference cleanup once
+on:
+  push:
+    paths:
+      - .github/workflows/docs-reference-cleanup-once.yml
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove stale documentation references
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('HUSREGLER.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('9. `SEO.md`, `QA.md`, `PRODUCT.md` — specialregler', '9. `SEO.md` + `PRODUCT.md` — specialregler')
+          p.write_text(text, encoding='utf-8')
+          PY
+          echo 'Remaining references to removed docs:'
+          grep -RInE 'EDITOR\.md|QA\.md|AUTOMATION\.md|REDAKTION-TJEK\.md' --include='*.md' . || true
+      - name: Commit and self-delete
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          rm -f .github/workflows/docs-reference-cleanup-once.yml
+          git add -A
+          git commit -m 'docs: remove stale references to retired policy files'
+          git push origin HEAD:main
