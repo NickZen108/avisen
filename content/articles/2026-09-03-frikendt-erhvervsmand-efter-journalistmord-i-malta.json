@@ -1,0 +1,81 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta",
+  "slug": "2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta",
+  "category": "Udland",
+  "weight": "B",
+  "editorial_destination": "main",
+  "story_location": {
+    "country": "Malta",
+    "country_code": "MT",
+    "place_names_english": [
+      "Valletta"
+    ],
+    "place_names_local": [
+      "Valletta"
+    ]
+  },
+  "title": "Frikendt erhvervsmand efter journalistmord i Malta",
+  "standfirst": "En maltesisk erhvervsmand er blevet frikendt for at have bestilt mordet på journalisten Daphne Caruana Galizia. Frikendelsen har ført til stor vrede i Malta.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "ledger": "sources/2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06"
+  ],
+  "seo": {
+    "title": "Frikendt erhvervsmand efter journalistmord i Malta",
+    "description": "En maltesisk erhvervsmand er blevet frikendt for at have bestilt mordet på journalisten Daphne Caruana Galizia. Frikendelsen har ført til stor vrede i Malta.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta.jpg",
+    "alt": "Malta, Valletta, Law Courts",
+    "credit": "Berthold Werner",
+    "license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Malta_Valletta_BW_2011-10-07_10-41-05.JPG",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "En maltesisk erhvervsmand er blevet frikendt for at have bestilt mordet på journalisten Daphne Caruana Galizia. Yorgen Fenech blev frikendt af en jury med 8-1 stemmer efter 8 timers afstemning. Frikendelsen har ført til stor vrede i Malta, hvor Daphne Caruana Galizia blev dræbt ved en bilbombe i 2017. Daphne Caruana Galizia var en fremtrædende kritiker af det maltesiske regering og havde afsløret korruptionsnetværk i Malta og udlandet. ",
+      "type": "h2"
+    },
+    {
+      "text": "Frikendelsen er blevet mødt med vrede fra Daphne Caruana Galizias familie, der græd under retssagen. Yorgen Fenecs familie skreg af glæde over frikendelsen. Yorgen Fenech blev dog dømt for samarbejde om mord og kriminel association til at begå mord. ",
+      "type": "h3"
+    },
+    {
+      "text": "Daphne Caruana Galizia var en fremtrædende journalist, der havde afsløret korruptionsnetværk i Malta og udlandet. Hendes død har ført til stor vrede og krav om gengældelse i Malta. ",
+      "type": "p"
+    },
+    {
+      "text": "Kilder: France 24, Sky World, BBC Europe ",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

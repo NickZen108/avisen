@@ -1,0 +1,228 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta",
+  "article_slug": "2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "Malta",
+      "country_code": "MT",
+      "place_names_english": [
+        "Valletta"
+      ],
+      "place_names_local": [
+        "Valletta"
+      ]
+    },
+    "core_question": "Outrage mounts in Malta after acquittal over journalist's murder"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "France 24",
+      "url": "https://www.france24.com/en/video/20260903-outrage-mounts-in-malta-after-acquittal-over-journalist-s-murder",
+      "published_at": "2026-09-03T15:07:33.000Z",
+      "accessed_at": "2026-09-03T15:14:22.723Z",
+      "type": "news",
+      "source_group": "host-france24-com",
+      "publisher_root": "france24-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Outrage mounts in Malta after acquittal over journalist's murder",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "Sky World",
+      "url": "https://news.sky.com/story/maltese-businessman-cleared-over-murder-of-journalist-daphne-caruana-galizia-13580542",
+      "published_at": "2026-09-02T20:43:00.000Z",
+      "accessed_at": "2026-09-03T15:14:22.723Z",
+      "type": "news",
+      "source_group": "host-sky-com",
+      "publisher_root": "sky-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Maltese businessman cleared over murder of journalist Daphne Caruana Galizia",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "BBC Europe",
+      "url": "https://www.bbc.co.uk/news/articles/c5ye295pxgxo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-02T19:05:31.000Z",
+      "accessed_at": "2026-09-03T15:14:22.723Z",
+      "type": "news",
+      "source_group": "host-bbc-co-uk",
+      "publisher_root": "bbc-co-uk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "https://www.facebook.com/bbcnews",
+      "publisher_name": "BBC News",
+      "canonical_url": "https://www.bbc.co.uk/news/articles/c5ye295pxgxo",
+      "primary_record": null,
+      "authoritative_for": "Maltese tycoon acquitted of orchestrating murder of renowned journalist",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "independent_source_groups": [
+      "host-france24-com",
+      "host-sky-com",
+      "host-bbc-co-uk"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Yorgen Fenech er blevet frikendt for at have bestilt mordet på journalisten Daphne Caruana Galizia.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-sky-com",
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T15:14:22.723Z",
+      "notes": "Kilder: France 24, Sky World, BBC Europe"
+    },
+    {
+      "id": "F02",
+      "claim": "Daphne Caruana Galizia blev dræbt ved en bilbombe i 2017.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-sky-com",
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T15:14:22.723Z",
+      "notes": "Kilder: France 24, Sky World, BBC Europe"
+    },
+    {
+      "id": "F03",
+      "claim": "Yorgen Fenech blev frikendt af en jury med 8-1 stemmer efter 8 timers afstemning.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-sky-com",
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T15:14:22.723Z",
+      "notes": "Kilder: France 24, Sky World, BBC Europe"
+    },
+    {
+      "id": "F04",
+      "claim": "Daphne Caruana Galizias familie græd under retssagen, mens Yorgen Fenecs familie skreg af glæde.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-sky-com",
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T15:14:22.723Z",
+      "notes": "Kilder: France 24, Sky World, BBC Europe"
+    },
+    {
+      "id": "F05",
+      "claim": "Yorgen Fenech blev dømt for samarbejde om mord og kriminel association til at begå mord.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-sky-com",
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T15:14:22.723Z",
+      "notes": "Kilder: France 24, Sky World, BBC Europe"
+    },
+    {
+      "id": "F06",
+      "claim": "Daphne Caruana Galizia var en fremtrædende kritiker af det maltesiske regering og havde afsløret korruptionsnetværk i Malta og udlandet.",
+      "status": "verified",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "independent_groups": [
+        "host-france24-com",
+        "host-sky-com",
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T15:14:22.723Z",
+      "notes": "Kilder: France 24, Sky World, BBC Europe"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T15:14:22.723Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "main"
+}
