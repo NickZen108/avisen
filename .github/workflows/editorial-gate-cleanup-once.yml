@@ -1,0 +1,57 @@
+name: Editorial gate cleanup once
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/editorial-gate-cleanup-once.yml']
+permissions: {contents: write}
+concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Patch editorial flow and article write boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('cloudflare/newsdesk/src/editorial.js')
+          s = p.read_text(encoding='utf-8')
+
+          old = '''  const desk = await deskRecheck(env, assignment, dossier);\n  if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, fact_check: { claims: dossier.claims, rationale: dossier.rationale }, desk_recheck: desk } };\n\n'''
+          new = '''  // Desk recheck was removed as a publication gate. Fact check + final editor own the decision.\n  // Keep a non-gating compatibility marker in audit/ledger until old consumers are migrated.\n  const desk = { decision: "publish", rationale: "Desk recheck gate removed; final editor owns final publication decision" };\n\n'''
+          if old not in s:
+              raise SystemExit('Expected Cloudflare desk-recheck call block not found; refusing broad edit')
+          s = s.replace(old, new, 1)
+
+          old_prompt = '''Du er uafhængig slutredaktør. Kontrollér den færdige artikel mod de verificerede claims uden at genresearche. Returnér kun reelle sikkerheds-/sandhedsproblemer som blockers: materielle påstande ud over dokumentationen, vildledende attribution, relevant men manglende fairness/pluralisme ved conflict_present=true, eller etisk problem. Sprog og SEO er repair/polish og må ikke i sig selv blokere. Media ejer hero og billedsandhed. Små stilpræferencer er aldrig blockers.'''
+          new_prompt = '''Du er uafhængig slutredaktør. Kontrollér den færdige artikel mod de verificerede claims uden at genresearche. Returnér kun reelle sikkerheds-/sandhedsproblemer som blockers: materielle påstande ud over dokumentationen, vildledende attribution, relevant men manglende fairness/pluralisme ved conflict_present=true, etisk problem, uklar/blandet genre eller en materielt forkert kategori i forhold til artikelens faktiske hovedemne og Morgentidendes kategorier. Hvis kategorien er forkert, rapportér det som final_editor-problem og angiv den korrekte kategori i issue-teksten. Kontrollér også at rubrik og manchet ikke er stærkere end dokumentationen. Sprog og SEO er repair/polish og må ikke i sig selv blokere. Media ejer hero og billedsandhed. Små stilpræferencer er aldrig blockers.'''
+          if old_prompt not in s:
+              raise SystemExit('Expected final-editor prompt not found; refusing broad edit')
+          s = s.replace(old_prompt, new_prompt, 1)
+          p.write_text(s, encoding='utf-8')
+
+          # Article/editorial production must never modify shared design/runtime surfaces.
+          wf = Path('.github/workflows/cloudflare-editorial-sync.yml')
+          w = wf.read_text(encoding='utf-8')
+          needle = '''      - name: Canonical gates before commit\n        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py\n'''
+          replacement = '''      - name: Enforce article-production write boundary\n        run: |\n          set -euo pipefail\n          if ! git diff --quiet -- templates docs/theme.css docs/theme.js docs/style.css; then\n            echo 'ARTICLE WRITE BOUNDARY FAIL: editorial production changed protected template/CSS/theme files' >&2\n            git diff -- templates docs/theme.css docs/theme.js docs/style.css >&2\n            exit 1\n          fi\n      - name: Canonical gates before commit\n        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py\n'''
+          if needle not in w:
+              raise SystemExit('Expected canonical-gates block not found; refusing workflow edit')
+          w = w.replace(needle, replacement, 1)
+          wf.write_text(w, encoding='utf-8')
+          PY
+          node --check cloudflare/newsdesk/src/editorial.js
+      - name: Commit migration and remove one-shot workflow
+        run: |
+          set -euo pipefail
+          git config user.name morgentidende-maintenance
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/editorial-gate-cleanup-once.yml
+          git add cloudflare/newsdesk/src/editorial.js .github/workflows/cloudflare-editorial-sync.yml
+          git commit -m "editorial: remove desk recheck and protect shared design"
+          git push origin main
