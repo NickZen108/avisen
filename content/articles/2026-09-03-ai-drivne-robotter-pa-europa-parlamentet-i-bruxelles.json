@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "draft",
+  "release_requested": false,
   "story_id": "2026-09-03-ai-powered-robots-showcased-at-european-parliament-in-brussels",
   "slug": "2026-09-03-ai-drivne-robotter-pa-europa-parlamentet-i-bruxelles",
   "category": "Videnskab & teknologi",
@@ -10,35 +10,14 @@
   "story_location": {
     "country": "Belgium",
     "country_code": "BE",
-    "hero_queries_english": [
-      "European Parliament",
-      "robots",
-      "Brussels"
-    ],
-    "hero_queries_local": [
-      "Parlement européen",
-      "robots",
-      "Bruxelles"
-    ],
-    "hero_queries_transliterated": [
-      "Parlement europeen",
-      "robots",
-      "Bruxelles"
-    ],
-    "place_names_english": [
-      "Brussels",
-      "European Parliament"
-    ],
-    "place_names_local": [
-      "Bruxelles",
-      "Parlement européen"
-    ],
+    "hero_queries_english": ["European Parliament", "robots", "Brussels"],
+    "hero_queries_local": ["Parlement européen", "robots", "Bruxelles"],
+    "hero_queries_transliterated": ["Parlement europeen", "robots", "Bruxelles"],
+    "place_names_english": ["Brussels", "European Parliament"],
+    "place_names_local": ["Bruxelles", "Parlement européen"],
     "primary_language": "fr",
     "primary_language_code": "fr",
-    "transliterations": [
-      "Bruxelles",
-      "Parlement europeen"
-    ]
+    "transliterations": ["Bruxelles", "Parlement europeen"]
   },
   "title": "AI-drivne robotter på Europa-Parlamentet i Bruxelles",
   "standfirst": "Euronews",
@@ -46,9 +25,7 @@
   "published_at": null,
   "updated_at": null,
   "ledger": "sources/2026-09-03-ai-drivne-robotter-pa-europa-parlamentet-i-bruxelles.json",
-  "claim_ids": [
-    "F01"
-  ],
+  "claim_ids": ["F01"],
   "seo": {
     "title": "AI-drivne robotter på Europa-Parlamentet i Bruxelles",
     "description": "AI-drivne robotter blev vist frem på Europa-Parlamentet i Bruxelles. Læs mere om præsentationen og hvad det betyder for fremtidens arbejdsmarked og samfund.",
@@ -81,13 +58,15 @@
       "type": "p"
     }
   ],
-  "source_ids_to_display": [
-    "S1"
-  ],
+  "source_ids_to_display": ["S1"],
   "related_news_slug": null,
   "related": [],
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "workflow_state": {
+    "state": "parked",
+    "reason": "Flawed final approval during engine simplification test: language, unsupported filler and irrelevant archive hero."
+  }
 }
