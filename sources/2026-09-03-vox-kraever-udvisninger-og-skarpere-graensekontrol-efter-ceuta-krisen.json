@@ -1,0 +1,106 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-vox-ceuta-migration-policy",
+  "article_slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "main",
+    "core_question": "Hvad kræver Vox efter migrantkrisen i Ceuta?",
+    "manual_review": false
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Reuters",
+      "url": "https://www.reuters.com/world/europe/ceuta-residents-call-calm-spain-rallies-over-enclaves-migrant-crisis-2026-09-02/",
+      "published_at": "2026-09-02T00:00:00Z",
+      "accessed_at": "2026-09-03T04:30:00Z",
+      "type": "news",
+      "source_group": "host-reuters-com",
+      "publisher_root": "reuters-com",
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "Associated Press",
+      "url": "https://apnews.com/article/dcc8fcac0897320c50d3bed6f7b6ebbb",
+      "published_at": "2026-09-02T00:00:00Z",
+      "accessed_at": "2026-09-03T04:30:00Z",
+      "type": "news",
+      "source_group": "host-apnews-com",
+      "publisher_root": "apnews-com",
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "Santiago Abascal",
+      "url": "https://www.instagram.com/santi_abascal/",
+      "published_at": "2026-08-02T00:00:00Z",
+      "accessed_at": "2026-09-03T04:30:00Z",
+      "type": "primary",
+      "source_group": "instagram-santi-abascal",
+      "publisher_root": "instagram-com",
+      "provenance_type": "primary_statement",
+      "provenance_cluster": "pc-3",
+      "provenance_basis": "speaker_account",
+      "authority_class": "primary_party",
+      "discovery_only": false
+    },
+    {
+      "id": "S4",
+      "name": "El País",
+      "url": "https://elpais.com/espana/2026-08-28/marlaska-evita-la-autocritica-y-acusa-a-pp-y-vox-de-incitar-al-odio-en-ceuta.html",
+      "published_at": "2026-08-28T00:00:00Z",
+      "accessed_at": "2026-09-03T04:30:00Z",
+      "type": "news",
+      "source_group": "host-elpais-com",
+      "publisher_root": "elpais-com",
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-4",
+      "provenance_basis": "publisher_or_similarity",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S5",
+      "name": "Financial Times",
+      "url": "https://www.ft.com/content/dece2ef6-88cb-497d-a919-0e9e3c2e3b10",
+      "published_at": "2026-08-29T00:00:00Z",
+      "accessed_at": "2026-09-03T04:30:00Z",
+      "type": "news",
+      "source_group": "host-ft-com",
+      "publisher_root": "ft-com",
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-5",
+      "provenance_basis": "publisher_or_similarity",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": ["S1", "S2", "S3", "S4", "S5"],
+    "independent_source_groups": ["host-reuters-com", "host-apnews-com", "instagram-santi-abascal", "host-elpais-com", "host-ft-com"],
+    "limitations": "Dødstal og antallet af tilbageværende migranter varierer mellem Reuters og AP og gengives derfor særskilt.",
+    "notes": ["Vox er hovedstemme; regeringens svar medtages for relevant pluralisme."]
+  },
+  "claims": [
+    {"id":"F01","claim":"Vox kalder grænseoverskridelserne en invasion og en krigshandling og placerer ansvar hos Marokko og Sánchez.","status":"verified","source_ids":["S1","S3"],"independent_groups":["host-reuters-com","instagram-santi-abascal"],"checked_at":"2026-09-03T04:30:00Z","notes":"Vox' egen politiske vurdering, tydeligt attribueret."},
+    {"id":"F02","claim":"Vox kræver udvisninger og skærpet grænsekontrol.","status":"verified","source_ids":["S1","S2","S3"],"independent_groups":["host-reuters-com","host-apnews-com","instagram-santi-abascal"],"checked_at":"2026-09-03T04:30:00Z","notes":"Partiets krav."},
+    {"id":"F03","claim":"Reuters og AP opgiver forskellige tal for døde og tilbageværende migranter.","status":"verified","source_ids":["S1","S2"],"independent_groups":["host-reuters-com","host-apnews-com"],"checked_at":"2026-09-03T04:30:00Z","notes":"Begge sæt tal gengives med kilde."},
+    {"id":"F04","claim":"Regeringen har afsat 309 millioner euro til Ceuta.","status":"verified","source_ids":["S2"],"independent_groups":["host-apnews-com"],"checked_at":"2026-09-03T04:30:00Z","notes":"Regeringens svar."},
+    {"id":"F05","claim":"Indenrigsministeren har beskyldt PP og Vox for at opildne til had.","status":"verified","source_ids":["S4","S5"],"independent_groups":["host-elpais-com","host-ft-com"],"checked_at":"2026-09-03T04:30:00Z","notes":"Tydeligt attribueret."}
+  ],
+  "fact_check": {"status":"pass","checked_at":"2026-09-03T04:30:00Z","notes":["Alle publicerede faktuelle påstande er attribueret til de anførte kilder; politiske vurderinger præsenteres som vurderinger."]},
+  "desk_recheck": {"status":"publish","checked_at":"2026-09-03T04:30:00Z","rationale":"Opfølgning med relevant pluralisme og tydelig attribution."},
+  "editorial_destination": "main"
+}
