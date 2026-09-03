@@ -1,0 +1,54 @@
+name: Add specialist Scan feeds once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-specialist-scan-feeds-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Extend Scan feeds
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('cloudflare/newsdesk/src/index.js')
+          s = p.read_text(encoding='utf-8')
+          marker = '  // Perspective/discovery sources. Valuable as tips and agenda discovery, but never\n'
+          if marker not in s:
+              raise SystemExit('FEEDS insertion marker missing')
+          if 'name: "TLDR Tech"' in s:
+              raise SystemExit('specialist feeds already present')
+          block = '''  // Specialist editorial/discovery sources. Strong specialist outlets may be used as normal\n  // secondary reporting; newsletters, podcasts and expert-led sources are discovery only.\n  { name: "TLDR Tech", url: "https://tldr.tech/rss", source_class: "tech_discovery", region: "WORLD", priority: 3, limit: 16, discovery_only: true },\n  { name: "The Neuron", url: "https://www.theneuron.ai/feed", source_class: "tech_discovery", region: "WORLD", priority: 3, limit: 16, discovery_only: true },\n  { name: "MIT Technology Review", url: "https://www.technologyreview.com/feed/", source_class: "specialist_news", region: "US", priority: 4, limit: 18 },\n  { name: "Hard Fork", url: "https://feeds.simplecast.com/l2i9YnTd", source_class: "tech_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },\n\n  { name: "Nature Briefing", url: "https://news.google.com/rss/search?q=site%3Anature.com%20%22Daily%20briefing%22&hl=en&gl=US&ceid=US%3Aen", source_class: "science_discovery", region: "WORLD", priority: 4, limit: 16, discovery_only: true },\n  { name: "ScienceDaily", url: "https://www.sciencedaily.com/rss/", source_class: "science_discovery", region: "WORLD", priority: 3, limit: 18, discovery_only: true },\n  { name: "Quanta Magazine", url: "https://www.quantamagazine.org/feed/", source_class: "specialist_news", region: "US", priority: 4, limit: 18 },\n  { name: "Videnskab.dk", url: "https://news.google.com/rss/search?q=site%3Avidenskab.dk&hl=da&gl=DK&ceid=DK%3Ada", source_class: "specialist_news", region: "DK", priority: 4, limit: 18 },\n\n  { name: "Huberman Lab", url: "https://feeds.megaphone.fm/hubermanlab", source_class: "health_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },\n  { name: "The Peter Attia Drive", url: "https://peterattiadrive.libsyn.com/rss", source_class: "health_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },\n  { name: "FoundMyFitness", url: "https://podcast.foundmyfitness.com/rss.xml", source_class: "health_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },\n  { name: "ZOE Science & Nutrition", url: "https://feeds.megaphone.fm/ZOELIMITED9301524082", source_class: "health_discovery", region: "UK", priority: 3, limit: 12, discovery_only: true },\n\n  { name: "Psychology Today", url: "https://news.google.com/rss/search?q=site%3Apsychologytoday.com&hl=en&gl=US&ceid=US%3Aen", source_class: "psychology_discovery", region: "US", priority: 3, limit: 16, discovery_only: true },\n  { name: "The Psychology Podcast", url: "https://news.google.com/rss/search?q=site%3Ascottbarrykaufman.com%2Fpodcast&hl=en&gl=US&ceid=US%3Aen", source_class: "psychology_discovery", region: "US", priority: 2, limit: 10, discovery_only: true },\n  { name: "Bessel van der Kolk", url: "https://news.google.com/rss/search?q=%22Bessel%20van%20der%20Kolk%22&hl=en&gl=US&ceid=US%3Aen", source_class: "psychology_discovery", region: "WORLD", priority: 2, limit: 10, discovery_only: true },\n  { name: "Gabor Maté", url: "https://news.google.com/rss/search?q=%22Gabor%20Mat%C3%A9%22&hl=en&gl=US&ceid=US%3Aen", source_class: "psychology_discovery", region: "WORLD", priority: 2, limit: 10, discovery_only: true },\n\n  { name: "The Gottman Institute", url: "https://www.gottman.com/blog/feed/", source_class: "relationships_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },\n  { name: "Esther Perel", url: "https://feeds.megaphone.fm/ep-wswb", source_class: "relationships_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },\n  { name: "Good Inside with Dr. Becky", url: "https://feeds.simplecast.com/Y5N0xWWZ", source_class: "parenting_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },\n  { name: "Sex and Psychology", url: "https://www.sexandpsychology.com/feed/podcast/sex-and-psychology-podcast/", source_class: "relationships_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },\n\n'''
+          s = s.replace(marker, block + marker, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+          node --check cloudflare/newsdesk/src/index.js
+          git diff --check
+          python - <<'PY'
+          from pathlib import Path
+          s = Path('cloudflare/newsdesk/src/index.js').read_text(encoding='utf-8')
+          names = ['TLDR Tech','The Neuron','MIT Technology Review','Hard Fork','Nature Briefing','ScienceDaily','Quanta Magazine','Videnskab.dk','Huberman Lab','The Peter Attia Drive','FoundMyFitness','ZOE Science & Nutrition','Psychology Today','The Psychology Podcast','Bessel van der Kolk','Gabor Maté','The Gottman Institute','Esther Perel','Good Inside with Dr. Becky','Sex and Psychology']
+          missing = [x for x in names if f'name: "{x}"' not in s]
+          assert not missing, missing
+          print('specialist Scan feeds: PASS')
+          PY
+      - name: Commit and clean up
+        shell: bash
+        run: |
+          git config user.name 'morgentidende-maintenance'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/add-specialist-scan-feeds-once.yml
+          git add cloudflare/newsdesk/src/index.js
+          git commit -m 'scan: add specialist tech science health and relationship feeds'
+          git pull --rebase origin main
+          git push origin main
