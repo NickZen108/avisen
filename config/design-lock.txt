@@ -1,6 +1,6 @@
 # Git blob SHA  path
 # Opdateres kun efter udtrykkelig brugerordre om designændring.
-fea6c1fd5b92e3e878f4de1f284718e42c59a97c docs/style.css
+a8fb1a6b7bc8022eba4f695e1bd995493f8c7f53 docs/style.css
 19c0c2ace05968ca427cc51977105059170034a4 docs/signup.css
 c7b9acaa545d95070afb6ffda9644f6ba456d0ec docs/theme.css
 36690092e475e494d64f8b728b8ac96ff577683d docs/theme.js
@@ -12,3 +12,5 @@ e48d5f4592a8a24d7b3a87ef1956fed642bdbe2f docs/account-ui.css
 c71cdb69f9a759947c2c9ac94b4612d1cda87012 docs/morning-sun.svg
 5c2dbbf368ffd440a4786993bd3d150b8ad3f4ef templates/article.html
 0d83fc94a9e40315694741169205aef1fbddbcd2 templates/index.html
+d560ba7dfe9a08c6bdfc8152c57baa170bb99a40 scripts/build_all_v2.py
+eb0dc5d7943b57498bb6dae7a34eee7ccd263a79 scripts/magazine_blocks.py

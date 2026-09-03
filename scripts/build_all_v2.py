@@ -66,7 +66,10 @@ def front():
  d=legacy.datetime.now(legacy.COPENHAGEN).date();dl=f"{legacy.WEEKDAYS[d.weekday()]} {d.day}. {legacy.MONTHS[d.month-1]} {d.year}"
  tk=resolve(s["ticker"],ix);ticker_text=str(tk.get("title") or "").strip();ticker=f'<p><a href="{legacy.front_item_url(tk["slug"])}">{esc(ticker_text)}</a></p>'
  l=resolve(s["lead"],ix);visual=lead_visual(l);lead_h=headline_link(l,legacy.front_item_url(l["slug"]),tag="h1",allow_split=True)
- lead_article='<section class="lead">'+visual+f'<p class="section-label">{esc(l["category"])}</p>{lead_h}<p class="standfirst">{esc(l.get("standfirst",l.get("teaser","")))}</p><p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
+ # Forsiden viser rubrikker, ikke artikelmanchet eller brødtekst. Manchetten
+ # hører kun til på artikelsiden; ellers kan en lang/manipuleret standfirst få
+ # en hel artikel til at ligne forsideindhold.
+ lead_article='<section class="lead">'+visual+f'<p class="section-label">{esc(l["category"])}</p>{lead_h}<p class="meta">{esc(l.get("published_label",""))} · {esc(l["category"])}</p></section>'
  followups=lead_followups(l["slug"],ix)
  lead_class="lead-column lead-column--story-package" if followups else "lead-column"
  lead=f'<div class="{lead_class}">'+lead_article+followups+'</div>'
@@ -87,10 +90,10 @@ def front():
   rail.append(f'<a class="rail-item headline--{esc(style)}" href="{legacy.front_item_url(x["slug"])}">{pic}<span><span>{esc(x["category"])}</span> {headline}</span></a>')
  rail.append("</aside>");stack=['<section class="stack">']
  for raw in s.get("stack",[]):
-  x=resolve(raw,ix);pic=f'<a href="{legacy.front_item_url(x["slug"])}"><img src="{esc(x["image_src"])}" alt="{esc(x.get("image_alt",""))}"></a>' if x.get("image_src") else "";stack.append(f'<article class="card">{pic}<p class="section-label">{esc(x["category"])}</p>{headline_link(x,legacy.front_item_url(x["slug"]),tag="h2",allow_split=True)}<p>{esc(x.get("teaser",x.get("standfirst","")))}</p></article>')
+  x=resolve(raw,ix);pic=f'<a href="{legacy.front_item_url(x["slug"])}"><img src="{esc(x["image_src"])}" alt="{esc(x.get("image_alt",""))}"></a>' if x.get("image_src") else "";stack.append(f'<article class="card">{pic}<p class="section-label">{esc(x["category"])}</p>{headline_link(x,legacy.front_item_url(x["slug"]),tag="h2",allow_split=True)}</article>')
  stack.append("</section>");narrow=['<section class="narrow">']
  for raw in s.get("narrow",[]):
-  x=resolve(raw,ix);narrow.append(f'<article><p class="section-label">{esc(x["category"])}</p>{headline_link(x,legacy.front_item_url(x["slug"]),tag="h2",allow_split=False)}<p>{esc(x.get("teaser",x.get("standfirst","")))}</p></article>')
+  x=resolve(raw,ix);narrow.append(f'<article><p class="section-label">{esc(x["category"])}</p>{headline_link(x,legacy.front_item_url(x["slug"]),tag="h2",allow_split=False)}</article>')
  narrow.append("</section>")
  r={"{{DATE_ISO}}":esc(d.isoformat()),"{{DATE_LABEL}}":esc(dl),"{{EDITION_LABEL}}":esc(s.get("edition_label","Danmarks nye avis")),"{{TICKER_HTML}}":ticker,"{{LEAD_HTML}}":lead,"{{RAIL_HTML}}":"".join(rail),"{{STACK_HTML}}":"".join(stack),"{{NARROW_HTML}}":"".join(narrow)}
  for k,v in r.items():t=t.replace(k,v)
