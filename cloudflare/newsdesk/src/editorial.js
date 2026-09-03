@@ -302,7 +302,7 @@ function structuredResponse(raw, schema) {
   if (!schemaShapeValid(parsed, schema)) throw new Error("Workers AI returned JSON that does not match required schema shape");
   return parsed;
 }
-async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRONG_TEXT_MODEL, fallbackModel = null) {
+async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRONG_TEXT_MODEL, fallbackModel = null, stage = "unknown") {
   const request = {
     messages: [{ role: "system", content: system }, { role: "user", content: user }],
     max_tokens: maxTokens, temperature: 0.15,
@@ -316,14 +316,22 @@ async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRON
     firstError = error;
     if (!fallbackModel || fallbackModel === model) throw error;
     console.warn("Workers AI structured-call fallback", model, "->", fallbackModel, String(error));
-    try { env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1; } catch (_) {}
+    try {
+    env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1;
+    env.__AI_FALLBACK_BY_STAGE__ = env.__AI_FALLBACK_BY_STAGE__ || {};
+    env.__AI_FALLBACK_BY_STAGE__[stage] = Number(env.__AI_FALLBACK_BY_STAGE__[stage] || 0) + 1;
+  } catch (_) {}
   }
   try {
     const raw = await env.AI.run(fallbackModel, request);
     return structuredResponse(raw, schema);
   } catch (error) {
     console.warn("Workers AI schema fallback still malformed; trying JSON-object repair", String(error));
-    try { env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1; } catch (_) {}
+    try {
+    env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1;
+    env.__AI_FALLBACK_BY_STAGE__ = env.__AI_FALLBACK_BY_STAGE__ || {};
+    env.__AI_FALLBACK_BY_STAGE__[stage] = Number(env.__AI_FALLBACK_BY_STAGE__[stage] || 0) + 1;
+  } catch (_) {}
     const repairRequest = {
       messages: [
         { role: "system", content: `${system}\nReturn ONLY one JSON object that satisfies every required field and type in the supplied JSON Schema. Do not omit required arrays; use empty arrays only when the schema permits them.` },
@@ -368,13 +376,12 @@ const researchSchema = {
 
 const factCheckSchema = {
   type: "object", properties: {
-    decision: { type: "string", enum: ["publish", "hold"] }, rationale: { type: "string" },
     contradictions: { type: "array", items: { type: "string" } },
     claims: { type: "array", minItems: 1, maxItems: 12, items: { type: "object", properties: {
       id: { type: "string" }, claim: { type: "string" }, source_indexes: { type: "array", items: { type: "integer" }, minItems: 1 },
       status: { type: "string", enum: ["verified", "uncertain", "rejected"] }, notes: { type: "string" },
     }, required: ["id", "claim", "source_indexes", "status", "notes"] } },
-  }, required: ["decision", "rationale", "contradictions", "claims"],
+  }, required: ["contradictions", "claims"],
 };
 
 const articleSchema = { type: "object", properties: {
@@ -460,7 +467,7 @@ async function chooseAssignment(env, scan, excludedSignalKeys = []) {
   const signals = signalSummary(scan, excludedSignalKeys);
   if (!signals.length) return { decision: "drop", title_hint: "", category: "Indland", weight: "D", signal_indexes: [], rationale: "Ingen ubehandlede kandidater med tilstrækkelig aktualitet/grundscore", core_question: "" };
   const system = `Du er Morgentidendes første Nyhedsdesk. Vælg ét konkret research-frø. RESEARCH er standard ved reel nyhedsværdi, originalitet, offentlig betydning eller tydelig redaktionel relevans; tynd dokumentation er Researchs problem, ikke en afvisningsgrund. WATCH kun hvis nyhedskrogen/aktualiteten endnu er uklar. DROP kun ved klar dublet, gammel/triviel sag, rent holdningsstof uden nyhedskrog eller åbenlys spam. discovery_only må udløse Research, men er aldrig dokumentation. Sæt kategori og A-D-vægt. Angiv kun det primære land og op til fire relevante stednavne på lokalt/engelsk navn, når de er tydelige; ellers brug unknown/tomme arrays. Media laver selv billedsøgninger. Svar ultrakort.`;
-  return aiJson(env, system, JSON.stringify({ generated_at: scan.generated_at, signals }), assignmentSchema, 260, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  return aiJson(env, system, JSON.stringify({ generated_at: scan.generated_at, signals }), assignmentSchema, 260, FAST_TEXT_MODEL, STRONG_TEXT_MODEL, "newsdesk");
 }
 function validIndexes(indexes, scan) { return [...new Set((indexes || []).filter((i) => Number.isInteger(i) && i >= 0 && i < scan.signals.length))]; }
 function expandRelatedSignals(seedIndexes, scan) {
@@ -633,13 +640,15 @@ async function runResearch(env, assignment, selected) {
     Number(authoritativePrimary(b)) - Number(authoritativePrimary(a)) ||
     Number(strongEditorialSource(b)) - Number(strongEditorialSource(a))
   );
-  for (const item of prioritized) {
-    const url = item.final_url || item.url;
-    if (!url || seenUrls.has(url)) continue;
-    seenUrls.add(url);
-    unique.push(item);
-    if (unique.length >= 4) break;
-  }
+  const hasAuthoritative = prioritized.some(authoritativeClaimSource);
+const researchSourceLimit = hasAuthoritative ? 3 : 4;
+for (const item of prioritized) {
+  const url = item.final_url || item.url;
+  if (!url || seenUrls.has(url)) continue;
+  seenUrls.add(url);
+  unique.push(item);
+  if (unique.length >= researchSourceLimit) break;
+}
 
   const researchClusters = provenanceClusters(unique);
   unique.forEach((item, i) => {
@@ -651,7 +660,7 @@ async function runResearch(env, assignment, selected) {
     name: item.source,
     headline: item.headline,
     url: item.final_url || item.url,
-    excerpt: item.excerpt.slice(0, 1800),
+    excerpt: item.excerpt.slice(0, authoritativeClaimSource(item) ? 1400 : 1000),
     discovery_only: false,
     source_kind: normalizedSourceKind(item),
     source_strength: authoritativePrimary(item) ? "primary" : authoritativeEditorial(item) ? "wire" : strongEditorialSource(item) ? "strong_editorial" : "standard",
@@ -662,7 +671,7 @@ async function runResearch(env, assignment, selected) {
     feed_summary_only: Boolean(item.feed_summary_only),
   }));
   const system = `Du er Research på Morgentidende. Lav et kompakt evidens-kort til Fact checker; vurder ikke nyhedsværdi igen og fæld ikke den endelige sandhedsdom. Kortlæg 1-6 bærende kandidat-claims med præcise source_indexes. Notér kun reelle modsigelser, væsentlige forbehold og nødvendig kontekst. En primærkilde er værdifuld, men du skal ikke kræve et bestemt antal medier. Hvis mindst ét brugbart claim kan kildebelægges, vælg continue; watch kun hvis materialet reelt ikke giver noget kontrollerbart. Sæt kun right_of_reply_required=true ved en konkret alvorlig belastende påstand, hvor fairness faktisk er relevant; ellers kan feltet udelades. Flaget er aldrig en automatisk ventetid eller stopregel. Sæt conflict_present=true kun når historien faktisk rummer en relevant politisk, juridisk, faglig eller parts-konflikt; almindelige hændelsesfakta/statistik kræver ikke kunstig pluralisme. Skriv alle kandidat-claims på idiomatisk dansk, også når originalkilden er norsk, svensk eller et andet sprog. Norske bokmåls-/nynorskformer og svenske ord eller bøjningsformer må ikke føres videre som dansk. Ved oversættelse eller parafrase skal originalens samlede betydning bevares præcist. Opfind intet.`;
-  const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 650, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 650, FAST_TEXT_MODEL, STRONG_TEXT_MODEL, "research");
   research.researched = unique;
   research.source_payload = sources;
   return research;
@@ -693,7 +702,7 @@ async function runFactCheck(env, assignment, research) {
       ...source,
       excerpt: focusedExcerpt(research.researched?.[i]?.excerpt || source.excerpt, research.candidate_claims, 500),
     })),
-  }), factCheckSchema, 850, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+  }), factCheckSchema, 850, FAST_TEXT_MODEL, STRONG_TEXT_MODEL, "fact-check");
   fact.researched = research.researched;
   fact.core_question = research.core_question || assignment.core_question;
   fact.right_of_reply_required = research.right_of_reply_required;
@@ -710,8 +719,6 @@ async function runFactCheck(env, assignment, research) {
     }
   }
   const verified = fact.claims.filter((c) => c.status === "verified");
-  const modelRationale = fact.rationale || "";
-  fact.model_rationale = modelRationale;
   fact.decision = verified.length >= 1 ? "publish" : "hold";
   fact.rationale = verified.length >= 1
     ? `Deterministisk Fact checker: ${verified.length} bærende claim(s) verificeret; usikre eller afviste detaljer udelades fra artiklen.`
@@ -724,24 +731,36 @@ async function writeArticle(env, assignment, dossier) {
   const sources = dossier.researched.filter(isEvidenceSource).map((s, i) => ({ source_index: i, name: s.source, headline: s.headline, url: s.final_url || s.url }));
   const destinationBrief = magazineWritingBrief(assignment?.editorial_destination || "main");
   const system = `Du er journalist på Morgentidende. ${destinationBrief} Brug KUN verified claims. Skriv præcist, levende og idiomatisk dansk; oversæt norsk/svensk/engelsk fuldt, bortset fra egennavne og officielle produktnavne. Rubrik, manchet og brødtekst må aldrig være stærkere end dokumentationen. Gør attribution konkret (fx “ifølge BBC”), men lav ikke afsnit om hvilke medier der dækkede sagen. Opfind aldrig citater eller fakta. Brug kun reel pluralisme når conflict_present=true og kun fra verificeret materiale. Forklar nødvendige fagord, roller og mindre kendte steder kort. En one-claim-nyhed må være én kort tekstblok: gentag aldrig samme claim og tilføj ikke generelle perspektiver, konsekvenser eller fremtidsforudsigelser uden verified claim. Standfirst er 1-2 korte sætninger, højst 35 ord, aldrig kun et kildenavn. Media ejer heroen.`;
-  return aiJson(env, system, JSON.stringify({ assignment, conflict_present: Boolean(dossier.conflict_present), verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null);
+  return aiJson(env, system, JSON.stringify({ assignment, conflict_present: Boolean(dossier.conflict_present), verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, assignment.weight === "A" || assignment.weight === "B" ? STRONG_TEXT_MODEL : null, "journalist");
 }
 
 async function finalReview(env, assignment, dossier, article) {
   const system = `Du er Morgentidendes uafhængige slutredaktør. Lav ét kort slutcheck af den færdige artikel mod de ALLEREDE verificerede claims; du må ikke genresearche og må ikke mekanisk kræve flere kilder. Vælg samtidig den korrekte kategori blandt de tilladte kategorier. Forkert kategori er IKKE en blocker: returnér bare korrekt category. Returnér kun reelle blockers: (final_editor) artikelteksten går ud over verified claims, har vildledende/forkert attribution, rubrik/manchet er stærkere end dokumentationen eller nyhed og kommentar blandes; (ethics) konkret uløst fairness-/presseetisk risiko som kan repareres med det eksisterende verificerede materiale; (language) tydeligt fremmedsprogligt læk, brudt dansk eller uklar formulering som faktisk kræver reparation; (evidence) kun når selve det verificerede evidensgrundlag er materielt selvmodsigende eller utilstrækkeligt til at skrive historien sikkert, så Research/Fact checker reelt må køres igen. Brug IKKE evidence for tekst, der blot skal fjernes eller omskrives til de eksisterende claims. Små stilpræferencer, SEO, metadata og media er aldrig blockers her. Media ejer billedsandhed og brugsret. Hvis artiklen er klar, returnér tom blocking_issues.`;
   const reviewModel = ["A", "B"].includes(assignment?.weight) ? STRONG_TEXT_MODEL : FAST_TEXT_MODEL;
   const reviewFallback = reviewModel === FAST_TEXT_MODEL ? STRONG_TEXT_MODEL : null;
-  const raw = await aiJson(env, system, JSON.stringify({ categories: CATEGORIES, assignment, claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions, article }), finalSchema, 360, reviewModel, reviewFallback);
+  const raw = await aiJson(env, system, JSON.stringify({ categories: CATEGORIES, assignment, claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions, article }), finalSchema, 360, reviewModel, reviewFallback, "final-editor");
   if (CATEGORIES.includes(raw.category)) assignment.category = raw.category;
   const issues = Array.isArray(raw.blocking_issues) ? raw.blocking_issues.filter((x) => x?.gate && x?.issue) : [];
   const failed = new Set(issues.map((x) => x.gate));
   return { decision: issues.length ? "hold" : "pass", language: failed.has("language") ? "hold" : "pass", ethics: failed.has("ethics") ? "hold" : "pass", final_editor: failed.has("final_editor") ? "hold" : "pass", issues, notes: issues.map((x) => `${x.gate}: ${x.issue}`) };
 }
+function normalizedArticleFingerprint(article) {
+  const normalized = {
+    title: String(article?.title || "").replace(/\s+/g, " ").trim(),
+    standfirst: String(article?.standfirst || "").replace(/\s+/g, " ").trim(),
+    body: (article?.body || []).map((b) => ({ type: b?.type || "", text: String(b?.text || "").replace(/\s+/g, " ").trim() })),
+  };
+  return JSON.stringify(normalized);
+}
 async function reviseArticleIssues(env, assignment, dossier, article, review) {
   const issues = (review.issues || []).filter((x) => ["language", "ethics", "final_editor"].includes(x.gate));
   if (!issues.length) return article;
-  const system = `Du reparerer en allerede fact-checket artikel. Ret KUN de konkrete problemer fra Slutredaktøren og returnér hele artiklen i samme schema. Brug kun de verificerede claims. Ved language: ret kun sprog og klarhed. Ved final_editor: fjern eller omskriv tekst, der går ud over de verificerede claims; opfind aldrig nye fakta. Ved ethics: tilføj kun fairness/attribution, hvis den nødvendige information allerede findes i de verificerede claims; ellers kan problemet ikke repareres automatisk. SEO må aldrig være blocker. Bevar vinkel og betydning så langt det er forsvarligt.`;
-  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), article, issues }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, null);
+  const languageOnly = issues.every((x) => x.gate === "language");
+  const system = languageOnly
+    ? `Du reparerer KUN sprog og klarhed i en allerede fact-checket artikel. Returnér hele artiklen i samme schema. Ændr ikke fakta, attribution, vinkel eller betydning. Ret kun de konkrete sprogproblemer fra Slutredaktøren.`
+    : `Du reparerer en allerede fact-checket artikel. Ret KUN de konkrete problemer fra Slutredaktøren og returnér hele artiklen i samme schema. Brug kun de verificerede claims. Ved final_editor: fjern eller omskriv tekst, der går ud over de verificerede claims; opfind aldrig nye fakta. Ved ethics: tilføj kun fairness/attribution, hvis den nødvendige information allerede findes i de verificerede claims; ellers kan problemet ikke repareres automatisk. SEO må aldrig være blocker. Bevar vinkel og betydning så langt det er forsvarligt.`;
+  const payload = languageOnly ? { article, issues } : { verified_claims: dossier.claims.filter((c) => c.status === "verified"), article, issues };
+  return aiJson(env, system, JSON.stringify(payload), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, null, "repair");
 }
 const DOCUMENTARY_CONTEXTS = new Set(["event", "place", "person", "object", "archive"]);
 function validDocumentaryHero(media) {
@@ -1128,7 +1147,7 @@ export async function runEditorialCycle(env, scan, options = {}) {
     }
 
     const revised = await reviseArticleIssues(env, assignment, dossier, article, review);
-    if (JSON.stringify(revised) === JSON.stringify(article)) break;
+    if (normalizedArticleFingerprint(revised) === normalizedArticleFingerprint(article)) { routing.push("local-repair→no-progress"); break; }
     article = revised;
     articleAttempts += 1;
     routing.push("local-repair→final-editor");
@@ -1192,10 +1211,10 @@ export async function runEditorialCycle(env, scan, options = {}) {
   };
     })();
   } catch (error) {
-    error.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0) };
+    error.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0), structured_fallback_by_stage: env.__AI_FALLBACK_BY_STAGE__ || {} };
     throw error;
   }
-  result.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0) };
+  result.ai_usage = { ...summarizeAiUsage(aiUsageEvents), structured_fallback_calls: Number(env.__AI_FALLBACK_COUNT__ || 0), structured_fallback_by_stage: env.__AI_FALLBACK_BY_STAGE__ || {} };
   return result;
 }
 

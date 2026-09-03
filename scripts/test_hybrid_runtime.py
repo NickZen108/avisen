@@ -140,6 +140,10 @@ def main() -> int:
         'async function generateTemporarySketch(env, assignment, article)',
         'function pendingSketchHero(imageKey, article, sketch)',
         'structured_fallback_calls',
+        'structured_fallback_by_stage',
+        'function normalizedArticleFingerprint(article)',
+        'const languageOnly = issues.every((x) => x.gate === "language")',
+        'const researchSourceLimit = hasAuthoritative ? 3 : 4',
         'pending_image: true',
         'people_style: "pencil_hatching"',
         'NO photorealism',
@@ -154,6 +158,9 @@ def main() -> int:
     ]
     missing = [item for item in required if item not in js]
     assert not missing, f"Hybrid runtime regression: missing {missing}"
+    fact_schema = js.split('const factCheckSchema', 1)[1].split('const articleSchema', 1)[0]
+    assert 'decision:' not in fact_schema, "Fact model must not spend output tokens on deterministic decision"
+    assert 'rationale:' not in fact_schema, "Fact model must not spend output tokens on deterministic rationale"
     assert 'hero_prompt' not in js.split('const articleSchema', 1)[1].split('const finalSchema', 1)[0], "Journalist schema must not spend output tokens on hero_prompt"
     assert 'hero_alt' not in js.split('const articleSchema', 1)[1].split('const finalSchema', 1)[0], "Journalist schema must not spend output tokens on hero_alt"
     assert 'seo_title' not in js.split('const articleSchema', 1)[1].split('const finalSchema', 1)[0], "Journalist schema must not spend output tokens on SEO"
