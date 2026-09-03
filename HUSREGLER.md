@@ -14,7 +14,7 @@ Ved konflikt vinder den højest placerede regel:
 6. `CATEGORIES.md` — kategorier og stofmix
 7. `SCHEDULE.md` + `FRONTPAGE.md` — udgivelsesrytme, breaking og lead
 8. `AGENTS.md` + `agents/*.md` — arbejdsdeling og agentspecifikke instruktioner
-9. `SEO.md`, `QA.md`, `PRODUCT.md` — specialregler
+9. `SEO.md` + `PRODUCT.md` — specialregler
 
 En lavere regel må aldrig ophæve en højere. Ved tvivl om et materielt redaktionelt forhold sendes arbejdet tilbage til den ansvarlige redaktionelle rolle; gæt aldrig.
 
