@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-03T05:50:36.065820Z",
+  "generated_at": "2026-09-03T05:52:12.275290Z",
   "date_dk": "2026-09-03",
   "policy": {
     "review_every_rejection": true,
@@ -65,7 +65,6 @@
         "approval gate language er ikke PASS",
         "approval gate ethics er ikke PASS",
         "approval gate image er ikke PASS",
-        "approval gate seo er ikke PASS",
         "approval gate final_editor er ikke PASS",
         "artiklens redaktionelle indhold er ændret efter final approval"
       ]

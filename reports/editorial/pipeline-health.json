@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T05:50:31Z",
+  "generated_at": "2026-09-03T05:52:08Z",
   "counts": {
     "published": 25,
     "checking": 2,
@@ -42,7 +42,6 @@
         "approval gate language er ikke PASS",
         "approval gate ethics er ikke PASS",
         "approval gate image er ikke PASS",
-        "approval gate seo er ikke PASS",
         "approval gate final_editor er ikke PASS",
         "artiklens redaktionelle indhold er ændret efter final approval"
       ]
