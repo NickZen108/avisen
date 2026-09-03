@@ -10,13 +10,13 @@ Ved konflikt vinder den højest placerede regel:
 2. `EDITORIAL.md` — presseetik, neutralitet, publiceringsansvar
 3. `SOURCES.md` — kildekrav, faktaledger og citater
 4. `STYLE.md` — dansk, overskrifter og redaktionelt sprog
-5. `DESIGN.md` + `DESIGN.lock.md` — låst udseende og genereret HTML
+5. `DESIGN.md` — fælles udseende og genereret HTML
 6. `CATEGORIES.md` — kategorier og stofmix
 7. `SCHEDULE.md` + `FRONTPAGE.md` — udgivelsesrytme, breaking og lead
 8. `AGENTS.md` + `agents/*.md` — arbejdsdeling og agentspecifikke instruktioner
 9. `SEO.md`, `QA.md`, `PRODUCT.md` — specialregler
 
-En lavere regel må aldrig ophæve en højere. Ved tvivl: stop og send til redaktør/manual review; gæt aldrig.
+En lavere regel må aldrig ophæve en højere. Ved tvivl om et materielt redaktionelt forhold sendes arbejdet tilbage til den ansvarlige redaktionelle rolle; gæt aldrig.
 
 ## Hårde gates
 
@@ -28,11 +28,10 @@ Intet nyt pipeline-v2-stykke må gå live, hvis ét af disse punkter fejler:
 - artikel og kommentar er blandet sammen
 - etik- eller billedopgaven indeholder en reel publiceringsrisiko, som ikke er løst
 - Slutredaktørens uafhængige final approval mangler eller ikke matcher den aktuelle redaktionelle slutversion
-- `manual_review: true` forsøges autopubliceret uden eksplicit afsluttet manuel review
 - publiceringstid er fremtidig eller opdigtet
 - en ny artikel er blot en dublet af en eksisterende story cluster
 
-Coverage sweep, desk recheck, forelæggelsesfrist, sprog, SEO og almindelige design-/UI-kontroller er redaktionelle eller tekniske arbejdsprocesser og må ikke i sig selv fungere som hårde publiceringsgates.
+Coverage sweep, desk recheck, forelæggelsesfrist, SEO og almindelige design-/UI-kontroller er redaktionelle eller tekniske arbejdsprocesser og må ikke i sig selv fungere som hårde publiceringsgates. Sprog, etik, billede og slutredaktør er de redaktionelle approval-led; sprog og billede forsøges højst tre gange, hvorefter artiklen droppes.
 
 Tom plads slår et svagt eller usikkert stykke. Der findes ingen volumenregel, som kan tilsidesætte kvalitet.
 
@@ -141,7 +140,7 @@ Sprogredaktøren skal aktivt lede efter sådanne ord og enheder før PASS. Slutr
 
 ## Design og kode
 
-Nye artikler skrives som struktureret indhold under `content/` og genereres til `docs/`. Journalist- og redaktøragenter må ikke håndredigere CSS, logo, header, grids eller andre låste designfiler. Låste filer verificeres maskinelt som udviklings-/regressionskontrol; en ren designhash-afvigelse må ikke i sig selv blokere en ellers publicerbar artikel.
+Nye artikler skrives som struktureret indhold under `content/` og genereres til `docs/`. Artikelproduktion må ikke skrive til templates, CSS, theme-filer, logo, header eller grids. Fælles design kontrolleres ved designændringer og ikke som en per-artikel publiceringsgate.
 
 Legacy-artikler i `docs/artikler/` er grandfathered, men ved større redaktionel opdatering skal de migreres til den strukturerede pipeline.
 
