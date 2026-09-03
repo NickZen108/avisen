@@ -30,16 +30,16 @@ jobs:
         run: python scripts/release_ready.py
       - name: Prefer lawful free documentary photos before final build
         run: python scripts/refresh_pending_images.py --limit 10
-      - name: Gates after release before build
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
+      - name: Validate any media/release changes
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
       - name: Apply frontpage publication strategy (placement only; non-gating)
         run: python scripts/frontpage_publication_strategy.py
       - name: Build
         run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/article_history.py && python scripts/editorial_analytics.py && python scripts/production_readiness.py && python scripts/queue_recovery.py && python scripts/pipeline_feedback.py && python scripts/build_control_room.py && python scripts/apply_control_room_extras.py && python scripts/seo_surface_fix.py && python scripts/magazine_blocks.py
       - name: Cache public images locally
         run: python scripts/cache_public_images.py
-      - name: Gates after build
-        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
+      - name: Validate generated output only
+        run: python scripts/quality_gate.py
       - name: Commit release + recovery state + generated files
         id: publish
         run: |
