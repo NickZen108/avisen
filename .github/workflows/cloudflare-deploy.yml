@@ -9,9 +9,15 @@ on:
       - 'wrangler.jsonc'
       - '.github/workflows/cloudflare-deploy.yml'
   workflow_dispatch:
+    inputs:
+      target_sha:
+        description: 'Publisher SHA to deploy and verify'
+        required: false
+        default: ''
 
 permissions:
   contents: read
+  actions: write
 
 concurrency:
   group: morgentidende-cloudflare-production
@@ -26,15 +32,20 @@ jobs:
         with:
           ref: main
           fetch-depth: 2
+      - name: Resolve deployment SHA
+        id: target
+        env:
+          INPUT_TARGET_SHA: ${{ github.event.inputs.target_sha }}
+        run: |
+          SHA="${INPUT_TARGET_SHA:-$(git rev-parse HEAD)}"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
       - name: Detect shared design changes
         id: design
         shell: bash
+        env:
+          TARGET_SHA: ${{ steps.target.outputs.sha }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo 'changed=true' >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          FILES=$(git diff --name-only HEAD^..HEAD 2>/dev/null || true)
+          FILES=$(git diff --name-only "$TARGET_SHA^..$TARGET_SHA" 2>/dev/null || git diff --name-only HEAD^..HEAD 2>/dev/null || true)
           if printf '%s\n' "$FILES" | grep -Eq '^(templates/|docs/(theme\.(css|js)|style\.css|morgentidende-ui\.css|account-ui\.css|signup\.css)$|scripts/(design_enhancements|reader_experience|live_surface_qa)\.py$)'; then
             echo 'changed=true' >> "$GITHUB_OUTPUT"
           else
@@ -62,5 +73,8 @@ jobs:
           path: reports/qa/live-surface-latest.md
           if-no-files-found: warn
           retention-days: 14
-
-# Manual source touch on 2026-09-03 to deploy the generated burst publication after bot-originated publisher commit.
+      - name: Dispatch post-deploy guard after successful deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: ${{ steps.target.outputs.sha }}
+        run: gh workflow run post-deploy-guard.yml --ref main -f target_sha="$TARGET_SHA"
