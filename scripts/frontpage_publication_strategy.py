@@ -16,8 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 ARTICLES_DIR = ROOT / "content" / "articles"
 FRONTPAGE = ROOT / "content" / "frontpage.json"
 
-# Keep the first iteration conservative: preserve the existing editorial lead and
-# layout, while guaranteeing fresh A/B main-destination stories a frontpage slot.
+# First iteration: preserve the chosen editorial lead while guaranteeing fresh
+# A/B main-destination stories a frontpage slot. Related follow-ups are promoted
+# as packages so an important perspective is visible in the upper frontpage.
 B_MAIN_WINDOW = timedelta(hours=48)
 RAIL_LIMIT = 8
 NARROW_LIMIT = 12
@@ -63,8 +64,8 @@ def load_articles() -> dict[str, dict]:
     return articles
 
 
-def slug_of(item: object) -> str:
-    return str(item.get("slug") or "").strip() if isinstance(item, dict) else ""
+def slug_of(raw: object) -> str:
+    return str(raw.get("slug") or "").strip() if isinstance(raw, dict) else ""
 
 
 def item(slug: str) -> dict[str, str]:
@@ -83,15 +84,9 @@ def dedupe(items: list[object]) -> list[dict]:
     return out
 
 
-def place_after(items: list[dict], slug: str, parent: str | None) -> list[dict]:
-    items = [x for x in items if slug_of(x) != slug]
-    if parent:
-        for index, existing in enumerate(items):
-            if slug_of(existing) == parent:
-                items.insert(index + 1, item(slug))
-                return items
-    items.insert(0, item(slug))
-    return items
+def published_rank(article: dict) -> float:
+    dt = article.get("_published")
+    return dt.timestamp() if isinstance(dt, datetime) else 0.0
 
 
 def main() -> int:
@@ -110,14 +105,13 @@ def main() -> int:
     newest = max(dated) if dated else datetime.now(timezone.utc)
     cutoff = newest - B_MAIN_WINDOW
 
-    rail = dedupe(list(state.get("rail") or []))
-    narrow = dedupe(list(state.get("narrow") or []))
+    old_rail = dedupe(list(state.get("rail") or []))
+    old_narrow = dedupe(list(state.get("narrow") or []))
     lead_slug = slug_of(state.get("lead") or {})
 
     # A is a hero/top-three candidate. We do not mechanically replace a valid
-    # editorial lead, but fresh A/main stories are guaranteed a high slot.
-    # B + editorial_destination=main is automatically included on the frontpage.
-    candidates = []
+    # editorial lead. B + editorial_destination=main is automatically included.
+    candidates: list[dict] = []
     for article in articles.values():
         weight = str(article.get("weight") or "").upper()
         destination = str(article.get("editorial_destination") or "").lower()
@@ -128,47 +122,73 @@ def main() -> int:
             continue
         candidates.append(article)
 
-    candidates.sort(
-        key=lambda a: (0 if str(a.get("weight") or "").upper() == "A" else 1,
-                       -(a.get("_published") or datetime.min.replace(tzinfo=timezone.utc)).timestamp())
+    a_candidates = sorted(
+        [a for a in candidates if str(a.get("weight") or "").upper() == "A" and a["_slug"] != lead_slug],
+        key=published_rank,
+        reverse=True,
+    )
+    followups = sorted(
+        [a for a in candidates if str(a.get("related_news_slug") or "").strip() and a["_slug"] != lead_slug],
+        key=published_rank,
+        reverse=True,
+    )
+    followup_slugs = {a["_slug"] for a in followups}
+    ordinary_b = sorted(
+        [
+            a for a in candidates
+            if str(a.get("weight") or "").upper() == "B"
+            and a["_slug"] != lead_slug
+            and a["_slug"] not in followup_slugs
+        ],
+        key=published_rank,
+        reverse=True,
     )
 
-    for article in candidates:
-        slug = article["_slug"]
-        if slug == lead_slug:
-            continue
-        parent = str(article.get("related_news_slug") or "").strip() or None
+    # Build a priority prefix instead of repeatedly inserting at position zero.
+    # This keeps the ordering deterministic and ensures a related parent/follow-up
+    # package stays together near the top rather than drifting down as other B
+    # stories are processed.
+    priority: list[dict] = []
+    if lead_slug and any(slug_of(x) == lead_slug for x in old_rail):
+        priority.append(item(lead_slug))
 
-        # A meaningful related follow-up should sit beside its main story when
-        # possible. If its published parent is missing, add the parent first.
-        if parent and parent in articles:
-            if not any(slug_of(x) == parent for x in rail) and parent != lead_slug:
-                rail.insert(0, item(parent))
-            if not any(slug_of(x) == parent for x in narrow) and parent != lead_slug:
-                narrow.insert(0, item(parent))
+    for article in a_candidates:
+        priority.append(item(article["_slug"]))
 
-        rail = place_after(rail, slug, parent)
-        narrow = place_after(narrow, slug, parent)
+    # Group follow-ups by parent: parent immediately followed by all fresh
+    # qualifying perspectives/responses. A missing/unpublished parent is not
+    # invented; the follow-up itself still gets a high placement.
+    seen_parents: set[str] = set()
+    for article in followups:
+        parent = str(article.get("related_news_slug") or "").strip()
+        if parent and parent not in seen_parents and parent in articles and parent != lead_slug:
+            priority.append(item(parent))
+            seen_parents.add(parent)
+        priority.append(item(article["_slug"]))
 
-    # Lead stays visible only once in the supporting lists where legacy layout
-    # expects it. De-duplication otherwise prevents repeated cards.
-    rail = dedupe(rail)[:RAIL_LIMIT]
-    narrow = dedupe(narrow)[:NARROW_LIMIT]
+    for article in ordinary_b:
+        priority.append(item(article["_slug"]))
+
+    rail = dedupe(priority + old_rail)[:RAIL_LIMIT]
+    narrow = dedupe(priority + old_narrow)[:NARROW_LIMIT]
 
     state["rail"] = rail
     state["narrow"] = narrow
     state["publication_strategy"] = {
-        "version": 1,
+        "version": 2,
         "mode": "placement_only_non_gating",
         "recalculated_from_published_articles": True,
+        "related_followups_promoted_as_packages": True,
     }
 
     FRONTPAGE.write_text(
         json.dumps(state, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    included = [a["_slug"] for a in candidates]
-    print(f"frontpage strategy: applied; A/B main candidates considered={len(included)}")
+    print(
+        "frontpage strategy: applied; "
+        f"A/B main candidates considered={len(candidates)}, related_followups={len(followups)}"
+    )
     return 0
 
 
