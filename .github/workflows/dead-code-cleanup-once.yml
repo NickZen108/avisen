@@ -1,0 +1,57 @@
+name: One-shot dead-code cleanup
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/dead-code-cleanup-once.yml']
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main, fetch-depth: 0}
+      - name: Remove verified unused editorial definitions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('cloudflare/newsdesk/src/editorial.js')
+          s=p.read_text(encoding='utf-8')
+          blocks=[
+          '''const deskRecheckSchema = { type: "object", properties: {
+  decision: { type: "string", enum: ["publish", "update", "hold", "kill"] }, rationale: { type: "string" },
+}, required: ["decision", "rationale"] };
+
+''',
+          '''function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSource).map(evidenceSourceGroup))]; }
+''',
+          '''const HIGH_RISK_FACT_TERMS = /\\b(sigtet|tiltalt|anklag|mistænkt|voldtægt|seksual|misbrug|selvmord|mindreår|barn|børn|privat helbred|diagnose|terror|drab|korruption|svindel|hvidvask|overgreb|racist|ekstremist)\\b/iu;
+function highRiskFactClaim(assignment, research, claim) {
+  if (research?.right_of_reply_required) return true;
+  return HIGH_RISK_FACT_TERMS.test(`${assignment?.title_hint || ""} ${assignment?.core_question || ""} ${claim?.claim || ""}`);
+}
+''',
+          '''async function deskRecheck(env, assignment, dossier) {
+  if (assignment.weight !== "A") {
+    return { decision: "publish", rationale: "Fact check bestået; intet særskilt A-recheck nødvendigt" };
+  }
+  const system = `Du er Nyhedsdesk ved et ultrakort A/breaking-recheck efter bestået Fact check. Genresearch ikke. Hold/kill kun hvis materialet viser, at nyhedskernen siden assignment er blevet materielt forældet eller har skiftet karakter. Ellers publish. Svar kort.`;
+  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions }), deskRecheckSchema, 140, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
+}
+
+'''
+          ]
+          for block in blocks:
+              if block not in s:
+                  raise SystemExit('Expected dead-code block not found')
+              s=s.replace(block,'',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit cleanup and remove one-shot workflow
+        run: |
+          git config user.name 'morgentidende-maintenance'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/dead-code-cleanup-once.yml
+          git add cloudflare/newsdesk/src/editorial.js
+          git commit -m 'cleanup: remove unused editorial definitions'
+          git push origin main
