@@ -1,8 +1,5 @@
 name: Cloudflare editorial sync
 
-# manual-three-cycle-trigger: 2026-09-02T09:28+02:00 json-repair
-
-# Pushes to this workflow run a fresh live editorial cycle through the hardened source boundary.
 on:
   push:
     branches: [main]
@@ -40,10 +37,6 @@ jobs:
           python-version: '3.12'
       - name: Install image normalizer
         run: python -m pip install --disable-pip-version-check pillow
-      - name: Self-test cheap hybrid helpers
-        run: |
-          python scripts/editorial_dispatch_gate.py --self-test
-          python scripts/github_source_prefetch.py --self-test
       - name: Fetch scan and editorial history for cheap dispatch
         run: |
           set +e
@@ -129,7 +122,7 @@ jobs:
             exit 1
           fi
       - name: Canonical gates before commit
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
+        run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
       - name: Commit source-of-truth editorial changes
         run: |
           set -euo pipefail
