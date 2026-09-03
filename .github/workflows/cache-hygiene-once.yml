@@ -1,0 +1,100 @@
+name: Cache hygiene once
+on:
+  workflow_dispatch:
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Remove orphaned image cache and stale reports
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import json, re
+
+          root = Path('.')
+          cache = root / 'docs/img/cache'
+          manifest_path = cache / 'manifest.json'
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.exists() else {}
+
+          referenced = set()
+          for html in (root / 'docs').rglob('*.html'):
+              text = html.read_text(encoding='utf-8', errors='ignore')
+              referenced.update(re.findall(r'/img/cache/([A-Za-z0-9._-]+)', text))
+
+          removed = []
+          for p in cache.iterdir() if cache.exists() else []:
+              if not p.is_file() or p.name == 'manifest.json':
+                  continue
+              if p.name not in referenced:
+                  removed.append(str(p))
+                  p.unlink()
+
+          new_manifest = {}
+          for source, record in manifest.items():
+              file_path = (record or {}).get('file', '')
+              name = Path(file_path).name if file_path else ''
+              if name and name in referenced and (cache / name).exists():
+                  new_manifest[source] = record
+          if manifest_path.exists():
+              manifest_path.write_text(json.dumps(new_manifest, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+
+          stale_reports = [
+              'reports/editorial/pipeline-qa-2026-08-31.md',
+              'reports/editorial/scan-newsdesk-refactor-2026-09-01.md',
+              'reports/editorial/workers-ai-neuron-optimization-2026-09-01.md',
+              'reports/qa/2026-08-29-korrekturvagt.md',
+              'reports/qa/2026-08-29.md',
+              'reports/qa/2026-08-31-korrekturvagt.md',
+              'scan/2026-08-29-20.md',
+          ]
+          for rel in stale_reports:
+              p = root / rel
+              if p.exists():
+                  p.unlink()
+                  removed.append(rel)
+
+          print(f'Removed {len(removed)} orphan/stale files')
+          for item in removed:
+              print(item)
+          print(f'Cache manifest entries: {len(manifest)} -> {len(new_manifest)}')
+          PY
+      - name: Ignore local/transient junk
+        shell: bash
+        run: |
+          cat > .gitignore <<'EOF'
+          __pycache__/
+          *.py[cod]
+          .DS_Store
+          Thumbs.db
+          *.tmp
+          *.temp
+          *.swp
+          *.swo
+          *~
+          .pytest_cache/
+          .mypy_cache/
+          .ruff_cache/
+          .coverage
+          htmlcov/
+          EOF
+      - name: Commit cleanup and self-delete
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          rm -f .github/workflows/cache-hygiene-once.yml
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'Nothing to clean'
+            exit 0
+          fi
+          git commit -m 'cleanup: prune orphaned cache and stale reports'
+          git push origin HEAD:main
