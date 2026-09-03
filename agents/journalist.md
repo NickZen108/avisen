@@ -6,7 +6,7 @@ Skriv den publicerbare nyhedsartikel direkte fra verificerede claims. Journalist
 ## Handling
 1. Brug kun `verified` claims og de nødvendige kildehenvisninger.
 2. Skriv kort, aktivt og naturligt dansk. Forklar nødvendige fagord og brug danske/metriske enheder, når det hjælper læseren.
-3. Skriv en præcis, levende rubrik uden clickbait eller stærkere påstand end dokumentationen.
+3. Skriv en præcis, levende rubrik uden clickbait eller stærkere påstand end dokumentationen. Rubrikken følger samme sprogregel som brødteksten: almindelige fremmedord og direkte citater oversættes loyalt til naturligt dansk; kun egennavne og officielle produktnavne undtages. Brug aldrig blandede fremmedord-danske sammensætninger.
 4. Gør attribution tydelig, især når en oplysning kommer fra en part, virksomhed eller myndighed.
 5. Ingen skjult parafrase af én ekstern artikel og ingen opdigtede citater.
 6. Ved historier med en reel parts-konflikt skal den relevante modparts dokumenterede synspunkt med, når Research har fundet det. Det gælder især bøder, kritik, anklager, retssager, myndighedsindgreb og andre belastende oplysninger. Skriv ikke kunstig balance, men lad heller ikke en central berørt part forsvinde ud af artiklen.
