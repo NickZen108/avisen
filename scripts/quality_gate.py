@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import subprocess
@@ -198,7 +199,7 @@ def validate_public_text() -> None:
         for phrase in banned:
             if phrase in low: err(f"offentlig intern formulering i {path.relative_to(ROOT)}: {phrase}")
 
-def validate_frontpage() -> None:
+def validate_frontpage(prebuild: bool) -> None:
     state=read_json(ROOT/"content"/"frontpage.json")
     if state is None: return
     for field in ["date","ticker","lead","rail","stack","narrow","lead_rationale"]:
@@ -214,12 +215,28 @@ def validate_frontpage() -> None:
     for slug in slugs:
         if slug not in known: err(f"frontpage peger på ukendt slug: {slug}")
 
+    # A regression in the v2 resolver once mapped standfirst directly to every
+    # front-page teaser. Keep article intros and body copy off the homepage.
+    index_path=ROOT/"docs"/"index.html"
+    if index_path.exists() and not prebuild:
+        page=html.unescape(index_path.read_text(encoding="utf-8"))
+        for slug in set(slugs):
+            article_path=ROOT/"content"/"articles"/f"{slug}.json"
+            if not article_path.exists(): continue
+            article=read_json(article_path) or {}
+            forbidden=[str(article.get("standfirst") or "").strip()]
+            forbidden += [str(b.get("text") or "").strip() for b in article.get("body",[]) if isinstance(b,dict) and b.get("type") not in {"h2","h3"}]
+            for copy in forbidden:
+                if len(copy) >= 45 and copy in page:
+                    err(f"forsiden indeholder manchet/brødtekst fra {slug}")
+                    break
+
 def main() -> int:
     parser=argparse.ArgumentParser(); parser.add_argument("--prebuild",action="store_true"); args=parser.parse_args()
     categories={x.strip() for x in (ROOT/"config"/"categories.txt").read_text(encoding="utf-8").splitlines() if x.strip()}
     check_design_lock()
     for path in sorted((ROOT/"content"/"articles").glob("*.json")): validate_article(path,categories,args.prebuild)
-    validate_no_new_handwritten_html(args.prebuild); validate_public_text(); validate_frontpage()
+    validate_no_new_handwritten_html(args.prebuild); validate_public_text(); validate_frontpage(args.prebuild)
     if not args.prebuild and not (ROOT/"docs"/"news-sitemap.xml").exists(): err("docs/news-sitemap.xml mangler efter build")
     if ERRORS:
         print("QUALITY GATE: FAIL")
