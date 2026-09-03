@@ -4,65 +4,42 @@ Målet er høj nyhedsværdi og stabil kvalitet, ikke et bestemt antal filer pr. 
 
 ## Ingen tvungen timeartikel
 
-Reglen om én artikel hver hele time er ophævet. En stille time uden en artikel er ikke en fejl. En svag, gammel eller dårligt dokumenteret artikel er en fejl.
-
-Normal kapacitet som planlægningsramme, ikke kvote:
-
-- stille dag: ca. 10–14 stærke stykker
-- normal hverdag: ca. 16–24
-- stor nyhedsdag: 30+ hvis stoffet faktisk bærer det
-
-Breaking kommer oveni. Volumen må aldrig være årsag til publicering.
+En stille periode uden en artikel er ikke en fejl. En svag, gammel eller dårligt dokumenteret artikel er en fejl. Breaking kommer oveni den normale rytme. Volumen må aldrig være årsag til publicering.
 
 ## Døgnrytme — dansk tid
 
-**23.00–05.30:** overvågning. Kun A-breaking publiceres automatisk. Evergreen kan færdiggøres og lægges i den planlagte kø med `scheduled_for`; den bliver ikke synlig før schedulerens faktiske frigivelse.
+- **23.00–05.30:** overvågning; kun tung breaking prioriteres automatisk.
+- **05.45–06.15:** morgenudgave og ny vurdering af lead/forside.
+- **06.15–09.00:** høj beredskab for morgenudviklinger.
+- **09.00–15.00:** kontinuerlig publicering efter vægt og readiness, med frokost-refresh omkring middag.
+- **15.00–19.00:** tung eftermiddags-/aftennyhedsperiode.
+- **19.00–22.00:** færre, stærkere stykker; forklaring, feature, guide og udvalgt kommentar kan fylde mere.
+- **22.00–23.00:** oprydning, rettelser og næste morgens research.
 
-**05.45–06.15:** morgenudgave. Forsideredaktøren vurderer dagens lead og 4–10 øvrige placeringer. Fokus på nyt siden aftenen/natten og det vigtigste, læseren skal vide før arbejdsdagen.
-
-**06.15–09.00:** høj beredskab for morgenudviklinger. Ingen automatisk lead-rotation bare fordi en nyere C-historie udkommer.
-
-**09.00–11.30:** kontinuerlig publicering efter vægt og readiness.
-
-**11.30–13.00:** frokost-refresh. Ny vurdering af lead, rail, story clusters og mix.
-
-**13.00–15.00:** kontinuerlig publicering.
-
-**15.00–19.00:** anden tunge nyhedsperiode. Eftermiddags-/aftenvurdering af lead.
-
-**19.00–22.00:** færre, stærkere stykker; forklaring, feature, guide og udvalgt kommentar kan fylde mere. Breaking bryder altid planen.
-
-**22.00–23.00:** oprydning, corrections, QA, næste morgens research.
-
-Klokkeslættene er en startmodel. Når egne analytics findes, justeres rytmen efter tilbagevendende læsere og engagement — ikke efter rå klik alene.
+Rytmen er en planlægningsmodel, ikke en kvote.
 
 ## Planlagt kø
 
-Evergreen, feature, guide, historie, videnskab og datastof kan færdiggøres i batches. En færdig artikel kan få `status: scheduled` og et timezone-aware `scheduled_for`. Den skal bestå samme faktuelle, sproglige, etiske, billedmæssige og tekniske gates som en straks-publiceret artikel. `published_at` sættes først af scheduleren, når artiklen faktisk frigives. `manual_review: true` må aldrig frigives automatisk.
+Evergreen, feature, guide, historie, videnskab og datastof kan færdiggøres i batches og få `status: scheduled` samt et timezone-aware `scheduled_for`. De følger samme redaktionelle approval-flow som øvrige artikler. `published_at` sættes først, når artiklen faktisk frigives.
 
-Aktuelle nyheder vurderes fortsat mindst hver time. Breaking kan tilsidesætte den planlagte rytme. Planlagt stof er en reserve og en distributionsmekanisme, ikke en produktionskvote.
+Aktuelle nyheder vurderes løbende. Breaking kan tilsidesætte den planlagte rytme. Planlagt stof er en distributionsmekanisme, ikke en produktionskvote.
 
 ## Nyhedsvægt
 
 Nyhedsdesk klassificerer kandidater:
 
 - **A — breaking/tung:** stor pågående hændelse eller beslutning med høj offentlig betydning og høj aktualitet
-- **B — væsentlig:** klar national/regional eller sektorbetydning, men ikke nødvendigvis breaking
+- **B — væsentlig:** klar national/regional eller sektorbetydning
 - **C — normal:** relevant, verificeret daglig nyhed
 - **D — evergreen/dybde:** guide, feature, historie, baggrund
 
-A kræver både høj betydning og stærk verifikation. To medier, der kopierer samme telegram, gør ikke en historie til A.
+Vægt afgøres af betydning og aktualitet, ikke af mekaniske kildekvoter.
 
 ## Breaking
 
-Breaking kan publiceres uden at vente på næste planlagte refresh, når:
+Breaking kan publiceres uden at vente på næste planlagte refresh, når det bærende faktum er dokumenteret efter `SOURCES.md`, rubrikken holder sig til det sikkert kendte, og de almindelige redaktionelle approval-led er bestået.
 
-1. vægten er A,
-2. det bærende faktum er bekræftet af officiel primærkilde eller mindst to reelt uafhængige kilder,
-3. headline kun siger det sikkert kendte,
-4. højrisiko-regler i `EDITORIAL.md` ikke kræver manuel review.
-
-Breaking overtager kun lead, hvis `FRONTPAGE.md` vurderer, at den faktisk er vigtigst.
+Breaking overtager kun lead, hvis `FRONTPAGE.md` vurderer, at historien faktisk er vigtigst.
 
 ## Story clusters og opdateringer
 
@@ -72,4 +49,4 @@ En gammel artikel må aldrig få nyt publiceringstidspunkt bare for at se frisk 
 
 ## Kommentar
 
-Kommentar om en aktuel nyhed publiceres først efter en faktuel artikel om samme story. Kommentar er sjældnere end nyhed, aldrig automatisk breaking og normalt ikke umiddelbart efter de første ufuldstændige oplysninger.
+Kommentar om en aktuel nyhed publiceres først efter en faktuel artikel om samme story. Kommentar er sjældnere end nyhed og normalt ikke første format under ufuldstændig breaking-information.
