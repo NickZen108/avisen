@@ -120,6 +120,14 @@ jobs:
               break
             fi
           done
+      - name: Enforce article-production write boundary
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- templates docs/theme.css docs/theme.js docs/style.css; then
+            echo 'ARTICLE WRITE BOUNDARY FAIL: editorial production changed protected template/CSS/theme files' >&2
+            git diff -- templates docs/theme.css docs/theme.js docs/style.css >&2
+            exit 1
+          fi
       - name: Canonical gates before commit
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
       - name: Commit source-of-truth editorial changes
