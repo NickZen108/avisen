@@ -79,9 +79,6 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
         err(f"{path.name}: ugyldig status")
         return
 
-    # Arbejdsstykker må være ufuldstændige uden at stoppe hele avisen. Deres mangler
-    # registreres/routes af release_ready + pipeline-health. Hårde publiceringsgates
-    # gælder først, når et stykke forsøger at blive ready/scheduled/published.
     if status in {"draft", "researching", "checking", "editing"}:
         return
 
@@ -126,12 +123,9 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
         if image.get("image_type") == "illustration" and article.get("automation_origin") == "cloudflare-workers-ai":
             if image.get("pending_image") is not True or image.get("ai_generated") is not True:
                 err(f"{path.name}: autonom nyhedsillustration skal være pending og AI-genereret")
-            if image.get("context_type") != "illustration":
-                err(f"{path.name}: autonom nyhedsillustration skal have context_type=illustration")
-            if str(image.get("caption") or "").strip().lower() != "illustration":
-                err(f"{path.name}: autonom nyhedsillustration skal have synlig caption Illustration")
-        if image.get("image_type") in {"photo", "video_still"} and image.get("pending_image") is True:
-            err(f"{path.name}: dokumentarisk hero må ikke have pending_image=true")
+            if image.get("context_type") != "illustration": err(f"{path.name}: autonom nyhedsillustration skal have context_type=illustration")
+            if str(image.get("caption") or "").strip().lower() != "illustration": err(f"{path.name}: autonom nyhedsillustration skal have synlig caption Illustration")
+        if image.get("image_type") in {"photo", "video_still"} and image.get("pending_image") is True: err(f"{path.name}: dokumentarisk hero må ikke have pending_image=true")
         if image.get("placement", "lead") not in {"lead", "inline", "none"}: err(f"{path.name}: image placement skal være lead, inline eller none")
         for field in ["src", "source_url"]:
             value=str(image.get(field, "")).strip()
@@ -150,7 +144,7 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
                 src=sources.get(sid)
                 if not src: err(f"{path.name}: claim {claim_id} peger på ukendt source_id {sid}")
                 elif not str(src.get("source_group","")).strip(): err(f"{path.name}: source {sid} mangler source_group")
-        if article.get("status") in {"ready","scheduled","published"} and not claim_has_required_support(article,ledger,claim,sources): err(f"{path.name}: claim {claim_id} mangler uafhængig eller autoritativ støtte")
+        if article.get("status") in {"ready","scheduled","published"} and not claim_has_required_support(article,ledger,claim,sources): err(f"{path.name}: claim {claim_id} mangler gyldig autoritativ eller anden tilladt støtte")
     if article.get("category")=="Kommentar" and not article.get("related_news_slug"): err(f"{path.name}: Kommentar mangler related_news_slug")
     if article.get("status")=="scheduled":
         scheduled_for=article.get("scheduled_for")
