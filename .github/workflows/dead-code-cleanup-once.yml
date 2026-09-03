@@ -1,3 +1,4 @@
+# one-shot maintenance trigger
 name: One-shot dead-code cleanup
 on:
   push:
