@@ -146,14 +146,20 @@ export class NewsroomState extends DurableObject {
       const now = Date.now();
       let handled = (await this.ctx.storage.get("handled_signals")) || [];
       handled = handled.filter((x) => Date.parse(x.expires_at || "") > now);
-      const ttlHours = incoming.status === "approved" ? 36
-        : incoming.status === "watch" && incoming.stage === "research" ? 18
-        : incoming.status === "watch" ? 4
-        : incoming.status === "drop" ? 12 : 6;
+      const category = incoming.audit?.assignment?.category || null;
+      const weight = incoming.audit?.assignment?.weight || null;
+      const fastWatch = ["Indland", "Udland", "Krimi"].includes(category);
+      const slowWatch = !fastWatch && weight === "D";
+      const watchRetryHours = fastWatch ? 1 : slowWatch ? 24 : 6;
+      const watchTtlHours = fastWatch ? 24 : 72;
+      const ttlHours = incoming.status === "approved" ? 36 : incoming.status === "watch" ? watchTtlHours : incoming.status === "drop" ? 12 : 6;
       for (const key of incoming.handled_signal_keys || []) {
         if (!key) continue;
+        const previous = handled.find((x) => x.key === key);
         handled = handled.filter((x) => x.key !== key);
-        handled.unshift({ key, at: stampedAt, status: incoming.status || "hold", expires_at: new Date(now + ttlHours * 3600_000).toISOString() });
+        const watchStartedAt = incoming.status === "watch" ? (previous?.watch_started_at || stampedAt) : null;
+        const hardExpiry = incoming.status === "watch" ? new Date(Date.parse(watchStartedAt) + watchTtlHours * 3600_000).toISOString() : new Date(now + ttlHours * 3600_000).toISOString();
+        handled.unshift({ key, at: stampedAt, status: incoming.status || "hold", category, weight, watch_started_at: watchStartedAt, retry_at: incoming.status === "watch" ? new Date(now + watchRetryHours * 3600_000).toISOString() : null, retry_hours: incoming.status === "watch" ? watchRetryHours : null, expires_at: hardExpiry });
       }
       await this.ctx.storage.put("handled_signals", handled.slice(0, 180));
 
@@ -230,6 +236,7 @@ async function maybeRunEditorial(env, scan, force = false, runtimeMeta = null) {
   const now = Date.now();
   const excludedSignalKeys = (status.handled_signals || [])
     .filter((x) => Date.parse(x.expires_at || "") > now)
+    .filter((x) => x.status !== "watch" || !x.retry_at || Date.parse(x.retry_at) > now)
     .map((x) => x.key)
     .filter(Boolean);
   try {
