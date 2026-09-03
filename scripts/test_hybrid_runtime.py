@@ -129,7 +129,7 @@ def main() -> int:
         'source === "ap"',
         'feed_summary_only',
         'source_strength',
-        'fact.decision = verified.length >= 1 ? "publish" : "hold"',
+        'fact.decision = verified.length >= 1 && unsupported.length === 0 ? "publish" : "hold"',
         'function validDocumentaryHero(media)',
         'function documentaryHeroFromSignals(selected = [])',
         'function contextualHeroFromSignals(selected = [])',
