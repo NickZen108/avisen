@@ -203,7 +203,7 @@ def build_article(path: Path) -> None:
     if article.get("related_news_slug"):
         related_slug = str(article["related_news_slug"])
         related_title = linked_article_title(related_slug)
-        related_teaser = f'<aside class="related-teaser"><strong>Mere om sagen:</strong> <a href="{esc(related_slug)}.html">{esc(related_title)}</a></aside>'
+        related_teaser = f'<aside class="related-teaser"><strong>Læs også:</strong> <a href="{esc(related_slug)}.html">{esc(related_title)}</a></aside>'
     og_image = f'<meta property="og:image" content="{esc(image["src"])}">' if image and image.get("src") else ""
 
     article_image_html = ""
