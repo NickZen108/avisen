@@ -3,7 +3,7 @@
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker": {
-    "slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget"
+    "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r"
   },
   "lead": {
     "slug": "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget"
@@ -14,6 +14,9 @@
     },
     {
       "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen"
+    },
+    {
+      "slug": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion"
     },
     {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
@@ -29,9 +32,6 @@
     },
     {
       "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
-    },
-    {
-      "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
     }
   ],
   "stack": [
@@ -68,6 +68,9 @@
       "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen"
     },
     {
+      "slug": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion"
+    },
+    {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
     },
     {
@@ -83,6 +86,9 @@
       "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
     },
     {
+      "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r"
+    },
+    {
       "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
     },
     {
@@ -90,12 +96,6 @@
     },
     {
       "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere"
-    },
-    {
-      "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv"
-    },
-    {
-      "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
     }
   ],
   "publication_strategy": {

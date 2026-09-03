@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-03T08:43:52Z",
+  "generated_at": "2026-09-03T10:44:44Z",
   "counts": {
-    "published": 26,
+    "published": 28,
     "checking": 2,
     "draft": 4
   },
@@ -240,6 +240,22 @@
       "slug": "2026-09-03-ai-drivne-robotter-pa-europa-parlamentet-i-bruxelles",
       "title": "AI-drivne robotter på Europa-Parlamentet i Bruxelles",
       "status": "draft",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r",
+      "title": "El Nino kunne være den stærkeste på 40 år",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion",
+      "title": "Migranter døde efter båd redningsaktion",
+      "status": "published",
       "release_requested": false,
       "resume_from": null,
       "reasons": []

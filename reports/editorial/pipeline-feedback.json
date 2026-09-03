@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-03T10:05:14.235166Z",
+  "generated_at": "2026-09-03T10:44:48.511666Z",
   "date_dk": "2026-09-03",
   "policy": {
     "diagnostic_only": true,
@@ -18,8 +18,17 @@
     "release"
   ],
   "today": {
-    "rejections": 5,
+    "rejections": 6,
     "reviews": [
+      {
+        "at": "2026-09-03T10:30:53.208Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "runtime_error",
+        "reason": "Error: Workers AI returned no parseable structured response",
+        "class": "review",
+        "assessment": "Diagnostisk efterkontrol; opret ikke nye gates."
+      },
       {
         "at": "2026-09-03T06:31:46.703Z",
         "slug": null,
@@ -73,7 +82,7 @@
     "final_editor": 5,
     "media": 5,
     "research": 12,
-    "runtime_error": 11
+    "runtime_error": 12
   },
   "current_blockers": [
     {

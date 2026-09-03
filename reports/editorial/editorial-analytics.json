@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "published_count": 42,
+  "published_count": 44,
   "category_mix": {
-    "Udland": 22,
+    "Udland": 23,
     "Sundhed": 6,
-    "Videnskab & teknologi": 5,
+    "Videnskab & teknologi": 6,
     "Videnskab": 3,
     "Krimi": 2,
     "Liv": 1,
@@ -13,15 +13,15 @@
     "Historie": 1
   },
   "top_source_hosts": {
+    "www.bbc.co.uk": 10,
     "www.aljazeera.com": 10,
     "www.reuters.com": 10,
-    "www.bbc.co.uk": 9,
     "www.theguardian.com": 7,
     "apnews.com": 6,
     "www.euronews.com": 5,
     "www.france24.com": 5,
     "science.nasa.gov": 5,
-    "www.dw.com": 3,
+    "www.dw.com": 4,
     "www.iter.org": 3,
     "www.nhs.uk": 3,
     "commons.wikimedia.org": 3,
@@ -35,15 +35,15 @@
     "www.nrk.no": 2
   },
   "top_source_groups": {
+    "host-bbc-co-uk": 8,
     "host-aljazeera-com": 7,
-    "host-bbc-co-uk": 7,
     "reuters-reporting": 5,
     "host-euronews-com": 4,
     "guardian-reporting": 4,
     "host-france24-com": 4,
+    "host-dw-com": 4,
     "ap-reporting": 4,
     "host-theguardian-com": 3,
-    "host-dw-com": 3,
     "aljazeera-reporting": 3,
     "host-reuters-com": 2,
     "wire-reuters": 2,
@@ -58,8 +58,8 @@
   },
   "unique_source_hosts": 45,
   "unique_source_groups": 69,
-  "followup_share": 0.119,
+  "followup_share": 0.114,
   "correction_rate": 0.0,
-  "median_body_characters": 1086,
+  "median_body_characters": 1051,
   "principle": "These metrics are diagnostic. Clicks alone must not determine editorial priority."
 }

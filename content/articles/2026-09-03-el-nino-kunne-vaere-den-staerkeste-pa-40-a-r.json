@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-el-nino",
   "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r",
   "category": "Videnskab & teknologi",
@@ -22,7 +22,7 @@
   "title": "El Nino kunne være den stærkeste på 40 år",
   "standfirst": "FN advarer om en stærk El Nino.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T10:44:44Z",
   "updated_at": null,
   "ledger": "sources/2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r.json",
   "claim_ids": [
@@ -60,5 +60,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T10:44:44Z"
+  }
 }

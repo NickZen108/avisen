@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion",
   "slug": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion",
   "category": "Udland",
@@ -22,7 +22,7 @@
   "title": "Migranter døde efter båd redningsaktion",
   "standfirst": "Over 80 migranter formodes at være døde efter en redningsaktion ud for Canary Islands. Båden var adrift i 27 dage i Atlanterhavet før den blev reddet.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T10:44:44Z",
   "updated_at": null,
   "ledger": "sources/2026-09-03-migranter-doede-efter-ba-d-redningsaktion.json",
   "claim_ids": [
@@ -65,5 +65,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T10:44:44Z"
+  }
 }
