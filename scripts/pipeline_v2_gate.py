@@ -10,8 +10,6 @@ import argparse,copy,json,sys
 from datetime import datetime,timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]
-PUB={"status","published_at","updated_at","scheduled_for","released_from_schedule_at","release_requested","publication","manual_review_completed","workflow_state"}
-# Metadata/placement fields may legitimately change after final editorial approval.
 NON_EDITORIAL_AFTER_APPROVAL={
  "status","published_at","updated_at","scheduled_for","released_from_schedule_at",
  "release_requested","publication","manual_review_completed","workflow_state",
@@ -28,7 +26,7 @@ def time(v,l):
   return d.astimezone(timezone.utc)
  except Exception as e:err(f"{l}: ugyldigt timestamp {v!r}: {e}");return None
 def snap(a):
- x=copy.deepcopy(a)
+ x=copy.deepcopy(a or {})
  for k in NON_EDITORIAL_AFTER_APPROVAL:x.pop(k,None)
  return x
 def approval(path,a):
@@ -42,7 +40,7 @@ def approval(path,a):
   if (x.get("gates") or {}).get(g)!="pass":err(f"{path.name}: approval gate {g} ikke pass")
  if not x.get("checked_at"):err(f"{path.name}: approval checked_at mangler")
  else:time(x["checked_at"],f"{path.name}.approval.checked_at")
- if x.get("editorial_snapshot")!=snap(a):err(f"{path.name}: redaktionelt indhold ændret efter final approval")
+ if snap(x.get("editorial_snapshot"))!=snap(a):err(f"{path.name}: redaktionelt indhold ændret efter final approval")
 def article(path):
  a=load(path)
  if not a or path.name.startswith("_") or a.get("pipeline_version")!=2 or a.get("status") not in {"ready","scheduled","published"}:return
