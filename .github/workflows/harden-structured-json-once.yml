@@ -2,7 +2,8 @@ name: Harden structured JSON recovery once
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/harden-structured-json-once.yml']
+    paths:
+      - .github/workflows/harden-structured-json-once.yml
 permissions:
   contents: write
 jobs:
@@ -10,94 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: {ref: main, fetch-depth: 0}
+        with:
+          ref: main
+          fetch-depth: 0
       - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
-      - name: Replace aiJson recovery with local format repair first
+        with:
+          python-version: '3.12'
+      - name: Patch structured recovery
+        env:
+          PATCH_B64: 'CmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aApwPVBhdGgoImNsb3VkZmxhcmUvbmV3c2Rlc2svc3JjL2VkaXRvcmlhbC5qcyIpCnM9cC5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IikKc3RhcnQ9cy5pbmRleCgiYXN5bmMgZnVuY3Rpb24gYWlKc29uKCIpCmVuZD1zLmluZGV4KCJcblxuY29uc3QgYXNzaWdubWVudFNjaGVtYSIsIHN0YXJ0KQpuZXc9cicnJ2FzeW5jIGZ1bmN0aW9uIGFpSnNvbihlbnYsIHN5c3RlbSwgdXNlciwgc2NoZW1hLCBtYXhUb2tlbnMgPSAyODAwLCBtb2RlbCA9IFNUUk9OR19URVhUX01PREVMLCBmYWxsYmFja01vZGVsID0gbnVsbCwgc3RhZ2UgPSAidW5rbm93biIpIHsKICBjb25zdCByZXF1ZXN0ID0gewogICAgbWVzc2FnZXM6IFt7IHJvbGU6ICJzeXN0ZW0iLCBjb250ZW50OiBzeXN0ZW0gfSwgeyByb2xlOiAidXNlciIsIGNvbnRlbnQ6IHVzZXIgfV0sCiAgICBtYXhfdG9rZW5zOiBtYXhUb2tlbnMsIHRlbXBlcmF0dXJlOiAwLjE1LAogICAgcmVzcG9uc2VfZm9ybWF0OiB7IHR5cGU6ICJqc29uX3NjaGVtYSIsIGpzb25fc2NoZW1hOiBzY2hlbWEgfSwKICB9OwogIGNvbnN0IG5vdGVGYWxsYmFjayA9ICgpID0+IHsKICAgIHRyeSB7CiAgICAgIGVudi5fX0FJX0ZBTExCQUNLX0NPVU5UX18gPSBOdW1iZXIoZW52Ll9fQUlfRkFMTEJBQ0tfQ09VTlRfXyB8fCAwKSArIDE7CiAgICAgIGVudi5fX0FJX0ZBTExCQUNLX0JZX1NUQUdFX18gPSBlbnYuX19BSV9GQUxMQkFDS19CWV9TVEFHRV9fIHx8IHt9OwogICAgICBlbnYuX19BSV9GQUxMQkFDS19CWV9TVEFHRV9fW3N0YWdlXSA9IE51bWJlcihlbnYuX19BSV9GQUxMQkFDS19CWV9TVEFHRV9fW3N0YWdlXSB8fCAwKSArIDE7CiAgICB9IGNhdGNoIChfKSB7fQogIH07CiAgY29uc3QgcmF3VGV4dEZvclJlcGFpciA9IChyYXcpID0+IHsKICAgIGlmICghcmF3KSByZXR1cm4gbnVsbDsKICAgIGlmICh0eXBlb2YgcmF3LnJlc3BvbnNlID09PSAic3RyaW5nIiAmJiByYXcucmVzcG9uc2UudHJpbSgpKSByZXR1cm4gcmF3LnJlc3BvbnNlLnRyaW0oKTsKICAgIGlmIChyYXcucmVzcG9uc2UgJiYgdHlwZW9mIHJhdy5yZXNwb25zZSA9PT0gIm9iamVjdCIpIHJldHVybiBKU09OLnN0cmluZ2lmeShyYXcucmVzcG9uc2UpOwogICAgY29uc3QgY29udGVudCA9IHJhdz8uY2hvaWNlcz8uWzBdPy5tZXNzYWdlPy5jb250ZW50OwogICAgaWYgKHR5cGVvZiBjb250ZW50ID09PSAic3RyaW5nIiAmJiBjb250ZW50LnRyaW0oKSkgcmV0dXJuIGNvbnRlbnQudHJpbSgpOwogICAgaWYgKGNvbnRlbnQgJiYgdHlwZW9mIGNvbnRlbnQgPT09ICJvYmplY3QiKSByZXR1cm4gSlNPTi5zdHJpbmdpZnkoY29udGVudCk7CiAgICByZXR1cm4gbnVsbDsKICB9OwogIGNvbnN0IHJlcGFpck1hbGZvcm1lZCA9IGFzeW5jIChyYXcsIHJlcGFpck1vZGVsKSA9PiB7CiAgICBjb25zdCBtYWxmb3JtZWQgPSByYXdUZXh0Rm9yUmVwYWlyKHJhdyk7CiAgICBpZiAoIW1hbGZvcm1lZCkgcmV0dXJuIG51bGw7CiAgICBjb25zdCByZXBhaXJSZXF1ZXN0ID0gewogICAgICBtZXNzYWdlczogWwogICAgICAgIHsgcm9sZTogInN5c3RlbSIsIGNvbnRlbnQ6ICJEdSByZXBhcmVyZXIgS1VOIEpTT04tZm9ybWF0LiBCZXZhciBhbGxlIG9wbHlzbmluZ2VyIG9nIHZ1cmRlcmluZ2VyIGZyYSBpbnB1dHRldDsgdWRmw7hyIGlra2Ugb3BnYXZlbiBpZ2VuLCB0aWxmw7hqIGlra2UgbnllIGZha3RhLCBvZyByZXR1cm7DqXIga3VuIEpTT04gc29tIG1hdGNoZXIgc2NoZW1hZXQuIiB9LAogICAgICAgIHsgcm9sZTogInVzZXIiLCBjb250ZW50OiBgVWd5bGRpZ3Qgc3RydWt0dXJlcmV0IHN2YXI6XG4ke21hbGZvcm1lZC5zbGljZSgwLCAxNjAwMCl9YCB9LAogICAgICBdLAogICAgICBtYXhfdG9rZW5zOiBtYXhUb2tlbnMsIHRlbXBlcmF0dXJlOiAwLAogICAgICByZXNwb25zZV9mb3JtYXQ6IHsgdHlwZTogImpzb25fc2NoZW1hIiwganNvbl9zY2hlbWE6IHNjaGVtYSB9LAogICAgfTsKICAgIG5vdGVGYWxsYmFjaygpOwogICAgY29uc3QgcmVwYWlyZWRSYXcgPSBhd2FpdCBlbnYuQUkucnVuKHJlcGFpck1vZGVsLCByZXBhaXJSZXF1ZXN0KTsKICAgIHJldHVybiBzdHJ1Y3R1cmVkUmVzcG9uc2UocmVwYWlyZWRSYXcsIHNjaGVtYSk7CiAgfTsKCiAgbGV0IGZpcnN0RXJyb3IgPSBudWxsOwogIGxldCBmaXJzdFJhdyA9IG51bGw7CiAgdHJ5IHsKICAgIGZpcnN0UmF3ID0gYXdhaXQgZW52LkFJLnJ1bihtb2RlbCwgcmVxdWVzdCk7CiAgICByZXR1cm4gc3RydWN0dXJlZFJlc3BvbnNlKGZpcnN0UmF3LCBzY2hlbWEpOwogIH0gY2F0Y2ggKGVycm9yKSB7CiAgICBmaXJzdEVycm9yID0gZXJyb3I7CiAgICBpZiAocmF3VGV4dEZvclJlcGFpcihmaXJzdFJhdykpIHsKICAgICAgdHJ5IHsgcmV0dXJuIGF3YWl0IHJlcGFpck1hbGZvcm1lZChmaXJzdFJhdywgRkFTVF9URVhUX01PREVMKTsgfQogICAgICBjYXRjaCAocmVwYWlyRXJyb3IpIHsgY29uc29sZS53YXJuKCJXb3JrZXJzIEFJIGxvY2FsIEpTT04gcmVwYWlyIGZhaWxlZCIsIFN0cmluZyhyZXBhaXJFcnJvcikpOyB9CiAgICB9CiAgfQoKICBpZiAoIWZhbGxiYWNrTW9kZWwgfHwgZmFsbGJhY2tNb2RlbCA9PT0gbW9kZWwpIHRocm93IGZpcnN0RXJyb3I7CiAgY29uc29sZS53YXJuKCJXb3JrZXJzIEFJIHN0cnVjdHVyZWQtY2FsbCBmYWxsYmFjayIsIG1vZGVsLCAiLT4iLCBmYWxsYmFja01vZGVsLCBTdHJpbmcoZmlyc3RFcnJvcikpOwogIG5vdGVGYWxsYmFjaygpOwogIGxldCBmYWxsYmFja1JhdyA9IG51bGw7CiAgdHJ5IHsKICAgIGZhbGxiYWNrUmF3ID0gYXdhaXQgZW52LkFJLnJ1bihmYWxsYmFja01vZGVsLCByZXF1ZXN0KTsKICAgIHJldHVybiBzdHJ1Y3R1cmVkUmVzcG9uc2UoZmFsbGJhY2tSYXcsIHNjaGVtYSk7CiAgfSBjYXRjaCAoZXJyb3IpIHsKICAgIGlmIChyYXdUZXh0Rm9yUmVwYWlyKGZhbGxiYWNrUmF3KSkgewogICAgICB0cnkgeyByZXR1cm4gYXdhaXQgcmVwYWlyTWFsZm9ybWVkKGZhbGxiYWNrUmF3LCBGQVNUX1RFWFRfTU9ERUwpOyB9CiAgICAgIGNhdGNoIChyZXBhaXJFcnJvcikgewogICAgICAgIHJlcGFpckVycm9yLmNhdXNlID0gZXJyb3IgfHwgZmlyc3RFcnJvcjsKICAgICAgICB0aHJvdyByZXBhaXJFcnJvcjsKICAgICAgfQogICAgfQogICAgZXJyb3IuY2F1c2UgPSBmaXJzdEVycm9yOwogICAgdGhyb3cgZXJyb3I7CiAgfQp9JycnCnM9c1s6c3RhcnRdK25ldytzW2VuZDpdCnAud3JpdGVfdGV4dChzLGVuY29kaW5nPSJ1dGYtOCIpCg=='
         run: |
           python - <<'PY'
-          from pathlib import Path
-          p=Path('cloudflare/newsdesk/src/editorial.js')
-          s=p.read_text(encoding='utf-8')
-          start=s.index('async function aiJson(')
-          end=s.index('\n\nconst assignmentSchema', start)
-          new=r'''async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRONG_TEXT_MODEL, fallbackModel = null, stage = "unknown") {
-  const request = {
-    messages: [{ role: "system", content: system }, { role: "user", content: user }],
-    max_tokens: maxTokens, temperature: 0.15,
-    response_format: { type: "json_schema", json_schema: schema },
-  };
-  const noteFallback = () => {
-    try {
-      env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1;
-      env.__AI_FALLBACK_BY_STAGE__ = env.__AI_FALLBACK_BY_STAGE__ || {};
-      env.__AI_FALLBACK_BY_STAGE__[stage] = Number(env.__AI_FALLBACK_BY_STAGE__[stage] || 0) + 1;
-    } catch (_) {}
-  };
-  const rawTextForRepair = (raw) => {
-    if (!raw) return null;
-    if (typeof raw.response === "string" && raw.response.trim()) return raw.response.trim();
-    if (raw.response && typeof raw.response === "object") return JSON.stringify(raw.response);
-    const content = raw?.choices?.[0]?.message?.content;
-    if (typeof content === "string" && content.trim()) return content.trim();
-    if (content && typeof content === "object") return JSON.stringify(content);
-    return null;
-  };
-  const repairMalformed = async (raw, repairModel) => {
-    const malformed = rawTextForRepair(raw);
-    if (!malformed) return null;
-    const repairRequest = {
-      messages: [
-        { role: "system", content: "Du reparerer KUN JSON-format. Bevar alle oplysninger og vurderinger fra inputtet; udfør ikke opgaven igen, tilføj ikke nye fakta, og returnér kun JSON som matcher schemaet." },
-        { role: "user", content: `Ugyldigt struktureret svar:\n${malformed.slice(0, 16000)}` },
-      ],
-      max_tokens: maxTokens, temperature: 0,
-      response_format: { type: "json_schema", json_schema: schema },
-    };
-    noteFallback();
-    const repairedRaw = await env.AI.run(repairModel, repairRequest);
-    return structuredResponse(repairedRaw, schema);
-  };
-
-  let firstError = null;
-  let firstRaw = null;
-  try {
-    firstRaw = await env.AI.run(model, request);
-    return structuredResponse(firstRaw, schema);
-  } catch (error) {
-    firstError = error;
-    // If the model returned content but only the structure is wrong, repair that exact
-    // content cheaply instead of repeating the editorial task.
-    if (rawTextForRepair(firstRaw)) {
-      try { return await repairMalformed(firstRaw, FAST_TEXT_MODEL); }
-      catch (repairError) { console.warn("Workers AI local JSON repair failed", String(repairError)); }
-    }
-  }
-
-  if (!fallbackModel || fallbackModel === model) throw firstError;
-  console.warn("Workers AI structured-call fallback", model, "->", fallbackModel, String(firstError));
-  noteFallback();
-  let fallbackRaw = null;
-  try {
-    fallbackRaw = await env.AI.run(fallbackModel, request);
-    return structuredResponse(fallbackRaw, schema);
-  } catch (error) {
-    // Last chance is still a format-only repair of the actual fallback output. If
-    // JSON Mode itself threw before returning content, there is nothing safe to
-    // repair and the original runtime error is surfaced.
-    if (rawTextForRepair(fallbackRaw)) {
-      try { return await repairMalformed(fallbackRaw, FAST_TEXT_MODEL); }
-      catch (repairError) {
-        repairError.cause = error || firstError;
-        throw repairError;
-      }
-    }
-    error.cause = firstError;
-    throw error;
-  }
-}'''
-          s=s[:start]+new+s[end:]
-          p.write_text(s,encoding='utf-8')
+          import os, base64
+          exec(base64.b64decode(os.environ['PATCH_B64']).decode('utf-8'))
           PY
           node --check cloudflare/newsdesk/src/editorial.js
           python scripts/test_hybrid_runtime.py
@@ -105,8 +31,8 @@ jobs:
           git diff --check
       - name: Commit runtime fix
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add cloudflare/newsdesk/src/editorial.js
           git commit -m 'fix: repair malformed structured output locally first' || exit 0
           git push origin main
