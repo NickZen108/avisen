@@ -1,11 +1,14 @@
-name: Burst 3 articles once
+name: Burst editorial articles
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/burst-3-once.yml'
+  workflow_dispatch:
+    inputs:
+      cycles:
+        description: 'Number of editorial cycles (1-3)'
+        required: false
+        default: '3'
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: morgentidende-editorial-import
   cancel-in-progress: false
@@ -29,13 +32,16 @@ jobs:
           python scripts/github_source_prefetch.py --scan /tmp/candidates.json --output /tmp/github-prefetch.json --limit 12
           python -m json.tool /tmp/github-prefetch.json >/dev/null 2>&1 || echo '{}' > /tmp/github-prefetch.json
           exit 0
-      - name: Run exactly up to three distinct editorial cycles
+      - name: Run requested editorial cycles
         env:
           EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
+          INPUT_CYCLES: ${{ github.event.inputs.cycles }}
         run: |
           set -euo pipefail
           BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
-          for i in 1 2 3; do
+          MAX="${INPUT_CYCLES:-3}"
+          case "$MAX" in 1|2|3) ;; *) MAX=3 ;; esac
+          for i in $(seq 1 "$MAX"); do
             OUT="/tmp/editorial-$i.json"
             curl --fail --silent --show-error --max-time 240 -X POST \
               -H 'content-type: application/json' \
@@ -52,11 +58,23 @@ jobs:
           python scripts/quality_gate.py --prebuild --changed-only
           python scripts/prepublish_surface_qa.py
       - name: Commit editorial results
+        id: editorial
         run: |
           set -euo pipefail
           git config user.name 'morgentidende-cloudflare-editorial'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add content/articles sources reports/editorial/approvals content/frontpage.json docs/img/auto reports/editorial/publication-attempts.jsonl 2>/dev/null || true
-          git diff --cached --quiet || git commit -m 'editorial: burst three article cycles'
-          git pull --rebase origin main
-          git push origin main
+          if git diff --cached --quiet; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            echo 'Ingen nye redaktionelle ændringer at publicere'
+          else
+            git commit -m 'editorial: burst article cycles'
+            git pull --rebase origin main
+            git push origin main
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Dispatch build/publish explicitly
+        if: ${{ steps.editorial.outputs.changed == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run build-publish.yml --ref main
