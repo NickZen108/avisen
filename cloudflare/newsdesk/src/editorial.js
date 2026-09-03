@@ -830,7 +830,7 @@ function requiresAiFinalReview(assignment, dossier, article) {
 }
 
 async function finalReview(env, assignment, dossier, article) {
-  const system = `Du er uafhængig slutredaktør. Kontrollér den færdige artikel mod de verificerede claims uden at genresearche. Returnér kun reelle sikkerheds-/sandhedsproblemer som blockers: materielle påstande ud over dokumentationen, vildledende attribution, relevant men manglende fairness/pluralisme ved conflict_present=true, eller etisk problem. Sprog og SEO er repair/polish og må ikke i sig selv blokere. Media ejer hero og billedsandhed. Små stilpræferencer er aldrig blockers.`;
+  const system = `Du er uafhængig slutredaktør. Kontrollér den færdige artikel mod de verificerede claims uden at genresearche. Returnér kun reelle sikkerheds-/sandhedsproblemer som blockers: materielle påstande ud over dokumentationen, vildledende attribution, relevant men manglende fairness/pluralisme ved conflict_present=true, etisk problem, uklar/blandet genre eller en materielt forkert kategori i forhold til artikelens faktiske hovedemne og Morgentidendes kategorier. Hvis kategorien er forkert, rapportér det som final_editor-problem og angiv den korrekte kategori i issue-teksten. Kontrollér også at rubrik og manchet ikke er stærkere end dokumentationen. Sprog og SEO er repair/polish og må ikke i sig selv blokere. Media ejer hero og billedsandhed. Små stilpræferencer er aldrig blockers.`;
   const raw = await aiJson(env, system, JSON.stringify({ assignment, claims: dossier.claims, contradictions: dossier.contradictions, article }), finalSchema, 450, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
   const issues = Array.isArray(raw.blocking_issues) ? raw.blocking_issues.filter((x) => x?.gate && x?.issue) : [];
   const failed = new Set(issues.map((x) => x.gate));
@@ -1198,8 +1198,8 @@ export async function runEditorialCycle(env, scan, options = {}) {
   });
   research.media_strategy = mediaScout ? "have" : "pending_illustration";
 
-  const desk = await deskRecheck(env, assignment, dossier);
-  if (!["publish", "update"].includes(desk.decision)) return { status: "hold", stage: "desk-recheck", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: desk.rationale || "Newsdesk recheck hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, fact_check: { claims: dossier.claims, rationale: dossier.rationale }, desk_recheck: desk } };
+  // Desk recheck gate removed. Fact check + final editor own publication decisions.
+  const desk = { decision: "publish", rationale: "Desk recheck gate removed; compatibility marker only" };
 
   let article = await writeArticle(env, assignment, dossier);
   article = await polishArticleLanguage(env, assignment, dossier, article);
