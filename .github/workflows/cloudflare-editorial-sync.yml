@@ -37,7 +37,7 @@ jobs:
           python-version: '3.12'
       - name: Install image normalizer
         run: python -m pip install --disable-pip-version-check pillow
-      - name: Fetch scan and editorial history for cheap dispatch
+      - name: Fetch scan and editorial history for cheap cycle selection
         run: |
           set +e
           BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
@@ -51,14 +51,14 @@ jobs:
         run: |
           MAX="${INPUT_CYCLES:-1}"
           case "$MAX" in 1|2|3) ;; *) MAX=1 ;; esac
-          python scripts/editorial_dispatch_gate.py \
+          python scripts/editorial_cycle_selector.py \
             --scan /tmp/candidates.json \
             --history /tmp/editorial-history.json \
             --max-cycles "$MAX" \
             --github-output "$GITHUB_OUTPUT"
       - name: Skip unnecessary Workers AI calls
         if: ${{ steps.dispatch.outputs.cycles == '0' }}
-        run: echo "Ingen friske ubehandlede kandidater; GitHub dispatch-gate sparer denne AI-runde."
+        run: echo "Ingen friske ubehandlede kandidater; cycle selector sparer denne AI-runde."
       - name: Prefetch likely source pages on GitHub
         if: ${{ steps.dispatch.outputs.cycles != '0' }}
         run: |
