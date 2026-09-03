@@ -10,19 +10,28 @@
   },
   "rail": [
     {
+      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
+    },
+    {
+      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
+    },
+    {
+      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
+    },
+    {
+      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
+    },
+    {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
+    },
+    {
+      "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen"
     },
     {
       "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
     },
     {
       "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
-    },
-    {
-      "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
-    },
-    {
-      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
     }
   ],
   "stack": [
@@ -53,7 +62,22 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-02-flood-relief-indsats-i-nepal-tibet-intensiveres"
+    },
+    {
+      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
+    },
+    {
+      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
+    },
+    {
+      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
+    },
+    {
       "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
+    },
+    {
+      "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen"
     },
     {
       "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
@@ -65,16 +89,12 @@
       "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid"
     },
     {
-      "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
-    },
-    {
-      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
-    },
-    {
       "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
-    },
-    {
-      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
     }
-  ]
+  ],
+  "publication_strategy": {
+    "version": 1,
+    "mode": "placement_only_non_gating",
+    "recalculated_from_published_articles": true
+  }
 }
