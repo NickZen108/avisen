@@ -2,7 +2,7 @@ name: Deploy Cloudflare Newsdesk Runtime
 
 # Deploy canonical source as committed; do not mutate editorial code during deploy.
 # Workflow-path commits are used only to deploy bot-originated runtime commits that GitHub does not recursively trigger.
-# This direct workflow touch deploys the targeted Research web-search runtime from main.
+# This direct workflow touch deploys the post-Journalist Fact checker runtime from main.
 on:
   push:
     branches: [main]
