@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-03T06:50:54Z",
+  "generated_at": "2026-09-03T08:43:52Z",
   "counts": {
     "published": 26,
     "checking": 2,
-    "draft": 3
+    "draft": 4
   },
   "blocked_count": 2,
   "articles": [
@@ -39,10 +39,6 @@
       "resume_from": "fact_check",
       "reasons": [
         "fact-check PASS mangler",
-        "approval gate language er ikke PASS",
-        "approval gate ethics er ikke PASS",
-        "approval gate image er ikke PASS",
-        "approval gate final_editor er ikke PASS",
         "artiklens redaktionelle indhold er ændret efter final approval"
       ]
     },
@@ -236,6 +232,14 @@
       "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe",
       "title": "WHO-chefen advarer om, at Ebola-udbruddet skal intensiveres for at stoppe udbruddet.",
       "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-ai-drivne-robotter-pa-europa-parlamentet-i-bruxelles",
+      "title": "AI-drivne robotter på Europa-Parlamentet i Bruxelles",
+      "status": "draft",
       "release_requested": false,
       "resume_from": null,
       "reasons": []
