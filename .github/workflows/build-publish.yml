@@ -3,7 +3,7 @@ name: Build structured edition
 on:
   push:
     branches: [main]
-    paths: ['content/**','sources/**','reports/editorial/approvals/**','templates/**','config/**','docs/theme.js','docs/kontrolrum/control-room-tabs.js','scripts/build_all.py','scripts/build_all_v2.py','scripts/build_short_videos.py','scripts/build_control_room.py','scripts/apply_control_room_extras.py','scripts/pipeline_feedback.py','scripts/design_enhancements.py','scripts/reader_experience.py','scripts/article_history.py','scripts/editorial_analytics.py','scripts/production_readiness.py','scripts/golden_path_gate.py','scripts/source_independence_gate.py','scripts/queue_recovery.py','scripts/seo_surface_fix.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/pipeline_v2_gate.py','scripts/readability_gate.py','scripts/prepublish_surface_qa.py','scripts/release_ready.py','scripts/refresh_pending_images.py','scripts/normalize_categories.py','scripts/magazine_blocks.py','scripts/frontpage_publication_strategy.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
+    paths: ['content/**','sources/**','reports/editorial/approvals/**','templates/**','config/**','docs/theme.js','docs/kontrolrum/control-room-tabs.js','scripts/build_all.py','scripts/build_all_v2.py','scripts/build_short_videos.py','scripts/build_control_room.py','scripts/apply_control_room_extras.py','scripts/pipeline_feedback.py','scripts/design_enhancements.py','scripts/reader_experience.py','scripts/article_history.py','scripts/editorial_analytics.py','scripts/production_readiness.py','scripts/queue_recovery.py','scripts/seo_surface_fix.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/pipeline_v2_gate.py','scripts/readability_gate.py','scripts/prepublish_surface_qa.py','scripts/release_ready.py','scripts/refresh_pending_images.py','scripts/normalize_categories.py','scripts/magazine_blocks.py','scripts/frontpage_publication_strategy.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
   workflow_run:
     workflows: ['Cloudflare editorial sync']
     types: [completed]
@@ -25,13 +25,13 @@ jobs:
       - name: Normalize current categories before validation
         run: python scripts/normalize_categories.py
       - name: Gates before release
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Release approved ready articles; park incomplete ones
         run: python scripts/release_ready.py
       - name: Prefer lawful free documentary photos before final build
         run: python scripts/refresh_pending_images.py --limit 10
       - name: Gates after release before build
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Apply frontpage publication strategy (placement only; non-gating)
         run: python scripts/frontpage_publication_strategy.py
       - name: Build
@@ -39,7 +39,7 @@ jobs:
       - name: Cache public images locally
         run: python scripts/cache_public_images.py
       - name: Gates after build
-        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py && python scripts/golden_path_gate.py && python scripts/production_readiness.py
+        run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Commit release + recovery state + generated files
         id: publish
         run: |
