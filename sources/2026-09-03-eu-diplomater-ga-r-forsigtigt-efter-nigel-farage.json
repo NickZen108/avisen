@@ -1,0 +1,154 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-eu-diplomats-cautiously-court-nigel-farage",
+  "article_slug": "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "tech_magazine",
+    "story_location": {
+      "country": "UK",
+      "country_code": "GB",
+      "place_names_english": [
+        "Birmingham"
+      ],
+      "place_names_local": []
+    },
+    "core_question": "EU diplomats cautiously court Nigel Farage"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Politico Europe",
+      "url": "https://www.politico.eu/article/eu-diplomats-cautiously-court-nigel-farage/?utm_source=RSS_Feed&#038;utm_medium=RSS&#038;utm_campaign=RSS_Syndication",
+      "published_at": "2026-09-03T14:40:40.000Z",
+      "accessed_at": "2026-09-03T14:53:02.584Z",
+      "type": "news",
+      "source_group": "host-politico-eu",
+      "publisher_root": "politico-eu",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "EU diplomats cautiously court Nigel Farage",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-politico-eu"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "EU-diplomater går forsigtigt efter Nigel Farage",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-03T14:53:02.584Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F02",
+      "claim": "Nigel Farages parti samles i Birmingham",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-03T14:53:02.584Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F03",
+      "claim": "Veteran-Brexit-aktivisten Nigel Farage bliver taget alvorligt",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-03T14:53:02.584Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F04",
+      "claim": "EU-diplomater søger at opbygge en alliance med Nigel Farage",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-03T14:53:02.584Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F05",
+      "claim": "Nigel Farage bliver taget alvorligt af EU-diplomater",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-03T14:53:02.584Z",
+      "notes": "Politico Europe"
+    },
+    {
+      "id": "F06",
+      "claim": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-politico-eu"
+      ],
+      "checked_at": "2026-09-03T14:53:02.584Z",
+      "notes": "Politico Europe"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T14:53:02.584Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "tech_magazine"
+}

@@ -1,0 +1,76 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-03-general-charged-over-kyiv-children-s-hospital-strike-shot-in-russia",
+  "slug": "2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland",
+  "category": "Krimi",
+  "weight": "B",
+  "editorial_destination": "main",
+  "story_location": {
+    "country": "Rusland",
+    "country_code": "RU",
+    "place_names_english": [
+      "Kyiv",
+      "Okhmatdyt",
+      "Russia"
+    ],
+    "place_names_local": [
+      "Kyiv",
+      "Okhmatdyt",
+      "Rusland"
+    ]
+  },
+  "title": "General anklaget over Kyiv børnehospital angreb skudt i Rusland",
+  "standfirst": "En russisk general, der er blevet anklaget for at have været involveret i et angreb på et børnehospital i Kyiv, er blevet skudt i Rusland. Den russiske undersøgelseskommission har åbnet en undersøgelse efter skuddet.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "ledger": "sources/2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland.json",
+  "claim_ids": [
+    "F01"
+  ],
+  "seo": {
+    "title": "General anklaget over Kyiv børnehospital angreb skudt i Rusland",
+    "description": "En russisk general, der er blevet anklaget for at have været involveret i et angreb på et børnehospital i Kyiv, er blevet skudt i Rusland. Den russiske undersøgelseskommission har åbnet en undersøgelse efter skuddet.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland.jpg",
+    "alt": "St Volodymyr's Cathedral in Kyiv, Ukraine.",
+    "credit": "Petar Milošević",
+    "license": "CC BY-SA 4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:St._Volodymyr%27s_Cathedral_in_Kiev.jpg",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "En russisk general, der er blevet anklaget for at have været involveret i et angreb på et børnehospital i Kyiv, er blevet skudt i Rusland. Ifølge CNN har den russiske undersøgelseskommission åbnet en undersøgelse efter skuddet. ",
+      "type": "h2"
+    },
+    {
+      "text": "Generalen er blevet anklaget for at have været involveret i et angreb på et børnehospital i Kyiv. Ifølge Euronews er generalen blevet skudt i Rusland. ",
+      "type": "h3"
+    },
+    {
+      "text": "Den russiske undersøgelseskommission har åbnet en undersøgelse efter skuddet. Ifølge CNN er det ikke klart, hvem der har skudt generalen. ",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

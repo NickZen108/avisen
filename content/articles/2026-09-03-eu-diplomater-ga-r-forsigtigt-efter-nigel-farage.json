@@ -1,0 +1,93 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-03-eu-diplomats-cautiously-court-nigel-farage",
+  "slug": "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage",
+  "category": "Udland",
+  "weight": "B",
+  "editorial_destination": "tech_magazine",
+  "story_location": {
+    "country": "UK",
+    "country_code": "GB",
+    "place_names_english": [
+      "Birmingham"
+    ],
+    "place_names_local": []
+  },
+  "title": "EU-diplomater går forsigtigt efter Nigel Farage",
+  "standfirst": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage, ifølge Politico Europe. Farage har været en vigtig figur i Storbritanniens udtræden af EU, og hans parti har samlet sig i Birmingham.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "ledger": "sources/2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06"
+  ],
+  "seo": {
+    "title": "EU-diplomater går forsigtigt efter Nigel Farage",
+    "description": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage, ifølge Politico Europe. Farage har været en vigtig figur i Storbritanniens udtræden af EU, og hans parti har samlet sig i Birmingham.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage.jpg",
+    "alt": "Skyline, Birmingham, England, UK - view from the north",
+    "credit": "Arne Müseler",
+    "license": "CC BY-SA 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Skyline,_Birmingham,_England,_UK.jpg",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "EU-diplomater går forsigtigt efter Nigel Farage",
+      "type": "h2"
+    },
+    {
+      "text": "Nigel Farage er en veteran-Brexit-aktivist, der har spillet en vigtig rolle i Storbritanniens udtræden af EU.",
+      "type": "p"
+    },
+    {
+      "text": "Ifølge Politico Europe søger EU-diplomater at opbygge en alliance med Farage, der kan hjælpe dem med at forbedre deres forhold til Storbritannien.",
+      "type": "p"
+    },
+    {
+      "text": "Farage har været en kontroversiel figur i EU-sammenhæng, men hans parti har samlet sig i Birmingham, hvilket kan være et tegn på, at han er på vej tilbage til politikken.",
+      "type": "p"
+    },
+    {
+      "text": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage, ifølge Politico Europe.",
+      "type": "h3"
+    },
+    {
+      "text": "Farage har været en vigtig figur i Storbritanniens udtræden af EU, og hans parti har samlet sig i Birmingham.",
+      "type": "p"
+    },
+    {
+      "text": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage, ifølge Politico Europe.",
+      "type": "h3"
+    },
+    {
+      "text": "Farage har været en vigtig figur i Storbritanniens udtræden af EU, og hans parti har samlet sig i Birmingham.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

@@ -1,0 +1,143 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-general-charged-over-kyiv-children-s-hospital-strike-shot-in-russia",
+  "article_slug": "2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland",
+  "assignment": {
+    "category": "Krimi",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "Rusland",
+      "country_code": "RU",
+      "place_names_english": [
+        "Kyiv",
+        "Okhmatdyt",
+        "Russia"
+      ],
+      "place_names_local": [
+        "Kyiv",
+        "Okhmatdyt",
+        "Rusland"
+      ]
+    },
+    "core_question": "General charged over Kyiv children's hospital strike shot in Russia"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Euronews",
+      "url": "https://www.euronews.com/2026/09/03/general-charged-over-kyiv-childrens-hospital-strike-shot-in-russia",
+      "published_at": "2026-09-03T14:49:39.000Z",
+      "accessed_at": "2026-09-03T14:52:21.875Z",
+      "type": "news",
+      "source_group": "host-euronews-com",
+      "publisher_root": "euronews-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "General charged over Kyiv children's hospital strike shot in Russia",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "cnn.com",
+      "url": "https://www.cnn.com/2026/09/03/world/russian-general-assassination-attempt-intl",
+      "published_at": null,
+      "accessed_at": "2026-09-03T14:52:21.875Z",
+      "type": "news",
+      "source_group": "host-cnn-com",
+      "publisher_root": "cnn-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "Ivana Kottasová, Kosta Gak",
+      "publisher_name": "https://www.facebook.com/CNN",
+      "canonical_url": "https://www.cnn.com/2026/09/03/world/russian-general-assassination-attempt-intl",
+      "primary_record": null,
+      "authoritative_for": "Russian general accused of masterminding the attack against Kyiv&#x27;s ...",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "kyivpost.com",
+      "url": "https://www.kyivpost.com/post/83679",
+      "published_at": null,
+      "accessed_at": "2026-09-03T14:52:21.875Z",
+      "type": "news",
+      "source_group": "host-kyivpost-com",
+      "publisher_root": "kyivpost-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-3",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "Kyiv Post",
+      "publisher_name": "Kyiv Post",
+      "canonical_url": "https://www.kyivpost.com/post/83679",
+      "primary_record": null,
+      "authoritative_for": "Kremlin General Tied to Kyiv Children&#x27;s Hospital Attack Reportedly Shot",
+      "authority_class": "news",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "independent_source_groups": [
+      "host-euronews-com",
+      "host-cnn-com",
+      "host-kyivpost-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Efter skuddet har den russiske undersøgelseskommission åbnet en undersøgelse.",
+      "status": "verified",
+      "source_ids": [
+        "S2"
+      ],
+      "independent_groups": [
+        "host-cnn-com"
+      ],
+      "checked_at": "2026-09-03T14:52:21.875Z",
+      "notes": "Kilde: CNN"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T14:52:21.875Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "main"
+}
