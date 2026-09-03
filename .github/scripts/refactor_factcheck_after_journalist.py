@@ -1,0 +1,146 @@
+from pathlib import Path
+import re
+
+p = Path('cloudflare/newsdesk/src/editorial.js')
+s = p.read_text(encoding='utf-8')
+
+def sub1(pattern, repl, label):
+    global s
+    s2, n = re.subn(pattern, repl, s, count=1, flags=re.S)
+    if n != 1:
+        raise SystemExit(f'{label}: expected 1 replacement, got {n}')
+    s = s2
+
+new_ai = '''async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRONG_TEXT_MODEL, fallbackModel = null, stage = "unknown") {
+  const request = {
+    messages: [{ role: "system", content: system }, { role: "user", content: user }],
+    max_tokens: maxTokens, temperature: 0.15,
+    response_format: { type: "json_schema", json_schema: schema },
+  };
+  const noteRetry = () => {
+    try {
+      env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1;
+      env.__AI_FALLBACK_BY_STAGE__ = env.__AI_FALLBACK_BY_STAGE__ || {};
+      env.__AI_FALLBACK_BY_STAGE__[stage] = Number(env.__AI_FALLBACK_BY_STAGE__[stage] || 0) + 1;
+    } catch (_) {}
+  };
+  const attempts = [model];
+  if (fallbackModel && fallbackModel !== model) attempts.push(fallbackModel);
+  else attempts.push(model);
+  let firstError = null;
+  let lastError = null;
+  for (let i = 0; i < attempts.length; i++) {
+    if (i > 0) noteRetry();
+    try {
+      const raw = await env.AI.run(attempts[i], request);
+      return structuredResponse(raw, schema);
+    } catch (error) {
+      if (!firstError) firstError = error;
+      lastError = error;
+      console.warn("Workers AI structured-call retry", stage, attempts[i], String(error));
+    }
+  }
+  if (lastError && firstError && lastError !== firstError) lastError.cause = firstError;
+  throw lastError || firstError || new Error("Workers AI structured call failed");
+}'''
+sub1(r'async function aiJson\([\s\S]*?\n\}\n\nconst assignmentSchema', new_ai + '\n\nconst assignmentSchema', 'aiJson')
+
+new_funcs = '''async function runFactCheck(env, assignment, research, article) {
+  if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Research/Fact-check boundary");
+  const system = `Du er Morgentidendes uafhængige Fact checker og kommer EFTER Journalisten. Kontrollér den færdige artikel mod Researchs kilder og kildeuddrag. Kortlæg alle materielle faktuelle udsagn i rubrik, manchet og brødtekst som claims og angiv præcise source_indexes. Et udsagn er verified, når én relevant autoritativ kilde faktisk dokumenterer den konkrete formulering. Kræv ikke mekanisk kilde nr. 2. Markér uncertain hvis formuleringen er stærkere end kilden, hvis et forbehold mangler, eller hvis belægget er uklart. Markér rejected hvis evidensen modsiger udsagnet. Tal, citater og attribution skal kontrolleres særligt nøje. Discovery-only-kilder må aldrig verificere claims. Opfind intet og omskriv ikke artiklen.`;
+  const fact = await aiJson(env, system, JSON.stringify({
+    assignment,
+    research: { core_question: research.core_question, rationale: research.rationale, contradictions: research.contradictions, candidate_claims: research.candidate_claims },
+    sources: (research.source_payload || []).map((source, i) => ({ ...source, excerpt: focusedExcerpt(research.researched?.[i]?.excerpt || source.excerpt, research.candidate_claims, 700) })),
+    article,
+  }), factCheckSchema, 1000, FAST_TEXT_MODEL, STRONG_TEXT_MODEL, "fact-check");
+  fact.researched = research.researched;
+  fact.core_question = research.core_question || assignment.core_question;
+  fact.right_of_reply_required = research.right_of_reply_required;
+  fact.conflict_present = Boolean(research.conflict_present);
+  for (const claim of fact.claims) {
+    const indexes = [...new Set((claim.source_indexes || []).filter((i) => Number.isInteger(i) && i >= 0 && i < fact.researched.length))];
+    claim.source_indexes = indexes;
+    const evidence = indexes.map((i) => fact.researched[i]).filter(isEvidenceSource);
+    claim.numeric_material = numericMaterialClaim(claim);
+    claim.named_accused_primary_required = namedAccusedCrimeClaim(assignment, claim);
+    if (claim.status === "verified" && (!indexes.length || !evidenceRulePass(assignment, research, claim, evidence))) {
+      claim.status = "uncertain";
+      claim.notes = `${claim.notes || ""} Nedgraderet: udsagnet mangler en relevant autoritativ kilde.`.trim();
+    }
+  }
+  const verified = fact.claims.filter((c) => c.status === "verified");
+  const unsupported = fact.claims.filter((c) => c.status !== "verified");
+  fact.decision = verified.length >= 1 && unsupported.length === 0 ? "publish" : "hold";
+  fact.rationale = fact.decision === "publish" ? `Fact checker: ${verified.length} materielle udsagn i den færdige artikel er verificeret.` : `Fact checker: ${unsupported.length} materielle udsagn kræver journalistisk rettelse eller fjernelse.`;
+  return fact;
+}
+
+async function writeArticle(env, assignment, research, factFeedback = null) {
+  if ((research.researched || []).some(isDiscoveryOnly)) throw new Error("Discovery-only source crossed the Journalist boundary");
+  const destinationBrief = magazineWritingBrief(assignment?.editorial_destination || "main");
+  const system = `Du er journalist på Morgentidende. ${destinationBrief} Du kommer EFTER Research og FØR Fact checker. Research har allerede fundet kilderne. Brug KUN de vedlagte bærende oplysninger og kildeuddrag; du må ikke selv tilføje fakta, konsekvenser eller sikkerhed, som materialet ikke bærer. HÅRD REGEL: Al redaktionel tekst skal være på dansk, inklusive rubrik, manchet, brødtekst, mellemoverskrifter og citater. Citater på andre sprog skal oversættes loyalt til naturligt dansk med samme betydning og forbehold. Kun egennavne, officielle navne og produkt-/værknavne må stå på originalsproget. Rubrik, manchet og brødtekst må aldrig være stærkere end dokumentationen. Gør attribution konkret. Hvis fact_check_feedback er vedlagt, omskriv den samme artikel sådan, at de markerede udsagn fjernes, præciseres eller svækkes til præcis det niveau kilderne dokumenterer; opfind aldrig erstatningsfakta. En one-claim-nyhed må være én kort tekstblok uden gentagelser.`;
+  const sources = (research.source_payload || []).map((source, i) => ({ source_index: i, name: source.name, headline: source.headline, url: source.url, excerpt: source.excerpt, source_kind: source.source_kind, source_strength: source.source_strength }));
+  return aiJson(env, system, JSON.stringify({ assignment, conflict_present: Boolean(research.conflict_present), research_material: research.candidate_claims || [], contradictions: research.contradictions || [], sources, fact_check_feedback: factFeedback }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1600, FAST_TEXT_MODEL, STRONG_TEXT_MODEL, "journalist");
+}'''
+sub1(r'async function runFactCheck\([\s\S]*?\n\}\n\nasync function writeArticle\([\s\S]*?\n\}\n\nasync function finalReview', new_funcs + '\n\nasync function finalReview', 'fact/write')
+
+new_flow = '''  const research = await runResearch(env, assignment, check.selected);
+  let currentResearch = research;
+  if (currentResearch.decision !== "continue") return { status: currentResearch.decision === "watch" ? "watch" : "hold", stage: currentResearch.right_of_reply_required ? "ethics" : "research", checked_at: startedAt, generated_at: startedAt, title: assignment.title_hint, reason: currentResearch.rationale || "Research hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, selected_signals: check.selected || [], research: { rationale: currentResearch.rationale, candidate_claims: currentResearch.candidate_claims || [], contradictions: currentResearch.contradictions || [], researched: (currentResearch.researched || []).map((x) => ({ source: x.source, headline: x.headline, url: x.final_url || x.url, fetched: x.fetched, fetch_status: x.fetch_status, fetch_error: x.fetch_error, source_kind: x.source_kind, feed_summary_only: Boolean(x.feed_summary_only) })) } } };
+
+  const MAX_ARTICLE_ATTEMPTS = 3;
+  let articleAttempts = 1;
+  let article = await writeArticle(env, assignment, currentResearch);
+  let dossier = await runFactCheck(env, assignment, currentResearch, article);
+  const routing = [];
+  while (dossier.decision !== "publish" && articleAttempts < MAX_ARTICLE_ATTEMPTS) {
+    article = await writeArticle(env, assignment, currentResearch, { rationale: dossier.rationale, claims: dossier.claims });
+    articleAttempts += 1;
+    routing.push("fact-check→journalist→fact-check");
+    dossier = await runFactCheck(env, assignment, currentResearch, article);
+  }
+  if (dossier.decision !== "publish") return { status: "hold", stage: "fact-check", checked_at: startedAt, generated_at: startedAt, title: article.title || assignment.title_hint, reason: dossier.rationale || "Fact check hold", scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys, audit: { assignment, research: { rationale: currentResearch.rationale, candidate_claims: currentResearch.candidate_claims, contradictions: currentResearch.contradictions }, article_title: article.title, article_attempts: articleAttempts, retry_routing: routing, fact_check: { rationale: dossier.rationale, claims: dossier.claims, contradictions: dossier.contradictions }, sources: (dossier.researched || []).map((x) => ({ source: x.source, headline: x.headline, url: x.final_url || x.url, source_kind: x.source_kind })) } };
+
+  let mediaScout = await resolveDocumentaryHero(check.selected, assignment, { ...currentResearch, candidate_claims: dossier.claims.filter((c) => c.status === "verified") });
+  currentResearch.media_strategy = mediaScout ? "have" : "pending_illustration";
+
+  let review = await finalReview'''
+sub1(r'  const research = await runResearch\([\s\S]*?  let review = await finalReview', new_flow, 'flow')
+
+old = '''      const nextResearch = await runResearch(env, assignment, check.selected);
+      if (nextResearch.decision !== "continue") break;
+      const nextDossier = await runFactCheck(env, assignment, nextResearch);
+      if (nextDossier.decision !== "publish") break;
+      const nextEvidence = JSON.stringify(nextDossier.claims || []);
+      if (nextEvidence === previousEvidence) break;
+      currentResearch = nextResearch;
+      dossier = nextDossier;
+      mediaScout = await resolveDocumentaryHero(check.selected, assignment, {
+        ...currentResearch,
+        candidate_claims: dossier.claims.filter((c) => c.status === "verified"),
+      });
+      currentResearch.media_strategy = mediaScout ? "have" : "pending_illustration";
+      article = await writeArticle(env, assignment, dossier);
+      articleAttempts += 1;
+      routing.push("evidence→research→fact-check→journalist→final-editor");'''
+new = '''      const nextResearch = await runResearch(env, assignment, check.selected);
+      if (nextResearch.decision !== "continue") break;
+      const nextArticle = await writeArticle(env, assignment, nextResearch);
+      const nextDossier = await runFactCheck(env, assignment, nextResearch, nextArticle);
+      if (nextDossier.decision !== "publish") break;
+      const nextEvidence = JSON.stringify(nextDossier.claims || []);
+      if (nextEvidence === previousEvidence) break;
+      currentResearch = nextResearch;
+      dossier = nextDossier;
+      article = nextArticle;
+      mediaScout = await resolveDocumentaryHero(check.selected, assignment, { ...currentResearch, candidate_claims: dossier.claims.filter((c) => c.status === "verified") });
+      currentResearch.media_strategy = mediaScout ? "have" : "pending_illustration";
+      articleAttempts += 1;
+      routing.push("evidence→research→journalist→fact-check→final-editor");'''
+if old not in s:
+    raise SystemExit('retry anchor missing')
+s = s.replace(old, new, 1)
+s = s.replace('audit: { assignment, research: { rationale: research.rationale, candidate_claims: research.candidate_claims, contradictions: research.contradictions }, fact_check:', 'audit: { assignment, research: { rationale: currentResearch.rationale, candidate_claims: currentResearch.candidate_claims, contradictions: currentResearch.contradictions }, fact_check:', 1)
+
+p.write_text(s, encoding='utf-8')
