@@ -1,4 +1,4 @@
-# Scan 2026-09-03T18:25:50.498Z (Cloudflare runtime)
+# Scan 2026-09-03T21:15:57.786Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -17,24 +17,24 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Tom des Tages
 
 ## Al Jazeera
-- 20 million children a year face online sexual abuse, UNICEF says
-- Billionaire Leon Black sues US congressional panel over Epstein subpoena
-- Canada ready for a trade deal with US that benefits both, Carney says
-- Deadpool-Wolverine derby in the offing as Hugh Jackman targets Norwich City
+- 5 dead, dozens missing after migrant boat found after weeks at sea
+- Advocates decry US House vote to defund universities that boycott Israel
+- FIFA accuses UEFA of ‘smear campaign’ over Infantino, World Cup plan
+- Foreign fighters and external support fuel Sudan’s war: UN-backed probe
 - Four imprisoned Palestine Action activists appeal ‘terrorism’ sentences
-- Gaza farmers restore seed bank to preserve local crops
-- Houthi fighters clash with Yemeni government forces in country’s southwest
-- How much oil is going through Hormuz? Why data doesn’t match US claims
-- Israel’s siege on Gaza is forcing dentists to operate in the streets
-- Israeli bombing seen behind journalist reporting from Lebanese village
-- Jerusalem Daily: Students sing ‘Erase Palestine’
-- Kurdish women who fought ISIL seek place in Syria’s new security forces
-- Panama Canal restricts traffic amid Hormuz crisis: Why this matters
-- Real Madrid’s Raul Asencio acquitted in sex-tape sharing case
-- Spain’s PM says no evidence Morocco planned Ceuta border rush
-- Syria begins destroying al-Assad-era chemical weapons materials
-- Trump calls media ‘treasonous scum’ over reports of low Iran war munitions
-- What’s behind the vote-by-mail controversy in the US?
+- France records ‘hottest summer ever’ in 2026
+- Funeral held for child killed in US strike on Iranian wedding
+- ICE agent charged with lying under oath about Minnesota shooting
+- India rejects court ruling on Indus Waters Treaty
+- Ipswich Town vs Liverpool: Premier League – prediction, team news, lineups
+- Is Nepal leading the battle for climate justice?
+- Israel kills 3 in Gaza as far-right minister plans for Palestinian removals
+- Israel releases Lebanese civilian, says five prisoners will be freed
+- Leaders of Thailand and Singapore perform Beatles song, “Let It Be”
+- Serbia welcomes return of war criminal Mladic’s body with military honours
+- Stranded survivors in Nepal cross raging Trishuli River using zip line
+- Ten injured in Ukraine as Kyiv expects talks with US envoys in coming days
+- Train crashes into truck at railway crossing in Gdansk, Poland
 
 ## BBC Europe
 - BBC visits smouldering Kyiv market after Russian strikes
@@ -61,27 +61,27 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Why is Ukraine's ex-defence minister calling for wartime elections?
 
 ## BBC World
+- AI data centres are booming in Australia - but at what cost?
 - Anthony Joshua's driver attempted overtake before fatal crash, trial hears
 - 'Beautiful, vibrant' Disney star Carla Jeffery dies aged 33
-- Channel smuggling gangs resort to 'mega-dinghies' as crackdown limits small boat supply
-- Could Lindsay Clancy trial end in a mistrial? Here are the jury's options
 - Embattled Spanish PM insists there were no prior warnings before Ceuta crisis
 - EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany
 - Feminist activist and journalist Gloria Steinem dies, aged 92
 - How Gloria Steinem changed the lives of generations of women
+- ICE agent charged with lying about shooting Venezuelan man during crackdown
 - Kenyan president orders crackdown on foreigners operating small businesses
-- LA Clippers fined $30m over Leonard pay scandal
-- Liechtenstein MPs vote to legalise abortion despite threat of veto
-- Maltese tycoon acquitted of orchestrating murder of renowned journalist
 - More than 80 migrants feared dead after boat rescued off Canary Islands
 - Palestinian teens killed during settler attack on West Bank village, officials say
 - Rocky Horror star Tim Curry's cause of death revealed as coronary artery disease
+- Sharpeville massacre survivors start legal fight for justice in South Africa
+- Stingy bosses and spare change: How much should you give to the office whip-round?
 - Sydney police investigate second possible mistaken identity killing in two days
+- 'The crowd shouted that we'd stolen someone's genitals' - deadly rumours spread on social media
 - Toxic wildfire haze spreads across South East Asia as 'super' El Niño intensifies
 - Trump $1 coin makes him first living president on US currency in a century
 - UN warns of 'supersized' El Niño as countries prepare for impact
+- US sailors go shopping before hitting the bars in Thailand after 250-day voyage
 - Vance's Antichrist comments are a 'common belief', his friend tells BBC
-- Who is Alejandro Betancourt, colourful oil baron behind US-Venezuela oil deal?
 - Why Nepal floods should worry India
 
 ## CapX
@@ -91,12 +91,12 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Amfis: les outils de l’indignation
 - «Decline porn»: quand les influenceurs font le travail des journalistes
 - Esprit de Noël en avance: Mélenchon se paye un Sapin
-- Est-il possible de protéger le ciel ukrainien sans entrer en guerre contre la Russie?
 - Heureux comme un islamiste en France?
 - Le culte de la biodiversité est un antihumanisme
 - Le mausolée d’Obama
 - Luxe: le bijou dézingue la montre
 - 🎙️Podcast : L&#8217;été diplomatique et la fin du multilatéralisme
+- Poutine / présidentiables: un tragique décalage
 - Sur le pont de Tolbiac, on y meurt, on y meurt…
 
 ## City Journal
@@ -104,14 +104,14 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Contrepoints
 - Arrêts de travail : si on essayait la responsabilité ?
-- Contrairement à ce que soutient Manon Aubry, les effectifs salariés des grandes entreprises ont augmenté ces dernières années
 - En France, le contribuable est impuissant mais présumé coupable
 - Intentions de vote des jeunes : l’Education nationale et les médias publics ont réussi leur endoctrinement
-- L’Islande dit non à l’UE
+- La recherche française décroche au niveau mondial
+- La saga Warsh-Powell, ou l&#8217;aveu involontaire que les banques centrales n&#8217;ont jamais été indépendantes
+- Le grand fantasme de la dédollarisation
 - Le RN veut interdire le port du voile islamique
-- Libéralisme, liberté et sécurité
 - Pendant les 45 dernières années, la France est le seul pays du G7 à ne pas avoir connu un taux de chômage à moins de 7 % !
-- Protectionnisme : arrêt des importations de bœuf et de volaille brésiliens
+- Radio France : le pluralisme à géométrie variable
 - Travailler plus ! Oui, mais collectivement ou individuellement ?
 
 ## DR
@@ -137,16 +137,16 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Wammen indkalder til hastemøde efter fejl i kriminalregisteret
 
 ## DW
-- Berlin BER airport Terminal 1 evacuated after security scare
+- Berlin: BER Airport Terminal 1 reopened after security scare
 - Can Hichilema heal Zambia's political divide?
 - Data centers are everywhere. Here's what they're doing to the planet.
 - Germany: From emigration to immigration destination
-- Germany news: Police say arson attack targeted defense firm
 - Gloria Steinem, feminist activist and journalist, dies at 92
 - India news: Jaishankar offers help to end war in Ukraine
 - Indonesia: Thousands fall sick from free school meals
 - Iran bets on shadow networks to evade US sanctions
 - Is Germany's economic slump finally over?
+- Israel releases first of 5 Lebanese prisoners
 - Malaysia's middle path between China and US faces new tests
 - Norway seizes Russian ship in Svalbard to compensate Ukraine
 - Nvidia to buy Hugging Face in $12.93 billion deal
@@ -157,16 +157,16 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - US sanctions halt TOEFL and GRE tests in Iran, disrupting study plans
 
 ## Document.no
-- Dansk justisminister: – Russland greier ikke å skremme oss
+- En hjuldamper nær Fredriksvern, nå Stavern (1834).
 - Hva har skjedd med datingkulturen?
 - Interlude: Brahms &#8211; Haydn-variasjonene for orkester
-- LIVE: Staten lærer barna å lage sexleketøy
-- Norges ambassadør til russisk UD: Ikke vårt bord
-- Putin om norsk beslag: Statsterrorisme. Ambassadøren innkalt på teppet
+- OpenAI ruller ut ny og kraftig KI-modell
 - Skogpod 3. september 2026
-- Trøbbel med UDs nødtelefon
+- Solgte 550 tonn dårlig laks, noe av den selvdød, innkasserte 23 millioner
+- Trædal danket ut av Margit Bye
 - Tyskland og Danmark skal beskytte Østersjøen mot trusler fra Russland
 - Ukrainske sikkerhetstjenester skyter mot hverandre
+- Østerrikes statsminister sier han vil forby politisk islam
 
 ## Euronews
 - AI-powered robots showcased at European Parliament in Brussels
@@ -178,29 +178,29 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Ghana's fantasy coffins turn funerals into life stories
 - How a quiz show and a dream took Azerbaijan's Sabah to the Champions League
 - Iranian café chain mogul jailed and stripped of assets for backing January protests
-- Kyiv school year begins under the shadow of air raid sirens
 - Latest news bulletin | September 3rd, 2026 – Evening
 - Latest news bulletin | September 3rd, 2026 – Midday
 - Latest news bulletin | September 3rd, 2026 – Morning
 - Nepal Army cable helps Nuwakot flood survivors cross river
 - Rubio urges US allies to isolate Nicaragua's 'brutal dictatorship' after vote to ban opposition parties
 - Russians skewer authorities for ordering citizens to register their chicken
+- Trump hints US may not back UK over Falkland Islands, citing lack of Iran support
 - Two arrested after attack on defence companies in Munich
 - US energy firms significantly expand operations in Venezuela after Washington's oil deal with Caracas
 
 ## France 24
 - Anti-Christian murder in Syria? No indication he was killed because of his faith
-- Beastie Boy Mike D releases his first solo LP 'Thank You'
+- Deadlocked jury in Lindsay Clancy's children murder trial deliberates for sixth day
 - Driverless robotaxis hit the streets of London
+- El Niño weather phenomenon set to deliver massive blow to global economy
 - ‘Fight through darkness, water’: Nepal survivor recounts escape from flood-hit tunnel
 - France agriculture production sees economic hit from heatwaves
 - France-UK ties and humour celebrated as London receives Bayeux Tapestry
 - Giorgia Meloni government becomes Italy's longest-lasting since World War II
-- 'Glacier melt and sea level rise will continue: We cannot leave this to the next generation'
 - Murder of Daphne Caruana Galizia: Campaigner 'devastated' at tycoon's acquittal
-- Nepal Floods: Survivors hauled to safety with makeshift zip line
+- No, UN chief Guterres did not call Francesca Albanese 'out of control'
 - Outrage mounts in Malta after acquittal over journalist's murder
-- Please welcome the newest member to our team: The AI agent
+- Shady surgeons and Nigeria organ harvesting
 - Spanish PM Sanchez says no evidence Morocco orchestrated Ceuta border surge
 - Two Palestinian teens killed in West Bank raid by Israeli settlers and army
 - US energy firms dominate Venezuela deals worth billions
@@ -215,6 +215,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Almost half of world’s farmers poisoned by pesticides every year, experts find
 - Apocalypse prep or pure pragmatism: what is behind Peter Thiel’s move to Argentina?
 - Apple Maps renames Lake Ontario as ‘Lake America’ for US users after Trump order
+- Australia news live: Pauline Hanson to make cost of living ‘worse’, new union boss warns; Labor scraps course citing ‘integrity’
 - Australian science prize awarded to researcher studying memory accuracy of domestic violence survivors
 - BoM forecasts strongest El Niño on record as research points to ‘alarming’ climate change influence
 - China’s falling emissions amid Iran war spark hope of decarbonisation watershed
@@ -222,7 +223,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Japan halves speed limit to 30km/h on all narrow city streets
 - New constitution in Guinea-Bissau will undermine democracy, opponents say
 - Nobel laureate Machado: ‘Illegitimate’ Venezuela regime has no right to strike US oil deal
-- Off-grid UK-Australian couple describe ‘anguish’ at removal of children by Italian court
 - South African airline defends dramatic low-level flyby before rugby union clash
 - Spain’s PM says no evidence ‘whatsoever’ Morocco behind Ceuta border breach
 - The US and Venezuela: a century-old relationship drenched in oil
@@ -249,16 +249,16 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## NRK
 - Dette seier publikum om teaterstykket om Høiby: – Ei sterkare betydning
 - Fann 385 mill. år gamalt plantefossil: – Eg sa nokre ukristelege ord
+- FpU-varsler i Debatten: – Jeg ble kvalm av det
+- Gav kongen eit løfte
 - Hurra, de blir i Norge! Eller?
-- Håp og fortviling tusenvis av kilometer unna
+- Håp og fortviling i Katmandu: – Eg er lei meg
 - Klikkfabrikker i Vietnam deler falske bilder av syk kong Harald
 - Kongens gravferd: – Politiet vil ta i bruk hele verktøykassen
+- MC-fører omkom
 - MC-ulykke i Ringerike: E16 stengt i begge retninger
 - Mister en kvart milliard – mener bydelsreformen kan være ulovlig
-- Norsk Folkehjelp seier nei til 400 millionar kroner
 - Nå avgjøres hvem som blir Oslo MDGs nye frontfigur
-- Politiet innfører midlertidig indre grensekontroll fra 4. september
-- Reagerer på makrell-kutt: – Latterlig nyhet
 - Se hvordan togene knuses – snart kommer de nye
 - Slutt for YouTube-suksessen «Chicken Shop Date»
 - Tiltalt for sal av dårleg oppdrettslaks for nesten 50 millionar
@@ -275,58 +275,59 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - The Meta Settlement Settles Nothing
 - The Need for Electricity Abundance
 - The Trauma Hothouse in Venice
-- The Vindication of Tom Homan
+- The Trumpapalooza You Never Knew You Wanted
 - There Is No Problem Government Creates That It Can’t Make Worse
 - Trump’s Tacky Coin
 - When the Horseshoe Isn’t Just a Theory
 
 ## Politico Europe
-- Canada invited to Ireland for EU talks alongside Trump’s trade envoy
 - ChatGPT soumis à de nouvelles règles européennes aux multiples angles morts
 - Document: EU Parliament wants tighter fossil fuel exclusions under sustainable finance rules
 - Dominique de Villepin &#8220;veut&#8221; être candidat. Vraiment ?
-- EU diplomats cautiously court Nigel Farage
-- German defense chief to meet with Hegseth after earlier snub
+- Farage pledges to slash UK energy bills
 - Germany&#8217;s far right gains off VW troubles
+- Mark Zuckerberg said a national AI regulator was a flawed idea in a secret call with President Trump
+- Meta blocks dozens of accounts protesting Kushner-linked Albanian resort project
 - Slovakia rejects EU&#8217;s plan to lock in Russia sanctions for 12 months
 - SpaceX, Blue Origin ditch Macron’s space summit after White House pressure
 - Trump says he’ll ask Europe to pay back US for munitions sent to Ukraine
 
 ## Reason
 - A California County Used Drones To Spy on Homes. A Settlement Will Now Require Warrants.
-- Brickbat: School of Hard Knocks
-- Florida Revenge Porn Law Doesn't Cover Simulated Sexual Conduct That's Implied Rather Than Shown
-- John Roberts Overruled Trump's Tariffs. But He Can't Seem To Stop Trump's Ballroom.
-- Judge Rejects Trump Administration's Plan To Break Up Google's Ad Business
+- A New Bill Reflects the Bipartisan Backlash Against Flock-Enabled Mass Surveillance
+- An Essay on How to Get Top Grades On Law School Exams
+- Brief Update on the Entergy / Arkansas Democrat-Gazette Matter
+- Congress Is Trying (Again) To Ban Boycotting Israel
+- ICE Reportedly Lowered Its Standards To Meet Trump's Hiring Goal
+- If You Replace the 13 Arrows on the U.S. Great Seal with a Modern Rifle, Make Sure You Depict a 50-Round Magazine
 - Judge's Opinion Denying TRO Against Arkansas Democrat-Gazette as to Publishing of Data Center Plans
-- Mamdani Bans the Robot Teachers
-- My New USA Today Article On Dangerous Similarities Between "Democratic Socialists" and MAGA Nationalists
-- Puerto Rico Has Rational Basis for Allowing Only Two Genders for Birth Certificate Gender Changes
-- Today in Supreme Court History: September 3, 2005
-- Trump Can't Deport Legal Immigrants for Protected Speech, Judge Rules
-- Trump Is Taking a Stake in Venezuela's Oil Industry and This Crony Is Cashing In
+- Lindsay Clancy, Heehaw the Donkey, and New Magneto Origins
+- State Film Subsidies Lose Money. Trump Wants To Try the Idea Nationally.
+- This Wired Article About AI Detection Software Was Really Mean
+- Trump's Beef Tariff Cut Accidentally Makes the Case for Free Trade
 
 ## SVT
 - Anders Blomquist om generationsväxlingen: ”Motståndet är sämre än någonsin”
+- Busch om flörtanklagelserna: ”Blir inget stödhjul åt S”
+- Djurgården med i guldstriden – efter målvaktens stormatch
 - Eva tog första bubbelglaset hos frisören i Jönköping
 - Experten: Dråpet i Karlstad utnyttjat som politiskt vapen
 - ”Finns dubbla skäl till att Rysslands hybridkampanj blir ännu värre”
+- Förlust för Calle Järnkroks Brynäs: ”Det kan bara bli bättre”
 - Hund hade bruten käke på grund av tumör i munnen – ägaren döms för djurplågeri
 - ”Håller trenden i sig blir det ett jämnt val”
 - Kristdemokraternas förslag: Inrätta viltmyndighet i Karlstad
 - Man död i Skepplanda – föll av gräsklippare
 - Man åtalas för grov utpressning – tvingade till sig 464 000 kronor
 - Misstänkta föremålet i Helsingborg var ofarligt
+- Mjällby utskällt av supportrarna: ”Man skäms”
 - Nu öppnar ”Star wars”-skaparens museum
-- Nya misstankar efter dödsmisshandel i Mariestad
-- Nya övervakningskameror testades – kan ha filmat attacken på Brinellskolan
 - Skid-VM ska arrangeras varje år – beskedet överraskade svenska landslaget
 - Skvättfria pissoarer och ruttnande kalsonger
 - SVT/Verian: L närmar sig spärren – ”Kan gå fort”
-- Sålde ”otrohetssoffa” på Blocket – nu åtalas han för grovt förtal
-- Uppgifter om hot mot skola i Katrineholm – polisen ökar närvaron
 
 ## Sky World
+- <a href='https://news.sky.com/video/sky-news-crosses-over-flooded-river-dividing-nepalese-town-13580967'>Sky News crosses flooded Nepali river in high wire metal cage</a>
 - About 80 dead in migrant boat tragedy
 - British woman, 34, stabbed to death in hotel corridor in Portugal
 - Current El Nino extreme weather phenomenon will be 'exceptional', say forecasters
@@ -334,7 +335,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - FIFA accuses UEFA of launching 'smear campaign' against Gianni Infantino
 - Maltese businessman cleared over murder of journalist Daphne Caruana Galizia
 - Nationwide migrant protests prompt appeals for calm in Spain's North African territory
-- Pistol in lake could be linked to unsolved killings of British family
 - Tiger Woods gets five-year driving ban and fine after entering car crash plea deal
 - Uber shuts operations in Nigeria and Uganda with immediate effect
 
@@ -359,12 +359,12 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - A California City Drops Houses On Gavin Newsom&#8217;s Bullet Train
 - Biden Judge Blocks Trump&#8217;s Renewed Efforts To Curb Birthplace Citizenship
 - CNN: Trump Cut Funding That Would Not Have Stopped Nepal Flood. Here&#8217;s Why It&#8217;s Still His Fault
+- Democrats Are Criminally Liable For Every Immigrant-Related Death
 - DOJ Set To Send Army Of Monitors To Keep An Eye On Elections
 - DOJ Tells Sanctuary States They Must Report Illegals To Get Federal Welfare
 - From Iryna Zarutska To Lindsay Clancy, The Left Only Likes Women If They&#8217;re Politically Useful
 - Leftists Tearing Down Statues Are Showing You What They Want To Do To America
-- Report: DHS Launches Voter Fraud &#8216;Surge&#8217; Probes In Nine States
-- The Story About Lindsay Clancy Being A Victim Comes From Deeper Roots Than 1960s Feminism
+- New IRS Rule To Strip Private Schools At All Levels Of Tax-Exempt Status For Using DEI
 - The Wealth Gap Is Real, And Washington Created It
 
 ## The Local Denmark
