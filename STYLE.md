@@ -2,6 +2,14 @@
 
 Kort. Aktivt. Dansk. Præcist. Seriøst uden at være stift.
 
+## Hård sprogregel
+
+**Al redaktionel tekst skal skrives på dansk.** Det gælder rubrik, manchet, brødtekst, mellemoverskrifter, billedtekster, teasere og øvrig redaktionel prosa.
+
+Undtagelser er kun egennavne, officielle navne, ordrette citater og produkt-/værknavne, hvor originalsproget skal bevares. Almindelige udenlandske ord, jobtitler, faste vendinger, grammatik og bøjninger skal oversættes til naturligt dansk.
+
+Norsk, svensk eller engelsk må aldrig glide ind som løbende redaktionelt sprog. Kildens sprog må ikke styre artikelens sprog.
+
 ## Grundregler
 
 - Skriv den vigtigste oplysning først.
