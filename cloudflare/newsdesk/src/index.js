@@ -40,6 +40,33 @@ const FEEDS = [
   { name: "Indenrigs- og Sundhedsministeriet X", url: "https://syndication.twitter.com/srv/timeline-profile/screen-name/DKsundhed", mode: "x_syndication", x_handle: "DKsundhed", source_class: "authority_social", region: "DK", priority: 4, limit: 12 },
   { name: "Transportministeriet X", url: "https://syndication.twitter.com/srv/timeline-profile/screen-name/TRM_dk", mode: "x_syndication", x_handle: "TRM_dk", source_class: "authority_social", region: "DK", priority: 3, limit: 12 },
 
+  // Specialist editorial/discovery sources. Strong specialist outlets may be used as normal
+  // secondary reporting; newsletters, podcasts and expert-led sources are discovery only.
+  { name: "TLDR Tech", url: "https://tldr.tech/rss", source_class: "tech_discovery", region: "WORLD", priority: 3, limit: 16, discovery_only: true },
+  { name: "The Neuron", url: "https://www.theneuron.ai/feed", source_class: "tech_discovery", region: "WORLD", priority: 3, limit: 16, discovery_only: true },
+  { name: "MIT Technology Review", url: "https://www.technologyreview.com/feed/", source_class: "specialist_news", region: "US", priority: 4, limit: 18 },
+  { name: "Hard Fork", url: "https://feeds.simplecast.com/l2i9YnTd", source_class: "tech_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },
+
+  { name: "Nature Briefing", url: "https://news.google.com/rss/search?q=site%3Anature.com%20%22Daily%20briefing%22&hl=en&gl=US&ceid=US%3Aen", source_class: "science_discovery", region: "WORLD", priority: 4, limit: 16, discovery_only: true },
+  { name: "ScienceDaily", url: "https://www.sciencedaily.com/rss/", source_class: "science_discovery", region: "WORLD", priority: 3, limit: 18, discovery_only: true },
+  { name: "Quanta Magazine", url: "https://www.quantamagazine.org/feed/", source_class: "specialist_news", region: "US", priority: 4, limit: 18 },
+  { name: "Videnskab.dk", url: "https://news.google.com/rss/search?q=site%3Avidenskab.dk&hl=da&gl=DK&ceid=DK%3Ada", source_class: "specialist_news", region: "DK", priority: 4, limit: 18 },
+
+  { name: "Huberman Lab", url: "https://feeds.megaphone.fm/hubermanlab", source_class: "health_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },
+  { name: "The Peter Attia Drive", url: "https://peterattiadrive.libsyn.com/rss", source_class: "health_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },
+  { name: "FoundMyFitness", url: "https://podcast.foundmyfitness.com/rss.xml", source_class: "health_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },
+  { name: "ZOE Science & Nutrition", url: "https://feeds.megaphone.fm/ZOELIMITED9301524082", source_class: "health_discovery", region: "UK", priority: 3, limit: 12, discovery_only: true },
+
+  { name: "Psychology Today", url: "https://news.google.com/rss/search?q=site%3Apsychologytoday.com&hl=en&gl=US&ceid=US%3Aen", source_class: "psychology_discovery", region: "US", priority: 3, limit: 16, discovery_only: true },
+  { name: "The Psychology Podcast", url: "https://news.google.com/rss/search?q=site%3Ascottbarrykaufman.com%2Fpodcast&hl=en&gl=US&ceid=US%3Aen", source_class: "psychology_discovery", region: "US", priority: 2, limit: 10, discovery_only: true },
+  { name: "Bessel van der Kolk", url: "https://news.google.com/rss/search?q=%22Bessel%20van%20der%20Kolk%22&hl=en&gl=US&ceid=US%3Aen", source_class: "psychology_discovery", region: "WORLD", priority: 2, limit: 10, discovery_only: true },
+  { name: "Gabor Maté", url: "https://news.google.com/rss/search?q=%22Gabor%20Mat%C3%A9%22&hl=en&gl=US&ceid=US%3Aen", source_class: "psychology_discovery", region: "WORLD", priority: 2, limit: 10, discovery_only: true },
+
+  { name: "The Gottman Institute", url: "https://www.gottman.com/blog/feed/", source_class: "relationships_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },
+  { name: "Esther Perel", url: "https://feeds.megaphone.fm/ep-wswb", source_class: "relationships_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },
+  { name: "Good Inside with Dr. Becky", url: "https://feeds.simplecast.com/Y5N0xWWZ", source_class: "parenting_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },
+  { name: "Sex and Psychology", url: "https://www.sexandpsychology.com/feed/podcast/sex-and-psychology-podcast/", source_class: "relationships_discovery", region: "US", priority: 3, limit: 12, discovery_only: true },
+
   // Perspective/discovery sources. Valuable as tips and agenda discovery, but never
   // sufficient verification merely because they are separate URLs/sites.
   { name: "Indblik", url: "https://indblik.dk/feed/", source_class: "perspective_discovery", region: "DK", priority: 2, limit: 12, discovery_only: true },
