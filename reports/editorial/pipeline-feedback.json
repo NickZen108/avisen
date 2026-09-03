@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-03T11:13:57.631370Z",
+  "generated_at": "2026-09-03T11:39:39.968875Z",
   "date_dk": "2026-09-03",
   "policy": {
     "diagnostic_only": true,
@@ -18,8 +18,17 @@
     "release"
   ],
   "today": {
-    "rejections": 8,
+    "rejections": 9,
     "reviews": [
+      {
+        "at": "2026-09-03T11:39:23.851Z",
+        "slug": null,
+        "title": "Ikke navngivet kandidat",
+        "stage": "runtime_error",
+        "reason": "Error: Workers AI returned JSON that does not match required schema shape",
+        "class": "review",
+        "assessment": "Diagnostisk efterkontrol; opret ikke nye gates."
+      },
       {
         "at": "2026-09-03T11:13:33.171Z",
         "slug": null,
@@ -100,7 +109,7 @@
     "final_editor": 5,
     "media": 5,
     "research": 13,
-    "runtime_error": 13
+    "runtime_error": 14
   },
   "current_blockers": [
     {
