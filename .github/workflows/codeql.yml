@@ -6,16 +6,12 @@ on:
       - 'cloudflare/**'
       - 'docs/**/*.js'
       - 'scripts/**/*.mjs'
-      - '.github/workflows/**'
-      - 'wrangler.jsonc'
   pull_request:
     branches: [main]
     paths:
       - 'cloudflare/**'
       - 'docs/**/*.js'
       - 'scripts/**/*.mjs'
-      - '.github/workflows/**'
-      - 'wrangler.jsonc'
   schedule:
     - cron: '41 2 * * 2'
 permissions:
