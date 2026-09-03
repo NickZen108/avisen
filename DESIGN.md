@@ -23,7 +23,7 @@ Kun en kompakt bjælke med sol-logoet og wordmarken “Morgentidende” forblive
 
 Brød: Source Serif 4. Kicker/UI: Source Sans 3.
 
-`Mere om sagen` bruger samme serif-familie som avisens øvrige rubrikker. Kategorilabels forbliver små sans serif-labels. Forsiden må ikke have sektionsoverskriften `Også i dag`.
+`Læs også` bruger samme serif-familie som avisens øvrige rubrikker. Kategorilabels forbliver små sans serif-labels. Forsiden må ikke have sektionsoverskriften `Også i dag`.
 
 ## Rubrikhierarki på forsiden
 
