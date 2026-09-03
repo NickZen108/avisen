@@ -1,4 +1,4 @@
-# Scan 2026-09-03T21:15:57.786Z (Cloudflare runtime)
+# Scan 2026-09-03T23:05:51.301Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -17,24 +17,24 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Tom des Tages
 
 ## Al Jazeera
-- 5 dead, dozens missing after migrant boat found after weeks at sea
 - Advocates decry US House vote to defund universities that boycott Israel
+- Burnham, Macron talk border security and stronger Europe-UK ties
+- El Nino: A phenomenon supercharged by climate change
 - FIFA accuses UEFA of ‘smear campaign’ over Infantino, World Cup plan
-- Foreign fighters and external support fuel Sudan’s war: UN-backed probe
-- Four imprisoned Palestine Action activists appeal ‘terrorism’ sentences
 - France records ‘hottest summer ever’ in 2026
 - Funeral held for child killed in US strike on Iranian wedding
 - ICE agent charged with lying under oath about Minnesota shooting
 - India rejects court ruling on Indus Waters Treaty
 - Ipswich Town vs Liverpool: Premier League – prediction, team news, lineups
-- Is Nepal leading the battle for climate justice?
 - Israel kills 3 in Gaza as far-right minister plans for Palestinian removals
-- Israel releases Lebanese civilian, says five prisoners will be freed
 - Leaders of Thailand and Singapore perform Beatles song, “Let It Be”
+- Nepal flood victims to be identified through DNA
+- NYC’s AI ban through grade 8 sets stage for rest of US, experts say
 - Serbia welcomes return of war criminal Mladic’s body with military honours
-- Stranded survivors in Nepal cross raging Trishuli River using zip line
 - Ten injured in Ukraine as Kyiv expects talks with US envoys in coming days
 - Train crashes into truck at railway crossing in Gdansk, Poland
+- US Vice President JD Vance declines to offer timeline for end of Iran war
+- Why are people calling Venezuela oil deal a new form of US colonialism?
 
 ## BBC Europe
 - BBC visits smouldering Kyiv market after Russian strikes
@@ -116,7 +116,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## DR
 - 20 personer menes at være gået ned med forlist færge ved Cypern
-- 22 mister livet i busulykke i Egypten
 - Antallet af savnede i Nepal og Tibet opjusteres
 - Båd fundet ud for De Kanariske Øer - 80 menes at have mistet livet
 - Dolly Partons stjerne på Hollywoods 'Walk of Fame' restaureres
@@ -124,7 +123,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Er momsdifferentiering en dårlig idé?
 - Første portrætmaleri af kong Frederik på vej
 - Hvorfor skaber den nye gødskningslov debat?
-- Italiensk salami tilbagekaldes
 - Nordjysk festival udsolgt på 55 minutter
 - Ny præsident udpeget i Estland
 - Omstridt Flextrafik-leverandør begæret konkurs
@@ -134,12 +132,14 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - To døde og flere sårede efter skyderi i Minneapolis
 - Togaflysninger mellem Slagelse og Københavns Lufthavn frem til middag
 - Trump foreslår at navngive Hormuzstrædet efter sig selv
+- Trumps triumfbue påbegyndes inden for to uger, siger indenrigsminister
+- USA undersøger anklage om angreb på iransk bryllup
 - Wammen indkalder til hastemøde efter fejl i kriminalregisteret
 
 ## DW
 - Berlin: BER Airport Terminal 1 reopened after security scare
 - Can Hichilema heal Zambia's political divide?
-- Data centers are everywhere. Here's what they're doing to the planet.
+- FIFA blames UEFA for 'smear campaign' against Infantino
 - Germany: From emigration to immigration destination
 - Gloria Steinem, feminist activist and journalist, dies at 92
 - India news: Jaishankar offers help to end war in Ukraine
@@ -158,13 +158,13 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 
 ## Document.no
 - En hjuldamper nær Fredriksvern, nå Stavern (1834).
+- Fra Norge til New York: Gåten om vestlige kvinner som vil behage muslimske menn
 - Hva har skjedd med datingkulturen?
 - Interlude: Brahms &#8211; Haydn-variasjonene for orkester
 - OpenAI ruller ut ny og kraftig KI-modell
 - Skogpod 3. september 2026
 - Solgte 550 tonn dårlig laks, noe av den selvdød, innkasserte 23 millioner
 - Trædal danket ut av Margit Bye
-- Tyskland og Danmark skal beskytte Østersjøen mot trusler fra Russland
 - Ukrainske sikkerhetstjenester skyter mot hverandre
 - Østerrikes statsminister sier han vil forby politisk islam
 
@@ -189,6 +189,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - US energy firms significantly expand operations in Venezuela after Washington's oil deal with Caracas
 
 ## France 24
+- '50% savvy political tactics, 50% extraordinarily good luck' - the formula to Meloni's success?
 - Anti-Christian murder in Syria? No indication he was killed because of his faith
 - Deadlocked jury in Lindsay Clancy's children murder trial deliberates for sixth day
 - Driverless robotaxis hit the streets of London
@@ -197,11 +198,10 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - France agriculture production sees economic hit from heatwaves
 - France-UK ties and humour celebrated as London receives Bayeux Tapestry
 - Giorgia Meloni government becomes Italy's longest-lasting since World War II
-- Murder of Daphne Caruana Galizia: Campaigner 'devastated' at tycoon's acquittal
 - No, UN chief Guterres did not call Francesca Albanese 'out of control'
-- Outrage mounts in Malta after acquittal over journalist's murder
+- Nvidia to buy Hugging Face for $12.93 billion in major AI expansion
 - Shady surgeons and Nigeria organ harvesting
-- Spanish PM Sanchez says no evidence Morocco orchestrated Ceuta border surge
+- Tunisia court upholds prison sentences of up to 45 years for opposition figures
 - Two Palestinian teens killed in West Bank raid by Israeli settlers and army
 - US energy firms dominate Venezuela deals worth billions
 - US feminist icon and journalist Gloria Steinem dies aged 92
@@ -215,13 +215,13 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Almost half of world’s farmers poisoned by pesticides every year, experts find
 - Apocalypse prep or pure pragmatism: what is behind Peter Thiel’s move to Argentina?
 - Apple Maps renames Lake Ontario as ‘Lake America’ for US users after Trump order
-- Australia news live: Pauline Hanson to make cost of living ‘worse’, new union boss warns; Labor scraps course citing ‘integrity’
 - Australian science prize awarded to researcher studying memory accuracy of domestic violence survivors
 - BoM forecasts strongest El Niño on record as research points to ‘alarming’ climate change influence
 - China’s falling emissions amid Iran war spark hope of decarbonisation watershed
 - Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case
 - Japan halves speed limit to 30km/h on all narrow city streets
 - New constitution in Guinea-Bissau will undermine democracy, opponents say
+- News live: Two more Australians confirmed safe in Nepal-Tibet floods; Bowen calls joint statement on China ‘strong’
 - Nobel laureate Machado: ‘Illegitimate’ Venezuela regime has no right to strike US oil deal
 - South African airline defends dramatic low-level flyby before rugby union clash
 - Spain’s PM says no evidence ‘whatsoever’ Morocco behind Ceuta border breach
@@ -300,9 +300,9 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Congress Is Trying (Again) To Ban Boycotting Israel
 - ICE Reportedly Lowered Its Standards To Meet Trump's Hiring Goal
 - If You Replace the 13 Arrows on the U.S. Great Seal with a Modern Rifle, Make Sure You Depict a 50-Round Magazine
-- Judge's Opinion Denying TRO Against Arkansas Democrat-Gazette as to Publishing of Data Center Plans
 - Lindsay Clancy, Heehaw the Donkey, and New Magneto Origins
 - State Film Subsidies Lose Money. Trump Wants To Try the Idea Nationally.
+- This U.S. Citizen Is Suing ICE for Arresting Him 3 Times. His Lawsuit Is Moving Forward.
 - This Wired Article About AI Detection Software Was Really Mean
 - Trump's Beef Tariff Cut Accidentally Makes the Case for Free Trade
 
@@ -333,9 +333,9 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Current El Nino extreme weather phenomenon will be 'exceptional', say forecasters
 - Discovery of explosive devices at substation leads to sabotage probe
 - FIFA accuses UEFA of launching 'smear campaign' against Gianni Infantino
-- Maltese businessman cleared over murder of journalist Daphne Caruana Galizia
-- Nationwide migrant protests prompt appeals for calm in Spain's North African territory
 - Tiger Woods gets five-year driving ban and fine after entering car crash plea deal
+- Trump avoids backing UK over Falklands, saying Britain 'not there to help' in Iran
+- Two people arrested by German police over alleged arson attack on defence firm
 - Uber shuts operations in Nigeria and Uganda with immediate effect
 
 ## Spiked
@@ -362,7 +362,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Democrats Are Criminally Liable For Every Immigrant-Related Death
 - DOJ Set To Send Army Of Monitors To Keep An Eye On Elections
 - DOJ Tells Sanctuary States They Must Report Illegals To Get Federal Welfare
-- From Iryna Zarutska To Lindsay Clancy, The Left Only Likes Women If They&#8217;re Politically Useful
+- Kavanaugh Declines To Order Citizen-Only Voting Initiative On Michigan&#8217;s Fall Ballot
 - Leftists Tearing Down Statues Are Showing You What They Want To Do To America
 - New IRS Rule To Strip Private Schools At All Levels Of Tax-Exempt Status For Using DEI
 - The Wealth Gap Is Real, And Washington Created It
@@ -407,15 +407,15 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Wolodarskis jakt på prenumeranter förklarar DN
 
 ## UnHerd
+- A childless world changes everything
 - AI is Trump’s Manhattan Project
-- America’s brain-rotting socialism debate
 - Andy Burnham meets reality
-- Could the Middlesbrough crime spree spread?
 - Get ready for the Trump Slump
 - How Domesday made modern England
-- How the Euro elite helps Trump
+- How Shakespeare explains the Taliban
 - How Wendell Berry saved my life
-- Milo Yiannopoulos’ horrible homecoming
 - Nepal’s clean energy curse
 - Samuel Samson: Team Trump’s civilisation defender
 - The man who made bin Laden
+- The plot to stop the AfD
+- Why universities embrace cheats
