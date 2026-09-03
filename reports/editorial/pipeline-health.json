@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T23:36:47Z",
+  "generated_at": "2026-09-03T01:32:16Z",
   "counts": {
-    "published": 23,
+    "published": 24,
     "checking": 2,
     "draft": 3
   },
@@ -238,6 +238,14 @@
     {
       "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe",
       "title": "WHO-chefen advarer om, at Ebola-udbruddet skal intensiveres for at stoppe udbruddet.",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede",
+      "title": "Minneapolis-apartment-skyderi: Tre døde og flere sårede",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

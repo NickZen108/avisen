@@ -1,14 +1,17 @@
 {
-  "date": "2026-09-02",
+  "date": "2026-09-03",
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker": {
-    "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
+    "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
   },
   "lead": {
-    "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
+    "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
   },
   "rail": [
+    {
+      "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
+    },
     {
       "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
     },
@@ -20,9 +23,6 @@
     },
     {
       "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist"
-    },
-    {
-      "slug": "2026-09-02-dykolycka-i-lerkils-hamn-en-person-er-blevet-allvarligt-skadet"
     }
   ],
   "stack": [
@@ -53,6 +53,9 @@
   ],
   "narrow": [
     {
+      "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede"
+    },
+    {
       "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c"
     },
     {
@@ -72,9 +75,6 @@
     },
     {
       "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund"
-    },
-    {
-      "slug": "2026-09-02-trump-foresla-r-at-navngive-hormuzstraedet-efter-sig-selv"
     }
   ]
 }

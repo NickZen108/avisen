@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-minneapolis-apartment-shooting-leaves-three-dead-multiple-injured",
   "slug": "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede",
   "category": "Krimi",
@@ -34,7 +34,7 @@
   "title": "Minneapolis-apartment-skyderi: Tre døde og flere sårede",
   "standfirst": "To personer blev dræbt og en mistænkt døde efter en skydeepisode i en lejlighedskompleks i Minneapolis, USA.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T01:32:16Z",
   "updated_at": null,
   "manual_review": false,
   "ledger": "sources/2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede.json",
@@ -87,5 +87,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T01:32:16Z"
+  }
 }
