@@ -29,13 +29,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Sync Cloudflare Newsdesk runtime
+      - name: Refresh candidate queue
         run: |
           if python scripts/sync_cloudflare_scan.py; then
             echo "Cloudflare Newsdesk synced"
           else
-            echo "Cloudflare Newsdesk unavailable; using temporary GitHub fallback"
+            echo "Cloudflare Newsdesk unavailable; using GitHub feed fallback"
             bash scripts/scan-feeds.sh
+            python scripts/newsroom_queue.py
           fi
       - name: Commit scan state
         run: |
