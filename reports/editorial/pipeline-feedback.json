@@ -1,18 +1,22 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-09-03T08:43:56.812917Z",
+  "schema_version": 2,
+  "generated_at": "2026-09-03T10:05:14.235166Z",
   "date_dk": "2026-09-03",
   "policy": {
-    "review_every_rejection": true,
-    "automatic_threshold_changes": false,
-    "hard_gates_not_relaxed_automatically": [
-      "fact_check",
-      "ethics",
-      "right_of_reply",
-      "final_editor"
-    ],
-    "rule": "Hver afvisning vurderes for falsk blokering, reparerbar friktion eller legitim hard gate. Ændringer foreslås først; målbare eksperimenter kan derefter skrues op/ned."
+    "diagnostic_only": true,
+    "automatic_rule_changes": false,
+    "principle": "Færre fejl, færre afvisninger og færre neurons pr. godkendt artikel. Feedback må ikke skabe nye gates."
   },
+  "canonical_flow": [
+    "scan",
+    "newsdesk",
+    "research",
+    "fact_check",
+    "journalist",
+    "media",
+    "final_editor",
+    "release"
+  ],
   "today": {
     "rejections": 5,
     "reviews": [
@@ -23,28 +27,25 @@
         "stage": "fact_check",
         "reason": "Fact checker: semantisk fejl mod originalkilden",
         "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
+        "assessment": "Send kun konkret evidensmangel til Research/Fact checker."
       },
       {
         "at": "2026-09-03T06:26:04.797Z",
         "slug": null,
         "title": "Kanalen smuglerbander",
-        "stage": "seo",
+        "stage": "final_editor",
         "reason": "seo: overlappende meta-titler; seo: overlappende meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner; seo: overlappende meta-titler og meta-deskriptioner",
-        "class": "repairable",
-        "assessment": "SEO bør normalt auto-repareres. Gentagne stop bør flyttes fra hard stop til automatisk reparation før final editor.",
-        "pipeline_change_considered": true
+        "class": "technical",
+        "assessment": "Reparer deterministisk; må ikke være redaktionelt stop."
       },
       {
         "at": "2026-09-03T06:22:02.224Z",
         "slug": null,
         "title": "El Niño: FN advarer om 'supersized' vejrfænomen",
-        "stage": "ethics",
+        "stage": "final_editor",
         "reason": "seo: Seo_description er ikke en nødvendig eller relevant beskrivelse af artiklen. Den giver kun en overordnet ide om, hvad artiklen handler om, men ikke den specifikke information, der findes i artiklen.; seo: Seo_title er ikke en nødvendig eller relevant titel for artiklen. Den giver kun en overordnet ide om, hvad artiklen handler om, men ikke den specifikke information, der findes i artiklen.; ethics: Artiklen citerer flere kilder, men uden at specificere, hvilke kilder der er blevet brugt til at støtte hver enkelt påstand. Dette kan give anledning til misforståelser eller forvrængninger af informationen.; seo: Artiklen indeholder flere påstande uden at give en tydelig forklaring på, hvordan disse påstande er blevet til. Dette kan gøre det svært for læserne at forstå, hvordan artiklen er blevet skrevet og hvilke kilder der er blevet brugt til at støtte hver enkelt påstand.",
-        "class": "repairable",
-        "assessment": "SEO bør normalt auto-repareres. Gentagne stop bør flyttes fra hard stop til automatisk reparation før final editor.",
-        "pipeline_change_considered": true
+        "class": "technical",
+        "assessment": "Reparer deterministisk; må ikke være redaktionelt stop."
       },
       {
         "at": "2026-09-03T06:01:53.327Z",
@@ -53,8 +54,7 @@
         "stage": "fact_check",
         "reason": "Fact checker: semantisk fejl mod originalkilden",
         "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
+        "assessment": "Send kun konkret evidensmangel til Research/Fact checker."
       },
       {
         "at": "2026-09-03T05:22:40.064Z",
@@ -63,46 +63,18 @@
         "stage": "fact_check",
         "reason": "Fact checker: semantisk fejl mod originalkilden",
         "class": "evidence",
-        "assessment": "Bevar fact-check som hard gate. Undersøg først kildeindhentning og claim-opdeling før krav sænkes.",
-        "pipeline_change_considered": true
+        "assessment": "Send kun konkret evidensmangel til Research/Fact checker."
       }
     ]
   },
   "last7_stage_counts": {
-    "ethics": 3,
+    "ethics": 1,
     "fact_check": 14,
-    "infrastructure": 11,
-    "language": 1,
+    "final_editor": 5,
     "media": 5,
     "research": 12,
-    "seo": 2
+    "runtime_error": 11
   },
-  "suggested_adjustments": [
-    {
-      "stage": "seo",
-      "parameter": "repair_policy",
-      "current": "1 auto-repair",
-      "proposed": "2 auto-repair",
-      "status": "experiment",
-      "why": "2 SEO-stop på 7 dage; dette er normalt reparerbar friktion."
-    },
-    {
-      "stage": "research",
-      "parameter": "source_retrieval",
-      "current": "2 kilder / 3 gruppe-mål",
-      "proposed": "bevar tærskel; forbedr retrieval",
-      "status": "investigate",
-      "why": "26 evidensstop på 7 dage. Før krav sænkes skal source fetch, syndikering og source_group-lineage måles."
-    },
-    {
-      "stage": "infrastructure",
-      "parameter": "capacity",
-      "current": "observeret driftsstop",
-      "proposed": "genkør/kapacitetsstyring",
-      "status": "fix-system",
-      "why": "11 driftsstop på 7 dage er ikke et argument for at svække redaktionelle gates."
-    }
-  ],
   "current_blockers": [
     {
       "slug": "2026-08-31-grand-canyon-flash-flood-en-doed-og-cirka-15-savnet",
@@ -119,279 +91,6 @@
       "resume_from": "research",
       "reasons": [
         "ledger mangler"
-      ]
-    }
-  ],
-  "flow": [
-    {
-      "id": "newsdesk",
-      "label": "Newsdesk",
-      "kind": "selection",
-      "hard_gate": false,
-      "requirements": [
-        {
-          "key": "max_story_candidates",
-          "label": "Historier valgt pr. cycle",
-          "value": 1,
-          "unit": "artikel",
-          "adjustable": true
-        },
-        {
-          "key": "min_start_sources",
-          "label": "Troværdige startkilder",
-          "value": 1,
-          "unit": "kilde",
-          "adjustable": true
-        }
-      ]
-    },
-    {
-      "id": "triage",
-      "label": "Triage",
-      "kind": "deterministic",
-      "hard_gate": false,
-      "requirements": [
-        {
-          "key": "fetch_probe",
-          "label": "Fetch/source probe før dyre trin",
-          "value": 1,
-          "unit": "probe",
-          "adjustable": false
-        },
-        {
-          "key": "risk_flag",
-          "label": "High-risk/right-of-reply klassificeret",
-          "value": 1,
-          "unit": "flag",
-          "adjustable": false
-        },
-        {
-          "key": "media_scout",
-          "label": "Tidlig documentary media-scout",
-          "value": 1,
-          "unit": "scout",
-          "adjustable": false
-        }
-      ]
-    },
-    {
-      "id": "research",
-      "label": "Research",
-      "kind": "evidence",
-      "hard_gate": true,
-      "requirements": [
-        {
-          "key": "min_readable_strong_source_chars",
-          "label": "Minimum læsbart uddrag fra stærk/primær kilde",
-          "value": 80,
-          "unit": "tegn",
-          "adjustable": true
-        },
-        {
-          "key": "min_readable_standard_source_chars",
-          "label": "Minimum læsbart uddrag fra standardkilde",
-          "value": 120,
-          "unit": "tegn",
-          "adjustable": true
-        },
-        {
-          "key": "min_distinct_sources",
-          "label": "Minimum dokumentationskilder",
-          "value": 1,
-          "unit": "kilde",
-          "adjustable": true
-        },
-        {
-          "key": "target_source_groups",
-          "label": "Mål for bredde når relevant",
-          "value": 3,
-          "unit": "kildegrupper",
-          "adjustable": true
-        }
-      ]
-    },
-    {
-      "id": "fact_check",
-      "label": "Fact check",
-      "kind": "evidence",
-      "hard_gate": true,
-      "requirements": [
-        {
-          "key": "min_verified_material_claims",
-          "label": "Verificerede bærende claims",
-          "value": 1,
-          "unit": "claim",
-          "adjustable": true
-        },
-        {
-          "key": "evidence_class_rule",
-          "label": "Lavrisiko evidensklasse A-D",
-          "value": 1,
-          "unit": "gyldig klasse",
-          "adjustable": false
-        },
-        {
-          "key": "numeric_conflict_check",
-          "label": "Tal skal aktivt falsificeres og mismatch håndteres",
-          "value": 1,
-          "unit": "check",
-          "adjustable": false
-        }
-      ]
-    },
-    {
-      "id": "desk_recheck",
-      "label": "Newsdesk recheck",
-      "kind": "editorial",
-      "hard_gate": false,
-      "requirements": [
-        {
-          "key": "mode",
-          "label": "Kun A/breaking AI-recheck; ellers deterministisk",
-          "value": 1,
-          "unit": "regel",
-          "adjustable": false
-        }
-      ]
-    },
-    {
-      "id": "journalist",
-      "label": "Journalist",
-      "kind": "production",
-      "hard_gate": false,
-      "requirements": [
-        {
-          "key": "min_body_blocks",
-          "label": "Minimum tekstblokke",
-          "value": 3,
-          "unit": "blokke",
-          "adjustable": true
-        },
-        {
-          "key": "max_body_blocks",
-          "label": "Maksimum tekstblokke",
-          "value": 14,
-          "unit": "blokke",
-          "adjustable": true
-        }
-      ]
-    },
-    {
-      "id": "polish",
-      "label": "Sprog & SEO",
-      "kind": "quality",
-      "hard_gate": false,
-      "requirements": [
-        {
-          "key": "max_auto_repair_cycles",
-          "label": "Automatiske reparationsforsøg",
-          "value": 1,
-          "unit": "forsøg",
-          "adjustable": true
-        }
-      ]
-    },
-    {
-      "id": "ethics",
-      "label": "Etik & fairness",
-      "kind": "safety",
-      "hard_gate": true,
-      "requirements": [
-        {
-          "key": "blocking_ethics_issues",
-          "label": "Tilladte blokerende etikfejl",
-          "value": 0,
-          "unit": "fejl",
-          "adjustable": false
-        },
-        {
-          "key": "right_of_reply_unresolved",
-          "label": "Uafklaret forelæggelse",
-          "value": 0,
-          "unit": "sager",
-          "adjustable": false
-        }
-      ]
-    },
-    {
-      "id": "image",
-      "label": "Hero-integritet",
-      "kind": "safety",
-      "hard_gate": true,
-      "requirements": [
-        {
-          "key": "documentary_first",
-          "label": "Media-scout skal forsøge lovligt dokumentarisk media før illustration",
-          "value": 1,
-          "unit": "regel",
-          "adjustable": false
-        },
-        {
-          "key": "no_photo_is_soft",
-          "label": "Intet foto fundet giver pending illustration – ikke hold",
-          "value": 1,
-          "unit": "regel",
-          "adjustable": false
-        },
-        {
-          "key": "truthful_context",
-          "label": "Foto/still skal have sand context_type og caption ved ikke-event",
-          "value": 1,
-          "unit": "regel",
-          "adjustable": false
-        },
-        {
-          "key": "ai_integrity",
-          "label": "Pending AI-hero skal være tydelig ikke-fotorealistisk illustration",
-          "value": 1,
-          "unit": "regel",
-          "adjustable": false
-        }
-      ]
-    },
-    {
-      "id": "final_editor",
-      "label": "Slutredaktør",
-      "kind": "editorial",
-      "hard_gate": true,
-      "requirements": [
-        {
-          "key": "ai_scope",
-          "label": "AI-final ved A/B, indholdsbaseret high-risk, ROR eller kontradiktion; ikke pga. kategori alene",
-          "value": 1,
-          "unit": "regel",
-          "adjustable": false
-        }
-      ]
-    },
-    {
-      "id": "publisher",
-      "label": "Publisher",
-      "kind": "release",
-      "hard_gate": true,
-      "requirements": [
-        {
-          "key": "required_safety_pass",
-          "label": "PASS på fact/ethics/image/final safety",
-          "value": 4,
-          "unit": "gates",
-          "adjustable": false
-        }
-      ]
-    },
-    {
-      "id": "live_qa",
-      "label": "Live QA",
-      "kind": "release",
-      "hard_gate": true,
-      "requirements": [
-        {
-          "key": "critical_live_errors",
-          "label": "Tilladte kritiske live-fejl",
-          "value": 0,
-          "unit": "fejl",
-          "adjustable": false
-        }
       ]
     }
   ]

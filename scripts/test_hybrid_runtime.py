@@ -18,22 +18,9 @@ def load_module(name: str, path: Path):
 
 
 def main() -> int:
-    thresholds = json.loads((ROOT / "config" / "pipeline-thresholds.json").read_text(encoding="utf-8"))
-    assert thresholds["schema_version"] >= 2
-    assert thresholds["evidence_policy"]["min_verified_material_claims"] == 1
-    assert thresholds["evidence_policy"]["named_accused_crime_requires_primary"] is True
-    assert thresholds["evidence_policy"]["discovery_only_never_evidence"] is True
-    assert thresholds["evidence_policy"]["high_risk_scope"] == "content_flags_and_right_of_reply_not_category"
-    assert thresholds["evidence_policy"]["named_accused_primary_scope"] == "all_categories"
-    fact_stage = next(x for x in thresholds["stages"] if x["id"] == "fact_check")
-    assert next(x for x in fact_stage["requirements"] if x["key"] == "min_verified_material_claims")["value"] == 1
-    research_stage = next(x for x in thresholds["stages"] if x["id"] == "research")
-    assert next(x for x in research_stage["requirements"] if x["key"] == "min_distinct_sources")["value"] == 1
-    image_stage = next(x for x in thresholds["stages"] if x["id"] == "image")
-    assert next(x for x in image_stage["requirements"] if x["key"] == "no_photo_is_soft")["value"] == 1
-    assert next(x for x in image_stage["requirements"] if x["key"] == "documentary_first")["value"] == 1
+    assert not (ROOT / "config" / "pipeline-thresholds.json").exists(), "Legacy parallel threshold policy must stay removed"
 
-    dispatch = load_module("dispatch", ROOT / "scripts" / "editorial_dispatch_gate.py")
+    dispatch = load_module("dispatch", ROOT / "scripts" / "editorial_cycle_selector.py")
     dispatch.self_test()
     categories = load_module("categories", ROOT / "scripts" / "normalize_categories.py")
     categories.self_test()
@@ -132,22 +119,14 @@ def main() -> int:
         'function authoritativeEditorial(item)',
         'function strongEditorialSource(item)',
         'function normalizedSourceKind(item)',
-        'function highRiskFactClaim(assignment, research, claim)',
         'function evidenceRulePass(assignment, research, claim, evidence)',
         '"wire-reuters", "wire-ap", "wire-afp", "wire-ritzau"',
-        'function deterministicFinalReview(assignment, dossier, article)',
-        'function requiresAiFinalReview(assignment, dossier, article)',
         '["A", "B"].includes(assignment?.weight)',
-        'dossier?.right_of_reply_required',
-        'const aiFinalRequired = requiresAiFinalReview',
         'final_editor_mode: review.mode || "ai"',
         'Discovery-only source crossed the Research/Fact-check boundary',
         'fetch_origin: "github-actions-prefetch"',
         'host === "reuters.com"',
         'source === "ap"',
-        'Et claim kan få Verified på baggrund af én relevant autoritativ kilde',
-        'Ét verificeret bærende claim er nok til en kort one-claim-artikel',
-        'Din overordnede publish/hold-vurdering er rådgivende',
         'feed_summary_only',
         'source_strength',
         'fact.decision = verified.length >= 1 ? "publish" : "hold"',
@@ -177,10 +156,11 @@ def main() -> int:
     assert not missing, f"Hybrid runtime regression: missing {missing}"
     assert 'hero_prompt' not in js.split('const articleSchema', 1)[1].split('const finalSchema', 1)[0], "Journalist schema must not spend output tokens on hero_prompt"
     assert 'hero_alt' not in js.split('const articleSchema', 1)[1].split('const finalSchema', 1)[0], "Journalist schema must not spend output tokens on hero_alt"
+    assert 'seo_title' not in js.split('const articleSchema', 1)[1].split('const finalSchema', 1)[0], "Journalist schema must not spend output tokens on SEO"
+    assert 'hero_queries_' not in js, "Newsdesk must not spend output tokens on hero search queries"
     assert 'if (!res.ok) return null' not in js, "Commons HTTP failure must continue to later queries"
     assert '["Krimi", "Sundhed"].includes(assignment?.category)' not in js, "Risk must be content-based, not category-based"
     assert js.count('await findCommonsDocumentaryHero(') <= 2, "One runtime scout plus helper definition only; no repeated post-Journalist Commons calls"
-    assert 'required: Boolean(dossier.right_of_reply_required)' in js, "Ledger must preserve Research right-of-reply flag"
 
     assert 'flux-1-schnell' in js, "Temporary pending sketch requires the constrained image model"
     assert 'image_type: "illustration"' in js

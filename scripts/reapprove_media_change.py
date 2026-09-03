@@ -139,11 +139,6 @@ def reapprove(slug: str, checked_at: str | None = None, dry_run: bool = False):
 
     new_approval = copy.deepcopy(approval)
     new_approval["checked_at"] = when
-    new_approval["gates"] = {
-        **(new_approval.get("gates") or {}),
-        "image": "pass",
-        "final_editor": "pass",
-    }
     new_approval["media_reapproval"] = {
         "mode": "targeted-image-only",
         "checked_at": when,

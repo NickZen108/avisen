@@ -349,14 +349,9 @@ const assignmentSchema = {
     rationale: { type: "string" }, core_question: { type: "string" },
     story_location: { type: "object", properties: {
       country: { type: "string" }, country_code: { type: "string" },
-      primary_language: { type: "string" }, primary_language_code: { type: "string" },
-      place_names_local: { type: "array", maxItems: 6, items: { type: "string" } },
-      place_names_english: { type: "array", maxItems: 6, items: { type: "string" } },
-      transliterations: { type: "array", maxItems: 6, items: { type: "string" } },
-      hero_queries_local: { type: "array", maxItems: 3, items: { type: "string" } },
-      hero_queries_english: { type: "array", maxItems: 3, items: { type: "string" } },
-      hero_queries_transliterated: { type: "array", maxItems: 3, items: { type: "string" } },
-    }, required: ["country", "country_code", "primary_language", "primary_language_code", "place_names_local", "place_names_english", "transliterations", "hero_queries_local", "hero_queries_english", "hero_queries_transliterated"] },
+      place_names_local: { type: "array", maxItems: 4, items: { type: "string" } },
+      place_names_english: { type: "array", maxItems: 4, items: { type: "string" } },
+    }, required: ["country", "country_code", "place_names_local", "place_names_english"] },
   }, required: ["decision", "title_hint", "category", "weight", "signal_indexes", "rationale", "core_question", "story_location"],
 };
 
@@ -368,7 +363,7 @@ const researchSchema = {
       id: { type: "string" }, claim: { type: "string" }, source_indexes: { type: "array", items: { type: "integer" }, minItems: 1 },
       notes: { type: "string" },
     }, required: ["id", "claim", "source_indexes", "notes"] } },
-  }, required: ["decision", "rationale", "core_question", "right_of_reply_required", "conflict_present", "contradictions", "candidate_claims"],
+  }, required: ["decision", "rationale", "core_question", "conflict_present", "contradictions", "candidate_claims"],
 };
 
 const factCheckSchema = {
@@ -387,8 +382,7 @@ const articleSchema = { type: "object", properties: {
   body: { type: "array", minItems: 1, maxItems: 14, items: { type: "object", properties: {
     type: { type: "string", enum: ["p", "h2", "h3"] }, text: { type: "string" },
   }, required: ["type", "text"] } },
-  seo_title: { type: "string" }, seo_description: { type: "string" },
-}, required: ["title", "standfirst", "body", "seo_title", "seo_description"] };
+}, required: ["title", "standfirst", "body"] };
 
 const finalSchema = { type: "object", properties: {
   category: { type: "string", enum: CATEGORIES },
@@ -465,7 +459,7 @@ function signalSummary(scan, excludedSignalKeys = []) {
 async function chooseAssignment(env, scan, excludedSignalKeys = []) {
   const signals = signalSummary(scan, excludedSignalKeys);
   if (!signals.length) return { decision: "drop", title_hint: "", category: "Indland", weight: "D", signal_indexes: [], rationale: "Ingen ubehandlede kandidater med tilstrækkelig aktualitet/grundscore", core_question: "" };
-  const system = `Du er Morgentidendes første Nyhedsdesk. Vælg ét konkret research-frø. RESEARCH er standard ved reel nyhedsværdi, originalitet, offentlig betydning eller tydelig redaktionel relevans; tynd dokumentation er Researchs problem, ikke en afvisningsgrund. WATCH kun hvis nyhedskrogen/aktualiteten endnu er uklar. DROP kun ved klar dublet, gammel/triviel sag, rent holdningsstof uden nyhedskrog eller åbenlys spam. discovery_only må udløse Research, men er aldrig dokumentation. Sæt kategori og A-D-vægt. Fastslå samtidig story_location FØR research og hero: primært land, ISO-landekode, vigtigste lokale sprog, lokale og engelske stednavne samt evt. translitterationer. Lav 1-3 korte hero-søgefraser på lokalt sprog og 1-3 på engelsk; ved andet alfabet også translittererede varianter. Brug hændelsestype + sted + år når det er kendt. Oversæt ikke egennavne forkert. Hvis landet reelt er uklart eller sagen ikke har ét primært land, brug country='unknown', country_code='', primary_language='unknown' og tomme lokale arrays, men lav stadig engelske hero-termer hvis muligt. Svar ultrakort.`;
+  const system = `Du er Morgentidendes første Nyhedsdesk. Vælg ét konkret research-frø. RESEARCH er standard ved reel nyhedsværdi, originalitet, offentlig betydning eller tydelig redaktionel relevans; tynd dokumentation er Researchs problem, ikke en afvisningsgrund. WATCH kun hvis nyhedskrogen/aktualiteten endnu er uklar. DROP kun ved klar dublet, gammel/triviel sag, rent holdningsstof uden nyhedskrog eller åbenlys spam. discovery_only må udløse Research, men er aldrig dokumentation. Sæt kategori og A-D-vægt. Angiv kun det primære land og op til fire relevante stednavne på lokalt/engelsk navn, når de er tydelige; ellers brug unknown/tomme arrays. Media laver selv billedsøgninger. Svar ultrakort.`;
   return aiJson(env, system, JSON.stringify({ generated_at: scan.generated_at, signals }), assignmentSchema, 260, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
 function validIndexes(indexes, scan) { return [...new Set((indexes || []).filter((i) => Number.isInteger(i) && i >= 0 && i < scan.signals.length))]; }
@@ -667,7 +661,7 @@ async function runResearch(env, assignment, selected) {
     canonical_url: item.provenance_meta?.canonical_url || null,
     feed_summary_only: Boolean(item.feed_summary_only),
   }));
-  const system = `Du er Research på Morgentidende. Lav et kompakt evidens-kort til Fact checker; vurder ikke nyhedsværdi igen og fæld ikke den endelige sandhedsdom. Kortlæg 1-6 bærende kandidat-claims med præcise source_indexes. Notér kun reelle modsigelser, væsentlige forbehold og nødvendig kontekst. En primærkilde er værdifuld, men du skal ikke kræve et bestemt antal medier. Hvis mindst ét brugbart claim kan kildebelægges, vælg continue; watch kun hvis materialet reelt ikke giver noget kontrollerbart. Flag alvorlige belastende påstande via right_of_reply_required, men brug ikke flaget som stopregel. Sæt conflict_present=true kun når historien faktisk rummer en relevant politisk, juridisk, faglig eller parts-konflikt; almindelige hændelsesfakta/statistik kræver ikke kunstig pluralisme. Skriv alle kandidat-claims på idiomatisk dansk, også når originalkilden er norsk, svensk eller et andet sprog. Norske bokmåls-/nynorskformer og svenske ord eller bøjningsformer må ikke føres videre som dansk. Ved oversættelse eller parafrase skal originalens samlede betydning bevares præcist. Opfind intet.`;
+  const system = `Du er Research på Morgentidende. Lav et kompakt evidens-kort til Fact checker; vurder ikke nyhedsværdi igen og fæld ikke den endelige sandhedsdom. Kortlæg 1-6 bærende kandidat-claims med præcise source_indexes. Notér kun reelle modsigelser, væsentlige forbehold og nødvendig kontekst. En primærkilde er værdifuld, men du skal ikke kræve et bestemt antal medier. Hvis mindst ét brugbart claim kan kildebelægges, vælg continue; watch kun hvis materialet reelt ikke giver noget kontrollerbart. Sæt kun right_of_reply_required=true ved en konkret alvorlig belastende påstand, hvor fairness faktisk er relevant; ellers kan feltet udelades. Flaget er aldrig en automatisk ventetid eller stopregel. Sæt conflict_present=true kun når historien faktisk rummer en relevant politisk, juridisk, faglig eller parts-konflikt; almindelige hændelsesfakta/statistik kræver ikke kunstig pluralisme. Skriv alle kandidat-claims på idiomatisk dansk, også når originalkilden er norsk, svensk eller et andet sprog. Norske bokmåls-/nynorskformer og svenske ord eller bøjningsformer må ikke føres videre som dansk. Ved oversættelse eller parafrase skal originalens samlede betydning bevares præcist. Opfind intet.`;
   const research = await aiJson(env, system, JSON.stringify({ assignment, sources }), researchSchema, 650, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
   research.researched = unique;
   research.source_payload = sources;
@@ -886,9 +880,8 @@ function mediaWords(value) {
 function commonsSearchQueries(assignment, article, research = null) {
   const loc = assignment?.story_location || {};
   const supplied = [
-    ...(Array.isArray(loc.hero_queries_local) ? loc.hero_queries_local : []),
-    ...(Array.isArray(loc.hero_queries_transliterated) ? loc.hero_queries_transliterated : []),
-    ...(Array.isArray(loc.hero_queries_english) ? loc.hero_queries_english : []),
+    ...(Array.isArray(loc.place_names_local) ? loc.place_names_local : []),
+    ...(Array.isArray(loc.place_names_english) ? loc.place_names_english : []),
   ].map((x) => String(x || "").trim()).filter((x) => x.length >= 2);
   const stop = new Set(["mener","siger","efter","over","under","vil","kan","skal","med","fra","til","for","the","and","with","from","says","after"]);
   const clean = (value, limit = 7) => mediaWords(value).filter((x) => !stop.has(x)).slice(0, limit).join(" ");
@@ -919,7 +912,6 @@ async function findCommonsDocumentaryHero(assignment, article, research = null) 
   const locationTerms = new Set([
     ...(Array.isArray(loc.place_names_local) ? loc.place_names_local : []),
     ...(Array.isArray(loc.place_names_english) ? loc.place_names_english : []),
-    ...(Array.isArray(loc.transliterations) ? loc.transliterations : []),
     loc.country || "",
   ].flatMap(mediaWords));
   const year = String(new Date().getUTCFullYear());
@@ -1184,13 +1176,13 @@ export async function runEditorialCycle(env, scan, options = {}) {
     category: assignment.category, weight: assignment.weight, editorial_destination: assignment.editorial_destination || "main", story_location: assignment.story_location || null, title: article.title, standfirst: article.standfirst,
     byline: "Morgentidende Redaktion", published_at: null, updated_at: null,
     ledger: `sources/${slug}.json`, claim_ids: ledger.claims.map((c) => c.id),
-    seo: { title: article.seo_title, description: article.seo_description, canonical: null },
+    seo: { title: article.title, description: article.standfirst, canonical: null },
     image: hero,
     body: article.body, source_ids_to_display: ledger.sources.filter((s) => !s.discovery_only).slice(0, 6).map((s) => s.id), related_news_slug: null, related: [], correction_note: null, scheduled_for: null, released_from_schedule_at: null,
   };
   const approvalSnapshot = JSON.parse(JSON.stringify(canonical));
   for (const key of ["status", "published_at", "updated_at", "scheduled_for", "released_from_schedule_at", "release_requested", "publication", "workflow_state"]) delete approvalSnapshot[key];
-  const approval = { schema_version: 1, status: "pass", story_id: storyId, article_slug: slug, checked_at: startedAt, gates: { language: "pass", ethics: "pass", image: "pass", final_editor: "pass" }, final_editor_mode: review.mode || "ai", editorial_snapshot: approvalSnapshot };
+  const approval = { schema_version: 1, status: "pass", story_id: storyId, article_slug: slug, checked_at: startedAt, final_editor_mode: review.mode || "ai", editorial_snapshot: approvalSnapshot };
 
   return {
     status: "approved", schema_version: 1, generated_at: startedAt, scan_fingerprint: scan.fingerprint, handled_signal_keys: handledSignalKeys,

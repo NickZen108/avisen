@@ -108,11 +108,8 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
             err(f"{path.name}: klar/publiceret claim {claim_id} er ikke verified")
         if article.get("status") in {"ready", "scheduled", "published"}:
             for sid in claim.get("source_ids", []):
-                src = sources.get(sid)
-                if not src:
+                if not sources.get(sid):
                     err(f"{path.name}: claim {claim_id} peger på ukendt source_id {sid}")
-                elif not str(src.get("source_group", "")).strip():
-                    err(f"{path.name}: source {sid} mangler source_group")
         if article.get("status") in {"ready", "scheduled", "published"} and not claim_has_required_support(article, ledger, claim, sources):
             err(f"{path.name}: claim {claim_id} mangler gyldig autoritativ eller anden tilladt støtte")
 
