@@ -393,10 +393,6 @@ const semanticFactCheckSchema = {
   }, required: ["decision", "issues", "notes"],
 };
 
-const deskRecheckSchema = { type: "object", properties: {
-  decision: { type: "string", enum: ["publish", "update", "hold", "kill"] }, rationale: { type: "string" },
-}, required: ["decision", "rationale"] };
-
 const articleSchema = { type: "object", properties: {
   title: { type: "string" }, standfirst: { type: "string" },
   body: { type: "array", minItems: 3, maxItems: 14, items: { type: "object", properties: {
@@ -569,7 +565,6 @@ function normalizedSourceKind(item) {
   if (kind === "public_media" || strongEditorialSource(item)) return "strong_editorial";
   return item?.source_kind || "news";
 }
-function evidenceGroups(items) { return [...new Set(items.filter(isEvidenceSource).map(evidenceSourceGroup))]; }
 function authoritativeClaimSource(item) {
   if (!isEvidenceSource(item)) return false;
   if (authoritativePrimary(item) || authoritativeEditorial(item) || strongEditorialSource(item)) return true;
@@ -577,11 +572,6 @@ function authoritativeClaimSource(item) {
   return ["paper", "research_paper", "researcher", "scientist", "expert", "company_statement", "organization_statement", "person_statement", "first_party_statement", "interview", "official_statement"].includes(kind);
 }
 
-const HIGH_RISK_FACT_TERMS = /\b(sigtet|tiltalt|anklag|mistænkt|voldtægt|seksual|misbrug|selvmord|mindreår|barn|børn|privat helbred|diagnose|terror|drab|korruption|svindel|hvidvask|overgreb|racist|ekstremist)\b/iu;
-function highRiskFactClaim(assignment, research, claim) {
-  if (research?.right_of_reply_required) return true;
-  return HIGH_RISK_FACT_TERMS.test(`${assignment?.title_hint || ""} ${assignment?.core_question || ""} ${claim?.claim || ""}`);
-}
 function namedAccusedCrimeClaim(assignment, claim) {
   const text = String(claim?.claim || "");
   if (!/\b(sigtet|tiltalt|mistænkt|anklaget)\b/iu.test(text)) return false;
@@ -763,14 +753,6 @@ async function reviseSemanticFactIssues(env, assignment, dossier, article, seman
   }));
   const system = `Ret KUN de konkrete semantiske/faktuelle problemer fundet af Fact checker. Bevar artikelstruktur, vinkel og verificerede fakta så vidt muligt. Ret oversættelser og parafraser, så den samlede betydning svarer til originalkilden. Tilføj ingen nye claims og kræv ingen nye kilder. Returnér hele artiklen i samme schema.`;
   return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), sources, article, issues: semantic.issues }), articleSchema, assignment.weight === "A" || assignment.weight === "B" ? 2200 : 1400, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
-}
-
-async function deskRecheck(env, assignment, dossier) {
-  if (assignment.weight !== "A") {
-    return { decision: "publish", rationale: "Fact check bestået; intet særskilt A-recheck nødvendigt" };
-  }
-  const system = `Du er Nyhedsdesk ved et ultrakort A/breaking-recheck efter bestået Fact check. Genresearch ikke. Hold/kill kun hvis materialet viser, at nyhedskernen siden assignment er blevet materielt forældet eller har skiftet karakter. Ellers publish. Svar kort.`;
-  return aiJson(env, system, JSON.stringify({ assignment, verified_claims: dossier.claims.filter((c) => c.status === "verified"), contradictions: dossier.contradictions }), deskRecheckSchema, 140, FAST_TEXT_MODEL, STRONG_TEXT_MODEL);
 }
 
 async function writeArticle(env, assignment, dossier) {
