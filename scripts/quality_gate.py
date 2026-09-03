@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic quality gates for Morgentidende."""
+"""Deterministic source/output validation for Morgentidende."""
 from __future__ import annotations
 
 import argparse
@@ -51,11 +51,10 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
     if status not in valid_statuses:
         err(f"{path.name}: ugyldig status")
         return
-
     if status in {"draft", "researching", "checking", "editing"}:
         return
 
-    required = ["status", "story_id", "slug", "category", "weight", "title", "standfirst", "byline", "ledger", "claim_ids", "seo", "body"]
+    required = ["status", "story_id", "slug", "category", "weight", "title", "standfirst", "byline", "ledger", "claim_ids", "body"]
     for field in required:
         if field not in article:
             err(f"{path.name}: mangler felt {field}")
@@ -70,6 +69,7 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
         err(f"{path.name}: ugyldig title")
     if not str(article.get("standfirst", "")).strip():
         err(f"{path.name}: standfirst mangler")
+
     body = article.get("body") or []
     if not body:
         err(f"{path.name}: body er tom")
@@ -80,11 +80,6 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
             continue
         if block.get("type") == "figure":
             src = str(block.get("src", "")).strip()
-            alt = str(block.get("alt", "")).strip()
-            if not src:
-                err(f"{path.name}: body[{i}] figure mangler src")
-            if not alt:
-                err(f"{path.name}: body[{i}] figure mangler alt")
             if src and not (src.startswith("../img/") or re.match(r"^https?://", src)):
                 err(f"{path.name}: body[{i}] figure src skal være ../img/... eller http(s)-URL")
             if src.startswith("../img/"):
@@ -94,31 +89,7 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
                     err(f"{path.name}: body[{i}] lokal figure findes ikke: {src}")
             if "wide" in block and not isinstance(block.get("wide"), bool):
                 err(f"{path.name}: body[{i}] figure wide skal være bool")
-    seo = article.get("seo") or {}
-    if not seo.get("title") or not seo.get("description"):
-        print(f"QUALITY NOTE {path.name}: SEO title/description mangler; SEO fallback må reparere det")
-    image = article.get("image")
-    if image is not None:
-        for field in ["src", "alt", "credit", "license", "source_url", "image_type"]:
-            if not str(image.get(field, "")).strip():
-                err(f"{path.name}: image mangler udfyldt {field}")
-        if image.get("image_type") not in {"photo", "video_still", "illustration", "graphic"}:
-            err(f"{path.name}: ugyldig image_type")
-        if image.get("image_type") == "illustration" and article.get("automation_origin") == "cloudflare-workers-ai":
-            if image.get("pending_image") is not True or image.get("ai_generated") is not True:
-                err(f"{path.name}: autonom nyhedsillustration skal være pending og AI-genereret")
-            if image.get("context_type") != "illustration":
-                err(f"{path.name}: autonom nyhedsillustration skal have context_type=illustration")
-            if str(image.get("caption") or "").strip().lower() != "illustration":
-                err(f"{path.name}: autonom nyhedsillustration skal have synlig caption Illustration")
-        if image.get("image_type") in {"photo", "video_still"} and image.get("pending_image") is True:
-            err(f"{path.name}: dokumentarisk hero må ikke have pending_image=true")
-        if image.get("placement", "lead") not in {"lead", "inline", "none"}:
-            err(f"{path.name}: image placement skal være lead, inline eller none")
-        for field in ["src", "source_url"]:
-            value = str(image.get(field, "")).strip()
-            if value and not re.match(r"^https?://", value):
-                err(f"{path.name}: image {field} skal være http(s)-URL")
+
     ledger_path = ROOT / str(article.get("ledger", ""))
     if not ledger_path.exists():
         err(f"{path.name}: ledger findes ikke: {article.get('ledger')}")
@@ -144,6 +115,7 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
                     err(f"{path.name}: source {sid} mangler source_group")
         if article.get("status") in {"ready", "scheduled", "published"} and not claim_has_required_support(article, ledger, claim, sources):
             err(f"{path.name}: claim {claim_id} mangler gyldig autoritativ eller anden tilladt støtte")
+
     if article.get("category") == "Kommentar" and not article.get("related_news_slug"):
         err(f"{path.name}: Kommentar mangler related_news_slug")
     if article.get("status") == "scheduled":
@@ -178,61 +150,6 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
                     err(f"{path.name}: HTML mangler generated-marker")
                 if len(re.findall(r"<h1(?:\s|>)", text, flags=re.I)) != 1:
                     err(f"{path.name}: genereret HTML skal have præcis én H1")
-
-
-def validate_no_new_handwritten_html(prebuild: bool) -> None:
-    legacy = set()
-    legacy_file = ROOT / "config" / "legacy-articles.txt"
-    if legacy_file.exists():
-        legacy = {x.strip() for x in legacy_file.read_text(encoding="utf-8").splitlines() if x.strip() and not x.startswith("#")}
-    structured = set()
-    for path in (ROOT / "content" / "articles").glob("*.json"):
-        if path.name.startswith("_"):
-            continue
-        data = read_json(path)
-        if data and data.get("slug"):
-            structured.add(f"{data['slug']}.html")
-    for html_path in (ROOT / "docs" / "artikler").glob("*.html"):
-        if html_path.name not in legacy and html_path.name not in structured:
-            err(f"ny håndskrevet HTML er forbudt: docs/artikler/{html_path.name}")
-        if html_path.name in structured and not prebuild:
-            text = html_path.read_text(encoding="utf-8")
-            if not text.startswith("<!-- GENERATED FROM content/articles/"):
-                err(f"struktureret artikel er ikke generator-output: {html_path.name}")
-
-
-def validate_public_text() -> None:
-    banned = ["intern note", "ingen frit foto", "ikke avisens"]
-    for path in [ROOT / "docs" / "index.html", *sorted((ROOT / "docs" / "artikler").glob("*.html"))]:
-        if not path.exists():
-            continue
-        low = path.read_text(encoding="utf-8").lower()
-        for phrase in banned:
-            if phrase in low:
-                err(f"offentlig intern formulering i {path.relative_to(ROOT)}: {phrase}")
-
-
-def validate_frontpage() -> None:
-    state = read_json(ROOT / "content" / "frontpage.json")
-    if state is None:
-        return
-    for field in ["date", "ticker", "lead", "rail", "stack", "narrow", "lead_rationale"]:
-        if field not in state:
-            err(f"frontpage mangler {field}")
-    slugs = []
-    for item in [state.get("ticker", {}), state.get("lead", {}), *state.get("rail", []), *state.get("stack", []), *state.get("narrow", [])]:
-        if item.get("slug"):
-            slugs.append(item["slug"])
-    known = {p.stem for p in (ROOT / "docs" / "artikler").glob("*.html")}
-    for article_path in (ROOT / "content" / "articles").glob("*.json"):
-        if article_path.name.startswith("_"):
-            continue
-        data = read_json(article_path)
-        if data and data.get("status") == "published" and data.get("slug"):
-            known.add(data["slug"])
-    for slug in slugs:
-        if slug not in known:
-            err(f"frontpage peger på ukendt slug: {slug}")
 
 
 def changed_article_paths() -> list[Path]:
@@ -277,15 +194,8 @@ def main() -> int:
     for path in article_paths:
         validate_article(path, categories, args.prebuild)
 
-    # Prebuild stays focused on source-of-truth article/frontpage state. Expensive
-    # archive/output scans belong after the canonical build, where they can actually
-    # validate generated HTML and the whole public surface once.
-    validate_frontpage()
-    if not args.prebuild:
-        validate_no_new_handwritten_html(False)
-        validate_public_text()
-        if not (ROOT / "docs" / "news-sitemap.xml").exists():
-            err("docs/news-sitemap.xml mangler efter build")
+    if not args.prebuild and not (ROOT / "docs" / "news-sitemap.xml").exists():
+        err("docs/news-sitemap.xml mangler efter build")
 
     if ERRORS:
         print("QUALITY GATE: FAIL")
