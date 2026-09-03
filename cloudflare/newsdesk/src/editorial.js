@@ -308,44 +308,68 @@ async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRON
     max_tokens: maxTokens, temperature: 0.15,
     response_format: { type: "json_schema", json_schema: schema },
   };
-  let firstError = null;
-  try {
-    const raw = await env.AI.run(model, request);
-    return structuredResponse(raw, schema);
-  } catch (error) {
-    firstError = error;
-    if (!fallbackModel || fallbackModel === model) throw error;
-    console.warn("Workers AI structured-call fallback", model, "->", fallbackModel, String(error));
+  const noteFallback = () => {
     try {
-    env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1;
-    env.__AI_FALLBACK_BY_STAGE__ = env.__AI_FALLBACK_BY_STAGE__ || {};
-    env.__AI_FALLBACK_BY_STAGE__[stage] = Number(env.__AI_FALLBACK_BY_STAGE__[stage] || 0) + 1;
-  } catch (_) {}
-  }
-  try {
-    const raw = await env.AI.run(fallbackModel, request);
-    return structuredResponse(raw, schema);
-  } catch (error) {
-    console.warn("Workers AI schema fallback still malformed; trying JSON-object repair", String(error));
-    try {
-    env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1;
-    env.__AI_FALLBACK_BY_STAGE__ = env.__AI_FALLBACK_BY_STAGE__ || {};
-    env.__AI_FALLBACK_BY_STAGE__[stage] = Number(env.__AI_FALLBACK_BY_STAGE__[stage] || 0) + 1;
-  } catch (_) {}
+      env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1;
+      env.__AI_FALLBACK_BY_STAGE__ = env.__AI_FALLBACK_BY_STAGE__ || {};
+      env.__AI_FALLBACK_BY_STAGE__[stage] = Number(env.__AI_FALLBACK_BY_STAGE__[stage] || 0) + 1;
+    } catch (_) {}
+  };
+  const rawTextForRepair = (raw) => {
+    if (!raw) return null;
+    if (typeof raw.response === "string" && raw.response.trim()) return raw.response.trim();
+    if (raw.response && typeof raw.response === "object") return JSON.stringify(raw.response);
+    const content = raw?.choices?.[0]?.message?.content;
+    if (typeof content === "string" && content.trim()) return content.trim();
+    if (content && typeof content === "object") return JSON.stringify(content);
+    return null;
+  };
+  const repairMalformed = async (raw, repairModel) => {
+    const malformed = rawTextForRepair(raw);
+    if (!malformed) return null;
     const repairRequest = {
       messages: [
-        { role: "system", content: `${system}\nReturn ONLY one JSON object that satisfies every required field and type in the supplied JSON Schema. Do not omit required arrays; use empty arrays only when the schema permits them.` },
-        { role: "user", content: `${user}\n\nRequired JSON Schema:\n${JSON.stringify(schema)}` },
+        { role: "system", content: "Du reparerer KUN JSON-format. Bevar alle oplysninger og vurderinger fra inputtet; udfør ikke opgaven igen, tilføj ikke nye fakta, og returnér kun JSON som matcher schemaet." },
+        { role: "user", content: `Ugyldigt struktureret svar:\n${malformed.slice(0, 16000)}` },
       ],
       max_tokens: maxTokens, temperature: 0,
-      response_format: { type: "json_object" },
+      response_format: { type: "json_schema", json_schema: schema },
     };
-    const repairedRaw = await env.AI.run(fallbackModel, repairRequest);
-    try { return structuredResponse(repairedRaw, schema); }
-    catch (repairError) {
-      repairError.cause = error || firstError;
-      throw repairError;
+    noteFallback();
+    const repairedRaw = await env.AI.run(repairModel, repairRequest);
+    return structuredResponse(repairedRaw, schema);
+  };
+
+  let firstError = null;
+  let firstRaw = null;
+  try {
+    firstRaw = await env.AI.run(model, request);
+    return structuredResponse(firstRaw, schema);
+  } catch (error) {
+    firstError = error;
+    if (rawTextForRepair(firstRaw)) {
+      try { return await repairMalformed(firstRaw, FAST_TEXT_MODEL); }
+      catch (repairError) { console.warn("Workers AI local JSON repair failed", String(repairError)); }
     }
+  }
+
+  if (!fallbackModel || fallbackModel === model) throw firstError;
+  console.warn("Workers AI structured-call fallback", model, "->", fallbackModel, String(firstError));
+  noteFallback();
+  let fallbackRaw = null;
+  try {
+    fallbackRaw = await env.AI.run(fallbackModel, request);
+    return structuredResponse(fallbackRaw, schema);
+  } catch (error) {
+    if (rawTextForRepair(fallbackRaw)) {
+      try { return await repairMalformed(fallbackRaw, FAST_TEXT_MODEL); }
+      catch (repairError) {
+        repairError.cause = error || firstError;
+        throw repairError;
+      }
+    }
+    error.cause = firstError;
+    throw error;
   }
 }
 
