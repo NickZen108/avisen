@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-eu-diplomats-cautiously-court-nigel-farage",
   "slug": "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage",
   "category": "Udland",
@@ -18,7 +18,7 @@
   "title": "EU-diplomater går forsigtigt efter Nigel Farage",
   "standfirst": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage, ifølge Politico Europe. Farage har været en vigtig figur i Storbritanniens udtræden af EU, og hans parti har samlet sig i Birmingham.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T14:54:41Z",
   "updated_at": null,
   "ledger": "sources/2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage.json",
   "claim_ids": [
@@ -89,5 +89,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T14:54:41Z"
+  }
 }

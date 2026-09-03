@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-general-charged-over-kyiv-children-s-hospital-strike-shot-in-russia",
   "slug": "2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland",
   "category": "Krimi",
@@ -24,7 +24,7 @@
   "title": "General anklaget over Kyiv børnehospital angreb skudt i Rusland",
   "standfirst": "En russisk general, der er blevet anklaget for at have været involveret i et angreb på et børnehospital i Kyiv, er blevet skudt i Rusland. Den russiske undersøgelseskommission har åbnet en undersøgelse efter skuddet.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T14:54:41Z",
   "updated_at": null,
   "ledger": "sources/2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland.json",
   "claim_ids": [
@@ -72,5 +72,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T14:54:41Z"
+  }
 }

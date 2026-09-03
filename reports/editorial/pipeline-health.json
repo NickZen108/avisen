@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-03T12:23:44Z",
+  "generated_at": "2026-09-03T14:54:41Z",
   "counts": {
-    "published": 32,
+    "published": 34,
     "checking": 2,
     "draft": 4
   },
@@ -255,6 +255,22 @@
     {
       "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r",
       "title": "El Nino kunne være den stærkeste på 40 år",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage",
+      "title": "EU-diplomater går forsigtigt efter Nigel Farage",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland",
+      "title": "General anklaget over Kyiv børnehospital angreb skudt i Rusland",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

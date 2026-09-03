@@ -6501,7 +6501,186 @@
           "automation_origin": "cloudflare-workers-ai"
         }
       }
+    ],
+    "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage": [
+      {
+        "hash": "22820556645b73031a7dfb41908544205b8d364a54fe78f9e302565aea90652f",
+        "recorded_at": "2026-09-03T14:54:45+00:00",
+        "title": "EU-diplomater går forsigtigt efter Nigel Farage",
+        "story_id": "2026-09-03-eu-diplomats-cautiously-court-nigel-farage",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-03-eu-diplomats-cautiously-court-nigel-farage",
+          "slug": "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage",
+          "category": "Udland",
+          "weight": "B",
+          "editorial_destination": "tech_magazine",
+          "story_location": {
+            "country": "UK",
+            "country_code": "GB",
+            "place_names_english": [
+              "Birmingham"
+            ],
+            "place_names_local": []
+          },
+          "title": "EU-diplomater går forsigtigt efter Nigel Farage",
+          "standfirst": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage, ifølge Politico Europe. Farage har været en vigtig figur i Storbritanniens udtræden af EU, og hans parti har samlet sig i Birmingham.",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "seo": {
+            "title": "EU-diplomater går forsigtigt efter Nigel Farage",
+            "description": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage, ifølge Politico Europe. Farage har været en vigtig figur i Storbritanniens udtræden af EU, og hans parti har samlet sig i Birmingham.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage.jpg",
+            "alt": "Skyline, Birmingham, England, UK - view from the north",
+            "credit": "Arne Müseler",
+            "license": "CC BY-SA 2.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Skyline,_Birmingham,_England,_UK.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "EU-diplomater går forsigtigt efter Nigel Farage",
+              "type": "h2"
+            },
+            {
+              "text": "Nigel Farage er en veteran-Brexit-aktivist, der har spillet en vigtig rolle i Storbritanniens udtræden af EU.",
+              "type": "p"
+            },
+            {
+              "text": "Ifølge Politico Europe søger EU-diplomater at opbygge en alliance med Farage, der kan hjælpe dem med at forbedre deres forhold til Storbritannien.",
+              "type": "p"
+            },
+            {
+              "text": "Farage har været en kontroversiel figur i EU-sammenhæng, men hans parti har samlet sig i Birmingham, hvilket kan være et tegn på, at han er på vej tilbage til politikken.",
+              "type": "p"
+            },
+            {
+              "text": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage, ifølge Politico Europe.",
+              "type": "h3"
+            },
+            {
+              "text": "Farage har været en vigtig figur i Storbritanniens udtræden af EU, og hans parti har samlet sig i Birmingham.",
+              "type": "p"
+            },
+            {
+              "text": "EU-diplomater søger at opbygge en alliance med veteran-Brexit-aktivisten Nigel Farage, ifølge Politico Europe.",
+              "type": "h3"
+            },
+            {
+              "text": "Farage har været en vigtig figur i Storbritanniens udtræden af EU, og hans parti har samlet sig i Birmingham.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland": [
+      {
+        "hash": "5b6693c4e2f45feef86dd19d40382caac76ab3e0be52f36e237aa15f9e83c0fa",
+        "recorded_at": "2026-09-03T14:54:45+00:00",
+        "title": "General anklaget over Kyiv børnehospital angreb skudt i Rusland",
+        "story_id": "2026-09-03-general-charged-over-kyiv-children-s-hospital-strike-shot-in-russia",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-03-general-charged-over-kyiv-children-s-hospital-strike-shot-in-russia",
+          "slug": "2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland",
+          "category": "Krimi",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "Rusland",
+            "country_code": "RU",
+            "place_names_english": [
+              "Kyiv",
+              "Okhmatdyt",
+              "Russia"
+            ],
+            "place_names_local": [
+              "Kyiv",
+              "Okhmatdyt",
+              "Rusland"
+            ]
+          },
+          "title": "General anklaget over Kyiv børnehospital angreb skudt i Rusland",
+          "standfirst": "En russisk general, der er blevet anklaget for at have været involveret i et angreb på et børnehospital i Kyiv, er blevet skudt i Rusland. Den russiske undersøgelseskommission har åbnet en undersøgelse efter skuddet.",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland.json",
+          "claim_ids": [
+            "F01"
+          ],
+          "seo": {
+            "title": "General anklaget over Kyiv børnehospital angreb skudt i Rusland",
+            "description": "En russisk general, der er blevet anklaget for at have været involveret i et angreb på et børnehospital i Kyiv, er blevet skudt i Rusland. Den russiske undersøgelseskommission har åbnet en undersøgelse efter skuddet.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-general-anklaget-over-kyiv-boernehospital-angreb-skudt-i-rusland.jpg",
+            "alt": "St Volodymyr's Cathedral in Kyiv, Ukraine.",
+            "credit": "Petar Milošević",
+            "license": "CC BY-SA 4.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:St._Volodymyr%27s_Cathedral_in_Kiev.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "En russisk general, der er blevet anklaget for at have været involveret i et angreb på et børnehospital i Kyiv, er blevet skudt i Rusland. Ifølge CNN har den russiske undersøgelseskommission åbnet en undersøgelse efter skuddet. ",
+              "type": "h2"
+            },
+            {
+              "text": "Generalen er blevet anklaget for at have været involveret i et angreb på et børnehospital i Kyiv. Ifølge Euronews er generalen blevet skudt i Rusland. ",
+              "type": "h3"
+            },
+            {
+              "text": "Den russiske undersøgelseskommission har åbnet en undersøgelse efter skuddet. Ifølge CNN er det ikke klart, hvem der har skudt generalen. ",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
     ]
   },
-  "generated_at": "2026-09-03T12:23:50+00:00"
+  "generated_at": "2026-09-03T14:54:45+00:00"
 }
