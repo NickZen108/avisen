@@ -62,3 +62,5 @@ jobs:
           path: reports/qa/live-surface-latest.md
           if-no-files-found: warn
           retention-days: 14
+
+# Manual source touch on 2026-09-03 to deploy the generated burst publication after bot-originated publisher commit.
