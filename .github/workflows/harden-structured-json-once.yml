@@ -1,0 +1,112 @@
+name: Harden structured JSON recovery once
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/harden-structured-json-once.yml']
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Replace aiJson recovery with local format repair first
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('cloudflare/newsdesk/src/editorial.js')
+          s=p.read_text(encoding='utf-8')
+          start=s.index('async function aiJson(')
+          end=s.index('\n\nconst assignmentSchema', start)
+          new=r'''async function aiJson(env, system, user, schema, maxTokens = 2800, model = STRONG_TEXT_MODEL, fallbackModel = null, stage = "unknown") {
+  const request = {
+    messages: [{ role: "system", content: system }, { role: "user", content: user }],
+    max_tokens: maxTokens, temperature: 0.15,
+    response_format: { type: "json_schema", json_schema: schema },
+  };
+  const noteFallback = () => {
+    try {
+      env.__AI_FALLBACK_COUNT__ = Number(env.__AI_FALLBACK_COUNT__ || 0) + 1;
+      env.__AI_FALLBACK_BY_STAGE__ = env.__AI_FALLBACK_BY_STAGE__ || {};
+      env.__AI_FALLBACK_BY_STAGE__[stage] = Number(env.__AI_FALLBACK_BY_STAGE__[stage] || 0) + 1;
+    } catch (_) {}
+  };
+  const rawTextForRepair = (raw) => {
+    if (!raw) return null;
+    if (typeof raw.response === "string" && raw.response.trim()) return raw.response.trim();
+    if (raw.response && typeof raw.response === "object") return JSON.stringify(raw.response);
+    const content = raw?.choices?.[0]?.message?.content;
+    if (typeof content === "string" && content.trim()) return content.trim();
+    if (content && typeof content === "object") return JSON.stringify(content);
+    return null;
+  };
+  const repairMalformed = async (raw, repairModel) => {
+    const malformed = rawTextForRepair(raw);
+    if (!malformed) return null;
+    const repairRequest = {
+      messages: [
+        { role: "system", content: "Du reparerer KUN JSON-format. Bevar alle oplysninger og vurderinger fra inputtet; udfør ikke opgaven igen, tilføj ikke nye fakta, og returnér kun JSON som matcher schemaet." },
+        { role: "user", content: `Ugyldigt struktureret svar:\n${malformed.slice(0, 16000)}` },
+      ],
+      max_tokens: maxTokens, temperature: 0,
+      response_format: { type: "json_schema", json_schema: schema },
+    };
+    noteFallback();
+    const repairedRaw = await env.AI.run(repairModel, repairRequest);
+    return structuredResponse(repairedRaw, schema);
+  };
+
+  let firstError = null;
+  let firstRaw = null;
+  try {
+    firstRaw = await env.AI.run(model, request);
+    return structuredResponse(firstRaw, schema);
+  } catch (error) {
+    firstError = error;
+    // If the model returned content but only the structure is wrong, repair that exact
+    // content cheaply instead of repeating the editorial task.
+    if (rawTextForRepair(firstRaw)) {
+      try { return await repairMalformed(firstRaw, FAST_TEXT_MODEL); }
+      catch (repairError) { console.warn("Workers AI local JSON repair failed", String(repairError)); }
+    }
+  }
+
+  if (!fallbackModel || fallbackModel === model) throw firstError;
+  console.warn("Workers AI structured-call fallback", model, "->", fallbackModel, String(firstError));
+  noteFallback();
+  let fallbackRaw = null;
+  try {
+    fallbackRaw = await env.AI.run(fallbackModel, request);
+    return structuredResponse(fallbackRaw, schema);
+  } catch (error) {
+    // Last chance is still a format-only repair of the actual fallback output. If
+    // JSON Mode itself threw before returning content, there is nothing safe to
+    // repair and the original runtime error is surfaced.
+    if (rawTextForRepair(fallbackRaw)) {
+      try { return await repairMalformed(fallbackRaw, FAST_TEXT_MODEL); }
+      catch (repairError) {
+        repairError.cause = error || firstError;
+        throw repairError;
+      }
+    }
+    error.cause = firstError;
+    throw error;
+  }
+}'''
+          s=s[:start]+new+s[end:]
+          p.write_text(s,encoding='utf-8')
+          PY
+          node --check cloudflare/newsdesk/src/editorial.js
+          python scripts/test_hybrid_runtime.py
+          python scripts/quality_gate.py
+          git diff --check
+      - name: Commit runtime fix
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add cloudflare/newsdesk/src/editorial.js
+          git commit -m 'fix: repair malformed structured output locally first' || exit 0
+          git push origin main
