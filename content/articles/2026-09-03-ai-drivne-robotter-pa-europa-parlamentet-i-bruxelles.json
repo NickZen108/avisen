@@ -1,0 +1,93 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-03-ai-powered-robots-showcased-at-european-parliament-in-brussels",
+  "slug": "2026-09-03-ai-drivne-robotter-pa-europa-parlamentet-i-bruxelles",
+  "category": "Videnskab & teknologi",
+  "weight": "B",
+  "editorial_destination": "tech_magazine",
+  "story_location": {
+    "country": "Belgium",
+    "country_code": "BE",
+    "hero_queries_english": [
+      "European Parliament",
+      "robots",
+      "Brussels"
+    ],
+    "hero_queries_local": [
+      "Parlement européen",
+      "robots",
+      "Bruxelles"
+    ],
+    "hero_queries_transliterated": [
+      "Parlement europeen",
+      "robots",
+      "Bruxelles"
+    ],
+    "place_names_english": [
+      "Brussels",
+      "European Parliament"
+    ],
+    "place_names_local": [
+      "Bruxelles",
+      "Parlement européen"
+    ],
+    "primary_language": "fr",
+    "primary_language_code": "fr",
+    "transliterations": [
+      "Bruxelles",
+      "Parlement europeen"
+    ]
+  },
+  "title": "AI-drivne robotter på Europa-Parlamentet i Bruxelles",
+  "standfirst": "Euronews",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "ledger": "sources/2026-09-03-ai-drivne-robotter-pa-europa-parlamentet-i-bruxelles.json",
+  "claim_ids": [
+    "F01"
+  ],
+  "seo": {
+    "title": "AI-drivne robotter på Europa-Parlamentet i Bruxelles",
+    "description": "AI-drivne robotter blev vist frem på Europa-Parlamentet i Bruxelles. Læs mere om præsentationen og hvad det betyder for fremtidens arbejdsmarked og samfund.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-ai-drivne-robotter-pa-europa-parlamentet-i-bruxelles.jpg",
+    "alt": "Visite du pape François au Parlement européen de Strasbourg .",
+    "credit": "Photo Claude TRUONG-NGOC",
+    "license": "CC BY-SA 3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Pape_Fran%C3%A7ois_Parlement_europ%C3%A9en_Strasbourg_25_nov_2014_04.jpg",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "I dagene før EU's topmøde i Bruxelles, blev Europa-Parlamentet i byen Bruxelles hjemsted for en interessant teknologisk præsentation. Her blev AI-drivne robotter vist frem for medlemmer af Europa-Parlamentet. Ifølge Euronews var dette en unik lejlighed for medlemmerne at se, hvordan disse robotter kan bruges i forskellige sammenhænge. Det er ikke første gang, at Europa-Parlamentet har været vært for teknologiske præsentationer, men denne gang var fokus på AI-drivne robotter. Det er et område, der er i hurtig udvikling og som kan have stor betydning for fremtidens arbejdsmarked og samfund. ",
+      "type": "h2"
+    },
+    {
+      "text": "Euronews har rapporteret om præsentationen og har nævnt, at AI-drivne robotter kan bruges til at hjælpe mennesker med forskellige opgaver, såsom at håndtere komplekse data og at udføre fysiske arbejdsopgaver. Det er et område, der er i hurtig udvikling og som kan have stor betydning for fremtidens arbejdsmarked og samfund. ",
+      "type": "p"
+    },
+    {
+      "text": "Det er vigtigt at notere, at AI-drivne robotter stadig er i en udviklingsfase og at der er mange udfordringer, der skal overvindes før de kan blive en del af vores daglige liv. Men med den hastige udvikling i teknologien, er det muligt, at vi ser AI-drivne robotter i en større rolle i fremtiden. ",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

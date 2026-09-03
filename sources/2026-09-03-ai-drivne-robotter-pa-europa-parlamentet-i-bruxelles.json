@@ -1,0 +1,114 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-ai-powered-robots-showcased-at-european-parliament-in-brussels",
+  "article_slug": "2026-09-03-ai-drivne-robotter-pa-europa-parlamentet-i-bruxelles",
+  "assignment": {
+    "category": "Videnskab & teknologi",
+    "weight": "B",
+    "editorial_destination": "tech_magazine",
+    "story_location": {
+      "country": "Belgium",
+      "country_code": "BE",
+      "hero_queries_english": [
+        "European Parliament",
+        "robots",
+        "Brussels"
+      ],
+      "hero_queries_local": [
+        "Parlement européen",
+        "robots",
+        "Bruxelles"
+      ],
+      "hero_queries_transliterated": [
+        "Parlement europeen",
+        "robots",
+        "Bruxelles"
+      ],
+      "place_names_english": [
+        "Brussels",
+        "European Parliament"
+      ],
+      "place_names_local": [
+        "Bruxelles",
+        "Parlement européen"
+      ],
+      "primary_language": "fr",
+      "primary_language_code": "fr",
+      "transliterations": [
+        "Bruxelles",
+        "Parlement europeen"
+      ]
+    },
+    "core_question": "AI-powered robots vist frem på Europa-Parlamentet i Bruxelles"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Euronews",
+      "url": "https://www.euronews.com/video/2026/09/03/ai-powered-robots-showcased-at-european-parliament-in-brussels",
+      "published_at": "2026-09-03T08:18:46.000Z",
+      "accessed_at": "2026-09-03T08:41:37.005Z",
+      "type": "news",
+      "source_group": "host-euronews-com",
+      "publisher_root": "euronews-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "AI-powered robots showcased at European Parliament in Brussels",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-euronews-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "AI-powered robots blev vist frem på Europa-Parlamentet i Bruxelles",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-euronews-com"
+      ],
+      "checked_at": "2026-09-03T08:41:37.005Z",
+      "notes": "Euronews"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T08:41:37.005Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "tech_magazine"
+}
