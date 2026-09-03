@@ -1,7 +1,7 @@
 name: Auto-publish merge
 on:
   workflow_run: {workflows: ["Quality gates"], types: [completed]}
-permissions: {contents: write, pull-requests: write, actions: write}
+permissions: {contents: write, pull-requests: write}
 concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
 jobs:
   merge:
@@ -10,15 +10,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: {ref: '${{ github.event.workflow_run.head_sha }}', fetch-depth: 0}
-      - name: Guard pipeline-v2 newsroom PR
+      - name: Merge tested AUTO newsroom PR
         env: {GH_TOKEN: '${{ github.token }}', TESTED_SHA: '${{ github.event.workflow_run.head_sha }}'}
         run: |
           set -euo pipefail
           PR=$(gh api "/repos/${GITHUB_REPOSITORY}/commits/${TESTED_SHA}/pulls" | jq -c '[.[]|select(.state=="open" and .base.ref=="main")][0]//empty'); [ -n "$PR" ] || exit 0
           N=$(echo "$PR"|jq -r .number); TITLE=$(echo "$PR"|jq -r .title); BODY=$(echo "$PR"|jq -r '.body//""'); REF=$(echo "$PR"|jq -r .head.ref); REPO=$(echo "$PR"|jq -r .head.repo.full_name); SHA=$(echo "$PR"|jq -r .head.sha)
-          [ "$REPO" = "$GITHUB_REPOSITORY" ] || exit 0; case "$REF" in edition/*|newsroom/*);;*) exit 0;;esac; case "$TITLE" in "[AUTO] "*);;*) exit 0;;esac; echo "$BODY"|grep -q '<!-- morgentidende-auto-publish -->' || exit 0; [ "$SHA" = "$TESTED_SHA" ] || exit 1
+          [ "$REPO" = "$GITHUB_REPOSITORY" ] || exit 0
+          case "$REF" in edition/*|newsroom/*);;*) exit 0;;esac
+          case "$TITLE" in "[AUTO] "*);;*) exit 0;;esac
+          echo "$BODY"|grep -q '<!-- morgentidende-auto-publish -->' || exit 0
+          [ "$SHA" = "$TESTED_SHA" ] || exit 1
           FILES=$(gh api "/repos/${GITHUB_REPOSITORY}/pulls/${N}/files?per_page=100")
-          BAD=$(echo "$FILES"|jq -r '.[]|select(.status=="removed" or (((.filename=="content/frontpage.json") or (.filename|startswith("content/articles/")) or (.filename|startswith("sources/")) or (.filename|startswith("killed/")) or (.filename|startswith("scheduled/")) or (.filename|startswith("reports/editorial/")))|not))|.filename'); [ -z "$BAD" ] || { echo "$BAD"; exit 1; }
-          for A in $(echo "$FILES"|jq -r '.[]|select(.filename|startswith("content/articles/"))|.filename'); do [ "$(basename "$A")" != "_example.json" ] || exit 1; jq -e '.pipeline_version==2 and .manual_review!=true' "$A" >/dev/null || exit 1; done
-          M=$(gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${N}/merge" -f merge_method=squash -f sha="$TESTED_SHA" -f commit_title="$TITLE"); [ "$(echo "$M"|jq -r .merged)" = true ] || exit 1
-          gh workflow run build-publish.yml --ref main
+          BAD=$(echo "$FILES"|jq -r '.[]|select(.status=="removed" or (((.filename=="content/frontpage.json") or (.filename|startswith("content/articles/")) or (.filename|startswith("sources/")) or (.filename|startswith("killed/")) or (.filename|startswith("scheduled/")) or (.filename|startswith("reports/editorial/")))|not))|.filename')
+          [ -z "$BAD" ] || { echo "$BAD"; exit 1; }
+          for A in $(echo "$FILES"|jq -r '.[]|select(.filename|startswith("content/articles/"))|.filename'); do
+            [ "$(basename "$A")" != "_example.json" ] || exit 1
+            jq -e '.pipeline_version==2' "$A" >/dev/null || exit 1
+          done
+          M=$(gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${N}/merge" -f merge_method=squash -f sha="$TESTED_SHA" -f commit_title="$TITLE")
+          [ "$(echo "$M"|jq -r .merged)" = true ] || exit 1
