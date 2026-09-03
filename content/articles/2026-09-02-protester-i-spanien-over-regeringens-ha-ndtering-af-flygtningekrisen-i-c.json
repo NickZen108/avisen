@@ -4,7 +4,7 @@
   "release_requested": false,
   "story_id": "2026-09-02-protests-in-spain-over-government-s-handling-of-ceuta-migrant-crisis",
   "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c",
-  "category": "Sport",
+  "category": "Udland",
   "weight": "B",
   "editorial_destination": "main",
   "story_location": {
@@ -80,17 +80,13 @@
     {
       "text": "Den spanske regering har sagt, at højreorienterede partier udnytter flygtningekrisen, mens oppositionspartier anklager premierminister Pedro Sánchez for at have forladt befolkningen i Ceuta. Premierminister Pedro Sánchez har også sagt, at Marokko ikke er ansvarlig for den massive grænseovertrædelse i Ceuta.",
       "type": "p"
-    },
-    {
-      "text": "BBC Europe og Guardian World har rapporteret om flygtningekrisen i Ceuta. BBC Europe har rapporteret om protesterne i Spanien, mens Guardian World har rapporteret om premierminister Pedro Sánchez' udtalelser om Marokko og flygtningekrisen.",
-      "type": "p"
     }
   ],
   "source_ids_to_display": [
     "S1",
     "S2"
   ],
-  "related_news_slug": null,
+  "related_news_slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen",
   "related": [],
   "correction_note": null,
   "scheduled_for": null,
