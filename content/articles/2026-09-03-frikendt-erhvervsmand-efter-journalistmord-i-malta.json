@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta",
   "slug": "2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta",
   "category": "Udland",
@@ -20,7 +20,7 @@
   "title": "Frikendt erhvervsmand efter journalistmord i Malta",
   "standfirst": "En maltesisk erhvervsmand er blevet frikendt for at have bestilt mordet på journalisten Daphne Caruana Galizia. Frikendelsen har ført til stor vrede i Malta.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-03T15:15:25Z",
   "updated_at": null,
   "ledger": "sources/2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta.json",
   "claim_ids": [
@@ -77,5 +77,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-03T15:15:25Z"
+  }
 }

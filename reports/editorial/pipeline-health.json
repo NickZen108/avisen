@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-03T14:54:41Z",
+  "generated_at": "2026-09-03T15:15:25Z",
   "counts": {
-    "published": 34,
+    "published": 35,
     "checking": 2,
     "draft": 4
   },
@@ -263,6 +263,14 @@
     {
       "slug": "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage",
       "title": "EU-diplomater går forsigtigt efter Nigel Farage",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-03-frikendt-erhvervsmand-efter-journalistmord-i-malta",
+      "title": "Frikendt erhvervsmand efter journalistmord i Malta",
       "status": "published",
       "release_requested": false,
       "resume_from": null,
