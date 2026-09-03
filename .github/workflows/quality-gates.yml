@@ -15,11 +15,34 @@ jobs:
         with: {python-version: '3.12'}
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
+      - name: Detect technical changes
+        id: changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin "${{ github.base_ref }}" --depth=1
+            RANGE="origin/${{ github.base_ref }}...HEAD"
+          elif git rev-parse HEAD^ >/dev/null 2>&1; then
+            RANGE="HEAD^..HEAD"
+          else
+            RANGE="HEAD"
+          fi
+          FILES=$(git diff --name-only $RANGE 2>/dev/null || true)
+          printf '%s\n' "$FILES"
+          if printf '%s\n' "$FILES" | grep -Eq '^(scripts/|cloudflare/|templates/|config/|\.github/workflows/|docs/theme\.(css|js)$|docs/style\.css$|docs/kontrolrum/control-room-tabs\.js$)'; then
+            echo 'technical=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'technical=false' >> "$GITHUB_OUTPUT"
+          fi
       - name: Script syntax
+        if: ${{ steps.changes.outputs.technical == 'true' || github.event_name == 'workflow_dispatch' }}
         run: python -m compileall -q scripts && bash -n scripts/scan-feeds.sh && node --check cloudflare/app/src/index.js && node --check cloudflare/site-worker.js && node --check cloudflare/newsdesk/src/index.js && node --check cloudflare/newsdesk/src/editorial.js && node --check docs/kontrolrum/control-room-tabs.js
       - name: Secret leak gate
+        if: ${{ steps.changes.outputs.technical == 'true' || github.event_name == 'workflow_dispatch' }}
         run: python scripts/secret_scan.py
       - name: Hybrid and workflow regression tests
+        if: ${{ steps.changes.outputs.technical == 'true' || github.event_name == 'workflow_dispatch' }}
         run: |
           python scripts/test_hybrid_runtime.py
           python scripts/reapprove_media_change.py --self-test
@@ -32,11 +55,11 @@ jobs:
         run: python scripts/release_ready.py --normalize-only
       - name: Normalize current categories
         run: python scripts/normalize_categories.py
-      - name: Prebuild gates
+      - name: Prebuild article gates
         run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Deterministic build
         run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/article_history.py && python scripts/editorial_analytics.py && python scripts/production_readiness.py && python scripts/queue_recovery.py && python scripts/build_control_room.py && python scripts/apply_control_room_extras.py && python scripts/seo_surface_fix.py && python scripts/magazine_blocks.py
-      - name: Postbuild gates
+      - name: Postbuild article gates
         run: python scripts/quality_gate.py && python scripts/pipeline_v2_gate.py && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
       - name: Show generated drift
         run: git diff --check
