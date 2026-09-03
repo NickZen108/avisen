@@ -2,7 +2,6 @@ name: Quality gates
 on:
   pull_request:
   workflow_dispatch:
-  push: {branches: [main]}
 permissions: {contents: read}
 concurrency: {group: 'quality-${{ github.event.pull_request.number || github.sha }}', cancel-in-progress: true}
 jobs:
@@ -23,8 +22,6 @@ jobs:
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             git fetch origin "${{ github.base_ref }}" --depth=1
             RANGE="origin/${{ github.base_ref }}...HEAD"
-          elif git rev-parse HEAD^ >/dev/null 2>&1; then
-            RANGE="HEAD^..HEAD"
           else
             RANGE="HEAD"
           fi
