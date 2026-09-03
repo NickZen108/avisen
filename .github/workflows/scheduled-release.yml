@@ -15,9 +15,8 @@ jobs:
       - name: Release due scheduled articles
         run: python scripts/release_scheduled.py
       - name: Validate released state
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py
+        run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/pipeline_v2_gate.py
       - name: Commit release
-        id: release
         run: |
           git config user.name morgentidende-scheduler; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"; git add content/articles
-          if git diff --cached --quiet; then echo "released=false" >> "$GITHUB_OUTPUT"; else git commit -m "schedule: release due articles"; git push; echo "released=true" >> "$GITHUB_OUTPUT"; fi
+          if git diff --cached --quiet; then echo 'Ingen planlagte artikler klar endnu.'; else git commit -m "schedule: release due articles"; git push; fi
