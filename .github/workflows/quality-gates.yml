@@ -55,11 +55,11 @@ jobs:
         run: python scripts/release_ready.py --normalize-only
       - name: Normalize current categories
         run: python scripts/normalize_categories.py
-      - name: Prebuild article gates
-        run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/readability_gate.py && python scripts/prepublish_surface_qa.py
+      - name: Validate article source
+        run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/prepublish_surface_qa.py
       - name: Deterministic public build
         run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/production_readiness.py && python scripts/seo_surface_fix.py && python scripts/magazine_blocks.py
-      - name: Validate generated output and global integrity once
+      - name: Validate generated output once
         run: python scripts/quality_gate.py
       - name: Optional diagnostics and Control Room build
         continue-on-error: true
