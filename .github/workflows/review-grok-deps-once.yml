@@ -1,0 +1,40 @@
+name: Inspect Grok cleanup dependencies once
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/review-grok-deps-once.yml'
+permissions:
+  contents: write
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Inspect active references
+        run: |
+          set -euo pipefail
+          echo '=== pipeline-thresholds refs ==='
+          git grep -n 'pipeline-thresholds' -- ':!config/pipeline-thresholds.json' || true
+          echo '=== story_location refs ==='
+          git grep -n 'story_location\|hero_queries_\|transliterations' cloudflare/newsdesk/src/editorial.js || true
+          echo '=== right_of_reply refs ==='
+          git grep -n 'right_of_reply_required' || true
+          echo '=== seo refs in editorial ==='
+          git grep -n 'seo_title\|seo_description' cloudflare/newsdesk/src/editorial.js || true
+          echo '=== approval gates refs ==='
+          git grep -n 'gates:' cloudflare/newsdesk/src/editorial.js scripts .github/workflows || true
+          git grep -n 'approval.*gates\|gates.*approval' scripts .github/workflows cloudflare || true
+          echo '=== workflow cross references ==='
+          git grep -n 'auto-publish-reconcile\|auto-publish-merge\|post-publication-qa\|post-deploy-guard\|pending-image-refresh\|recovery-rehearsal' .github scripts README.md ARCHITECTURE.md AGENTS.md || true
+      - name: Remove one-shot workflow
+        run: rm -f .github/workflows/review-grok-deps-once.yml
+      - name: Commit cleanup of one-shot
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet || git commit -m 'chore: remove Grok dependency inspection workflow'
+          git push
