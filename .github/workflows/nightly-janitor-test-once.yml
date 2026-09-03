@@ -1,0 +1,37 @@
+name: Nightly janitor test once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/nightly-janitor-test-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run janitor
+        run: |
+          python -m py_compile scripts/nightly_janitor.py
+          python scripts/nightly_janitor.py
+          git diff --check
+      - name: Remove one-shot workflow and commit
+        run: |
+          set -euo pipefail
+          rm .github/workflows/nightly-janitor-test-once.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'chore: validate nightly janitor'
+          git pull --rebase origin main
+          git push origin main
