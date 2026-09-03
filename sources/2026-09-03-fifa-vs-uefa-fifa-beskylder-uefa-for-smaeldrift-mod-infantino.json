@@ -1,0 +1,132 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-fifa-vs-uefa",
+  "article_slug": "2026-09-03-fifa-vs-uefa-fifa-beskylder-uefa-for-smaeldrift-mod-infantino",
+  "assignment": {
+    "category": "Sport",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "DE",
+      "country_code": "Germany",
+      "place_names_english": [
+        "Berlin",
+        "Saxony-Anhalt"
+      ],
+      "place_names_local": [
+        "Berlin",
+        "Sachsen-Anhalt"
+      ]
+    },
+    "core_question": "FIFA blames UEFA for 'smear campaign' against Infantino"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "DW",
+      "url": "https://www.dw.com/en/fifa-blames-uefa-for-smear-campaign-against-infantino/a-78896105?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-03T22:35:00.000Z",
+      "accessed_at": "2026-09-03T23:30:09.140Z",
+      "type": "news",
+      "source_group": "host-dw-com",
+      "publisher_root": "dw-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "FIFA blames UEFA for 'smear campaign' against Infantino",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-dw-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "FIFA beskylder UEFA for at have startet en 'smældrift' mod Infantino",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T23:30:09.140Z",
+      "notes": "FIFA har beskyldt UEFA for at have startet en 'smældrift' mod Infantino og FIFA selv. Dette er ifølge FIFA en 'fiskerexpedition' uden grund."
+    },
+    {
+      "id": "F02",
+      "claim": "UEFA søger tilladelse til at samle beviser for kriminalforsøg i Schweiz",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T23:30:09.140Z",
+      "notes": "UEFA søger tilladelse til at samle beviser for kriminalforsøg i Schweiz, hvor både FIFA og UEFA har hjemsted."
+    },
+    {
+      "id": "F03",
+      "claim": "UEFA har indgivet en eks parte-anke til US District Court i New York",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T23:30:09.140Z",
+      "notes": "UEFA har indgivet en eks parte-anke til US District Court i New York for at få adgang til vidnesbyrd og dokumenter fra US-baserede enheder."
+    },
+    {
+      "id": "F04",
+      "claim": "Dokumenterne vil blive brugt i mulige kriminalforsøg i Schweiz",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T23:30:09.140Z",
+      "notes": "Dokumenterne vil blive brugt i mulige kriminalforsøg i Schweiz, hvor både FIFA og UEFA er hjemmehørende."
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T23:30:09.140Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "main"
+}
