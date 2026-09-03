@@ -56,7 +56,11 @@ def inject_context(a,all_items):
  p=DOCS/'artikler'/f"{a['slug']}.html"
  if not p.exists():return
  text=p.read_text(encoding='utf-8'); related=related_for(a,all_items)
- if related and 'article-story-package' not in text:
+ # build_all already renders the canonical direct relation as a compact
+ # ``Læs også`` teaser. Do not add a second story package for the same link.
+ # Keep the larger package only for reverse/multi-story relations where no
+ # canonical inline teaser exists.
+ if related and 'related-teaser' not in text and 'article-story-package' not in text:
   rows=''.join(f'<a class="lead-followup" href="{esc(x["slug"])}.html"><span class="lead-followup__type">{esc(x.get("category") or "Nyhed")}</span><strong>{esc(x.get("title"))}</strong></a>' for x in related[:5])
   box=f'<aside class="article-story-package lead-package" aria-label="Mere om sagen"><p class="lead-package__title">Mere om sagen</p>{rows}</aside>'
   pos=text.find('<section class="wrap below">')
