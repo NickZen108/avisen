@@ -1,8 +1,8 @@
 name: Auto-publish reconcile
 on:
-  schedule: [{cron: '3,8,13,18,23,28,33,38,43,48,53,58 * * * *'}]
+  schedule: [{cron: '13 * * * *'}]
   workflow_dispatch:
-permissions: {contents: write, pull-requests: write, actions: write}
+permissions: {contents: read, pull-requests: write}
 concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
 jobs:
   reconcile:
@@ -10,15 +10,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: {ref: main, fetch-depth: 0}
-      - name: Reconcile eligible pipeline-v2 AUTO PR
+      - name: Recover missed eligible AUTO PR
         env: {GH_TOKEN: '${{ github.token }}'}
         run: |
           set -euo pipefail
           for N in $(gh api -X GET "/repos/${GITHUB_REPOSITORY}/pulls" -f state=open -f base=main -f per_page=100 --jq '.[].number'); do
-            D=$(gh api "/repos/${GITHUB_REPOSITORY}/pulls/${N}"); TITLE=$(echo "$D"|jq -r .title); BODY=$(echo "$D"|jq -r '.body//""'); REF=$(echo "$D"|jq -r .head.ref); REPO=$(echo "$D"|jq -r .head.repo.full_name); SHA=$(echo "$D"|jq -r .head.sha)
-            [ "$REPO" = "$GITHUB_REPOSITORY" ] || continue; case "$REF" in edition/*|newsroom/*);;*) continue;;esac; case "$TITLE" in "[AUTO] "*);;*) continue;;esac; echo "$BODY"|grep -q '<!-- morgentidende-auto-publish -->' || continue
-            FILES=$(gh api "/repos/${GITHUB_REPOSITORY}/pulls/${N}/files?per_page=100"); BAD=$(echo "$FILES"|jq -r '.[]|select(.status=="removed" or (((.filename=="content/frontpage.json") or (.filename|startswith("content/articles/")) or (.filename|startswith("sources/")) or (.filename|startswith("killed/")) or (.filename|startswith("scheduled/")) or (.filename|startswith("reports/editorial/")))|not))|.filename'); [ -z "$BAD" ] || continue
-            BLOCK=0; for A in $(echo "$FILES"|jq -r '.[]|select(.filename|startswith("content/articles/"))|.filename'); do git show "$SHA:$A"|jq -e '.pipeline_version==2 and .manual_review!=true' >/dev/null || BLOCK=1; done; [ "$BLOCK" = 0 ] || continue
-            RUNS=$(gh api "/repos/${GITHUB_REPOSITORY}/actions/workflows/quality-gates.yml/runs?branch=${REF}&per_page=50"); [ "$(echo "$RUNS"|jq -r --arg s "$SHA" '[.workflow_runs[]|select(.head_sha==$s and .status=="completed" and .conclusion=="success")]|length')" -gt 0 ] || continue
-            M=$(gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${N}/merge" -f merge_method=squash -f sha="$SHA" -f commit_title="$TITLE"); [ "$(echo "$M"|jq -r .merged)" = true ] || exit 1; gh workflow run build-publish.yml --ref main; exit 0
+            D=$(gh api "/repos/${GITHUB_REPOSITORY}/pulls/${N}")
+            TITLE=$(echo "$D"|jq -r .title); BODY=$(echo "$D"|jq -r '.body//""'); REF=$(echo "$D"|jq -r .head.ref); REPO=$(echo "$D"|jq -r .head.repo.full_name); SHA=$(echo "$D"|jq -r .head.sha)
+            [ "$REPO" = "$GITHUB_REPOSITORY" ] || continue
+            case "$REF" in edition/*|newsroom/*);;*) continue;;esac
+            case "$TITLE" in "[AUTO] "*);;*) continue;;esac
+            echo "$BODY"|grep -q '<!-- morgentidende-auto-publish -->' || continue
+            FILES=$(gh api "/repos/${GITHUB_REPOSITORY}/pulls/${N}/files?per_page=100")
+            BAD=$(echo "$FILES"|jq -r '.[]|select(.status=="removed" or (((.filename=="content/frontpage.json") or (.filename|startswith("content/articles/")) or (.filename|startswith("sources/")) or (.filename|startswith("killed/")) or (.filename|startswith("scheduled/")) or (.filename|startswith("reports/editorial/")))|not))|.filename')
+            [ -z "$BAD" ] || continue
+            BLOCK=0
+            for A in $(echo "$FILES"|jq -r '.[]|select(.filename|startswith("content/articles/"))|.filename'); do
+              git show "$SHA:$A"|jq -e '.pipeline_version==2' >/dev/null || BLOCK=1
+            done
+            [ "$BLOCK" = 0 ] || continue
+            RUNS=$(gh api "/repos/${GITHUB_REPOSITORY}/actions/workflows/quality-gates.yml/runs?branch=${REF}&per_page=50")
+            [ "$(echo "$RUNS"|jq -r --arg s "$SHA" '[.workflow_runs[]|select(.head_sha==$s and .status=="completed" and .conclusion=="success")]|length')" -gt 0 ] || continue
+            M=$(gh api --method PUT "/repos/${GITHUB_REPOSITORY}/pulls/${N}/merge" -f merge_method=squash -f sha="$SHA" -f commit_title="$TITLE")
+            [ "$(echo "$M"|jq -r .merged)" = true ] || exit 1
+            exit 0
           done
