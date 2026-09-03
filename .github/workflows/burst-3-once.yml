@@ -1,0 +1,62 @@
+name: Burst 3 articles once
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/burst-3-once.yml'
+permissions:
+  contents: write
+concurrency:
+  group: morgentidende-editorial-import
+  cancel-in-progress: false
+jobs:
+  burst:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check pillow
+      - name: Fetch scan and prefetch
+        run: |
+          set +e
+          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          curl --fail --silent --show-error --max-time 30 "$BASE/candidates" -o /tmp/candidates.json
+          python scripts/github_source_prefetch.py --scan /tmp/candidates.json --output /tmp/github-prefetch.json --limit 12
+          python -m json.tool /tmp/github-prefetch.json >/dev/null 2>&1 || echo '{}' > /tmp/github-prefetch.json
+          exit 0
+      - name: Run exactly up to three distinct editorial cycles
+        env:
+          EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
+        run: |
+          set -euo pipefail
+          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          for i in 1 2 3; do
+            OUT="/tmp/editorial-$i.json"
+            curl --fail --silent --show-error --max-time 240 -X POST \
+              -H 'content-type: application/json' \
+              -H "authorization: Bearer $EDITORIAL_RUN_TOKEN" \
+              --data-binary @/tmp/github-prefetch.json \
+              "$BASE/run-editorial" -o "$OUT"
+            python -m json.tool "$OUT" >/dev/null
+            jq '{status,stage,generated_at,slug,title,reason,handled_signal_keys,ai_usage}' "$OUT"
+            python scripts/log_publication_attempt.py --input "$OUT"
+            python scripts/sync_cloudflare_editorial.py --input "$OUT"
+          done
+      - name: Validate
+        run: |
+          python scripts/quality_gate.py --prebuild --changed-only
+          python scripts/prepublish_surface_qa.py
+      - name: Commit editorial results
+        run: |
+          set -euo pipefail
+          git config user.name 'morgentidende-cloudflare-editorial'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/articles sources reports/editorial/approvals content/frontpage.json docs/img/auto reports/editorial/publication-attempts.jsonl 2>/dev/null || true
+          git diff --cached --quiet || git commit -m 'editorial: burst three article cycles'
+          git pull --rebase origin main
+          git push origin main
