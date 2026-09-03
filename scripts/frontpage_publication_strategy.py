@@ -84,6 +84,11 @@ def published_rank(article: dict) -> float:
     return dt.timestamp() if isinstance(dt, datetime) else 0.0
 
 
+def is_magazine(article: dict) -> bool:
+    destination = str(article.get("editorial_destination") or "").lower()
+    return destination.endswith("_magazine") or destination == "magazine"
+
+
 def main() -> int:
     try:
         state = json.loads(FRONTPAGE.read_text(encoding="utf-8"))
@@ -105,18 +110,20 @@ def main() -> int:
     lead_slug = current_lead if current_lead in articles else ""
 
     candidates: list[dict] = []
+    magazine_candidates: list[dict] = []
     for article in articles.values():
         weight = str(article.get("weight") or "").upper()
         destination = str(article.get("editorial_destination") or "").lower()
         published = article.get("_published")
-        if destination != "main" or weight not in {"A", "B"}:
-            continue
         if published and published < cutoff:
             continue
-        candidates.append(article)
+        if destination == "main" and weight in {"A", "B"}:
+            candidates.append(article)
+        if is_magazine(article):
+            magazine_candidates.append(article)
 
     # Preserve the former release behaviour in one place: a fresh standalone A/B
-    # main story becomes lead; otherwise keep the existing valid lead.
+    # main story becomes lead; magazine placement never promotes an article to lead.
     if (
         str(newest.get("weight") or "").upper() in {"A", "B"}
         and str(newest.get("editorial_destination") or "").lower() == "main"
@@ -140,6 +147,11 @@ def main() -> int:
         key=published_rank,
         reverse=True,
     )
+    magazine_visible = sorted(
+        [a for a in magazine_candidates if a["_slug"] != lead_slug],
+        key=published_rank,
+        reverse=True,
+    )
 
     priority: list[dict] = []
     for article in a_candidates:
@@ -150,6 +162,10 @@ def main() -> int:
         if parent and parent not in seen_parents and parent in articles and parent != lead_slug:
             priority.append(item(parent))
             seen_parents.add(parent)
+        priority.append(item(article["_slug"]))
+    # Magazine articles also belong on the ordinary frontpage. Keep them below
+    # breaking A/follow-up packages but ahead of the ordinary B backlog.
+    for article in magazine_visible:
         priority.append(item(article["_slug"]))
     for article in ordinary_b:
         priority.append(item(article["_slug"]))
@@ -162,14 +178,19 @@ def main() -> int:
     state["rail"] = dedupe(priority + chronological)[:RAIL_LIMIT]
     state["narrow"] = dedupe(priority + chronological)[:NARROW_LIMIT]
     state["publication_strategy"] = {
-        "version": 3,
+        "version": 4,
         "mode": "placement_only_non_gating",
         "sole_placement_owner": True,
         "related_followups_promoted_as_packages": True,
+        "magazine_articles_also_on_main_frontpage": True,
     }
 
     FRONTPAGE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"frontpage strategy: applied; published={len(articles)}, priority candidates={len(candidates)}")
+    print(
+        "frontpage strategy: applied; "
+        f"published={len(articles)}, main priority candidates={len(candidates)}, "
+        f"magazine candidates={len(magazine_candidates)}"
+    )
     return 0
 
 
