@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-03T05:24:09.868473Z",
+  "generated_at": "2026-09-03T05:32:39.362633Z",
   "date_dk": "2026-09-03",
   "policy": {
     "review_every_rejection": true,
@@ -59,17 +59,15 @@
     {
       "slug": "2026-08-31-grand-canyon-flash-flood-en-doed-og-cirka-15-savnet",
       "title": "Flash flood i Grand Canyon: En død og omkring 15 savnet",
-      "resume_from": "research",
+      "resume_from": "fact_check",
       "reasons": [
-        "coverage sweep mangler/er ugyldigt",
         "fact-check PASS mangler",
-        "newsdesk recheck PUBLISH/UPDATE mangler",
         "approval gate language er ikke PASS",
         "approval gate ethics er ikke PASS",
         "approval gate image er ikke PASS",
         "approval gate seo er ikke PASS",
         "approval gate final_editor er ikke PASS",
-        "artiklen er ændret efter final approval"
+        "artiklens redaktionelle indhold er ændret efter final approval"
       ]
     },
     {

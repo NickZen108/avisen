@@ -73,17 +73,15 @@
   "workflow_state": {
     "state": "blocked",
     "blocked_at": "2026-08-31T09:33:16Z",
-    "resume_from": "research",
+    "resume_from": "fact_check",
     "reasons": [
-      "coverage sweep mangler/er ugyldigt",
       "fact-check PASS mangler",
-      "newsdesk recheck PUBLISH/UPDATE mangler",
       "approval gate language er ikke PASS",
       "approval gate ethics er ikke PASS",
       "approval gate image er ikke PASS",
       "approval gate seo er ikke PASS",
       "approval gate final_editor er ikke PASS",
-      "artiklen er ændret efter final approval"
+      "artiklens redaktionelle indhold er ændret efter final approval"
     ]
   }
 }
