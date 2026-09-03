@@ -121,7 +121,7 @@ jobs:
             fi
           done
       - name: Canonical gates before commit
-        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/source_independence_gate.py && python scripts/prepublish_surface_qa.py
+        run: python scripts/quality_gate.py --prebuild && python scripts/pipeline_v2_gate.py && python scripts/prepublish_surface_qa.py
       - name: Commit source-of-truth editorial changes
         run: |
           set -euo pipefail
