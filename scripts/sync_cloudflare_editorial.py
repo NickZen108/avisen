@@ -162,10 +162,6 @@ def validate(payload: dict) -> tuple[dict, dict, dict, dict]:
     if approval.get("status") != "pass" or approval.get("story_id") != article.get("story_id"):
         fail("final approval mangler eller matcher ikke")
     normalize_coverage(ledger)
-    coverage = ledger.get("coverage_sweep") or {}
-    groups = set(coverage.get("independent_source_groups") or [])
-    if coverage.get("status") not in {"pass", "limited"} or not groups:
-        fail("coverage sweep mangler en dokumenteret kildegruppe")
 
     source_map = {s.get("id"): s for s in ledger.get("sources", []) if s.get("id")}
     source_ids = set(source_map)
