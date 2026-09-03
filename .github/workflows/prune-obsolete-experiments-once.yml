@@ -1,0 +1,48 @@
+name: Prune obsolete experiment branches once
+on:
+  push:
+    paths:
+      - .github/workflows/prune-obsolete-experiments-once.yml
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Delete verified obsolete experiment branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          branches=(
+            newsroom/automation-self-test
+            newsroom/connector-self-test-20260830-1134-01
+            newsroom/publish-self-test-20260830-1136-01
+            newsroom/publish-self-test-update-20260830-1142-01
+            newsroom/20260830-114600-publish-self-test-01
+            ops/run-three-news-20260901
+            ops/run-three-news-20260901-b
+            qa/hybrid-live-20260901
+            qa/hybrid-postfix-live-20260901
+            maintenance/obsolete-branch-prune-20260903
+            maintenance/obsolete-branch-prune-trigger-20260903
+          )
+          for branch in "${branches[@]}"; do
+            if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+              echo "Deleting obsolete branch: $branch"
+              git push origin --delete "$branch"
+            fi
+          done
+      - name: Self-delete workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git pull --ff-only origin main
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          rm -f .github/workflows/prune-obsolete-experiments-once.yml
+          git add -A
+          git commit -m 'cleanup: remove obsolete experiment branch pruner'
+          git push origin HEAD:main
