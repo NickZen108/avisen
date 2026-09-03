@@ -53,3 +53,5 @@ jobs:
         if: ${{ steps.publish.outputs.published == 'true' }}
         env: {GH_TOKEN: '${{ github.token }}', PUBLISHER_SHA: '${{ steps.publish.outputs.publisher_sha }}'}
         run: gh workflow run post-deploy-guard.yml --ref main -f target_sha="$PUBLISHER_SHA"
+
+# Manual source touch on 2026-09-03 to publish the approved three-cycle burst after bot-originated editorial commit.
