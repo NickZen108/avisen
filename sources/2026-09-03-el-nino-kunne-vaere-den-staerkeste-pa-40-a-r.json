@@ -1,0 +1,93 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-el-nino",
+  "article_slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r",
+  "assignment": {
+    "category": "Videnskab & teknologi",
+    "weight": "B",
+    "editorial_destination": "tech_magazine",
+    "story_location": {
+      "country": "unknown",
+      "country_code": "unknown",
+      "place_names_english": [
+        "United Nations",
+        "unknown"
+      ],
+      "place_names_local": [
+        "FN",
+        "unknown"
+      ]
+    },
+    "core_question": "Vilken af de følgende nyheder har størst nyhedsværdi?"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "DW",
+      "url": "https://www.dw.com/en/supersized-el-nino-could-be-strongest-on-record-un-says/a-78841246?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-03T09:39:00.000Z",
+      "accessed_at": "2026-09-03T10:30:54.065Z",
+      "type": "news",
+      "source_group": "host-dw-com",
+      "publisher_root": "dw-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "Natalie Muller",
+      "publisher_name": "Deutsche Welle",
+      "canonical_url": "https://www.dw.com/en/supersized-el-nino-could-be-strongest-on-record-un-says/a-78841246",
+      "primary_record": null,
+      "authoritative_for": "'Supersized' El Nino could be strongest on record, UN says",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-dw-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "El Nino kunne være den stærkeste på 40 år",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-03T10:30:54.065Z",
+      "notes": "Kilder: DW, UN"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T10:30:54.065Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "tech_magazine"
+}

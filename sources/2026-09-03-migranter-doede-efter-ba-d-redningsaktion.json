@@ -1,0 +1,158 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion",
+  "article_slug": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "Spanien",
+      "country_code": "ES",
+      "place_names_english": [
+        "Canary Islands",
+        "Ceuta"
+      ],
+      "place_names_local": [
+        "Canary Islands",
+        "Ceuta"
+      ]
+    },
+    "core_question": "Migranter"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "BBC Europe",
+      "url": "https://www.bbc.co.uk/news/articles/c33kzv7kly4o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-03T10:19:03.000Z",
+      "accessed_at": "2026-09-03T10:29:40.598Z",
+      "type": "news",
+      "source_group": "host-bbc-co-uk",
+      "publisher_root": "bbc-co-uk",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "More than 80 migrants feared dead after boat rescued off Canary Islands",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-bbc-co-uk"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Over 80 migranter formodes at være døde efter en redningsaktion ud for Canary Islands",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T10:29:40.598Z",
+      "notes": ""
+    },
+    {
+      "id": "F02",
+      "claim": "Båden var adrift i 27 dage i Atlanterhavet",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T10:29:40.598Z",
+      "notes": ""
+    },
+    {
+      "id": "F03",
+      "claim": "Båden havde 127 personer ombord, da den sejlede ud fra Gambia i Vestafrika i begyndelsen af august",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T10:29:40.598Z",
+      "notes": ""
+    },
+    {
+      "id": "F04",
+      "claim": "44 overlevende, alle mænd fra subsaharisk Afrika, blev reddet",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T10:29:40.598Z",
+      "notes": ""
+    },
+    {
+      "id": "F05",
+      "claim": "Tre af overlevende blev fløjet til hospital i kritisk tilstand",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T10:29:40.598Z",
+      "notes": ""
+    },
+    {
+      "id": "F06",
+      "claim": "Redningsholdet var tvunget til at efterlade de fem døde lig på grund af dårlige vejrforhold",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-bbc-co-uk"
+      ],
+      "checked_at": "2026-09-03T10:29:40.598Z",
+      "notes": ""
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-03T10:29:40.598Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "main"
+}
