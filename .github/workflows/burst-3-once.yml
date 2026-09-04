@@ -83,6 +83,8 @@ jobs:
         continue-on-error: true
         run: |
           python scripts/quality_gate.py --prebuild --changed-only
+          python scripts/editorial_sanity_gate.py --changed-only
+          python scripts/media_entity_sanity.py
           python scripts/prepublish_surface_qa.py
       - name: Build burst audit summary
         if: always()
