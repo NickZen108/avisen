@@ -15,6 +15,7 @@ concurrency:
 jobs:
   burst:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -49,15 +50,18 @@ jobs:
           echo "GITHUB_OIDC_TOKEN=$TOKEN" >> "$GITHUB_ENV"
           echo "V3_PRIVATE_BACKEND_URL=https://vwujgfhcsumsdjigccnr.supabase.co/functions/v1/newsroom-private" >> "$GITHUB_ENV"
 
-      - name: Verify private Publisher Inbox bridge
+      - name: Verify private backend and show today's remaining AI budget
         run: |
+          set -euo pipefail
+          TODAY="$(TZ=Europe/Copenhagen date +%F)"
           curl --fail --silent --show-error --max-time 20 \
             -H "Authorization: Bearer $GITHUB_OIDC_TOKEN" \
             -H "Content-Type: application/json" \
-            -d '{"action":"pull_inbox","limit":1}' \
-            "$V3_PRIVATE_BACKEND_URL" | jq -e '.ok == true' >/dev/null
+            -d "{\"action\":\"daily_budget\",\"budget_date\":\"$TODAY\"}" \
+            "$V3_PRIVATE_BACKEND_URL" | tee /tmp/v3-budget.json | jq -e '.ok == true and .hard_limit_dkk == 10' >/dev/null
+          jq '{budget_date,spent_dkk,reserved_dkk,remaining_hard_dkk,hard_limit_dkk,operational_limit_dkk}' /tmp/v3-budget.json
 
-      - name: Prepare isolated v3 inference Worker
+      - name: Prepare isolated v3 native Workers AI inference Worker
         run: |
           set -euo pipefail
           WORKER_NAME="morgentidende-v3-run-${GITHUB_RUN_ID}"
@@ -89,30 +93,13 @@ jobs:
           echo "V3_WORKER_URL=$V3_WORKER_URL" >> "$GITHUB_ENV"
           READY=0
           for i in $(seq 1 12); do
-            if curl --fail --silent --show-error --max-time 10 "$V3_WORKER_URL/health" | jq -e '.ok == true' >/dev/null; then READY=1; break; fi
+            if curl --fail --silent --show-error --max-time 10 "$V3_WORKER_URL/health" | jq -e '.ok == true and .native_workers_ai == true' >/dev/null; then READY=1; break; fi
             sleep 3
           done
           test "$READY" = 1
 
-      - name: Verify Unified Billing model path
-        run: |
-          set -euo pipefail
-          OK=0
-          for i in $(seq 1 4); do
-            CODE="$(curl --max-time 35 --silent --show-error -o /tmp/v3-ai-smoke.json -w '%{http_code}' \
-              -H "Authorization: Bearer $V3_WORKER_TOKEN" \
-              -H "Content-Type: application/json" \
-              -d '{"stage":"smoke","model":"openai/gpt-5.6-luna","instructions":"Return only the word OK.","input":"Health check","max_output_tokens":64,"reasoning":"none"}' \
-              "$V3_WORKER_URL/run" || true)"
-            if [ "$CODE" = 200 ] && jq -e '.ok == true and (.text|length>0)' /tmp/v3-ai-smoke.json >/dev/null 2>&1; then OK=1; break; fi
-            echo "Inference smoke attempt $i returned HTTP ${CODE:-transport-error}"
-            cat /tmp/v3-ai-smoke.json 2>/dev/null || true
-            sleep 3
-          done
-          test "$OK" = 1
-
-      - name: Run three integrated editorial cycles
-        run: python scripts/v3_pipeline.py --cycles 3
+      - name: Run three bounded integrated editorial cycles
+        run: python scripts/v3_safe_runner.py --cycles 3
 
       - name: Delete temporary v3 inference Worker
         if: always()
@@ -128,7 +115,7 @@ jobs:
           python scripts/v3_newsroom_state.py
           python scripts/v3_technical_check.py
 
-      - name: Commit editorial outputs only
+      - name: Commit editorial outputs and safety report only
         run: |
           set -euo pipefail
           git restore queue/candidates.json scan/latest.md 2>/dev/null || true
