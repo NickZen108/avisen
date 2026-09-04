@@ -1,5 +1,6 @@
 const OPENAI_PREFIX = "openai/";
 const GATEWAY_OPTIONS = { gateway: { id: "default" } };
+const QWEN_VISION = "@cf/qwen/qwen3.8-27b";
 
 function extractText(result) {
   if (!result) return "";
@@ -38,7 +39,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (request.method === "GET" && url.pathname === "/health") {
-      return Response.json({ ok: true, service: "morgentidende-v3-newsroom", ai: true, gateway: "default" });
+      return Response.json({ ok: true, service: "morgentidende-v3-newsroom", ai: true, native_workers_ai: true });
     }
     if (request.method !== "POST" || url.pathname !== "/run") {
       return new Response("Not found", { status: 404 });
@@ -63,6 +64,8 @@ export default {
         "openai/gpt-5.6-luna",
         "openai/gpt-5.4-mini",
         "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "@cf/qwen/qwen3-30b-a3b-fp8",
+        QWEN_VISION,
       ]);
       if (!allowed.has(model)) {
         return Response.json({ ok: false, error: "model not allowlisted" }, { status: 400 });
@@ -89,6 +92,17 @@ export default {
         };
         if (webSearch) params.tools = [{ type: "web_search_preview" }];
         result = await env.AI.run(model, params, GATEWAY_OPTIONS);
+      } else if (model === QWEN_VISION && images.length) {
+        const content = [
+          ...images.map((image_url) => ({ type: "image_url", image_url: { url: image_url } })),
+          { type: "text", text: `${instructions}\n\n${textInput}` },
+        ];
+        result = await env.AI.run(model, {
+          messages: [{ role: "user", content }],
+          max_completion_tokens: maxOutput,
+          reasoning_effort: reasoning === "none" ? "low" : reasoning,
+          temperature: 0.1,
+        });
       } else {
         result = await env.AI.run(model, {
           messages: [
@@ -97,7 +111,7 @@ export default {
           ],
           max_tokens: maxOutput,
           temperature: 0.15,
-        }, GATEWAY_OPTIONS);
+        });
       }
 
       const text = extractText(result);
