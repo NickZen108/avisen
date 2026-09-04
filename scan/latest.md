@@ -1,4 +1,4 @@
-# Scan 2026-09-04 17:38 UTC
+# Scan 2026-09-04 19:54 UTC
 
 Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 
