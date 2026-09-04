@@ -60,14 +60,14 @@
     "canonical": null
   },
   "image": {
-    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c.jpg",
-    "alt": "Sujet : Manifestations -- Espagne Référence bibliographique : Mondial, 3058 Appartient à l’ensemble documentaire : Pho20MPP Image de presse Couverture : 20 juillet 1932 Langue : français Éditeur : diff. par l'Agence Mondial (Paris)",
-    "credit": "Agence de presse Mondial Photo-Presse. Agence photographique (commanditaire)",
-    "license": "Public domain",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Manifestation_en_Espagne_contre_le_nouveau_statut_en_Catalogne_-_btv1b90532254.jpg",
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceuta%20City.jpg",
+    "alt": "Udsigt over Ceuta",
+    "credit": "switch_1010",
+    "license": "CC BY 2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Ceuta_City.jpg",
     "image_type": "photo",
-    "context_type": "archive",
-    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "context_type": "place",
+    "caption": "Arkivfoto af Ceuta – billedet viser ikke den omtalte demonstration.",
     "pending_image": false,
     "ai_generated": false,
     "placement": "lead"
