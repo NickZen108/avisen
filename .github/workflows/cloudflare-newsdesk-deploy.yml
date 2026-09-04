@@ -1,62 +1,17 @@
-name: Deploy Cloudflare Newsdesk Runtime
+name: '[QUARANTINED] Pipeline v2 Newsdesk deploy'
 
-# Deploy canonical source as committed; do not mutate editorial code during deploy.
-# Workflow-path commits are used only to deploy bot-originated runtime commits that GitHub does not recursively trigger.
-# This direct workflow touch deploys the specialist tech/science/health/psychology/relationship Scan feeds from main.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'cloudflare/newsdesk/**'
-      - '.github/workflows/cloudflare-newsdesk-deploy.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: morgentidende-cloudflare-newsdesk
-  cancel-in-progress: false
-
 jobs:
-  deploy:
+  quarantined:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - name: Validate Newsdesk source
-        run: node --check cloudflare/newsdesk/src/index.js && node --check cloudflare/newsdesk/src/editorial.js
-
-      - name: Deploy Newsdesk Worker
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: '4.127.1'
-          command: deploy --config cloudflare/newsdesk/wrangler.jsonc
-
-      - name: Smoke-test scan and editorial runtime
+      - name: Pipeline v2 runtime is frozen
         run: |
-          set -euo pipefail
-          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
-          for i in 1 2 3 4 5 6; do
-            if curl --fail --silent --show-error "$BASE/health" -o /tmp/health.json && \
-               curl --fail --silent --show-error "$BASE/candidates" -o /tmp/candidates.json && \
-               curl --fail --silent --show-error "$BASE/editorial/latest" -o /tmp/editorial.json; then
-              break
-            fi
-            sleep 5
-          done
-          jq -e '.ok == true and .runtime == "cloudflare-workers" and .service == "morgentidende-newsdesk" and .ai_runtime == true' /tmp/health.json >/dev/null
-          jq -e '.runtime == "cloudflare-workers" and (.signals | type == "array") and (.feeds | type == "array") and (.fingerprint | type == "string")' /tmp/candidates.json >/dev/null
-          jq -e '(.status | type == "string")' /tmp/editorial.json >/dev/null
-          echo "Health:"
-          jq '{ok,runtime,ai_runtime,signal_count,latest_generated_at,last_attempt_at,last_editorial_at,editorial_status}' /tmp/health.json
-          echo "Candidates:"
-          jq '{schema_version,runtime,generated_at,signal_count,feeds,fingerprint}' /tmp/candidates.json
-          echo "Editorial:"
-          jq '{status,stage,generated_at,slug,reason,runtime,models,ai_usage}' /tmp/editorial.json
+          echo 'The deployed v2 Newsdesk runtime is frozen as a reference.'
+          echo 'This workflow will not deploy cloudflare/newsdesk.'
+          echo 'Pipeline v3 must use a separate runtime/path.'
