@@ -1,9 +1,11 @@
-# Scan 2026-09-04 19:54 UTC
+# Scan 2026-09-04 22:18 UTC
 
 Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 
 ## DR
 - Kort nyt | DR
+- Lukningstruet lufthavn i Grønland skal måske bruges af Nato
+- Lyngby slår tophold og henter sæsonens første sejr
 - Dommer vil erklære retssag mod Lindsay Clancy ugyldig
 - Løkke laver udleveringsaftale med Marokko
 - 71-årig kvinde får fængsel for mishandling af sin mand
@@ -17,8 +19,6 @@ Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 - Antallet af savnede i Nepal og Tibet opjusteres
 - Omstridt Flextrafik-leverandør begæret konkurs
 - Dolly Partons stjerne på Hollywoods 'Walk of Fame' restaureres
-- Endnu en person dømt for hvidvask med minkskind
-- Svensker sigtet for kontaktbedrageri for 1,2 millioner kroner
 
 ## TV2
 - (feed ikke nået)

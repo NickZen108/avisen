@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-04T17:38:28+00:00",
-  "scan_label": "2026-09-04 17:38 UTC",
-  "fingerprint": "9e47141694b0ceeafaad2de5164cdf633e1b1ac73977a8b8bf0ce7d3581c0a81",
+  "generated_at": "2026-09-04T22:18:18+00:00",
+  "scan_label": "2026-09-04 22:18 UTC",
+  "fingerprint": "af5a6f84201db63d2123cc6cecbf2cdca8f76687bb6daedd8811cf67deb55a95",
   "signal_count": 16,
   "signals": [
     {
@@ -32,13 +32,18 @@
     },
     {
       "source": "DR",
-      "headline": "Endnu en person dømt for hvidvask med minkskind",
-      "normalized": "endnu en person dømt for hvidvask med minkskind"
+      "headline": "Kort nyt | DR",
+      "normalized": "kort nyt dr"
     },
     {
       "source": "DR",
-      "headline": "Kort nyt | DR",
-      "normalized": "kort nyt dr"
+      "headline": "Lukningstruet lufthavn i Grønland skal måske bruges af Nato",
+      "normalized": "lukningstruet lufthavn i grønland skal måske bruges af nato"
+    },
+    {
+      "source": "DR",
+      "headline": "Lyngby slår tophold og henter sæsonens første sejr",
+      "normalized": "lyngby slår tophold og henter sæsonens første sejr"
     },
     {
       "source": "DR",
@@ -59,11 +64,6 @@
       "source": "DR",
       "headline": "Politi opfordrer beboere i Frederiks til at lukke døre og vinduer",
       "normalized": "politi opfordrer beboere i frederiks til at lukke døre og vinduer"
-    },
-    {
-      "source": "DR",
-      "headline": "Svensker sigtet for kontaktbedrageri for 1,2 millioner kroner",
-      "normalized": "svensker sigtet for kontaktbedrageri for 1 2 millioner kroner"
     },
     {
       "source": "DR",
@@ -128,12 +128,12 @@
       "note": "Likely same-event cluster; editorial/source independence must still be verified."
     },
     {
-      "event_key": "3d36462e8ffe0c66",
+      "event_key": "50cb92c1dd97dce1",
       "sources": [
         "DR"
       ],
       "headlines": [
-        "Svensker sigtet for kontaktbedrageri for 1,2 millioner kroner"
+        "Lyngby slår tophold og henter sæsonens første sejr"
       ],
       "signal_count": 1,
       "multi_source": false,
@@ -154,12 +154,12 @@
       "note": "Likely same-event cluster; editorial/source independence must still be verified."
     },
     {
-      "event_key": "690a85c60621b6e8",
+      "event_key": "7b0fd14af1e79994",
       "sources": [
         "DR"
       ],
       "headlines": [
-        "Endnu en person dømt for hvidvask med minkskind"
+        "Trumps triumfbue påbegyndes inden for to uger, siger indenrigsminister"
       ],
       "signal_count": 1,
       "multi_source": false,
@@ -167,12 +167,12 @@
       "note": "Likely same-event cluster; editorial/source independence must still be verified."
     },
     {
-      "event_key": "7b0fd14af1e79994",
+      "event_key": "8d63b13b9e49b6e4",
       "sources": [
         "DR"
       ],
       "headlines": [
-        "Trumps triumfbue påbegyndes inden for to uger, siger indenrigsminister"
+        "Lukningstruet lufthavn i Grønland skal måske bruges af Nato"
       ],
       "signal_count": 1,
       "multi_source": false,
