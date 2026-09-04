@@ -1,18 +1,16 @@
-name: Dispatch burst 3 once
-# Manual trigger helper refreshed 2026-09-04T06:31+02:00 — auditable burst
+name: '[QUARANTINED] Pipeline v2 burst dispatcher'
+
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/dispatch-burst-3-once.yml'
+  workflow_dispatch:
+
 permissions:
-  actions: write
   contents: read
+
 jobs:
-  dispatch:
+  quarantined:
     runs-on: ubuntu-latest
     steps:
-      - name: Dispatch 3-cycle burst
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run burst-3-once.yml -R NickZen108/avisen --ref main -f cycles=3
+      - name: Pipeline v2 is quarantined
+        run: |
+          echo 'Pipeline v2 dispatcher is quarantined.'
+          echo 'It will not start burst-3-once.yml.'
