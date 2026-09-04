@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-03T23:30:55Z",
+  "generated_at": "2026-09-04T01:17:27Z",
   "counts": {
-    "published": 36,
+    "published": 37,
     "checking": 2,
     "draft": 4
   },
@@ -343,6 +343,14 @@
     {
       "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen",
       "title": "Vox kræver udvisninger og skarpere grænsekontrol efter Ceuta-krisen",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t",
+      "title": "Haiti: Regeringen opfordrer til genoplivning af international anti-gang-taskforce",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-04-haitian-government-calls-for-renewal-of-international-anti-gang-task-for",
   "slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t",
   "category": "Udland",
@@ -22,7 +22,7 @@
   "title": "Haiti: Regeringen opfordrer til genoplivning af international anti-gang-taskforce",
   "standfirst": "Haiti's udenrigsminister Raina Forbin har opfordret til genoplivning af international anti-gang-taskforce. GSF skal være fuldt udbygget i landet med støtte fra den internationale samfund, før valgene i december, for at sikre sikkerheden i landet.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-04T01:17:27Z",
   "updated_at": null,
   "ledger": "sources/2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t.json",
   "claim_ids": [
@@ -85,5 +85,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-04T01:17:27Z"
+  }
 }
