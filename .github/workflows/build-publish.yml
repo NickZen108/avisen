@@ -23,8 +23,10 @@ jobs:
           python scripts/quality_gate.py --prebuild --changed-only
           python scripts/editorial_sanity_gate.py --changed-only
           python scripts/media_entity_sanity.py
-      - name: Release approved ready articles; park incomplete ones
-        run: python scripts/release_ready.py
+      - name: Pipeline v2 release is quarantined
+        run: |
+          echo 'Automatic release_ready is disabled while Pipeline v2 is quarantined.'
+          echo 'Legacy build may render existing published content, but it must not promote ready v2 articles.'
       - name: Prefer lawful free documentary photos before final build
         run: python scripts/refresh_pending_images.py --limit 10
       - name: Avoid photo reuse within 20 published articles
