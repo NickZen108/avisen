@@ -1,0 +1,54 @@
+{
+  "model": "@cf/openai/gpt-oss-20b",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 3221,
+    "output_tokens": 350,
+    "estimated_usd": 0.0007492
+  },
+  "elapsed_s": 2.602,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-f5f4b238a94a46d49b522b68bef6a484",
+      "object": "chat.completion",
+      "created": 1788504944,
+      "model": "@cf/openai/gpt-oss-20b",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning_content": "We need to choose the next story based on editorial value: newsworthiness, relevance, significance, documentation, existing coverage, open follow-up. We have 6 candidates. We need to pick one or none. Let's evaluate each.\n\n1. FIFA vs UEFA conflict: high-profile sports, legal dispute, international. Good newsworthiness. Already coverage? Possibly some coverage but still relevant. Could be a good story.\n\n2. Bodens kommun selling hangar to crypto company: local Swedish news, but maybe not high editorial value for national front page. Might be more local.\n\n3. South Korea military deployment to Hormuz: geopolitical, high significance, but maybe already covered by other outlets. But still timely.\n\n4. Trump administration removing tax exemptions for private universities with DEI: US policy, but maybe less immediate? Could be relevant but maybe less urgent.\n\n5. Vox demands after Ceuta crisis: political, but maybe less high-level.\n\n6. Reform UK budget skip: UK politics, but maybe less urgent.\n\nWe need to choose the best. The FIFA-UEFA conflict is a high-profile sports legal dispute, with potential implications for global football governance. It has multiple sources, documented claims. Good editorial value. Also, the story is likely to be of interest to a broad audience. So I'd pick that.\n\nAlternatively, South Korea deployment to Hormuz is also high significance. But maybe the FIFA-UEFA is more unique.\n\nThus choose FIFA-UEFA. Provide brief justification."
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 3221,
+        "completion_tokens": 350,
+        "total_tokens": 3571,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 68.1090228
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

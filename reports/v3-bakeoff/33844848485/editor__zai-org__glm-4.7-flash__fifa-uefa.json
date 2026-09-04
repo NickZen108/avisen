@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "fifa-uefa",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 885,
+    "output_tokens": 700,
+    "estimated_usd": 0.0003331
+  },
+  "elapsed_s": 15.457,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-b8d8a56086af704d",
+      "object": "chat.completion",
+      "created": 1788504618,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Snobbish Danish editor-in-chief.\n    *   **Task:** Evaluate a text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural or incorrect Danish (machine translation, Swedish/Norwegian/English leaks).\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Hero image relevance (is it relevant or just legal?).\n        4.  Other serious editorial errors.\n    *   **Tone:** Snobbish, critical, precise.\n    *   **Output:** Precisely one decision: PUBLISH, REVISE, or DROP. If REVISE, cite problems and suggest natural Danish corrections.\n\n2.  **Analyze the Input Data:**\n    *   **Title:** \"FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'\"\n    *   **Standfirst:** \"FIFA anklager UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Disputen mellem FIFA og UEFA har nået en US-domstol.\"\n    *   **Body:**\n        *   H2: \"FIFA har anklaget UEFA for at føre en 'smørgås-kampagne' mod Infantino.\"\n        *   P1: \"FIFA har anklaget UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Ifølge Deutsche Welle (DW) har UEFA søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz.\"\n        *   P2: \"UEFA har også indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder.\"\n        *   P3: \"Disputen mellem FIFA og UEFA har nået en US-domstol, ifølge DW.\"\n        *   P4: \"FIFA har beskyldt UEFA for at føre en 'smørgås-kampagne' mod Infantino, men UEFA har ikke kommenteret beskyldningerne.\"\n        *   P5: \"Kilde: Deutsche Welle (DW)\"\n    *   **Image:**\n        *   URL: `...declaration_of_independence.jpg`\n        *   Alt text: \"This is a high-resolution image of the United States Declaration of Independence...\"\n        *   Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\"\n    *   **Context:** Sports category, locations: Switzerland, USA, Geneva.\n\n3.  **Evaluate against Criteria:**\n\n    *   **Criterion 1: Language (Machine translation/Swedish/Norwegian/English):**\n        *   *Title/Standfirst:* \"smørgås-kampagne\" is a direct translation of \"sandwich campaign\". It sounds weird in Danish. A Danish editor would likely use \"sandwich-kampagne\" or \"sandwich-angreb\" or \"sandwich-strategi\". \"Smø",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Snobbish Danish editor-in-chief.\n    *   **Task:** Evaluate a text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural or incorrect Danish (machine translation, Swedish/Norwegian/English leaks).\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Hero image relevance (is it relevant or just legal?).\n        4.  Other serious editorial errors.\n    *   **Tone:** Snobbish, critical, precise.\n    *   **Output:** Precisely one decision: PUBLISH, REVISE, or DROP. If REVISE, cite problems and suggest natural Danish corrections.\n\n2.  **Analyze the Input Data:**\n    *   **Title:** \"FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'\"\n    *   **Standfirst:** \"FIFA anklager UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Disputen mellem FIFA og UEFA har nået en US-domstol.\"\n    *   **Body:**\n        *   H2: \"FIFA har anklaget UEFA for at føre en 'smørgås-kampagne' mod Infantino.\"\n        *   P1: \"FIFA har anklaget UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Ifølge Deutsche Welle (DW) har UEFA søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz.\"\n        *   P2: \"UEFA har også indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder.\"\n        *   P3: \"Disputen mellem FIFA og UEFA har nået en US-domstol, ifølge DW.\"\n        *   P4: \"FIFA har beskyldt UEFA for at føre en 'smørgås-kampagne' mod Infantino, men UEFA har ikke kommenteret beskyldningerne.\"\n        *   P5: \"Kilde: Deutsche Welle (DW)\"\n    *   **Image:**\n        *   URL: `...declaration_of_independence.jpg`\n        *   Alt text: \"This is a high-resolution image of the United States Declaration of Independence...\"\n        *   Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\"\n    *   **Context:** Sports category, locations: Switzerland, USA, Geneva.\n\n3.  **Evaluate against Criteria:**\n\n    *   **Criterion 1: Language (Machine translation/Swedish/Norwegian/English):**\n        *   *Title/Standfirst:* \"smørgås-kampagne\" is a direct translation of \"sandwich campaign\". It sounds weird in Danish. A Danish editor would likely use \"sandwich-kampagne\" or \"sandwich-angreb\" or \"sandwich-strategi\". \"Smø"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 885,
+        "completion_tokens": 700,
+        "total_tokens": 1585,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 30.3475
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

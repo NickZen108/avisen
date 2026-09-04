@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "ugyldigt-struktureret-svar",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 525,
+    "output_tokens": 700,
+    "estimated_usd": 0.00042875
+  },
+  "elapsed_s": 14.781,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze this fixture carefully.\n\nThe article is titled \"Ugyldigt struktureret svar\" (Invalid structured response) with the same standfirst and body text. This is clearly a fixture where the article generation failed - the content is just a placeholder error message, not an actual article.\n\nThe task: I'm a picky Danish editor-in-chief evaluating whether this text is ready for publication in a serious Danish newspaper.\n\nKey issues:\n\n1) **The article has no actual content.** The title, standfirst, and body are all just \"Ugyldigt struktureret svar\" - which is an error message/placeholder, not journalism. This is the most fundamental problem. There's no story here at all.\n\n2) **\"Ugyldigt struktureret svar\"** - this phrase itself is a somewhat machine-translated-sounding phrase (likely from English \"Invalid structured response\" or similar). It's not natural Danish journalism. But more importantly, it's an internal system error message that leaked into the article.\n\n3) **Hero image relevance**: The image shows San Francisco Airport (SFO) at night. The story location mentions San Francisco, Mountain View, Palo Alto - suggesting the intended story was about something in the Bay Area (possibly tech-related given the category \"Videnskab & teknologi\"). But since there's no actual story, we can't assess image relevance. The image is a generic archive photo with a caption saying \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" The image might be tangentially relevant to a Bay Area story, but with no story content, publishing an SFO airport photo with an error-message headline would be nonsensical and potentially misleading.\n\n4) **Factual risks**: Publishing an error message as an article would be a serious editorial failure. Readers would see \"Ugyldigt struktureret svar\" as the headline and body - completely meaningless to them.\n\n5) The metadata suggests the intended story was about San Francisco/Mountain View/Palo Alto (Bay Area tech news), but the generation failed.\n\nDecision: This should be DROP or REVISE. Since there's literally no article content to revise - the body is just the error message - the correct decision is DROP. You can't revise an error message into an article; the story needs to be regenerated from scratch. Actually, let me think about whether REVISE makes sense. The instruction says \"Ved REVISE skal du citere de konkrete problemsteder og foreslå naturlig dansk rettelse.\" But there's no underlying story to fix - the entire content is the error. A revision would mean writing an entirely new article, which isn't a \"revision\" of this text. So DROP is the right call.\n\nLet me structure my response:\n\n1) Ikke-naturligt dansk / læk: \"Ugyldigt struktureret svar\" er en ordret oversættelse af engelsk \"Invalid structured response\" - en systemfejlbesked, ikke journalistik. Det er en intern fejlmeddelelse, der er leaket ind i artiklen.\n\n2) Uklare/faktuelt risikable formuleringer: Hele artiklen mangler indhold. Der er ingen story, ingen kilder, ingen fakta. At publicere dette ville være en redaktion",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504806,
+      "id": "da2a7ac0168b43048d3be9123f1179b0",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 525,
+        "completion_tokens": 700,
+        "total_tokens": 1225,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 38.97727584838867
+      }
+    }
+  }
+}

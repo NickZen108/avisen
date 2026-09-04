@@ -1,0 +1,57 @@
+{
+  "model": "@cf/qwen/qwen3.8-27b",
+  "fixture": "ugyldigt-struktureret-svar",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 553,
+    "output_tokens": 700,
+    "estimated_usd": 0.0024888500000000004
+  },
+  "elapsed_s": 14.502,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": null,
+            "function_call": null,
+            "reasoning": "Vi skal svare på dansk som en kræsen dansk chefredaktør. Brugeren giver en JSON-artikel med title/standfirst/body kun \"Ugyldigt struktureret svar\", billede San Francisco Airport at night, story location USA, category Videnskab & teknologi. Vi skal vurdere som om den stod klar til publicering på seriøs dansk avis. Find konkret: 1) ikke-naturligt/forkert dansk, svensk/norsk/engelsk læk, maskinoversættelser, 2) uklare/faktuelt risikable formuleringer/attribution, 3) om hero-billedet faktisk er relevant for historien og ikke bare lovligt, 4) øvrige alvorlige redaktionelle fejl. Små stilpræferencer ikke blockers. Afslut med præcis én beslutning: PUBLISH, REVISE eller DROP. Ved REVISE skal citere konkrete problemsteder og foreslå naturlig dansk rettelse.\n\nVi skal analysere: Teksten er kun \"Ugyldigt struktureret svar\" tre gange. Det er ikke en artikel. Det er en fejlbesked/placeholder. Det er ikke publicerbart. Billedet er San Francisco Airport at night, men der er ingen historie om San Francisco, lufthavn, videnskab/teknologi. Billedet er ikke relevant. Title/standfirst/body er identisk og meningsløs. Det er alvorlig redaktionel fejl: manglende indhold, manglende attribution, manglende kontekst, fiktiv dato 2026? Dato i filnavn 2026-09-04, måske fremtid, men ikke nødvendigvis blocker hvis fixture. Men som publicering: ikke en artikel. Beslutning: DROP eller REVISE? Brugeren beder om præcis én beslutning. Hvis teksten er \"ugyldigt struktureret svar\", kan det ikke rettes med naturlig dansk rettelse, fordi der intet indhold. DROP er passende. Men hvis REVISE kræver citere problemsteder og foreslå rettelse. DROP kan også have begrundelse. De siger \"Ved REVISE skal du citere...\" ikke ved DROP. Vi kan afslutte med DROP. Men måske de forventer REVISE fordi der er konkrete problemsteder? Men der er ingen artikel at redigere. \"Ugyldigt struktureret svar\" er ikke en artikel, men en fejl. DROP.\n\nVi skal skrive som chefredaktør, konkret. Måske struktur:\n- Dansk: \"Ugyldigt struktureret svar\" er ikke journalistisk sprog, men en systembesked. Det er ikke en overskrift, standfirst eller brødtekst. Ingen mening.\n- Uklart/faktuelt risikabelt: Ingen hændelse, ingen kilde, ingen attribution. Kun en fejlbesked. Kan ikke verificeres.\n- Billede: Hero er San Francisco Airport at night, men historien har intet med San Francisco, lufthavn eller videnskab/teknologi at gøre. Billedteksten siger arkivfoto, men det er ikke relevant. Det er ikke blot lovligt, men misvisende.\n-",
+            "refusal": null,
+            "role": "assistant"
+          },
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "created": 1788504891,
+      "ec_transfer_params": null,
+      "id": "chatcmpl-0c363219-219f-44dc-b567-902440052b7b",
+      "kv_transfer_params": null,
+      "metrics": null,
+      "model": "@cf/qwen/qwen3.8-27b",
+      "object": "chat.completion",
+      "prompt_logprobs": null,
+      "prompt_text": null,
+      "prompt_token_ids": null,
+      "service_tier": null,
+      "usage": {
+        "prompt_tokens": 553,
+        "completion_tokens": 700,
+        "total_tokens": 1253,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 226.2590789794922
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "entertainment-over-policy",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 671,
+    "output_tokens": 700,
+    "estimated_usd": 0.00032026000000000005
+  },
+  "elapsed_s": 13.259,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-bcaa2682b00d5203",
+      "object": "chat.completion",
+      "created": 1788504677,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Snobbish Danish editor-in-chief.\n    *   **Task:** Evaluate a text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural or incorrect Danish (machine translation, Swedish/Norwegian/English \"leaks\").\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Hero image relevance (is it relevant or just legal?).\n        4.  Other serious editorial errors.\n    *   **Tone:** Snobbish, critical, professional.\n    *   **Output:** Precisely one decision: PUBLISH, REVISE, or DROP.\n    *   **If REVISE:** Quote problem spots and suggest natural Danish corrections.\n\n2.  **Analyze the Input Data:**\n    *   **Title:** \"Entertainment over policy? White House arcade games ignite backlash\"\n    *   **Standfirst:** \"Trump-administrationen under beskyldning for at prioritere underholdning over politik. Kritikere mener, at administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.\"\n    *   **Body:**\n        *   H2: \"Trump-administrationen under beskyldning for at prioritere underholdning over politik\" (This is a direct copy of the title, just without the question mark).\n        *   P: \"Kritikere mener, at Trump-administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.\" (This is a direct copy of the standfirst).\n        *   P: \"Det sker ifølge Al Jazeera, efter at fem arkadestilte spil blev afsløret på White Houses hjemmeside.\"\n    *   **Image:**\n        *   Source: \"Comwell Hvide Hus Aalborg\" (A hotel in Aalborg, Denmark).\n        *   License: CC BY-SA 4.0.\n        *   Context: Archive photo.\n        *   Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\"\n    *   **Story Location:** USA (White House, Washington D.C.).\n\n3.  **Evaluate against Criteria:**\n\n    *   **Criterion 1: Language (Machine translation/unnatural Danish):**\n        *   The text is actually grammatically correct Danish.\n        *   However, the structure is repetitive and feels like a direct translation of a short English news snippet.\n        *   \"arkadestilte spil\" is a bit clunky. \"arkadespil\" is better.\n        *   \"under beskyldning for at prioritere\" is okay, but standard journalistic style might vary.\n        *   *Verdict:* Not strictly \"wrong\" or \"machine translated\" in a broken way, but very dry and repetitive.\n\n    *   **Criterion 2: Attribution/Facts:**\n        *   The text claims Al Jazeera reported this.\n        *   The image is from a hotel in Aalborg, Denmark (Comwell Hvide",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Snobbish Danish editor-in-chief.\n    *   **Task:** Evaluate a text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural or incorrect Danish (machine translation, Swedish/Norwegian/English \"leaks\").\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Hero image relevance (is it relevant or just legal?).\n        4.  Other serious editorial errors.\n    *   **Tone:** Snobbish, critical, professional.\n    *   **Output:** Precisely one decision: PUBLISH, REVISE, or DROP.\n    *   **If REVISE:** Quote problem spots and suggest natural Danish corrections.\n\n2.  **Analyze the Input Data:**\n    *   **Title:** \"Entertainment over policy? White House arcade games ignite backlash\"\n    *   **Standfirst:** \"Trump-administrationen under beskyldning for at prioritere underholdning over politik. Kritikere mener, at administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.\"\n    *   **Body:**\n        *   H2: \"Trump-administrationen under beskyldning for at prioritere underholdning over politik\" (This is a direct copy of the title, just without the question mark).\n        *   P: \"Kritikere mener, at Trump-administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.\" (This is a direct copy of the standfirst).\n        *   P: \"Det sker ifølge Al Jazeera, efter at fem arkadestilte spil blev afsløret på White Houses hjemmeside.\"\n    *   **Image:**\n        *   Source: \"Comwell Hvide Hus Aalborg\" (A hotel in Aalborg, Denmark).\n        *   License: CC BY-SA 4.0.\n        *   Context: Archive photo.\n        *   Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\"\n    *   **Story Location:** USA (White House, Washington D.C.).\n\n3.  **Evaluate against Criteria:**\n\n    *   **Criterion 1: Language (Machine translation/unnatural Danish):**\n        *   The text is actually grammatically correct Danish.\n        *   However, the structure is repetitive and feels like a direct translation of a short English news snippet.\n        *   \"arkadestilte spil\" is a bit clunky. \"arkadespil\" is better.\n        *   \"under beskyldning for at prioritere\" is okay, but standard journalistic style might vary.\n        *   *Verdict:* Not strictly \"wrong\" or \"machine translated\" in a broken way, but very dry and repetitive.\n\n    *   **Criterion 2: Attribution/Facts:**\n        *   The text claims Al Jazeera reported this.\n        *   The image is from a hotel in Aalborg, Denmark (Comwell Hvide"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 671,
+        "completion_tokens": 700,
+        "total_tokens": 1371,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 29.1705
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

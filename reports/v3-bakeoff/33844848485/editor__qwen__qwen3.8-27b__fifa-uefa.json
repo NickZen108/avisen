@@ -1,0 +1,57 @@
+{
+  "model": "@cf/qwen/qwen3.8-27b",
+  "fixture": "fifa-uefa",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 900,
+    "output_tokens": 700,
+    "estimated_usd": 0.002645
+  },
+  "elapsed_s": 13.929,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": null,
+            "function_call": null,
+            "reasoning": "Vi skal svare på dansk som en kræsen dansk chefredaktør. Brugeren giver en JSON med artikel, title, standfirst, body, image, story_location, category. Vi skal vurdere som om den stod klar til publicering på seriøs dansk avis. Find konkret: 1) ikke-naturligt/forkert dansk, svensk/norsk/engelsk læk og ordrette maskinoversættelser, 2) uklare/faktuelt risikable formuleringer/attribution, 3) om hero-billedet faktisk er relevant for historien og ikke bare lovligt, 4) øvrige alvorlige redaktionelle fejl. Små stilpræferencer ikke blockers. Afslut med præcis én beslutning: PUBLISH, REVISE eller DROP. Ved REVISE skal citere konkrete problemsteder og foreslå naturlig dansk rettelse.\n\nVi skal analysere teksten.\n\nTitel: \"FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'\". Dansk: \"FIFA-UEFA-konflikten\" med bindestreg? I dansk kan man skrive \"FIFA-UEFA-konflikten\" eller \"FIFA-UEFA-konflikten\". \"FIFA-UEFA konflikten\" er ikke helt korrekt, da sammensatnavn med to forkortelser og substantiv typisk bindestreg: \"FIFA-UEFA-konflikten\". Men det er måske stil. \"smørgås-kampagne\" i anførselstegn. Er det en kendt metafor? Måske fra FIFA? \"smørgås\" er dansk, men \"smørgås-kampagne\" lyder underligt. Måske oversat fra engelsk \"smear campaign\"? Ah! \"smørgås-kampagne\" er sandsynligvis en ordret maskinoversættelse af \"smear campaign\" (smear = smør? smørgås?). Det er en alvorlig fejl: \"smear campaign\" betyder smædekampagne/sort kampagne, ikke smørgåskampagne. Det er en engelsk læk/maskinoversættelse. Det skal rettes til \"smædekampagne\" eller \"sort kampagne\". Titlen og standfirst og body bruger \"smørgås-kampagne\". Det er blocker.\n\nStandfirst: \"FIFA anklager UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Disputen mellem FIFA og UEFA har nået en US-domstol.\" \"FIFA's\" med apostrof? I dansk bruges ikke apostrof i besiddelsesform for forkortelser? Man kan skrive \"FIFAs præsident\" eller \"FIFA's præsident\"? Dansk: apostrof bruges til at undgå forvirring, f.eks. \"FIFA's\" måske acceptabelt? Men normalt \"FIFAs præsident\". \"US-domstol\" er ikke dansk; skal være \"US-domstol\"? I dansk: \"en amerikansk domstol\" eller \"en US-domstol\"? \"US\" er forkortelse",
+            "refusal": null,
+            "role": "assistant"
+          },
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "created": 1788504836,
+      "ec_transfer_params": null,
+      "id": "chatcmpl-3c33066f-4a89-45e3-a464-4eca11acaf8c",
+      "kv_transfer_params": null,
+      "metrics": null,
+      "model": "@cf/qwen/qwen3.8-27b",
+      "object": "chat.completion",
+      "prompt_logprobs": null,
+      "prompt_text": null,
+      "prompt_token_ids": null,
+      "service_tier": null,
+      "usage": {
+        "prompt_tokens": 900,
+        "completion_tokens": 700,
+        "total_tokens": 1600,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 240.45452880859375
+      }
+    }
+  }
+}

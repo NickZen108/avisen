@@ -1,0 +1,14 @@
+{
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "fixture": "reform-uk",
+  "ok": true,
+  "http_status": 200,
+  "text": "RUBRIK: Penge\nMANCHET: Reform UK overvejer at springe over budgeten hvis de vinder næste valg\nBRØDTEKST: Ifølge Politico Europe overvejer det britiske parti Reform UK at springe over budgeten, hvis de vinder næste valg. Partiet mener, at de vil være i stand til at træffe store finansielle beslutninger inden for få dage eller uger efter et valg. Disse planer er blevet offentliggjort af Politico Europe, der har talt med partiets førende medlemmer. Det er dog endnu ikke klart, hvordan partiet konkret ønsker at gennemføre disse planer.",
+  "usage": {
+    "input_tokens": 474,
+    "output_tokens": 164,
+    "estimated_usd": 0.000508374
+  },
+  "elapsed_s": 3.5,
+  "raw": null
+}

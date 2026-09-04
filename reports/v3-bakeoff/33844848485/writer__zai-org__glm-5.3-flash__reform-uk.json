@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "reform-uk",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 451,
+    "output_tokens": 750,
+    "estimated_usd": 0.00044265
+  },
+  "elapsed_s": 92.219,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze this task. I'm a journalist at a serious Danish news website. I need to write a short news article in natural, idiomatic Danish based on documented material.\n\nThe material:\n- Fixture: \"reform-uk\"\n- Source: Politico Europe article \"Reform UK floats skipping budget if it wins next election\"\n- Verified claims:\n  - F01: Reform UK will consider skipping the budget if they win the next election\n  - F02: Reform UK will make major financial decisions within days or weeks after an election\n\nThe category is \"Penge\" (Money), weight A, main editorial destination. Story location: London, UK, Europe.\n\nI need to write:\n- RUBRIK (headline)\n- MANCHET (standfirst/lede)\n- BRØDTEKST (body text)\n\nI must not invent facts. I must preserve reservations and attribution. The material can contain poorly translated Danish formulations from a previous pipeline; I should understand the meaning and rewrite in correct Danish.\n\nSo the core facts I can use:\n1. Reform UK (the British party) is considering skipping the budget if they win the next election.\n2. Reform UK would make major financial decisions within days or weeks after an election.\n\nThe source is Politico Europe. The URL mentions Robert Jenrick, but I shouldn't invent facts about him since the verified claims don't mention him. I should stick to the verified claims.\n\nI need to be careful: \"budgeten\" here refers to the UK's Budget (the annual budget statement/finance bill presented by the Chancellor of the Exchequer). In Danish, this would be \"budgettet\" or \"finansloven\" — the UK Budget is analogous to the Danish finanslov. The idea of \"skipping the budget\" means not presenting the annual budget statement as normally scheduled.\n\nLet me write a short news article in Danish:\n\nRUBRIK: Something like \"Reform UK overvejer at springe budgettet over ved valgsejr\" or \"Reform UK vil overveje at droppe budgettet, hvis partiet vinder næste valg\"\n\nMANCHET: A one-two sentence summary.\n\nBRØDTEKST: Body text with attribution to Politico Europe.\n\nI should keep it short since the material is limited. I shouldn't invent details like who said it, when, quotes, etc. I can attribute to Politico Europe. I can note that this is according to the media outlet.\n\nLet me be careful about the Danish term for the UK Budget. In Danish media, the UK \"Budget\" is often called \"budgettet\" or \"finansloven\" or \"budgetredegørelsen\". The annual Budget speech is a major event. I could write \"det årlige budget\" or \"budgetfremlæggelsen\". To be safe and not invent, I can say \"springe budgettet over\" — meaning skip presenting the budget.\n\nActually, let me think about what \"skipping the budget\" means in UK context: The Chancellor presents a Budget (financial statement) usually in autumn/spring. Skipping it would mean not presenting a formal budget event. But I shouldn't over-explain beyond the material. I can add minimal context that's generally known: Reform UK is a British party led by Nigel Farage — wait, is that inventing? It's widely known that Nigel Farage leads Reform UK, but the verified claims don't include it. The instruction says \"Opfind ingen fakta\" (invent no facts). Adding well-known context like \"det britiske parti Reform UK\" is fine — describing Reform UK as a British party",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504489,
+      "id": "b7d60e5241a54b17a8cd45b0ba586063",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 451,
+        "completion_tokens": 750,
+        "total_tokens": 1201,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 40.24091339111328
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "vox-kraever",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 648,
+    "output_tokens": 750,
+    "estimated_usd": 0.0004722
+  },
+  "elapsed_s": 117.013,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze this task. I'm a journalist at a serious Danish news site. I need to write a short news article in natural, idiomatic Danish based on the documented material.\n\nThe material:\n- Fixture: \"vox-kraever\" (Vox demands)\n- Source: about Vox demanding expulsions and sharper border control after the Ceuta crisis\n- Category: Udland (Foreign), weight B\n- Core question: What does Vox demand after the migrant crisis in Ceuta?\n\nSources:\n- S1: Reuters - about Ceuta residents calling for calm, Spain rallies over enclave's migrant crisis (2026-09-02)\n- S2: AP\n- S3: Santiago Abascal's Instagram\n\nVerified claims:\n- F01: Vox calls the border crossings an invasion and an act of war, and places responsibility with Morocco and Sánchez. (S1, S3)\n- F02: Vox demands expulsions and sharper border control. (S1, S2, S3)\n- F03: Reuters and AP give different figures for dead and remaining migrants. (S1, S2)\n- F04: The government has allocated 309 million euros to Ceuta. (S2)\n- F05: The interior minister has accused PP and Vox of inciting hatred. (S4, S5)\n\nNote: F05 references S4 and S5, which are not in the sources list. That's a bit odd, but I should keep the attribution as stated — the interior minister has accused PP and Vox of inciting hatred. I should be careful with attribution since S4/S5 aren't listed, but the claim itself is verified. I'll attribute it to \"the interior minister\" without specifying which source, or I could say \"ifølge Reuters og AP\" — no, I shouldn't invent. The claim says \"Indenrigsministeren har beskyldt PP og Vox for at opildne til had\" with sources S4, S5. Since those sources aren't named, I'll just attribute to the interior minister. Actually, I could note it's per the material. In a news article, I'd write \"Spaniens indenrigsminister har ifølge ... \" — but I don't know the source. Safest: \"Den spanske indenrigsminister har ifølge oplysninger i medierne beskyldt...\" Hmm, that's vague. Better to just state it with attribution to the interior minister as the actor: \"Indenrigsministeren har beskyldt PP og Vox for at opildne til had.\" That preserves the attribution (the accusation comes from the interior minister).\n\nAlso F03: Reuters and AP give different figures for dead and remaining migrants. I don't know the actual figures, so I must not invent them. I should mention that the two news agencies differ in their figures without stating specific numbers. Something like \"De to nyhedsbureauer opgiver forskellige tal for, hvor mange migranter der er omkommet og stadig opholder sig i Ceuta.\"\n\nF04: The government has allocated 309 million euros to Ceuta (per AP).\n\nF01: Vox calls the crossings an invasion and an act of war, blaming Morocco and Sánchez (Spanish PM Pedro Sánchez).\n\nF02: Vox demands expulsions and sharper border control.\n\nThe date context: September 2026, Ceuta crisis. Reuters headline: \"Ceuta residents call calm, Spain rallies over enclave's migrant crisis\" dated 2026-09-02. So the article would be dated around 2026-09-",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504373,
+      "id": "df207ce4176042a286b25207f3d5f198",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 648,
+        "completion_tokens": 750,
+        "total_tokens": 1398,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 42.927276611328125
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "fixture": "sydkorea",
+  "ok": true,
+  "http_status": 200,
+  "text": "Beslutning: REVISE\n\nDer er flere problemsteder i teksten, der kræver rettelse for at sikre en korrekt og naturlig dansk formulering:\n\n1. \"frihed af navigation\" burde rettes til \"fri navigation\" for at være mere idiomatisk på dansk.\n2. \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet\" lyder lidt underligt og burde rettes til \"USA påstår, at de ikke har målrettet civile i sin militære indsats i Hormuz-sundet\" for at være mere præcis og nuanceret.\n3. \"Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse\" burde rettes til \"Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være en krigsforbrydelse\" for at være mere korrekt i formuleringen.\n4. Der er også en vis repetition i teksten, hvor samme information gentages med henvisning til forskellige kilder. Det ville være bedre at sammenfatte informationen og give en mere samlet og koherent fremstilling.\n\nDesuden kunne billedet muligvis erstattes med et, der er mere direkte relevant for historien om Sydkorea og Hormuz-sundet, selvom det nuværende billede ikke er direkte forkert.",
+  "usage": {
+    "input_tokens": 1002,
+    "output_tokens": 359,
+    "estimated_usd": 0.001102413
+  },
+  "elapsed_s": 8.957,
+  "raw": null
+}

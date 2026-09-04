@@ -1,0 +1,42 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 3283,
+    "output_tokens": 350,
+    "estimated_usd": 0.00066745
+  },
+  "elapsed_s": 7.233,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me work through this as a desk editor at a Danish morning paper (\"Morgentidende\"). I need to pick the next story based on news value, timeliness, significance, documentation, existing coverage, and follow-up needs. I can also choose NONE.\n\nLet me review the candidates:\n\n1. **FIFA vs UEFA (Sport, weight B)**: FIFA accuses UEFA of \"smear campaign\" against Infantino. Sources: DW and Sky. Verified claims are somewhat thin — UEFA seeking evidence in Switzerland, ex parte application in US District Court in New York. This is a governance/institutional conflict story in football. It's a developing conflict between the two biggest football bodies. News value: moderate-high for sports section, but it's mostly about legal maneuvering. Two independent sources (DW, Sky). Date 2026-09-04, so current. For a Danish morning paper, this has some interest — Danish/European football context. But it's a \"he said, she said\" governance story with limited verified substance. Weight B, Sport.\n\n2. **Boden municipality (Udland, weight B)**: Swedish municipality sells hangar for 105 million SEK to a crypto company with hundreds of millions in debt; marketed as AI but is actually mining. Source: SVT only (local Norrbotten). Single source. It's a Swedish story — relevant to Danish readers as Nordic neighbor story, and it has a nice angle: AI hype vs. crypto reality, municipal risk. But single source (SVT local), and it's a Swedish local story. Weight B. Documentation: one source. Could be a follow-up/verification need. Interesting but not top priority.\n\n3.",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504947,
+      "id": "c61e421e405f45448d444bec1cd52291",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 3283,
+        "completion_tokens": 350,
+        "total_tokens": 3633,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 60.677268981933594
+      }
+    }
+  }
+}

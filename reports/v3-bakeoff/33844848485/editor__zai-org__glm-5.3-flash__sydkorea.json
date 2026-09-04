@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "sydkorea",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 968,
+    "output_tokens": 700,
+    "estimated_usd": 0.0004952
+  },
+  "elapsed_s": 17.643,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Lad mig analysere denne artikel som en kræsen dansk chefredaktør.\n\nArtiklen handler om:\n1. Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet\n2. USA undersøger, om et missil ramte en iransk bryllupsfest\n\nLad mig gennemgå teksten punkt for punkt:\n\n**1) Ikke-naturligt dansk, læk og maskinoversættelser:**\n\n- \"for at støtte frihed af navigation\" - Dette er en ordret oversættelse af engelsk \"freedom of navigation\". Naturligt dansk ville være \"for at støtte den frie navigation\" eller \"for at sikre fri sejlads\" eller \"friheden til at sejle\". \"Frihed af navigation\" er klart forkert dansk - det er en direkte kalkering af \"freedom of navigation\". Dette er en blocker.\n\n- \"hvilket ville være et krigsforbrydelse\" - Grammatikfejl: \"et krigsforbrydelse\" skal være \"en krigsforbrydelse\" (krigsforbrydelse er fælleskøn). Desuden lyder sætningen klodset: \"hvilket ville være en krigsforbrydelse\" - bedre ville være \"hvilket ville udgøre en krigsforbrydelse\" eller \"noget der ville udgøre en krigsforbrydelse\". Grammatikfejlen \"et krigsforbrydelse\" er en blocker.\n\n- \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" - \"målrettet civile\" er lidt klodset - på dansk ville man sige \"USA har ikke rettet angreb mod civile\" eller \"USA har ikke bevidst angrebet civile\". \"Målrette civile\" er en engelsk kalkering af \"to target civilians\". Det er grænsetilfælde, men lyder unaturligt.\n\n- Strukturen \"Det skriver France 24.\" / \"Det skriver BBC World.\" gentages fem gange - det er meget mekanisk og ser ud som maskinelt genereret indhold. Det er en redaktionel kvalitetsfejl, men måske ikke en blocker i sig selv - dog er det meget dårlig journalistik.\n\n**2) Uklare eller faktuelt risikable formuleringer/attribution:**\n\n- \"Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse.\" - Der er en faktuelt risikabel formulering her: En bryllupsfest i Hormuz-sundet? Hormuz-sundet er et stræde (vandområde) mellem Iran og Oman. Det er meget mærkeligt, at en bryllupsfest skulle ligge \"i Hormuz-sundet\". Sandsynligvis mener man en by ved Hormuz-sundet eller i Iran. Dette er faktuelt risik",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504791,
+      "id": "cd688b297ce144828fc3cd649f1ab369",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 968,
+        "completion_tokens": 700,
+        "total_tokens": 1668,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 45.018184661865234
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "bodens-kommun",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 763,
+    "output_tokens": 700,
+    "estimated_usd": 0.00032578
+  },
+  "elapsed_s": 13.596,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-8484a7a2a8a258f3",
+      "object": "chat.completion",
+      "created": 1788504633,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Snobbish Danish editor-in-chief.\n    *   **Task:** Evaluate a news text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural/wrong Danish, Swedish/Norwegian/English \"leaks\" or direct machine translations.\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Hero image relevance (is it relevant or just legal?).\n        4.  Other serious editorial errors.\n    *   **Tone:** Snobbish, critical, precise.\n    *   **Output:** Precisely one decision: PUBLISH, REVISE, or DROP. If REVISE, cite problems and suggest natural Danish corrections.\n\n2.  **Analyze the Input Text:**\n    *   **Title:** \"Bodens kommun solgte en hangar til en kryptokoncern for 105 millioner kroner\"\n    *   **Standfirst:** \"Bodens kommun har solgt en hangar til en kryptokoncern for 105 millioner kroner. Det er ifølge SVT.\"\n    *   **Body:**\n        *   H2: Same as title/standfirst.\n        *   H3: \"Kryptokoncernen, Bikupa, har skulder for hundretals millioner kroner. Det er ifølge SVT.\"\n        *   P: \"Bikupa har ifølge Skatteverket kunnet sin virksomhed til at være en ren miningvirksomhed. Det er ifølge SVT.\" -> *Wait, \"kunnet sin virksomhed til at være\" is very strange Danish. It sounds like a machine translation of \"kunnet få sin virksomhed til at være\" or \"kunnet få sin virksomhed til at fremstå\".*\n        *   P: \"Bodens kommun har ifølge SVT sagt, at de forventer, at deres hyresgæster og forretningspartnere følger de aftalte aftaler og svensk lovgivning.\" -> *Repetitive (\"aftalte aftaler\"). \"Svensk lovgivning\" is correct contextually (since it's Sweden), but the phrasing is clunky.*\n        *   P: \"I juni 2026 gav Bodens kommun tilladelse til salget af hangaren, hvor Bikupa's datacenter har været placeret. Det er ifølge SVT.\" -> *Grammar is okay, but \"Bikupa's\" should be \"Bikupas\" (genitive s). \"Det er ifølge SVT\" is repeated constantly.*\n\n    *   **Image:**\n        *   Source: Wikimedia Commons (Boden centrum).\n        *   Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\"\n        *   Context: Archive photo.\n        *   Relevance: It's a generic photo of Boden center. The story is about a specific hangar sale to a crypto company. This is a \"hero image\" (lead placement) but it's totally irrelevant. It's just a stock photo of a town center. This violates the \"hero image relevance\" rule.\n\n3.  **Evaluate against Criteria",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Snobbish Danish editor-in-chief.\n    *   **Task:** Evaluate a news text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural/wrong Danish, Swedish/Norwegian/English \"leaks\" or direct machine translations.\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Hero image relevance (is it relevant or just legal?).\n        4.  Other serious editorial errors.\n    *   **Tone:** Snobbish, critical, precise.\n    *   **Output:** Precisely one decision: PUBLISH, REVISE, or DROP. If REVISE, cite problems and suggest natural Danish corrections.\n\n2.  **Analyze the Input Text:**\n    *   **Title:** \"Bodens kommun solgte en hangar til en kryptokoncern for 105 millioner kroner\"\n    *   **Standfirst:** \"Bodens kommun har solgt en hangar til en kryptokoncern for 105 millioner kroner. Det er ifølge SVT.\"\n    *   **Body:**\n        *   H2: Same as title/standfirst.\n        *   H3: \"Kryptokoncernen, Bikupa, har skulder for hundretals millioner kroner. Det er ifølge SVT.\"\n        *   P: \"Bikupa har ifølge Skatteverket kunnet sin virksomhed til at være en ren miningvirksomhed. Det er ifølge SVT.\" -> *Wait, \"kunnet sin virksomhed til at være\" is very strange Danish. It sounds like a machine translation of \"kunnet få sin virksomhed til at være\" or \"kunnet få sin virksomhed til at fremstå\".*\n        *   P: \"Bodens kommun har ifølge SVT sagt, at de forventer, at deres hyresgæster og forretningspartnere følger de aftalte aftaler og svensk lovgivning.\" -> *Repetitive (\"aftalte aftaler\"). \"Svensk lovgivning\" is correct contextually (since it's Sweden), but the phrasing is clunky.*\n        *   P: \"I juni 2026 gav Bodens kommun tilladelse til salget af hangaren, hvor Bikupa's datacenter har været placeret. Det er ifølge SVT.\" -> *Grammar is okay, but \"Bikupa's\" should be \"Bikupas\" (genitive s). \"Det er ifølge SVT\" is repeated constantly.*\n\n    *   **Image:**\n        *   Source: Wikimedia Commons (Boden centrum).\n        *   Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\"\n        *   Context: Archive photo.\n        *   Relevance: It's a generic photo of Boden center. The story is about a specific hangar sale to a crypto company. This is a \"hero image\" (lead placement) but it's totally irrelevant. It's just a stock photo of a town center. This violates the \"hero image relevance\" rule.\n\n3.  **Evaluate against Criteria"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 763,
+        "completion_tokens": 700,
+        "total_tokens": 1463,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 29.6765
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

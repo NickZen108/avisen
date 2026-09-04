@@ -1,0 +1,57 @@
+{
+  "model": "@cf/qwen/qwen3.8-27b",
+  "fixture": "entertainment-over-policy",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 682,
+    "output_tokens": 700,
+    "estimated_usd": 0.0025469000000000004
+  },
+  "elapsed_s": 26.983,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": null,
+            "function_call": null,
+            "reasoning": "Vi skal svare på dansk. Brugeren beder om at vurdere en artikel som om den stod klar til publicering på en seriøs dansk avis. Vi skal finde konkret: 1) ikke-naturligt/forkert dansk, svensk/norsk/engelsk læk, maskinoversættelser; 2) uklare/faktuelt risikable formuleringer/attribution; 3) om hero-billedet faktisk er relevant for historien og ikke bare lovligt; 4) øvrige alvorlige redaktionelle fejl. Små stilpræferencer er ikke blockers. Afslut med præcis én beslutning: PUBLISH, REVISE eller DROP. Ved REVISE skal vi citere konkrete problemsteder og foreslå naturlig dansk rettelse.\n\nVi skal analysere JSON-artiklen.\n\nTitel: \"Entertainment over policy? White House arcade games ignite backlash\"\nStandfirst: \"Trump-administrationen under beskyldning for at prioritere underholdning over politik. Kritikere mener, at administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.\"\nBody:\nh2: \"Trump-administrationen under beskyldning for at prioritere underholdning over politik\"\np: \"Kritikere mener, at Trump-administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.\"\np: \"Det sker ifølge Al Jazeera, efter at fem arkadestilte spil blev afsløret på White Houses hjemmeside.\"\nImage: src ... alt \"Comwell Hvide Hus Aalborg\", credit Drlady, license CC BY-SA 4.0, source_url commons file Comwell_Hvide_Hus_Aalborg.jpg, image_type photo, context_type archive, caption \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" placement lead.\nstory_location USA, White House, Washington D.C.\ncategory Kultur & medier.\n\nProblemer:\n- Titel er på engelsk. For dansk avis skal være dansk. \"Entertainment over policy? White House arcade games ignite backlash\" er engelsk og ikke oversat. Måske \"Underholdning i stedet for politik? Arkadespil i Hvide Hus udløser vrede\". Men \"ignite backlash\" = udløser kritik/reaktion. \"White House\" skal være \"Hvide Hus\" (dansk). \"arcade games\" = arkadespil. \"backlash\" = vrede/kritik.\n- Standfirst: \"Trump-administrationen under beskyldning for at prioritere underholdning over politik.\" Mangler verb? \"Trump-administrationen er under beskyldning...\" eller \"Trump-administrationen beskyldes for at prioritere underholdning over politik.\" \"under beskyldning\" er lidt maskinlignende/ukorrekt. \"under beskyldning for\" er ikke naturligt dansk; \"beskyldes for\" eller \"er genstand for beskyldninger om\".\n- \"Kritikere mener, at administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål",
+            "refusal": null,
+            "role": "assistant"
+          },
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "created": 1788504905,
+      "ec_transfer_params": null,
+      "id": "chatcmpl-7e50d409-1578-4e52-b578-6d5eeee0bc92",
+      "kv_transfer_params": null,
+      "metrics": null,
+      "model": "@cf/qwen/qwen3.8-27b",
+      "object": "chat.completion",
+      "prompt_logprobs": null,
+      "prompt_text": null,
+      "prompt_token_ids": null,
+      "service_tier": null,
+      "usage": {
+        "prompt_tokens": 682,
+        "completion_tokens": 700,
+        "total_tokens": 1382,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 231.53634643554688
+      }
+    }
+  }
+}

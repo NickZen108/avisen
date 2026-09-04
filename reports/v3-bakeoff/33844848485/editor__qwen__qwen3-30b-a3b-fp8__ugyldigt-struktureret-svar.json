@@ -1,0 +1,14 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "ugyldigt-struktureret-svar",
+  "ok": true,
+  "http_status": 200,
+  "text": "\n\n**1) Ikke-naturligt/dansk/engelsk læk/fejl:**  \n- Teksten er en tom placeholder (\"Ugyldigt struktureret svar\") uden indhold. Dette er ikke naturligt dansk og tyder på en fejl i systemet.  \n- \"Arkivfoto\" og \"billedet viser ikke nødvendigvis selve hændelsen\" er korrekte, men udelukkende relevante, hvis der faktisk er en hændelse at referere til – hvilket der ikke er.  \n\n**2) Uklare/formuleringsfejl/attribution:**  \n- Der er ingen faktisk historie eller oplysninger i teksten. Titel, standfirst og body er identiske og uden betydning.  \n- Attributionen til billedet (Andrew Choy, CC BY-SA 2.0) er korrekt, men billedet er ikke relevant for en artikel uden indhold.  \n\n**3) Relevans af hero-billedet:**  \n- Billed",
+  "usage": {
+    "input_tokens": 542,
+    "output_tokens": 700,
+    "estimated_usd": 0.000265642
+  },
+  "elapsed_s": 5.571,
+  "raw": null
+}

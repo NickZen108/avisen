@@ -1,0 +1,14 @@
+{
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "fixture": "entertainment-over-policy",
+  "ok": true,
+  "http_status": 200,
+  "text": "Ved gennemlæsning af artiklen finder jeg følgende problemsteder:\n\n1. \"Trump-administrationen under beskyldning for at prioritere underholdning over politik\" burde være \"Trump-administrationen beskyldes for at prioritere underholdning over politik\" for at være mere naturligt dansk.\n2. \"Kritikere mener, at Trump-administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter\" er en lidt lang og uklar sætning. Den kunne forkortes til \"Kritikere mener, at administrationen prioriterer underholdning over vigtige spørgsmål som stigende omkostninger og udenlandske konflikter\".\n3. \"Det sker ifølge Al Jazeera, efter at fem arkadestilte spil blev afsløret på White Houses hjemmeside\" burde være \"Ifølge Al Jazeera sker det efter, at fem arkadestilte spil blev afsløret på White Houses hjemmeside\" for at være mere naturligt dansk.\n4. Billedet af Comwell Hvide Hus Aalborg har ikke noget at gøre med artiklens indhold, da det handler om White House i USA, ikke et hotel i Aalborg. Dette er en fejl, da billedet ikke er relevant for historien.\n\nBeslutning: REVISE\n\nForeslåede rettelser:\n- \"Trump-administrationen beskyldes for at prioritere underholdning over politik\"\n- \"Kritikere mener, at administrationen prioriterer underholdning over vigtige spørgsmål som stigende omkostninger og udenlandske konflikter\"\n- \"Ifølge Al Jazeera sker det efter, at fem arkadestilte spil blev afsløret på White Houses hjemmeside\"\n- Erstat billedet med et relevant billede af White House i USA.",
+  "usage": {
+    "input_tokens": 709,
+    "output_tokens": 464,
+    "estimated_usd": 0.001253129
+  },
+  "elapsed_s": 9.721,
+  "raw": null
+}

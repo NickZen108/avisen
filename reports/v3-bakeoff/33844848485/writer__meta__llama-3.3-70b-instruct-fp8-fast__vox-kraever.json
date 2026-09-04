@@ -1,0 +1,14 @@
+{
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "fixture": "vox-kraever",
+  "ok": true,
+  "http_status": 200,
+  "text": "RUBRIK: Udland\nMANCHET: Spansk højrefløjsparti kræver udvisninger og skærpet grænsekontrol efter migrantkrisen i Ceuta\nBRØDTEKST: Efter den seneste migrantkrise i den spanske enklave Ceuta kræver det højrefløjsparti Vox udvisninger og skærpet grænsekontrol. Ifølge partiets leder, Santiago Abascal, skal der tages skærpet kontrol med grænserne for at forhindre lignende situationer i fremtiden. Vox kalder grænseoverskridelserne for en \"invasion\" og en \"krigshandling\" og placerer ansvaret hos Marokko og den spanske regering under ledelse af Pedro Sánchez. Samtidig har regeringen afsat 309 millioner euro til at håndtere situationen i Ceuta.",
+  "usage": {
+    "input_tokens": 676,
+    "output_tokens": 215,
+    "estimated_usd": 0.0006824629999999999
+  },
+  "elapsed_s": 4.255,
+  "raw": null
+}

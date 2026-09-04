@@ -1,0 +1,55 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 3276,
+    "output_tokens": 350,
+    "estimated_usd": 0.00033655999999999996
+  },
+  "elapsed_s": 5.107,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-8872d50aed04a7b1",
+      "object": "chat.completion",
+      "created": 1788504937,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Desk Editor at *Morgentidende* (Morning Newspaper).\n    *   **Task:** Select the next story based on news value, timeliness, significance, documentation, existing coverage, and follow-up needs.\n    *   **Constraint:** Avoid mechanical categorization filling. It is allowed to choose NONE.\n    *   **Output Format:** Return VALG (Selection) and a short BEGRUNDELING (Justification).\n    *   **Language:** Danish.\n\n2.  **Analyze the Candidates:**\n\n    *   **Candidate 1: `fifa-uefa`**\n        *   *Topic:* FIFA accuses UEFA of smear campaign against Infantino.\n        *   *Category:* Sport.\n        *   *Weight:* B.\n        *   *Significance:* High. Major conflict between two of the world's biggest football bodies. Legal battles in Switzerland and the US. Infantino is a polarizing figure.\n        *   *Timeliness:* High (current conflict).\n        *   *Context:* *Morgentidende* is a Danish newspaper. Football is huge in Denmark. This is a major international sports story.\n\n    *   **Candidate 2: `bodens-kommun`**\n        *   *Topic:* Boden municipality sells a hangar to a crypto company for 105 million SEK.\n        *   *Category:* Udland (Foreign/International - though this is local Swedish news, it's categorized as Udland here).\n        *   *Weight:* B.\n        *   *Significance:* Medium. Local Swedish news affecting a Swedish municipality. Involves crypto/AI",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Desk Editor at *Morgentidende* (Morning Newspaper).\n    *   **Task:** Select the next story based on news value, timeliness, significance, documentation, existing coverage, and follow-up needs.\n    *   **Constraint:** Avoid mechanical categorization filling. It is allowed to choose NONE.\n    *   **Output Format:** Return VALG (Selection) and a short BEGRUNDELING (Justification).\n    *   **Language:** Danish.\n\n2.  **Analyze the Candidates:**\n\n    *   **Candidate 1: `fifa-uefa`**\n        *   *Topic:* FIFA accuses UEFA of smear campaign against Infantino.\n        *   *Category:* Sport.\n        *   *Weight:* B.\n        *   *Significance:* High. Major conflict between two of the world's biggest football bodies. Legal battles in Switzerland and the US. Infantino is a polarizing figure.\n        *   *Timeliness:* High (current conflict).\n        *   *Context:* *Morgentidende* is a Danish newspaper. Football is huge in Denmark. This is a major international sports story.\n\n    *   **Candidate 2: `bodens-kommun`**\n        *   *Topic:* Boden municipality sells a hangar to a crypto company for 105 million SEK.\n        *   *Category:* Udland (Foreign/International - though this is local Swedish news, it's categorized as Udland here).\n        *   *Weight:* B.\n        *   *Significance:* Medium. Local Swedish news affecting a Swedish municipality. Involves crypto/AI"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 3276,
+        "completion_tokens": 350,
+        "total_tokens": 3626,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 30.758000000000003
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

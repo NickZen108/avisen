@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "fifa-uefa",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 663,
+    "output_tokens": 750,
+    "estimated_usd": 0.00047445
+  },
+  "elapsed_s": 116.816,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze the task. I'm a journalist at a serious Danish news site. I need to write a short news article in natural, idiomatic Danish based on the documented material. The material may contain poorly translated Danish formulations from a previous pipeline; I should understand the meaning and rewrite in correct Danish rather than copying linguistic errors. I must not invent facts. Preserve caveats and attribution. Return only: RUBRIK (headline), MANCHET (lead/standfirst), and BRØDTEKST (body text).\n\nThe verified claims:\n- F01: UEFA has applied for permission to collect evidence for criminal proceedings in Switzerland. (Source: DW)\n- F02: UEFA has filed an ex parte application to the US District Court in New York to obtain witness statements and documents from US-based entities. (Source: DW)\n- F03: The dispute between FIFA and UEFA has reached a US court. (Source: DW)\n- F04: UEFA has sought permission to collect evidence for criminal proceedings in Switzerland, where both FIFA and UEFA are headquartered. (Source: DW)\n\nThe headline from DW: \"FIFA accuses UEFA of 'smear campaign' against Infantino\" — FIFA anklager UEFA for 'smædekampagne' mod Infantino. The assignment says \"smoerga-s kampagne\" which is likely \"smædekampagne\" (smear campaign). The core question: \"FIFA anklager UEFA for 'smældrift' mod Infantino\" — hmm, \"smældrift\"? That's odd. Probably \"smædekampagne\" is the correct Danish term. The instruction says the material may contain badly translated Danish formulations; I should write correct Danish. \"Smear campaign\" in Danish is \"smædekampagne\" or \"bagvaskelseskampagne\".\n\nSo the article: FIFA accuses UEFA of launching a smear campaign against FIFA president Gianni Infantino. Meanwhile, UEFA has filed applications: one in Switzerland seeking permission to gather evidence for criminal proceedings (both FIFA and UEFA are based in Switzerland), and an ex parte application to the US District Court in New York to obtain witness statements and documents from US-based entities. The dispute has now reached a US court.\n\nI need to be careful: the verified claims don't explicitly state that FIFA made the accusation in response, but the headline \"FIFA accuses UEFA of 'smear campaign' against Infantino\" is documented from DW and Sky. So I can attribute: According to DW (Deutsche Welle), FIFA accuses UEFA of a smear campaign against Infantino.\n\nI should not invent details like quotes, dates, names beyond what's given. Gianni Infantino is FIFA president — that's implied by the headline (\"against Gianni Infantino\" from Sky). I can say FIFA-president Gianni Infantino.\n\nPlace: Geneva is mentioned in story location — but I shouldn't invent that UEFA is based in Geneva unless documented. F04 says both FIFA and UEFA are headquartered in Switzerland. I can say Switzerland. Geneva is in the story location, but to be safe, I'll just say Switzerland. Actually, it's well known both are in Zurich... FIFA is in Zurich, UEFA in Nyon. Geneva is where... hmm, the story location says Geneva. But I shouldn't invent. I'll stick to \"Schweiz\".\n\nStructure:\n- RUBRIK: Something like \"FIFA anklager UEFA for smædekampagne mod Infantino\"\n- MANCHET: Short lead summarizing.\n- BRØDTEKST: Body with attribution to DW and Sky.\n\nLet me write it in natural Danish.\n\nR",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788503950,
+      "id": "34ae3e54d32b43b4a8da9e551589635f",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 663,
+        "completion_tokens": 750,
+        "total_tokens": 1413,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 43.13182067871094
+      }
+    }
+  }
+}

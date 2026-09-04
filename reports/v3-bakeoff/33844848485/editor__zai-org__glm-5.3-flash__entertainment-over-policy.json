@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "entertainment-over-policy",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 678,
+    "output_tokens": 700,
+    "estimated_usd": 0.0004517
+  },
+  "elapsed_s": 16.687,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze this Danish article carefully.\n\nThe article is about the White House adding arcade-style games to its website, and criticism of the Trump administration for prioritizing entertainment over policy.\n\nLet me check the Danish text:\n\n1. Title: \"Entertainment over policy? White House arcade games ignite backlash\" — This is entirely in English! For a serious Danish newspaper, the title should be in Danish. This is a major issue — the headline is untranslated English.\n\n2. Standfirst: \"Trump-administrationen under beskyldning for at prioritere underholdning over politik. Kritikere mener, at administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.\"\n\n- \"Trump-administrationen under beskyldning for at prioritere...\" — This is a verbless construction. In Danish, you'd typically say \"Trump-administrationen er under beskyldning for...\" or \"Trump-administrationen beskyldes for at prioritere...\". The verbless form is a bit headline-style, but in a standfirst it's borderline acceptable in Danish journalism (headlines often drop \"er\"). Actually \"Trump-administrationen under beskyldning for...\" is fairly common headline style in Danish. Hmm, but combined with the rest it reads like machine translation. Let me think. Danish headlines do use verbless constructions: \"Statsministeren under pres\" is normal. So that's okay-ish.\n\n- \"under beskyldning for at prioritere underholdning over politik\" — \"prioritere X over Y\" — in Danish, \"prioritere X frem for Y\" is more natural. \"Over\" here is an English calque (\"prioritize entertainment over policy\"). Danish would say \"prioritere underholdning frem for politik\" or \"at underholdning går forud for politik\". \"Prioritere over\" is not idiomatic Danish. This appears twice (standfirst and body).\n\n- \"at beskæftige sig med vigtige spørgsmål\" — that's fine Danish.\n\n- \"stigende omkostninger\" — \"omkostninger\" is more like \"costs\" in a business sense; for consumer prices/cost of living, Danish would say \"stigende priser\" or \"de stigende leveomkostninger\". \"Stigende omkostninger\" is a slightly off translation of \"rising costs\". Could be acceptable but \"stigende priser\" is more natural for the cost-of-living context.\n\n3. Body:\n- First item is an h2 that duplicates the standfirst's first sentence: \"Trump-administrationen under beskyldning for at prioritere underholdning over politik\" — duplication of standfirst as h2 is a structural issue. Also it's a subheadline that just repeats.\n- Second p duplicates the standfirst's second sentence verbatim. So the body literally repeats the standfirst. That's a serious editorial flaw — the article body is just the standfirst repeated plus one sentence.\n- Third p: \"Det sker ifølge Al Jazeera, efter at fem arkadestilte spil blev afsløret på White Houses hjemmeside.\"\n\n- \"arkadestilte spil\" — hmm. \"Arkade-stil\"",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504820,
+      "id": "97d519696f4f4b4aa927e978baf0bfad",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 678,
+        "completion_tokens": 700,
+        "total_tokens": 1378,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 41.06364059448242
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "bodens-kommun",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 753,
+    "output_tokens": 750,
+    "estimated_usd": 0.00048795
+  },
+  "elapsed_s": 65.218,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze this task. I'm a journalist at a serious Danish news site. I need to write a short news article in natural, idiomatic Danish based on documented material. The material may contain poorly translated Danish formulations from a previous pipeline; I should understand the meaning and rewrite in correct Danish rather than copying linguistic errors. I must not invent facts. Preserve reservations and attribution. Return only: RUBRIK (headline), MANCHET (lead/standfirst), and BRØDTEKST (body text).\n\nThe source is SVT (Swedish television), about Boden municipality in Sweden selling a hangar for 105 million (presumably Swedish kronor) to a crypto company with debts of hundreds of millions. The deal is marketed as an AI initiative, but according to Skatteverket (Swedish Tax Agency), the company Bikupa has engaged in pure mining operations. In June 2026, Boden municipality gave the green light to the sale of the hangar where Bikupa's data center has been located.\n\nKey facts:\n- F01: Boden municipality sells a hangar for 105 million to a crypto company with debts of hundreds of millions.\n- F02: The deal is marketed as an AI initiative – but according to the Tax Agency (Skatteverket), the company Bikupa has engaged in pure mining operations.\n- F03: Boden municipality assumes that our tenants and business partners comply with entered agreements and Swedish legislation. (This is a quote from the municipality, presumably)\n- F04: In June 2026, Boden municipality gave the green light to the sale of the hangar where Bikupa's data center has been.\n- F05: Bikupa has debts of hundreds of millions.\n- F06: The company Bikupa has engaged in pure mining operations.\n- F07: Boden municipality sells a hangar for 105 million to a crypto company.\n- F08: The deal is marketed as an AI initiative.\n\nThe currency: 105 millioner kr — the assignment says \"105 millioner kr\" in the source file name. Since it's Sweden, it's likely Swedish kronor (SEK). The SVT headline says \"105-miljonersaffär\". I should probably say \"105 millioner svenske kroner\" or just \"105 millioner kroner\" — since it's Sweden, I could specify \"svenske kronor\" but the material doesn't explicitly say SEK. Hmm. The source file name says \"solgte-en-hangar-til-en-kryptokoncern-for-105-millioner-kr\". The Danish assignment category is \"Udland\" (foreign news). To be safe, I could write \"105 millioner kroner\" — since the context is Sweden, it's Swedish kroner. Actually, saying \"svenske kroner\" would be a reasonable interpretation but might be adding a fact. The SVT article is Swedish, so the amount is in SEK. I think it's safe to say \"105 millioner svenske kroner\" — actually, let me be careful. The claim says \"105 miljoner\" without currency. In a Swedish context, it's SEK. Writing \"105 millioner kroner\" in Danish is fine and ambiguous enough. But for a Danish audience, \"svenske kroner\" clarifies. I think it's a reasonable inference that the Swedish article refers to Swedish kronor. I'll write \"105 millioner svenske kroner\" — hmm, but is that inventing? The SVT headline \"Boden gör 105-miljonersaffär\" — in Swedish media, amounts are in SEK by",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504067,
+      "id": "7f65886bc59e46afb7b7aa1e1a91a573",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 753,
+        "completion_tokens": 750,
+        "total_tokens": 1503,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 44.359092712402344
+      }
+    }
+  }
+}

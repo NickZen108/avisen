@@ -1,0 +1,13 @@
+{
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "ok": true,
+  "http_status": 200,
+  "text": "VALG: reform-uk\nBEGRUNDELSE: Historien om Reform UK, der overvejer at springe over budgeten hvis de vinder næste valg, har høj nyhedsværdi og aktualitet, da det kan have betydelige konsekvenser for den britiske økonomi og politik. Denne historie har også en klar og tydelig core question, og der er tilstrekkelige kilder til at dokumentere påstandene. Desuden har historien en høj vægt (A) og er tildelt til hovedsektionen, hvilket indikerer, at den er vigtig og relevant for læserne.",
+  "usage": {
+    "input_tokens": 3350,
+    "output_tokens": 153,
+    "estimated_usd": 0.0013262589999999998
+  },
+  "elapsed_s": 4.371,
+  "raw": null
+}

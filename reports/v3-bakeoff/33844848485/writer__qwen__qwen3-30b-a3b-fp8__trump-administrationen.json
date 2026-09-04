@@ -1,0 +1,14 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "trump-administrationen",
+  "ok": true,
+  "http_status": 200,
+  "text": "\n\nRUBRIK: Udland  \nMANCHET: Trump-administrationen søger at fjerne skattefriheder for private universiteter med DEI-politikker  \nBRØDTEKST: Ifølge Euronews har Trump-administrationen indgået en strategi for at fjerne skattefriheder for private universiteter, der har DEI-politikker (diversitet, ligestilling og inklusion). Administrationen argumenterer, at sådanne politikker repræsenterer politisk aktivitet, der ikke hører hjemme på uddannelsesinstitutioner. Materialet viser, at fjernelsen af skattefrihederne kan have en betydelig økonomisk påvirkning på universiteterne, herunder mulige budgetreduktioner. Kritikere peger på, at DEI-politikker er afgørende for at sikre, at alle studerende føler sig velkomne og inkluderet. Euronews henviser til, at debatten spejler en bredere politisk strid om rollen af universiteter i samfundet.",
+  "usage": {
+    "input_tokens": 691,
+    "output_tokens": 597,
+    "estimated_usd": 0.000238221
+  },
+  "elapsed_s": 3.803,
+  "raw": null
+}

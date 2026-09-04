@@ -1,0 +1,60 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "sydkorea",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 1002,
+    "output_tokens": 700,
+    "estimated_usd": 0.000289102
+  },
+  "elapsed_s": 3.893,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": null,
+            "function_call": null,
+            "reasoning": "\nOkay, let's take a look at this article. The user wants me to act as a Danish editor and check for specific issues. First, I need to go through each part of the text carefully.\n\nStarting with the title: \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet.\" That seems okay. The standfirst mentions supporting freedom of navigation, which is a common phrase. But I should check if \"frihed af navigation\" is the right term. Maybe \"frihed for navigation\" or \"frihed i navigation\" would be more natural. Wait, \"frihed af\" might not be the best preposition here. In Danish, \"frihed for\" is more common, like \"frihed for at navigere.\" So that's a possible issue.\n\nLooking at the body text. The first paragraph under the h2 is a repeat of the title. That's redundant. The article should avoid repeating the same sentence. Then, the first paragraph says \"Det skriver France 24.\" But the original text in the body has \"Det skriver France 24.\" and \"Det skriver BBC World.\" multiple times. That's a bit repetitive. Also, the attribution is a bit off. The user mentioned checking for unclear or factually risky attributions. Since the article is a compilation of different sources, it's important to attribute each statement correctly. However, the way it's written now, each sentence is attributed to a source, but the structure is a bit choppy.\n\nNext, the sentence \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" The source is BBC World. But the original text says \"Det skriver BBC World.\" So the attribution is correct. However, the phrase \"målrettet civile\" might be better as \"målrettede civile\" (past participle). Also, \"militære indsats\" should be \"militær indsats\" (singular) since \"indsats\" is singular. So that's a grammatical error.\n\nAnother point: \"Sydkorea kunne bidrage til USAs sikkerhedsindsats i Hormuz-sundet.\" The source is France 24. The word \"kunne\" (could) might be a bit uncertain. If the article is presenting it as a possibility, that's okay, but if it's a fact, it should be \"overvejer\" instead of \"kunne.\" But the original text says \"overvejer\" in the title, so maybe \"kunne\" is correct here as a possibility.\n\nThen, \"Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse.\" The source is BBC World. The phrase \"ville være\" (would be) is a bit tentative. If Iran is making the claim, the article should present it as their assertion without adding \"ville være.\" Maybe \"hvilket er en krigsforbrydelse\" (which is a war crime) if it's a fact, but since it's Iran's claim, it should be \"hvilket ville være\" to indicate that it's their assertion. However",
+            "reasoning_content": "\nOkay, let's take a look at this article. The user wants me to act as a Danish editor and check for specific issues. First, I need to go through each part of the text carefully.\n\nStarting with the title: \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet.\" That seems okay. The standfirst mentions supporting freedom of navigation, which is a common phrase. But I should check if \"frihed af navigation\" is the right term. Maybe \"frihed for navigation\" or \"frihed i navigation\" would be more natural. Wait, \"frihed af\" might not be the best preposition here. In Danish, \"frihed for\" is more common, like \"frihed for at navigere.\" So that's a possible issue.\n\nLooking at the body text. The first paragraph under the h2 is a repeat of the title. That's redundant. The article should avoid repeating the same sentence. Then, the first paragraph says \"Det skriver France 24.\" But the original text in the body has \"Det skriver France 24.\" and \"Det skriver BBC World.\" multiple times. That's a bit repetitive. Also, the attribution is a bit off. The user mentioned checking for unclear or factually risky attributions. Since the article is a compilation of different sources, it's important to attribute each statement correctly. However, the way it's written now, each sentence is attributed to a source, but the structure is a bit choppy.\n\nNext, the sentence \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" The source is BBC World. But the original text says \"Det skriver BBC World.\" So the attribution is correct. However, the phrase \"målrettet civile\" might be better as \"målrettede civile\" (past participle). Also, \"militære indsats\" should be \"militær indsats\" (singular) since \"indsats\" is singular. So that's a grammatical error.\n\nAnother point: \"Sydkorea kunne bidrage til USAs sikkerhedsindsats i Hormuz-sundet.\" The source is France 24. The word \"kunne\" (could) might be a bit uncertain. If the article is presenting it as a possibility, that's okay, but if it's a fact, it should be \"overvejer\" instead of \"kunne.\" But the original text says \"overvejer\" in the title, so maybe \"kunne\" is correct here as a possibility.\n\nThen, \"Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse.\" The source is BBC World. The phrase \"ville være\" (would be) is a bit tentative. If Iran is making the claim, the article should present it as their assertion without adding \"ville være.\" Maybe \"hvilket er en krigsforbrydelse\" (which is a war crime) if it's a fact, but since it's Iran's claim, it should be \"hvilket ville være\" to indicate that it's their assertion. However",
+            "refusal": null,
+            "role": "assistant"
+          },
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "created": 1788504702,
+      "ec_transfer_params": null,
+      "id": "chatcmpl-9e15aaa9-cdff-47bd-99af-568278304864",
+      "kv_transfer_params": null,
+      "metrics": null,
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "object": "chat.completion",
+      "prompt_logprobs": null,
+      "prompt_text": null,
+      "prompt_token_ids": null,
+      "response": null,
+      "service_tier": null,
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 1002,
+        "completion_tokens": 700,
+        "total_tokens": 1702,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 25.966171264648438
+      }
+    }
+  }
+}

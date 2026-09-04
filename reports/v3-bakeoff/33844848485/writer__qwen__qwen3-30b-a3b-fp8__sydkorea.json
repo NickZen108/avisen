@@ -1,0 +1,14 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "sydkorea",
+  "ok": true,
+  "http_status": 200,
+  "text": "\n\nRUBRIK: Sydkorea overvejer militær udstationering i Hormuz-sundet  \nMANCHET: Køreplan for støtte til frihed af navigation i området  \nBRØDTEKST: Ifølge medier overvejer Sydkorea at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation i området, ifølge oplysninger fra France 24 og economictimes.indiatimes.com. Det er ikke klart, om landet vil deltage direkte i sikkerhedsindsat",
+  "usage": {
+    "input_tokens": 823,
+    "output_tokens": 750,
+    "estimated_usd": 0.000296973
+  },
+  "elapsed_s": 6.097,
+  "raw": null
+}

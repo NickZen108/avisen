@@ -1,0 +1,14 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "vox-kraever",
+  "ok": true,
+  "http_status": 200,
+  "text": "\n\nRUBRIK: Vox kræver udvisninger og skarpere grænsekontrol efter Ceuta-krisen  \nMANCHET: Partiet anklager Marokko og regeringen for at forværre migrantkrisen og kræver hårdere foranstaltninger.  \nBRØDTEKST: Efter den uro, der har ramt Ceuta, har den spanske højreparti Vox krævet udvisninger og skærpet grænsekontrol. Partiet betegner grænseoverskridelserne som en \"invasion\" og en \"krigshandling\" og placerer ansvaret hos Marokko og den spanske regering. Ifølge medier som Reuters og Associated Press er der opgivet forskellige tal for døde og tilbageværende migranter i forbindelse med begivenhederne. Regeringen har desuden afsat 309 millioner euro til at støtte Ceuta, mens indenrigsministeren har beskyldt højrefløjen for at opildne til had. Vox har i flere uger kritiseret regeringen for at være passiv over for migrationspresset.",
+  "usage": {
+    "input_tokens": 675,
+    "output_tokens": 527,
+    "estimated_usd": 0.000213605
+  },
+  "elapsed_s": 4.582,
+  "raw": null
+}

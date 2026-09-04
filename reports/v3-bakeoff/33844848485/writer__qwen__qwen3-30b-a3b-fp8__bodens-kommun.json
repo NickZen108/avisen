@@ -1,0 +1,14 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "bodens-kommun",
+  "ok": true,
+  "http_status": 200,
+  "text": "\n\nRUBRIK: Bodens kommun solgte hangar til kryptokoncern med skulder på hundrede millioner  \nMANCHET: Affären markedsføres som AI-investering, men Skatteverket oplyser, at virksomheden har været i mining  \nBRØDTEKST: Bodens kommun har solgt en hangar til den kryptokoncerne Bikupa for 105 millioner kr, ifølge SVT. Ifølge Skatteverket har Bikupa været i mining, selvom affæren markedsføres som en AI-satsning. Kommunen oplyser, at de forventer, at hyresgæster og partnere overholder aftaler og svensk lovgivning. Sætningen blev godkendt i juni 2026, og Bikupa har skulder på hundrede millioner kr, ifølge medierne.",
+  "usage": {
+    "input_tokens": 797,
+    "output_tokens": 687,
+    "estimated_usd": 0.00027422700000000004
+  },
+  "elapsed_s": 3.501,
+  "raw": null
+}

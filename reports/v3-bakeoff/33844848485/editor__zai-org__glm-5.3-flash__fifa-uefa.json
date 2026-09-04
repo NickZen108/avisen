@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "fifa-uefa",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 892,
+    "output_tokens": 700,
+    "estimated_usd": 0.0004838
+  },
+  "elapsed_s": 24.572,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze this Danish article carefully as a demanding Danish editor-in-chief.\n\nThe article is about FIFA accusing UEFA of a \"smørgås-kampagne\" (sandwich campaign?) against FIFA president Gianni Infantino.\n\nLet me go through the issues:\n\n1) **Non-natural or incorrect Danish, Swedish/Norwegian/English leaks, word-for-word machine translations:**\n\n- \"smørgås-kampagne\" - This is interesting. \"Smørgås\" is actually Norwegian/Danish for \"smørrebrød\" (open sandwich). In Danish, the word is \"smørrebrød\" or \"smørgås\" is more Norwegian. Actually \"smørgås\" exists in Norwegian; in Danish it's \"smørrebrød\". The term \"smear campaign\" in English - the German original might be \"Smear-Kampagne\" or \"Schmähkampagne\". Wait - this looks like a machine translation issue. The English \"smear campaign\" might have been mistranslated. Actually, \"smear\" could have been confused with \"smörgås\" (Swedish for sandwich)? Hmm, that's odd. Actually, in German, \"smear campaign\" is \"Verleumdungskampagne\" or \"Schmutzkampagne\". The word \"smear\" in English... The article says FIFA accused UEFA of a \"smear campaign\". If the original English was \"smear campaign\", a machine translation might have produced \"smørekampagne\" or \"bagvaskelseskampagne\". \"Smørgås-kampagne\" is bizarre - it literally means \"sandwich campaign\". This is likely a machine translation error where \"smear\" was confused with \"smörgås\"/\"smorgasbord\" (smörgåsbord = \"smørrebrødsbord\"). Actually \"smorgasbord\" in Swedish is \"smörgåsbord\". So \"smear\" → \"smörgås\" confusion is plausible in a bad MT. In Danish, the correct term would be \"bagvaskelseskampagne\" or \"smædekampagne\" (smear campaign = \"smædekampagne\" is actually a real Danish term!). \"Smæde\" means to smear/slander. So \"smædekampagne\" would be correct Danish. \"Smørgås-kampagne\" is nonsense Danish - it's a sandwich. Also the hyphenation \"smørgås-kampagne\" with hyphen is not standard Danish compound writing (Danish writes compounds together: \"smørgåskampagne\" if it were a word). The title also uses 'smørgås-kampagne'.\n\n- \"kriminalforsøg\" - \"samle beviser for kriminalforsøg i Schweiz\" - this is odd. Probably the original was \"evidence of criminal offences\" or \"criminal investigation\"? \"Kriminalforsøg\" is not a natural Danish word in this context. Danish \"kriminalforsorgen\" is the prison and probation service. \"Kriminalforsøg\" might be a mistranslation of \"criminal offences\" (kriminelle forbrydelser/kriminalitet",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504754,
+      "id": "34b4838189104c9890a1adaa0ebc4532",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 892,
+        "completion_tokens": 700,
+        "total_tokens": 1592,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 43.98181915283203
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "model": "@cf/qwen/qwen3.8-27b",
+  "fixture": "sydkorea",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 985,
+    "output_tokens": 700,
+    "estimated_usd": 0.0026832500000000003
+  },
+  "elapsed_s": 24.342,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": null,
+            "function_call": null,
+            "reasoning": "Vi skal svare på dansk som en kræsen dansk chefredaktør. Brugeren giver en artikel JSON og beder om vurdering: 1) ikke-naturligt/forkert dansk, svensk/norsk/engelsk læk, maskinoversættelser; 2) uklare/faktuelt risikable formuleringer/attribution; 3) hero-billedet relevant eller bare lovligt; 4) øvrige alvorlige redaktionelle fejl. Små stilpræferencer ikke blockers. Afslut med præcis én beslutning: PUBLISH, REVISE eller DROP. Ved REVISE skal vi citere konkrete problemsteder og foreslå naturlig dansk rettelse.\n\nVi skal analysere teksten.\n\nTitel: \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet\"\nStandfirst: \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation. USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.\"\n\nBody:\nh2 samme som titel.\np: Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation.\np: Det skriver France 24.\np: USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.\np: Det skriver BBC World.\np: USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\np: Det skriver BBC World.\np: Sydkorea kunne bidrage til USAs sikkerhedsindsats i Hormuz-sundet.\np: Det skriver France 24.\np: Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse.\np: Det skriver BBC World.\n\nProblemer:\n- \"frihed af navigation\" er ikke naturligt dansk. Skal være \"fri navigation\" eller \"frihed til navigation\"? I international ret \"freedom of navigation\" = \"fri navigation\" / \"frihed til navigation\"? På dansk: \"støtte fri navigation\" eller \"støtte friheden til navigation\". \"frihed af navigation\" lyder maskinoversat.\n- \"militære ressourcer\" er lidt vasket, men måske ok. \"militære styrker\" eller \"militære enheder\" mere konkret. Men ikke blocker? Det er uklart.\n- \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" Dette er en meget stærk og faktuelt risikabel formulering. Hvis det er fra BBC World, skal det attribueres præcist: \"Ifølge BBC World har USA ikke målrettet civile...\" Men det er allerede efterfulgt af \"Det skriver BBC World.\" Men formuleringen som egen udsagnsfaktum er risikabel. Desuden \"målrettet civile\" er lidt upassende; \"angrebet civile\" eller \"målrett",
+            "refusal": null,
+            "role": "assistant"
+          },
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "created": 1788504867,
+      "ec_transfer_params": null,
+      "id": "chatcmpl-33656635-a36e-461e-9e66-2f582ee01ec2",
+      "kv_transfer_params": null,
+      "metrics": null,
+      "model": "@cf/qwen/qwen3.8-27b",
+      "object": "chat.completion",
+      "prompt_logprobs": null,
+      "prompt_text": null,
+      "prompt_token_ids": null,
+      "service_tier": null,
+      "usage": {
+        "prompt_tokens": 985,
+        "completion_tokens": 700,
+        "total_tokens": 1685,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 243.9318084716797
+      }
+    }
+  }
+}

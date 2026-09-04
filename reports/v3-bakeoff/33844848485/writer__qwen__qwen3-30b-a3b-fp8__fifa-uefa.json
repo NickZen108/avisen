@@ -1,0 +1,14 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "fifa-uefa",
+  "ok": true,
+  "http_status": 200,
+  "text": "\n\nRUBRIK: FIFA anklager UEFA for smældrift mod Infantino  \nMANCHET: Kilder: UEFA har søgt om tilladelse til at samle beviser i Schweiz og indgivet ansøgning i New York  \nBRØDTEKST: FIFA har anklaget UEFA for at udføre en \"smældrift\" mod præsident Gianni Infantino, ifølge kilder. UEFA har ifølge dokumenter søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz, hvor både organisationer har hjemsted. Desuden har UEFA indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder. Disputen mellem de to fodboldorganisationer har nu nået en amerikansk domstol, ifølge kilder.",
+  "usage": {
+    "input_tokens": 686,
+    "output_tokens": 677,
+    "estimated_usd": 0.000265166
+  },
+  "elapsed_s": 3.654,
+  "raw": null
+}

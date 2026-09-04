@@ -1,0 +1,60 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "entertainment-over-policy",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 699,
+    "output_tokens": 700,
+    "estimated_usd": 0.000273649
+  },
+  "elapsed_s": 5.853,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": null,
+            "function_call": null,
+            "reasoning": "\nOkay, let's take a look at this article. The user wants me to act as a Danish editor and check for specific issues. First, I need to check for unnatural or incorrect Danish, possible Swedish/Norwegian/English slips, and machine translation errors.\n\nThe title is \"Entertainment over policy? White House arcade games ignite backlash.\" That seems okay. The standfirst starts with \"Trump-administrationen under beskyldning...\" which translates to \"Trump administration is under accusation...\" but \"under beskyldning\" is a bit awkward. Maybe \"er i fokus for kritik\" (is under criticism) would be better. \n\nThe body has \"Trump-administrationen under beskyldning for at prioritere underholdning over politik.\" Again, \"under beskyldning\" is not natural. \"Er kritiseret for at prioritere...\" (is criticized for prioritizing) would be better. \n\nThe next paragraph: \"Kritikere mener, at Trump-administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål...\" The structure here is a bit clunky. Maybe \"Kritikere mener, at administrationen prioriterer underholdning frem for at beskæftige sig med vigtige spørgsmål...\" to make it flow better. \n\nThe third paragraph: \"Det sker ifølge Al Jazeera, efter at fem arkadestilte spil blev afsløret på White Houses hjemmeside.\" \"Arkadestilte spil\" is correct, but \"afsløret\" (revealed) might be too strong. Maybe \"opdager\" (discovered) or \"fandt\" (found) would be more neutral. Also, \"White Houses hjemmeside\" should be \"White House's hjemmeside\" with an apostrophe. \n\nLooking at the image: The alt text is \"Comwell Hvide Hus Aalborg\" which is a hotel in Aalborg, not the White House. The caption says \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" So the image is from a different location. That's a problem because the article is about the White House, but the image is of a hotel in Denmark. That's a major issue. The image isn't relevant to the story, which is about the White House. \n\nOther issues: The category is \"Kultur & medier\" (Culture & Media), which might not be the best fit. The article is more about politics and media, so maybe \"Politik & Medier\" would be better. \n\nThe source URL is from Wikimedia, but the image is from a hotel in Denmark, which is unrelated. The license is CC BY-SA 4.0, which is okay, but the image is not relevant. \n\nSo the main issues are the image not matching the story and some awkward phrasing. The image is a big problem because it's misleading. The text has some minor issues but they can be fixed. The image needs to be replaced with a relevant one. Therefore, the decision would be to REVISE, but the image issue is critical. However, the user's instructions say to check for the four points: non-natural language, unclear attribution, image relevance, and",
+            "reasoning_content": "\nOkay, let's take a look at this article. The user wants me to act as a Danish editor and check for specific issues. First, I need to check for unnatural or incorrect Danish, possible Swedish/Norwegian/English slips, and machine translation errors.\n\nThe title is \"Entertainment over policy? White House arcade games ignite backlash.\" That seems okay. The standfirst starts with \"Trump-administrationen under beskyldning...\" which translates to \"Trump administration is under accusation...\" but \"under beskyldning\" is a bit awkward. Maybe \"er i fokus for kritik\" (is under criticism) would be better. \n\nThe body has \"Trump-administrationen under beskyldning for at prioritere underholdning over politik.\" Again, \"under beskyldning\" is not natural. \"Er kritiseret for at prioritere...\" (is criticized for prioritizing) would be better. \n\nThe next paragraph: \"Kritikere mener, at Trump-administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål...\" The structure here is a bit clunky. Maybe \"Kritikere mener, at administrationen prioriterer underholdning frem for at beskæftige sig med vigtige spørgsmål...\" to make it flow better. \n\nThe third paragraph: \"Det sker ifølge Al Jazeera, efter at fem arkadestilte spil blev afsløret på White Houses hjemmeside.\" \"Arkadestilte spil\" is correct, but \"afsløret\" (revealed) might be too strong. Maybe \"opdager\" (discovered) or \"fandt\" (found) would be more neutral. Also, \"White Houses hjemmeside\" should be \"White House's hjemmeside\" with an apostrophe. \n\nLooking at the image: The alt text is \"Comwell Hvide Hus Aalborg\" which is a hotel in Aalborg, not the White House. The caption says \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" So the image is from a different location. That's a problem because the article is about the White House, but the image is of a hotel in Denmark. That's a major issue. The image isn't relevant to the story, which is about the White House. \n\nOther issues: The category is \"Kultur & medier\" (Culture & Media), which might not be the best fit. The article is more about politics and media, so maybe \"Politik & Medier\" would be better. \n\nThe source URL is from Wikimedia, but the image is from a hotel in Denmark, which is unrelated. The license is CC BY-SA 4.0, which is okay, but the image is not relevant. \n\nSo the main issues are the image not matching the story and some awkward phrasing. The image is a big problem because it's misleading. The text has some minor issues but they can be fixed. The image needs to be replaced with a relevant one. Therefore, the decision would be to REVISE, but the image issue is critical. However, the user's instructions say to check for the four points: non-natural language, unclear attribution, image relevance, and",
+            "refusal": null,
+            "role": "assistant"
+          },
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "created": 1788504712,
+      "ec_transfer_params": null,
+      "id": "chatcmpl-a4fb587a-42bf-4b39-a837-55701b48ecd8",
+      "kv_transfer_params": null,
+      "metrics": null,
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "object": "chat.completion",
+      "prompt_logprobs": null,
+      "prompt_text": null,
+      "prompt_token_ids": null,
+      "response": null,
+      "service_tier": null,
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 699,
+        "completion_tokens": 700,
+        "total_tokens": 1399,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 24.564922332763672
+      }
+    }
+  }
+}

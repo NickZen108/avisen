@@ -1,0 +1,14 @@
+{
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "fixture": "ugyldigt-struktureret-svar",
+  "ok": true,
+  "http_status": 200,
+  "text": "Beslutning: DROP\n\nDenne tekst er ikke egnet til publicering på en seriøs dansk avis, da den ikke indeholder nogen meningsfuld information eller journalistisk indhold. Teksten består kun af enkelte ord og fraser, der ikke danner en sammenhængende historie eller artikel.\n\nSpecifikt kan følgende problemer nævnes:\n\n* Teksten indeholder ikke nogen egentlig artikel eller historie, men kun en række løse ord og fraser.\n* Der er ingen sammenhæng mellem billedet og teksten, og billedet synes at være valgt tilfældigt.\n* Teksten indeholder ikke nogen faktiske oplysninger eller informationer, der kan være relevante for læserne.\n\nFor at kunne publicere en artikel på en seriøs dansk avis, kræves det, at teksten er velstruktureret, indeholder meningsfuld information og har en klar sammenhæng med billedet eller andre illustrationer. I dette tilfælde er det bedst at droppe artiklen og i stedet skrive en ny, der opfylder disse krav.",
+  "usage": {
+    "input_tokens": 554,
+    "output_tokens": 259,
+    "estimated_usd": 0.000745849
+  },
+  "elapsed_s": 4.51,
+  "raw": null
+}

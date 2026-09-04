@@ -1,0 +1,60 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "fifa-uefa",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 913,
+    "output_tokens": 700,
+    "estimated_usd": 0.000284563
+  },
+  "elapsed_s": 6.379,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": null,
+            "function_call": null,
+            "reasoning": "\nOkay, let's take a look at this article. The user wants me to act as a Danish editor and check for specific issues. First, I need to check for unnatural or incorrect Danish, possible Swedish/Norwegian/English slips, and machine translation errors.\n\nThe title says \"smørgås-kampagne.\" Wait, \"smørgås\" is a Danish word for a sandwich, but in the context of a campaign, maybe it's supposed to be \"smøg-kampagne\"? Because \"smøg\" is a term used in Danish for a smear campaign. \"Smørgås\" doesn't make sense here. That's probably a machine translation error. So that's a problem.\n\nLooking at the body, the first paragraph mentions \"smørgås-kampagne\" again. The same issue. Then there's \"kriminalforsøg\" which translates to \"criminal attempt,\" but in the context of a legal dispute, maybe \"kriminalforsøg\" is correct. But I'm not sure. Also, \"eks parte-ansøgning\" – \"eks parte\" might be a typo. It should be \"eks parte\" or maybe \"eks part\" but that doesn't make sense. Wait, \"eks parte\" is a term in legal contexts, but maybe it's supposed to be \"eks parte\" or \"eks part\" – not sure. Alternatively, \"eks parte\" could be a mistranslation. Maybe it's supposed to be \"ex parte\" which is a legal term in English, but in Danish, it's \"eks part.\" So that's a possible error.\n\nNext, the article mentions \"US District Court in New York\" – that's correct. The source is Deutsche Welle, which is a German media outlet, so the citation is okay. \n\nThe image description says \"This is a high-resolution image of the United States Declaration of Independence\" but the alt text is in English, which might be okay, but the image is from Wikimedia Commons, public domain. However, the caption says \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" That's correct, but the image itself is of the Declaration of Independence, which is unrelated to the FIFA-UEFA conflict. The hero image is not relevant to the story. That's a problem. The image should be related to the topic, like a photo of FIFA or UEFA officials, not the Declaration of Independence.\n\nAlso, the image's alt text mentions \"William Stone facsimile\" which is correct, but the image is not related to the article's content. So that's a major issue. The image is just there for legal reasons, not relevance.\n\nOther issues: The article mentions \"US-domstol\" which is correct. The place names are in both English and Danish, which is fine. The category is \"Sport,\" which is correct.\n\nSo the main issues are:\n1. \"smørgås-kampagne\" should be \"smøg-kampagne\" (smear campaign).\n2. \"eks parte-ansøgning\" might be \"eks part-ansøgning\" or \"ex parte\" but needs checking.\n3. The hero image is irrelevant and just there for legal reasons.\n\nThe user wants a decision: PUBLISH, REVISE, or DROP. Since",
+            "reasoning_content": "\nOkay, let's take a look at this article. The user wants me to act as a Danish editor and check for specific issues. First, I need to check for unnatural or incorrect Danish, possible Swedish/Norwegian/English slips, and machine translation errors.\n\nThe title says \"smørgås-kampagne.\" Wait, \"smørgås\" is a Danish word for a sandwich, but in the context of a campaign, maybe it's supposed to be \"smøg-kampagne\"? Because \"smøg\" is a term used in Danish for a smear campaign. \"Smørgås\" doesn't make sense here. That's probably a machine translation error. So that's a problem.\n\nLooking at the body, the first paragraph mentions \"smørgås-kampagne\" again. The same issue. Then there's \"kriminalforsøg\" which translates to \"criminal attempt,\" but in the context of a legal dispute, maybe \"kriminalforsøg\" is correct. But I'm not sure. Also, \"eks parte-ansøgning\" – \"eks parte\" might be a typo. It should be \"eks parte\" or maybe \"eks part\" but that doesn't make sense. Wait, \"eks parte\" is a term in legal contexts, but maybe it's supposed to be \"eks parte\" or \"eks part\" – not sure. Alternatively, \"eks parte\" could be a mistranslation. Maybe it's supposed to be \"ex parte\" which is a legal term in English, but in Danish, it's \"eks part.\" So that's a possible error.\n\nNext, the article mentions \"US District Court in New York\" – that's correct. The source is Deutsche Welle, which is a German media outlet, so the citation is okay. \n\nThe image description says \"This is a high-resolution image of the United States Declaration of Independence\" but the alt text is in English, which might be okay, but the image is from Wikimedia Commons, public domain. However, the caption says \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" That's correct, but the image itself is of the Declaration of Independence, which is unrelated to the FIFA-UEFA conflict. The hero image is not relevant to the story. That's a problem. The image should be related to the topic, like a photo of FIFA or UEFA officials, not the Declaration of Independence.\n\nAlso, the image's alt text mentions \"William Stone facsimile\" which is correct, but the image is not related to the article's content. So that's a major issue. The image is just there for legal reasons, not relevance.\n\nOther issues: The article mentions \"US-domstol\" which is correct. The place names are in both English and Danish, which is fine. The category is \"Sport,\" which is correct.\n\nSo the main issues are:\n1. \"smørgås-kampagne\" should be \"smøg-kampagne\" (smear campaign).\n2. \"eks parte-ansøgning\" might be \"eks part-ansøgning\" or \"ex parte\" but needs checking.\n3. The hero image is irrelevant and just there for legal reasons.\n\nThe user wants a decision: PUBLISH, REVISE, or DROP. Since",
+            "refusal": null,
+            "role": "assistant"
+          },
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "created": 1788504690,
+      "ec_transfer_params": null,
+      "id": "chatcmpl-7dbd4e96-04e5-4351-b5c4-14b448d4205a",
+      "kv_transfer_params": null,
+      "metrics": null,
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "object": "chat.completion",
+      "prompt_logprobs": null,
+      "prompt_text": null,
+      "prompt_token_ids": null,
+      "response": null,
+      "service_tier": null,
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 913,
+        "completion_tokens": 700,
+        "total_tokens": 1613,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 25.554582595825195
+      }
+    }
+  }
+}

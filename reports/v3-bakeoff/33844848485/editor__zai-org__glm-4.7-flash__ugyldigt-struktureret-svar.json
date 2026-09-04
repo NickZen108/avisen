@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "ugyldigt-struktureret-svar",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 518,
+    "output_tokens": 700,
+    "estimated_usd": 0.00031108000000000004
+  },
+  "elapsed_s": 13.257,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-8e16fc4f8fc13caf",
+      "object": "chat.completion",
+      "created": 1788504663,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Pedantic Danish editor-in-chief.\n    *   **Task:** Evaluate a text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural, incorrect Danish (machine translation, Swedish/Norwegian/English \"leaks\").\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Hero image relevance (is it relevant or just legal?).\n        4.  Other serious editorial errors.\n    *   **Tone:** Strict, professional, Danish.\n    *   **Output:** Precise decision (PUBLISH, REVISE, DROP) + specific revisions if REVISE.\n\n2.  **Analyze the Input Data:**\n    *   **Title:** \"Ugyldigt struktureret svar\" (Invalidly structured answer).\n    *   **Standfirst:** \"Ugyldigt struktureret svar\" (Invalidly structured answer).\n    *   **Body:** `[{\"text\": \"Ugyldigt struktureret svar\", \"type\": \"p\"}]` (Just repeats the title).\n    *   **Image:** San Francisco Airport at night (CC BY-SA 2.0). Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" (Archive photo – the image does not necessarily show the event itself).\n    *   **Location:** USA (San Francisco, Mountain View, Palo Alto).\n    *   **Category:** Science & Technology.\n\n3.  **Evaluate against Criteria:**\n\n    *   **Criterion 1 (Language):** The text is extremely short and repetitive. It's technically grammatically correct Danish (\"Ugyldigt struktureret svar\"), but it's nonsensical content-wise. It's not a machine translation error, but a content error.\n\n    *   **Criterion 2 (Clarity/Facts):** The text says nothing. It's a placeholder or an error. It lacks attribution (who said it? what is the context?). The location is listed, but the text doesn't explain *why* San Francisco/Mountain View/Palo Alto are relevant if the text is just \"Invalidly structured answer\".\n\n    *   **Criterion 3 (Image Relevance):** The image is a night shot of SFO. The text is about an \"invalidly structured answer\". There is absolutely no connection. The caption says \"does not necessarily show the event itself,\" which is an understatement; it shows an airport. This is a classic \"legal image\" placeholder.\n\n    *   **Criterion 4 (Other Errors):** The article structure is broken (empty body). The title and standfirst are identical and meaningless.\n\n4.  **Formulate the Assessment:**\n    *   The text is essentially empty content. It's not a translation error, but a severe content generation failure.\n    *   The image is completely irrelevant.\n    *   It cannot be published as is.\n\n5.  **Decide:**\n    *   **DROP.** There is no substance to revise. The text is a placeholder error. Publishing this would be a disaster for a \"serious Danish newspaper\".\n\n6.  **Draft the Response (in Danish):**\n    *   *Tone:* Editor-in-chief.\n    *   *Point 1",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Pedantic Danish editor-in-chief.\n    *   **Task:** Evaluate a text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural, incorrect Danish (machine translation, Swedish/Norwegian/English \"leaks\").\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Hero image relevance (is it relevant or just legal?).\n        4.  Other serious editorial errors.\n    *   **Tone:** Strict, professional, Danish.\n    *   **Output:** Precise decision (PUBLISH, REVISE, DROP) + specific revisions if REVISE.\n\n2.  **Analyze the Input Data:**\n    *   **Title:** \"Ugyldigt struktureret svar\" (Invalidly structured answer).\n    *   **Standfirst:** \"Ugyldigt struktureret svar\" (Invalidly structured answer).\n    *   **Body:** `[{\"text\": \"Ugyldigt struktureret svar\", \"type\": \"p\"}]` (Just repeats the title).\n    *   **Image:** San Francisco Airport at night (CC BY-SA 2.0). Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" (Archive photo – the image does not necessarily show the event itself).\n    *   **Location:** USA (San Francisco, Mountain View, Palo Alto).\n    *   **Category:** Science & Technology.\n\n3.  **Evaluate against Criteria:**\n\n    *   **Criterion 1 (Language):** The text is extremely short and repetitive. It's technically grammatically correct Danish (\"Ugyldigt struktureret svar\"), but it's nonsensical content-wise. It's not a machine translation error, but a content error.\n\n    *   **Criterion 2 (Clarity/Facts):** The text says nothing. It's a placeholder or an error. It lacks attribution (who said it? what is the context?). The location is listed, but the text doesn't explain *why* San Francisco/Mountain View/Palo Alto are relevant if the text is just \"Invalidly structured answer\".\n\n    *   **Criterion 3 (Image Relevance):** The image is a night shot of SFO. The text is about an \"invalidly structured answer\". There is absolutely no connection. The caption says \"does not necessarily show the event itself,\" which is an understatement; it shows an airport. This is a classic \"legal image\" placeholder.\n\n    *   **Criterion 4 (Other Errors):** The article structure is broken (empty body). The title and standfirst are identical and meaningless.\n\n4.  **Formulate the Assessment:**\n    *   The text is essentially empty content. It's not a translation error, but a severe content generation failure.\n    *   The image is completely irrelevant.\n    *   It cannot be published as is.\n\n5.  **Decide:**\n    *   **DROP.** There is no substance to revise. The text is a placeholder error. Publishing this would be a disaster for a \"serious Danish newspaper\".\n\n6.  **Draft the Response (in Danish):**\n    *   *Tone:* Editor-in-chief.\n    *   *Point 1"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 518,
+        "completion_tokens": 700,
+        "total_tokens": 1218,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 28.329
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

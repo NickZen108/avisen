@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "trump-administrationen",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 655,
+    "output_tokens": 750,
+    "estimated_usd": 0.00047325
+  },
+  "elapsed_s": 138.442,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze this task. I'm a journalist at a serious Danish news site. I need to write a short news article in natural, idiomatic Danish based on the documented material.\n\nThe material:\n- Fixture: trump-administrationen\n- Source: Euronews, dated 2026-09-04\n- Core question: Trump administration pushes to remove tax exemptions for private universities with DEI policies\n- Verified claims:\n  - F01: Trump administration seeks to remove tax exemptions for private universities with DEI policies\n  - F02: DEI policies are part of university leaderships' strategy to promote diversity, equity and inclusion\n  - F03: Removal of tax exemptions will have significant economic impact on private universities\n  - F04: Trump administration believes DEI policies are a form of political activity that doesn't belong at universities\n  - F05: DEI policies are a necessary part of university leaderships' work to ensure all students feel welcome and included\n  - F06: Removal of tax exemptions will lead to significant reduction in university budgets\n\nI need to write:\n- RUBRIK (headline)\n- MANCHET (lead/standfirst)\n- BRØDTEKST (body text)\n\nImportant considerations:\n- Write in natural, idiomatic Danish\n- Don't invent facts\n- Preserve reservations and attribution (attribute to Euronews)\n- Only return RUBRIK, MANCHET, BRØDTEKST\n- The material may contain poorly translated Danish formulations; understand the meaning and rewrite in correct Danish\n\nNote: F05 is a claim that DEI policies are \"necessary\" — this is an opinion/characterization. I should attribute it carefully. The source is Euronews. I should attribute claims to Euronews since that's the only source.\n\nLet me draft:\n\nRUBRIK: Trump-administrationen vil fjerne skattefritagelse for private universiteter med DEI-politikker\n\nMANCHET: Ifølge Euronews søger den amerikanske regering at straffe universiteter, der arbejder for diversitet, lighed og inklusion, med alvorlige økonomiske konsekvenser.\n\nBRØDTEKST:\nTrump-administrationen forsøger at fjerne skattefriheder for private universiteter, der har DEI-politikker – det vil sige strategier, som universitetsledelser bruger til at fremme diversitet, lighed og inklusion. Det skriver Euronews.\n\nIfølge mediet vurderer administrationen, at DEI-politikker udgør en form for politisk aktivitet, der ikke hører hjemme på universiteterne. Modstandere af tiltaget peger derimod på, at arbejdet med DEI er en nødvendig del af ledelsernes bestræbelser på at sikre, at alle studerende føler sig velkomne og inkluderet.\n\nFjernelsen af skattefrihederne ventes at få betydelige økonomiske konsekvenser for de private universiteter. Ifølge Euronews vil det kunne føre til markante nedskæringer i universiteternes budgetter.\n\nHmm, let me be careful. F03 says \"will have significant economic impact\" and F06 says \"will lead to significant reduction in budgets\". I should attribute these to Euronews rather than state them as fact, since it's a single source. Actually the claims are \"verified\" per the material, but attribution should be preserved. The instruction says",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504233,
+      "id": "1525266dfb464565939d4c4925d70d3c",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 655,
+        "completion_tokens": 750,
+        "total_tokens": 1405,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 43.022727966308594
+      }
+    }
+  }
+}

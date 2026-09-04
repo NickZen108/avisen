@@ -1,0 +1,14 @@
+{
+  "model": "@cf/openai/gpt-oss-20b",
+  "fixture": "fifa-uefa",
+  "ok": true,
+  "http_status": 200,
+  "text": "**RUBRIK**  \nFIFA anklager UEFA for smældkampagne mod Infantino  \n\n**MANCHET**  \nFIFA har indbragt UEFA for at have startet en “smældkampagne” mod FIFA‑ordfører Gianni Infantino, og har i den forbindelse indbragt UEFA i en amerikansk domstol og i Schweiz.  \n\n**BRØDTEKST**  \nI en ny udvikling i den langvarige konflikt mellem FIFA og UEFA har FIFA i dag anklaget UEFA for at have igangsat en “smældkampagne” mod FIFA‑ordfører Gianni Infantino. Ifølge Deutsche Welle har UEFA indbragt en eks‑parte‑ansøgning til US District Court i New York for at få adgang til vidneudsagn og dokumenter fra amerikanske enheder, og har samtidig søgt tilladelse til at samle beviser for et påstået kriminalforsøg i Schweiz – et land, hvor både FIFA og UEFA har deres hjemsted.  \n\nFIFA hævder, at UEFA har brugt offentlige kanaler til at sprede usande påstande om Infantino, og at kampagnen er en del af en større strategi for at undergrave FIFA’s ledelse. UEFA har afvist anklagerne og påpeger, at de har handlet i overensstemmelse med gældende internationale regler og procedurer.  \n\nSky World rapporterer, at den aktuelle retssag i USA er en del af UEFA’s forsøg på at beskytte sig mod de påståede krænkende påstande, mens de samtidig søger at indsamle beviser i Schweiz. Det er endnu ikke klart, hvilke konkrete beviser UEFA vil indsamle, men de har angivet, at de er relevante for den pågældende sag.  \n\nDen juridiske konflikt mellem de to største fodboldorganisationer er blevet en af de mest omtalte i sportens verden, og den vil sandsynligvis fortsætte med at udvikle sig i de kommende måneder, efterhånden som både FIFA og UEFA forbereder sig på de næste retlige skridt.",
+  "usage": {
+    "input_tokens": 692,
+    "output_tokens": 675,
+    "estimated_usd": 0.0003409
+  },
+  "elapsed_s": 5.183,
+  "raw": null
+}

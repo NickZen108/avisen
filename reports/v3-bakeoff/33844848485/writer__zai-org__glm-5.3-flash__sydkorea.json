@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "sydkorea",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 791,
+    "output_tokens": 750,
+    "estimated_usd": 0.00049365
+  },
+  "elapsed_s": 101.802,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze the task. I'm a journalist at a serious Danish news site. I need to write a short news article in natural, idiomatic Danish based on the documented material. The material may contain poorly translated Danish formulations from a previous pipeline; I should understand the meaning and rewrite in correct Danish rather than copying linguistic errors. I must not invent facts. Preserve reservations and attribution. Return only: RUBRIK (headline), MANCHET (lead/standfirst), and BRØDTEKST (body text).\n\nThe verified claims:\n- F01: South Korea is considering sending military resources to the Strait of Hormuz to support freedom of navigation. (Source: France 24)\n- F02: The US is investigating whether a missile hit an Iranian wedding celebration where at least four people were killed. (Source: BBC)\n- F03: The US has not targeted civilians in its military operation in the Strait of Hormuz. (Source: BBC)\n- F04: South Korea could contribute to the US security effort in the Strait of Hormuz. (Source: France 24)\n- F05: Iran has claimed that an American missile hit a wedding celebration in the Strait of Hormuz, which would be a war crime. (Source: BBC)\n\nThe core question: South Korea prepares for military deployment in the Strait of Hormuz.\n\nThe main story is about South Korea considering/preparing a military deployment to the Strait of Hormuz. The BBC claims about the missile/wedding are related context — the US military involvement in the Hormuz area and allegations about civilian casualties.\n\nNote: F03 says \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet\" — this is presumably a US statement (Vance said the US doesn't target civilians). I should attribute this properly: \"ifølge USA\" or \"USA afviser...\" Actually the claim as stated is \"USA har ikke målrettet civile\" — this is likely a US assertion. Vance said the US is investigating whether a missile hit an Iranian wedding. So the US position is that they don't target civilians. I should attribute: \"USA har ifølge vicepræsident JD Vance ikke...\" — wait, I shouldn't invent that Vance is vice president or that he said it directly. The source headline says \"US investigating if missile hit Iran wedding, Vance says\". So Vance is the one saying the US is investigating. The claim F03 \"USA har ikke målrettet civile i sin militære indsats\" — attributed to S2 (BBC). I can write \"USA har ifølge BBC oplyst...\" or better: attribute to US statements as reported by BBC. Let me be careful: I can say \"Ifølge BBC har USA oplyst, at det ikke har målrettet civile...\" That preserves attribution.\n\nF05: Iran has claimed that an American missile hit a wedding celebration in the Strait of Hormuz, which would be a war crime. Hmm, \"i Hormuz-sundet\" — a wedding in the strait itself seems odd, but I should stick to the material. Actually the claim says \"ramte en bryllupsfest i Hormuz-sundet\" — I'll keep it as the material states but perhaps phrase carefully: \"Iran har ifølge BBC hævdet, at et amerikansk missil ramte en bryllupsfest... noget, Iran kalder en mulig krigsforbrydelse.\" The claim says \"hvilket ville være et krigsforbrydelse\" — \"which would be a war crime\" — so Iran claims",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504131,
+      "id": "f43c74ee74014b55ac0ca3f859917572",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 791,
+        "completion_tokens": 750,
+        "total_tokens": 1541,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 44.87727355957031
+      }
+    }
+  }
+}

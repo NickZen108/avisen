@@ -1,0 +1,156 @@
+{
+  "run_id": "33844848485",
+  "fixtures": {
+    "writer": [
+      "fifa-uefa",
+      "bodens-kommun",
+      "sydkorea",
+      "trump-administrationen",
+      "vox-kraever",
+      "reform-uk"
+    ],
+    "editor": [
+      "fifa-uefa",
+      "bodens-kommun",
+      "sydkorea",
+      "ugyldigt-struktureret-svar",
+      "entertainment-over-policy"
+    ]
+  },
+  "summary": {
+    "writer": {
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+        "calls": 6,
+        "success": 3,
+        "input_tokens": 1942,
+        "output_tokens": 585,
+        "estimated_usd": 0.001887,
+        "elapsed_s": 12.02
+      },
+      "@cf/zai-org/glm-4.7-flash": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 3919,
+        "output_tokens": 4500,
+        "estimated_usd": 0.002035,
+        "elapsed_s": 101.24
+      },
+      "@cf/qwen/qwen3-30b-a3b-fp8": {
+        "calls": 6,
+        "success": 6,
+        "input_tokens": 4135,
+        "output_tokens": 3988,
+        "estimated_usd": 0.001567,
+        "elapsed_s": 25.71
+      },
+      "@cf/openai/gpt-oss-20b": {
+        "calls": 6,
+        "success": 5,
+        "input_tokens": 4098,
+        "output_tokens": 3592,
+        "estimated_usd": 0.001897,
+        "elapsed_s": 30.42
+      },
+      "@cf/zai-org/glm-5.3-flash": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 3961,
+        "output_tokens": 4500,
+        "estimated_usd": 0.002844,
+        "elapsed_s": 631.51
+      }
+    },
+    "editor": {
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+        "calls": 5,
+        "success": 5,
+        "input_tokens": 3998,
+        "output_tokens": 1959,
+        "estimated_usd": 0.005585,
+        "elapsed_s": 37.67
+      },
+      "@cf/zai-org/glm-4.7-flash": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 3798,
+        "output_tokens": 3500,
+        "estimated_usd": 0.001628,
+        "elapsed_s": 72.24
+      },
+      "@cf/qwen/qwen3-30b-a3b-fp8": {
+        "calls": 5,
+        "success": 1,
+        "input_tokens": 3966,
+        "output_tokens": 3500,
+        "estimated_usd": 0.001392,
+        "elapsed_s": 27.54
+      },
+      "@cf/openai/gpt-oss-20b": {
+        "calls": 5,
+        "success": 1,
+        "input_tokens": 3896,
+        "output_tokens": 3150,
+        "estimated_usd": 0.001724,
+        "elapsed_s": 26.81
+      },
+      "@cf/zai-org/glm-5.3-flash": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 3833,
+        "output_tokens": 3500,
+        "estimated_usd": 0.002325,
+        "elapsed_s": 92.03
+      },
+      "@cf/qwen/qwen3.8-27b": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 3906,
+        "output_tokens": 3500,
+        "estimated_usd": 0.012958,
+        "elapsed_s": 96.19
+      }
+    },
+    "desk": {
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+        "calls": 1,
+        "success": 1,
+        "input_tokens": 3350,
+        "output_tokens": 153,
+        "estimated_usd": 0.001326,
+        "elapsed_s": 4.37
+      },
+      "@cf/zai-org/glm-4.7-flash": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 3276,
+        "output_tokens": 350,
+        "estimated_usd": 0.000337,
+        "elapsed_s": 5.11
+      },
+      "@cf/qwen/qwen3-30b-a3b-fp8": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 3443,
+        "output_tokens": 350,
+        "estimated_usd": 0.000295,
+        "elapsed_s": 2.27
+      },
+      "@cf/openai/gpt-oss-20b": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 3221,
+        "output_tokens": 350,
+        "estimated_usd": 0.000749,
+        "elapsed_s": 2.6
+      },
+      "@cf/zai-org/glm-5.3-flash": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 3283,
+        "output_tokens": 350,
+        "estimated_usd": 0.000667,
+        "elapsed_s": 7.23
+      }
+    }
+  }
+}

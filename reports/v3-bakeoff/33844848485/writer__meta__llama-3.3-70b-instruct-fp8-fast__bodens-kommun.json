@@ -1,0 +1,14 @@
+{
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "fixture": "bodens-kommun",
+  "ok": true,
+  "http_status": 200,
+  "text": "RUBRIK: Erhverv\nMANCHET: Svensk kommune solgte hangar til kryptofirma for 105 millioner kroner\nBRØDTEKST: Bodens kommun i Sverige har solgt en hangar til en kryptokoncern for 105 millioner kroner, selv om koncernen har skulder for hundredvis af millioner. Ifølge SVT har koncernen, Bikupa, tidligere været involveret i ren kryptovaluta-mining, men affæren er blevet markedsført som en investering i kunstig intelligens. Bodens kommun har udtalt, at de forventer, at deres samarbejdspartnere overholder svenske love og aftaler. Før salget fik kommunen i juni 2026 godkendt salget af hangaren, hvor Bikupas datacenter er placeret.",
+  "usage": {
+    "input_tokens": 792,
+    "output_tokens": 206,
+    "estimated_usd": 0.0006961739999999999
+  },
+  "elapsed_s": 4.154,
+  "raw": null
+}

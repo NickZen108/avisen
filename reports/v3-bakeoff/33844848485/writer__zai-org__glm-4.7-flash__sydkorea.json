@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "sydkorea",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 784,
+    "output_tokens": 750,
+    "estimated_usd": 0.00034704
+  },
+  "elapsed_s": 16.066,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-9a08e13b1fc0001d",
+      "object": "chat.completion",
+      "created": 1788503836,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news website.\n    *   **Task:** Write a short news article in natural, idiomatic Danish based on the provided material.\n    *   **Constraint 1:** Handle poor translations from a previous pipeline (understand meaning, rewrite correctly, don't copy errors).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain caveats and attribution.\n    *   **Constraint 4:** Output format: RUBRIK, MANCHET, BRØDTEKST.\n    *   **Input Data:**\n        *   Fixture: South Korea.\n        *   Core Question: South Korea prepares for military deployment in Strait of Hormuz.\n        *   Sources: France 24, BBC, Economic Times.\n        *   Verified Claims:\n            *   F01: South Korea considers sending military resources to Hormuz for freedom of navigation.\n            *   F02: US investigating if missile hit Iranian wedding (4 dead).\n            *   F03: US did not target civilians.\n            *   F04: South Korea could contribute to US security efforts.\n            *   F05: Iran claims US missile hit wedding (war crime).\n\n2.  **Determine the Angle:**\n    *   The prompt asks for a story about South Korea preparing for military deployment in Hormuz.\n    *   The other claims (Iranian wedding, US investigation) are related context but not the core focus of the specific assignment (\"South Korea forbereder sig på militær udstationering i Hormuz-sundet\").\n    *   *Decision:* Focus primarily on the South Korea/Hormuz aspect as requested by the assignment, but briefly mention the context of the region (security efforts) to make it a coherent news piece. The wedding incident is a separate story (F02/F03/F05) but might be relevant as background context for *why* South Korea is there (freedom of navigation/security). However, the prompt specifically asks for the story based on the assignment. I will stick to the core question but weave in the \"freedom of navigation\" aspect mentioned in F01.\n\n3.  **Drafting - Section by Section:**\n\n    *   **Rubrik (Headline):** Needs to be catchy but serious.\n        *   *Draft 1:* Sydkorea overvejer militær i Hormuz-sundet. (Too simple)\n        *   *Draft 2:* Sydkorea sender militær til Hormuz-sundet. (Too definitive, \"overvejer\" is in the source).\n        *   *Draft 3:* Sydkorea overvejer at sende militærstyrker til Hormuz-sundet. (Better)\n        *   *Refinement:* Sydkorea overvejer militær udstationering i Hormuz-sundet.\n\n    *   **Manchet (Lead):** Summarize the main point.\n        *   *Content:* South Korea is considering sending military resources to the Strait of Hormuz to support freedom of navigation. This is part of a broader security effort.\n        *   *Danish:* Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at sikre frihandel og frihed af navigation. Det sker i en region, hvor sikkerheden er under pres, og hvor landet potentielt kan bidrage til USA's sikkerhedsindsats.\n\n    *   **Brødtekst (Body):**\n        *   *Paragraph 1",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news website.\n    *   **Task:** Write a short news article in natural, idiomatic Danish based on the provided material.\n    *   **Constraint 1:** Handle poor translations from a previous pipeline (understand meaning, rewrite correctly, don't copy errors).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain caveats and attribution.\n    *   **Constraint 4:** Output format: RUBRIK, MANCHET, BRØDTEKST.\n    *   **Input Data:**\n        *   Fixture: South Korea.\n        *   Core Question: South Korea prepares for military deployment in Strait of Hormuz.\n        *   Sources: France 24, BBC, Economic Times.\n        *   Verified Claims:\n            *   F01: South Korea considers sending military resources to Hormuz for freedom of navigation.\n            *   F02: US investigating if missile hit Iranian wedding (4 dead).\n            *   F03: US did not target civilians.\n            *   F04: South Korea could contribute to US security efforts.\n            *   F05: Iran claims US missile hit wedding (war crime).\n\n2.  **Determine the Angle:**\n    *   The prompt asks for a story about South Korea preparing for military deployment in Hormuz.\n    *   The other claims (Iranian wedding, US investigation) are related context but not the core focus of the specific assignment (\"South Korea forbereder sig på militær udstationering i Hormuz-sundet\").\n    *   *Decision:* Focus primarily on the South Korea/Hormuz aspect as requested by the assignment, but briefly mention the context of the region (security efforts) to make it a coherent news piece. The wedding incident is a separate story (F02/F03/F05) but might be relevant as background context for *why* South Korea is there (freedom of navigation/security). However, the prompt specifically asks for the story based on the assignment. I will stick to the core question but weave in the \"freedom of navigation\" aspect mentioned in F01.\n\n3.  **Drafting - Section by Section:**\n\n    *   **Rubrik (Headline):** Needs to be catchy but serious.\n        *   *Draft 1:* Sydkorea overvejer militær i Hormuz-sundet. (Too simple)\n        *   *Draft 2:* Sydkorea sender militær til Hormuz-sundet. (Too definitive, \"overvejer\" is in the source).\n        *   *Draft 3:* Sydkorea overvejer at sende militærstyrker til Hormuz-sundet. (Better)\n        *   *Refinement:* Sydkorea overvejer militær udstationering i Hormuz-sundet.\n\n    *   **Manchet (Lead):** Summarize the main point.\n        *   *Content:* South Korea is considering sending military resources to the Strait of Hormuz to support freedom of navigation. This is part of a broader security effort.\n        *   *Danish:* Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at sikre frihandel og frihed af navigation. Det sker i en region, hvor sikkerheden er under pres, og hvor landet potentielt kan bidrage til USA's sikkerhedsindsats.\n\n    *   **Brødtekst (Body):**\n        *   *Paragraph 1"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 784,
+        "completion_tokens": 750,
+        "total_tokens": 1534,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 31.612000000000002
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

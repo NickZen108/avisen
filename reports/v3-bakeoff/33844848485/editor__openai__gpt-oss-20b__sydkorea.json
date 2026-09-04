@@ -1,0 +1,55 @@
+{
+  "model": "@cf/openai/gpt-oss-20b",
+  "fixture": "sydkorea",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 977,
+    "output_tokens": 700,
+    "estimated_usd": 0.0004054
+  },
+  "elapsed_s": 6.588,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-653a677dc28a4c1caef021c79434fa40",
+      "object": "chat.completion",
+      "created": 1788504728,
+      "model": "@cf/openai/gpt-oss-20b",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning_content": "We need to evaluate article for publication. Identify issues: unnatural Danish, machine translation, unclear/factual risk, hero image relevance, other editorial errors.\n\nLet's read article:\n\nTitle: \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet\"\n\nStandfirst: \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation. USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.\"\n\nBody: repeated statements with sources.\n\nObservations:\n\n- \"frihed af navigation\" unnatural; should be \"frihed i navigationen\" or \"fri navigation\". \n- \"USA undersøger, om et missil ramte en iransk bryllupsfest\" unnatural; \"missil\" should be \"missil\" but \"missil\" is correct. But phrase \"iransk bryllupsfest\" weird. Also \"USA undersøger, om et missil ramte en iransk bryllupsfest\" is unclear; should be \"USA undersøger, om et missil ramte en bryllupsfest i Iran\" maybe. \n- The article repeats same sentences with sources; no quotes or attribution details. \n- \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" unnatural; maybe \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" okay but could be \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" It's okay but could be improved. \n- \"Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse.\" Should be \"krigsforbrydelse\" singular? Actually \"krigsforbrydelse\" is singular; phrase \"et krigsforbrydelse\" wrong; should be \"en krigsforbrydelse\". \n- The article uses \"Det skriver France 24.\" repeated; unnatural; should be \"Ifølge France 24\" or \"France 24 rapporterer\". \n- The article has no quotes, no direct attribution, no context. \n- The hero image: a US Marine training in Korea; not relevant to story about South Korea sending resources to Hormuz. The caption says \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" So hero image irrelevant. \n- The article has no mention of South Korea's decision, no details. \n- The article seems like a stub, lacking depth. \n- The article uses \"missil\" spelled correctly but \"missil\" is Danish? Actually \"missil\" is Danish for missile. Good. \n- The article uses \"frihed af navigation\" unnatural. \n- The article uses \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" Might be okay but could be improved. \n- The article uses \"USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.\" This is a claim; needs source. It's attributed to BBC World. But still needs context. \n- The article uses \"USA har ikke målrettet civile i sin milit"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 977,
+        "completion_tokens": 700,
+        "total_tokens": 1677,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 36.8545086
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

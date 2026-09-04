@@ -1,0 +1,14 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "reform-uk",
+  "ok": true,
+  "http_status": 200,
+  "text": "\n\nRUBRIK: Penge  \nMANCHET: Reform UK overvejer at udskyde budgettet, hvis de vinder næste valg  \nBRØDTEKST: Ifølge Politico Europe overvejer partiet Reform UK at udskyde eller undgå at følge det traditionelle budgetprocess i forbindelse med et eventuelt sejr i næste valg. Partiet har ifølge kilder udtalt, at de vil træffe store finansielle beslutninger inden for få dage eller uger efter valget",
+  "usage": {
+    "input_tokens": 463,
+    "output_tokens": 750,
+    "estimated_usd": 0.00027861300000000004
+  },
+  "elapsed_s": 4.073,
+  "raw": null
+}

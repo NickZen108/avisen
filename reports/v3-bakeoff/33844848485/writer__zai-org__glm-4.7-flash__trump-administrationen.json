@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "trump-administrationen",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 648,
+    "output_tokens": 750,
+    "estimated_usd": 0.00033888
+  },
+  "elapsed_s": 15.425,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-92ce3e024e43a548",
+      "object": "chat.completion",
+      "created": 1788503852,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news site.\n    *   **Task:** Write a short news article in natural, idiomatic Danish.\n    *   **Source Material:** A JSON object containing a fixture, source file, assignment details, sources, and verified claims.\n    *   **Constraint 1:** Understand and correct any poor translations in the source material (don't copy errors).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain caveats and attribution.\n    *   **Constraint 4:** Output format: RUBRIK, MANCHET, BRØDTEKST.\n    *   **Language:** Danish.\n\n2.  **Analyze the Source Material:**\n    *   *Fixture:* \"trump-administrationen\" (Trump administration).\n    *   *Core Question:* Trump administration pushes to remove tax exemptions for private universities with DEI policies.\n    *   *Source:* Euronews (2026-09-04).\n    *   *Verified Claims:*\n        *   F01: Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker.\n        *   F02: DEI-politikker er en del af universitetsledelsers strategi for at fremme diversity, equity og inclusion.\n        *   F03: Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter.\n        *   F04: Trump-administrationen mener, at DEI-politikker er en form for politisk aktivitet, der ikke hører hjemme på universiteter.\n        *   F05: DEI-politikker er en nødvendig del af universitetsledelsers arbejde for at sikre, at alle studerende føler sig velkommen og inkluderet.\n        *   F06: Fjernelsen af skattefriheder vil føre til en betydelig reduktion i universiteters budgetter.\n\n3.  **Drafting Strategy:**\n    *   *Headline (Rubrik):* Needs to be punchy and informative. \"Trump-administrationen vil straffe private universiteter med DEI-politikker\" or similar.\n    *   *Sub-headline (Manchet):* Summarize the main point. Focus on the tax exemption threat and the reason (DEI).\n    *   *Body Text (Brødtekst):*\n        *   Start with the main event: Trump's administration is targeting private universities with DEI policies.\n        *   Explain what DEI is briefly (diversity, equity, inclusion) based on F02/F05.\n        *   Explain the administration's stance: They view it as political activity (F04).\n        *   Explain the consequence: Loss of tax-exempt status (F01/F03/F06).\n        *   Mention the impact: Financial strain on universities (F03/F06).\n        *   Maintain attribution to Euronews.\n\n4.  **Refining the Language (Danish):**\n    *   *Drafting Headline:* Trump-administrationen vil fjerne skattefriheder for universiteter med DEI-politikker. (Good, clear).\n    *   *Drafting Manchet:* Trumps administration i USA er i gang med at søge at fjerne skattefriheden for private universiteter, der aktivt arbejder med diversitets-, lighed- og inkl",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news site.\n    *   **Task:** Write a short news article in natural, idiomatic Danish.\n    *   **Source Material:** A JSON object containing a fixture, source file, assignment details, sources, and verified claims.\n    *   **Constraint 1:** Understand and correct any poor translations in the source material (don't copy errors).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain caveats and attribution.\n    *   **Constraint 4:** Output format: RUBRIK, MANCHET, BRØDTEKST.\n    *   **Language:** Danish.\n\n2.  **Analyze the Source Material:**\n    *   *Fixture:* \"trump-administrationen\" (Trump administration).\n    *   *Core Question:* Trump administration pushes to remove tax exemptions for private universities with DEI policies.\n    *   *Source:* Euronews (2026-09-04).\n    *   *Verified Claims:*\n        *   F01: Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker.\n        *   F02: DEI-politikker er en del af universitetsledelsers strategi for at fremme diversity, equity og inclusion.\n        *   F03: Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter.\n        *   F04: Trump-administrationen mener, at DEI-politikker er en form for politisk aktivitet, der ikke hører hjemme på universiteter.\n        *   F05: DEI-politikker er en nødvendig del af universitetsledelsers arbejde for at sikre, at alle studerende føler sig velkommen og inkluderet.\n        *   F06: Fjernelsen af skattefriheder vil føre til en betydelig reduktion i universiteters budgetter.\n\n3.  **Drafting Strategy:**\n    *   *Headline (Rubrik):* Needs to be punchy and informative. \"Trump-administrationen vil straffe private universiteter med DEI-politikker\" or similar.\n    *   *Sub-headline (Manchet):* Summarize the main point. Focus on the tax exemption threat and the reason (DEI).\n    *   *Body Text (Brødtekst):*\n        *   Start with the main event: Trump's administration is targeting private universities with DEI policies.\n        *   Explain what DEI is briefly (diversity, equity, inclusion) based on F02/F05.\n        *   Explain the administration's stance: They view it as political activity (F04).\n        *   Explain the consequence: Loss of tax-exempt status (F01/F03/F06).\n        *   Mention the impact: Financial strain on universities (F03/F06).\n        *   Maintain attribution to Euronews.\n\n4.  **Refining the Language (Danish):**\n    *   *Drafting Headline:* Trump-administrationen vil fjerne skattefriheder for universiteter med DEI-politikker. (Good, clear).\n    *   *Drafting Manchet:* Trumps administration i USA er i gang med at søge at fjerne skattefriheden for private universiteter, der aktivt arbejder med diversitets-, lighed- og inkl"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 648,
+        "completion_tokens": 750,
+        "total_tokens": 1398,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 30.864
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "model": "@cf/openai/gpt-oss-20b",
+  "fixture": "ugyldigt-struktureret-svar",
+  "ok": true,
+  "http_status": 200,
+  "text": "**Decision: DROP**\n\nThe submission lacks substantive content, contains no narrative or factual information, and the hero image is unrelated to the title. It does not meet the standards for a publishable article in a serious Danish newspaper.",
+  "usage": {
+    "input_tokens": 552,
+    "output_tokens": 350,
+    "estimated_usd": 0.00021539999999999998
+  },
+  "elapsed_s": 2.638,
+  "raw": null
+}

@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "reform-uk",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 444,
+    "output_tokens": 750,
+    "estimated_usd": 0.00032664
+  },
+  "elapsed_s": 11.773,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-a1c96d6750572d9c",
+      "object": "chat.completion",
+      "created": 1788503880,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news website.\n    *   **Task:** Write a short news article in natural, idiomatic Danish.\n    *   **Source Material:** A JSON object containing fixture details, source info (Politico Europe), and verified claims.\n    *   **Constraint 1:** Understand and correct bad translations if present (though the source text provided in the prompt is already in Danish, the prompt mentions \"materialet kan indeholde dårligt oversatte danske formuleringer\", implying I should look out for awkward phrasing in the source claims if they were provided, but here the claims are actually quite clear).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain caveats and attribution.\n    *   **Constraint 4:** Output format: RUBRIK, MANCHET, BRØDTEKST.\n\n2.  **Analyze the Source Material:**\n    *   **Subject:** Reform UK (a UK political party).\n    *   **Core Question:** Reform UK.\n    *   **Location:** London, UK, Europe.\n    *   **Source:** Politico Europe.\n    *   **Claim F01:** Reform UK will consider skipping the budget if they win the next election.\n    *   **Claim F02:** Reform UK will make major financial decisions within days or weeks after an election.\n\n3.  **Drafting Strategy:**\n    *   **Headline (Rubrik):** Needs to be catchy but serious. Focus on the \"skipping budget\" aspect.\n        *   *Draft 1:* Reform UK vil springe budget over. (Too simple)\n        *   *Draft 2:* Reform UK overvejer at springe over budgetet ved næste valg. (Better)\n        *   *Draft 3:* Reform UK vil springe over budgetet, hvis de vinder valget. (Stronger)\n    *   **Sub-headline (Manchet):** Summarize the main point and the source.\n        *   *Draft 1:* If they win, they will make big decisions fast. According to Politico.\n        *   *Draft 2:* Partiet vil træffe store økonomiske beslutninger hurtigt, skriver Politico Europe.\n        *   *Draft 3:* Partiet vil ikke vente på traditionel budgetforhandling, men i stedet træffe store beslutninger hurtigt, ifølge Politico Europe.\n    *   **Body Text (Brødtekst):**\n        *   Start with the main claim: Reform UK is considering skipping the budget process.\n        *   Elaborate on F02: They want to act quickly (days/weeks) after an election.\n        *   Contextualize: This is a significant shift from standard parliamentary procedure.\n        *   Attribution: Mention Politico Europe.\n        *   Tone: Objective, journalistic.\n\n4.  **Refining the Danish (Idiomatic Check):**\n    *   \"Springe over budgetet\" is okay, but \"springe budgetprocessen over\" or \"undlade at fremlægge et budget\" is more precise. However, \"springe over budgetet\" is punchy and acceptable in a headline. Let's stick to the prompt's phrasing but make it flow.\n    *   \"Træffe store finansielle beslutninger\" -> \"Gøre store økonomiske skridt\" or \"Føre en række store økonomiske reformer\".\n    *   \"",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news website.\n    *   **Task:** Write a short news article in natural, idiomatic Danish.\n    *   **Source Material:** A JSON object containing fixture details, source info (Politico Europe), and verified claims.\n    *   **Constraint 1:** Understand and correct bad translations if present (though the source text provided in the prompt is already in Danish, the prompt mentions \"materialet kan indeholde dårligt oversatte danske formuleringer\", implying I should look out for awkward phrasing in the source claims if they were provided, but here the claims are actually quite clear).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain caveats and attribution.\n    *   **Constraint 4:** Output format: RUBRIK, MANCHET, BRØDTEKST.\n\n2.  **Analyze the Source Material:**\n    *   **Subject:** Reform UK (a UK political party).\n    *   **Core Question:** Reform UK.\n    *   **Location:** London, UK, Europe.\n    *   **Source:** Politico Europe.\n    *   **Claim F01:** Reform UK will consider skipping the budget if they win the next election.\n    *   **Claim F02:** Reform UK will make major financial decisions within days or weeks after an election.\n\n3.  **Drafting Strategy:**\n    *   **Headline (Rubrik):** Needs to be catchy but serious. Focus on the \"skipping budget\" aspect.\n        *   *Draft 1:* Reform UK vil springe budget over. (Too simple)\n        *   *Draft 2:* Reform UK overvejer at springe over budgetet ved næste valg. (Better)\n        *   *Draft 3:* Reform UK vil springe over budgetet, hvis de vinder valget. (Stronger)\n    *   **Sub-headline (Manchet):** Summarize the main point and the source.\n        *   *Draft 1:* If they win, they will make big decisions fast. According to Politico.\n        *   *Draft 2:* Partiet vil træffe store økonomiske beslutninger hurtigt, skriver Politico Europe.\n        *   *Draft 3:* Partiet vil ikke vente på traditionel budgetforhandling, men i stedet træffe store beslutninger hurtigt, ifølge Politico Europe.\n    *   **Body Text (Brødtekst):**\n        *   Start with the main claim: Reform UK is considering skipping the budget process.\n        *   Elaborate on F02: They want to act quickly (days/weeks) after an election.\n        *   Contextualize: This is a significant shift from standard parliamentary procedure.\n        *   Attribution: Mention Politico Europe.\n        *   Tone: Objective, journalistic.\n\n4.  **Refining the Danish (Idiomatic Check):**\n    *   \"Springe over budgetet\" is okay, but \"springe budgetprocessen over\" or \"undlade at fremlægge et budget\" is more precise. However, \"springe over budgetet\" is punchy and acceptable in a headline. Let's stick to the prompt's phrasing but make it flow.\n    *   \"Træffe store finansielle beslutninger\" -> \"Gøre store økonomiske skridt\" or \"Føre en række store økonomiske reformer\".\n    *   \""
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 444,
+        "completion_tokens": 750,
+        "total_tokens": 1194,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 29.742
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

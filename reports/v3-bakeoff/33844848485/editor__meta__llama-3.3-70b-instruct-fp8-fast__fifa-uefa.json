@@ -1,0 +1,14 @@
+{
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "fixture": "fifa-uefa",
+  "ok": true,
+  "http_status": 200,
+  "text": "Beslutning: REVISE\n\nDer er flere problemsteder i teksten:\n\n1. \"Smørgås-kampagne\" er ikke en naturlig dansk oversættelse af det engelske udtryk \"smear campaign\". En mere passende oversættelse ville være \"ødelæggelseskampagne\" eller \"besudlingskampagne\".\n2. I teksten står der \"Ifølge Deutsche Welle (DW) har UEFA søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz.\" Her burde det stå \"kriminelle forhold\" eller \"kriminelle handlinger\" i stedet for \"kriminalforsøg\", da det sidste ikke er en korrekt juridisk term.\n3. I teksten står der \"UEFA har også indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder.\" Her burde det stå \"eks parte-ansøgning\" erstattet med \"en ansøgning uden modpart\" eller \"en ensidig ansøgning\", da \"eks parte\" ikke er en almindelig dansk juridisk term.\n4. Billedet af USA's uafhængighedserklæring har ingen relevans for artiklen om FIFA-UEFA konflikten og burde erstattes med et mere relevant billede.\n\nForeslåede rettelser:\n\n* \"Smørgås-kampagne\" -> \"ødelæggelseskampagne\" eller \"besudlingskampagne\"\n* \"kriminalforsøg\" -> \"kriminelle forhold\" eller \"kriminelle handlinger\"\n* \"eks parte-ansøgning\" -> \"en ansøgning uden modpart\" eller \"en ensidig ansøgning\"\n* Erstatt billedet med et mere relevant billede relateret til FIFA-UEFA konflikten.",
+  "usage": {
+    "input_tokens": 923,
+    "output_tokens": 458,
+    "estimated_usd": 0.001302313
+  },
+  "elapsed_s": 8.382,
+  "raw": null
+}

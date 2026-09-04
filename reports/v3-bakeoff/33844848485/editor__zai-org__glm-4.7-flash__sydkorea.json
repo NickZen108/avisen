@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "sydkorea",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 961,
+    "output_tokens": 700,
+    "estimated_usd": 0.00033766000000000004
+  },
+  "elapsed_s": 16.669,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-972a72b1cba11631",
+      "object": "chat.completion",
+      "created": 1788504647,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Fastidious Danish editor.\n    *   **Task:** Evaluate a news text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural or incorrect Danish (machine translation, Swedish/Norwegian/English \"leaks\").\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Relevance of the hero image.\n        4.  Other serious editorial errors.\n    *   **Tone:** Professional, critical.\n    *   **Output:** Precise decision (PUBLISH, REVISE, DROP) + specific revisions if REVISE.\n\n2.  **Analyze the Input Text:**\n\n    *   **Title:** \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet\"\n    *   **Standfirst:** \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation. USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.\"\n    *   **Body:**\n        *   H2: Same as title.\n        *   P: \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation.\" (Repetition of title).\n        *   P: \"Det skriver France 24.\" (Attribution).\n        *   P: \"USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.\" (Repetition of standfirst).\n        *   P: \"Det skriver BBC World.\" (Attribution).\n        *   P: \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" (Statement).\n        *   P: \"Det skriver BBC World.\" (Attribution).\n        *   P: \"Sydkorea kunne bidrage til USAs sikkerhedsindsats i Hormuz-sundet.\" (Statement).\n        *   P: \"Det skriver France 24.\" (Attribution).\n        *   P: \"Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse.\" (Statement).\n        *   P: \"Det skriver BBC World.\" (Attribution).\n\n    *   **Image:**\n        *   Source: US Marine Corps photo (Korea Viper 26.1).\n        *   Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\"\n        *   Context: South Korea (Camp Rodriguez), Dec 15, 2025.\n        *   Relevance: The story is about sending resources to Hormuz. The image is about training in South Korea. It is *not* relevant to the story.\n\n3.  **Evaluate against Criteria:**\n\n    *   **1. Language (Danish):**\n        *   The Danish is grammatically correct but extremely repetitive and structurally flawed. It reads like a list of disjointed sentences with attributions",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Fastidious Danish editor.\n    *   **Task:** Evaluate a news text for publication in a serious Danish newspaper.\n    *   **Criteria:**\n        1.  Unnatural or incorrect Danish (machine translation, Swedish/Norwegian/English \"leaks\").\n        2.  Unclear or factually risky formulations/attribution.\n        3.  Relevance of the hero image.\n        4.  Other serious editorial errors.\n    *   **Tone:** Professional, critical.\n    *   **Output:** Precise decision (PUBLISH, REVISE, DROP) + specific revisions if REVISE.\n\n2.  **Analyze the Input Text:**\n\n    *   **Title:** \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet\"\n    *   **Standfirst:** \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation. USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.\"\n    *   **Body:**\n        *   H2: Same as title.\n        *   P: \"Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation.\" (Repetition of title).\n        *   P: \"Det skriver France 24.\" (Attribution).\n        *   P: \"USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.\" (Repetition of standfirst).\n        *   P: \"Det skriver BBC World.\" (Attribution).\n        *   P: \"USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.\" (Statement).\n        *   P: \"Det skriver BBC World.\" (Attribution).\n        *   P: \"Sydkorea kunne bidrage til USAs sikkerhedsindsats i Hormuz-sundet.\" (Statement).\n        *   P: \"Det skriver France 24.\" (Attribution).\n        *   P: \"Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse.\" (Statement).\n        *   P: \"Det skriver BBC World.\" (Attribution).\n\n    *   **Image:**\n        *   Source: US Marine Corps photo (Korea Viper 26.1).\n        *   Caption: \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\"\n        *   Context: South Korea (Camp Rodriguez), Dec 15, 2025.\n        *   Relevance: The story is about sending resources to Hormuz. The image is about training in South Korea. It is *not* relevant to the story.\n\n3.  **Evaluate against Criteria:**\n\n    *   **1. Language (Danish):**\n        *   The Danish is grammatically correct but extremely repetitive and structurally flawed. It reads like a list of disjointed sentences with attributions"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 961,
+        "completion_tokens": 700,
+        "total_tokens": 1661,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 30.7655
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

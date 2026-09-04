@@ -1,0 +1,55 @@
+{
+  "model": "@cf/openai/gpt-oss-20b",
+  "fixture": "fifa-uefa",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 904,
+    "output_tokens": 700,
+    "estimated_usd": 0.00039079999999999996
+  },
+  "elapsed_s": 5.463,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-54f79f7a5e2b433e9e8b8e2aa7f6a00b",
+      "object": "chat.completion",
+      "created": 1788504718,
+      "model": "@cf/openai/gpt-oss-20b",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning_content": "We need to evaluate article for publication. Check for unnatural language, machine translation artifacts, unclear or risky statements, hero image relevance, other editorial errors.\n\nLet's read body: \"FIFA anklager UEFA for 'smørgås-kampagne' mod Infantino\" heading. Then paragraph: \"FIFA har anklaget UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Ifølge Deutsche Welle (DW) har UEFA søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz.\" That seems odd: \"samle beviser for kriminalforsøg\" maybe wrong. Also \"smørgås-kampagne\" is a phrase? Might be translation of \"sandwich campaign\"? Might be a metaphor. But unnatural? Might be okay.\n\nNext: \"UEFA har også indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder.\" \"eks parte\" maybe \"ex parte\". Should be \"ex parte\". Also \"enheder\" maybe \"enheder\" okay. But \"US-baserede enheder\" maybe \"US-baserede enheder\" okay.\n\nNext: \"Disputen mellem FIFA og UEFA har nået en US-domstol, ifølge DW.\" okay.\n\nNext: \"FIFA har beskyldt UEFA for at føre en 'smørgås-kampagne' mod Infantino, men UEFA har ikke kommenteret beskyldningerne.\" okay.\n\n\"Kilde: Deutsche Welle (DW)\" okay.\n\nPotential issues: unnatural phrase \"smørgås-kampagne\" maybe not common. Might be translation of \"sandwich campaign\" but unclear. Also \"samle beviser for kriminalforsøg i Schweiz\" unnatural. Should be \"samle beviser for en kriminel handling i Schweiz\" or \"for en kriminel handling\". Also \"eks parte-ansøgning\" should be \"ex parte-ansøgning\". Also \"US District Court i New York\" maybe \"US District Court i New York\" okay.\n\nHero image: It's a photo of the US Declaration of Independence. The article is about FIFA-UEFA conflict. The image is irrelevant. The alt text is in English and describes the image. The caption says \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" That seems irrelevant. So image not relevant.\n\nAlso the article is very short, lacking sources beyond DW. Might be okay but questionable.\n\nAlso the article uses \"Ifølge Deutsche Welle (DW)\" but no link. Might be okay.\n\nAlso the article uses \"Kilde: Deutsche Welle (DW)\" but no link.\n\nAlso the article uses \"smørgås-kampagne\" which might be a translation of \"sandwich campaign\" but unclear. Might be a metaphor used by some. But might be confusing.\n\nAlso the article uses \"eks parte-ansøgning\" incorrectly.\n\nAlso the article uses \"US-baserede enheder\" maybe \"US-baserede enheder\" okay.\n\nAlso the article uses \"US-domstol\" maybe \"US-domstol\" okay.\n\nAlso the article uses \"US District Court i New York\" maybe \"US District Court i New York\" okay.\n\nAlso the article uses \""
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 904,
+        "completion_tokens": 700,
+        "total_tokens": 1604,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 35.5272372
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

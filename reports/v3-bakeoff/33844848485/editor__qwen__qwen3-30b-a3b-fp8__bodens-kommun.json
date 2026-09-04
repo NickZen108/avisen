@@ -1,0 +1,60 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "fixture": "bodens-kommun",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 810,
+    "output_tokens": 700,
+    "estimated_usd": 0.00027931
+  },
+  "elapsed_s": 5.845,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": null,
+            "function_call": null,
+            "reasoning": "\nOkay, let's take a look at this article. The user wants me to act as a Danish editor and check for specific issues. First, I need to go through each part of the article step by step.\n\nStarting with the title: \"Bodens kommun solgte en hangar til en kryptokoncern for 105 millioner kroner.\" That seems okay. The word \"solgte\" is correct, and \"kryptokoncern\" is the right term. But wait, the article mentions \"Bodens kommun\" which is a Swedish municipality. The user is a Danish editor, so maybe the name should be in Danish? But \"Bodens kommun\" is the correct Swedish name. However, in Danish, it might be \"Bodens Kommune\" with a capital K. But since the article is about a Swedish municipality, maybe it's okay as is. Not sure yet.\n\nThe standfirst: \"Bodens kommun har solgt en hangar til en kryptokoncern for 105 millioner kroner. Det er ifølge SVT.\" The structure is repetitive. \"Har solgt\" is correct. \"Det er ifølge SVT\" is a bit awkward. Maybe \"Ifølge SVT har Bodens kommun solgt...\" would be better. Also, \"kroner\" should be \"kroner\" (plural), which it is. But \"105 millioner kroner\" is correct.\n\nLooking at the body. The first paragraph under h2: same as the standfirst. That's redundant. The user mentioned not to focus on small style preferences, but repetition might be an issue. However, the user said small stylistic issues aren't blockers, so maybe not a big deal here.\n\nNext, the h3: \"Kryptokoncernen, Bikupa, har skulder for hundretals millioner kroner. Det er ifølge SVT.\" \"Skulder\" is the correct form of \"skulde\" (owed), but \"har skulder\" is incorrect. It should be \"har skulder\" or \"har gæld\". Wait, \"skulder\" is the plural of \"skuld\" (debt), so \"har skulder\" is correct. But \"hundretals millioner\" is a bit odd. \"Hundrede millioner\" would be more natural. Also, \"Det er ifølge SVT\" is repeated, which is redundant.\n\nThen the p: \"Bikupa har ifølge Skatteverket kunnet sin virksomhed til at være en ren miningvirksomhed. Det er ifølge SVT.\" \"Kunnet sin virksomhed til at være\" is incorrect. The correct phrase would be \"kunnet sin virksomhed til at være\" or \"kunnet sin virksomhed til at være en ren miningvirksomhed.\" But \"kunnet\" is the past tense of \"kunne\" (can), so \"har kunnet\" would be \"has been able to.\" But the structure here is confusing. Maybe \"har ifølge Skatteverket kunnet sin virksomhed til at være en ren miningvirksomhed\"",
+            "reasoning_content": "\nOkay, let's take a look at this article. The user wants me to act as a Danish editor and check for specific issues. First, I need to go through each part of the article step by step.\n\nStarting with the title: \"Bodens kommun solgte en hangar til en kryptokoncern for 105 millioner kroner.\" That seems okay. The word \"solgte\" is correct, and \"kryptokoncern\" is the right term. But wait, the article mentions \"Bodens kommun\" which is a Swedish municipality. The user is a Danish editor, so maybe the name should be in Danish? But \"Bodens kommun\" is the correct Swedish name. However, in Danish, it might be \"Bodens Kommune\" with a capital K. But since the article is about a Swedish municipality, maybe it's okay as is. Not sure yet.\n\nThe standfirst: \"Bodens kommun har solgt en hangar til en kryptokoncern for 105 millioner kroner. Det er ifølge SVT.\" The structure is repetitive. \"Har solgt\" is correct. \"Det er ifølge SVT\" is a bit awkward. Maybe \"Ifølge SVT har Bodens kommun solgt...\" would be better. Also, \"kroner\" should be \"kroner\" (plural), which it is. But \"105 millioner kroner\" is correct.\n\nLooking at the body. The first paragraph under h2: same as the standfirst. That's redundant. The user mentioned not to focus on small style preferences, but repetition might be an issue. However, the user said small stylistic issues aren't blockers, so maybe not a big deal here.\n\nNext, the h3: \"Kryptokoncernen, Bikupa, har skulder for hundretals millioner kroner. Det er ifølge SVT.\" \"Skulder\" is the correct form of \"skulde\" (owed), but \"har skulder\" is incorrect. It should be \"har skulder\" or \"har gæld\". Wait, \"skulder\" is the plural of \"skuld\" (debt), so \"har skulder\" is correct. But \"hundretals millioner\" is a bit odd. \"Hundrede millioner\" would be more natural. Also, \"Det er ifølge SVT\" is repeated, which is redundant.\n\nThen the p: \"Bikupa har ifølge Skatteverket kunnet sin virksomhed til at være en ren miningvirksomhed. Det er ifølge SVT.\" \"Kunnet sin virksomhed til at være\" is incorrect. The correct phrase would be \"kunnet sin virksomhed til at være\" or \"kunnet sin virksomhed til at være en ren miningvirksomhed.\" But \"kunnet\" is the past tense of \"kunne\" (can), so \"har kunnet\" would be \"has been able to.\" But the structure here is confusing. Maybe \"har ifølge Skatteverket kunnet sin virksomhed til at være en ren miningvirksomhed\"",
+            "refusal": null,
+            "role": "assistant"
+          },
+          "routed_experts": null,
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "created": 1788504696,
+      "ec_transfer_params": null,
+      "id": "chatcmpl-62fbcb77-6ad8-408a-9633-cb166c1e5ea5",
+      "kv_transfer_params": null,
+      "metrics": null,
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "object": "chat.completion",
+      "prompt_logprobs": null,
+      "prompt_text": null,
+      "prompt_token_ids": null,
+      "response": null,
+      "service_tier": null,
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 810,
+        "completion_tokens": 700,
+        "total_tokens": 1510,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 25.078250885009766
+      }
+    }
+  }
+}

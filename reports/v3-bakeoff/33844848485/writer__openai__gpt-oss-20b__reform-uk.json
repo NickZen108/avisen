@@ -1,0 +1,14 @@
+{
+  "model": "@cf/openai/gpt-oss-20b",
+  "fixture": "reform-uk",
+  "ok": true,
+  "http_status": 200,
+  "text": "**RUBRIK**  \nReform UK overvejer at springe over budget, hvis de vinder næste valg\n\n**MANCHET**  \nDen britiske parti Reform UK har udtalt, at de vil overveje at undlade at fremlægge statsbudgettet, hvis de vinder det kommende valg. Partiet har også signaleret, at de vil træffe store finansielle beslutninger inden for få dage eller uger efter valget.\n\n**BRØDTEKST**  \nIfølge en artikel fra Politico Europe har Reform UK, der er kendt for sin pro‑EU‑holdning og fokus på økonomisk liberalisering, udtalt, at de vil overveje at springe over budgetet, hvis de vinder det kommende valget. Partiet har også angivet, at de vil træffe store finansielle beslutninger inden for få dage eller uger efter valget.\n\nReform UK har tidligere kritiseret den britiske regerings udgifter og har forberedt sig på at indføre en mere stram økonomisk politik, hvis de får magten. Partiets beslutning om at springe over budgetet vil sandsynligvis skabe debat om, hvordan regeringen skal håndtere offentlige finanser og økonomisk planlægning i en tid med usikkerhed.\n\n*Kilde: Politico Europe – “Reform UK floats skipping budget if it wins next election”*",
+  "usage": {
+    "input_tokens": 482,
+    "output_tokens": 557,
+    "estimated_usd": 0.0002635
+  },
+  "elapsed_s": 3.405,
+  "raw": null
+}

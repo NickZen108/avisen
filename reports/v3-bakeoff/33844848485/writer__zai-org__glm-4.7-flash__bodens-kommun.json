@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "bodens-kommun",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 746,
+    "output_tokens": 750,
+    "estimated_usd": 0.00034476000000000005
+  },
+  "elapsed_s": 14.667,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-bb2630f64fb75e10",
+      "object": "chat.completion",
+      "created": 1788503821,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news website.\n    *   **Task:** Write a short news article in natural, idiomatic Danish based on the provided material.\n    *   **Input Material:** JSON containing fixture details, source file path, assignment (category, location, core question), sources (SVT), and verified claims.\n    *   **Constraints:**\n        *   Correct bad translations (idiomatic Danish).\n        *   Do not invent facts.\n        *   Maintain caveats and attribution.\n        *   **Output Format:** Only RUBRIK, MANCHET, and BRØDTEKST.\n\n2.  **Analyze the Input Material:**\n    *   **Location:** Boden, Sweden (SE).\n    *   **Core Question:** Boden makes a 100-million deal with indebted crypto company.\n    *   **Key Facts (Verified Claims):**\n        *   F01: Boden municipality sells a hangar for 105 million SEK to a crypto company (Bikupa) with debts of hundreds of millions.\n        *   F02: The deal is marketed as an AI investment, but Skatteverket (Tax Agency) says Bikupa has done pure mining.\n        *   F03: Municipality expects partners to follow agreements and laws.\n        *   F04: In June 2026, the municipality gave the green light for the sale.\n        *   F05: Bikupa has debts of hundreds of millions.\n        *   F06: Bikupa has done pure mining.\n        *   F07: Municipality sells hangar for 105 million.\n        *   F08: Deal marketed as AI investment.\n\n3.  **Drafting Strategy:**\n    *   **Headline (Rubrik):** Needs to be catchy but serious. Mention Boden, the amount (105 million), and the context (crypto company, debts).\n    *   **Lead (Manchet):** Summarize the main point: Boden municipality sold a hangar for 105 million SEK to Bikupa, a company with huge debts. Mention the discrepancy between the AI marketing and the actual mining activity.\n    *   **Body (Brødtekst):**\n        *   Detail the sale: Hangar in Boden, price 105 million SEK.\n        *   Context: The company is Bikupa.\n        *   The controversy: It was sold as an AI hub, but Skatteverket says it's just mining.\n        *   The debt: Bikupa has debts in the hundreds of millions.\n        *   The municipality's stance: They expect compliance with laws.\n\n4.  **Drafting Content (Iterative refinement in Danish):**\n\n    *   *Rubrik:* Boden sælger hangar til kryptokoncern med milliardgæld for 105 mio. kr.\n    *   *Manchet:* Bodens kommun har indgået en handel på 105 millioner kroner med den skuldsatte kryptokoncern Bikupa. Hangaren, som tidligere har været hjemsted for virksomhedens datacenter, er solgt, selvom Skatteverket vurderer, at Bikupa har drevet ren minevirksomhed frem for den AI-satsning, som kommunen markedsførte affæren som.\n\n    *   *Brødtekst:*\n        I juni 2026 gav Bodens kommun grønt lys til salget af en stor hangar i byen. Prisen blev sat til 105 millioner kroner, og kø",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news website.\n    *   **Task:** Write a short news article in natural, idiomatic Danish based on the provided material.\n    *   **Input Material:** JSON containing fixture details, source file path, assignment (category, location, core question), sources (SVT), and verified claims.\n    *   **Constraints:**\n        *   Correct bad translations (idiomatic Danish).\n        *   Do not invent facts.\n        *   Maintain caveats and attribution.\n        *   **Output Format:** Only RUBRIK, MANCHET, and BRØDTEKST.\n\n2.  **Analyze the Input Material:**\n    *   **Location:** Boden, Sweden (SE).\n    *   **Core Question:** Boden makes a 100-million deal with indebted crypto company.\n    *   **Key Facts (Verified Claims):**\n        *   F01: Boden municipality sells a hangar for 105 million SEK to a crypto company (Bikupa) with debts of hundreds of millions.\n        *   F02: The deal is marketed as an AI investment, but Skatteverket (Tax Agency) says Bikupa has done pure mining.\n        *   F03: Municipality expects partners to follow agreements and laws.\n        *   F04: In June 2026, the municipality gave the green light for the sale.\n        *   F05: Bikupa has debts of hundreds of millions.\n        *   F06: Bikupa has done pure mining.\n        *   F07: Municipality sells hangar for 105 million.\n        *   F08: Deal marketed as AI investment.\n\n3.  **Drafting Strategy:**\n    *   **Headline (Rubrik):** Needs to be catchy but serious. Mention Boden, the amount (105 million), and the context (crypto company, debts).\n    *   **Lead (Manchet):** Summarize the main point: Boden municipality sold a hangar for 105 million SEK to Bikupa, a company with huge debts. Mention the discrepancy between the AI marketing and the actual mining activity.\n    *   **Body (Brødtekst):**\n        *   Detail the sale: Hangar in Boden, price 105 million SEK.\n        *   Context: The company is Bikupa.\n        *   The controversy: It was sold as an AI hub, but Skatteverket says it's just mining.\n        *   The debt: Bikupa has debts in the hundreds of millions.\n        *   The municipality's stance: They expect compliance with laws.\n\n4.  **Drafting Content (Iterative refinement in Danish):**\n\n    *   *Rubrik:* Boden sælger hangar til kryptokoncern med milliardgæld for 105 mio. kr.\n    *   *Manchet:* Bodens kommun har indgået en handel på 105 millioner kroner med den skuldsatte kryptokoncern Bikupa. Hangaren, som tidligere har været hjemsted for virksomhedens datacenter, er solgt, selvom Skatteverket vurderer, at Bikupa har drevet ren minevirksomhed frem for den AI-satsning, som kommunen markedsførte affæren som.\n\n    *   *Brødtekst:*\n        I juni 2026 gav Bodens kommun grønt lys til salget af en stor hangar i byen. Prisen blev sat til 105 millioner kroner, og kø"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 746,
+        "completion_tokens": 750,
+        "total_tokens": 1496,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 31.403
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

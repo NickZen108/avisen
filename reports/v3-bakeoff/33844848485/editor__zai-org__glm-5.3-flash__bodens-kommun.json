@@ -1,0 +1,43 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "bodens-kommun",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 770,
+    "output_tokens": 700,
+    "estimated_usd": 0.0004655
+  },
+  "elapsed_s": 18.343,
+  "raw": {
+    "ok": true,
+    "result": {
+      "choices": [
+        {
+          "finish_reason": "length",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "",
+            "reasoning_content": "Let me analyze this Danish article carefully as a demanding Danish editor-in-chief.\n\nThe article is about Boden municipality (Sweden) selling a hangar to a crypto company for 105 million kroner.\n\nLet me go through the text:\n\n**Title:** \"Bodens kommun solgte en hangar til en kryptokoncern for 105 millioner kroner\"\n- \"Bodens kommun\" - this is Swedish. In Danish, it should be \"Bodens kommun\" is actually acceptable as a proper name (Swedish municipalities are often kept in Swedish, e.g., \"Bodens kommun\" - actually in Danish journalism, Swedish municipality names are often kept as-is, like \"Stockholms kommun\". But \"kommun\" is Swedish for \"kommune\". Danish media would typically write \"Boden kommune\" or \"Bodens kommun\" - actually Danish media often writes \"Bodens kommun\" when referring to the Swedish municipality as a proper name. Hmm, but more natural Danish would be \"Boden kommune\" or \"kommunen i Boden\". Actually, Danish media do use \"kommun\" for Swedish municipalities sometimes as part of proper names, but it's more common to see \"Bodens kommun\" kept. Let me think... DR and other Danish media typically write \"svenske kommuner\" but for specific ones like \"Malmø kommune\" they use Danish \"kommune\". So \"Bodens kommun\" is a Swedish leak. Better: \"Boden kommune\" or \"kommunen i Boden\".\n\n- \"solgte en hangar til en kryptokoncern for 105 millioner kroner\" - grammatically fine. But wait - the sale is 105 millioner kroner - is that Danish kroner or Swedish kronor? The original SVT story would be in Swedish kronor. 105 millioner SEK. Writing \"kroner\" without specifying could be factually risky - Danish readers would assume DKK. Should specify \"svenske kroner\" (svenske kronor). This is a factual risk point.\n\n**Standfirst:** \"Bodens kommun har solgt en hangar til en kryptokoncern for 105 millioner kroner. Det er ifølge SVT.\"\n- \"Det er ifølge SVT\" - awkward Danish. Natural: \"Det oplyser SVT\" or \"ifølge SVT\". \"Det er ifølge SVT\" is a direct translation of Swedish \"Det är enligt SVT\" - a Swedish leak. Repeated multiple times in the body - very machine-translation-like.\n\n**Body:**\n\n1. H2 repeats the standfirst verbatim - redundant, but also \"Det er ifølge SVT\" again.\n\n2. \"Kryptokoncernen, Bikupa, har skulder for hundretals millioner kroner. Det er ifølge SVT.\"\n- \"har skulder for\" - wrong Danish. Should be \"skylder hundredevis af millioner\" or \"har gæld for hundredevis af millioner kroner\". \"skulder\" as a noun means \"shoulder\"; \"har skulder\" is not natural. Swedish: \"har skulder på hundratals miljoner kronor\" - direct translation. So \"h",
+            "role": "assistant"
+          }
+        }
+      ],
+      "created": 1788504773,
+      "id": "9ecdaffc5a29489ba77b82a7ac429e4a",
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "object": "chat.completion",
+      "usage": {
+        "prompt_tokens": 770,
+        "completion_tokens": 700,
+        "total_tokens": 1470,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 42.31818389892578
+      }
+    }
+  }
+}

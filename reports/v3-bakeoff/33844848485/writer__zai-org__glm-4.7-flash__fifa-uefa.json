@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "fifa-uefa",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 656,
+    "output_tokens": 750,
+    "estimated_usd": 0.00033936000000000003
+  },
+  "elapsed_s": 29.79,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-beb70e460e650703",
+      "object": "chat.completion",
+      "created": 1788503791,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news site.\n    *   **Task:** Write a short news article in natural, idiomatic Danish.\n    *   **Source Material:** JSON containing fixture info, source links (DW, Sky), and verified claims.\n    *   **Constraint 1:** Handle bad translations from a previous pipeline (understand meaning, rewrite correctly).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain caveats and attribution.\n    *   **Constraint 4:** Return *only* the following sections: RUBRIK, MANCHET, BRØDTEKST.\n\n2.  **Analyze the Source Material:**\n    *   **Core Question:** FIFA accuses UEFA of 'smear campaign' against Infantino.\n    *   **Location:** Switzerland, USA, Geneva (based on story location).\n    *   **Verified Claims (F01-F04):**\n        *   UEFA applied for permission to collect evidence for criminal proceedings in Switzerland.\n        *   UEFA filed an ex parte application in a US District Court in New York for witness statements and documents from US-based entities.\n        *   The dispute between FIFA and UEFA has reached a US court.\n        *   (Note: F04 is a repetition of F01, essentially).\n\n3.  **Drafting - Step-by-Step:**\n\n    *   **RUBRIK (Headline):** Needs to be punchy and informative.\n        *   *Draft 1:* FIFA anklager UEFA for smældrift mod Infantino.\n        *   *Refinement:* Make it sound like a serious Danish newspaper. \"FIFA anklager UEFA for 'smældrift' mod Gianni Infantino\" is good, but maybe add the legal context.\n        *   *Final Choice:* **FIFA anklager UEFA for 'smældrift' mod Gianni Infantino**\n\n    *   **MANCHET (Sub-headline):** Summarizes the legal action.\n        *   *Draft 1:* UEFA har søgt beviser i Schweiz og USA.\n        *   *Refinement:* Mention the specific legal steps (Swiss criminal proceedings, US court).\n        *   *Final Choice:* **Konflikten mellem fodboldforbundene eskalerer, da UEFA søger beviser i både schweizisk og amerikansk retspleje.**\n\n    *   **BRØDTEKST (Body):**\n        *   *Opening:* State the main accusation clearly. FIFA accuses UEFA of a smear campaign against President Infantino.\n        *   *Middle (The Legal Action):* Explain *why* this is happening. UEFA is taking legal steps. They applied for permission to collect evidence for criminal proceedings in Switzerland (where both have headquarters). They also went to a US court (New York) to get documents from US entities.\n        *   *Closing:* Mention the dispute has reached a US court (as per F03).\n        *   *Tone:* Objective, journalistic, neutral.\n\n    *   *Drafting the text (Mental Sandbox):*\n        FIFA har beskyldt UEFA for at lave en smædekampagne mod deres præsident, Gianni Infantino. Det sker i en tid, hvor konflikten mellem de to fodboldforbund er blevet juridisk. UEFA har søgt om lov til at indsamle beviser til en kriminalsag i Schweiz. De har også gå",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news site.\n    *   **Task:** Write a short news article in natural, idiomatic Danish.\n    *   **Source Material:** JSON containing fixture info, source links (DW, Sky), and verified claims.\n    *   **Constraint 1:** Handle bad translations from a previous pipeline (understand meaning, rewrite correctly).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain caveats and attribution.\n    *   **Constraint 4:** Return *only* the following sections: RUBRIK, MANCHET, BRØDTEKST.\n\n2.  **Analyze the Source Material:**\n    *   **Core Question:** FIFA accuses UEFA of 'smear campaign' against Infantino.\n    *   **Location:** Switzerland, USA, Geneva (based on story location).\n    *   **Verified Claims (F01-F04):**\n        *   UEFA applied for permission to collect evidence for criminal proceedings in Switzerland.\n        *   UEFA filed an ex parte application in a US District Court in New York for witness statements and documents from US-based entities.\n        *   The dispute between FIFA and UEFA has reached a US court.\n        *   (Note: F04 is a repetition of F01, essentially).\n\n3.  **Drafting - Step-by-Step:**\n\n    *   **RUBRIK (Headline):** Needs to be punchy and informative.\n        *   *Draft 1:* FIFA anklager UEFA for smældrift mod Infantino.\n        *   *Refinement:* Make it sound like a serious Danish newspaper. \"FIFA anklager UEFA for 'smældrift' mod Gianni Infantino\" is good, but maybe add the legal context.\n        *   *Final Choice:* **FIFA anklager UEFA for 'smældrift' mod Gianni Infantino**\n\n    *   **MANCHET (Sub-headline):** Summarizes the legal action.\n        *   *Draft 1:* UEFA har søgt beviser i Schweiz og USA.\n        *   *Refinement:* Mention the specific legal steps (Swiss criminal proceedings, US court).\n        *   *Final Choice:* **Konflikten mellem fodboldforbundene eskalerer, da UEFA søger beviser i både schweizisk og amerikansk retspleje.**\n\n    *   **BRØDTEKST (Body):**\n        *   *Opening:* State the main accusation clearly. FIFA accuses UEFA of a smear campaign against President Infantino.\n        *   *Middle (The Legal Action):* Explain *why* this is happening. UEFA is taking legal steps. They applied for permission to collect evidence for criminal proceedings in Switzerland (where both have headquarters). They also went to a US court (New York) to get documents from US entities.\n        *   *Closing:* Mention the dispute has reached a US court (as per F03).\n        *   *Tone:* Objective, journalistic, neutral.\n\n    *   *Drafting the text (Mental Sandbox):*\n        FIFA har beskyldt UEFA for at lave en smædekampagne mod deres præsident, Gianni Infantino. Det sker i en tid, hvor konflikten mellem de to fodboldforbund er blevet juridisk. UEFA har søgt om lov til at indsamle beviser til en kriminalsag i Schweiz. De har også gå"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 656,
+        "completion_tokens": 750,
+        "total_tokens": 1406,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 30.908
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

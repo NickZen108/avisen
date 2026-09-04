@@ -1,0 +1,55 @@
+{
+  "model": "@cf/openai/gpt-oss-20b",
+  "fixture": "entertainment-over-policy",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 691,
+    "output_tokens": 700,
+    "estimated_usd": 0.0003482
+  },
+  "elapsed_s": 6.819,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-2fd49d145ed54cef9d2d2cdbbf06e208",
+      "object": "chat.completion",
+      "created": 1788504737,
+      "model": "@cf/openai/gpt-oss-20b",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning_content": "We need to evaluate article for publication. Check for unnatural Danish, machine translation errors, unclear or risky statements, hero image relevance, other editorial errors.\n\nLet's read content. Title: \"Entertainment over policy? White House arcade games ignite backlash\". Standfirst: \"Trump-administrationen under beskyldning for at prioritere underholdning over politik. Kritikere mener, at administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.\" Body: H2: same as standfirst. Paragraph: same. Paragraph: \"Det sker ifølge Al Jazeera, efter at fem arkadestilte spil blev afsløret på White Houses hjemmeside.\" There's a typo: \"White Houses\" missing apostrophe. Also \"arkadestilte\" maybe \"arkadestil\" or \"arkade\" but \"arkadestilte\" is wrong. Should be \"arkade-spil\" or \"arkadespil\". Also \"afsløret\" maybe \"afsløret\" okay. Also \"White Houses hjemmeside\" should be \"White House's hjemmeside\" or \"White House's hjemmeside\" but in Danish: \"White House's hjemmeside\" or \"White House's hjemmeside\" but better \"White House's hjemmeside\" or \"White House's hjemmeside\". Also \"Al Jazeera\" is a source but not cited properly. Also \"Kritikere mener\" but no attribution. Also \"underholdning over at beskæftige sig\" unnatural phrase. Should be \"underholdning frem for at beskæftige sig\". Also \"stigende omkostninger\" maybe \"stigende omkostninger\" okay. Also \"udenlandske konflikter\" okay.\n\nHero image: alt \"Comwell Hvide Hus Aalborg\" but article about White House. Image is of Comwell Hvide Hus in Aalborg, not relevant. Caption says \"Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.\" So hero image irrelevant. Should be replaced with image of White House or arcade games. So editorial error.\n\nAlso category \"Kultur & medier\" okay.\n\nAlso \"story_location\" includes \"White House\" and \"Washington D.C.\" but local names \"Hvide Hus\" and \"Washington D.C.\" okay.\n\nAlso \"image_type\": photo, context_type: archive. But alt text wrong. Also \"source_url\" points to Wikimedia Commons file of Comwell Hvide Hus. Not relevant.\n\nAlso \"image credit\": \"Drlady\" but not sure. Also license CC BY-SA 4.0 okay.\n\nAlso \"pending_image\": false, \"ai_generated\": false.\n\nAlso \"image placement\": lead. So hero image is wrong.\n\nAlso \"body\" missing any quotes or direct statements. Also \"Det sker ifølge Al Jazeera\" but no link. Should provide link.\n\nAlso \"fem arkadestilte spil\" wrong. Should be \"fem arkade-spil\" or \"fem arkade-spil\".\n\nAlso \"White Houses hjemmeside\" wrong.\n\nAlso \"underholdning over politik\" unnatural. Should be \"underholdning frem for politik\".\n\nAlso \"underholdning over at beskæftige sig\" unnatural.\n\nAlso \"prioriterer underholdning over at beskæftige sig med vigtige spørgsmål\" unnatural. Should be \"prioriterer underhold"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 691,
+        "completion_tokens": 700,
+        "total_tokens": 1391,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 31.654513800000004
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

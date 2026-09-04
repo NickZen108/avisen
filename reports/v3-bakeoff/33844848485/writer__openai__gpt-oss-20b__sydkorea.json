@@ -1,0 +1,14 @@
+{
+  "model": "@cf/openai/gpt-oss-20b",
+  "fixture": "sydkorea",
+  "ok": true,
+  "http_status": 200,
+  "text": "**RUBRIK**  \nSydkorea overvejer militær udstationering i Hormuz-sundet  \n\n**MANCHET**  \nDen koreanske regering har indledt drøftelser om at sende tropper og udstyr til den strategiske havn for at styrke den internationale frihed af navigation, ifølge rapporter fra France 24.  \n\n**BRØDTEKST**  \nIfølge France 24 har Sydkorea i øjeblikket overvejet at sende militære ressourcer til Hormuz-sundet for at støtte friheden af navigation i den kritiske havn. Det er et skridt, der kan styrke den amerikanske sikkerhedsindsats i området, som også er under intens international overvågning.  \n\nSamtidig undersøger USA, om et missil, der blev affyret fra Iran, ramte en bryllupsfest i området, hvor mindst fire mennesker mistede livet. Ifølge BBC er der ingen beviser for, at USA har målrettet civile i sin militære indsats i Hormuz-sundet.  \n\nSydkoreas potentielle bidrag vil således kunne supplere de eksisterende amerikanske og internationale styrker, der arbejder for at sikre fri passage gennem den strategiske havn. (France 24; BBC)",
+  "usage": {
+    "input_tokens": 813,
+    "output_tokens": 545,
+    "estimated_usd": 0.0003261
+  },
+  "elapsed_s": 3.961,
+  "raw": null
+}

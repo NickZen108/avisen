@@ -1,0 +1,56 @@
+{
+  "model": "@cf/zai-org/glm-4.7-flash",
+  "fixture": "vox-kraever",
+  "ok": false,
+  "http_status": 200,
+  "text": "",
+  "usage": {
+    "input_tokens": 641,
+    "output_tokens": 750,
+    "estimated_usd": 0.00033846
+  },
+  "elapsed_s": 13.515,
+  "raw": {
+    "ok": true,
+    "result": {
+      "id": "chatcmpl-8eb33946c6dc74e9",
+      "object": "chat.completion",
+      "created": 1788503867,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [],
+            "reasoning": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news website.\n    *   **Task:** Write a short news article in natural, idiomatic Danish based on provided material.\n    *   **Constraint 1:** Handle bad translations from a previous pipeline (understand meaning, rewrite correctly, don't copy errors).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain reservations and attribution.\n    *   **Constraint 4:** Output format: RUBRIK, MANCHET, BRØDTEKST.\n    *   **Input Data:**\n        *   Fixture: `vox-kraever`\n        *   Category: Udland (Foreign)\n        *   Core Question: \"Hvad kræver Vox efter migrantkrisen i Ceuta?\"\n        *   Sources: Reuters, AP, Santiago Abascal (Vox leader).\n        *   Verified Claims:\n            *   F01: Vox calls crossings invasion/war, blames Morocco/Sánchez.\n            *   F02: Vox demands deportations and stricter border control.\n            *   F03: Reuters/AP have different numbers for dead/returning migrants (implies conflicting reports).\n            *   F04: Govt allocated 309 million euros to Ceuta.\n            *   F05: Interior Minister accuses PP and Vox of inciting hatred. (Note: S4 and S5 are not in the source list provided in the prompt, but the claim is there. I should probably focus on the Vox claims and the general situation, perhaps mentioning the political reaction if relevant, but the core question is \"What does Vox demand?\". I will stick to the Vox demands and the context provided by Reuters/AP).\n\n2.  **Drafting - Step-by-Step:**\n\n    *   **Rubrik (Headline):** Needs to be punchy and relevant to the core question.\n        *   *Draft 1:* Vox kræver udvisninger efter Ceuta-krisen. (A bit dry)\n        *   *Draft 2:* Vox vil have skærpet grænsekontrol og udvisninger efter Ceuta-krisen. (Better)\n        *   *Draft 3:* Vox kalder Ceuta-krisen invasion og kræver hårde tiltag. (Stronger)\n        *   *Selection:* **Vox kræver udvisninger og skærpet grænsekontrol efter Ceuta-krisen**\n\n    *   **Manchet (Sub-headline):** Summarizes the main point.\n        *   *Draft:* Partiet kalder situationen en invasion og vil have ansvar lagt på Marokko og regeringen.\n        *   *Selection:* **Partiet beskylder Marokko og spanske myndigheder for at have ignoreret situationen og kalder migranterne for en invasion.**\n\n    *   **Brødtekst (Body):**\n        *   *Opening:* Set the scene. Ceuta crisis. Vox reaction.\n        *   *Content:* Vox leader Santiago Abascal (and party) calls it an invasion/war. Blames Morocco and PM Sánchez. Demands deportations and stricter borders.\n        *   *Context:* Reuters/AP report on the situation (conflicting numbers on dead/returning migrants). Government allocated funds (309 million euros).\n        *   *Tone:* Serious, journalistic, objective.\n\n    *   *Drafting the text (Mental or rough notes):*\n        Efter den seneste krise",
+            "reasoning_content": "1.  **Analyze the Request:**\n    *   **Role:** Journalist for a serious Danish news website.\n    *   **Task:** Write a short news article in natural, idiomatic Danish based on provided material.\n    *   **Constraint 1:** Handle bad translations from a previous pipeline (understand meaning, rewrite correctly, don't copy errors).\n    *   **Constraint 2:** Do not invent facts.\n    *   **Constraint 3:** Maintain reservations and attribution.\n    *   **Constraint 4:** Output format: RUBRIK, MANCHET, BRØDTEKST.\n    *   **Input Data:**\n        *   Fixture: `vox-kraever`\n        *   Category: Udland (Foreign)\n        *   Core Question: \"Hvad kræver Vox efter migrantkrisen i Ceuta?\"\n        *   Sources: Reuters, AP, Santiago Abascal (Vox leader).\n        *   Verified Claims:\n            *   F01: Vox calls crossings invasion/war, blames Morocco/Sánchez.\n            *   F02: Vox demands deportations and stricter border control.\n            *   F03: Reuters/AP have different numbers for dead/returning migrants (implies conflicting reports).\n            *   F04: Govt allocated 309 million euros to Ceuta.\n            *   F05: Interior Minister accuses PP and Vox of inciting hatred. (Note: S4 and S5 are not in the source list provided in the prompt, but the claim is there. I should probably focus on the Vox claims and the general situation, perhaps mentioning the political reaction if relevant, but the core question is \"What does Vox demand?\". I will stick to the Vox demands and the context provided by Reuters/AP).\n\n2.  **Drafting - Step-by-Step:**\n\n    *   **Rubrik (Headline):** Needs to be punchy and relevant to the core question.\n        *   *Draft 1:* Vox kræver udvisninger efter Ceuta-krisen. (A bit dry)\n        *   *Draft 2:* Vox vil have skærpet grænsekontrol og udvisninger efter Ceuta-krisen. (Better)\n        *   *Draft 3:* Vox kalder Ceuta-krisen invasion og kræver hårde tiltag. (Stronger)\n        *   *Selection:* **Vox kræver udvisninger og skærpet grænsekontrol efter Ceuta-krisen**\n\n    *   **Manchet (Sub-headline):** Summarizes the main point.\n        *   *Draft:* Partiet kalder situationen en invasion og vil have ansvar lagt på Marokko og regeringen.\n        *   *Selection:* **Partiet beskylder Marokko og spanske myndigheder for at have ignoreret situationen og kalder migranterne for en invasion.**\n\n    *   **Brødtekst (Body):**\n        *   *Opening:* Set the scene. Ceuta crisis. Vox reaction.\n        *   *Content:* Vox leader Santiago Abascal (and party) calls it an invasion/war. Blames Morocco and PM Sánchez. Demands deportations and stricter borders.\n        *   *Context:* Reuters/AP report on the situation (conflicting numbers on dead/returning migrants). Government allocated funds (309 million euros).\n        *   *Tone:* Serious, journalistic, objective.\n\n    *   *Drafting the text (Mental or rough notes):*\n        Efter den seneste krise"
+          },
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "token_ids": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": null,
+      "usage": {
+        "prompt_tokens": 641,
+        "completion_tokens": 750,
+        "total_tokens": 1391,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 30.8255
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "kv_transfer_params": null
+    }
+  }
+}

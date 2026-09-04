@@ -1,0 +1,14 @@
+{
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "fixture": "bodens-kommun",
+  "ok": true,
+  "http_status": 200,
+  "text": "Beslutning: REVISE\n\nDer er flere problemsteder i teksten, som skal rettes før publicering:\n\n1. \"Kryptokoncernen, Bikupa, har skulder for hundretals millioner kroner.\" burde være \"Kryptokoncernen Bikupa har skulder på hundredetals millioner kroner.\" for at få en mere naturlig dansk formulering.\n2. \"Bikupa har ifølge Skatteverket kunnet sin virksomhed til at være en ren miningvirksomhed.\" er uklar og burde være \"Ifølge Skatteverket er Bikupas virksomhed en ren miningvirksomhed.\"\n3. \"Bodens kommun har ifølge SVT sagt, at de forventer, at deres hyresgæster og forretningspartnere følger de aftalte aftaler og svensk lovgivning.\" burde være \"Bodens kommun har ifølge SVT udtalt, at de forventer, at deres hyresgæster og forretningspartnere overholder de aftalte aftaler og svensk lovgivning.\"\n4. \"I juni 2026 gav Bodens kommun tilladelse til salget af hangaren, hvor Bikupa's datacenter har været placeret.\" burde være \"I juni 2026 gav Bodens kommun tilladelse til at sælge hangaren, hvor Bikupas datacenter er placeret.\"\n5. Billedet af Boden centrum er ikke direkte relevant for historien om salget af hangaren til en kryptokoncern. Det ville være bedre at bruge et billed, der har en mere direkte forbindelse til historien.\n\nDisse rettelser vil gøre teksten mere læselig og præcis, og billeder bedre relateret til historien.",
+  "usage": {
+    "input_tokens": 810,
+    "output_tokens": 419,
+    "estimated_usd": 0.001181337
+  },
+  "elapsed_s": 6.1,
+  "raw": null
+}

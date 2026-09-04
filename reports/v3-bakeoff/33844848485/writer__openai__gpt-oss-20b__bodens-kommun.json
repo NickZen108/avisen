@@ -1,0 +1,14 @@
+{
+  "model": "@cf/openai/gpt-oss-20b",
+  "fixture": "bodens-kommun",
+  "ok": true,
+  "http_status": 200,
+  "text": "**RUBRIK**  \nBoden sælger hangar til kryptokoncern for 105 millioner\n\n**MANCHET**  \nDen svenske kommune i Boden har solgt et hangar til den skuldsatte kryptokoncern Bikupa for 105 millioner svenske kroner – en transaktion, der markedsføres som en AI‑investering, men som ifølge Skatteverket primært drejer sig om minedrift.\n\n**BRØDTEKST**  \nBodens kommun i Sverige har i juni 2026 givet grønt lys til salget af et hangar, der tidligere har fungeret som datacenter for Bikupa, til en pris på 105 millioner svenske kroner. Ifølge SVT er Bikupa en kryptokoncern med gæld på flere hundrede millioner kroner, og virksomheden har i virkeligheden beskæftiget sig udelukkende med minedrift.\n\nSelvom salgsavtalen præsenteres som en satsning på kunstig intelligens, har Skatteverket påpeget, at Bikupa primært driver med minedrift. Kommunen har udtalt, at den forventer, at både lejere og forretningspartnere vil overholde de indgåede aftaler og gældende svensk lovgivning.\n\nKilden: SVT – “Boden gör 105 miljonersaffär med vacklande kryptobolag”.",
+  "usage": {
+    "input_tokens": 767,
+    "output_tokens": 524,
+    "estimated_usd": 0.0003106
+  },
+  "elapsed_s": 4.29,
+  "raw": null
+}
