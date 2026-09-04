@@ -7614,7 +7614,215 @@
           "automation_origin": "cloudflare-workers-ai"
         }
       }
+    ],
+    "2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne": [
+      {
+        "hash": "237f88b29351cd6146b9796f13d8d9fe10e339035241be38c4d9c98ddbc88acf",
+        "recorded_at": "2026-09-04T05:51:19+00:00",
+        "title": "FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'",
+        "story_id": "2026-09-04-fifa-uefa-konflikten",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-04-fifa-uefa-konflikten",
+          "slug": "2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne",
+          "category": "Sport",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "DE",
+            "country_code": "DE",
+            "place_names_english": [
+              "Switzerland",
+              "United States",
+              "Geneva"
+            ],
+            "place_names_local": [
+              "Schweiz",
+              "USA",
+              "Genf"
+            ]
+          },
+          "title": "FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'",
+          "standfirst": "FIFA anklager UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Disputen mellem FIFA og UEFA har nået en US-domstol.",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "seo": {
+            "title": "FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'",
+            "description": "FIFA anklager UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Disputen mellem FIFA og UEFA har nået en US-domstol.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne.jpg",
+            "alt": "This is a high-resolution image of the United States Declaration of Independence ( article - text ). This image is a version of the 1823 William Stone facsimile — Stone may well have used a wet pressing process (that removed ink from the original document onto a contact sheet for the purpose of making the engraving).",
+            "credit": "original: w:Second Continental Congress ; reproduction: William Stone",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:United_States_Declaration_of_Independence.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "FIFA anklager UEFA for 'smørgås-kampagne' mod Infantino",
+              "type": "h2"
+            },
+            {
+              "text": "FIFA har anklaget UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Ifølge Deutsche Welle (DW) har UEFA søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz.",
+              "type": "p"
+            },
+            {
+              "text": "UEFA har også indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder.",
+              "type": "p"
+            },
+            {
+              "text": "Disputen mellem FIFA og UEFA har nået en US-domstol, ifølge DW.",
+              "type": "p"
+            },
+            {
+              "text": "FIFA har beskyldt UEFA for at føre en 'smørgås-kampagne' mod Infantino, men UEFA har ikke kommenteret beskyldningerne.",
+              "type": "p"
+            },
+            {
+              "text": "Kilde: Deutsche Welle (DW)",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet": [
+      {
+        "hash": "50bfed9797f4dfd61a657386a438fcc304620d4c68300d0c2d435a218ab080b5",
+        "recorded_at": "2026-09-04T05:51:19+00:00",
+        "title": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet",
+        "story_id": "2026-09-04-south-korea",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-04-south-korea",
+          "slug": "2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet",
+          "category": "Udland",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "South Korea",
+            "country_code": "KR",
+            "place_names_english": [
+              "Strait of Hormuz"
+            ],
+            "place_names_local": [
+              "Hormuz-sundet"
+            ]
+          },
+          "title": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet",
+          "standfirst": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation. USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05"
+          ],
+          "seo": {
+            "title": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet",
+            "description": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation. USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet.jpg",
+            "alt": "A U.S. Marine with 1st Battalion, 6th Marines, forward deployed with 4th Marine Regiment, 3rd Marine Division as part of the Unit Deployment Program, prepares to deploy a Skydio X2D while conducting military operations in urban terrain combined arms training during Korea Viper 26.1 at Camp Rodriguez, South Korea, Dec. 15, 2025. Korea Viper is a recurring exercise series that demonstrates the Republic of Korea and U.S. Marine Corps' ability to respond decisively in the region as a singular, unifi",
+            "credit": "U.S. Marine Corps photo by Cpl. John Simpson",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Korea_Viper_26_1_-_V16_Conducts_MOUT_Combined_Arms_Attacks_(9444839).jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet",
+              "type": "h2"
+            },
+            {
+              "text": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation.",
+              "type": "p"
+            },
+            {
+              "text": "Det skriver France 24.",
+              "type": "p"
+            },
+            {
+              "text": "USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.",
+              "type": "p"
+            },
+            {
+              "text": "Det skriver BBC World.",
+              "type": "p"
+            },
+            {
+              "text": "USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.",
+              "type": "p"
+            },
+            {
+              "text": "Det skriver BBC World.",
+              "type": "p"
+            },
+            {
+              "text": "Sydkorea kunne bidrage til USAs sikkerhedsindsats i Hormuz-sundet.",
+              "type": "p"
+            },
+            {
+              "text": "Det skriver France 24.",
+              "type": "p"
+            },
+            {
+              "text": "Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse.",
+              "type": "p"
+            },
+            {
+              "text": "Det skriver BBC World.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
     ]
   },
-  "generated_at": "2026-09-04T04:38:47+00:00"
+  "generated_at": "2026-09-04T05:51:19+00:00"
 }

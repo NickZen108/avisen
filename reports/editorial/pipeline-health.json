@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-04T04:38:43Z",
+  "generated_at": "2026-09-04T05:51:15Z",
   "counts": {
-    "published": 38,
+    "published": 40,
     "checking": 2,
     "draft": 4,
-    "editing": 2
+    "editing": 3
   },
   "blocked_count": 4,
   "articles": [
@@ -350,6 +350,14 @@
       "reasons": []
     },
     {
+      "slug": "2026-09-04-bodens-kommun-solgte-en-hangar-til-en-kryptokoncern-for-105-millioner-kr",
+      "title": "Bodens kommun solgte en hangar til en kryptokoncern for 105 millioner kroner",
+      "status": "editing",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
       "slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
       "title": "Entertainment over policy? White House arcade games ignite backlash",
       "status": "editing",
@@ -360,8 +368,24 @@
       ]
     },
     {
+      "slug": "2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne",
+      "title": "FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
       "slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t",
       "title": "Haiti: Regeringen opfordrer til genoplivning af international styrke mod bander",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet",
+      "title": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

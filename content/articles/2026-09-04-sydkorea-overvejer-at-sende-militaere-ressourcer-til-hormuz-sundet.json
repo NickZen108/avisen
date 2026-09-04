@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-04-south-korea",
   "slug": "2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet",
   "category": "Udland",
@@ -20,7 +20,7 @@
   "title": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet",
   "standfirst": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation. USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-04T05:51:15Z",
   "updated_at": null,
   "ledger": "sources/2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet.json",
   "claim_ids": [
@@ -104,5 +104,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-04T05:51:15Z"
+  }
 }
