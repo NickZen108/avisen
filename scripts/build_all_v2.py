@@ -72,12 +72,9 @@ def front():
    x=resolve(raw,ix)
    if x.get("slug") in seen or not unrelated_to_lead(x,l["slug"],ix):continue
    seen.add(x["slug"]);rail_candidates.append(x)
- seen_images=set()
  for x in rail_candidates[:5]:
   image_src=str(x.get("image_src") or "")
-  pic=""
-  if image_src and image_src not in seen_images:
-   seen_images.add(image_src);pic=f'<img src="{esc(image_src)}" alt="{esc(x.get("image_alt",""))}">'
+  pic=f'<img src="{esc(image_src)}" alt="{esc(x.get("image_alt",""))}">' if image_src else ""
   style,headline=headline_parts(x,allow_split=False)
   rail.append(f'<a class="rail-item headline--{esc(style)}" href="{core.front_item_url(x["slug"])}">{pic}<span><span>{esc(x["category"])}</span> {headline}</span></a>')
  rail.append("</aside>");stack=['<section class="stack">']
