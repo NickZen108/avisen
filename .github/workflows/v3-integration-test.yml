@@ -8,6 +8,7 @@ on:
       - 'cloudflare/v3-newsroom/**'
       - 'scripts/v3_pipeline.py'
       - 'scripts/v3_safe_runner.py'
+      - 'scripts/v3_run_entry.py'
       - 'scripts/v3_newsroom_state.py'
       - 'scripts/v3_technical_check.py'
       - '.github/workflows/v3-burst-3.yml'
@@ -35,7 +36,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check requests
       - name: Static contract tests
         run: |
-          python -m py_compile scripts/v3_pipeline.py scripts/v3_safe_runner.py scripts/v3_newsroom_state.py scripts/v3_technical_check.py
+          python -m py_compile scripts/v3_pipeline.py scripts/v3_safe_runner.py scripts/v3_run_entry.py scripts/v3_newsroom_state.py scripts/v3_technical_check.py
           python scripts/v3_newsroom_state.py
           python scripts/v3_technical_check.py
 
@@ -56,11 +57,10 @@ jobs:
           URL="$V3_PRIVATE_BACKEND_URL"
           CODE="$(curl --max-time 20 -s -o /tmp/noauth.json -w '%{http_code}' -H 'Content-Type: application/json' -d '{"action":"pull_inbox"}' "$URL")"
           test "$CODE" = "401"
-          TODAY="$(TZ=Europe/Copenhagen date +%F)"
           curl --fail --silent --show-error --max-time 20 \
             -H "Authorization: Bearer $GITHUB_OIDC_TOKEN" \
             -H 'Content-Type: application/json' \
-            -d "{\"action\":\"daily_budget\",\"budget_date\":\"$TODAY\"}" "$URL" \
+            -d '{"action":"daily_budget"}' "$URL" \
             | jq -e '.ok == true and .hard_limit_dkk == 10' >/dev/null
 
       - name: Prepare temporary native Workers AI inference Worker
@@ -99,7 +99,7 @@ jobs:
           test "$READY" = 1
 
       - name: One budget-accounted native Workers AI smoke call
-        run: python scripts/v3_safe_runner.py --smoke
+        run: python scripts/v3_run_entry.py --smoke
 
       - name: Cleanup test Worker
         if: always()
