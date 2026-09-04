@@ -3,8 +3,7 @@ name: Embedding benchmark
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/embedding-benchmark.yml'
+    paths: ['.github/workflows/embedding-benchmark.yml']
   workflow_dispatch:
 
 permissions:
@@ -19,144 +18,93 @@ jobs:
         with: {python-version: '3.12'}
       - name: Install requests
         run: python -m pip install --disable-pip-version-check requests
-      - name: Run multilingual same-event benchmark
+      - name: Prepare temporary embedding Worker
+        run: |
+          set -euo pipefail
+          WORKER_NAME="morgentidende-embed-bench-${GITHUB_RUN_ID}"
+          RUN_TOKEN="$(openssl rand -hex 32)"
+          echo "::add-mask::$RUN_TOKEN"
+          echo "WORKER_NAME=$WORKER_NAME" >> "$GITHUB_ENV"
+          echo "RUN_TOKEN=$RUN_TOKEN" >> "$GITHUB_ENV"
+          cat > /tmp/embed-worker.js <<'JS'
+          export default {
+            async fetch(request, env) {
+              if (request.method === 'GET') return Response.json({ok:true});
+              if ((request.headers.get('authorization')||'') !== `Bearer ${env.RUN_TOKEN}`) return new Response('unauthorized',{status:401});
+              const b=await request.json();
+              const allowed=new Set(['@cf/qwen/qwen3-embedding-0.6b','@cf/baai/bge-m3']);
+              if(!allowed.has(b.model)) return new Response('bad model',{status:400});
+              const input={text:b.text};
+              if(b.instruction) input.instruction=b.instruction;
+              const result=await env.AI.run(b.model,input);
+              return Response.json(result);
+            }
+          }
+          JS
+          cat > /tmp/wrangler.jsonc <<EOF
+          {"name":"$WORKER_NAME","main":"/tmp/embed-worker.js","compatibility_date":"2026-09-01","ai":{"binding":"AI"},"vars":{"RUN_TOKEN":"$RUN_TOKEN"}}
+          EOF
+      - name: Deploy temporary Worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
+          set -euo pipefail
+          npx --yes wrangler@4.127.1 deploy --config /tmp/wrangler.jsonc | tee /tmp/deploy.log
+          URL="$(grep -Eo 'https://[^[:space:]]+\.workers\.dev' /tmp/deploy.log | tail -1 || true)"
+          if [ -z "$URL" ]; then URL="https://${WORKER_NAME}.nicolaipetersen108.workers.dev"; fi
+          echo "WORKER_URL=$URL" >> "$GITHUB_ENV"
+          for i in $(seq 1 12); do curl --fail --silent --max-time 10 "$URL" >/dev/null && exit 0; sleep 3; done
+          exit 1
+      - name: Run multilingual same-event benchmark
+        run: |
           python - <<'PY'
           import json, math, os, requests, statistics
-
-          # Controlled RSS-style corpus: 12 events, 3 languages/headline formulations each.
-          # Several events intentionally share entities/topics to test false merges.
-          rows = [
-            ('tw_quake', 'Strong earthquake strikes Taiwan, buildings damaged in Hualien'),
-            ('tw_quake', 'Kraftigt jordskælv rammer Taiwan og beskadiger bygninger i Hualien'),
-            ('tw_quake', 'Un fuerte terremoto sacude Taiwán y daña edificios en Hualien'),
-
-            ('tw_restart', 'Taiwan chip factories resume production after earthquake shutdowns'),
-            ('tw_restart', 'Taiwans chipfabrikker genoptager produktionen efter jordskælvsstop'),
-            ('tw_restart', 'Las fábricas de chips de Taiwán reanudan la producción tras el terremoto'),
-
-            ('us_tariff', 'US president announces new 20 percent tariffs on imported cars'),
-            ('us_tariff', 'USA varsler ny told på 20 procent på importerede biler'),
-            ('us_tariff', 'Les États-Unis annoncent des droits de douane de 20 % sur les voitures importées'),
-
-            ('eu_tariff_reply', 'EU prepares retaliatory measures after new US car tariffs'),
-            ('eu_tariff_reply', 'EU forbereder modsvar efter USA’s nye biltold'),
-            ('eu_tariff_reply', 'Die EU bereitet Gegenmaßnahmen nach neuen US-Autozöllen vor'),
-
-            ('starship', 'SpaceX Starship explodes minutes after launch during test flight'),
-            ('starship', 'SpaceX Starship eksploderer få minutter efter opsendelse på testflyvning'),
-            ('starship', 'SpaceX Starship explota minutos después del lanzamiento durante un vuelo de prueba'),
-
-            ('moon_delay', 'NASA delays crewed moon mission after heat shield review'),
-            ('moon_delay', 'NASA udsætter bemandet månemission efter gennemgang af varmeskjold'),
-            ('moon_delay', 'La NASA retrasa la misión lunar tripulada tras revisar el escudo térmico'),
-
-            ('ecb_cut', 'European Central Bank cuts interest rates by a quarter point'),
-            ('ecb_cut', 'Den Europæiske Centralbank sænker renten med 0,25 procentpoint'),
-            ('ecb_cut', 'La BCE baisse ses taux de 0,25 point de pourcentage'),
-
-            ('dk_wind', 'Denmark cancels offshore wind tender after receiving no bids'),
-            ('dk_wind', 'Danmark aflyser havvindudbud efter nul bud fra energiselskaber'),
-            ('dk_wind', 'Dänemark sagt Offshore-Wind-Ausschreibung nach ausbleibenden Geboten ab'),
-
-            ('spain_fire', 'Wildfire forces thousands to evacuate homes in eastern Spain'),
-            ('spain_fire', 'Skovbrand tvinger tusinder til at forlade deres hjem i det østlige Spanien'),
-            ('spain_fire', 'Un incendio forestal obliga a evacuar a miles de personas en el este de España'),
-
-            ('spain_return', 'Residents return home as eastern Spain wildfire is brought under control'),
-            ('spain_return', 'Beboere vender hjem efter skovbrand i det østlige Spanien kommer under kontrol'),
-            ('spain_return', 'Los vecinos regresan a casa tras quedar controlado el incendio del este de España'),
-
-            ('transfer', 'Liverpool signs Brazilian midfielder Silva from Porto for 60 million euros'),
-            ('transfer', 'Liverpool køber den brasilianske midtbanespiller Silva i Porto for 60 millioner euro'),
-            ('transfer', 'Liverpool ficha al centrocampista brasileño Silva del Porto por 60 millones de euros'),
-
-            ('injury', 'Liverpool midfielder Silva ruled out for six weeks with ankle injury'),
-            ('injury', 'Liverpools midtbanespiller Silva er ude i seks uger med en ankelskade'),
-            ('injury', 'El centrocampista Silva del Liverpool estará seis semanas de baja por lesión de tobillo'),
-          ]
-          labels = [x[0] for x in rows]
-          texts = [x[1] for x in rows]
-
-          acct=os.environ['CLOUDFLARE_ACCOUNT_ID']
-          tok=os.environ['CLOUDFLARE_API_TOKEN']
-          headers={'Authorization':f'Bearer {tok}','Content-Type':'application/json'}
-
-          models=[
-            ('qwen3-embedding-0.6b','@cf/qwen/qwen3-embedding-0.6b', {
-              'text': texts,
-              'instruction': 'Represent each news headline so headlines describing the same real-world event are close, even across languages; keep separate developments about the same entity distinct.'
-            }),
-            ('bge-m3','@cf/baai/bge-m3', {'text': texts}),
-          ]
-
-          def vecs_from(obj):
-            r=obj.get('result', obj)
-            data=r.get('data') if isinstance(r,dict) else None
-            if data is None and isinstance(r,dict): data=r.get('embeddings')
-            if data is None: raise RuntimeError('No embedding data: '+json.dumps(obj)[:1000])
-            out=[]
-            for x in data:
-              if isinstance(x,dict): x=x.get('embedding', x.get('vector'))
-              out.append([float(v) for v in x])
-            return out
-
-          def cosine(a,b):
-            dot=sum(x*y for x,y in zip(a,b)); na=math.sqrt(sum(x*x for x in a)); nb=math.sqrt(sum(y*y for y in b))
-            return dot/(na*nb) if na and nb else 0.0
-
-          def evaluate(vs):
-            n=len(vs); sims=[[0.0]*n for _ in range(n)]
+          rows=[
+          ('tw_quake','Strong earthquake strikes Taiwan, buildings damaged in Hualien'),('tw_quake','Kraftigt jordskælv rammer Taiwan og beskadiger bygninger i Hualien'),('tw_quake','Un fuerte terremoto sacude Taiwán y daña edificios en Hualien'),
+          ('tw_restart','Taiwan chip factories resume production after earthquake shutdowns'),('tw_restart','Taiwans chipfabrikker genoptager produktionen efter jordskælvsstop'),('tw_restart','Las fábricas de chips de Taiwán reanudan la producción tras el terremoto'),
+          ('us_tariff','US president announces new 20 percent tariffs on imported cars'),('us_tariff','USA varsler ny told på 20 procent på importerede biler'),('us_tariff','Les États-Unis annoncent des droits de douane de 20 % sur les voitures importées'),
+          ('eu_reply','EU prepares retaliatory measures after new US car tariffs'),('eu_reply','EU forbereder modsvar efter USA’s nye biltold'),('eu_reply','Die EU bereitet Gegenmaßnahmen nach neuen US-Autozöllen vor'),
+          ('starship','SpaceX Starship explodes minutes after launch during test flight'),('starship','SpaceX Starship eksploderer få minutter efter opsendelse på testflyvning'),('starship','SpaceX Starship explota minutos después del lanzamiento durante un vuelo de prueba'),
+          ('moon_delay','NASA delays crewed moon mission after heat shield review'),('moon_delay','NASA udsætter bemandet månemission efter gennemgang af varmeskjold'),('moon_delay','La NASA retrasa la misión lunar tripulada tras revisar el escudo térmico'),
+          ('ecb_cut','European Central Bank cuts interest rates by a quarter point'),('ecb_cut','Den Europæiske Centralbank sænker renten med 0,25 procentpoint'),('ecb_cut','La BCE baisse ses taux de 0,25 point de pourcentage'),
+          ('dk_wind','Denmark cancels offshore wind tender after receiving no bids'),('dk_wind','Danmark aflyser havvindudbud efter nul bud fra energiselskaber'),('dk_wind','Dänemark sagt Offshore-Wind-Ausschreibung nach ausbleibenden Geboten ab'),
+          ('spain_fire','Wildfire forces thousands to evacuate homes in eastern Spain'),('spain_fire','Skovbrand tvinger tusinder til at forlade deres hjem i det østlige Spanien'),('spain_fire','Un incendio forestal obliga a evacuar a miles de personas en el este de España'),
+          ('spain_return','Residents return home as eastern Spain wildfire is brought under control'),('spain_return','Beboere vender hjem efter skovbrand i det østlige Spanien kommer under kontrol'),('spain_return','Los vecinos regresan a casa tras quedar controlado el incendio del este de España'),
+          ('transfer','Liverpool signs Brazilian midfielder Silva from Porto for 60 million euros'),('transfer','Liverpool køber den brasilianske midtbanespiller Silva i Porto for 60 millioner euro'),('transfer','Liverpool ficha al centrocampista brasileño Silva del Porto por 60 millones de euros'),
+          ('injury','Liverpool midfielder Silva ruled out for six weeks with ankle injury'),('injury','Liverpools midtbanespiller Silva er ude i seks uger med en ankelskade'),('injury','El centrocampista Silva del Liverpool estará seis semanas de baja por lesión de tobillo')]
+          labels=[r[0] for r in rows]; texts=[r[1] for r in rows]
+          H={'Authorization':f"Bearer {os.environ['RUN_TOKEN']}",'Content-Type':'application/json'}
+          def extract(o):
+            d=o.get('data',o.get('embeddings')) if isinstance(o,dict) else None
+            if d is None: raise RuntimeError(json.dumps(o)[:1000])
+            return [[float(v) for v in (x.get('embedding',x.get('vector')) if isinstance(x,dict) else x)] for x in d]
+          def cos(a,b):
+            return sum(x*y for x,y in zip(a,b))/(math.sqrt(sum(x*x for x in a))*math.sqrt(sum(y*y for y in b)))
+          def score(v):
+            n=len(v); S=[[0]*n for _ in range(n)]
             for i in range(n):
-              for j in range(i+1,n):
-                s=cosine(vs[i],vs[j]); sims[i][j]=sims[j][i]=s
-            top1=0; margins=[]; pos=[]; neg=[]; failures=[]
+              for j in range(i+1,n):S[i][j]=S[j][i]=cos(v[i],v[j])
+            top=0;marg=[];pos=[];neg=[];fails=[]
             for i in range(n):
-              same=[sims[i][j] for j in range(n) if j!=i and labels[j]==labels[i]]
-              diff=[sims[i][j] for j in range(n) if labels[j]!=labels[i]]
-              best_same=max(same); best_diff=max(diff)
-              margins.append(best_same-best_diff)
-              j=max((j for j in range(n) if j!=i), key=lambda j:sims[i][j])
-              if labels[j]==labels[i]: top1+=1
-              else: failures.append((i,j,sims[i][j],best_same))
+              j=max((j for j in range(n) if j!=i),key=lambda j:S[i][j]); top+=labels[j]==labels[i]
+              bs=max(S[i][j] for j in range(n) if j!=i and labels[j]==labels[i]); bd=max(S[i][j] for j in range(n) if labels[j]!=labels[i]);marg.append(bs-bd)
+              if labels[j]!=labels[i]:fails.append((texts[i],texts[j],S[i][j],bs))
             for i in range(n):
-              for j in range(i+1,n):
-                (pos if labels[i]==labels[j] else neg).append(sims[i][j])
-            # Pairwise AUC via rank comparison, dependency-free.
-            wins=ties=0
-            for p in pos:
-              for q in neg:
-                if p>q:wins+=1
-                elif p==q:ties+=1
-            auc=(wins+0.5*ties)/(len(pos)*len(neg))
-            return {
-              'top1_accuracy': top1/n,
-              'pairwise_auc': auc,
-              'mean_positive_similarity': statistics.mean(pos),
-              'mean_negative_similarity': statistics.mean(neg),
-              'mean_nearest_event_margin': statistics.mean(margins),
-              'worst_margin': min(margins),
-              'failures': failures,
-            }
-
-          for short,model,payload in models:
-            url=f'https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/{model}'
-            resp=requests.post(url,headers=headers,json=payload,timeout=90)
-            print(f'HTTP {short}: {resp.status_code}')
-            resp.raise_for_status()
-            obj=resp.json()
-            vs=vecs_from(obj)
-            if len(vs)!=len(texts): raise RuntimeError(f'{short}: expected {len(texts)} vectors, got {len(vs)}')
-            m=evaluate(vs)
-            print('\n===',short,'===')
-            print('vectors:',len(vs),'dims:',len(vs[0]))
-            for k in ['top1_accuracy','pairwise_auc','mean_positive_similarity','mean_negative_similarity','mean_nearest_event_margin','worst_margin']:
-              print(f'{k}: {m[k]:.6f}')
-            print('failures:',len(m['failures']))
-            for i,j,s,bs in m['failures'][:10]:
-              print('  QUERY:',texts[i])
-              print('  WRONG NN:',texts[j],f'(sim={s:.4f}; best_same={bs:.4f})')
+              for j in range(i+1,n):(pos if labels[i]==labels[j] else neg).append(S[i][j])
+            wins=sum(p>q for p in pos for q in neg); ties=sum(p==q for p in pos for q in neg);auc=(wins+.5*ties)/(len(pos)*len(neg))
+            return top/n,auc,statistics.mean(pos),statistics.mean(neg),statistics.mean(marg),min(marg),fails
+          models=[('Qwen3','@cf/qwen/qwen3-embedding-0.6b','Represent news headlines so reports of the same real-world event are close across languages, while distinct developments about the same entity remain separate.'),('BGE-M3','@cf/baai/bge-m3',None)]
+          for name,model,inst in models:
+            p={'model':model,'text':texts};
+            if inst:p['instruction']=inst
+            r=requests.post(os.environ['WORKER_URL'],headers=H,json=p,timeout=90);print(name,'HTTP',r.status_code);r.raise_for_status();v=extract(r.json());m=score(v)
+            print(f'=== {name} ===\nvectors={len(v)} dims={len(v[0])}\ntop1={m[0]:.4f}\nauc={m[1]:.4f}\npos_mean={m[2]:.4f}\nneg_mean={m[3]:.4f}\nmean_margin={m[4]:.4f}\nworst_margin={m[5]:.4f}\nfailures={len(m[6])}')
+            for a,b,s,bs in m[6]:print('FAIL',a,'=>',b,f'wrong={s:.4f} best_same={bs:.4f}')
           PY
+      - name: Cleanup Worker
+        if: always()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4.127.1 delete --name "$WORKER_NAME" --force || true
