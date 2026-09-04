@@ -25,11 +25,52 @@ jobs:
           python-version: '3.12'
       - name: Install HTTP client
         run: python -m pip install --disable-pip-version-check requests
+      - name: Prepare isolated temporary Worker
+        run: |
+          set -euo pipefail
+          WORKER_NAME="morgentidende-v3-bakeoff-${GITHUB_RUN_ID}"
+          BAKEOFF_TOKEN="$(openssl rand -hex 32)"
+          echo "WORKER_NAME=$WORKER_NAME" >> "$GITHUB_ENV"
+          echo "V3_BAKEOFF_TOKEN=$BAKEOFF_TOKEN" >> "$GITHUB_ENV"
+          cat > .tmp-v3-bakeoff-wrangler.jsonc <<EOF
+          {
+            "name": "$WORKER_NAME",
+            "main": "cloudflare/v3-bakeoff/src/index.js",
+            "compatibility_date": "2026-09-01",
+            "ai": { "binding": "AI" },
+            "vars": { "BAKEOFF_TOKEN": "$BAKEOFF_TOKEN" }
+          }
+          EOF
+      - name: Deploy temporary bakeoff Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4.127.1 deploy --config .tmp-v3-bakeoff-wrangler.jsonc | tee /tmp/v3-bakeoff-deploy.log
+          WORKER_URL="$(grep -Eo 'https://[^[:space:]]+\.workers\.dev' /tmp/v3-bakeoff-deploy.log | tail -1 || true)"
+          if [ -z "$WORKER_URL" ]; then
+            WORKER_URL="https://${WORKER_NAME}.nicolaipetersen108.workers.dev"
+          fi
+          echo "V3_BAKEOFF_WORKER_URL=$WORKER_URL" >> "$GITHUB_ENV"
+          for i in 1 2 3 4 5; do
+            if curl --fail --silent --show-error "$WORKER_URL/health" -o /tmp/v3-health.json; then break; fi
+            sleep 3
+          done
+          jq -e '.ok == true' /tmp/v3-health.json >/dev/null
       - name: Run isolated v3 model bakeoff
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: python scripts/v3_model_bakeoff.py
+      - name: Delete temporary bakeoff Worker
+        if: always()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4.127.1 delete --name "$WORKER_NAME" --force || true
+          rm -f .tmp-v3-bakeoff-wrangler.jsonc
       - name: Commit test results only
         run: |
           set -euo pipefail
