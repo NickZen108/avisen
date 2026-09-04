@@ -5465,6 +5465,104 @@
           "scheduled_for": null,
           "automation_origin": "cloudflare-workers-ai"
         }
+      },
+      {
+        "hash": "ea8488922fecb09607b2c0f8efb315e28b9273f40ae3c9268e4f914d0d2fadb5",
+        "recorded_at": "2026-09-04T03:51:32+00:00",
+        "title": "Protester i Spanien over regeringens håndtering af flygtningekrisen i Ceuta",
+        "story_id": "2026-09-02-protests-in-spain-over-government-s-handling-of-ceuta-migrant-crisis",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-02-protests-in-spain-over-government-s-handling-of-ceuta-migrant-crisis",
+          "slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c",
+          "category": "Udland",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "Spain",
+            "country_code": "ES",
+            "hero_queries_english": [
+              "Ceuta migrant crisis",
+              "Spain protests",
+              "Pedro Sánchez"
+            ],
+            "hero_queries_local": [
+              "crise des migrants à Ceuta",
+              "manifestations en Espagne",
+              "Pedro Sánchez"
+            ],
+            "hero_queries_transliterated": [
+              "krise de los migrantes en Ceuta",
+              "manifestaciones en España",
+              "Pedro Sánchez"
+            ],
+            "place_names_english": [
+              "Ceuta",
+              "Spain"
+            ],
+            "place_names_local": [
+              "Ceuta",
+              "Espagne"
+            ],
+            "primary_language": "español",
+            "primary_language_code": "es",
+            "transliterations": [
+              "Ceuta",
+              "España"
+            ]
+          },
+          "title": "Protester i Spanien over regeringens håndtering af flygtningekrisen i Ceuta",
+          "standfirst": "Tusindvis af mennesker har protesteret i Spanien over regeringens håndtering af flygtningekrisen i Ceuta, hvor op til 141 mennesker er døde under forsøget på at krydse grænsen fra Marokko til Ceuta.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05"
+          ],
+          "seo": {
+            "title": "Protester i Spanien over regeringens håndtering af flygtningekrisen i Ceuta",
+            "description": "Tusindvis af mennesker har protesteret i Spanien over regeringens håndtering af flygtningekrisen i Ceuta. Den spanske regering har sagt, at højreorienterede partier udnytter flygtningekrisen, mens oppositionspartier anklager premierminister Pedro Sánchez for at have forladt befolkningen i Ceuta.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceuta%20City.jpg",
+            "alt": "Udsigt over Ceuta",
+            "credit": "switch_1010",
+            "license": "CC BY 2.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Ceuta_City.jpg",
+            "image_type": "photo",
+            "context_type": "place",
+            "caption": "Arkivfoto af Ceuta – billedet viser ikke den omtalte demonstration.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Tusindvis af mennesker har protesteret i Spanien over regeringens håndtering af flygtningekrisen i Ceuta. Ifølge rapporter er op til 141 mennesker døde under forsøget på at krydse grænsen fra Marokko til Ceuta i slutningen af juli og begyndelsen af august. Flygtningekrisen i Ceuta har ført til, at tusindvis af mennesker er blevet flygtninge, og mange af dem er blevet placeret i improviserede lejre eller er spredt ud over byens gader eller på stranden.",
+              "type": "p"
+            },
+            {
+              "text": "Den spanske regering har sagt, at højreorienterede partier udnytter flygtningekrisen, mens oppositionspartier anklager premierminister Pedro Sánchez for at have forladt befolkningen i Ceuta. Premierminister Pedro Sánchez har også sagt, at Marokko ikke er ansvarlig for den massive grænseovertrædelse i Ceuta.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2"
+          ],
+          "related_news_slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen",
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
       }
     ],
     "2026-09-03-minneapolis-apartment-skyderi-tre-doede-og-flere-sa-rede": [
@@ -7054,5 +7152,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-04T03:46:36+00:00"
+  "generated_at": "2026-09-04T03:51:32+00:00"
 }
