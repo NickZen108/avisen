@@ -1,21 +1,40 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "pipeline": "v3",
   "cost": {
     "target_avg_dkk_per_published": 0.5,
     "soft_warning_avg_dkk": 0.45,
-    "quality_over_budget": true,
-    "fx_usd_dkk": 6.45
+    "daily_hard_limit_dkk": 10.0,
+    "daily_operational_limit_dkk": 9.0,
+    "quality_over_budget": false,
+    "fx_usd_dkk": 6.45,
+    "failed_or_unknown_call_charge": "full_reservation"
   },
   "models": {
-    "desk": "openai/gpt-5.6-terra",
-    "journalist": "openai/gpt-5.6-terra",
+    "desk": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "journalist": "@cf/qwen/qwen3-30b-a3b-fp8",
     "language_editor": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-    "research_web": "openai/gpt-5.4-mini",
-    "chief_normal": "openai/gpt-5.6-terra",
-    "chief_high_risk": "openai/gpt-5.6-sol"
+    "research_web": null,
+    "media_vision": "@cf/qwen/qwen3.8-27b",
+    "chief_normal": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "chief_high_risk": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
   },
   "model_prices_usd_per_million_tokens": {
+    "@cf/qwen/qwen3-30b-a3b-fp8": {
+      "input": 0.051,
+      "output": 0.335,
+      "cached_input": 0.0
+    },
+    "@cf/qwen/qwen3.8-27b": {
+      "input": 0.45,
+      "output": 3.2,
+      "cached_input": 0.0
+    },
+    "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+      "input": 0.293,
+      "output": 2.253,
+      "cached_input": 0.0
+    },
     "openai/gpt-5.6-terra": {
       "input": 2.0,
       "output": 12.0,
@@ -30,11 +49,6 @@
       "input": 0.75,
       "output": 4.5,
       "cached_input": 0.075
-    },
-    "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
-      "input": 0.293,
-      "output": 2.253,
-      "cached_input": 0.0
     }
   },
   "editorial": {
@@ -86,6 +100,12 @@
     "max_source_fetches": 4,
     "max_revision_rounds": 1,
     "max_research_rounds": 1,
-    "hero_candidates": 4
+    "hero_candidates": 4,
+    "max_cycles_per_run": 3,
+    "max_ai_calls_per_run": 24,
+    "max_ai_calls_per_story": 10,
+    "max_format_attempts": 2,
+    "ai_request_timeout_seconds": 90,
+    "workflow_timeout_minutes": 25
   }
 }
