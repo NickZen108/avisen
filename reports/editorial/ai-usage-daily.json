@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-03T09:11:34.884900+00:00",
+  "updated_at": "2026-09-04T06:30:35.595675+00:00",
   "days": [
     {
       "attempts": 39,
@@ -33,19 +33,34 @@
       "calls_per_approved": 9.69
     },
     {
-      "attempts": 8,
-      "approved": 3,
-      "holds_or_drops": 5,
-      "ai_calls": 73,
-      "prompt_tokens": 120292,
-      "completion_tokens": 40109,
-      "total_tokens": 160401,
-      "estimated_neurons": 3888.097,
+      "attempts": 25,
+      "approved": 15,
+      "holds_or_drops": 10,
+      "ai_calls": 175,
+      "prompt_tokens": 244606,
+      "completion_tokens": 90164,
+      "total_tokens": 334770,
+      "estimated_neurons": 7516.453,
       "retries": 0,
       "evidence_retries": 0,
       "date": "2026-09-03",
-      "neurons_per_approved": 1296.032,
-      "calls_per_approved": 24.33
+      "neurons_per_approved": 501.097,
+      "calls_per_approved": 11.67
+    },
+    {
+      "attempts": 7,
+      "approved": 7,
+      "holds_or_drops": 0,
+      "ai_calls": 44,
+      "prompt_tokens": 57580,
+      "completion_tokens": 19805,
+      "total_tokens": 77385,
+      "estimated_neurons": 1408.408,
+      "retries": 0,
+      "evidence_retries": 0,
+      "date": "2026-09-04",
+      "neurons_per_approved": 201.201,
+      "calls_per_approved": 6.29
     }
   ]
 }
