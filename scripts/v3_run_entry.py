@@ -17,6 +17,7 @@ import time
 import requests
 
 import v3_safe_runner as s
+import v3_language_editor
 
 
 def refresh_oidc() -> str:
@@ -103,6 +104,7 @@ def main() -> int:
     args = ap.parse_args()
     s.private_backend = refreshable_backend
     s.safe_call_ai = route_resilient_safe_call
+    v3_language_editor.install(s.p)
     # Refresh once proactively; later calls transparently refresh again after 401.
     refresh_oidc()
     return s.smoke() if args.smoke else s.run_pipeline(args.cycles)
