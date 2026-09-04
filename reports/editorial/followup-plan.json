@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T05:51:18Z",
+  "generated_at": "2026-09-04T09:58:08Z",
   "active": true,
-  "lead_slug": "2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne",
-  "story_id": "2026-09-04-fifa-uefa-konflikten",
-  "title": "FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'",
-  "weight": "B",
+  "lead_slug": "2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg",
+  "story_id": "2026-09-03-reform-uk-floats-skipping-budget-if-it-wins-next-election",
+  "title": "Reform UK overvejer at springe over budgeten hvis de vinder næste valg",
+  "weight": "A",
   "requests": [
     {
       "type": "new_development",
@@ -36,7 +36,7 @@
   "commentary": {
     "consider": true,
     "special_interest_matches": [
-      "dsa"
+      "reform uk"
     ],
     "rule": "overvej kommentar; aldrig automatisk publiceringskrav"
   },
