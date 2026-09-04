@@ -3,8 +3,14 @@
 
 Only published article records with image.pending_image=true are touched before
 the public HTML build. The scout queries Wikimedia Commons for a lawful free
-visual, preferring direct documentary material, then contextual photos, maps and
-satellite imagery, and delegates approval to the targeted media re-approval flow.
+visual, preferring direct documentary material, then neutral contextual photos
+of the place/person/object, then maps and satellite imagery.
+
+Safety rule: when an image looks like a specific event scene (for example a
+protest, riot, fire or flood) but cannot be tied to the current event/year, it is
+not used as a generic archive hero. A neutral place/person image is preferred so
+readers are not given a false impression that an unrelated event photo depicts
+the event described in the article.
 
 When Newsdesk has supplied story_location metadata, search is location-aware and
 multilingual: local-language queries, transliterations/alternate place names and
@@ -33,6 +39,14 @@ TAG_RE = re.compile(r"<[^>]+>")
 ALLOWED_VISUAL_MIME = {
     "image/jpeg", "image/png", "image/webp", "image/svg+xml",
     "image/tiff", "image/gif", "image/avif",
+}
+EVENT_SCENE_WORDS = {
+    "protest", "protests", "protester", "protesters", "demonstration", "demonstrations",
+    "manifestation", "manifestations", "manifestación", "manifestaciones", "rally", "march",
+    "riot", "riots", "unrest", "clash", "clashes", "strike", "streik", "strejk",
+    "fire", "wildfire", "brand", "flood", "flooding", "oversvømmelse", "earthquake",
+    "jordskælv", "explosion", "bombing", "attack", "angreb", "shooting", "skyderi",
+    "rescue", "redning", "evacuation", "evakuering",
 }
 
 
@@ -75,13 +89,7 @@ def words(value: str) -> list[str]:
 
 
 def named_entity_queries(article: dict) -> list[str]:
-    """Extract useful multi-word proper names, especially people, before broad story queries.
-
-    The original scout often searched a whole headline (for example a person + an
-    event/place) and Commons returned nothing, even when a free portrait of the
-    named person existed. This adds narrower documentary queries; it does not
-    change publication blocking or licensing rules.
-    """
+    """Extract useful multi-word proper names, especially people, before broad story queries."""
     body = article.get("body") or []
     body_text = " ".join(
         str(block.get("text") or "")
@@ -162,9 +170,15 @@ def queries(article: dict) -> list[str]:
     return list(dict.fromkeys(x for x in raw if x))[:8]
 
 
+def looks_like_specific_event_scene(value: str) -> bool:
+    tokens = {x.casefold() for x in words(value)}
+    return bool(tokens & EVENT_SCENE_WORDS)
+
+
 def commons_photo(article: dict) -> dict | None:
     year = str(article.get("published_at") or "")[:4]
     loc = article.get("story_location") or {}
+    person_queries = {q.casefold() for q in named_entity_queries(article)}
     location_terms = set()
     if isinstance(loc, dict):
         for key in ("place_names_local", "place_names_english", "transliterations"):
@@ -180,7 +194,7 @@ def commons_photo(article: dict) -> dict | None:
             "gsrnamespace": 6, "gsrsearch": q, "gsrlimit": 10,
             "prop": "imageinfo", "iiprop": "url|mime|size|extmetadata", "iiurlwidth": 1600,
         })
-        req = urllib.request.Request(COMMONS_API + "?" + params, headers={"User-Agent": "MorgentidendePendingMedia/3.2"})
+        req = urllib.request.Request(COMMONS_API + "?" + params, headers={"User-Agent": "MorgentidendePendingMedia/3.3"})
         try:
             with urllib.request.urlopen(req, timeout=30) as response:
                 payload = json.loads(response.read().decode("utf-8"))
@@ -214,18 +228,41 @@ def commons_photo(article: dict) -> dict | None:
             is_map = " map" in f" {visual_text}" or "kort" in visual_text or "karte" in visual_text
             is_satellite = any(x in visual_text for x in ("satellite", "landsat", "sentinel", "earth observ", "satellit"))
             graphic = is_map or is_satellite or mime in {"image/svg+xml", "image/tiff"}
-            context_type = "map" if is_map else "satellite" if is_satellite else "archive"
-            caption = (
-                "Kort over sagen eller det berørte område."
-                if is_map else
-                "Satellitbillede relateret til hændelsen eller det berørte område."
-                if is_satellite else
-                "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen."
-            )
-            event_bonus = 5 if year.isdigit() and year in visual_text else 0
+            event_scene = looks_like_specific_event_scene(visual_text)
+            current_event_signal = year.isdigit() and year in visual_text
+
+            # Do not use an unrelated event scene as generic archive context. This is
+            # the exact class of error that made a 1932 protest look like the current
+            # Ceuta demonstration. Neutral place/person imagery is safer.
+            if not graphic and event_scene and not current_event_signal:
+                continue
+
+            place_match = bool(location_terms & bag)
+            person_match = q.casefold() in person_queries and overlap >= 2
+            if is_map:
+                context_type = "map"
+                caption = "Kort over sagen eller det berørte område."
+            elif is_satellite:
+                context_type = "satellite"
+                caption = "Satellitbillede relateret til det berørte område."
+            elif current_event_signal and event_scene:
+                context_type = "event"
+                caption = "Foto relateret til den aktuelle hændelse."
+            elif person_match:
+                context_type = "person"
+                caption = "Arkivfoto af en central person i sagen – billedet er ikke fra den omtalte hændelse."
+            elif place_match:
+                context_type = "place"
+                caption = "Arkivfoto af det berørte sted – billedet viser ikke den omtalte hændelse."
+            else:
+                context_type = "archive"
+                caption = "Kontekstfoto – billedet viser ikke den omtalte hændelse."
+
+            event_bonus = 8 if current_event_signal and event_scene else 0
+            safe_context_bonus = 7 if context_type in {"person", "place"} else 0
             place_bonus = min(4, len(location_terms & bag) * 2)
             query_priority_bonus = max(0.0, 1.0 - q_index * 0.1)
-            score = overlap * 3 + event_bonus + place_bonus + query_priority_bonus
+            score = overlap * 3 + event_bonus + safe_context_bonus + place_bonus + query_priority_bonus
             source_url = info.get("descriptionurl") or f"https://commons.wikimedia.org/wiki/{urllib.parse.quote(str(page.get('title') or ''))}"
             hero = {
                 "src": src,
@@ -316,6 +353,7 @@ def self_test() -> None:
     assert any(q.startswith("नेपाल") for q in qs)
     assert any("Nepal flood" in q for q in qs)
     assert words("नेपाल बाढी") == ["नेपाल", "बाढी"]
+    assert looks_like_specific_event_scene("Demonstration in Spain 1932")
     person_article = {
         "title": "Trump foreslår ændring",
         "standfirst": "DR",
@@ -329,8 +367,8 @@ def self_test() -> None:
     }
     new = {
         "src": "https://example.test/a.jpg", "alt": "Stedet", "credit": "X", "license": "CC BY 4.0",
-        "source_url": "https://example.test/source", "image_type": "photo", "context_type": "archive",
-        "caption": "Arkivfoto", "pending_image": False, "ai_generated": False, "placement": "lead",
+        "source_url": "https://example.test/source", "image_type": "photo", "context_type": "place",
+        "caption": "Arkivfoto af stedet – billedet viser ikke hændelsen.", "pending_image": False, "ai_generated": False, "placement": "lead",
     }
     validate_image(new)
     validate_replacement_transition(old, new)
