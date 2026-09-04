@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "story_id": "2026-09-04-haitian-government-calls-for-renewal-of-international-anti-gang-task-for",
+  "article_slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t",
+  "checked_at": "2026-09-04T01:16:48.577Z",
+  "final_editor_mode": "ai",
+  "editorial_snapshot": {
+    "pipeline_version": 2,
+    "story_id": "2026-09-04-haitian-government-calls-for-renewal-of-international-anti-gang-task-for",
+    "slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t",
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "Haiti",
+      "country_code": "HT",
+      "place_names_english": [
+        "Port-au-Prince",
+        "Haiti"
+      ],
+      "place_names_local": [
+        "Port-au-Prince",
+        "Haiti"
+      ]
+    },
+    "title": "Haiti: Regeringen opfordrer til genoplivning af international anti-gang-taskforce",
+    "standfirst": "Haiti's udenrigsminister Raina Forbin har opfordret til genoplivning af international anti-gang-taskforce. GSF skal være fuldt udbygget i landet med støtte fra den internationale samfund, før valgene i december, for at sikre sikkerheden i landet.",
+    "byline": "Morgentidende Redaktion",
+    "ledger": "sources/2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t.json",
+    "claim_ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06"
+    ],
+    "seo": {
+      "title": "Haiti: Regeringen opfordrer til genoplivning af international anti-gang-taskforce",
+      "description": "Haiti's udenrigsminister Raina Forbin har opfordret til genoplivning af international anti-gang-taskforce. GSF skal være fuldt udbygget i landet med støtte fra den internationale samfund, før valgene i december, for at sikre sikkerheden i landet.",
+      "canonical": null
+    },
+    "image": {
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t.jpg",
+      "alt": "An aerial view of Port-au-Prince, Haiti, is shown Sept. 16, 2008, from the U.N. Stabilization Mission in Haiti (MINUSTAH) headquarters building. MINUSTAH is the U.N.-led multinational peacekeeping security force helping to establish, maintain and ensure order, safety and security during international relief efforts in Haiti following the landfall of several tropical storms and hurricanes. The Department of Defense is contributing to hurricane relief operations in Haiti being led by the U.S. Agen",
+      "credit": "U.S. Navy photo by Chief Mass Communication Specialist James G. Pinsky",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Port-au-Prince_Haiti_2008.JPG",
+      "image_type": "photo",
+      "context_type": "archive",
+      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "pending_image": false,
+      "ai_generated": false,
+      "placement": "lead"
+    },
+    "body": [
+      {
+        "text": "Haiti: Regeringen opfordrer til genoplivning af international anti-gang-taskforce",
+        "type": "h2"
+      },
+      {
+        "text": "Haiti's udenrigsminister Raina Forbin har opfordret FN's sikkerhedsråd til at forlænge mandatet for Gang Suppression Force (GSF).",
+        "type": "h3"
+      },
+      {
+        "text": "Haiti's udenrigsminister Raina Forbin mener, at GSF skal være fuldt udbygget i landet med støtte fra den internationale samfund, for at sikre sikkerheden i Haiti før valgene i december.",
+        "type": "p"
+      },
+      {
+        "text": "Ifølge Al Jazeera har Raina Forbin gentaget sin opfattelse om, at GSF skal være fuldt udbygget i landet med støtte fra den internationale samfund.",
+        "type": "p"
+      },
+      {
+        "text": "Haiti's udenrigsminister Raina Forbin har opfordret til, at GSF skal være fuldt udbygget i landet med støtte fra den internationale samfund, før valgene i december, for at sikre sikkerheden i landet.",
+        "type": "p"
+      },
+      {
+        "text": "Kilde: Al Jazeera",
+        "type": "p"
+      }
+    ],
+    "source_ids_to_display": [
+      "S1"
+    ],
+    "related_news_slug": null,
+    "related": [],
+    "correction_note": null,
+    "automation_origin": "cloudflare-workers-ai"
+  },
+  "editorial_destination": "main"
+}
