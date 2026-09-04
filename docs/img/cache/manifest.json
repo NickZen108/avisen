@@ -113,6 +113,12 @@
     "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Reichstag_building_Berlin_view_from_west_before_sunset.jpg/1920px-Reichstag_building_Berlin_view_from_west_before_sunset.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
     "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/59633195f001eeccdcdd.jpg"
   },
+  "https://commons.wikimedia.org/wiki/Special:FilePath/Santiago%20Abascal%20portrait.jpg": {
+    "content_type": "image/jpeg",
+    "file": "/img/cache/69da06c5320f7512220f.jpg",
+    "origin_final_url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Santiago_Abascal_portrait.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled",
+    "public_url": "https://morgentidende.nicolaipetersen108.workers.dev/img/cache/69da06c5320f7512220f.jpg"
+  },
   "https://commons.wikimedia.org/wiki/Special:FilePath/Solar_System_graphic_by_NASA.png": {
     "content_type": "image/png",
     "file": "/img/cache/4bf3648d929f250bc6c6.png",

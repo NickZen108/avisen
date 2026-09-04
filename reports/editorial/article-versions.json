@@ -5854,6 +5854,105 @@
           "scheduled_for": null,
           "automation_origin": "manual-editorial-followup"
         }
+      },
+      {
+        "hash": "809e1761c3472dadf8871bae1a945c6f965bb85e9e6f3b13746bccbf67e8d921",
+        "recorded_at": "2026-09-04T03:51:54+00:00",
+        "title": "Vox kræver udvisninger og skarpere grænsekontrol efter Ceuta-krisen",
+        "story_id": "2026-09-03-vox-ceuta-migration-policy",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-03-vox-ceuta-migration-policy",
+          "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen",
+          "category": "Udland",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "Spain",
+            "country_code": "ES",
+            "hero_queries_english": [
+              "Santiago Abascal Vox Ceuta",
+              "Vox Ceuta migration"
+            ],
+            "hero_queries_local": [
+              "Santiago Abascal Vox Ceuta",
+              "Vox inmigración Ceuta"
+            ],
+            "hero_queries_transliterated": [],
+            "place_names_english": [
+              "Ceuta",
+              "Spain"
+            ],
+            "place_names_local": [
+              "Ceuta",
+              "España"
+            ],
+            "primary_language": "spansk",
+            "primary_language_code": "es",
+            "transliterations": []
+          },
+          "title": "Vox kræver udvisninger og skarpere grænsekontrol efter Ceuta-krisen",
+          "standfirst": "Det nationalkonservative parti Vox kalder migranttilstrømningen en invasion og kræver udvisninger. Regeringen beskylder partiet for at puste til spændingerne.",
+          "byline": "Morgentidende Redaktion",
+          "manual_review": false,
+          "ledger": "sources/2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05"
+          ],
+          "seo": {
+            "title": "Vox kræver udvisninger efter migrantkrisen i Ceuta",
+            "description": "Vox kræver udvisninger og skærpet grænsekontrol efter migranttilstrømningen i Ceuta. Den spanske regering afviser partiets fremstilling.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Santiago%20Abascal%20portrait.jpg",
+            "alt": "Santiago Abascal, leder af Vox",
+            "credit": "Vox España",
+            "license": "CC0 1.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Santiago_Abascal_portrait.jpg",
+            "image_type": "photo",
+            "context_type": "person",
+            "caption": "Arkivfoto af Vox-leder Santiago Abascal.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "type": "p",
+              "text": "Vox-leder Santiago Abascal beskriver den store migranttilstrømning til Ceuta som en invasion og en krigshandling. Han mener, at Marokko fremmede grænseoverskridelserne, og at premierminister Pedro Sánchez lod dem ske. Det er Vox' politiske vurdering; Sánchez har afvist, at Marokko bærer ansvaret."
+            },
+            {
+              "type": "p",
+              "text": "Vox kræver, at migranter uden lovligt opholdsgrundlag udvises, og at den spanske grænse håndhæves langt mere konsekvent. Partiet har samtidig brugt krisen til at kræve Sánchez' afgang og et retsligt ansvar for regeringens håndtering. Vox mener, at myndighedernes hidtidige svar har svigtet både Ceutas indbyggere og Spaniens territoriale sikkerhed."
+            },
+            {
+              "type": "p",
+              "text": "Nyhedsbureauerne opgiver forskellige tal for krisens omfang. Reuters skriver, at omkring 72.000 mennesker krydsede grænsen i juli, at mindst 72 døde, og at mere end 10.000 fortsat opholder sig i improviserede lejre. AP skriver, at mindst 90 døde, og at omkring 5.000 migranter fortsat befinder sig i Ceuta. Forskellene viser, at det endelige omfang endnu ikke er sikkert fastslået."
+            },
+            {
+              "type": "p",
+              "text": "Den spanske regering siger, at protesterne bliver brugt politisk af Vox og det konservative Partido Popular. Regeringen har afsat 309 millioner euro til blandt andet sociale tilbud, økonomi og sikkerhed i Ceuta. Indenrigsminister Fernando Grande-Marlaska har beskyldt Vox og Partido Popular for at opildne til had."
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "related_news_slug": "2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c",
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "manual-editorial-followup"
+        }
       }
     ],
     "2026-09-03-va-lerenga-styreleder-ga-r-av-etter-bjoerdal-salget": [
@@ -7152,5 +7251,5 @@
       }
     ]
   },
-  "generated_at": "2026-09-04T03:51:32+00:00"
+  "generated_at": "2026-09-04T03:51:54+00:00"
 }
