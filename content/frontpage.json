@@ -3,10 +3,10 @@
   "edition_label": "Danmarks nye avis",
   "lead_rationale": "Ny B-historie publiceret automatisk; frisk væsentlig nyhed erstatter ældre lead.",
   "ticker": {
-    "slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t"
+    "slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash"
   },
   "lead": {
-    "slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t"
+    "slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash"
   },
   "rail": [
     {
@@ -19,6 +19,9 @@
       "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen"
     },
     {
+      "slug": "2026-09-04-ugyldigt-struktureret-svar"
+    },
+    {
       "slug": "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage"
     },
     {
@@ -29,9 +32,6 @@
     },
     {
       "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r"
-    },
-    {
-      "slug": "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove"
     }
   ],
   "stack": [
@@ -71,6 +71,9 @@
       "slug": "2026-09-03-vox-kraever-udvisninger-og-skarpere-graensekontrol-efter-ceuta-krisen"
     },
     {
+      "slug": "2026-09-04-ugyldigt-struktureret-svar"
+    },
+    {
       "slug": "2026-09-03-eu-diplomater-ga-r-forsigtigt-efter-nigel-farage"
     },
     {
@@ -93,9 +96,6 @@
     },
     {
       "slug": "2026-09-02-tyskland-og-rusland-i-konflikt-efter-droneangreb"
-    },
-    {
-      "slug": "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe"
     }
   ],
   "publication_strategy": {

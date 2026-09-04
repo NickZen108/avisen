@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-04T04:21:35Z",
+  "generated_at": "2026-09-04T04:24:49Z",
   "counts": {
-    "published": 37,
+    "published": 40,
     "checking": 2,
     "draft": 4
   },
@@ -349,8 +349,32 @@
       "reasons": []
     },
     {
+      "slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
+      "title": "Entertainment over policy? White House arcade games ignite backlash",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
       "slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t",
       "title": "Haiti: Regeringen opfordrer til genoplivning af international styrke mod bander",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive",
+      "title": "Trump-administrationen søger at fjerne skattefriheder for private universiteter med DEI-politikker",
+      "status": "published",
+      "release_requested": false,
+      "resume_from": null,
+      "reasons": []
+    },
+    {
+      "slug": "2026-09-04-ugyldigt-struktureret-svar",
+      "title": "Ugyldigt struktureret svar",
       "status": "published",
       "release_requested": false,
       "resume_from": null,

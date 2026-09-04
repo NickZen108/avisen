@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-04-trump-administration-pushes-to-remove-tax-exemptions-for-private-univers",
   "slug": "2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive",
   "category": "Udland",
@@ -20,7 +20,7 @@
   "title": "Trump-administrationen søger at fjerne skattefriheder for private universiteter med DEI-politikker",
   "standfirst": "Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker. Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-04T04:24:49Z",
   "updated_at": null,
   "ledger": "sources/2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive.json",
   "claim_ids": [
@@ -83,5 +83,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-04T04:24:49Z"
+  }
 }

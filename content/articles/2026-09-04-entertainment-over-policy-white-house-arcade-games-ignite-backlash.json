@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
   "slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
   "category": "Kultur & medier",
@@ -22,7 +22,7 @@
   "title": "Entertainment over policy? White House arcade games ignite backlash",
   "standfirst": "Trump-administrationen under beskyldning for at prioritere underholdning over politik. Kritikere mener, at administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-04T04:24:49Z",
   "updated_at": null,
   "ledger": "sources/2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash.json",
   "claim_ids": [
@@ -97,5 +97,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-04T04:24:49Z"
+  }
 }

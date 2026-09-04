@@ -7343,7 +7343,278 @@
           "automation_origin": "cloudflare-workers-ai"
         }
       }
+    ],
+    "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash": [
+      {
+        "hash": "a42979b83171bce1c04d9f68d1d98aa7e3eb57fe90221be655ffebb2e37fd67c",
+        "recorded_at": "2026-09-04T04:24:53+00:00",
+        "title": "Entertainment over policy? White House arcade games ignite backlash",
+        "story_id": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
+          "slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
+          "category": "Kultur & medier",
+          "weight": "B",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "USA",
+            "country_code": "US",
+            "place_names_english": [
+              "White House",
+              "Washington D.C."
+            ],
+            "place_names_local": [
+              "Hvide Hus",
+              "Washington D.C."
+            ]
+          },
+          "title": "Entertainment over policy? White House arcade games ignite backlash",
+          "standfirst": "Trump-administrationen under beskyldning for at prioritere underholdning over politik. Kritikere mener, at administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "seo": {
+            "title": "Entertainment over policy? White House arcade games ignite backlash",
+            "description": "Trump-administrationen under beskyldning for at prioritere underholdning over politik. Kritikere mener, at administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash.jpg",
+            "alt": "Comwell Hvide Hus Aalborg",
+            "credit": "Drlady",
+            "license": "CC BY-SA 4.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Comwell_Hvide_Hus_Aalborg.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Trump-administrationen under beskyldning for at prioritere underholdning over politik",
+              "type": "h2"
+            },
+            {
+              "text": "Kritikere mener, at Trump-administrationen prioriterer underholdning over at beskæftige sig med vigtige spørgsmål som stigende omkostninger og udenlandske konflikter.",
+              "type": "p"
+            },
+            {
+              "text": "Det sker ifølge Al Jazeera, efter at fem arkadestilte spil blev afsløret på White Houses hjemmeside.",
+              "type": "p"
+            },
+            {
+              "text": "Spillet 'Build the Wall' er et løbsspil, hvor spillerne skal kapre små grønne figurer før de når en grænsevold.",
+              "type": "p"
+            },
+            {
+              "text": "Spillet 'Rio Run' er et Snake-stilspil, hvor spillerne skal samle grænseskridere langs en hegn.",
+              "type": "p"
+            },
+            {
+              "text": "Kritikere har reageret med tilbageholdenhed over for Trump-administrationens prioritering af underholdning over at beskæftige sig med vigtige spørgsmål.",
+              "type": "p"
+            },
+            {
+              "text": "Trump-administrationen har været udsat for stigende kritik over den økonomiske konsekvens af krigen i Iran og hans bredere hjemlige agenda.",
+              "type": "p"
+            },
+            {
+              "text": "Ifølge Al Jazeera har kritikere reageret med tilbageholdenhed over for Trump-administrationens prioritering af underholdning over at beskæftige sig med vigtige spørgsmål.",
+              "type": "p"
+            },
+            {
+              "text": "Læs mere om sagen på Al Jazeeras hjemmeside.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive": [
+      {
+        "hash": "8313ce3cc03a9b56639b174ac9a1511688034af36f89c3b79086b9ec022eef26",
+        "recorded_at": "2026-09-04T04:24:53+00:00",
+        "title": "Trump-administrationen søger at fjerne skattefriheder for private universiteter med DEI-politikker",
+        "story_id": "2026-09-04-trump-administration-pushes-to-remove-tax-exemptions-for-private-univers",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-04-trump-administration-pushes-to-remove-tax-exemptions-for-private-univers",
+          "slug": "2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive",
+          "category": "Udland",
+          "weight": "C",
+          "editorial_destination": "main",
+          "story_location": {
+            "country": "USA",
+            "country_code": "US",
+            "place_names_english": [
+              "Washington D.C."
+            ],
+            "place_names_local": [
+              "Washington D.C."
+            ]
+          },
+          "title": "Trump-administrationen søger at fjerne skattefriheder for private universiteter med DEI-politikker",
+          "standfirst": "Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker. Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter.",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive.json",
+          "claim_ids": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "seo": {
+            "title": "Trump-administrationen søger at fjerne skattefriheder for private universiteter med DEI-politikker",
+            "description": "Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker. Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter.",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive.jpg",
+            "alt": "Library of Congress, Thomas Jefferson Building, Washington, D.C.",
+            "credit": "William Henry Jackson",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Library_of_Congress,_Washington,_D.C._-_c._1902.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker. Ifølge Euronews søger administrationen at fjærne skattefrihederne på grund af, at DEI-politikker er en form for politisk aktivitet, der ikke hører hjemme på universiteter.",
+              "type": "h2"
+            },
+            {
+              "text": "DEI-politikker er en del af universitetsledelsers strategi for at fremme diversity, equity og inclusion. Det betyder, at universiteterne søger at sikre, at alle studerende føler sig velkommen og inkluderet.",
+              "type": "p"
+            },
+            {
+              "text": "Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter. Det vil føre til en betydelig reduktion i universiteters budgetter.",
+              "type": "p"
+            },
+            {
+              "text": "Trump-administrationen mener, at DEI-politikker er en form for politisk aktivitet, der ikke hører hjemme på universiteter. Det er en kontroversiel holdning, der har været mødt med kritik fra mange sider.",
+              "type": "p"
+            },
+            {
+              "text": "DEI-politikker er en nødvendig del af universitetsledelsers arbejde for at sikre, at alle studerende føler sig velkommen og inkluderet. Det er en vigtig del af universitetsledelsers strategi for at fremme diversity, equity og inclusion.",
+              "type": "p"
+            },
+            {
+              "text": "Fjernelsen af skattefriheder vil føre til en betydelig reduktion i universiteters budgetter. Det vil være en stor udfordring for universiteterne at finansiere deres aktiviteter uden skattefriheder.",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
+    ],
+    "2026-09-04-ugyldigt-struktureret-svar": [
+      {
+        "hash": "67b1f3ea44a0d4076273b2ac90194086f9a410a92ae1e4c179a625ca88e36ae1",
+        "recorded_at": "2026-09-04T04:24:53+00:00",
+        "title": "Ugyldigt struktureret svar",
+        "story_id": "2026-09-04-openais-nyeste-ai-model",
+        "snapshot": {
+          "pipeline_version": 2,
+          "status": "published",
+          "release_requested": false,
+          "story_id": "2026-09-04-openais-nyeste-ai-model",
+          "slug": "2026-09-04-ugyldigt-struktureret-svar",
+          "category": "Videnskab & teknologi",
+          "weight": "B",
+          "editorial_destination": "tech_magazine",
+          "story_location": {
+            "country": "USA",
+            "country_code": "US",
+            "place_names_english": [
+              "San Francisco",
+              "Mountain View",
+              "Palo Alto"
+            ],
+            "place_names_local": [
+              "San Francisco",
+              "Mountain View",
+              "Palo Alto"
+            ]
+          },
+          "title": "Ugyldigt struktureret svar",
+          "standfirst": "Ugyldigt struktureret svar",
+          "byline": "Morgentidende Redaktion",
+          "ledger": "sources/2026-09-04-ugyldigt-struktureret-svar.json",
+          "claim_ids": [
+            "F01"
+          ],
+          "seo": {
+            "title": "Ugyldigt struktureret svar",
+            "description": "Ugyldigt struktureret svar",
+            "canonical": null
+          },
+          "image": {
+            "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-ugyldigt-struktureret-svar.jpg",
+            "alt": "San Francisco Airport (SFO) at night.",
+            "credit": "Andrew Choy from Santa Clara, California",
+            "license": "CC BY-SA 2.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:San_Francisco_International_Airport_at_night.jpg",
+            "image_type": "photo",
+            "context_type": "archive",
+            "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+            "pending_image": false,
+            "ai_generated": false,
+            "placement": "lead"
+          },
+          "body": [
+            {
+              "text": "Ugyldigt struktureret svar",
+              "type": "p"
+            }
+          ],
+          "source_ids_to_display": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "related_news_slug": null,
+          "related": [],
+          "correction_note": null,
+          "scheduled_for": null,
+          "automation_origin": "cloudflare-workers-ai"
+        }
+      }
     ]
   },
-  "generated_at": "2026-09-04T04:21:39+00:00"
+  "generated_at": "2026-09-04T04:24:53+00:00"
 }

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T04:22:19Z",
+  "generated_at": "2026-09-04T04:24:52Z",
   "active": true,
-  "lead_slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t",
-  "story_id": "2026-09-04-haitian-government-calls-for-renewal-of-international-anti-gang-task-for",
-  "title": "Haiti: Regeringen opfordrer til genoplivning af international styrke mod bander",
+  "lead_slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
+  "story_id": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
+  "title": "Entertainment over policy? White House arcade games ignite backlash",
   "weight": "B",
   "requests": [
     {
@@ -26,11 +26,19 @@
       "type": "background",
       "priority": "medium",
       "instruction": "Søg efter dokumentation og baggrund, der forklarer konsekvenser og kontekst."
+    },
+    {
+      "type": "commentary_material",
+      "priority": "medium",
+      "instruction": "Søg efter materiale til en mulig Kommentar/Perspektiv. Kommentar bestilles kun hvis der findes en selvstændig tese og tilstrækkeligt verificeret materiale."
     }
   ],
   "commentary": {
-    "consider": false,
-    "special_interest_matches": [],
+    "consider": true,
+    "special_interest_matches": [
+      "dsa",
+      "grænse"
+    ],
     "rule": "overvej kommentar; aldrig automatisk publiceringskrav"
   },
   "mode": "advisory_non_gating"

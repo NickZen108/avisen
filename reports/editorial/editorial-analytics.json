@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "published_count": 53,
+  "published_count": 56,
   "category_mix": {
-    "Udland": 27,
-    "Videnskab & teknologi": 8,
+    "Udland": 28,
+    "Videnskab & teknologi": 9,
     "Sundhed": 6,
     "Krimi": 3,
     "Videnskab": 3,
@@ -11,15 +11,16 @@
     "Liv": 1,
     "Penge": 1,
     "Guide": 1,
-    "Historie": 1
+    "Historie": 1,
+    "Kultur & medier": 1
   },
   "top_source_hosts": {
+    "www.aljazeera.com": 14,
     "www.bbc.co.uk": 12,
-    "www.aljazeera.com": 12,
     "www.reuters.com": 10,
+    "www.france24.com": 7,
+    "www.euronews.com": 7,
     "www.theguardian.com": 7,
-    "www.france24.com": 6,
-    "www.euronews.com": 6,
     "www.dw.com": 6,
     "apnews.com": 6,
     "science.nasa.gov": 5,
@@ -36,11 +37,11 @@
     "www.nist.gov": 2
   },
   "top_source_groups": {
+    "host-aljazeera-com": 11,
     "host-bbc-co-uk": 10,
-    "host-aljazeera-com": 9,
+    "host-euronews-com": 6,
     "host-dw-com": 6,
-    "host-euronews-com": 5,
-    "host-france24-com": 5,
+    "host-france24-com": 6,
     "reuters-reporting": 5,
     "ap-reporting": 4,
     "guardian-reporting": 4,
@@ -57,10 +58,10 @@
     "ukrainian-presidency": 2,
     "nih-sleep-guidance": 1
   },
-  "unique_source_hosts": 47,
-  "unique_source_groups": 71,
-  "followup_share": 0.094,
+  "unique_source_hosts": 48,
+  "unique_source_groups": 72,
+  "followup_share": 0.089,
   "correction_rate": 0.0,
-  "median_body_characters": 920,
+  "median_body_characters": 957,
   "principle": "These metrics are diagnostic. Clicks alone must not determine editorial priority."
 }

@@ -1,7 +1,7 @@
 {
   "pipeline_version": 2,
-  "status": "ready",
-  "release_requested": true,
+  "status": "published",
+  "release_requested": false,
   "story_id": "2026-09-04-openais-nyeste-ai-model",
   "slug": "2026-09-04-ugyldigt-struktureret-svar",
   "category": "Videnskab & teknologi",
@@ -24,7 +24,7 @@
   "title": "Ugyldigt struktureret svar",
   "standfirst": "Ugyldigt struktureret svar",
   "byline": "Morgentidende Redaktion",
-  "published_at": null,
+  "published_at": "2026-09-04T04:24:49Z",
   "updated_at": null,
   "ledger": "sources/2026-09-04-ugyldigt-struktureret-svar.json",
   "claim_ids": [
@@ -64,5 +64,9 @@
   "correction_note": null,
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai"
+  "automation_origin": "cloudflare-workers-ai",
+  "publication": {
+    "release_mode": "immediate",
+    "released_at": "2026-09-04T04:24:49Z"
+  }
 }
