@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T11:01:08+00:00",
+  "generated_at": "2026-09-04T11:37:33+00:00",
   "pipeline": "v3",
   "published_count": 54,
   "active_lead": {
@@ -87,8 +87,7 @@
     "Udland": 5,
     "Sport": 1,
     "Krimi": 1,
-    "Penge": 1,
-    "Videnskab & teknologi": 2
+    "Penge": 1
   },
   "active_packages": [],
   "scan_brief": [
@@ -203,19 +202,6 @@
       "followup_needs": []
     },
     {
-      "slug": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
-      "story_id": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
-      "package_id": null,
-      "category": "Videnskab & teknologi",
-      "title": "Datacenteres udvikling kan have store konsekvenser for miljøet",
-      "standfirst": "Datacenterer er en af de største forbrugere af elektricitet i verden, og deres udvikling kan have store konsekvenser for miljøet. Men hvad kan vi gøre for at mindske datacenteres miljøpåvirkning?",
-      "published_at": "2026-09-03T11:13:50Z",
-      "weight": "C",
-      "frontpage_role": "normal",
-      "topics": [],
-      "followup_needs": []
-    },
-    {
       "slug": "2026-09-03-ugyldigt-struktureret-svar",
       "story_id": "2026-09-03-will-the-us-or-china-emerge-as-the-ai-superpower",
       "package_id": null,
@@ -229,14 +215,14 @@
       "followup_needs": []
     },
     {
-      "slug": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion",
-      "story_id": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion",
+      "slug": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
+      "story_id": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
       "package_id": null,
-      "category": "Udland",
-      "title": "Migranter døde efter båd redningsaktion",
-      "standfirst": "Over 80 migranter formodes at være døde efter en redningsaktion ud for Canary Islands. Båden var adrift i 27 dage i Atlanterhavet før den blev reddet.",
-      "published_at": "2026-09-03T10:44:44Z",
-      "weight": "B",
+      "category": "Videnskab & teknologi",
+      "title": "Datacenteres udvikling kan have store konsekvenser for miljøet",
+      "standfirst": "Datacenterer er en af de største forbrugere af elektricitet i verden, og deres udvikling kan have store konsekvenser for miljøet. Men hvad kan vi gøre for at mindske datacenteres miljøpåvirkning?",
+      "published_at": "2026-09-03T11:13:50Z",
+      "weight": "C",
       "frontpage_role": "normal",
       "topics": [],
       "followup_needs": []
@@ -248,6 +234,19 @@
       "category": "Videnskab & teknologi",
       "title": "El Nino kunne være den stærkeste på 40 år",
       "standfirst": "FN advarer om en stærk El Nino.",
+      "published_at": "2026-09-03T10:44:44Z",
+      "weight": "B",
+      "frontpage_role": "normal",
+      "topics": [],
+      "followup_needs": []
+    },
+    {
+      "slug": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion",
+      "story_id": "2026-09-03-migranter-doede-efter-ba-d-redningsaktion",
+      "package_id": null,
+      "category": "Udland",
+      "title": "Migranter døde efter båd redningsaktion",
+      "standfirst": "Over 80 migranter formodes at være døde efter en redningsaktion ud for Canary Islands. Båden var adrift i 27 dage i Atlanterhavet før den blev reddet.",
       "published_at": "2026-09-03T10:44:44Z",
       "weight": "B",
       "frontpage_role": "normal",
@@ -320,19 +319,6 @@
       "followup_needs": []
     },
     {
-      "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid",
-      "story_id": "2026-09-02-gaza-amputees-struggle-under-blockade-and-rubble",
-      "package_id": null,
-      "category": "Sundhed",
-      "title": "Shurouq Khaira: En kvinde, der har mistet sit ben og sin fremtid",
-      "standfirst": "Shurouq Khaira er en af mange, der har lidt under blokaden og ødelæggelsen i Gaza-striben. Hun søger stadig at overleve og at finde en måde at gøre det på, selv om hendes drømme er blevet til nothingness. ",
-      "published_at": "2026-09-02T20:28:29Z",
-      "weight": "B",
-      "frontpage_role": "normal",
-      "topics": [],
-      "followup_needs": []
-    },
-    {
       "slug": "2026-09-02-maltesisk-forretningsmand-frikendt-for-mordet-pa-journalist",
       "story_id": "2026-09-02-maltese-tycoon-acquitted-of-orchestrating-murder-of-renowned-journalist",
       "package_id": null,
@@ -352,6 +338,19 @@
       "category": "Udland",
       "title": "Dykkerulykke i Lerkils havn: En person alvorligt kvæstet",
       "standfirst": "To dykkere blev reddet op af vandet efter en ulykke i Lerkils havn. Den ene blev kørt på hospitalet med alvorlige skader, oplyser SVT, Sveriges public service-tv.",
+      "published_at": "2026-09-02T20:28:29Z",
+      "weight": "B",
+      "frontpage_role": "normal",
+      "topics": [],
+      "followup_needs": []
+    },
+    {
+      "slug": "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid",
+      "story_id": "2026-09-02-gaza-amputees-struggle-under-blockade-and-rubble",
+      "package_id": null,
+      "category": "Sundhed",
+      "title": "Shurouq Khaira: En kvinde, der har mistet sit ben og sin fremtid",
+      "standfirst": "Shurouq Khaira er en af mange, der har lidt under blokaden og ødelæggelsen i Gaza-striben. Hun søger stadig at overleve og at finde en måde at gøre det på, selv om hendes drømme er blevet til nothingness. ",
       "published_at": "2026-09-02T20:28:29Z",
       "weight": "B",
       "frontpage_role": "normal",
@@ -385,12 +384,12 @@
       "followup_needs": []
     },
     {
-      "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere",
-      "story_id": "2026-09-02-israeli-fm-gideon-sa-ar-i-hope-iran-will-not-make-the-mistake-of-attacki",
+      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+      "story_id": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
       "package_id": null,
-      "category": "Videnskab & teknologi",
-      "title": "Israels udenrigsminister Gideon Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os'",
-      "standfirst": "Israels udenrigsminister Gideon Sa'ar har udtrykt håb om, at Iran ikke vil angribe landet. Han har også understreget, at hvis Israel bliver angrebet af Iran, vil landet sikkert svare kraftigt.",
+      "category": "Udland",
+      "title": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
+      "standfirst": "Tyskland har en stigende antal vælgere med indvandrerbaggrund. Ifølge en ny undersøgelse fra DW (2026) er dette en voksende gruppe, der kan spille en stor rolle i fremtidens tyske valg. ",
       "published_at": "2026-09-02T20:15:15Z",
       "weight": "B",
       "frontpage_role": "normal",
@@ -398,12 +397,12 @@
       "followup_needs": []
     },
     {
-      "slug": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
-      "story_id": "2026-09-02-tyskland-hvordan-kan-man-vinde-vaelgere-med-indvandrerbaggrund",
+      "slug": "2026-09-02-israels-udenrigsminister-gideon-sa-ar-jeg-ha-ber-at-iran-ikke-vil-goere",
+      "story_id": "2026-09-02-israeli-fm-gideon-sa-ar-i-hope-iran-will-not-make-the-mistake-of-attacki",
       "package_id": null,
-      "category": "Udland",
-      "title": "Tyskland: Hvordan kan man vinde vælgere med indvandrerbaggrund?",
-      "standfirst": "Tyskland har en stigende antal vælgere med indvandrerbaggrund. Ifølge en ny undersøgelse fra DW (2026) er dette en voksende gruppe, der kan spille en stor rolle i fremtidens tyske valg. ",
+      "category": "Videnskab & teknologi",
+      "title": "Israels udenrigsminister Gideon Sa'ar: 'Jeg håber, at Iran ikke vil gøre det forkerte og angribe os'",
+      "standfirst": "Israels udenrigsminister Gideon Sa'ar har udtrykt håb om, at Iran ikke vil angribe landet. Han har også understreget, at hvis Israel bliver angrebet af Iran, vil landet sikkert svare kraftigt.",
       "published_at": "2026-09-02T20:15:15Z",
       "weight": "B",
       "frontpage_role": "normal",
@@ -437,6 +436,19 @@
       "followup_needs": []
     },
     {
+      "slug": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
+      "story_id": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
+      "package_id": null,
+      "category": "Videnskab & teknologi",
+      "title": "CRISPR er en programmerbar DNA-saks – men klippet er kun begyndelsen",
+      "standfirst": "CRISPR-Cas9 bruger et RNA-molekyle som adresse og et Cas-enzym som skæreværktøj. Det gør genredigering langt mere målrettet – men cellens egen reparation afgør meget af resultatet.",
+      "published_at": "2026-09-02T11:05:00Z",
+      "weight": "D",
+      "frontpage_role": "normal",
+      "topics": [],
+      "followup_needs": []
+    },
+    {
       "slug": "2026-09-02-fusion-kunsten-at-holde-en-stjerne-i-et-magnetfelt",
       "story_id": "2026-09-02-fusion-kunsten-at-holde-en-stjerne-i-et-magnetfelt",
       "package_id": null,
@@ -456,19 +468,6 @@
       "category": "Videnskab & teknologi",
       "title": "Kvantecomputeren er ikke en hurtigere pc – den regner på en anden måde",
       "standfirst": "En qubit kan udnytte superposition og sammenfiltring, men netop de kvanteeffekter, der gør maskinen interessant, gør den også ekstremt følsom over for støj og fejl.",
-      "published_at": "2026-09-02T11:05:00Z",
-      "weight": "D",
-      "frontpage_role": "normal",
-      "topics": [],
-      "followup_needs": []
-    },
-    {
-      "slug": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
-      "story_id": "2026-09-02-crispr-er-en-programmerbar-dna-saks",
-      "package_id": null,
-      "category": "Videnskab & teknologi",
-      "title": "CRISPR er en programmerbar DNA-saks – men klippet er kun begyndelsen",
-      "standfirst": "CRISPR-Cas9 bruger et RNA-molekyle som adresse og et Cas-enzym som skæreværktøj. Det gør genredigering langt mere målrettet – men cellens egen reparation afgør meget af resultatet.",
       "published_at": "2026-09-02T11:05:00Z",
       "weight": "D",
       "frontpage_role": "normal",
