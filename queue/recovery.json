@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-04T10:30:52+00:00",
+  "generated_at": "2026-09-04T11:01:09+00:00",
   "retry_count": 4,
   "dead_letter_count": 0,
   "items": {
@@ -13,7 +13,7 @@
         "artiklens redaktionelle indhold er ændret efter final approval"
       ],
       "reason_signature": "artiklens redaktionelle indhold er ændret efter final approval | fact-check PASS mangler",
-      "last_seen_at": "2026-09-04T10:30:52+00:00",
+      "last_seen_at": "2026-09-04T11:01:09+00:00",
       "last_recovery_attempt_at": null,
       "next_retry_at": "2026-09-03T08:43:56+00:00"
     },
@@ -25,7 +25,7 @@
         "ledger mangler"
       ],
       "reason_signature": "ledger mangler",
-      "last_seen_at": "2026-09-04T10:30:52+00:00",
+      "last_seen_at": "2026-09-04T11:01:09+00:00",
       "last_recovery_attempt_at": null,
       "next_retry_at": "2026-09-01T03:52:00+00:00"
     },
@@ -37,7 +37,7 @@
         "artiklens redaktionelle indhold er ændret efter final approval"
       ],
       "reason_signature": "artiklens redaktionelle indhold er ændret efter final approval",
-      "last_seen_at": "2026-09-04T10:30:52+00:00",
+      "last_seen_at": "2026-09-04T11:01:09+00:00",
       "last_recovery_attempt_at": null,
       "next_retry_at": "2026-09-04T04:38:47+00:00"
     },
@@ -49,7 +49,7 @@
         "artiklens redaktionelle indhold er ændret efter final approval"
       ],
       "reason_signature": "artiklens redaktionelle indhold er ændret efter final approval",
-      "last_seen_at": "2026-09-04T10:30:52+00:00",
+      "last_seen_at": "2026-09-04T11:01:09+00:00",
       "last_recovery_attempt_at": null,
       "next_retry_at": "2026-09-04T04:38:47+00:00"
     }

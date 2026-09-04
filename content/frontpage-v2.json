@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-04T10:30:51+00:00",
+  "generated_at": "2026-09-04T11:01:08+00:00",
   "date": "2026-09-04",
   "edition_label": "Danmarks nye avis",
   "source_of_truth": "published_articles",
@@ -231,19 +231,6 @@
       "frontpage_role": "normal"
     },
     {
-      "slug": "2026-09-03-ugyldigt-struktureret-svar",
-      "category": "Videnskab & teknologi",
-      "title": "Ugyldigt struktureret svar",
-      "standfirst": "Ugyldigt struktureret svar",
-      "teaser": "Ugyldigt struktureret svar",
-      "published_label": "2026-09-03T11:13:50Z",
-      "image_src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-ugyldigt-struktureret-svar.jpg",
-      "image_alt": "Banknoten (Kina) und Münzen von Papua Neuguinea. 2- , 10- und 20-Kina-Banknote und 1-Kina-Münze. 1 Kina = 100 Toea",
-      "image_caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
-      "image_credit": "Bin im Garten",
-      "frontpage_role": "normal"
-    },
-    {
       "slug": "2026-09-03-datacenteres-udvikling-kan-have-store-konsekvenser-for-miljoeet",
       "category": "Videnskab & teknologi",
       "title": "Datacenteres udvikling kan have store konsekvenser for miljøet",
@@ -257,16 +244,16 @@
       "frontpage_role": "normal"
     },
     {
-      "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r",
+      "slug": "2026-09-03-ugyldigt-struktureret-svar",
       "category": "Videnskab & teknologi",
-      "title": "El Nino kunne være den stærkeste på 40 år",
-      "standfirst": "FN advarer om en stærk El Nino.",
-      "teaser": "FN advarer om en stærk El Nino.",
-      "published_label": "2026-09-03T10:44:44Z",
-      "image_src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r.jpg",
-      "image_alt": "Discurso del Presidente Zapatero ante la Asamblea General. nokia035",
+      "title": "Ugyldigt struktureret svar",
+      "standfirst": "Ugyldigt struktureret svar",
+      "teaser": "Ugyldigt struktureret svar",
+      "published_label": "2026-09-03T11:13:50Z",
+      "image_src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-ugyldigt-struktureret-svar.jpg",
+      "image_alt": "Banknoten (Kina) und Münzen von Papua Neuguinea. 2- , 10- und 20-Kina-Banknote und 1-Kina-Münze. 1 Kina = 100 Toea",
       "image_caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
-      "image_credit": "azugaldia",
+      "image_credit": "Bin im Garten",
       "frontpage_role": "normal"
     },
     {
@@ -280,6 +267,19 @@
       "image_alt": "Salinas de Janubio at Lanzarote, Canary Islands, Spain .",
       "image_caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
       "image_credit": "Alchemist-hp ( talk ) ( www.pse-mendelejew.de )",
+      "frontpage_role": "normal"
+    },
+    {
+      "slug": "2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r",
+      "category": "Videnskab & teknologi",
+      "title": "El Nino kunne være den stærkeste på 40 år",
+      "standfirst": "FN advarer om en stærk El Nino.",
+      "teaser": "FN advarer om en stærk El Nino.",
+      "published_label": "2026-09-03T10:44:44Z",
+      "image_src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-03-el-nino-kunne-vaere-den-staerkeste-pa-40-a-r.jpg",
+      "image_alt": "Discurso del Presidente Zapatero ante la Asamblea General. nokia035",
+      "image_caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "image_credit": "azugaldia",
       "frontpage_role": "normal"
     },
     {
@@ -356,9 +356,9 @@
       "2026-09-02-boern-vender-tilbage-til-skolen-i-dr-congo-midt-i-stigende-bekymring-ove",
       "2026-09-02-shurouq-khaira-en-kvinde-der-har-mistet-sit-ben-og-sin-fremtid",
       "2026-09-02-who-chefen-advarer-om-at-ebola-udbruddet-skal-intensiveres-for-at-stoppe",
-      "2026-09-02-soevn-er-ikke-spildtid",
       "2026-09-02-gode-relationer-er-ogsaa-sundhed",
-      "2026-09-02-bevaegelse-hjaelper-baade-krop-og-hjerne"
+      "2026-09-02-overgangsalderen-er-mere-end-hedeture",
+      "2026-09-02-soevn-er-ikke-spildtid"
     ]
   },
   "publication_strategy": {
