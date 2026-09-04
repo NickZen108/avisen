@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "pipeline": "v3",
   "cost": {
     "target_avg_dkk_per_published": 0.5,
@@ -11,19 +11,18 @@
     "failed_or_unknown_call_charge": "full_reservation"
   },
   "models": {
+    "scan_embedding": "@cf/baai/bge-m3",
     "desk": "@cf/qwen/qwen3-30b-a3b-fp8",
-    "journalist": "@cf/qwen/qwen3-30b-a3b-fp8",
-    "language_editor": "openai/gpt-5.6-terra",
-    "research_web": null,
+    "journalist": "openai/gpt-5.6-terra",
     "media_vision": "@cf/google/gemma-4-26b-a4b-it",
     "media_generator": "@cf/black-forest-labs/flux-1-schnell",
     "chief_normal": "openai/gpt-5.6-terra",
     "chief_high_risk": "openai/gpt-5.6-terra"
   },
   "model_prices_usd_per_million_tokens": {
-    "@cf/meta/llama-3.1-8b-instruct-fp8-fast": {
-      "input": 0.045,
-      "output": 0.384,
+    "@cf/baai/bge-m3": {
+      "input": 0.012,
+      "output": 0.0,
       "cached_input": 0.0
     },
     "@cf/qwen/qwen3-30b-a3b-fp8": {
@@ -36,16 +35,6 @@
       "output": 0.3,
       "cached_input": 0.0
     },
-    "@cf/qwen/qwen3.8-27b": {
-      "input": 0.45,
-      "output": 3.2,
-      "cached_input": 0.0
-    },
-    "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
-      "input": 0.293,
-      "output": 2.253,
-      "cached_input": 0.0
-    },
     "openai/gpt-5.6-terra": {
       "input": 2.0,
       "output": 12.0,
@@ -55,11 +44,6 @@
       "input": 4.0,
       "output": 20.0,
       "cached_input": 0.4
-    },
-    "openai/gpt-5.4-mini": {
-      "input": 0.75,
-      "output": 4.5,
-      "cached_input": 0.075
     }
   },
   "image_generation_prices_usd": {
@@ -68,6 +52,22 @@
       "per_step": 0.0001056,
       "default_steps": 4
     }
+  },
+  "scan": {
+    "semantic_cluster_threshold": 0.76,
+    "targeted_results_per_query": 3,
+    "engine": "retrieval_plus_bge_m3"
+  },
+  "media": {
+    "photo_strategy": "one_at_a_time",
+    "photo_priority": [
+      "event",
+      "central_person",
+      "exact_place_or_object"
+    ],
+    "generator_fallback": "@cf/black-forest-labs/flux-1-schnell",
+    "generator_fallback_models": [],
+    "flux_steps": 4
   },
   "editorial": {
     "language": "da-DK",
@@ -97,10 +97,11 @@
       "Morgentidendes særlige interesseområder omfatter nationalkonservative og libertære perspektiver, men vinklen må aldrig forudbestemme fakta eller konklusion.",
       "Pluralisme: berørte myndigheder, virksomheder og reelle modparter skal høres eller deres kendte synspunkt gengives, når det er relevant og muligt.",
       "Én autoritativ kilde kan være tilstrækkelig til en ukontroversiel faktuel nyhed. Kontroversielle påstande kræver passende modpart og dokumentation; kvalitet vurderes efter evidens, ikke kildeantal.",
+      "Journalisten er Terra og ejer selv researchbehov, kildevurdering, pluralisme og det færdige første udkast.",
+      "Chefredaktøren er Terra og retter selv både små og væsentlige fejl. Mangler der dokumentation, bestiller Chefredaktøren selv målrettet Scan og færdiggør artiklen uden retur til Journalisten.",
       "Skriv naturligt, idiomatisk dansk fra kildens betydning. Oversæt ikke ord-for-ord.",
-      "Danskredaktøren skal aktivt forbedre klarhed, rytme, præcision og journalistisk dansk, ikke kun rette oversættelsesfejl, uden at ændre dokumenterede fakta eller betydning.",
-      "Pipeline reparerer som udgangspunkt. DROP bruges kun når historien reelt ikke holder, er dublet, ikke kan dokumenteres eller er blevet irrelevant.",
-      "Alle publicerede artikler skal have et lovligt og semantisk relevant Hero-billede.",
+      "DROP bruges kun når historien reelt ikke holder, er dublet, ikke kan dokumenteres eller er blevet irrelevant.",
+      "Alle publicerede artikler skal have et lovligt og semantisk relevant Hero-billede eller en tydeligt redaktionel illustration.",
       "Forsiden styres efter nyhedsværdi og artikeltype, ikke efter om artiklen er automatisk eller manuelt initieret."
     ],
     "frontpage_roles": [
@@ -115,11 +116,10 @@
   },
   "limits": {
     "desk_candidates": 42,
-    "perspective_candidates": 12,
-    "max_source_fetches": 4,
-    "max_revision_rounds": 1,
-    "max_research_rounds": 1,
-    "hero_candidates": 4,
+    "max_source_fetches": 5,
+    "max_journalist_scan_requests": 2,
+    "max_chief_scan_requests": 2,
+    "max_media_photo_attempts": 3,
     "max_cycles_per_run": 3,
     "max_ai_calls_per_run": 24,
     "max_ai_calls_per_story": 10,
