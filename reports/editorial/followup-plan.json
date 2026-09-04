@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-04T04:21:38Z",
+  "active": true,
+  "lead_slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t",
+  "story_id": "2026-09-04-haitian-government-calls-for-renewal-of-international-anti-gang-task-for",
+  "title": "Haiti: Regeringen opfordrer til genoplivning af international styrke mod bander",
+  "weight": "B",
+  "requests": [
+    {
+      "type": "new_development",
+      "priority": "high",
+      "instruction": "Søg efter nye verificerbare oplysninger om lead-sagen."
+    },
+    {
+      "type": "authority_response",
+      "priority": "high",
+      "instruction": "Søg efter myndigheders eller ansvarlige institutioners svar."
+    },
+    {
+      "type": "counterparty_response",
+      "priority": "high",
+      "instruction": "Søg efter modpartens eller den kritiserede parts svar."
+    },
+    {
+      "type": "background",
+      "priority": "medium",
+      "instruction": "Søg efter dokumentation og baggrund, der forklarer konsekvenser og kontekst."
+    }
+  ],
+  "commentary": {
+    "consider": false,
+    "special_interest_matches": [],
+    "rule": "overvej kommentar; aldrig automatisk publiceringskrav"
+  },
+  "mode": "advisory_non_gating"
+}
