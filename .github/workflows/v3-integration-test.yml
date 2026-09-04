@@ -9,6 +9,7 @@ on:
       - 'scripts/v3_pipeline.py'
       - 'scripts/v3_safe_runner.py'
       - 'scripts/v3_run_entry.py'
+      - 'scripts/v3_language_editor.py'
       - 'scripts/v3_newsroom_state.py'
       - 'scripts/v3_technical_check.py'
       - '.github/workflows/v3-burst-3.yml'
@@ -36,9 +37,18 @@ jobs:
         run: python -m pip install --disable-pip-version-check requests
       - name: Static contract tests
         run: |
-          python -m py_compile scripts/v3_pipeline.py scripts/v3_safe_runner.py scripts/v3_run_entry.py scripts/v3_newsroom_state.py scripts/v3_technical_check.py
+          python -m py_compile scripts/v3_pipeline.py scripts/v3_safe_runner.py scripts/v3_run_entry.py scripts/v3_language_editor.py scripts/v3_newsroom_state.py scripts/v3_technical_check.py
           python scripts/v3_newsroom_state.py
           python scripts/v3_technical_check.py
+          python - <<'PY'
+          import json
+          c=json.load(open('config/editorial_v3.json', encoding='utf-8'))
+          assert c['models']['journalist']=='@cf/qwen/qwen3-30b-a3b-fp8'
+          assert c['models']['language_editor']=='openai/gpt-5.6-terra'
+          assert c['models']['chief_normal']=='openai/gpt-5.6-terra'
+          assert c['models']['chief_high_risk']=='openai/gpt-5.6-terra'
+          assert float(c['cost']['daily_hard_limit_dkk'])==10.0
+          PY
 
       - name: Get GitHub OIDC token
         run: |
@@ -63,7 +73,7 @@ jobs:
             -d '{"action":"daily_budget"}' "$URL" \
             | jq -e '.ok == true and .hard_limit_dkk == 10' >/dev/null
 
-      - name: Prepare temporary native Workers AI inference Worker
+      - name: Prepare temporary inference Worker
         run: |
           set -euo pipefail
           WORKER_NAME="morgentidende-v3-test-${GITHUB_RUN_ID}"
@@ -98,7 +108,7 @@ jobs:
           done
           test "$READY" = 1
 
-      - name: One budget-accounted native Workers AI smoke call
+      - name: One budget-accounted Terra smoke call
         run: python scripts/v3_run_entry.py --smoke
 
       - name: Cleanup test Worker
