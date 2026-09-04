@@ -1,0 +1,87 @@
+{
+  "pipeline_version": 2,
+  "status": "ready",
+  "release_requested": true,
+  "story_id": "2026-09-04-boden-go-r-100-miljonersaffa-r-med-skuldsatt-kryptokoncern",
+  "slug": "2026-09-04-bodens-kommun-solgte-en-hangar-til-en-kryptokoncern-for-105-millioner-kr",
+  "category": "Udland",
+  "weight": "B",
+  "editorial_destination": "main",
+  "story_location": {
+    "country": "SE",
+    "country_code": "Sverige",
+    "place_names_english": [
+      "Boden",
+      "Sverige"
+    ],
+    "place_names_local": [
+      "Boden",
+      "Sverige"
+    ]
+  },
+  "title": "Bodens kommun solgte en hangar til en kryptokoncern for 105 millioner kroner",
+  "standfirst": "Bodens kommun har solgt en hangar til en kryptokoncern for 105 millioner kroner. Det er ifølge SVT.",
+  "byline": "Morgentidende Redaktion",
+  "published_at": null,
+  "updated_at": null,
+  "ledger": "sources/2026-09-04-bodens-kommun-solgte-en-hangar-til-en-kryptokoncern-for-105-millioner-kr.json",
+  "claim_ids": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "F07",
+    "F08"
+  ],
+  "seo": {
+    "title": "Bodens kommun solgte en hangar til en kryptokoncern for 105 millioner kroner",
+    "description": "Bodens kommun har solgt en hangar til en kryptokoncern for 105 millioner kroner. Det er ifølge SVT.",
+    "canonical": null
+  },
+  "image": {
+    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-bodens-kommun-solgte-en-hangar-til-en-kryptokoncern-for-105-millioner-kr.jpg",
+    "alt": "Boden centrum",
+    "credit": "Unknown author Unknown author",
+    "license": "Public domain",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Boden_centrum.jpg",
+    "image_type": "photo",
+    "context_type": "archive",
+    "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+    "pending_image": false,
+    "ai_generated": false,
+    "placement": "lead"
+  },
+  "body": [
+    {
+      "text": "Bodens kommun har solgt en hangar til en kryptokoncern for 105 millioner kroner. Det er ifølge SVT.",
+      "type": "h2"
+    },
+    {
+      "text": "Kryptokoncernen, Bikupa, har skulder for hundretals millioner kroner. Det er ifølge SVT.",
+      "type": "h3"
+    },
+    {
+      "text": "Bikupa har ifølge Skatteverket kunnet sin virksomhed til at være en ren miningvirksomhed. Det er ifølge SVT.",
+      "type": "p"
+    },
+    {
+      "text": "Bodens kommun har ifølge SVT sagt, at de forventer, at deres hyresgæster og forretningspartnere følger de aftalte aftaler og svensk lovgivning.",
+      "type": "p"
+    },
+    {
+      "text": "I juni 2026 gav Bodens kommun tilladelse til salget af hangaren, hvor Bikupa's datacenter har været placeret. Det er ifølge SVT.",
+      "type": "p"
+    }
+  ],
+  "source_ids_to_display": [
+    "S1"
+  ],
+  "related_news_slug": null,
+  "related": [],
+  "correction_note": null,
+  "scheduled_for": null,
+  "released_from_schedule_at": null,
+  "automation_origin": "cloudflare-workers-ai"
+}

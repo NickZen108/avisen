@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "story_id": "2026-09-04-fifa-uefa-konflikten",
+  "article_slug": "2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne",
+  "checked_at": "2026-09-04T04:41:56.826Z",
+  "final_editor_mode": "ai",
+  "editorial_snapshot": {
+    "pipeline_version": 2,
+    "story_id": "2026-09-04-fifa-uefa-konflikten",
+    "slug": "2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne",
+    "category": "Sport",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "DE",
+      "country_code": "DE",
+      "place_names_english": [
+        "Switzerland",
+        "United States",
+        "Geneva"
+      ],
+      "place_names_local": [
+        "Schweiz",
+        "USA",
+        "Genf"
+      ]
+    },
+    "title": "FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'",
+    "standfirst": "FIFA anklager UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Disputen mellem FIFA og UEFA har nået en US-domstol.",
+    "byline": "Morgentidende Redaktion",
+    "ledger": "sources/2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne.json",
+    "claim_ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04"
+    ],
+    "seo": {
+      "title": "FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'",
+      "description": "FIFA anklager UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Disputen mellem FIFA og UEFA har nået en US-domstol.",
+      "canonical": null
+    },
+    "image": {
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne.jpg",
+      "alt": "This is a high-resolution image of the United States Declaration of Independence ( article - text ). This image is a version of the 1823 William Stone facsimile — Stone may well have used a wet pressing process (that removed ink from the original document onto a contact sheet for the purpose of making the engraving).",
+      "credit": "original: w:Second Continental Congress ; reproduction: William Stone",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:United_States_Declaration_of_Independence.jpg",
+      "image_type": "photo",
+      "context_type": "archive",
+      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "pending_image": false,
+      "ai_generated": false,
+      "placement": "lead"
+    },
+    "body": [
+      {
+        "text": "FIFA anklager UEFA for 'smørgås-kampagne' mod Infantino",
+        "type": "h2"
+      },
+      {
+        "text": "FIFA har anklaget UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Ifølge Deutsche Welle (DW) har UEFA søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz.",
+        "type": "p"
+      },
+      {
+        "text": "UEFA har også indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder.",
+        "type": "p"
+      },
+      {
+        "text": "Disputen mellem FIFA og UEFA har nået en US-domstol, ifølge DW.",
+        "type": "p"
+      },
+      {
+        "text": "FIFA har beskyldt UEFA for at føre en 'smørgås-kampagne' mod Infantino, men UEFA har ikke kommenteret beskyldningerne.",
+        "type": "p"
+      },
+      {
+        "text": "Kilde: Deutsche Welle (DW)",
+        "type": "p"
+      }
+    ],
+    "source_ids_to_display": [
+      "S1",
+      "S2"
+    ],
+    "related_news_slug": null,
+    "related": [],
+    "correction_note": null,
+    "automation_origin": "cloudflare-workers-ai"
+  },
+  "editorial_destination": "main"
+}

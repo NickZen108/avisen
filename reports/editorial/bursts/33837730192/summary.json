@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "github_run_id": "33837730192",
+  "requested_cycles": 3,
+  "validation_outcome": "success",
+  "cycles": [
+    {
+      "status": "approved",
+      "stage": null,
+      "generated_at": "2026-09-04T04:41:33.761Z",
+      "slug": "2026-09-04-bodens-kommun-solgte-en-hangar-til-en-kryptokoncern-for-105-millioner-kr",
+      "title": null,
+      "reason": null,
+      "handled_signal_keys": [
+        "boden gör 100 miljonersaffär med skuldsatt kryptokoncern|https://www.svt.se/nyheter/lokalt/norrbotten/boden-gor-105-miljonersaffar-med-vacklande-kryptobolag"
+      ],
+      "ai_usage": {
+        "calls": 5,
+        "text_calls": 5,
+        "image_calls": 0,
+        "prompt_tokens": 7255,
+        "completion_tokens": 1567,
+        "total_tokens": 8822,
+        "estimated_neurons": 120.26268400000001,
+        "complete_token_telemetry": true,
+        "neuron_values_are_estimates": true,
+        "by_model": {
+          "@cf/meta/llama-3.1-8b-instruct-fast": {
+            "calls": 4,
+            "prompt_tokens": 5783,
+            "completion_tokens": 1552,
+            "total_tokens": 7335,
+            "estimated_neurons": 77.93531300000001
+          },
+          "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+            "calls": 1,
+            "prompt_tokens": 1472,
+            "completion_tokens": 15,
+            "total_tokens": 1487,
+            "estimated_neurons": 42.327371
+          }
+        },
+        "structured_fallback_calls": 0,
+        "structured_fallback_by_stage": {}
+      },
+      "cycle": 1
+    },
+    {
+      "status": "approved",
+      "stage": null,
+      "generated_at": "2026-09-04T04:41:56.826Z",
+      "slug": "2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne",
+      "title": null,
+      "reason": null,
+      "handled_signal_keys": [
+        "fifa accuses uefa of smear campaign against infantino|https://www.dw.com/en/fifa-accuses-uefa-of-smear-campaign-against-infantino/a-78896105?maca=en-rss-en-all-1573-rdf"
+      ],
+      "ai_usage": {
+        "calls": 6,
+        "text_calls": 6,
+        "image_calls": 0,
+        "prompt_tokens": 7426,
+        "completion_tokens": 2371,
+        "total_tokens": 9797,
+        "estimated_neurons": 144.015937,
+        "complete_token_telemetry": true,
+        "neuron_values_are_estimates": true,
+        "by_model": {
+          "@cf/meta/llama-3.1-8b-instruct-fast": {
+            "calls": 5,
+            "prompt_tokens": 6160,
+            "completion_tokens": 2358,
+            "total_tokens": 8518,
+            "estimated_neurons": 107.591784
+          },
+          "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+            "calls": 1,
+            "prompt_tokens": 1266,
+            "completion_tokens": 13,
+            "total_tokens": 1279,
+            "estimated_neurons": 36.424153
+          }
+        },
+        "structured_fallback_calls": 1,
+        "structured_fallback_by_stage": {
+          "fact-check": 1
+        }
+      },
+      "cycle": 2
+    },
+    {
+      "status": "approved",
+      "stage": null,
+      "generated_at": "2026-09-04T04:42:32.645Z",
+      "slug": "2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet",
+      "title": null,
+      "reason": null,
+      "handled_signal_keys": [
+        "middle east live south korea prepares for military deployment in strait of hormuz|https://www.france24.com/en/middle-east/20260904-middle-east-live-south-korea-prepares-for-military-deployment-in-strait-of-hormuz"
+      ],
+      "ai_usage": {
+        "calls": 7,
+        "text_calls": 7,
+        "image_calls": 0,
+        "prompt_tokens": 10693,
+        "completion_tokens": 3465,
+        "total_tokens": 14158,
+        "estimated_neurons": 321.721716,
+        "complete_token_telemetry": true,
+        "neuron_values_are_estimates": true,
+        "by_model": {
+          "@cf/meta/llama-3.1-8b-instruct-fast": {
+            "calls": 5,
+            "prompt_tokens": 7550,
+            "completion_tokens": 2959,
+            "total_tokens": 10509,
+            "estimated_neurons": 134.272862
+          },
+          "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+            "calls": 2,
+            "prompt_tokens": 3143,
+            "completion_tokens": 506,
+            "total_tokens": 3649,
+            "estimated_neurons": 187.44885399999998
+          }
+        },
+        "structured_fallback_calls": 2,
+        "structured_fallback_by_stage": {
+          "fact-check": 2
+        }
+      },
+      "cycle": 3
+    }
+  ],
+  "published_candidates": 3,
+  "nonpublished_candidates": [],
+  "note": "Raw cycle JSON is retained so every non-publication can be traced to status, stage and reason."
+}

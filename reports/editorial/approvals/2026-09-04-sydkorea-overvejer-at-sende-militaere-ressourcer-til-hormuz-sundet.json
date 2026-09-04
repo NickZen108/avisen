@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "story_id": "2026-09-04-south-korea",
+  "article_slug": "2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet",
+  "checked_at": "2026-09-04T04:42:32.645Z",
+  "final_editor_mode": "ai",
+  "editorial_snapshot": {
+    "pipeline_version": 2,
+    "story_id": "2026-09-04-south-korea",
+    "slug": "2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet",
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "South Korea",
+      "country_code": "KR",
+      "place_names_english": [
+        "Strait of Hormuz"
+      ],
+      "place_names_local": [
+        "Hormuz-sundet"
+      ]
+    },
+    "title": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet",
+    "standfirst": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation. USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.",
+    "byline": "Morgentidende Redaktion",
+    "ledger": "sources/2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet.json",
+    "claim_ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05"
+    ],
+    "seo": {
+      "title": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet",
+      "description": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation. USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.",
+      "canonical": null
+    },
+    "image": {
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-sydkorea-overvejer-at-sende-militaere-ressourcer-til-hormuz-sundet.jpg",
+      "alt": "A U.S. Marine with 1st Battalion, 6th Marines, forward deployed with 4th Marine Regiment, 3rd Marine Division as part of the Unit Deployment Program, prepares to deploy a Skydio X2D while conducting military operations in urban terrain combined arms training during Korea Viper 26.1 at Camp Rodriguez, South Korea, Dec. 15, 2025. Korea Viper is a recurring exercise series that demonstrates the Republic of Korea and U.S. Marine Corps' ability to respond decisively in the region as a singular, unifi",
+      "credit": "U.S. Marine Corps photo by Cpl. John Simpson",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Korea_Viper_26_1_-_V16_Conducts_MOUT_Combined_Arms_Attacks_(9444839).jpg",
+      "image_type": "photo",
+      "context_type": "archive",
+      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "pending_image": false,
+      "ai_generated": false,
+      "placement": "lead"
+    },
+    "body": [
+      {
+        "text": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet",
+        "type": "h2"
+      },
+      {
+        "text": "Sydkorea overvejer at sende militære ressourcer til Hormuz-sundet for at støtte frihed af navigation.",
+        "type": "p"
+      },
+      {
+        "text": "Det skriver France 24.",
+        "type": "p"
+      },
+      {
+        "text": "USA undersøger, om et missil ramte en iransk bryllupsfest, hvor mindst fire mennesker blev dræbt.",
+        "type": "p"
+      },
+      {
+        "text": "Det skriver BBC World.",
+        "type": "p"
+      },
+      {
+        "text": "USA har ikke målrettet civile i sin militære indsats i Hormuz-sundet.",
+        "type": "p"
+      },
+      {
+        "text": "Det skriver BBC World.",
+        "type": "p"
+      },
+      {
+        "text": "Sydkorea kunne bidrage til USAs sikkerhedsindsats i Hormuz-sundet.",
+        "type": "p"
+      },
+      {
+        "text": "Det skriver France 24.",
+        "type": "p"
+      },
+      {
+        "text": "Iran har påstået, at et amerikansk missil ramte en bryllupsfest i Hormuz-sundet, hvilket ville være et krigsforbrydelse.",
+        "type": "p"
+      },
+      {
+        "text": "Det skriver BBC World.",
+        "type": "p"
+      }
+    ],
+    "source_ids_to_display": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "related_news_slug": null,
+    "related": [],
+    "correction_note": null,
+    "automation_origin": "cloudflare-workers-ai"
+  },
+  "editorial_destination": "main"
+}

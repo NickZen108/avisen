@@ -1,0 +1,184 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-04-boden-go-r-100-miljonersaffa-r-med-skuldsatt-kryptokoncern",
+  "article_slug": "2026-09-04-bodens-kommun-solgte-en-hangar-til-en-kryptokoncern-for-105-millioner-kr",
+  "assignment": {
+    "category": "Udland",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "SE",
+      "country_code": "Sverige",
+      "place_names_english": [
+        "Boden",
+        "Sverige"
+      ],
+      "place_names_local": [
+        "Boden",
+        "Sverige"
+      ]
+    },
+    "core_question": "Boden gör 100-miljonersaffär med skuldsatt kryptokoncern"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "SVT",
+      "url": "https://www.svt.se/nyheter/lokalt/norrbotten/boden-gor-105-miljonersaffar-med-vacklande-kryptobolag",
+      "published_at": "2026-09-04T03:30:00.000Z",
+      "accessed_at": "2026-09-04T04:41:33.761Z",
+      "type": "news",
+      "source_group": "host-svt-se",
+      "publisher_root": "svt-se",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Boden gör 100-miljonersaffär med skuldsatt kryptokoncern",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-svt-se"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Bodens kommun säljer en hangar för 105 miljoner till en kryptokoncern med skulder för hundratals miljoner.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-svt-se"
+      ],
+      "checked_at": "2026-09-04T04:41:33.761Z",
+      "notes": "Kilde: SVT"
+    },
+    {
+      "id": "F02",
+      "claim": "Affären marknadsförs som en AI-satsning – men enligt Skatteverket har företaget Bikupa ägnat sig åt ren miningverksamhet.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-svt-se"
+      ],
+      "checked_at": "2026-09-04T04:41:33.761Z",
+      "notes": "Kilde: SVT"
+    },
+    {
+      "id": "F03",
+      "claim": "Bodens kommun förutsätter att våra hyresgäster och affärspartners följer ingångna avtal och svensk lagstiftning.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-svt-se"
+      ],
+      "checked_at": "2026-09-04T04:41:33.761Z",
+      "notes": "Kilde: SVT"
+    },
+    {
+      "id": "F04",
+      "claim": "I juni 2026 gav Bodens kommun klartecken till försäljningen av den hangar där Bikupa datacenter funnits.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-svt-se"
+      ],
+      "checked_at": "2026-09-04T04:41:33.761Z",
+      "notes": "Kilde: SVT"
+    },
+    {
+      "id": "F05",
+      "claim": "Bikupa har skulder för hundratals miljoner.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-svt-se"
+      ],
+      "checked_at": "2026-09-04T04:41:33.761Z",
+      "notes": "Kilde: SVT"
+    },
+    {
+      "id": "F06",
+      "claim": "Företaget Bikupa ägnat sig åt ren miningverksamhet.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-svt-se"
+      ],
+      "checked_at": "2026-09-04T04:41:33.761Z",
+      "notes": "Kilde: SVT"
+    },
+    {
+      "id": "F07",
+      "claim": "Bodens kommun säljer en hangar för 105 miljoner till en kryptokoncern.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-svt-se"
+      ],
+      "checked_at": "2026-09-04T04:41:33.761Z",
+      "notes": "Kilde: SVT"
+    },
+    {
+      "id": "F08",
+      "claim": "Affären marknadsförs som en AI-satsning.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-svt-se"
+      ],
+      "checked_at": "2026-09-04T04:41:33.761Z",
+      "notes": "Kilde: SVT"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-04T04:41:33.761Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "main"
+}

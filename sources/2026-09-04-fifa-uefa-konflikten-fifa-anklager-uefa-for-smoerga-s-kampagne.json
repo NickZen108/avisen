@@ -1,0 +1,158 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-04-fifa-uefa-konflikten",
+  "article_slug": "2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne",
+  "assignment": {
+    "category": "Sport",
+    "weight": "B",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "DE",
+      "country_code": "DE",
+      "place_names_english": [
+        "Switzerland",
+        "United States",
+        "Geneva"
+      ],
+      "place_names_local": [
+        "Schweiz",
+        "USA",
+        "Genf"
+      ]
+    },
+    "core_question": "FIFA anklager UEFA for 'smældrift' mod Infantino"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "DW",
+      "url": "https://www.dw.com/en/fifa-accuses-uefa-of-smear-campaign-against-infantino/a-78896105?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-04T03:09:00.000Z",
+      "accessed_at": "2026-09-04T04:41:56.826Z",
+      "type": "news",
+      "source_group": "host-dw-com",
+      "publisher_root": "dw-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "Felix Tamsut",
+      "publisher_name": "Deutsche Welle",
+      "canonical_url": "https://www.dw.com/en/fifa-accuses-uefa-of-smear-campaign-against-infantino/a-78896105",
+      "primary_record": null,
+      "authoritative_for": "FIFA accuses UEFA of 'smear campaign' against Infantino",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "Sky World",
+      "url": "https://news.sky.com/story/fifa-accuses-uefa-of-launching-smear-campaign-against-gianni-infantino-13580964",
+      "published_at": "2026-09-03T17:33:00.000Z",
+      "accessed_at": "2026-09-04T04:41:56.826Z",
+      "type": "news",
+      "source_group": "host-sky-com",
+      "publisher_root": "sky-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "FIFA accuses UEFA of launching 'smear campaign' against Gianni Infantino",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2"
+    ],
+    "independent_source_groups": [
+      "host-dw-com",
+      "host-sky-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "UEFA har søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-04T04:41:56.826Z",
+      "notes": "Kilde: DW (0)"
+    },
+    {
+      "id": "F02",
+      "claim": "UEFA har indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-04T04:41:56.826Z",
+      "notes": "Kilde: DW (0)"
+    },
+    {
+      "id": "F03",
+      "claim": "Disputen mellem FIFA og UEFA har nået en US-domstol.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-04T04:41:56.826Z",
+      "notes": "Kilde: DW (0)"
+    },
+    {
+      "id": "F04",
+      "claim": "UEFA har søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz, hvor både FIFA og UEFA har hjemsted.",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-dw-com"
+      ],
+      "checked_at": "2026-09-04T04:41:56.826Z",
+      "notes": "Kilde: DW (0)"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-04T04:41:56.826Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "main"
+}
