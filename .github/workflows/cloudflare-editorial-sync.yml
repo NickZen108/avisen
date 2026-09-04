@@ -1,150 +1,16 @@
-name: Cloudflare editorial sync
+name: '[QUARANTINED] Pipeline v2 editorial sync'
 
 on:
   workflow_dispatch:
-    inputs:
-      cycles:
-        description: 'Maximum distinct editorial candidates to process'
-        required: false
-        default: '1'
 
 permissions:
-  contents: write
-  actions: write
-
-concurrency:
-  group: morgentidende-editorial-import
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  sync:
+  quarantined:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-      - name: Sync latest main
-        run: git fetch origin main && git reset --hard origin/main
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install image normalizer
-        run: python -m pip install --disable-pip-version-check pillow
-      - name: Fetch scan and editorial history for cheap cycle selection
+      - name: Pipeline v2 is quarantined
         run: |
-          set +e
-          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
-          curl --fail --silent --show-error --max-time 30 "$BASE/candidates" -o /tmp/candidates.json
-          curl --fail --silent --show-error --max-time 30 "$BASE/editorial/history" -o /tmp/editorial-history.json
-          exit 0
-      - name: Decide how many AI editorial cycles are actually needed
-        id: dispatch
-        env:
-          INPUT_CYCLES: ${{ github.event.inputs.cycles }}
-        run: |
-          MAX="${INPUT_CYCLES:-1}"
-          case "$MAX" in 1|2|3) ;; *) MAX=1 ;; esac
-          python scripts/editorial_cycle_selector.py \
-            --scan /tmp/candidates.json \
-            --history /tmp/editorial-history.json \
-            --max-cycles "$MAX" \
-            --github-output "$GITHUB_OUTPUT"
-      - name: Skip unnecessary Workers AI calls
-        if: ${{ steps.dispatch.outputs.cycles == '0' }}
-        run: echo "Ingen friske ubehandlede kandidater; cycle selector sparer denne AI-runde."
-      - name: Prefetch likely source pages on GitHub
-        if: ${{ steps.dispatch.outputs.cycles != '0' }}
-        run: |
-          set +e
-          python scripts/github_source_prefetch.py --scan /tmp/candidates.json --output /tmp/github-prefetch.json --limit 12
-          if ! python -m json.tool /tmp/github-prefetch.json >/dev/null 2>&1; then
-            echo '{}' > /tmp/github-prefetch.json
-          fi
-          exit 0
-      - name: Run and import distinct editorial candidates
-        if: ${{ steps.dispatch.outputs.cycles != '0' }}
-        env:
-          INPUT_CYCLES: ${{ steps.dispatch.outputs.cycles }}
-          EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
-        run: |
-          set -euo pipefail
-          BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
-          MAX="${INPUT_CYCLES:-1}"
-          case "$MAX" in 1|2|3) ;; *) MAX=1 ;; esac
-          for i in $(seq 1 "$MAX"); do
-            OUT="/tmp/editorial-$i.json"
-            if [ -s /tmp/github-prefetch.json ]; then
-              curl --fail --silent --show-error --max-time 240 -X POST \
-                -H 'content-type: application/json' \
-                -H "authorization: Bearer $EDITORIAL_RUN_TOKEN" \
-                --data-binary @/tmp/github-prefetch.json \
-                "$BASE/run-editorial" -o "$OUT"
-            else
-              curl --fail --silent --show-error --max-time 240 -X POST -H "authorization: Bearer $EDITORIAL_RUN_TOKEN" "$BASE/run-editorial" -o "$OUT"
-            fi
-            python -m json.tool "$OUT" >/dev/null
-            jq '{status,stage,generated_at,slug,reason,runtime,handled_signal_keys}' "$OUT"
-            python scripts/log_publication_attempt.py --input "$OUT"
-            python scripts/sync_cloudflare_editorial.py --input "$OUT"
-            HANDLED=$(jq '(.handled_signal_keys // []) | length' "$OUT")
-            STATUS=$(jq -r '.status // "hold"' "$OUT")
-            STAGE=$(jq -r '.stage // ""' "$OUT")
-            if [ "$STATUS" = 'approved' ]; then
-              echo 'Godkendt artikel fundet; stopper denne kvartér-runde efter første publicerbare artikel.'
-              break
-            fi
-            if [ "$STAGE" = 'runtime-error' ]; then
-              if [ "$i" -lt "$MAX" ]; then
-                echo 'Transient Workers AI/runtime-fejl; prøver næste cycle i samme runde.'
-                continue
-              fi
-              echo 'Runtime-fejl på sidste tilladte cycle i denne runde.'
-              break
-            fi
-            if [ "$HANDLED" -eq 0 ] && [ "$STATUS" != 'approved' ]; then
-              echo 'Ingen yderligere distinkt kandidat i denne runde'
-              break
-            fi
-          done
-      - name: Enforce article-production write boundary
-        run: |
-          set -euo pipefail
-          if ! git diff --quiet -- templates docs/theme.css docs/theme.js docs/style.css; then
-            echo 'ARTICLE WRITE BOUNDARY FAIL: editorial production changed protected template/CSS/theme files' >&2
-            git diff -- templates docs/theme.css docs/theme.js docs/style.css >&2
-            exit 1
-          fi
-      - name: Canonical article validation before commit
-        run: python scripts/quality_gate.py --prebuild --changed-only && python scripts/prepublish_surface_qa.py
-      - name: Commit source-of-truth editorial changes
-        id: editorial
-        run: |
-          set -euo pipefail
-          git config user.name 'morgentidende-cloudflare-editorial'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add content/articles sources reports/editorial/approvals content/frontpage.json docs/img/auto reports/editorial/publication-attempts.jsonl 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo 'changed=false' >> "$GITHUB_OUTPUT"
-            echo 'Ingen nye redaktionelle source-of-truth ændringer at committe'
-          else
-            git commit -m 'editorial: import cycle results'
-            echo 'changed=true' >> "$GITHUB_OUTPUT"
-          fi
-          git reset --hard HEAD
-          git pull --rebase origin main
-      - name: Push editorial sync atomically
-        if: ${{ steps.editorial.outputs.changed == 'true' }}
-        run: |
-          set -euo pipefail
-          if git push origin main; then
-            exit 0
-          fi
-          echo 'Main flyttede sig mellem rebase og push; prøver én sikker retry.'
-          git pull --rebase origin main
-          git push origin main
-      - name: Dispatch build/publish explicitly
-        if: ${{ steps.editorial.outputs.changed == 'true' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run build-publish.yml --ref main
+          echo 'Pipeline v2 is quarantined and cannot run editorial production.'
+          echo 'Do not reactivate this workflow. Build Pipeline v3 separately.'
