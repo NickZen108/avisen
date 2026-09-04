@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-09-04T04:36:58Z",
+  "generated_at": "2026-09-04T04:38:43Z",
   "counts": {
-    "published": 40,
+    "published": 38,
     "checking": 2,
-    "draft": 4
+    "draft": 4,
+    "editing": 2
   },
-  "blocked_count": 2,
+  "blocked_count": 4,
   "articles": [
     {
       "slug": "2026-08-30-island-afviser-eu-forhandlinger",
@@ -351,10 +352,12 @@
     {
       "slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
       "title": "Entertainment over policy? White House arcade games ignite backlash",
-      "status": "published",
+      "status": "editing",
       "release_requested": false,
-      "resume_from": null,
-      "reasons": []
+      "resume_from": "final_editor",
+      "reasons": [
+        "artiklens redaktionelle indhold er ændret efter final approval"
+      ]
     },
     {
       "slug": "2026-09-04-haiti-regeringen-opfordrer-til-genoplivning-af-international-anti-gang-t",
@@ -375,10 +378,12 @@
     {
       "slug": "2026-09-04-ugyldigt-struktureret-svar",
       "title": "Ugyldigt struktureret svar",
-      "status": "published",
+      "status": "editing",
       "release_requested": false,
-      "resume_from": null,
-      "reasons": []
+      "resume_from": "final_editor",
+      "reasons": [
+        "artiklens redaktionelle indhold er ændret efter final approval"
+      ]
     }
   ]
 }

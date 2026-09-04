@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-04T04:37:03.510852Z",
+  "generated_at": "2026-09-04T04:38:47.991532Z",
   "date_dk": "2026-09-04",
   "policy": {
     "diagnostic_only": true,
@@ -45,6 +45,22 @@
       "resume_from": "research",
       "reasons": [
         "ledger mangler"
+      ]
+    },
+    {
+      "slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
+      "title": "Entertainment over policy? White House arcade games ignite backlash",
+      "resume_from": "final_editor",
+      "reasons": [
+        "artiklens redaktionelle indhold er ændret efter final approval"
+      ]
+    },
+    {
+      "slug": "2026-09-04-ugyldigt-struktureret-svar",
+      "title": "Ugyldigt struktureret svar",
+      "resume_from": "final_editor",
+      "reasons": [
+        "artiklens redaktionelle indhold er ændret efter final approval"
       ]
     }
   ]

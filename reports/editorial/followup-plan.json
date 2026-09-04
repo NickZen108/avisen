@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T04:37:02Z",
+  "generated_at": "2026-09-04T04:38:46Z",
   "active": true,
-  "lead_slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
-  "story_id": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
-  "title": "Entertainment over policy? White House arcade games ignite backlash",
-  "weight": "B",
+  "lead_slug": "2026-09-03-reform-uk-overvejer-at-springe-over-budgeten-hvis-de-vinder-naeste-valg",
+  "story_id": "2026-09-03-reform-uk-floats-skipping-budget-if-it-wins-next-election",
+  "title": "Reform UK overvejer at springe over budgeten hvis de vinder næste valg",
+  "weight": "A",
   "requests": [
     {
       "type": "new_development",
@@ -36,8 +36,7 @@
   "commentary": {
     "consider": true,
     "special_interest_matches": [
-      "dsa",
-      "grænse"
+      "reform uk"
     ],
     "rule": "overvej kommentar; aldrig automatisk publiceringskrav"
   },
