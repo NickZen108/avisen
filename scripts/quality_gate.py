@@ -13,6 +13,7 @@ from evidence_policy import claim_has_required_support as evidence_claim_has_req
 
 ROOT = Path(__file__).resolve().parents[1]
 ERRORS: list[str] = []
+LANGUAGE_POLICY_PATH = ROOT / "config" / "danish_language_policy.json"
 
 
 def err(message: str) -> None:
@@ -25,6 +26,69 @@ def read_json(path: Path):
     except Exception as exc:
         err(f"JSON-fejl {path.relative_to(ROOT)}: {exc}")
         return None
+
+
+def load_language_policy() -> dict:
+    if not LANGUAGE_POLICY_PATH.exists():
+        err("config/danish_language_policy.json mangler")
+        return {"blocked_terms": {}, "allowed_terms": [], "allowed_phrases": []}
+    policy = read_json(LANGUAGE_POLICY_PATH)
+    if not isinstance(policy, dict):
+        err("config/danish_language_policy.json skal være et JSON-object")
+        return {"blocked_terms": {}, "allowed_terms": [], "allowed_phrases": []}
+    if not isinstance(policy.get("blocked_terms", {}), dict):
+        err("danish_language_policy.blocked_terms skal være et object")
+        policy["blocked_terms"] = {}
+    for key in ("allowed_terms", "allowed_phrases"):
+        if not isinstance(policy.get(key, []), list):
+            err(f"danish_language_policy.{key} skal være en liste")
+            policy[key] = []
+    return policy
+
+
+def editorial_text_fields(article: dict) -> list[tuple[str, str]]:
+    fields: list[tuple[str, str]] = []
+    for key in ("title", "standfirst"):
+        value = article.get(key)
+        if isinstance(value, str) and value.strip():
+            fields.append((key, value))
+    seo = article.get("seo") or {}
+    if isinstance(seo, dict):
+        for key in ("title", "description"):
+            value = seo.get(key)
+            if isinstance(value, str) and value.strip():
+                fields.append((f"seo.{key}", value))
+    for i, block in enumerate(article.get("body") or []):
+        if not isinstance(block, dict):
+            continue
+        for key in ("text", "caption"):
+            value = block.get(key)
+            if isinstance(value, str) and value.strip():
+                fields.append((f"body[{i}].{key}", value))
+    return fields
+
+
+def normalized_language_text(text: str, allowed_phrases: list[str]) -> str:
+    cleaned = text
+    for phrase in sorted((str(x) for x in allowed_phrases if str(x).strip()), key=len, reverse=True):
+        cleaned = re.sub(re.escape(phrase), " ", cleaned, flags=re.IGNORECASE)
+    return cleaned
+
+
+def validate_danish_language(path: Path, article: dict, policy: dict) -> None:
+    """Hard deterministic leak check before ready/scheduled/published content can pass."""
+    blocked = {str(k).strip().lower(): str(v).strip() for k, v in (policy.get("blocked_terms") or {}).items() if str(k).strip()}
+    allowed_terms = {str(x).strip().lower() for x in (policy.get("allowed_terms") or []) if str(x).strip()}
+    allowed_phrases = [str(x).strip() for x in (policy.get("allowed_phrases") or []) if str(x).strip()]
+    for field, original in editorial_text_fields(article):
+        text = normalized_language_text(original, allowed_phrases)
+        for term, suggestion in blocked.items():
+            if term in allowed_terms:
+                continue
+            pattern = rf"(?<![\wæøåÆØÅ]){re.escape(term)}(?![\wæøåÆØÅ])"
+            if re.search(pattern, text, flags=re.IGNORECASE):
+                suffix = f"; foreslået dansk: {suggestion}" if suggestion else ""
+                err(f"{path.name}: fremmedord {term!r} i {field}{suffix}")
 
 
 def parse_iso(value: str, label: str):
@@ -42,7 +106,7 @@ def claim_has_required_support(article: dict, ledger: dict, claim: dict, sources
     return evidence_claim_has_required_support(article, ledger, claim, sources)
 
 
-def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
+def validate_article(path: Path, categories: set[str], prebuild: bool, language_policy: dict) -> None:
     article = read_json(path)
     if article is None or path.name.startswith("_"):
         return
@@ -69,6 +133,8 @@ def validate_article(path: Path, categories: set[str], prebuild: bool) -> None:
         err(f"{path.name}: ugyldig title")
     if not str(article.get("standfirst", "")).strip():
         err(f"{path.name}: standfirst mangler")
+
+    validate_danish_language(path, article, language_policy)
 
     body = article.get("body") or []
     if not body:
@@ -176,6 +242,7 @@ def main() -> int:
     parser.add_argument("--changed-only", action="store_true", help="prebuild: validate only changed article JSON files when detectable")
     args = parser.parse_args()
     categories = {x.strip() for x in (ROOT / "config" / "categories.txt").read_text(encoding="utf-8").splitlines() if x.strip()}
+    language_policy = load_language_policy()
 
     article_paths = sorted((ROOT / "content" / "articles").glob("*.json"))
     if args.prebuild and args.changed_only:
@@ -187,7 +254,7 @@ def main() -> int:
             print("QUALITY: no changed article detected; falling back to full article validation")
 
     for path in article_paths:
-        validate_article(path, categories, args.prebuild)
+        validate_article(path, categories, args.prebuild, language_policy)
 
     if not args.prebuild and not (ROOT / "docs" / "news-sitemap.xml").exists():
         err("docs/news-sitemap.xml mangler efter build")
