@@ -1,41 +1,47 @@
 #!/usr/bin/env python3
-"""Dedicated Danish language editor policy for Pipeline v3.
+"""Dedicated Danish copy editor for Pipeline v3.
 
-The language editor is allowed to improve prose, not only detect translation
-artifacts. It must preserve documented facts, attribution, quotations and the
-editorial angle while making the article read like professional Danish news.
+Terra receives only the journalist's finished draft (plus the angle for context)
+and returns the polished publication draft. This keeps the expensive model away
+from the large evidence bundle while giving it real responsibility for Danish
+clarity, rhythm and journalistic prose.
 """
 from __future__ import annotations
 
 
 def install(p):
-    def enhanced_language_review(draft, desk, story_id):
+    def polish_language(draft, desk, story_id):
         model = p.CONFIG["models"]["language_editor"]
-        instructions = """Du er Danskredaktør på Morgentidende. Din opgave er at løfte teksten til professionelt, naturligt og præcist dansk nyhedssprog.
+        instructions = """Du er Danskredaktør på Morgentidende. Redigér den medsendte artikel direkte til publiceringsklart dansk.
 
-Du skal både finde egentlige fejl OG forbedre sproget, når en formulering er tung, stiv, uklar, gentagende, maskinagtig eller mindre idiomatisk end den bør være. Se især efter svensk/norsk læk, engelske calques, falske venner, ord-for-ord-oversættelse, grammatik, uklare referencer, dårligt flow, unødige gentagelser, svage verber, tung syntaks, oppustet embedsmandssprog og rubrik/manchet der kan gøres skarpere.
+Du er ikke kun korrekturlæser. Forbedr aktivt klarhed, præcision, rytme, flow og journalistisk styrke. Ret svensk/norsk læk, engelske calques, falske venner, ord-for-ord-oversættelse, grammatik, uklare referencer, stift eller maskinagtigt sprog, svage verber, gentagelser, tung syntaks og oppustet embedsmandssprog. Gør rubrik og manchet skarpere når det tydeligt forbedrer teksten.
 
-Bevar altid dokumenterede fakta, tal, attribution, forbehold, direkte citater og historiens betydning. Du må ikke indføre nye fakta, ændre politisk substans eller gøre teksten mere kategorisk end evidensen tillader. Godt, enkelt dansk skal ikke pyntes unødigt.
+Bevar dokumenterede fakta, tal, attribution, forbehold, direkte citaters betydning og den redaktionelle vinkel. Indfør ingen nye fakta og gør ikke udsagn mere sikre end de var. Overredigér ikke godt, enkelt dansk.
 
-Returnér KUN JSON:
-{"status":"approve"|"revise","issues":[{"quote":"konkret passage","fix":"bedre naturlig dansk formulering","reason":"kort forklaring"}]}.
-
-Vælg revise hvis konkrete ændringer mærkbart vil forbedre korrekthed, klarhed, rytme, præcision eller journalistisk kvalitet. Vælg approve når teksten allerede er publiceringsklar."""
+Returnér KUN JSON i denne form:
+{"title":"...","standfirst":"...","body":[{"type":"p","text":"..."},{"type":"h2","text":"..."}],"changes_summary":["kort beskrivelse"]}.
+Returnér HELE den redigerede artikel, også når kun få ændringer er nødvendige."""
         data, _ = p.call_json(
             "danish_editor",
             model,
             instructions,
-            {"article": draft, "angle": desk.get("angle")},
+            {"article": {"title": draft.get("title"), "standfirst": draft.get("standfirst"), "body": draft.get("body")},
+             "angle": desk.get("angle")},
             story_id=story_id,
-            max_output_tokens=850,
+            max_output_tokens=1900,
             reasoning="low",
         )
-        if data.get("status") not in {"approve", "revise"}:
-            raise RuntimeError("Danish editor returned invalid status")
-        issues = data.get("issues") or []
-        if not isinstance(issues, list):
-            raise RuntimeError("Danish editor returned invalid issues")
-        data["issues"] = issues[:12]
-        return data
+        polished = p.normalize_draft(data)
+        # Preserve non-language metadata produced by the journalist.
+        draft["title"] = polished["title"]
+        draft["standfirst"] = polished["standfirst"]
+        draft["body"] = polished["body"]
+        # The base orchestrator expects approve/revise. Terra has already performed
+        # the edit, so returning approve prevents an unnecessary Qwen rewrite.
+        return {
+            "status": "approve",
+            "issues": [],
+            "changes_summary": (data.get("changes_summary") or [])[:8],
+        }
 
-    p.language_review = enhanced_language_review
+    p.language_review = polish_language
