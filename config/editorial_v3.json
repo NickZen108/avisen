@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "pipeline": "v3",
+  "cost": {
+    "target_avg_dkk_per_published": 0.5,
+    "soft_warning_avg_dkk": 0.45,
+    "quality_over_budget": true,
+    "fx_usd_dkk": 6.45
+  },
+  "models": {
+    "desk": "openai/gpt-5.6-terra",
+    "journalist": "openai/gpt-5.6-terra",
+    "language_editor": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "research_web": "openai/gpt-5.4-mini",
+    "chief_normal": "openai/gpt-5.6-terra",
+    "chief_high_risk": "openai/gpt-5.6-sol"
+  },
+  "model_prices_usd_per_million_tokens": {
+    "openai/gpt-5.6-terra": {
+      "input": 2.0,
+      "output": 12.0,
+      "cached_input": 0.2
+    },
+    "openai/gpt-5.6-sol": {
+      "input": 4.0,
+      "output": 20.0,
+      "cached_input": 0.4
+    },
+    "openai/gpt-5.4-mini": {
+      "input": 0.75,
+      "output": 4.5,
+      "cached_input": 0.075
+    },
+    "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+      "input": 0.293,
+      "output": 2.253,
+      "cached_input": 0.0
+    }
+  },
+  "editorial": {
+    "language": "da-DK",
+    "categories": [
+      "Nyhed",
+      "Indland",
+      "Krimi",
+      "Økonomi",
+      "Udland",
+      "Forbruger",
+      "Kultur",
+      "Videnskab",
+      "Sundhed",
+      "Parforhold",
+      "Sport",
+      "Guide",
+      "Feature",
+      "Historie",
+      "Kommentar",
+      "Penge",
+      "Videnskab & teknologi",
+      "Kultur & medier",
+      "Liv"
+    ],
+    "principles": [
+      "Find først de vigtigste historier; vælg også originale og overraskende vinkler når de kan dokumenteres.",
+      "Morgentidendes særlige interesseområder omfatter nationalkonservative og libertære perspektiver, men vinklen må aldrig forudbestemme fakta eller konklusion.",
+      "Pluralisme: berørte myndigheder, virksomheder og reelle modparter skal høres eller deres kendte synspunkt gengives, når det er relevant og muligt.",
+      "Én autoritativ kilde kan være tilstrækkelig til en ukontroversiel faktuel nyhed. Kontroversielle påstande kræver passende modpart og dokumentation; kvalitet vurderes efter evidens, ikke kildeantal.",
+      "Skriv naturligt, idiomatisk dansk fra kildens betydning. Oversæt ikke ord-for-ord.",
+      "Pipeline reparerer som udgangspunkt. DROP bruges kun når historien reelt ikke holder, er dublet, ikke kan dokumenteres eller er blevet irrelevant.",
+      "Alle publicerede artikler skal have et lovligt og semantisk relevant Hero-billede.",
+      "Forsiden styres efter nyhedsværdi og artikeltype, ikke efter om artiklen er automatisk eller manuelt initieret."
+    ],
+    "frontpage_roles": [
+      "lead",
+      "top_story",
+      "important_followup",
+      "normal",
+      "magazine",
+      "section_only"
+    ],
+    "special_interest_note": "Særlige perspektiver må skabe spørgsmål og vinkler, ikke facts. Perspektivkilder kan opdage historier, men skal ikke automatisk behandles som autoritativ evidens."
+  },
+  "limits": {
+    "desk_candidates": 42,
+    "perspective_candidates": 12,
+    "max_source_fetches": 4,
+    "max_revision_rounds": 1,
+    "max_research_rounds": 1,
+    "hero_candidates": 4
+  }
+}

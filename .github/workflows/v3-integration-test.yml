@@ -1,0 +1,100 @@
+name: V3 integration test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'config/editorial_v3.json'
+      - 'cloudflare/v3-newsroom/**'
+      - 'scripts/v3_pipeline.py'
+      - 'scripts/v3_newsroom_state.py'
+      - 'scripts/v3_technical_check.py'
+      - '.github/workflows/v3-burst-3.yml'
+      - '.github/workflows/v3-integration-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: morgentidende-v3-integration-test
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Static contract tests
+        run: |
+          python -m py_compile scripts/v3_pipeline.py scripts/v3_newsroom_state.py scripts/v3_technical_check.py
+          python scripts/v3_newsroom_state.py
+          python scripts/v3_technical_check.py
+
+      - name: Get GitHub OIDC token
+        run: |
+          set -euo pipefail
+          TOKEN="$(curl --fail --silent --show-error \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=morgentidende-v3" | jq -r .value)"
+          test -n "$TOKEN" && test "$TOKEN" != "null"
+          echo "::add-mask::$TOKEN"
+          echo "GITHUB_OIDC_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+
+      - name: Verify private backend is not public and accepts this repo OIDC
+        run: |
+          set -euo pipefail
+          URL="https://vwujgfhcsumsdjigccnr.supabase.co/functions/v1/newsroom-private"
+          CODE="$(curl -s -o /tmp/noauth.json -w '%{http_code}' -H 'Content-Type: application/json' -d '{"action":"pull_inbox"}' "$URL")"
+          test "$CODE" = "401"
+          curl --fail --silent --show-error \
+            -H "Authorization: Bearer $GITHUB_OIDC_TOKEN" \
+            -H 'Content-Type: application/json' \
+            -d '{"action":"pull_inbox","limit":1}' "$URL" | jq -e '.ok == true' >/dev/null
+
+      - name: Prepare temporary inference Worker
+        run: |
+          set -euo pipefail
+          WORKER_NAME="morgentidende-v3-test-${GITHUB_RUN_ID}"
+          RUN_TOKEN="$(openssl rand -hex 32)"
+          echo "::add-mask::$RUN_TOKEN"
+          echo "WORKER_NAME=$WORKER_NAME" >> "$GITHUB_ENV"
+          echo "RUN_TOKEN=$RUN_TOKEN" >> "$GITHUB_ENV"
+          cat > .tmp-v3-test.jsonc <<EOF
+          {
+            "name": "$WORKER_NAME",
+            "main": "cloudflare/v3-newsroom/src/index.js",
+            "compatibility_date": "2026-09-01",
+            "ai": { "binding": "AI" },
+            "vars": { "RUN_TOKEN": "$RUN_TOKEN" }
+          }
+          EOF
+
+      - name: Deploy and smoke-test OpenAI via Cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4.127.1 deploy --config .tmp-v3-test.jsonc | tee /tmp/deploy.log
+          URL="$(grep -Eo 'https://[^[:space:]]+\.workers\.dev' /tmp/deploy.log | tail -1 || true)"
+          if [ -z "$URL" ]; then URL="https://${WORKER_NAME}.nicolaipetersen108.workers.dev"; fi
+          for i in 1 2 3 4 5; do
+            if curl --fail --silent "$URL/health" | jq -e '.ok == true' >/dev/null; then break; fi
+            sleep 3
+          done
+          curl --fail --silent --show-error \
+            -H "Authorization: Bearer $RUN_TOKEN" -H 'Content-Type: application/json' \
+            -d '{"stage":"test","model":"openai/gpt-5.6-luna","instructions":"Return only OK.","input":"ping","max_output_tokens":64,"reasoning":"none"}' \
+            "$URL/run" | tee /tmp/ai.json | jq -e '.ok == true and (.text|length>0)' >/dev/null
+
+      - name: Cleanup test Worker
+        if: always()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4.127.1 delete --name "$WORKER_NAME" --force || true

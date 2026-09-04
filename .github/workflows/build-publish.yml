@@ -1,50 +1,73 @@
-name: Build structured edition
+name: Build Morgentidende v3 edition
+
 on:
   push:
     branches: [main]
-    paths: ['content/**','sources/**','reports/editorial/approvals/**','templates/**','config/**','docs/theme.js','docs/kontrolrum/control-room-tabs.js','scripts/build_all_v2.py','scripts/builder_core.py','scripts/build_short_videos.py','scripts/build_control_room.py','scripts/apply_control_room_extras.py','scripts/pipeline_feedback.py','scripts/design_enhancements.py','scripts/reader_experience.py','scripts/article_history.py','scripts/editorial_analytics.py','scripts/production_readiness.py','scripts/queue_recovery.py','scripts/seo_surface_fix.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/editorial_sanity_gate.py','scripts/media_entity_sanity.py','scripts/prepublish_surface_qa.py','scripts/release_ready.py','scripts/refresh_pending_images.py','scripts/enforce_image_diversity.py','scripts/normalize_categories.py','scripts/magazine_blocks.py','scripts/frontpage_publication_strategy.py','scripts/lead_followup.py','scripts/followup_plan.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
+    paths:
+      - 'content/**'
+      - 'sources/**'
+      - 'state/**'
+      - 'templates/**'
+      - 'config/**'
+      - 'scripts/build_all_v2.py'
+      - 'scripts/builder_core.py'
+      - 'scripts/build_short_videos.py'
+      - 'scripts/design_enhancements.py'
+      - 'scripts/reader_experience.py'
+      - 'scripts/seo_surface_fix.py'
+      - 'scripts/magazine_blocks.py'
+      - 'scripts/cache_public_images.py'
+      - 'scripts/normalize_categories.py'
+      - 'scripts/v3_newsroom_state.py'
+      - 'scripts/v3_technical_check.py'
+      - '.github/workflows/build-publish.yml'
   workflow_dispatch:
-permissions: {contents: write, actions: write}
-concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: morgentidende-main-writes
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: {ref: main, fetch-depth: 0}
+        with:
+          ref: main
+          fetch-depth: 0
+
       - name: Sync latest main
         run: git fetch origin main && git reset --hard origin/main
+
       - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
-      - name: Normalize current categories before validation
+        with:
+          python-version: '3.12'
+
+      - name: Normalize legacy category aliases
         run: python scripts/normalize_categories.py
-      - name: Validate changed article source
-        run: |
-          python scripts/quality_gate.py --prebuild --changed-only
-          python scripts/editorial_sanity_gate.py --changed-only
-          python scripts/media_entity_sanity.py
-      - name: Pipeline v2 release is quarantined
-        run: |
-          echo 'Automatic release_ready is disabled while Pipeline v2 is quarantined.'
-          echo 'Legacy build may render existing published content, but it must not promote ready v2 articles.'
-      - name: Prefer lawful free documentary photos before final build
-        run: python scripts/refresh_pending_images.py --limit 10
-      - name: Avoid photo reuse within 20 published articles
-        run: python scripts/enforce_image_diversity.py --window 20
-      - name: Validate final article media
-        run: python scripts/prepublish_surface_qa.py
-      - name: Apply frontpage publication strategy (placement only; non-gating)
-        run: python scripts/frontpage_publication_strategy.py
-      - name: Sync lead follow-up plan for Scan
-        run: |
-          python scripts/lead_followup.py --sync
-          python scripts/followup_plan.py
+
+      - name: Rebuild single newsroom state and Forside v2
+        run: python scripts/v3_newsroom_state.py
+
+      - name: Technical publication integrity only
+        run: python scripts/v3_technical_check.py
+
       - name: Build public edition
-        run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/production_readiness.py && python scripts/seo_surface_fix.py && python scripts/magazine_blocks.py
+        run: |
+          python scripts/build_all_v2.py
+          python scripts/build_short_videos.py
+          python scripts/design_enhancements.py
+          python scripts/reader_experience.py
+          python scripts/seo_surface_fix.py
+          python scripts/magazine_blocks.py
+
       - name: Cache public images locally
         run: python scripts/cache_public_images.py
-      - name: Validate generated output once
-        run: python scripts/quality_gate.py
+
       - name: Refresh diagnostics and Control Room
         continue-on-error: true
         run: |
@@ -54,20 +77,26 @@ jobs:
           python scripts/pipeline_feedback.py
           python scripts/build_control_room.py
           python scripts/apply_control_room_extras.py
-      - name: Commit release + generated files
+
+      - name: Commit generated edition
         id: publish
         run: |
-          git config user.name "morgentidende-publisher"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/articles content/frontpage.json reports/editorial/approvals reports/editorial/lead-followup.json reports/editorial/followup-plan.json queue/recovery.json reports/editorial/pipeline-health.json reports/editorial/pipeline-feedback.json reports/editorial/production-readiness.json reports/editorial/article-versions.json reports/editorial/editorial-analytics.json docs/index.html docs/artikler docs/emner docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/robots.txt docs/kontrolrum docs/img/cache
+          set -euo pipefail
+          git config user.name "morgentidende-publisher"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/frontpage.json content/frontpage-v2.json state/newsroom-v3.json docs
+          git add reports/editorial/article-versions.json reports/editorial/editorial-analytics.json queue/recovery.json reports/editorial/pipeline-health.json reports/editorial/pipeline-feedback.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "published=false" >> "$GITHUB_OUTPUT"
           else
-            git commit -m "publish: build structured edition"
-            git push
+            git commit -m "publish: build v3 edition"
+            git pull --rebase origin main
+            git push origin main
             echo "published=true" >> "$GITHUB_OUTPUT"
             echo "publisher_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
-      - name: Dispatch production Cloudflare deploy explicitly
+
+      - name: Dispatch production Cloudflare deploy
         if: ${{ steps.publish.outputs.published == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}

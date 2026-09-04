@@ -1,0 +1,135 @@
+name: Pipeline v3 — Burst 3
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+  id-token: write
+
+concurrency:
+  group: morgentidende-v3-burst
+  cancel-in-progress: false
+
+jobs:
+  burst:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Sync latest main
+        run: git fetch origin main && git reset --hard origin/main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install runtime dependency
+        run: python -m pip install --disable-pip-version-check requests
+
+      - name: Refresh broad Scan inventory
+        run: python scripts/sync_cloudflare_scan.py
+
+      - name: Build newsroom state and scan brief
+        run: python scripts/v3_newsroom_state.py
+
+      - name: Get short-lived GitHub OIDC token for private newsroom backend
+        run: |
+          set -euo pipefail
+          OIDC_JSON="$(curl --fail --silent --show-error \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=morgentidende-v3")"
+          TOKEN="$(printf '%s' "$OIDC_JSON" | jq -r .value)"
+          test -n "$TOKEN" && test "$TOKEN" != "null"
+          echo "::add-mask::$TOKEN"
+          echo "GITHUB_OIDC_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          echo "V3_PRIVATE_BACKEND_URL=https://vwujgfhcsumsdjigccnr.supabase.co/functions/v1/newsroom-private" >> "$GITHUB_ENV"
+
+      - name: Verify private Publisher Inbox bridge
+        run: |
+          curl --fail --silent --show-error \
+            -H "Authorization: Bearer $GITHUB_OIDC_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"action":"pull_inbox","limit":1}' \
+            "$V3_PRIVATE_BACKEND_URL" | jq -e '.ok == true' >/dev/null
+
+      - name: Prepare isolated v3 inference Worker
+        run: |
+          set -euo pipefail
+          WORKER_NAME="morgentidende-v3-run-${GITHUB_RUN_ID}"
+          RUN_TOKEN="$(openssl rand -hex 32)"
+          echo "::add-mask::$RUN_TOKEN"
+          echo "WORKER_NAME=$WORKER_NAME" >> "$GITHUB_ENV"
+          echo "V3_WORKER_TOKEN=$RUN_TOKEN" >> "$GITHUB_ENV"
+          cat > .tmp-v3-wrangler.jsonc <<EOF
+          {
+            "name": "$WORKER_NAME",
+            "main": "cloudflare/v3-newsroom/src/index.js",
+            "compatibility_date": "2026-09-01",
+            "ai": { "binding": "AI" },
+            "vars": { "RUN_TOKEN": "$RUN_TOKEN" }
+          }
+          EOF
+
+      - name: Deploy isolated v3 inference Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4.127.1 deploy --config .tmp-v3-wrangler.jsonc | tee /tmp/v3-deploy.log
+          V3_WORKER_URL="$(grep -Eo 'https://[^[:space:]]+\.workers\.dev' /tmp/v3-deploy.log | tail -1 || true)"
+          if [ -z "$V3_WORKER_URL" ]; then
+            V3_WORKER_URL="https://${WORKER_NAME}.nicolaipetersen108.workers.dev"
+          fi
+          echo "V3_WORKER_URL=$V3_WORKER_URL" >> "$GITHUB_ENV"
+          for i in 1 2 3 4 5; do
+            if curl --fail --silent "$V3_WORKER_URL/health" | jq -e '.ok == true' >/dev/null; then break; fi
+            sleep 3
+          done
+          curl --fail --silent "$V3_WORKER_URL/health" | jq -e '.ok == true' >/dev/null
+
+      - name: Verify Unified Billing model path
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error \
+            -H "Authorization: Bearer $V3_WORKER_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"stage":"smoke","model":"openai/gpt-5.6-luna","instructions":"Return only the word OK.","input":"Health check","max_output_tokens":64,"reasoning":"none"}' \
+            "$V3_WORKER_URL/run" | jq -e '.ok == true and (.text|length>0)' >/dev/null
+
+      - name: Run three integrated editorial cycles
+        run: python scripts/v3_pipeline.py --cycles 3
+
+      - name: Delete temporary v3 inference Worker
+        if: always()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4.127.1 delete --name "$WORKER_NAME" --force || true
+          rm -f .tmp-v3-wrangler.jsonc
+
+      - name: Rebuild single state and validate technical integrity
+        run: |
+          python scripts/v3_newsroom_state.py
+          python scripts/v3_technical_check.py
+
+      - name: Commit editorial outputs only
+        run: |
+          set -euo pipefail
+          git restore queue/candidates.json scan/latest.md 2>/dev/null || true
+          git config user.name "morgentidende-v3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/articles sources content/frontpage.json content/frontpage-v2.json state/newsroom-v3.json "reports/v3-runs/${GITHUB_RUN_ID}"
+          if git diff --cached --quiet; then
+            echo "No v3 editorial outputs to commit."
+          else
+            git commit -m "v3: Burst 3 ${GITHUB_RUN_ID}"
+            git pull --rebase origin main
+            git push origin main
+          fi
