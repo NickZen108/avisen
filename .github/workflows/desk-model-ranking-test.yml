@@ -26,8 +26,6 @@ jobs:
         run: |
           python - <<'PY'
           import json, re, feedparser, requests, os
-          from datetime import datetime, timezone
-
           feeds = [
             ('Poland','RMF24',['https://www.rmf24.pl/feed']),
             ('Czechia','iDNES',['https://servis.idnes.cz/rss.aspx?c=zpravodaj']),
@@ -43,11 +41,9 @@ jobs:
             ('Slovenia','RTV Slovenija',['https://www.rtvslo.si/feeds/00.xml']),
             ('Bulgaria','Novinite',['https://www.novinite.com/services/news_rss.php']),
           ]
-
           def clean(s):
             s = re.sub('<[^>]+>', ' ', s or '')
             return re.sub(r'\s+', ' ', s).strip()
-
           picked=[]
           headers={'User-Agent':'Mozilla/5.0 Morgentidende-Scan-Test/1.0'}
           for country, source, urls in feeds:
@@ -62,26 +58,13 @@ jobs:
               except Exception:
                 pass
             if not entry: continue
-            picked.append({
-              'id': len(picked)+1,
-              'country': country,
-              'source': source,
-              'feed': used,
-              'title': clean(entry.get('title','')),
-              'summary': clean(entry.get('summary',''))[:700],
-              'published': clean(entry.get('published','') or entry.get('updated','')),
-              'link': entry.get('link','')
-            })
-            if len(picked) == 10: break
-
-          if len(picked) < 10:
-            raise SystemExit(f'Only found {len(picked)} working distinct-country feeds: '+json.dumps(picked,ensure_ascii=False))
+            picked.append({'id':len(picked)+1,'country':country,'source':source,'feed':used,'title':clean(entry.get('title','')),'summary':clean(entry.get('summary',''))[:700],'published':clean(entry.get('published','') or entry.get('updated','')),'link':entry.get('link','')})
+            if len(picked)==10: break
+          if len(picked)<10: raise SystemExit(f'Only found {len(picked)} working distinct-country feeds')
           print('=== SCAN CANDIDATES ===')
-          for x in picked:
-            print(f"{x['id']}. {x['country']} | {x['source']} | {x['title']} | {x['published']}")
+          for x in picked: print(f"{x['id']}. {x['country']} | {x['source']} | {x['title']} | {x['published']}")
           json.dump(picked,open(os.environ['OUT'],'w'),ensure_ascii=False,indent=2)
           PY
-
       - name: Prepare temporary ranking Worker
         run: |
           set -euo pipefail
@@ -98,7 +81,7 @@ jobs:
               const b=await request.json();
               const allowed=new Set(['@cf/meta/llama-3.1-8b-instruct-fast','@cf/qwen/qwen3-30b-a3b-fp8','@cf/google/gemma-4-26b-a4b-it']);
               if(!allowed.has(b.model)) return new Response('bad model',{status:400});
-              const result=await env.AI.run(b.model,{messages:[{role:'system',content:b.system},{role:'user',content:b.user}],max_tokens:1200,temperature:0.1});
+              const result=await env.AI.run(b.model,{messages:[{role:'system',content:b.system},{role:'user',content:b.user}],max_tokens:3000,temperature:0.1});
               return Response.json(result);
             }
           }
@@ -106,7 +89,6 @@ jobs:
           cat >/tmp/wrangler.jsonc <<EOF
           {"name":"$WORKER_NAME","main":"/tmp/rank-worker.js","compatibility_date":"2026-09-01","ai":{"binding":"AI"},"vars":{"RUN_TOKEN":"$RUN_TOKEN"}}
           EOF
-
       - name: Deploy temporary Worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -119,7 +101,6 @@ jobs:
           echo "WORKER_URL=$URL" >> "$GITHUB_ENV"
           for i in $(seq 1 12); do curl --fail --silent --max-time 10 "$URL" >/dev/null && exit 0; sleep 3; done
           exit 1
-
       - name: Rank identical Scan candidates with all three models
         env:
           CANDIDATES: /tmp/candidates.json
@@ -127,26 +108,19 @@ jobs:
           python - <<'PY'
           import json, os, requests
           c=json.load(open(os.environ['CANDIDATES']))
-          system='''Du er Desk Editor på en dansk nationalkonservativ-liberal netavis. Du får 10 helt friske historier fra nationale medier i forskellige østeuropæiske lande. Rangér dem udelukkende efter hvor relevante og interessante de er for danske læsere og denne avis. Vægt især: direkte dansk betydning; europæisk sikkerhed, migration, suverænitet, forsvar og Rusland; økonomi, energi, handel og regulering; borgerlige/liberale eller nationalkonservative konflikter og idéer; stor nyhedsværdi; samt historier danske medier sandsynligvis overser. Politisk profil må påvirke interesse og vinkel, men ikke fakta. Vær ikke mekanisk ideologisk: en stor almindelig nyhed kan sagtens være vigtigere. Returnér ALLE 10 som en rangeret liste 1-10. For hver: kandidatnummer, land, kort dansk titel, relevansscore 0-100 og én kort begrundelse. Til sidst: vælg de 3, du ville sende videre til journalist nu.'''
+          system='''Du er Desk Editor på en dansk nationalkonservativ-liberal netavis. Du får 10 helt friske historier fra nationale medier i forskellige østeuropæiske lande. Rangér dem udelukkende efter hvor relevante og interessante de er for danske læsere og denne avis. Vægt især: direkte dansk betydning; europæisk sikkerhed, migration, suverænitet, forsvar og Rusland; økonomi, energi, handel og regulering; borgerlige/liberale eller nationalkonservative konflikter og idéer; stor nyhedsværdi; samt historier danske medier sandsynligvis overser. Politisk profil må påvirke interesse og vinkel, men ikke fakta. Vær ikke mekanisk ideologisk: en stor almindelig nyhed kan sagtens være vigtigere. Returnér ALLE 10 som en rangeret liste 1-10. For hver: kandidatnummer, land, kort dansk titel, relevansscore 0-100 og én meget kort begrundelse. Til sidst: vælg de 3, du ville sende videre til journalist nu. Svar kompakt.'''
           payload='\n\n'.join(f"KANDIDAT {x['id']} | {x['country']} | {x['source']}\nTitel: {x['title']}\nTeaser: {x['summary']}\nTid: {x['published']}" for x in c)
-          models=[
-            ('LLAMA 3.1 8B FAST','@cf/meta/llama-3.1-8b-instruct-fast'),
-            ('QWEN3 30B','@cf/qwen/qwen3-30b-a3b-fp8'),
-            ('GEMMA 4 26B','@cf/google/gemma-4-26b-a4b-it')]
+          models=[('LLAMA 3.1 8B FAST','@cf/meta/llama-3.1-8b-instruct-fast'),('QWEN3 30B','@cf/qwen/qwen3-30b-a3b-fp8'),('GEMMA 4 26B','@cf/google/gemma-4-26b-a4b-it')]
           H={'Authorization':f"Bearer {os.environ['RUN_TOKEN']}",'Content-Type':'application/json'}
           for name,model in models:
-            r=requests.post(os.environ['WORKER_URL'],headers=H,json={'model':model,'system':system,'user':payload},timeout=120)
-            print('\n\n############################')
-            print('MODEL:',name,'HTTP',r.status_code)
-            print('############################')
-            r.raise_for_status(); o=r.json()
-            text=o.get('response')
+            r=requests.post(os.environ['WORKER_URL'],headers=H,json={'model':model,'system':system,'user':payload},timeout=180)
+            print('\n\n############################');print('MODEL:',name,'HTTP',r.status_code);print('############################')
+            r.raise_for_status(); o=r.json(); text=o.get('response')
             if not text and o.get('choices'):
-              text=o['choices'][0].get('message',{}).get('content','')
+              msg=o['choices'][0].get('message',{}); text=msg.get('content') or msg.get('reasoning_content') or ''
             if not text: text=json.dumps(o,ensure_ascii=False)
             print(text)
           PY
-
       - name: Cleanup Worker
         if: always()
         env:
