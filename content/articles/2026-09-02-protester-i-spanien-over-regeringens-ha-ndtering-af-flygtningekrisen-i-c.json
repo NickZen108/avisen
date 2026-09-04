@@ -16,22 +16,18 @@
       "Pedro Sánchez"
     ],
     "hero_queries_local": [
-      "crise des migrants à Ceuta",
-      "manifestations en Espagne",
+      "crisis migratoria en Ceuta",
+      "protestas en España",
       "Pedro Sánchez"
     ],
-    "hero_queries_transliterated": [
-      "krise de los migrantes en Ceuta",
-      "manifestaciones en España",
-      "Pedro Sánchez"
-    ],
+    "hero_queries_transliterated": [],
     "place_names_english": [
       "Ceuta",
       "Spain"
     ],
     "place_names_local": [
       "Ceuta",
-      "Espagne"
+      "España"
     ],
     "primary_language": "español",
     "primary_language_code": "es",
