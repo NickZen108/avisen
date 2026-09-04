@@ -24,54 +24,122 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check pillow
+      - name: Record lead follow-up plan for this experiment
+        run: |
+          python scripts/lead_followup.py --sync || true
+          python scripts/followup_plan.py || true
+          BURST_DIR="reports/editorial/bursts/${GITHUB_RUN_ID}"
+          mkdir -p "$BURST_DIR"
+          [ -f reports/editorial/followup-plan.json ] && cp reports/editorial/followup-plan.json "$BURST_DIR/followup-plan.json" || true
       - name: Fetch scan and prefetch
         run: |
           set +e
           BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          BURST_DIR="reports/editorial/bursts/${GITHUB_RUN_ID}"
+          mkdir -p "$BURST_DIR"
           curl --fail --silent --show-error --max-time 30 "$BASE/candidates" -o /tmp/candidates.json
-          python scripts/github_source_prefetch.py --scan /tmp/candidates.json --output /tmp/github-prefetch.json --limit 12
+          if python -m json.tool /tmp/candidates.json >/dev/null 2>&1; then
+            cp /tmp/candidates.json "$BURST_DIR/candidates.json"
+            python scripts/github_source_prefetch.py --scan /tmp/candidates.json --output /tmp/github-prefetch.json --limit 12
+          else
+            echo '{}' > /tmp/candidates.json
+            echo '{}' > /tmp/github-prefetch.json
+          fi
           python -m json.tool /tmp/github-prefetch.json >/dev/null 2>&1 || echo '{}' > /tmp/github-prefetch.json
+          cp /tmp/github-prefetch.json "$BURST_DIR/prefetch.json"
           exit 0
       - name: Run requested editorial cycles
         env:
           EDITORIAL_RUN_TOKEN: ${{ secrets.EDITORIAL_RUN_TOKEN }}
           INPUT_CYCLES: ${{ github.event.inputs.cycles }}
         run: |
-          set -euo pipefail
+          set -u
           BASE='https://morgentidende-newsdesk.nicolaipetersen108.workers.dev'
+          BURST_DIR="reports/editorial/bursts/${GITHUB_RUN_ID}"
           MAX="${INPUT_CYCLES:-3}"
           case "$MAX" in 1|2|3) ;; *) MAX=3 ;; esac
           for i in $(seq 1 "$MAX"); do
             OUT="/tmp/editorial-$i.json"
-            curl --fail --silent --show-error --max-time 240 -X POST \
+            if curl --fail --silent --show-error --max-time 240 -X POST \
               -H 'content-type: application/json' \
               -H "authorization: Bearer $EDITORIAL_RUN_TOKEN" \
               --data-binary @/tmp/github-prefetch.json \
-              "$BASE/run-editorial" -o "$OUT"
-            python -m json.tool "$OUT" >/dev/null
-            jq '{status,stage,generated_at,slug,title,reason,handled_signal_keys,ai_usage}' "$OUT"
-            python scripts/log_publication_attempt.py --input "$OUT"
-            python scripts/sync_cloudflare_editorial.py --input "$OUT"
+              "$BASE/run-editorial" -o "$OUT"; then
+              if ! python -m json.tool "$OUT" >/dev/null 2>&1; then
+                printf '{"status":"hold","stage":"malformed-response","reason":"Workers editorial endpoint returned invalid JSON","burst_cycle":%s}\n' "$i" > "$OUT"
+              fi
+            else
+              printf '{"status":"hold","stage":"transport-error","reason":"Workers editorial request failed or timed out","burst_cycle":%s}\n' "$i" > "$OUT"
+            fi
+            cp "$OUT" "$BURST_DIR/cycle-$i.json"
+            jq '{status,stage,generated_at,slug,title,reason,handled_signal_keys,ai_usage}' "$OUT" || cat "$OUT"
+            python scripts/log_publication_attempt.py --input "$OUT" || true
+            if [ "$(jq -r '.stage // ""' "$OUT")" != 'transport-error' ] && [ "$(jq -r '.stage // ""' "$OUT")" != 'malformed-response' ]; then
+              python scripts/sync_cloudflare_editorial.py --input "$OUT" || true
+            fi
           done
-      - name: Validate
+      - name: Validate potential editorial results
+        id: validate
+        continue-on-error: true
         run: |
           python scripts/quality_gate.py --prebuild --changed-only
           python scripts/prepublish_surface_qa.py
-      - name: Commit editorial results
-        id: editorial
+      - name: Build burst audit summary
+        if: always()
+        env:
+          VALIDATION_OUTCOME: ${{ steps.validate.outcome }}
+          INPUT_CYCLES: ${{ github.event.inputs.cycles }}
         run: |
           set -euo pipefail
+          BURST_DIR="reports/editorial/bursts/${GITHUB_RUN_ID}"
+          MAX="${INPUT_CYCLES:-3}"
+          case "$MAX" in 1|2|3) ;; *) MAX=3 ;; esac
+          python - "$BURST_DIR" "$MAX" "$VALIDATION_OUTCOME" <<'PY'
+          import json, pathlib, sys
+          d=pathlib.Path(sys.argv[1]); n=int(sys.argv[2]); validation=sys.argv[3]
+          cycles=[]
+          for i in range(1,n+1):
+              p=d/f"cycle-{i}.json"
+              try: row=json.loads(p.read_text(encoding='utf-8'))
+              except Exception as exc: row={"status":"hold","stage":"audit-read-error","reason":str(exc)}
+              cycles.append({k:row.get(k) for k in ("status","stage","generated_at","slug","title","reason","handled_signal_keys","ai_usage")}|{"cycle":i})
+          summary={
+              "schema_version":1,
+              "github_run_id":d.name,
+              "requested_cycles":n,
+              "validation_outcome":validation,
+              "cycles":cycles,
+              "published_candidates":sum(1 for x in cycles if x.get("status")=="approved"),
+              "nonpublished_candidates":[x for x in cycles if x.get("status")!="approved"],
+              "note":"Raw cycle JSON is retained so every non-publication can be traced to status, stage and reason."
+          }
+          (d/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(summary,ensure_ascii=False,indent=2))
+          PY
+      - name: Commit editorial results and immutable burst audit
+        if: always()
+        id: editorial
+        env:
+          VALIDATION_OUTCOME: ${{ steps.validate.outcome }}
+        run: |
+          set -euo pipefail
+          BURST_DIR="reports/editorial/bursts/${GITHUB_RUN_ID}"
           git config user.name 'morgentidende-cloudflare-editorial'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add content/articles sources reports/editorial/approvals content/frontpage.json docs/img/auto reports/editorial/publication-attempts.jsonl 2>/dev/null || true
+          if [ "$VALIDATION_OUTCOME" = 'success' ]; then
+            git add content/articles sources reports/editorial/approvals content/frontpage.json docs/img/auto reports/editorial/publication-attempts.jsonl reports/editorial/lead-followup.json reports/editorial/followup-plan.json "$BURST_DIR" 2>/dev/null || true
+          else
+            git reset --hard HEAD
+            git add "$BURST_DIR" 2>/dev/null || true
+          fi
           if git diff --cached --quiet; then
             echo 'changed=false' >> "$GITHUB_OUTPUT"
-            echo 'Ingen nye redaktionelle ændringer at publicere'
+            echo 'Ingen nye redaktionelle ændringer eller auditdata'
           else
-            git commit -m 'editorial: burst article cycles'
+            git commit -m "editorial: burst ${GITHUB_RUN_ID} with audit trail"
             git pull --rebase origin main
             git push origin main
-            echo 'changed=true' >> "$GITHUB_OUTPUT"
+            if [ "$VALIDATION_OUTCOME" = 'success' ]; then echo 'changed=true' >> "$GITHUB_OUTPUT"; else echo 'changed=false' >> "$GITHUB_OUTPUT"; fi
           fi
       - name: Dispatch build/publish explicitly
         if: ${{ steps.editorial.outputs.changed == 'true' }}
