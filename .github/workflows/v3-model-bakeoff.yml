@@ -1,0 +1,41 @@
+name: V3 model bakeoff
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: morgentidende-v3-model-bakeoff
+  cancel-in-progress: false
+
+jobs:
+  bakeoff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Sync latest main
+        run: git fetch origin main && git reset --hard origin/main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install HTTP client
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Run isolated v3 model bakeoff
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python scripts/v3_model_bakeoff.py
+      - name: Commit test results only
+        run: |
+          set -euo pipefail
+          git config user.name 'morgentidende-v3-bakeoff'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "reports/v3-bakeoff/${GITHUB_RUN_ID}"
+          git commit -m "v3: model bakeoff ${GITHUB_RUN_ID}"
+          git pull --rebase origin main
+          git push origin main
