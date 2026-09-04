@@ -1,0 +1,17 @@
+name: Dispatch v3 model bakeoff
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/dispatch-v3-model-bakeoff.yml'
+permissions:
+  actions: write
+  contents: read
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch isolated bakeoff
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run v3-model-bakeoff.yml -R NickZen108/avisen --ref main
