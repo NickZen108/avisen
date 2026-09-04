@@ -1,0 +1,90 @@
+name: Udland 100 fair compact test
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/udland-100-fair-compact-test.yml']
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install --disable-pip-version-check requests feedparser python-dateutil numpy
+      - name: Collect RSS
+        env: {RAW: /tmp/raw.json}
+        run: |
+          python - <<'PY'
+          import os,json,re,requests,feedparser
+          from dateutil import parser as dp
+          F=[('Poland','RMF24','https://www.rmf24.pl/feed'),('Czechia','iDNES','https://servis.idnes.cz/rss.aspx?c=zpravodaj'),('Slovakia','Aktuality','https://www.aktuality.sk/rss/'),('Croatia','Index','https://www.index.hr/rss/vijesti'),('Estonia','ERR','https://news.err.ee/k/news/rss.xml'),('Lithuania','LRT','https://www.lrt.lt/?rss'),('Romania','HotNews','https://hotnews.ro/feed'),('Serbia','N1','https://n1info.rs/feed/'),('Ukraine','UP','https://www.pravda.com.ua/rss/'),('France','France24','https://www.france24.com/en/rss'),('Italy','ANSA','https://www.ansa.it/sito/ansait_rss.xml'),('Spain','ElPais','https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada'),('India','TheHindu','https://www.thehindu.com/news/international/feeder/default.rss')]
+          def c(s):return re.sub(r'\s+',' ',re.sub('<[^>]+>',' ',s or '')).strip()
+          def t(e):
+            try:return dp.parse(e.get('published') or e.get('updated') or '').timestamp()
+            except:return 0
+          A=[]
+          for co,so,u in F:
+            try:d=feedparser.parse(requests.get(u,headers={'User-Agent':'Morgentidende-Test'},timeout=15).content)
+            except:continue
+            for e in d.entries[:18]:
+              if c(e.get('title')):A.append({'country':co,'source':so,'title':c(e.get('title')),'summary':c(e.get('summary') or e.get('description'))[:500],'ts':t(e)})
+          A=sorted(A,key=lambda x:x['ts'],reverse=True)[:220]; print('RAW',len(A)); json.dump(A,open(os.environ['RAW'],'w'),ensure_ascii=False)
+          PY
+      - name: Deploy worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          NAME="faircompact-${GITHUB_RUN_ID}"; TOKEN="$(openssl rand -hex 20)"; echo "::add-mask::$TOKEN"; echo "NAME=$NAME" >>$GITHUB_ENV; echo "TOKEN=$TOKEN" >>$GITHUB_ENV
+          cat >/tmp/w.js <<'JS'
+          export default {async fetch(r,e){if(r.method==='GET')return Response.json({ok:true});if((r.headers.get('authorization')||'')!==`Bearer ${e.TOKEN}`)return new Response('no',{status:401});let b=await r.json();if(b.embed)return Response.json(await e.AI.run('@cf/baai/bge-m3',{text:b.text}));return Response.json(await e.AI.run(b.model,{messages:[{role:'system',content:b.system},{role:'user',content:b.user}],max_tokens:700,temperature:.1}));}}
+          JS
+          cat >/tmp/wrangler.jsonc <<EOF
+          {"name":"$NAME","main":"/tmp/w.js","compatibility_date":"2026-09-01","ai":{"binding":"AI"},"vars":{"TOKEN":"$TOKEN"}}
+          EOF
+          npx --yes wrangler@4.127.1 deploy --config /tmp/wrangler.jsonc | tee /tmp/d.log
+          URL="$(grep -Eo 'https://[^[:space:]]+\.workers\.dev' /tmp/d.log | tail -1)"; echo "URL=$URL" >>$GITHUB_ENV
+          for i in $(seq 1 20); do curl -fsS "$URL" >/dev/null && break; sleep 2; done
+      - name: Cluster and rank
+        env: {RAW: /tmp/raw.json}
+        run: |
+          python - <<'PY'
+          import os,json,time,requests,numpy as np
+          A=json.load(open(os.environ['RAW']));U=os.environ['URL'];H={'Authorization':'Bearer '+os.environ['TOKEN'],'Content-Type':'application/json'}
+          def post(j):
+            for _ in range(12):
+              r=requests.post(U,headers=H,json=j,timeout=180)
+              if r.status_code==200:return r.json()
+              time.sleep(2)
+            raise RuntimeError(r.text)
+          T=[(x['title']+' — '+x['summary'])[:900] for x in A];V=[]
+          for i in range(0,len(T),25):V.extend((post({'embed':1,'text':T[i:i+25]}).get('data') or []))
+          V=np.array(V,float);V/=np.linalg.norm(V,axis=1,keepdims=True)+1e-12;C=[]
+          for i in range(len(A)):
+            b=(-1,-1)
+            for k,c in enumerate(C):
+              s=float(V[i]@V[c[0]])
+              if s>b[1]:b=(k,s)
+            if b[0]>=0 and b[1]>=.84:C[b[0]][1].append(i)
+            else:C.append([i,[i]])
+          E=[]
+          for n,c in enumerate(C[:100],1):
+            x=A[c[0]];E.append({'id':n,'country':x['country'],'title':x['title'],'summary':x['summary'],'cluster':len(c[1])})
+          print('DISTINCT',len(C),'USED',len(E),'MULTI',sum(e['cluster']>1 for e in E)); assert len(E)==100
+          p='\n'.join(f"{e['id']}|{e['country']}|{e['title']}|{e['summary']}|cluster={e['cluster']}" for e in E)
+          s='''Du er Desk Editor på Morgentidende, dansk nationalkonservativ-liberal netavis. Her er 100 forskellige, semantisk deduplikerede udenlandske nyhedsbegivenheder. Vælg præcis 3 forskellige historier til Udland NU. Vægt nyhedsværdi, Danmark/Europa, sikkerhed, forsvar, Rusland, migration, suverænitet, energi, økonomi, handel, regulering samt borgerlig/liberal eller nationalkonservativ relevans. Profil påvirker interesse, ikke fakta. Svar KUN tre nummererede linjer: EVENT-ID — dansk rubrik — én kort begrundelse.'''
+          M=[('LLAMA 8B','@cf/meta/llama-3.1-8b-instruct-fast'),('QWEN3 30B','@cf/qwen/qwen3-30b-a3b-fp8'),('GEMMA 4 26B','@cf/google/gemma-4-26b-a4b-it')]
+          for name,m in M:
+            o=post({'model':m,'system':s,'user':p});z=o.get('response')
+            if not z and o.get('choices'):
+              q=o['choices'][0].get('message',{});z=q.get('content') or q.get('reasoning_content')
+            print('\n### '+name+' ###\n'+str(z))
+          PY
+      - name: Cleanup
+        if: always()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4.127.1 delete --name "$NAME" --force || true
