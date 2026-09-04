@@ -1,0 +1,155 @@
+name: Desk model ranking test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/desk-model-ranking-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rank:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check requests feedparser
+      - name: Collect one fresh RSS headline from 10 Eastern European countries
+        env:
+          OUT: /tmp/candidates.json
+        run: |
+          python - <<'PY'
+          import json, re, feedparser, requests, os
+          from datetime import datetime, timezone
+
+          feeds = [
+            ('Poland','RMF24',['https://www.rmf24.pl/feed']),
+            ('Czechia','iDNES',['https://servis.idnes.cz/rss.aspx?c=zpravodaj']),
+            ('Slovakia','Aktuality',['https://www.aktuality.sk/rss/']),
+            ('Croatia','Index.hr',['https://www.index.hr/rss/vijesti']),
+            ('Estonia','ERR',['https://news.err.ee/k/news/rss.xml','https://www.err.ee/rss']),
+            ('Lithuania','LRT',['https://www.lrt.lt/?rss']),
+            ('Romania','HotNews',['https://hotnews.ro/feed','https://rss.hotnews.ro']),
+            ('Hungary','Telex',['https://telex.hu/rss','https://telex.hu/rss/all']),
+            ('Serbia','N1 Serbia',['https://n1info.rs/feed/']),
+            ('Latvia','LSM',['https://www.lsm.lv/rss/','https://eng.lsm.lv/rss/']),
+            ('Ukraine','Ukrainska Pravda',['https://www.pravda.com.ua/rss/']),
+            ('Slovenia','RTV Slovenija',['https://www.rtvslo.si/feeds/00.xml']),
+            ('Bulgaria','Novinite',['https://www.novinite.com/services/news_rss.php']),
+          ]
+
+          def clean(s):
+            s = re.sub('<[^>]+>', ' ', s or '')
+            return re.sub(r'\s+', ' ', s).strip()
+
+          picked=[]
+          headers={'User-Agent':'Mozilla/5.0 Morgentidende-Scan-Test/1.0'}
+          for country, source, urls in feeds:
+            entry=None; used=None
+            for url in urls:
+              try:
+                r=requests.get(url,headers=headers,timeout=15)
+                if r.status_code != 200: continue
+                d=feedparser.parse(r.content)
+                if d.entries:
+                  entry=d.entries[0]; used=url; break
+              except Exception:
+                pass
+            if not entry: continue
+            picked.append({
+              'id': len(picked)+1,
+              'country': country,
+              'source': source,
+              'feed': used,
+              'title': clean(entry.get('title','')),
+              'summary': clean(entry.get('summary',''))[:700],
+              'published': clean(entry.get('published','') or entry.get('updated','')),
+              'link': entry.get('link','')
+            })
+            if len(picked) == 10: break
+
+          if len(picked) < 10:
+            raise SystemExit(f'Only found {len(picked)} working distinct-country feeds: '+json.dumps(picked,ensure_ascii=False))
+          print('=== SCAN CANDIDATES ===')
+          for x in picked:
+            print(f"{x['id']}. {x['country']} | {x['source']} | {x['title']} | {x['published']}")
+          json.dump(picked,open(os.environ['OUT'],'w'),ensure_ascii=False,indent=2)
+          PY
+
+      - name: Prepare temporary ranking Worker
+        run: |
+          set -euo pipefail
+          WORKER_NAME="morgentidende-desk-rank-${GITHUB_RUN_ID}"
+          RUN_TOKEN="$(openssl rand -hex 32)"
+          echo "::add-mask::$RUN_TOKEN"
+          echo "WORKER_NAME=$WORKER_NAME" >> "$GITHUB_ENV"
+          echo "RUN_TOKEN=$RUN_TOKEN" >> "$GITHUB_ENV"
+          cat >/tmp/rank-worker.js <<'JS'
+          export default {
+            async fetch(request, env) {
+              if (request.method === 'GET') return Response.json({ok:true});
+              if ((request.headers.get('authorization')||'') !== `Bearer ${env.RUN_TOKEN}`) return new Response('unauthorized',{status:401});
+              const b=await request.json();
+              const allowed=new Set(['@cf/meta/llama-3.1-8b-instruct-fast','@cf/qwen/qwen3-30b-a3b-fp8','@cf/google/gemma-4-26b-a4b-it']);
+              if(!allowed.has(b.model)) return new Response('bad model',{status:400});
+              const result=await env.AI.run(b.model,{messages:[{role:'system',content:b.system},{role:'user',content:b.user}],max_tokens:1200,temperature:0.1});
+              return Response.json(result);
+            }
+          }
+          JS
+          cat >/tmp/wrangler.jsonc <<EOF
+          {"name":"$WORKER_NAME","main":"/tmp/rank-worker.js","compatibility_date":"2026-09-01","ai":{"binding":"AI"},"vars":{"RUN_TOKEN":"$RUN_TOKEN"}}
+          EOF
+
+      - name: Deploy temporary Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4.127.1 deploy --config /tmp/wrangler.jsonc | tee /tmp/deploy.log
+          URL="$(grep -Eo 'https://[^[:space:]]+\.workers\.dev' /tmp/deploy.log | tail -1 || true)"
+          if [ -z "$URL" ]; then URL="https://${WORKER_NAME}.nicolaipetersen108.workers.dev"; fi
+          echo "WORKER_URL=$URL" >> "$GITHUB_ENV"
+          for i in $(seq 1 12); do curl --fail --silent --max-time 10 "$URL" >/dev/null && exit 0; sleep 3; done
+          exit 1
+
+      - name: Rank identical Scan candidates with all three models
+        env:
+          CANDIDATES: /tmp/candidates.json
+        run: |
+          python - <<'PY'
+          import json, os, requests
+          c=json.load(open(os.environ['CANDIDATES']))
+          system='''Du er Desk Editor på en dansk nationalkonservativ-liberal netavis. Du får 10 helt friske historier fra nationale medier i forskellige østeuropæiske lande. Rangér dem udelukkende efter hvor relevante og interessante de er for danske læsere og denne avis. Vægt især: direkte dansk betydning; europæisk sikkerhed, migration, suverænitet, forsvar og Rusland; økonomi, energi, handel og regulering; borgerlige/liberale eller nationalkonservative konflikter og idéer; stor nyhedsværdi; samt historier danske medier sandsynligvis overser. Politisk profil må påvirke interesse og vinkel, men ikke fakta. Vær ikke mekanisk ideologisk: en stor almindelig nyhed kan sagtens være vigtigere. Returnér ALLE 10 som en rangeret liste 1-10. For hver: kandidatnummer, land, kort dansk titel, relevansscore 0-100 og én kort begrundelse. Til sidst: vælg de 3, du ville sende videre til journalist nu.'''
+          payload='\n\n'.join(f"KANDIDAT {x['id']} | {x['country']} | {x['source']}\nTitel: {x['title']}\nTeaser: {x['summary']}\nTid: {x['published']}" for x in c)
+          models=[
+            ('LLAMA 3.1 8B FAST','@cf/meta/llama-3.1-8b-instruct-fast'),
+            ('QWEN3 30B','@cf/qwen/qwen3-30b-a3b-fp8'),
+            ('GEMMA 4 26B','@cf/google/gemma-4-26b-a4b-it')]
+          H={'Authorization':f"Bearer {os.environ['RUN_TOKEN']}",'Content-Type':'application/json'}
+          for name,model in models:
+            r=requests.post(os.environ['WORKER_URL'],headers=H,json={'model':model,'system':system,'user':payload},timeout=120)
+            print('\n\n############################')
+            print('MODEL:',name,'HTTP',r.status_code)
+            print('############################')
+            r.raise_for_status(); o=r.json()
+            text=o.get('response')
+            if not text and o.get('choices'):
+              text=o['choices'][0].get('message',{}).get('content','')
+            if not text: text=json.dumps(o,ensure_ascii=False)
+            print(text)
+          PY
+
+      - name: Cleanup Worker
+        if: always()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4.127.1 delete --name "$WORKER_NAME" --force || true
