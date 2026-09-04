@@ -16,6 +16,7 @@
     "language_editor": "openai/gpt-5.6-terra",
     "research_web": null,
     "media_vision": "@cf/google/gemma-4-26b-a4b-it",
+    "media_generator": "@cf/black-forest-labs/flux-2-klein-9b",
     "chief_normal": "openai/gpt-5.6-terra",
     "chief_high_risk": "openai/gpt-5.6-terra"
   },
@@ -59,6 +60,13 @@
       "input": 0.75,
       "output": 4.5,
       "cached_input": 0.075
+    }
+  },
+  "image_generation_prices_usd": {
+    "@cf/black-forest-labs/flux-2-klein-9b": {
+      "first_megapixel": 0.015,
+      "subsequent_megapixel": 0.002,
+      "input_image_megapixel": 0.002
     }
   },
   "editorial": {
