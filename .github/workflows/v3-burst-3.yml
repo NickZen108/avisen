@@ -53,11 +53,10 @@ jobs:
       - name: Verify private backend and show today's remaining AI budget
         run: |
           set -euo pipefail
-          TODAY="$(TZ=Europe/Copenhagen date +%F)"
           curl --fail --silent --show-error --max-time 20 \
             -H "Authorization: Bearer $GITHUB_OIDC_TOKEN" \
             -H "Content-Type: application/json" \
-            -d "{\"action\":\"daily_budget\",\"budget_date\":\"$TODAY\"}" \
+            -d '{"action":"daily_budget"}' \
             "$V3_PRIVATE_BACKEND_URL" | tee /tmp/v3-budget.json | jq -e '.ok == true and .hard_limit_dkk == 10' >/dev/null
           jq '{budget_date,spent_dkk,reserved_dkk,remaining_hard_dkk,hard_limit_dkk,operational_limit_dkk}' /tmp/v3-budget.json
 
@@ -99,7 +98,7 @@ jobs:
           test "$READY" = 1
 
       - name: Run three bounded integrated editorial cycles
-        run: python scripts/v3_safe_runner.py --cycles 3
+        run: python scripts/v3_run_entry.py --cycles 3
 
       - name: Delete temporary v3 inference Worker
         if: always()
