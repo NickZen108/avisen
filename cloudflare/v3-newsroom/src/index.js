@@ -1,4 +1,5 @@
 const OPENAI_PREFIX = "openai/";
+const GATEWAY_OPTIONS = { gateway: { id: "default" } };
 
 function extractText(result) {
   if (!result) return "";
@@ -37,7 +38,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (request.method === "GET" && url.pathname === "/health") {
-      return Response.json({ ok: true, service: "morgentidende-v3-newsroom", ai: true });
+      return Response.json({ ok: true, service: "morgentidende-v3-newsroom", ai: true, gateway: "default" });
     }
     if (request.method !== "POST" || url.pathname !== "/run") {
       return new Response("Not found", { status: 404 });
@@ -87,7 +88,7 @@ export default {
           text: { format: { type: "text" }, verbosity: "low" },
         };
         if (webSearch) params.tools = [{ type: "web_search_preview" }];
-        result = await env.AI.run(model, params);
+        result = await env.AI.run(model, params, GATEWAY_OPTIONS);
       } else {
         result = await env.AI.run(model, {
           messages: [
@@ -96,14 +97,14 @@ export default {
           ],
           max_tokens: maxOutput,
           temperature: 0.15,
-        });
+        }, GATEWAY_OPTIONS);
       }
 
       const text = extractText(result);
       if (!text) {
         return Response.json({ ok: false, error: "empty model response", usage: usageOf(result) }, { status: 502 });
       }
-      return Response.json({ ok: true, text, usage: usageOf(result) });
+      return Response.json({ ok: true, text, usage: usageOf(result), gateway_log_id: env.AI.aiGatewayLogId || null });
     } catch (err) {
       return Response.json({ ok: false, error: String(err?.message || err) }, { status: 502 });
     }
