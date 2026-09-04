@@ -13,11 +13,11 @@
   "models": {
     "desk": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
     "journalist": "@cf/qwen/qwen3-30b-a3b-fp8",
-    "language_editor": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "language_editor": "openai/gpt-5.6-terra",
     "research_web": null,
     "media_vision": "@cf/qwen/qwen3.8-27b",
-    "chief_normal": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-    "chief_high_risk": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+    "chief_normal": "openai/gpt-5.6-terra",
+    "chief_high_risk": "openai/gpt-5.6-terra"
   },
   "model_prices_usd_per_million_tokens": {
     "@cf/qwen/qwen3-30b-a3b-fp8": {
@@ -80,6 +80,7 @@
       "Pluralisme: berørte myndigheder, virksomheder og reelle modparter skal høres eller deres kendte synspunkt gengives, når det er relevant og muligt.",
       "Én autoritativ kilde kan være tilstrækkelig til en ukontroversiel faktuel nyhed. Kontroversielle påstande kræver passende modpart og dokumentation; kvalitet vurderes efter evidens, ikke kildeantal.",
       "Skriv naturligt, idiomatisk dansk fra kildens betydning. Oversæt ikke ord-for-ord.",
+      "Danskredaktøren skal aktivt forbedre klarhed, rytme, præcision og journalistisk dansk, ikke kun rette oversættelsesfejl, uden at ændre dokumenterede fakta eller betydning.",
       "Pipeline reparerer som udgangspunkt. DROP bruges kun når historien reelt ikke holder, er dublet, ikke kan dokumenteres eller er blevet irrelevant.",
       "Alle publicerede artikler skal have et lovligt og semantisk relevant Hero-billede.",
       "Forsiden styres efter nyhedsværdi og artikeltype, ikke efter om artiklen er automatisk eller manuelt initieret."
