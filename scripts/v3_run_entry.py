@@ -97,6 +97,28 @@ def route_resilient_safe_call(*args, **kwargs):
     raise last or RuntimeError("bounded route retry failed")
 
 
+def terra_smoke() -> int:
+    """Exercise the critical OpenAI/Cloudflare path and budget guard.
+
+    Success means the configured Terra editor model returned any non-empty text;
+    exact wording is deliberately not asserted because wording is not the
+    transport contract being tested.
+    """
+    model = s.p.CONFIG["models"]["language_editor"]
+    text, _ = s.safe_call_ai(
+        "integration_smoke",
+        model,
+        "Svar meget kort på dansk.",
+        "Skriv ét dansk ord.",
+        max_output_tokens=32,
+        reasoning="none",
+    )
+    if not str(text or "").strip():
+        raise RuntimeError("Terra smoke returned empty text")
+    print(f"V3 Terra smoke PASS: {str(text).strip()[:80]}")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cycles", type=int, default=1)
@@ -107,7 +129,7 @@ def main() -> int:
     v3_language_editor.install(s.p)
     # Refresh once proactively; later calls transparently refresh again after 401.
     refresh_oidc()
-    return s.smoke() if args.smoke else s.run_pipeline(args.cycles)
+    return terra_smoke() if args.smoke else s.run_pipeline(args.cycles)
 
 
 if __name__ == "__main__":
