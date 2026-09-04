@@ -1,6 +1,6 @@
 {
   "pipeline_version": 2,
-  "status": "published",
+  "status": "editing",
   "release_requested": false,
   "story_id": "2026-09-04-fifa-uefa-konflikten",
   "slug": "2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne",
@@ -10,29 +10,16 @@
   "story_location": {
     "country": "DE",
     "country_code": "DE",
-    "place_names_english": [
-      "Switzerland",
-      "United States",
-      "Geneva"
-    ],
-    "place_names_local": [
-      "Schweiz",
-      "USA",
-      "Genf"
-    ]
+    "place_names_english": ["Switzerland", "United States", "Geneva"],
+    "place_names_local": ["Schweiz", "USA", "Genf"]
   },
   "title": "FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'",
   "standfirst": "FIFA anklager UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Disputen mellem FIFA og UEFA har nået en US-domstol.",
   "byline": "Morgentidende Redaktion",
-  "published_at": "2026-09-04T05:51:15Z",
+  "published_at": null,
   "updated_at": null,
   "ledger": "sources/2026-09-04-fifa-uefa-konflikten-fifa-anklager-uefa-for-smoerga-s-kampagne.json",
-  "claim_ids": [
-    "F01",
-    "F02",
-    "F03",
-    "F04"
-  ],
+  "claim_ids": ["F01", "F02", "F03", "F04"],
   "seo": {
     "title": "FIFA-UEFA konflikten: FIFA anklager UEFA for 'smørgås-kampagne'",
     "description": "FIFA anklager UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Disputen mellem FIFA og UEFA har nået en US-domstol.",
@@ -52,43 +39,18 @@
     "placement": "lead"
   },
   "body": [
-    {
-      "text": "FIFA anklager UEFA for 'smørgås-kampagne' mod Infantino",
-      "type": "h2"
-    },
-    {
-      "text": "FIFA har anklaget UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Ifølge Deutsche Welle (DW) har UEFA søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz.",
-      "type": "p"
-    },
-    {
-      "text": "UEFA har også indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder.",
-      "type": "p"
-    },
-    {
-      "text": "Disputen mellem FIFA og UEFA har nået en US-domstol, ifølge DW.",
-      "type": "p"
-    },
-    {
-      "text": "FIFA har beskyldt UEFA for at føre en 'smørgås-kampagne' mod Infantino, men UEFA har ikke kommenteret beskyldningerne.",
-      "type": "p"
-    },
-    {
-      "text": "Kilde: Deutsche Welle (DW)",
-      "type": "p"
-    }
+    {"text": "FIFA anklager UEFA for 'smørgås-kampagne' mod Infantino", "type": "h2"},
+    {"text": "FIFA har anklaget UEFA for at føre en 'smørgås-kampagne' mod FIFA's præsident, Gianni Infantino. Ifølge Deutsche Welle (DW) har UEFA søgt om tilladelse til at samle beviser for kriminalforsøg i Schweiz.", "type": "p"},
+    {"text": "UEFA har også indgivet en eks parte-ansøgning til US District Court i New York for at få vidneudsagn og dokumenter fra US-baserede enheder.", "type": "p"},
+    {"text": "Disputen mellem FIFA og UEFA har nået en US-domstol, ifølge DW.", "type": "p"},
+    {"text": "FIFA har beskyldt UEFA for at føre en 'smørgås-kampagne' mod Infantino, men UEFA har ikke kommenteret beskyldningerne.", "type": "p"},
+    {"text": "Kilde: Deutsche Welle (DW)", "type": "p"}
   ],
-  "source_ids_to_display": [
-    "S1",
-    "S2"
-  ],
+  "source_ids_to_display": ["S1", "S2"],
   "related_news_slug": null,
   "related": [],
-  "correction_note": null,
+  "correction_note": "Trukket tilbage under karantæne af Pipeline v2 efter redaktionel kvalitetskontrol.",
   "scheduled_for": null,
   "released_from_schedule_at": null,
-  "automation_origin": "cloudflare-workers-ai",
-  "publication": {
-    "release_mode": "immediate",
-    "released_at": "2026-09-04T05:51:15Z"
-  }
+  "automation_origin": "cloudflare-workers-ai"
 }
