@@ -33,14 +33,14 @@
     "canonical": null
   },
   "image": {
-    "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-02-protester-i-spanien-over-regeringens-ha-ndtering-af-flygtningekrisen-i-c.jpg",
-    "alt": "Arkivfoto fra en demonstration i Spanien",
-    "credit": "Agence de presse Mondial Photo-Presse",
-    "license": "Public domain",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Manifestation_en_Espagne_contre_le_nouveau_statut_en_Catalogne_-_btv1b90532254.jpg",
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Santiago%20Abascal%20portrait.jpg",
+    "alt": "Santiago Abascal, leder af Vox",
+    "credit": "Vox España",
+    "license": "CC0 1.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Santiago_Abascal_portrait.jpg",
     "image_type": "photo",
-    "context_type": "archive",
-    "caption": "Arkivfoto – billedet viser ikke demonstrationen i Ceuta.",
+    "context_type": "person",
+    "caption": "Arkivfoto af Vox-leder Santiago Abascal.",
     "pending_image": false,
     "ai_generated": false,
     "placement": "lead"
