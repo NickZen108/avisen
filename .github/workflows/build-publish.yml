@@ -2,7 +2,7 @@ name: Build structured edition
 on:
   push:
     branches: [main]
-    paths: ['content/**','sources/**','reports/editorial/approvals/**','templates/**','config/**','docs/theme.js','docs/kontrolrum/control-room-tabs.js','scripts/build_all_v2.py','scripts/builder_core.py','scripts/build_short_videos.py','scripts/build_control_room.py','scripts/apply_control_room_extras.py','scripts/pipeline_feedback.py','scripts/design_enhancements.py','scripts/reader_experience.py','scripts/article_history.py','scripts/editorial_analytics.py','scripts/production_readiness.py','scripts/queue_recovery.py','scripts/seo_surface_fix.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/prepublish_surface_qa.py','scripts/release_ready.py','scripts/refresh_pending_images.py','scripts/enforce_image_diversity.py','scripts/normalize_categories.py','scripts/magazine_blocks.py','scripts/frontpage_publication_strategy.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
+    paths: ['content/**','sources/**','reports/editorial/approvals/**','templates/**','config/**','docs/theme.js','docs/kontrolrum/control-room-tabs.js','scripts/build_all_v2.py','scripts/builder_core.py','scripts/build_short_videos.py','scripts/build_control_room.py','scripts/apply_control_room_extras.py','scripts/pipeline_feedback.py','scripts/design_enhancements.py','scripts/reader_experience.py','scripts/article_history.py','scripts/editorial_analytics.py','scripts/production_readiness.py','scripts/queue_recovery.py','scripts/seo_surface_fix.py','scripts/cache_public_images.py','scripts/quality_gate.py','scripts/prepublish_surface_qa.py','scripts/release_ready.py','scripts/refresh_pending_images.py','scripts/enforce_image_diversity.py','scripts/normalize_categories.py','scripts/magazine_blocks.py','scripts/frontpage_publication_strategy.py','scripts/lead_followup.py','scripts/followup_plan.py','.github/workflows/build-publish.yml','.github/workflows/auto-publish-merge.yml']
   workflow_dispatch:
 permissions: {contents: write, actions: write}
 concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
@@ -30,6 +30,10 @@ jobs:
         run: python scripts/prepublish_surface_qa.py
       - name: Apply frontpage publication strategy (placement only; non-gating)
         run: python scripts/frontpage_publication_strategy.py
+      - name: Sync lead follow-up plan for Scan
+        run: |
+          python scripts/lead_followup.py --sync
+          python scripts/followup_plan.py
       - name: Build public edition
         run: python scripts/build_all_v2.py && python scripts/build_short_videos.py && python scripts/design_enhancements.py && python scripts/reader_experience.py && python scripts/production_readiness.py && python scripts/seo_surface_fix.py && python scripts/magazine_blocks.py
       - name: Cache public images locally
@@ -49,7 +53,7 @@ jobs:
         id: publish
         run: |
           git config user.name "morgentidende-publisher"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/articles content/frontpage.json reports/editorial/approvals queue/recovery.json reports/editorial/pipeline-health.json reports/editorial/pipeline-feedback.json reports/editorial/production-readiness.json reports/editorial/article-versions.json reports/editorial/editorial-analytics.json docs/index.html docs/artikler docs/emner docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/robots.txt docs/kontrolrum docs/img/cache
+          git add content/articles content/frontpage.json reports/editorial/approvals reports/editorial/lead-followup.json reports/editorial/followup-plan.json queue/recovery.json reports/editorial/pipeline-health.json reports/editorial/pipeline-feedback.json reports/editorial/production-readiness.json reports/editorial/article-versions.json reports/editorial/editorial-analytics.json docs/index.html docs/artikler docs/emner docs/rettelser.html docs/sitemap.xml docs/news-sitemap.xml docs/robots.txt docs/kontrolrum docs/img/cache
           if git diff --cached --quiet; then
             echo "published=false" >> "$GITHUB_OUTPUT"
           else
