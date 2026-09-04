@@ -1,0 +1,156 @@
+{
+  "run_id": "33844593891",
+  "fixtures": {
+    "writer": [
+      "fifa-uefa",
+      "bodens-kommun",
+      "sydkorea",
+      "trump-administrationen",
+      "vox-kraever",
+      "reform-uk"
+    ],
+    "editor": [
+      "fifa-uefa",
+      "bodens-kommun",
+      "sydkorea",
+      "ugyldigt-struktureret-svar",
+      "entertainment-over-policy"
+    ]
+  },
+  "summary": {
+    "writer": {
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.59
+      },
+      "@cf/zai-org/glm-4.7-flash": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.64
+      },
+      "@cf/qwen/qwen3-30b-a3b-fp8": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.7
+      },
+      "@cf/openai/gpt-oss-20b": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.58
+      },
+      "@cf/zai-org/glm-5.3-flash": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.52
+      }
+    },
+    "editor": {
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.43
+      },
+      "@cf/zai-org/glm-4.7-flash": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.44
+      },
+      "@cf/qwen/qwen3-30b-a3b-fp8": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.45
+      },
+      "@cf/openai/gpt-oss-20b": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.41
+      },
+      "@cf/zai-org/glm-5.3-flash": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.42
+      },
+      "@cf/qwen/qwen3.8-27b": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.44
+      }
+    },
+    "desk": {
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.1
+      },
+      "@cf/zai-org/glm-4.7-flash": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.1
+      },
+      "@cf/qwen/qwen3-30b-a3b-fp8": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.1
+      },
+      "@cf/openai/gpt-oss-20b": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.12
+      },
+      "@cf/zai-org/glm-5.3-flash": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.06
+      }
+    }
+  }
+}

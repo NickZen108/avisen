@@ -1,0 +1,1716 @@
+{
+  "schema_version": 1,
+  "run_id": "33844593891",
+  "writer_fixtures": [
+    "fifa-uefa",
+    "bodens-kommun",
+    "sydkorea",
+    "trump-administrationen",
+    "vox-kraever",
+    "reform-uk"
+  ],
+  "editor_fixtures": [
+    "fifa-uefa",
+    "bodens-kommun",
+    "sydkorea",
+    "ugyldigt-struktureret-svar",
+    "entertainment-over-policy"
+  ],
+  "writer": [
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.116,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.103,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.082,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "trump-administrationen",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.076,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "vox-kraever",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.108,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "reform-uk",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.109,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.102,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.134,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.104,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "trump-administrationen",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.121,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "vox-kraever",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.09,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "reform-uk",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.094,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.088,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.109,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.1,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "trump-administrationen",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.134,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "vox-kraever",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.174,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "reform-uk",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.094,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.089,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.106,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.082,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "trump-administrationen",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.086,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "vox-kraever",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.097,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "reform-uk",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.116,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.103,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.064,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.102,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "trump-administrationen",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.092,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "vox-kraever",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.091,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "reform-uk",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.072,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    }
+  ],
+  "editor": [
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.069,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.074,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.099,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "ugyldigt-struktureret-svar",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.075,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "fixture": "entertainment-over-policy",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.117,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.075,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.088,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.107,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "ugyldigt-struktureret-svar",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.071,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "fixture": "entertainment-over-policy",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.102,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.079,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.11,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.076,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "ugyldigt-struktureret-svar",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.088,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "fixture": "entertainment-over-policy",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.099,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.074,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.075,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.074,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "ugyldigt-struktureret-svar",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.097,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "fixture": "entertainment-over-policy",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.093,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.075,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.079,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.096,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "ugyldigt-struktureret-svar",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.076,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "fixture": "entertainment-over-policy",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.092,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3.8-27b",
+      "fixture": "fifa-uefa",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.076,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3.8-27b",
+      "fixture": "bodens-kommun",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.096,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3.8-27b",
+      "fixture": "sydkorea",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.085,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3.8-27b",
+      "fixture": "ugyldigt-struktureret-svar",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.105,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3.8-27b",
+      "fixture": "entertainment-over-policy",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.075,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    }
+  ],
+  "desk": [
+    {
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.098,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.095,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.098,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/openai/gpt-oss-20b",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.119,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    },
+    {
+      "model": "@cf/zai-org/glm-5.3-flash",
+      "ok": false,
+      "http_status": 401,
+      "text": "",
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0
+      },
+      "elapsed_s": 0.063,
+      "raw": {
+        "result": null,
+        "success": false,
+        "errors": [
+          {
+            "code": 10000,
+            "message": "Authentication error"
+          }
+        ],
+        "messages": []
+      }
+    }
+  ],
+  "summary": {
+    "writer": {
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.59
+      },
+      "@cf/zai-org/glm-4.7-flash": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.64
+      },
+      "@cf/qwen/qwen3-30b-a3b-fp8": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.7
+      },
+      "@cf/openai/gpt-oss-20b": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.58
+      },
+      "@cf/zai-org/glm-5.3-flash": {
+        "calls": 6,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.52
+      }
+    },
+    "editor": {
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.43
+      },
+      "@cf/zai-org/glm-4.7-flash": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.44
+      },
+      "@cf/qwen/qwen3-30b-a3b-fp8": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.45
+      },
+      "@cf/openai/gpt-oss-20b": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.41
+      },
+      "@cf/zai-org/glm-5.3-flash": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.42
+      },
+      "@cf/qwen/qwen3.8-27b": {
+        "calls": 5,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.44
+      }
+    },
+    "desk": {
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.1
+      },
+      "@cf/zai-org/glm-4.7-flash": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.1
+      },
+      "@cf/qwen/qwen3-30b-a3b-fp8": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.1
+      },
+      "@cf/openai/gpt-oss-20b": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.12
+      },
+      "@cf/zai-org/glm-5.3-flash": {
+        "calls": 1,
+        "success": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "elapsed_s": 0.06
+      }
+    }
+  }
+}

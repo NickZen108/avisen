@@ -1,0 +1,24 @@
+{
+  "model": "@cf/zai-org/glm-5.3-flash",
+  "fixture": "sydkorea",
+  "ok": false,
+  "http_status": 401,
+  "text": "",
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "estimated_usd": 0.0
+  },
+  "elapsed_s": 0.096,
+  "raw": {
+    "result": null,
+    "success": false,
+    "errors": [
+      {
+        "code": 10000,
+        "message": "Authentication error"
+      }
+    ],
+    "messages": []
+  }
+}
