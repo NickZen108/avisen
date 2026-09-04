@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T11:37:33+00:00",
+  "generated_at": "2026-09-04T13:39:40+00:00",
   "pipeline": "v3",
   "published_count": 54,
   "active_lead": {
@@ -84,10 +84,9 @@
     }
   ],
   "coverage_last_24h": {
-    "Udland": 5,
+    "Udland": 4,
     "Sport": 1,
-    "Krimi": 1,
-    "Penge": 1
+    "Krimi": 1
   },
   "active_packages": [],
   "scan_brief": [
