@@ -11,7 +11,7 @@
     "failed_or_unknown_call_charge": "full_reservation"
   },
   "models": {
-    "desk": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "desk": "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
     "journalist": "@cf/qwen/qwen3-30b-a3b-fp8",
     "language_editor": "openai/gpt-5.6-terra",
     "research_web": null,
@@ -20,6 +20,11 @@
     "chief_high_risk": "openai/gpt-5.6-terra"
   },
   "model_prices_usd_per_million_tokens": {
+    "@cf/meta/llama-3.1-8b-instruct-fp8-fast": {
+      "input": 0.045,
+      "output": 0.384,
+      "cached_input": 0.0
+    },
     "@cf/qwen/qwen3-30b-a3b-fp8": {
       "input": 0.051,
       "output": 0.335,
