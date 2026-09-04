@@ -52,7 +52,13 @@ async function rpc(name: string, body: unknown) {
 
 Deno.serve(async (req: Request) => {
   if (req.method === "GET" && new URL(req.url).pathname.endsWith("/health")) {
-    return out({ ok: true, service: "newsroom-private", auth: "github-oidc", hard_daily_limit_dkk: HARD_DAILY_LIMIT_DKK });
+    return out({
+      ok: true,
+      service: "newsroom-private",
+      auth: "github-oidc",
+      hard_daily_limit_dkk: HARD_DAILY_LIMIT_DKK,
+      capabilities: ["publisher_inbox", "ai_budget", "ai_logs", "scan_request_logs"],
+    });
   }
   if (req.method !== "POST") return out({ error: "POST required" }, 405);
   try {
@@ -63,31 +69,63 @@ Deno.serve(async (req: Request) => {
   try {
     const body = await req.json();
     const action = body?.action;
+
     if (action === "pull_inbox") {
       const limit = Math.min(20, Math.max(1, Number(body?.limit || 10)));
       const rows = await rest(`publisher_inbox?select=id,created_at,source,kind,priority,title,body,status,story_id,package_id,metadata&status=in.(new,commissioned)&order=priority.asc,created_at.asc&limit=${limit}`);
       return out({ ok: true, rows });
     }
+
     if (action === "set_inbox_status") {
       const id = String(body?.id || "");
       const status = String(body?.status || "");
       if (!/^[0-9a-f-]{36}$/i.test(id)) return out({ error: "bad id" }, 400);
-      if (!["new","triaged","commissioned","parked","completed","rejected"].includes(status)) return out({ error: "bad status" }, 400);
+      if (!["new", "triaged", "commissioned", "parked", "completed", "rejected"].includes(status)) return out({ error: "bad status" }, 400);
       const patch: Record<string, unknown> = { status, updated_at: new Date().toISOString() };
-      if (["completed","rejected"].includes(status)) patch.processed_at = new Date().toISOString();
+      if (["completed", "rejected"].includes(status)) patch.processed_at = new Date().toISOString();
       if (body?.story_id) patch.story_id = String(body.story_id);
       if (body?.package_id) patch.package_id = String(body.package_id);
       if (body?.pipeline_run_id) patch.pipeline_run_id = String(body.pipeline_run_id);
       const rows = await rest(`publisher_inbox?id=eq.${encodeURIComponent(id)}`, { method: "PATCH", body: JSON.stringify(patch) });
       return out({ ok: true, rows });
     }
+
     if (action === "log_ai") {
       const row = body?.row || {};
-      const required = ["run_id","stage","provider","model","status"];
+      const required = ["run_id", "stage", "provider", "model", "status"];
       if (required.some((k) => !row[k])) return out({ error: "missing log fields" }, 400);
       const rows = await rest("ai_run_logs", { method: "POST", body: JSON.stringify({ ...row, created_at: new Date().toISOString() }) });
       return out({ ok: true, rows });
     }
+
+    if (action === "log_scan_request") {
+      const row = body?.row || {};
+      const requestedBy = String(row?.requested_by || "");
+      const kind = String(row?.kind || "");
+      const query = String(row?.query || "").trim();
+      if (!row?.run_id || !query) return out({ error: "missing scan request fields" }, 400);
+      if (!["journalist", "media", "chief"].includes(requestedBy)) return out({ error: "bad requested_by" }, 400);
+      if (!["source", "photo", "next_story"].includes(kind)) return out({ error: "bad kind" }, 400);
+      const clean = {
+        run_id: String(row.run_id).slice(0, 180),
+        story_id: row.story_id ? String(row.story_id).slice(0, 180) : null,
+        requested_by: requestedBy,
+        kind,
+        query: query.slice(0, 1000),
+        purpose: row.purpose ? String(row.purpose).slice(0, 1000) : null,
+        result_count: Math.max(0, Math.min(1000, Number(row.result_count || 0))),
+        metadata: row.metadata && typeof row.metadata === "object" ? row.metadata : {},
+      };
+      const rows = await rest("editorial_scan_requests", { method: "POST", body: JSON.stringify(clean) });
+      return out({ ok: true, rows });
+    }
+
+    if (action === "scan_request_summary") {
+      const limit = Math.min(200, Math.max(1, Number(body?.limit || 50)));
+      const rows = await rest(`editorial_scan_requests?select=created_at,run_id,story_id,requested_by,kind,query,purpose,result_count&order=created_at.desc&limit=${limit}`);
+      return out({ ok: true, rows });
+    }
+
     if (action === "budget_reserve") {
       const reservationId = String(body?.reservation_id || "");
       const amount = Number(body?.amount_dkk || 0);
@@ -104,6 +142,7 @@ Deno.serve(async (req: Request) => {
       });
       return out({ ok: Boolean(result?.ok), budget: result, budget_date: budgetDate }, result?.ok ? 200 : 429);
     }
+
     if (action === "budget_settle") {
       const reservationId = String(body?.reservation_id || "");
       const actual = Number(body?.actual_dkk || 0);
@@ -116,13 +155,17 @@ Deno.serve(async (req: Request) => {
       });
       return out({ ok: true, budget: result });
     }
+
     if (action === "daily_budget") {
       const budgetDate = copenhagenDate();
       const rows = await rest(`ai_daily_budget?select=budget_date,spent_dkk,reserved_dkk,updated_at&budget_date=eq.${encodeURIComponent(budgetDate)}&limit=1`);
       const row = rows?.[0] || { budget_date: budgetDate, spent_dkk: 0, reserved_dkk: 0 };
       const spent = Number(row.spent_dkk || 0), reserved = Number(row.reserved_dkk || 0);
-      return out({ ok: true, ...row, hard_limit_dkk: HARD_DAILY_LIMIT_DKK, operational_limit_dkk: OPERATIONAL_DAILY_LIMIT_DKK, remaining_hard_dkk: Math.max(0, HARD_DAILY_LIMIT_DKK - spent - reserved) });
+      return out({ ok: true, ...row, hard_limit_dkk: HARD_DAILY_LIMIT_DKK,
+        operational_limit_dkk: OPERATIONAL_DAILY_LIMIT_DKK,
+        remaining_hard_dkk: Math.max(0, HARD_DAILY_LIMIT_DKK - spent - reserved) });
     }
+
     if (action === "cost_summary") {
       const since = body?.since ? String(body.since) : null;
       let path = "ai_run_logs?select=story_id,stage,status,estimated_cost_dkk,created_at&order=created_at.desc&limit=5000";
@@ -131,8 +174,10 @@ Deno.serve(async (req: Request) => {
       const total = (rows || []).reduce((s: number, r: any) => s + Math.max(0, Number(r.estimated_cost_dkk || 0)), 0);
       const published = new Set((rows || []).filter((r: any) => r.stage === "publish" && r.status === "success" && r.story_id).map((r: any) => r.story_id));
       const avg = published.size ? total / published.size : null;
-      return out({ ok: true, total_cost_dkk: total, published_articles: published.size, avg_cost_dkk_per_published: avg, rows_count: (rows || []).length, since });
+      return out({ ok: true, total_cost_dkk: total, published_articles: published.size,
+        avg_cost_dkk_per_published: avg, rows_count: (rows || []).length, since });
     }
+
     return out({ error: "unknown action" }, 400);
   } catch (e) {
     return out({ error: "backend failure", detail: String(e?.message || e) }, 500);
