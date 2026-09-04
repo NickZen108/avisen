@@ -1,0 +1,156 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-04-trump-administration-pushes-to-remove-tax-exemptions-for-private-univers",
+  "article_slug": "2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive",
+  "assignment": {
+    "category": "Udland",
+    "weight": "C",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "USA",
+      "country_code": "US",
+      "place_names_english": [
+        "Washington D.C."
+      ],
+      "place_names_local": [
+        "Washington D.C."
+      ]
+    },
+    "core_question": "Trump administration pushes to remove tax exemptions for private universities with DEI policies"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Euronews",
+      "url": "https://www.euronews.com/2026/09/04/trump-administration-pushes-to-remove-tax-exemptions-for-private-universities-with-dei-pol",
+      "published_at": "2026-09-04T04:02:09.000Z",
+      "accessed_at": "2026-09-04T04:22:23.297Z",
+      "type": "news",
+      "source_group": "host-euronews-com",
+      "publisher_root": "euronews-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "Trump administration pushes to remove tax exemptions for private universities with DEI policies",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1"
+    ],
+    "independent_source_groups": [
+      "host-euronews-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-euronews-com"
+      ],
+      "checked_at": "2026-09-04T04:22:23.297Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F02",
+      "claim": "DEI-politikker er en del af universitetsledelsers strategi for at fremme diversity, equity og inclusion",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-euronews-com"
+      ],
+      "checked_at": "2026-09-04T04:22:23.297Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F03",
+      "claim": "Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-euronews-com"
+      ],
+      "checked_at": "2026-09-04T04:22:23.297Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F04",
+      "claim": "Trump-administrationen mener, at DEI-politikker er en form for politisk aktivitet, der ikke hører hjemme på universiteter",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-euronews-com"
+      ],
+      "checked_at": "2026-09-04T04:22:23.297Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F05",
+      "claim": "DEI-politikker er en nødvendig del af universitetsledelsers arbejde for at sikre, at alle studerende føler sig velkommen og inkluderet",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-euronews-com"
+      ],
+      "checked_at": "2026-09-04T04:22:23.297Z",
+      "notes": "Euronews"
+    },
+    {
+      "id": "F06",
+      "claim": "Fjernelsen af skattefriheder vil føre til en betydelig reduktion i universiteters budgetter",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-euronews-com"
+      ],
+      "checked_at": "2026-09-04T04:22:23.297Z",
+      "notes": "Euronews"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-04T04:22:23.297Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "main"
+}

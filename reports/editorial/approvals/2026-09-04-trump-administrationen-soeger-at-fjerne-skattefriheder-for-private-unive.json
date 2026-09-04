@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "story_id": "2026-09-04-trump-administration-pushes-to-remove-tax-exemptions-for-private-univers",
+  "article_slug": "2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive",
+  "checked_at": "2026-09-04T04:22:23.297Z",
+  "final_editor_mode": "ai",
+  "editorial_snapshot": {
+    "pipeline_version": 2,
+    "story_id": "2026-09-04-trump-administration-pushes-to-remove-tax-exemptions-for-private-univers",
+    "slug": "2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive",
+    "category": "Udland",
+    "weight": "C",
+    "editorial_destination": "main",
+    "story_location": {
+      "country": "USA",
+      "country_code": "US",
+      "place_names_english": [
+        "Washington D.C."
+      ],
+      "place_names_local": [
+        "Washington D.C."
+      ]
+    },
+    "title": "Trump-administrationen søger at fjerne skattefriheder for private universiteter med DEI-politikker",
+    "standfirst": "Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker. Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter.",
+    "byline": "Morgentidende Redaktion",
+    "ledger": "sources/2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive.json",
+    "claim_ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06"
+    ],
+    "seo": {
+      "title": "Trump-administrationen søger at fjerne skattefriheder for private universiteter med DEI-politikker",
+      "description": "Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker. Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter.",
+      "canonical": null
+    },
+    "image": {
+      "src": "https://morgentidende.nicolaipetersen108.workers.dev/img/auto/2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive.jpg",
+      "alt": "Library of Congress, Thomas Jefferson Building, Washington, D.C.",
+      "credit": "William Henry Jackson",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Library_of_Congress,_Washington,_D.C._-_c._1902.jpg",
+      "image_type": "photo",
+      "context_type": "archive",
+      "caption": "Arkivfoto – billedet viser ikke nødvendigvis selve hændelsen.",
+      "pending_image": false,
+      "ai_generated": false,
+      "placement": "lead"
+    },
+    "body": [
+      {
+        "text": "Trump-administrationen søger at fjerne skattefriheder for private universiteter, der har DEI-politikker. Ifølge Euronews søger administrationen at fjærne skattefrihederne på grund af, at DEI-politikker er en form for politisk aktivitet, der ikke hører hjemme på universiteter.",
+        "type": "h2"
+      },
+      {
+        "text": "DEI-politikker er en del af universitetsledelsers strategi for at fremme diversity, equity og inclusion. Det betyder, at universiteterne søger at sikre, at alle studerende føler sig velkommen og inkluderet.",
+        "type": "p"
+      },
+      {
+        "text": "Fjernelsen af skattefriheder vil have en betydelig økonomisk påvirkning på private universiteter. Det vil føre til en betydelig reduktion i universiteters budgetter.",
+        "type": "p"
+      },
+      {
+        "text": "Trump-administrationen mener, at DEI-politikker er en form for politisk aktivitet, der ikke hører hjemme på universiteter. Det er en kontroversiel holdning, der har været mødt med kritik fra mange sider.",
+        "type": "p"
+      },
+      {
+        "text": "DEI-politikker er en nødvendig del af universitetsledelsers arbejde for at sikre, at alle studerende føler sig velkommen og inkluderet. Det er en vigtig del af universitetsledelsers strategi for at fremme diversity, equity og inclusion.",
+        "type": "p"
+      },
+      {
+        "text": "Fjernelsen af skattefriheder vil føre til en betydelig reduktion i universiteters budgetter. Det vil være en stor udfordring for universiteterne at finansiere deres aktiviteter uden skattefriheder.",
+        "type": "p"
+      }
+    ],
+    "source_ids_to_display": [
+      "S1"
+    ],
+    "related_news_slug": null,
+    "related": [],
+    "correction_note": null,
+    "automation_origin": "cloudflare-workers-ai"
+  },
+  "editorial_destination": "main"
+}

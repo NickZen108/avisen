@@ -1,0 +1,143 @@
+{
+  "schema_version": 3,
+  "story_id": "2026-09-04-openais-nyeste-ai-model",
+  "article_slug": "2026-09-04-ugyldigt-struktureret-svar",
+  "assignment": {
+    "category": "Videnskab & teknologi",
+    "weight": "B",
+    "editorial_destination": "tech_magazine",
+    "story_location": {
+      "country": "USA",
+      "country_code": "US",
+      "place_names_english": [
+        "San Francisco",
+        "Mountain View",
+        "Palo Alto"
+      ],
+      "place_names_local": [
+        "San Francisco",
+        "Mountain View",
+        "Palo Alto"
+      ]
+    },
+    "core_question": "Hvad er OpenAIs nyeste AI-model?"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/economy/2026/9/4/openai-unveils-gpt-6-astra-amid-rising-scrutiny-and-safety?traffic_source=rss",
+      "published_at": "2026-09-04T03:36:19.000Z",
+      "accessed_at": "2026-09-04T04:22:50.927Z",
+      "type": "news",
+      "source_group": "host-aljazeera-com",
+      "publisher_root": "aljazeera-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-1",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": null,
+      "primary_record": null,
+      "authoritative_for": "OpenAI unveils GPT‑6 Astra amid rising scrutiny and safety concerns",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S2",
+      "name": "France 24",
+      "url": "https://www.france24.com/en/technology/20260904-openai-begins-rollout-of-gpt-6-with-focus-on-cyber-security-safeguards",
+      "published_at": "2026-09-04T02:44:09.000Z",
+      "accessed_at": "2026-09-04T04:22:50.927Z",
+      "type": "news",
+      "source_group": "host-france24-com",
+      "publisher_root": "france24-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-2",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": "https://www.facebook.com/FRANCE24.English",
+      "publisher_name": "https://www.facebook.com/FRANCE24.English",
+      "canonical_url": "https://www.france24.com/en/technology/20260904-openai-begins-rollout-of-gpt-6-with-focus-on-cyber-security-safeguards",
+      "primary_record": null,
+      "authoritative_for": "OpenAI begins rollout of GPT-6 with focus on cyber security safeguards",
+      "authority_class": "strong_editorial",
+      "discovery_only": false
+    },
+    {
+      "id": "S3",
+      "name": "developers.openai.com",
+      "url": "https://developers.openai.com/api/docs/models/all",
+      "published_at": null,
+      "accessed_at": "2026-09-04T04:22:50.927Z",
+      "type": "news",
+      "source_group": "host-developers-openai-com",
+      "publisher_root": "developers-openai-com",
+      "wire_origin": null,
+      "upstream_origin": null,
+      "provenance_type": "reporting",
+      "provenance_cluster": "pc-3",
+      "provenance_basis": "publisher_or_similarity",
+      "byline": null,
+      "publisher_name": null,
+      "canonical_url": "https://developers.openai.com/api/docs/models/all",
+      "primary_record": null,
+      "authoritative_for": "All models | OpenAI API",
+      "authority_class": "news",
+      "discovery_only": false
+    }
+  ],
+  "coverage_sweep": {
+    "status": "pass",
+    "editorial_source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "independent_source_groups": [
+      "host-aljazeera-com",
+      "host-france24-com",
+      "host-developers-openai-com"
+    ],
+    "limitations": null,
+    "notes": [
+      "Coverage beskriver kildegrundlaget; claim-verifikation afgøres særskilt. Ét claim kan verificeres af én relevant autoritativ kilde: stort redaktionelt medie, myndighed/officiel kilde, virksomhed/person om egne forhold, relevant forsker/fagekspert eller forskningspaper/original forskning. Flere kilder er til pluralisme, mod-evidens og ekstra sikkerhed — ikke en mekanisk kvote."
+    ]
+  },
+  "claims": [
+    {
+      "id": "F01",
+      "claim": "OpenAIs nyeste AI-model er GPT-6 Astra",
+      "status": "verified",
+      "source_ids": [
+        "S1"
+      ],
+      "independent_groups": [
+        "host-aljazeera-com"
+      ],
+      "checked_at": "2026-09-04T04:22:50.927Z",
+      "notes": "Al Jazeera: OpenAI unveils GPT‐6 Astra amid rising scrutiny and safety concerns"
+    }
+  ],
+  "numbers": [],
+  "quotes": [],
+  "right_of_reply": {
+    "required": false,
+    "party": null,
+    "contacted_at": null,
+    "deadline": null,
+    "response": null,
+    "exception": null
+  },
+  "fact_check": {
+    "status": "pass",
+    "checked_at": "2026-09-04T04:22:50.927Z",
+    "notes": [
+      "Uafhængigt Fact checker-call bestået; hvert publiceret claim har mindst én relevant autoritativ kilde, og discovery-only-kilder kan ikke verificere claims."
+    ]
+  },
+  "editorial_destination": "tech_magazine"
+}

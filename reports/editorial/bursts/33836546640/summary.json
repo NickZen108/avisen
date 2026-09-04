@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "github_run_id": "33836546640",
+  "requested_cycles": 3,
+  "validation_outcome": "success",
+  "cycles": [
+    {
+      "status": "approved",
+      "stage": null,
+      "generated_at": "2026-09-04T04:22:23.297Z",
+      "slug": "2026-09-04-trump-administrationen-soeger-at-fjerne-skattefriheder-for-private-unive",
+      "title": null,
+      "reason": null,
+      "handled_signal_keys": [
+        "trump administration pushes to remove tax exemptions for private universities with dei policies|http://www.euronews.com/2026/09/04/trump-administration-pushes-to-remove-tax-exemptions-for-private-universities-with-dei-pol"
+      ],
+      "ai_usage": {
+        "calls": 6,
+        "text_calls": 6,
+        "image_calls": 0,
+        "prompt_tokens": 7339,
+        "completion_tokens": 2480,
+        "total_tokens": 9819,
+        "estimated_neurons": 116.70198100000002,
+        "complete_token_telemetry": true,
+        "neuron_values_are_estimates": true,
+        "by_model": {
+          "@cf/meta/llama-3.1-8b-instruct-fast": {
+            "calls": 6,
+            "prompt_tokens": 7339,
+            "completion_tokens": 2480,
+            "total_tokens": 9819,
+            "estimated_neurons": 116.70198100000002
+          }
+        },
+        "structured_fallback_calls": 1,
+        "structured_fallback_by_stage": {
+          "fact-check": 1
+        }
+      },
+      "cycle": 1
+    },
+    {
+      "status": "approved",
+      "stage": null,
+      "generated_at": "2026-09-04T04:22:50.927Z",
+      "slug": "2026-09-04-ugyldigt-struktureret-svar",
+      "title": null,
+      "reason": null,
+      "handled_signal_keys": [
+        "openai unveils gpt 6 astra amid rising scrutiny and safety concerns|https://www.aljazeera.com/economy/2026/9/4/openai-unveils-gpt-6-astra-amid-rising-scrutiny-and-safety?traffic_source=rss",
+        "openai begins rollout of gpt 6 with focus on cyber security safeguards|https://www.france24.com/en/technology/20260904-openai-begins-rollout-of-gpt-6-with-focus-on-cyber-security-safeguards"
+      ],
+      "ai_usage": {
+        "calls": 8,
+        "text_calls": 8,
+        "image_calls": 0,
+        "prompt_tokens": 9600,
+        "completion_tokens": 4850,
+        "total_tokens": 14450,
+        "estimated_neurons": 278.757611,
+        "complete_token_telemetry": true,
+        "neuron_values_are_estimates": true,
+        "by_model": {
+          "@cf/meta/llama-3.1-8b-instruct-fast": {
+            "calls": 6,
+            "prompt_tokens": 7222,
+            "completion_tokens": 4753,
+            "total_tokens": 11975,
+            "estimated_neurons": 195.475022
+          },
+          "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+            "calls": 2,
+            "prompt_tokens": 2378,
+            "completion_tokens": 97,
+            "total_tokens": 2475,
+            "estimated_neurons": 83.282589
+          }
+        },
+        "structured_fallback_calls": 3,
+        "structured_fallback_by_stage": {
+          "fact-check": 2,
+          "journalist": 1
+        }
+      },
+      "cycle": 2
+    },
+    {
+      "status": "approved",
+      "stage": null,
+      "generated_at": "2026-09-04T04:23:42.016Z",
+      "slug": "2026-09-04-entertainment-over-policy-white-house-arcade-games-ignite-backlash",
+      "title": null,
+      "reason": null,
+      "handled_signal_keys": [
+        "entertainment over policy white house arcade games ignite backlash|https://www.aljazeera.com/economy/2026/9/4/entertainment-over-policy-white-house-arcade-games-ignite-backlash?traffic_source=rss"
+      ],
+      "ai_usage": {
+        "calls": 7,
+        "text_calls": 7,
+        "image_calls": 0,
+        "prompt_tokens": 8458,
+        "completion_tokens": 3464,
+        "total_tokens": 11922,
+        "estimated_neurons": 306.732303,
+        "complete_token_telemetry": true,
+        "neuron_values_are_estimates": true,
+        "by_model": {
+          "@cf/meta/llama-3.1-8b-instruct-fast": {
+            "calls": 5,
+            "prompt_tokens": 5894,
+            "completion_tokens": 2915,
+            "total_tokens": 8809,
+            "estimated_neurons": 125.917606
+          },
+          "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+            "calls": 2,
+            "prompt_tokens": 2564,
+            "completion_tokens": 549,
+            "total_tokens": 3113,
+            "estimated_neurons": 180.814697
+          }
+        },
+        "structured_fallback_calls": 2,
+        "structured_fallback_by_stage": {
+          "fact-check": 2
+        }
+      },
+      "cycle": 3
+    }
+  ],
+  "published_candidates": 3,
+  "nonpublished_candidates": [],
+  "note": "Raw cycle JSON is retained so every non-publication can be traced to status, stage and reason."
+}
