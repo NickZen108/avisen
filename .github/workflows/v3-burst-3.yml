@@ -40,7 +40,7 @@ jobs:
       - name: Get short-lived GitHub OIDC token for private newsroom backend
         run: |
           set -euo pipefail
-          OIDC_JSON="$(curl --fail --silent --show-error \
+          OIDC_JSON="$(curl --fail --silent --show-error --max-time 20 \
             -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=morgentidende-v3")"
           TOKEN="$(printf '%s' "$OIDC_JSON" | jq -r .value)"
@@ -51,7 +51,7 @@ jobs:
 
       - name: Verify private Publisher Inbox bridge
         run: |
-          curl --fail --silent --show-error \
+          curl --fail --silent --show-error --max-time 20 \
             -H "Authorization: Bearer $GITHUB_OIDC_TOKEN" \
             -H "Content-Type: application/json" \
             -d '{"action":"pull_inbox","limit":1}' \
@@ -89,7 +89,7 @@ jobs:
           echo "V3_WORKER_URL=$V3_WORKER_URL" >> "$GITHUB_ENV"
           READY=0
           for i in $(seq 1 12); do
-            if curl --fail --silent --show-error "$V3_WORKER_URL/health" | jq -e '.ok == true' >/dev/null; then READY=1; break; fi
+            if curl --fail --silent --show-error --max-time 10 "$V3_WORKER_URL/health" | jq -e '.ok == true' >/dev/null; then READY=1; break; fi
             sleep 3
           done
           test "$READY" = 1
@@ -98,15 +98,15 @@ jobs:
         run: |
           set -euo pipefail
           OK=0
-          for i in $(seq 1 6); do
-            CODE="$(curl --silent --show-error -o /tmp/v3-ai-smoke.json -w '%{http_code}' \
+          for i in $(seq 1 4); do
+            CODE="$(curl --max-time 35 --silent --show-error -o /tmp/v3-ai-smoke.json -w '%{http_code}' \
               -H "Authorization: Bearer $V3_WORKER_TOKEN" \
               -H "Content-Type: application/json" \
               -d '{"stage":"smoke","model":"openai/gpt-5.6-luna","instructions":"Return only the word OK.","input":"Health check","max_output_tokens":64,"reasoning":"none"}' \
-              "$V3_WORKER_URL/run")"
-            if [ "$CODE" = 200 ] && jq -e '.ok == true and (.text|length>0)' /tmp/v3-ai-smoke.json >/dev/null; then OK=1; break; fi
-            echo "Inference smoke attempt $i returned HTTP $CODE"
-            cat /tmp/v3-ai-smoke.json || true
+              "$V3_WORKER_URL/run" || true)"
+            if [ "$CODE" = 200 ] && jq -e '.ok == true and (.text|length>0)' /tmp/v3-ai-smoke.json >/dev/null 2>&1; then OK=1; break; fi
+            echo "Inference smoke attempt $i returned HTTP ${CODE:-transport-error}"
+            cat /tmp/v3-ai-smoke.json 2>/dev/null || true
             sleep 3
           done
           test "$OK" = 1
