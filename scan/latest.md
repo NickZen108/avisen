@@ -1,4 +1,4 @@
-# Scan 2026-09-03T23:05:51.301Z (Cloudflare runtime)
+# Scan 2026-09-04T00:55:52.791Z (Cloudflare runtime)
 
 Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel source of truth.
 
@@ -17,22 +17,22 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Tom des Tages
 
 ## Al Jazeera
-- Advocates decry US House vote to defund universities that boycott Israel
+- Are Trump’s AI videos just memes or psychological warfare?
 - Burnham, Macron talk border security and stronger Europe-UK ties
+- DR Congo joins countries pledging embassy move to Jerusalem
 - El Nino: A phenomenon supercharged by climate change
-- FIFA accuses UEFA of ‘smear campaign’ over Infantino, World Cup plan
 - France records ‘hottest summer ever’ in 2026
-- Funeral held for child killed in US strike on Iranian wedding
+- Haitian government calls for renewal of international anti-gang task force
 - ICE agent charged with lying under oath about Minnesota shooting
 - India rejects court ruling on Indus Waters Treaty
 - Ipswich Town vs Liverpool: Premier League – prediction, team news, lineups
+- Iran war live: US rules out Iran talks until ship attacks stop
 - Israel kills 3 in Gaza as far-right minister plans for Palestinian removals
-- Leaders of Thailand and Singapore perform Beatles song, “Let It Be”
 - Nepal flood victims to be identified through DNA
 - NYC’s AI ban through grade 8 sets stage for rest of US, experts say
-- Serbia welcomes return of war criminal Mladic’s body with military honours
 - Ten injured in Ukraine as Kyiv expects talks with US envoys in coming days
 - Train crashes into truck at railway crossing in Gdansk, Poland
+- Tunisia’s top court upholds conviction of opposition figures, activists
 - US Vice President JD Vance declines to offer timeline for end of Iran war
 - Why are people calling Venezuela oil deal a new form of US colonialism?
 
@@ -63,23 +63,23 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 ## BBC World
 - AI data centres are booming in Australia - but at what cost?
 - Anthony Joshua's driver attempted overtake before fatal crash, trial hears
+- Around 2,000 fall ill in Indonesia after eating free school meals
 - 'Beautiful, vibrant' Disney star Carla Jeffery dies aged 33
 - Embattled Spanish PM insists there were no prior warnings before Ceuta crisis
-- EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany
 - Feminist activist and journalist Gloria Steinem dies, aged 92
 - How Gloria Steinem changed the lives of generations of women
 - ICE agent charged with lying about shooting Venezuelan man during crackdown
 - Kenyan president orders crackdown on foreigners operating small businesses
 - More than 80 migrants feared dead after boat rescued off Canary Islands
 - Palestinian teens killed during settler attack on West Bank village, officials say
-- Rocky Horror star Tim Curry's cause of death revealed as coronary artery disease
 - Sharpeville massacre survivors start legal fight for justice in South Africa
-- Stingy bosses and spare change: How much should you give to the office whip-round?
-- Sydney police investigate second possible mistaken identity killing in two days
 - 'The crowd shouted that we'd stolen someone's genitals' - deadly rumours spread on social media
-- Toxic wildfire haze spreads across South East Asia as 'super' El Niño intensifies
+- Transplanted pig kidney works in US man's body for record 271 days
 - Trump $1 coin makes him first living president on US currency in a century
+- Trump hints US would not back UK over Falkland Islands due to lack of Iran war support
 - UN warns of 'supersized' El Niño as countries prepare for impact
+- US billionaire Leon Black defies summons and sues Epstein panel
+- US investigating if missile hit Iran wedding, Vance says
 - US sailors go shopping before hitting the bars in Thailand after 250-day voyage
 - Vance's Antichrist comments are a 'common belief', his friend tells BBC
 - Why Nepal floods should worry India
@@ -152,9 +152,9 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Nvidia to buy Hugging Face in $12.93 billion deal
 - Putin denies fresh mobilization campaign in Ukraine war
 - South Africa airline behind viral stadium flyby scraps repeat display
-- 'Supersized' El Nino could be strongest on record, UN says
 - Trump's Iran strategy: Could this become a forever war?
 - US sanctions halt TOEFL and GRE tests in Iran, disrupting study plans
+- Volkswagen to cut 100,000 jobs by end of decade
 
 ## Document.no
 - En hjuldamper nær Fredriksvern, nå Stavern (1834).
@@ -192,7 +192,6 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - '50% savvy political tactics, 50% extraordinarily good luck' - the formula to Meloni's success?
 - Anti-Christian murder in Syria? No indication he was killed because of his faith
 - Deadlocked jury in Lindsay Clancy's children murder trial deliberates for sixth day
-- Driverless robotaxis hit the streets of London
 - El Niño weather phenomenon set to deliver massive blow to global economy
 - ‘Fight through darkness, water’: Nepal survivor recounts escape from flood-hit tunnel
 - France agriculture production sees economic hit from heatwaves
@@ -205,6 +204,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Two Palestinian teens killed in West Bank raid by Israeli settlers and army
 - US energy firms dominate Venezuela deals worth billions
 - US feminist icon and journalist Gloria Steinem dies aged 92
+- Volkswagen to cut another 50,000 jobs to counter tariffs and Chinese competition
 - Why Ukraine’s drained Kakhovka Dam is strategic for Russia
 - WMO chief says El Nino could be strongest in four decades
 
@@ -221,7 +221,7 @@ Kildehentning udført af Cloudflare Newsdesk Worker. GitHub er redaktionel sourc
 - Hong Kong pro-democracy activist Joshua Wong pleads guilty in second national security case
 - Japan halves speed limit to 30km/h on all narrow city streets
 - New constitution in Guinea-Bissau will undermine democracy, opponents say
-- News live: Two more Australians confirmed safe in Nepal-Tibet floods; Bowen calls joint statement on China ‘strong’
+- News live: Two more Australians confirmed safe in Nepal-Tibet floods; Sydney’s first case of bird flu confirmed
 - Nobel laureate Machado: ‘Illegitimate’ Venezuela regime has no right to strike US oil deal
 - South African airline defends dramatic low-level flyby before rugby union clash
 - Spain’s PM says no evidence ‘whatsoever’ Morocco behind Ceuta border breach
