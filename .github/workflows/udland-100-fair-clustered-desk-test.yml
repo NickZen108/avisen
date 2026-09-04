@@ -1,0 +1,132 @@
+name: Udland 100 fair clustered Desk test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/udland-100-fair-clustered-desk-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check requests feedparser python-dateutil numpy
+      - name: Collect fresh foreign RSS candidates
+        env:
+          RAW: /tmp/raw.json
+        run: |
+          python - <<'PY'
+          import json,re,os,requests,feedparser
+          from dateutil import parser as dtparser
+          feeds=[
+          ('Poland','RMF24',['https://www.rmf24.pl/feed']),('Czechia','iDNES',['https://servis.idnes.cz/rss.aspx?c=zpravodaj']),('Slovakia','Aktuality',['https://www.aktuality.sk/rss/']),('Croatia','Index.hr',['https://www.index.hr/rss/vijesti']),('Estonia','ERR',['https://news.err.ee/k/news/rss.xml','https://www.err.ee/rss']),('Lithuania','LRT',['https://www.lrt.lt/?rss']),('Romania','HotNews',['https://hotnews.ro/feed','https://rss.hotnews.ro']),('Hungary','Telex',['https://telex.hu/rss','https://telex.hu/rss/all']),('Serbia','N1 Serbia',['https://n1info.rs/feed/']),('Latvia','LSM',['https://www.lsm.lv/rss/','https://eng.lsm.lv/rss/']),('Ukraine','Ukrainska Pravda',['https://www.pravda.com.ua/rss/']),('Slovenia','RTV Slovenija',['https://www.rtvslo.si/feeds/00.xml']),('Bulgaria','Novinite',['https://www.novinite.com/services/news_rss.php']),('United Kingdom','BBC World',['https://feeds.bbci.co.uk/news/world/rss.xml']),('Germany','DW',['https://rss.dw.com/rdf/rss-en-world']),('France','France 24',['https://www.france24.com/en/rss']),('Italy','ANSA',['https://www.ansa.it/sito/ansait_rss.xml']),('Spain','El Pais',['https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada']),('Ireland','RTE',['https://www.rte.ie/feeds/rss/?index=/news/']),('United States','NPR World',['https://feeds.npr.org/1004/rss.xml']),('Canada','CBC World',['https://www.cbc.ca/cmlink/rss-world']),('Australia','ABC News',['https://www.abc.net.au/news/feed/51120/rss.xml']),('New Zealand','RNZ',['https://www.rnz.co.nz/rss/world.xml']),('Japan','NHK World',['https://www3.nhk.or.jp/rss/news/cat0.xml']),('India','The Hindu',['https://www.thehindu.com/news/international/feeder/default.rss']),('Singapore','CNA',['https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml']),('South Korea','Korea Herald',['https://www.koreaherald.com/rss']),('Israel','Times of Israel',['https://www.timesofisrael.com/feed/']),('Turkey','Daily Sabah',['https://www.dailysabah.com/rss']),('South Africa','News24',['https://feeds.news24.com/articles/news24/TopStories/rss']),('Nigeria','Premium Times',['https://www.premiumtimesng.com/feed']),('Kenya','Nation',['https://nation.africa/kenya/rss']),('Brazil','Agencia Brasil',['https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml']),('Argentina','Buenos Aires Herald',['https://buenosairesherald.com/feed']),('Mexico','Mexico News Daily',['https://mexiconewsdaily.com/feed/'])]
+          def clean(s): return re.sub(r'\s+',' ',re.sub('<[^>]+>',' ',s or '')).strip()
+          def ts(e):
+            try:return dtparser.parse(e.get('published') or e.get('updated') or '').timestamp()
+            except:return 0
+          H={'User-Agent':'Mozilla/5.0 Morgentidende-Scan-Test/1.0'}; items=[]
+          for country,source,urls in feeds:
+            d=None
+            for url in urls:
+              try:
+                r=requests.get(url,headers=H,timeout=12)
+                if r.status_code==200:
+                  p=feedparser.parse(r.content)
+                  if p.entries:d=p;break
+              except:pass
+            if not d:continue
+            for e in d.entries[:20]:
+              title=clean(e.get('title',''))
+              if not title:continue
+              items.append({'country':country,'source':source,'title':title,'summary':clean(e.get('summary','') or e.get('description',''))[:700],'published':clean(e.get('published','') or e.get('updated','')),'link':e.get('link',''),'ts':ts(e)})
+          items=sorted(items,key=lambda x:x['ts'],reverse=True)[:450]
+          json.dump(items,open(os.environ['RAW'],'w'),ensure_ascii=False)
+          print('RAW_ITEMS',len(items))
+          PY
+      - name: Prepare temporary AI Worker
+        run: |
+          set -euo pipefail
+          WORKER_NAME="morgentidende-fair-${GITHUB_RUN_ID}"
+          RUN_TOKEN="$(openssl rand -hex 32)"; echo "::add-mask::$RUN_TOKEN"; echo "WORKER_NAME=$WORKER_NAME" >> "$GITHUB_ENV"; echo "RUN_TOKEN=$RUN_TOKEN" >> "$GITHUB_ENV"
+          cat >/tmp/worker.js <<'JS'
+          export default {async fetch(request,env){if(request.method==='GET')return Response.json({ok:true});if((request.headers.get('authorization')||'')!==`Bearer ${env.RUN_TOKEN}`)return new Response('unauthorized',{status:401});const b=await request.json();if(b.kind==='embed')return Response.json(await env.AI.run('@cf/baai/bge-m3',{text:b.text}));const allowed=new Set(['@cf/meta/llama-3.1-8b-instruct-fast','@cf/qwen/qwen3-30b-a3b-fp8','@cf/google/gemma-4-26b-a4b-it']);if(!allowed.has(b.model))return new Response('bad model',{status:400});return Response.json(await env.AI.run(b.model,{messages:[{role:'system',content:b.system},{role:'user',content:b.user}],max_tokens:2200,temperature:0.1}));}}
+          JS
+          cat >/tmp/wrangler.jsonc <<EOF
+          {"name":"$WORKER_NAME","main":"/tmp/worker.js","compatibility_date":"2026-09-01","ai":{"binding":"AI"},"vars":{"RUN_TOKEN":"$RUN_TOKEN"}}
+          EOF
+      - name: Deploy temporary Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4.127.1 deploy --config /tmp/wrangler.jsonc | tee /tmp/deploy.log
+          URL="$(grep -Eo 'https://[^[:space:]]+\.workers\.dev' /tmp/deploy.log | tail -1 || true)"; [ -n "$URL" ] || URL="https://${WORKER_NAME}.nicolaipetersen108.workers.dev"; echo "WORKER_URL=$URL" >> "$GITHUB_ENV"; sleep 4
+      - name: BGE-M3 event clustering and select 100 distinct events
+        env:
+          RAW: /tmp/raw.json
+          OUT: /tmp/events100.json
+        run: |
+          python - <<'PY'
+          import json,os,requests,numpy as np
+          items=json.load(open(os.environ['RAW']))
+          H={'Authorization':f"Bearer {os.environ['RUN_TOKEN']}",'Content-Type':'application/json'}
+          texts=[(x['title']+' — '+x['summary'])[:1200] for x in items]
+          vecs=[]
+          for i in range(0,len(texts),40):
+            r=requests.post(os.environ['WORKER_URL'],headers=H,json={'kind':'embed','text':texts[i:i+40]},timeout=180); r.raise_for_status(); o=r.json(); data=o.get('data') or o.get('result',{}).get('data') or []
+            vecs.extend(data)
+          V=np.array(vecs,float); V/=np.linalg.norm(V,axis=1,keepdims=True)+1e-12
+          clusters=[]; assigned=[]; threshold=.84
+          for idx,x in enumerate(items):
+            best=-1; bestsim=-1
+            for ci,c in enumerate(clusters):
+              sim=float(V[idx]@V[c['rep']])
+              if sim>bestsim: bestsim=sim; best=ci
+            if best>=0 and bestsim>=threshold:
+              clusters[best]['members'].append(idx)
+            else:
+              clusters.append({'rep':idx,'members':[idx]})
+          clusters=clusters[:100]
+          events=[]
+          for eid,c in enumerate(clusters,1):
+            rep=items[c['rep']]
+            sources=[]
+            for j in c['members'][:6]: sources.append({'country':items[j]['country'],'source':items[j]['source'],'title':items[j]['title']})
+            events.append({'id':eid,'country':rep['country'],'source':rep['source'],'title':rep['title'],'summary':rep['summary'],'published':rep['published'],'cluster_size':len(c['members']),'sources':sources})
+          if len(events)<100: raise SystemExit(f'Only {len(events)} clusters')
+          json.dump(events,open(os.environ['OUT'],'w'),ensure_ascii=False,indent=2)
+          print('EVENTS',len(events)); print('MULTI_SOURCE_CLUSTERS',sum(1 for e in events if e['cluster_size']>1))
+          for e in events[:100]: print(f"{e['id']:03d}. {e['country']} | {e['title']} | cluster={e['cluster_size']}")
+          PY
+      - name: Fair Desk comparison on identical 100 events
+        env:
+          EVENTS: /tmp/events100.json
+        run: |
+          python - <<'PY'
+          import json,os,requests
+          c=json.load(open(os.environ['EVENTS']))
+          system='''Du er Desk Editor på Morgentidende, en dansk nationalkonservativ-liberal netavis. Du får præcis 100 forskellige udenlandske nyhedsbegivenheder, allerede deduplikeret/clusteret på tværs af medier og sprog. Vælg præcis 3 forskellige historier, som du ville bestille artikler på NU til Udland. Vægt stor og aktuel nyhedsværdi, Danmark/Europa, sikkerhed, forsvar, Rusland, migration, suverænitet, energi, økonomi, handel, regulering og borgerlig/liberal eller nationalkonservativ relevans. Profilen må påvirke interesse og vinkel, aldrig fakta. Undgå trivielt lokalt stof. For hvert valg: eventnummer, kort dansk rubrik, hvorfor vigtig og journalistisk vinkel. Svar kompakt.'''
+          payload='\n\n'.join(f"EVENT {x['id']} | {x['country']} | {x['source']} | cluster {x['cluster_size']}\nTitel: {x['title']}\nTeaser: {x['summary']}\nAndre dækninger: "+' ; '.join(s['country']+': '+s['title'] for s in x['sources'][1:4]) for x in c)
+          H={'Authorization':f"Bearer {os.environ['RUN_TOKEN']}",'Content-Type':'application/json'}
+          models=[('LLAMA 3.1 8B FAST','@cf/meta/llama-3.1-8b-instruct-fast'),('QWEN3 30B','@cf/qwen/qwen3-30b-a3b-fp8'),('GEMMA 4 26B','@cf/google/gemma-4-26b-a4b-it')]
+          for name,model in models:
+            r=requests.post(os.environ['WORKER_URL'],headers=H,json={'model':model,'system':system,'user':payload},timeout=240);r.raise_for_status();o=r.json();text=o.get('response')
+            if not text and o.get('choices'):
+              m=o['choices'][0].get('message',{});text=m.get('content') or m.get('reasoning_content') or ''
+            print('\n### '+name+' ###\n'+(text or json.dumps(o,ensure_ascii=False)))
+          PY
+      - name: Cleanup Worker
+        if: always()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4.127.1 delete --name "$WORKER_NAME" --force || true
