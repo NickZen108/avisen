@@ -1,5 +1,5 @@
 name: Dispatch burst 3 once
-# Manual trigger helper refreshed 2026-09-04T06:00+02:00 — auditable burst
+# Manual trigger helper refreshed 2026-09-04T06:31+02:00 — auditable burst
 on:
   push:
     branches: [main]
