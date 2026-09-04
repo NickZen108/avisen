@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""Runtime entrypoint that keeps the private budget backend authenticated.
+"""Runtime entrypoint that keeps auth fresh and transport retries bounded.
 
 GitHub OIDC tokens are intentionally short lived. Worker deployment can take
-several minutes, so the safe runner must be able to refresh its token instead
-of either failing mid-run or replacing it with a long-lived secret.
+several minutes, so the safe runner refreshes its token. Fresh workers can also
+briefly return Cloudflare's generic HTML 404 while the workers.dev route is
+propagating; those transport failures are retried at most twice. Each attempt
+still passes through the DB budget reservation and the normal run/story call
+ceilings, so this retry cannot become a spending loop.
 """
 from __future__ import annotations
 
 import argparse
 import os
+import time
 
 import requests
 
@@ -66,12 +70,39 @@ def refreshable_backend(action: str, **kwargs):
     raise s.SafetyLimitExceeded(f"Private backend {action} authorization failed after OIDC refresh")
 
 
+BASE_SAFE_CALL = s.safe_call_ai
+
+
+def route_resilient_safe_call(*args, **kwargs):
+    """Retry only the known zero-inference workers.dev propagation failure.
+
+    The underlying safe call reserves/settles budget for every attempt. There
+    are at most three attempts total, and all other errors stop immediately.
+    """
+    last = None
+    for attempt in range(3):
+        try:
+            return BASE_SAFE_CALL(*args, **kwargs)
+        except RuntimeError as exc:
+            msg = str(exc)
+            transient_route_404 = (
+                "HTTP 404" in msg
+                and ("Page not found" in msg or "workers.cloudflare" in msg or "workers.dev" in msg)
+            )
+            if not transient_route_404 or attempt >= 2:
+                raise
+            last = exc
+            time.sleep(3 * (attempt + 1))
+    raise last or RuntimeError("bounded route retry failed")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cycles", type=int, default=1)
     ap.add_argument("--smoke", action="store_true")
     args = ap.parse_args()
     s.private_backend = refreshable_backend
+    s.safe_call_ai = route_resilient_safe_call
     # Refresh once proactively; later calls transparently refresh again after 401.
     refresh_oidc()
     return s.smoke() if args.smoke else s.run_pipeline(args.cycles)
