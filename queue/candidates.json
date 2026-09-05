@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-05T00:10:01+00:00",
-  "scan_label": "2026-09-05 00:09 UTC",
-  "fingerprint": "758a453c69d00044f9a800d6c6b54aa00498522c7c38818de1a21069fc7a4177",
+  "generated_at": "2026-09-05T04:36:13+00:00",
+  "scan_label": "2026-09-05 04:36 UTC",
+  "fingerprint": "bc47e00ac119cb84ac402caab49b409c7f918a8a9042b705b0ab525e7282bb76",
   "signal_count": 16,
   "signals": [
     {
@@ -24,6 +24,11 @@
       "source": "DR",
       "headline": "Dommer vil erklære retssag mod Lindsay Clancy ugyldig",
       "normalized": "dommer vil erklære retssag mod lindsay clancy ugyldig"
+    },
+    {
+      "source": "DR",
+      "headline": "Flere meldes dræbt efter eksplosion på en militærkaserne i Bolivia",
+      "normalized": "flere meldes dræbt efter eksplosion på en militærkaserne i bolivia"
     },
     {
       "source": "DR",
@@ -59,11 +64,6 @@
       "source": "DR",
       "headline": "Politi opfordrer beboere i Frederiks til at lukke døre og vinduer",
       "normalized": "politi opfordrer beboere i frederiks til at lukke døre og vinduer"
-    },
-    {
-      "source": "DR",
-      "headline": "Stor diskokugle ramte mand i hovedet til firmafest i København",
-      "normalized": "stor diskokugle ramte mand i hovedet til firmafest i københavn"
     },
     {
       "source": "DR",
@@ -115,19 +115,6 @@
       "note": "Likely same-event cluster; editorial/source independence must still be verified."
     },
     {
-      "event_key": "1e5359a2222635e4",
-      "sources": [
-        "DR"
-      ],
-      "headlines": [
-        "Stor diskokugle ramte mand i hovedet til firmafest i København"
-      ],
-      "signal_count": 1,
-      "multi_source": false,
-      "max_similarity": 1.0,
-      "note": "Likely same-event cluster; editorial/source independence must still be verified."
-    },
-    {
       "event_key": "36e65baa4a3c5018",
       "sources": [
         "DR"
@@ -160,6 +147,19 @@
       ],
       "headlines": [
         "Omstridt Flextrafik-leverandør begæret konkurs"
+      ],
+      "signal_count": 1,
+      "multi_source": false,
+      "max_similarity": 1.0,
+      "note": "Likely same-event cluster; editorial/source independence must still be verified."
+    },
+    {
+      "event_key": "71ce39833e8c49e9",
+      "sources": [
+        "DR"
+      ],
+      "headlines": [
+        "Flere meldes dræbt efter eksplosion på en militærkaserne i Bolivia"
       ],
       "signal_count": 1,
       "multi_source": false,
