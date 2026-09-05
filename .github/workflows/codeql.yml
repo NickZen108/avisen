@@ -12,8 +12,6 @@ on:
       - 'cloudflare/**'
       - 'docs/**/*.js'
       - 'scripts/**/*.mjs'
-  schedule:
-    - cron: '41 2 * * 2'
 permissions:
   contents: read
   security-events: write
