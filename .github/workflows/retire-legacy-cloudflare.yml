@@ -1,0 +1,55 @@
+name: Retire legacy Cloudflare v1-v2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/retire-legacy-cloudflare.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  retire:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete verified legacy Workers only
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          test -n "$CF_TOKEN"
+          test -n "$CF_ACCOUNT"
+          api="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT}/workers/scripts"
+          # Legacy v1 public Worker and Pipeline v2 Newsdesk. Do NOT touch
+          # morgentidende-v2: that name is used by the current Pipeline v3 runtime.
+          for worker in morgentidende morgentidende-newsdesk; do
+            echo "Retiring ${worker}"
+            code=$(curl -sS -o "/tmp/${worker}.json" -w '%{http_code}' \
+              -X DELETE "${api}/${worker}" \
+              -H "Authorization: Bearer ${CF_TOKEN}" \
+              -H 'Content-Type: application/json')
+            cat "/tmp/${worker}.json" || true
+            case "$code" in
+              200|204|404) ;;
+              *) echo "Cloudflare delete failed for ${worker}: HTTP ${code}" >&2; exit 1 ;;
+            esac
+          done
+      - name: Verify legacy Workers are gone
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT}/workers/scripts"
+          for worker in morgentidende morgentidende-newsdesk; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' \
+              "${api}/${worker}" -H "Authorization: Bearer ${CF_TOKEN}")
+            if [ "$code" != 404 ]; then
+              echo "${worker} still responds in Cloudflare API: HTTP ${code}" >&2
+              exit 1
+            fi
+            echo "${worker}: retired"
+          done
