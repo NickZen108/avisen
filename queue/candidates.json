@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-04T22:18:18+00:00",
-  "scan_label": "2026-09-04 22:18 UTC",
-  "fingerprint": "af5a6f84201db63d2123cc6cecbf2cdca8f76687bb6daedd8811cf67deb55a95",
+  "generated_at": "2026-09-05T00:10:01+00:00",
+  "scan_label": "2026-09-05 00:09 UTC",
+  "fingerprint": "758a453c69d00044f9a800d6c6b54aa00498522c7c38818de1a21069fc7a4177",
   "signal_count": 16,
   "signals": [
     {
@@ -19,11 +19,6 @@
       "source": "DR",
       "headline": "Antallet af savnede i Nepal og Tibet opjusteres",
       "normalized": "antallet af savnede i nepal og tibet opjusteres"
-    },
-    {
-      "source": "DR",
-      "headline": "Dolly Partons stjerne på Hollywoods 'Walk of Fame' restaureres",
-      "normalized": "dolly partons stjerne på hollywoods walk of fame restaureres"
     },
     {
       "source": "DR",
@@ -64,6 +59,11 @@
       "source": "DR",
       "headline": "Politi opfordrer beboere i Frederiks til at lukke døre og vinduer",
       "normalized": "politi opfordrer beboere i frederiks til at lukke døre og vinduer"
+    },
+    {
+      "source": "DR",
+      "headline": "Stor diskokugle ramte mand i hovedet til firmafest i København",
+      "normalized": "stor diskokugle ramte mand i hovedet til firmafest i københavn"
     },
     {
       "source": "DR",
@@ -108,6 +108,19 @@
       ],
       "headlines": [
         "71-årig kvinde får fængsel for mishandling af sin mand"
+      ],
+      "signal_count": 1,
+      "multi_source": false,
+      "max_similarity": 1.0,
+      "note": "Likely same-event cluster; editorial/source independence must still be verified."
+    },
+    {
+      "event_key": "1e5359a2222635e4",
+      "sources": [
+        "DR"
+      ],
+      "headlines": [
+        "Stor diskokugle ramte mand i hovedet til firmafest i København"
       ],
       "signal_count": 1,
       "multi_source": false,
@@ -199,19 +212,6 @@
       ],
       "headlines": [
         "Trump har udpeget ny fungerende minister for landets hær"
-      ],
-      "signal_count": 1,
-      "multi_source": false,
-      "max_similarity": 1.0,
-      "note": "Likely same-event cluster; editorial/source independence must still be verified."
-    },
-    {
-      "event_key": "b31731f7079d92d2",
-      "sources": [
-        "DR"
-      ],
-      "headlines": [
-        "Dolly Partons stjerne på Hollywoods 'Walk of Fame' restaureres"
       ],
       "signal_count": 1,
       "multi_source": false,
