@@ -1,6 +1,5 @@
 name: Auto-publish reconcile
 on:
-  schedule: [{cron: '13 * * * *'}]
   workflow_dispatch:
 permissions: {contents: read, pull-requests: write}
 concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
