@@ -1,6 +1,5 @@
 name: Release scheduled articles
 on:
-  schedule: [{cron: '2,17,32,47 * * * *'}]
   workflow_dispatch:
 permissions: {contents: write}
 concurrency: {group: morgentidende-main-writes, cancel-in-progress: false}
