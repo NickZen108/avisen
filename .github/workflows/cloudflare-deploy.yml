@@ -1,80 +1,17 @@
-name: Deploy to Cloudflare Workers
+name: '[RETIRED] Legacy Cloudflare v1 deploy'
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'docs/**'
-      - 'cloudflare/site-worker.js'
-      - 'wrangler.jsonc'
-      - '.github/workflows/cloudflare-deploy.yml'
   workflow_dispatch:
-    inputs:
-      target_sha:
-        description: 'Publisher SHA to deploy and verify'
-        required: false
-        default: ''
 
 permissions:
   contents: read
-  actions: write
-
-concurrency:
-  group: morgentidende-cloudflare-production
-  cancel-in-progress: true
 
 jobs:
-  deploy:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout latest generated main
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 2
-      - name: Resolve deployment SHA
-        id: target
-        env:
-          INPUT_TARGET_SHA: ${{ github.event.inputs.target_sha }}
+      - name: Legacy v1 runtime is retired
         run: |
-          SHA="${INPUT_TARGET_SHA:-$(git rev-parse HEAD)}"
-          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
-      - name: Detect shared design changes
-        id: design
-        shell: bash
-        env:
-          TARGET_SHA: ${{ steps.target.outputs.sha }}
-        run: |
-          FILES=$(git diff --name-only "$TARGET_SHA^..$TARGET_SHA" 2>/dev/null || git diff --name-only HEAD^..HEAD 2>/dev/null || true)
-          if printf '%s\n' "$FILES" | grep -Eq '^(templates/|docs/(theme\.(css|js)|style\.css|morgentidende-ui\.css|account-ui\.css|signup\.css)$|scripts/(design_enhancements|reader_experience|live_surface_qa)\.py$)'; then
-            echo 'changed=true' >> "$GITHUB_OUTPUT"
-          else
-            echo 'changed=false' >> "$GITHUB_OUTPUT"
-          fi
-      - name: Deploy Worker and static assets
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: '4.127.1'
-          command: deploy
-      - uses: actions/setup-python@v5
-        if: ${{ steps.design.outputs.changed == 'true' }}
-        with:
-          python-version: '3.12'
-      - name: Verify shared design after deployment
-        if: ${{ steps.design.outputs.changed == 'true' }}
-        run: python scripts/live_surface_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-surface-latest.md
-      - name: Upload design QA evidence
-        if: ${{ always() && steps.design.outputs.changed == 'true' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: design-qa-${{ github.run_id }}
-          path: reports/qa/live-surface-latest.md
-          if-no-files-found: warn
-          retention-days: 14
-      - name: Dispatch post-deploy guard after successful deploy
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TARGET_SHA: ${{ steps.target.outputs.sha }}
-        run: gh workflow run post-deploy-guard.yml --ref main -f target_sha="$TARGET_SHA"
+          echo 'Legacy Cloudflare v1 worker morgentidende has been retired.'
+          echo 'This workflow intentionally does not deploy anything.'
+          echo 'Current Pipeline v3 lives in NickZen108/morgentidende and must not be changed from this repo.'
