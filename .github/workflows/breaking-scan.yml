@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
       - name: Sync main
         run: git pull --ff-only origin main
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - name: Translate current lead into follow-up search needs
