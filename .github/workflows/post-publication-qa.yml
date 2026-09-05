@@ -36,7 +36,7 @@ jobs:
         run: python scripts/live_visual_qa.py --base-url https://morgentidende.nicolaipetersen108.workers.dev/ --recent-hours 24 --report reports/qa/live-visual-latest.md
       - name: Upload QA evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: post-publication-image-qa-${{ github.run_id }}
           path: reports/qa/live-visual-latest.md
