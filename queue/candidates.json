@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-05T04:36:13+00:00",
-  "scan_label": "2026-09-05 04:36 UTC",
-  "fingerprint": "bc47e00ac119cb84ac402caab49b409c7f918a8a9042b705b0ab525e7282bb76",
+  "generated_at": "2026-09-05T08:33:08+00:00",
+  "scan_label": "2026-09-05 08:33 UTC",
+  "fingerprint": "a1b55096dc695d0d96bdab449dec426a97d6dd8274d550e3a110623ab3bce7d1",
   "signal_count": 16,
   "signals": [
     {
@@ -14,11 +14,6 @@
       "source": "DR",
       "headline": "Adopterede får hjælp til at finde biologisk familie",
       "normalized": "adopterede får hjælp til at finde biologisk familie"
-    },
-    {
-      "source": "DR",
-      "headline": "Antallet af savnede i Nepal og Tibet opjusteres",
-      "normalized": "antallet af savnede i nepal og tibet opjusteres"
     },
     {
       "source": "DR",
@@ -57,13 +52,23 @@
     },
     {
       "source": "DR",
-      "headline": "Omstridt Flextrafik-leverandør begæret konkurs",
-      "normalized": "omstridt flextrafik leverandør begæret konkurs"
+      "headline": "Politi opfordrer beboere i Frederiks til at lukke døre og vinduer",
+      "normalized": "politi opfordrer beboere i frederiks til at lukke døre og vinduer"
     },
     {
       "source": "DR",
-      "headline": "Politi opfordrer beboere i Frederiks til at lukke døre og vinduer",
-      "normalized": "politi opfordrer beboere i frederiks til at lukke døre og vinduer"
+      "headline": "Politiet stoppede bil og fandt 137 kilo hash",
+      "normalized": "politiet stoppede bil og fandt 137 kilo hash"
+    },
+    {
+      "source": "DR",
+      "headline": "Skudepisode i Værløse i aftes - ingen tilskadekomne",
+      "normalized": "skudepisode i værløse i aftes ingen tilskadekomne"
+    },
+    {
+      "source": "DR",
+      "headline": "Togbusser indsættes på strækning mellem København og Helsingør",
+      "normalized": "togbusser indsættes på strækning mellem københavn og helsingør"
     },
     {
       "source": "DR",
@@ -79,11 +84,6 @@
       "source": "DR",
       "headline": "Udrejsefrist for personer fra Iran eller Libanon genoptages",
       "normalized": "udrejsefrist for personer fra iran eller libanon genoptages"
-    },
-    {
-      "source": "DR",
-      "headline": "USA undersøger anklage om angreb på iransk bryllup",
-      "normalized": "usa undersøger anklage om angreb på iransk bryllup"
     }
   ],
   "exact_clusters": [],
@@ -108,6 +108,19 @@
       ],
       "headlines": [
         "71-årig kvinde får fængsel for mishandling af sin mand"
+      ],
+      "signal_count": 1,
+      "multi_source": false,
+      "max_similarity": 1.0,
+      "note": "Likely same-event cluster; editorial/source independence must still be verified."
+    },
+    {
+      "event_key": "2d291e102700404c",
+      "sources": [
+        "DR"
+      ],
+      "headlines": [
+        "Skudepisode i Værløse i aftes - ingen tilskadekomne"
       ],
       "signal_count": 1,
       "multi_source": false,
@@ -141,12 +154,12 @@
       "note": "Likely same-event cluster; editorial/source independence must still be verified."
     },
     {
-      "event_key": "58671cfec0d49f63",
+      "event_key": "71ce39833e8c49e9",
       "sources": [
         "DR"
       ],
       "headlines": [
-        "Omstridt Flextrafik-leverandør begæret konkurs"
+        "Flere meldes dræbt efter eksplosion på en militærkaserne i Bolivia"
       ],
       "signal_count": 1,
       "multi_source": false,
@@ -154,12 +167,12 @@
       "note": "Likely same-event cluster; editorial/source independence must still be verified."
     },
     {
-      "event_key": "71ce39833e8c49e9",
+      "event_key": "72aed8755a061fcd",
       "sources": [
         "DR"
       ],
       "headlines": [
-        "Flere meldes dræbt efter eksplosion på en militærkaserne i Bolivia"
+        "Togbusser indsættes på strækning mellem København og Helsingør"
       ],
       "signal_count": 1,
       "multi_source": false,
@@ -219,38 +232,25 @@
       "note": "Likely same-event cluster; editorial/source independence must still be verified."
     },
     {
-      "event_key": "c31c2d92dafcba4e",
-      "sources": [
-        "DR"
-      ],
-      "headlines": [
-        "USA undersøger anklage om angreb på iransk bryllup"
-      ],
-      "signal_count": 1,
-      "multi_source": false,
-      "max_similarity": 1.0,
-      "note": "Likely same-event cluster; editorial/source independence must still be verified."
-    },
-    {
-      "event_key": "d26a20a0e12c7176",
-      "sources": [
-        "DR"
-      ],
-      "headlines": [
-        "Antallet af savnede i Nepal og Tibet opjusteres"
-      ],
-      "signal_count": 1,
-      "multi_source": false,
-      "max_similarity": 1.0,
-      "note": "Likely same-event cluster; editorial/source independence must still be verified."
-    },
-    {
       "event_key": "d470cc0a40499bd5",
       "sources": [
         "DR"
       ],
       "headlines": [
         "Novo Nordisk Fonden vil bygge kvantefabrik i København"
+      ],
+      "signal_count": 1,
+      "multi_source": false,
+      "max_similarity": 1.0,
+      "note": "Likely same-event cluster; editorial/source independence must still be verified."
+    },
+    {
+      "event_key": "d8bcd6fbfb823f49",
+      "sources": [
+        "DR"
+      ],
+      "headlines": [
+        "Politiet stoppede bil og fandt 137 kilo hash"
       ],
       "signal_count": 1,
       "multi_source": false,

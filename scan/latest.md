@@ -1,9 +1,12 @@
-# Scan 2026-09-05 04:36 UTC
+# Scan 2026-09-05 08:33 UTC
 
 Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 
 ## DR
 - Kort nyt | DR
+- Politiet stoppede bil og fandt 137 kilo hash
+- Skudepisode i Værløse i aftes - ingen tilskadekomne
+- Togbusser indsættes på strækning mellem København og Helsingør
 - Flere meldes dræbt efter eksplosion på en militærkaserne i Bolivia
 - Lukningstruet lufthavn i Grønland skal måske bruges af Nato
 - Lyngby slår tophold og henter sæsonens første sejr
@@ -16,9 +19,6 @@ Kilder forsøgt: DR, TV 2, Berlingske. En død kilde stopper ikke scannet.
 - Novo Nordisk Fonden vil bygge kvantefabrik i København
 - Trump har udpeget ny fungerende minister for landets hær
 - Trumps triumfbue påbegyndes inden for to uger, siger indenrigsminister
-- USA undersøger anklage om angreb på iransk bryllup
-- Antallet af savnede i Nepal og Tibet opjusteres
-- Omstridt Flextrafik-leverandør begæret konkurs
 
 ## TV2
 - (feed ikke nået)
