@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-05T08:33:08+00:00",
-  "scan_label": "2026-09-05 08:33 UTC",
-  "fingerprint": "a1b55096dc695d0d96bdab449dec426a97d6dd8274d550e3a110623ab3bce7d1",
+  "generated_at": "2026-09-05T11:59:47+00:00",
+  "scan_label": "2026-09-05 11:59 UTC",
+  "fingerprint": "e5068d8dda35cac8b052150a5a698b589f96e74b04cf316055d29b794537bb17",
   "signal_count": 16,
   "signals": [
     {
@@ -24,6 +24,11 @@
       "source": "DR",
       "headline": "Flere meldes dræbt efter eksplosion på en militærkaserne i Bolivia",
       "normalized": "flere meldes dræbt efter eksplosion på en militærkaserne i bolivia"
+    },
+    {
+      "source": "DR",
+      "headline": "Forsvaret sender F35-fly på vingerne i anledning af flagdag",
+      "normalized": "forsvaret sender f35 fly på vingerne i anledning af flagdag"
     },
     {
       "source": "DR",
@@ -52,6 +57,11 @@
     },
     {
       "source": "DR",
+      "headline": "Over en kilometer lang kø til kong Haralds kiste",
+      "normalized": "over en kilometer lang kø til kong haralds kiste"
+    },
+    {
+      "source": "DR",
       "headline": "Politi opfordrer beboere i Frederiks til at lukke døre og vinduer",
       "normalized": "politi opfordrer beboere i frederiks til at lukke døre og vinduer"
     },
@@ -69,16 +79,6 @@
       "source": "DR",
       "headline": "Togbusser indsættes på strækning mellem København og Helsingør",
       "normalized": "togbusser indsættes på strækning mellem københavn og helsingør"
-    },
-    {
-      "source": "DR",
-      "headline": "Trump har udpeget ny fungerende minister for landets hær",
-      "normalized": "trump har udpeget ny fungerende minister for landets hær"
-    },
-    {
-      "source": "DR",
-      "headline": "Trumps triumfbue påbegyndes inden for to uger, siger indenrigsminister",
-      "normalized": "trumps triumfbue påbegyndes inden for to uger siger indenrigsminister"
     },
     {
       "source": "DR",
@@ -154,6 +154,19 @@
       "note": "Likely same-event cluster; editorial/source independence must still be verified."
     },
     {
+      "event_key": "6d613e7064c193b1",
+      "sources": [
+        "DR"
+      ],
+      "headlines": [
+        "Over en kilometer lang kø til kong Haralds kiste"
+      ],
+      "signal_count": 1,
+      "multi_source": false,
+      "max_similarity": 1.0,
+      "note": "Likely same-event cluster; editorial/source independence must still be verified."
+    },
+    {
       "event_key": "71ce39833e8c49e9",
       "sources": [
         "DR"
@@ -180,12 +193,12 @@
       "note": "Likely same-event cluster; editorial/source independence must still be verified."
     },
     {
-      "event_key": "7b0fd14af1e79994",
+      "event_key": "7e6c89166b6a9ad7",
       "sources": [
         "DR"
       ],
       "headlines": [
-        "Trumps triumfbue påbegyndes inden for to uger, siger indenrigsminister"
+        "Forsvaret sender F35-fly på vingerne i anledning af flagdag"
       ],
       "signal_count": 1,
       "multi_source": false,
@@ -212,19 +225,6 @@
       ],
       "headlines": [
         "Løkke laver udleveringsaftale med Marokko"
-      ],
-      "signal_count": 1,
-      "multi_source": false,
-      "max_similarity": 1.0,
-      "note": "Likely same-event cluster; editorial/source independence must still be verified."
-    },
-    {
-      "event_key": "ab277ca040ff8fc7",
-      "sources": [
-        "DR"
-      ],
-      "headlines": [
-        "Trump har udpeget ny fungerende minister for landets hær"
       ],
       "signal_count": 1,
       "multi_source": false,
